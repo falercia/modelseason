@@ -32,9 +32,28 @@ python -m http.server 8000 --directory public   # abre http://localhost:8000
 ## Deploy
 
 1. Repositório: `github.com/falercia/modelseason`.
-2. Em Settings → Secrets and variables → Actions, criar `OPENROUTER_API_KEY`.
+2. Criar o secret `OPENROUTER_API_KEY` (Settings → Secrets and variables → Actions, ou `gh secret set OPENROUTER_API_KEY`, que pede a chave por prompt e não deixa rastro no histórico do shell). A chave nunca entra em arquivo, comentário ou log.
 3. Rodar o workflow "Atualizar dados diariamente" manualmente uma vez (Actions → Run workflow) para validar.
 4. Na Vercel, importar o repositório. O `vercel.json` já define `outputDirectory: public` sem build. Cada commit do bot dispara um deploy.
+
+## Operação e alertas
+
+O workflow `.github/workflows/daily.yml` roda às 06:30 UTC (03:30 America/Sao_Paulo) e:
+
+- aborta cedo, com mensagem clara, se o secret não estiver configurado;
+- tenta o `fetch.py` até 3 vezes, com 60s entre as tentativas, para absorver 429 e instabilidade da API;
+- roda `pipeline/check_freshness.py`, que **falha se o último dia do CSV estiver mais de 2 dias atrás de ontem (UTC)**. Esse guard existe porque o modo de falha perigoso não é o erro barulhento, é o silencioso: a API responde 200 com dado velho, nada muda no commit e a página fica congelada parecendo atualizada;
+- em caso de falha, abre (ou comenta em) uma issue com a label `pipeline`, contendo o link do run e um checklist de diagnóstico. O GitHub notifica por e-mail;
+- quando volta a funcionar, comenta e fecha a issue automaticamente.
+
+Para receber também o e-mail nativo de falha do Actions: GitHub → Settings → Notifications → Actions → "Send notifications for failed workflows only".
+
+Rodar o guard localmente:
+
+```bash
+python pipeline/check_freshness.py                    # tolerância padrão de 2 dias
+python pipeline/check_freshness.py --max-lag-days 5   # tolerância maior
+```
 
 ## Limites conhecidos da API
 

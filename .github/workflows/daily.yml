@@ -4,9 +4,15 @@ on:
   schedule:
     - cron: "30 6 * * *"   # 06:30 UTC = 03:30 America/Sao_Paulo; o dia UTC anterior já está fechado
   workflow_dispatch:
+    inputs:
+      max_lag_days:
+        description: "Atraso máximo tolerado no CSV, em dias"
+        required: false
+        default: "2"
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: daily-update
@@ -15,20 +21,51 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
           cache-dependency-path: pipeline/requirements.txt
+
       - run: pip install -r pipeline/requirements.txt
+
+      - name: Verificar se o secret existe
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          if [ -z "$OPENROUTER_API_KEY" ]; then
+            echo "::error::Secret OPENROUTER_API_KEY não configurado no repositório."
+            exit 1
+          fi
+          echo "Secret presente."
+
+      - name: Estado antes
+        run: python pipeline/check_freshness.py --max-lag-days 3650 || true
+
       - name: Buscar dados novos
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        run: python pipeline/fetch.py
+        run: |
+          for tentativa in 1 2 3; do
+            if python pipeline/fetch.py; then
+              exit 0
+            fi
+            echo "::warning::fetch.py falhou na tentativa $tentativa. Nova tentativa em 60s."
+            sleep 60
+          done
+          echo "::error::fetch.py falhou nas 3 tentativas."
+          exit 1
+
+      - name: Guardar frescor dos dados
+        run: python pipeline/check_freshness.py --max-lag-days "${{ inputs.max_lag_days || 2 }}"
+
       - name: Recalcular agregados
         run: python pipeline/build.py
+
       - name: Commitar se houver mudança
         run: |
           git config user.name "modelseason-bot"
@@ -40,3 +77,65 @@ jobs:
             git commit -m "data: atualização $(date -u +%F)"
             git push
           fi
+
+      - name: Abrir issue se falhou
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const titulo = 'Falha na atualização diária do Model Season';
+            const corpo = [
+              'A execução automática do pipeline falhou.',
+              '',
+              `**Run:** ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              `**Quando:** ${new Date().toISOString()}`,
+              `**Gatilho:** ${context.eventName}`,
+              '',
+              'Checklist de diagnóstico:',
+              '1. O secret `OPENROUTER_API_KEY` existe e a chave continua válida?',
+              '2. O passo "Buscar dados novos" retornou 401, 403 ou 429?',
+              '3. O guard de frescor acusou dados parados? Pode ser atraso do próprio OpenRouter.',
+              '4. O endpoint `rankings-daily` mudou de contrato?',
+              '',
+              'Enquanto isto estiver aberto, a página segue publicada com os últimos dados bons.'
+            ].join('\n');
+
+            const abertas = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'pipeline'
+            });
+            const existente = abertas.data.find(i => i.title === titulo);
+
+            if (existente) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: existente.number, body: corpo
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title: titulo, body: corpo, labels: ['pipeline']
+              });
+            }
+
+      - name: Fechar issue se voltou a funcionar
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const titulo = 'Falha na atualização diária do Model Season';
+            const abertas = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'pipeline'
+            });
+            for (const i of abertas.data.filter(i => i.title === titulo)) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number,
+                body: `Execução voltou a funcionar: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number, state: 'closed'
+              });
+            }
