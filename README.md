@@ -108,4 +108,4 @@ O código deste repositório está sob [MIT](LICENSE). A licença dos dados é a
 
 ---
 
-Detalhes de pipeline, operação e contribuição: [`docs/pipeline.md`](docs/pipeline.md).
+Histórico de mudanças: [`CHANGELOG.md`](CHANGELOG.md). Plano da próxima versão: [`docs/v2.md`](docs/v2.md). Detalhes de pipeline, operação e contribuição: [`docs/pipeline.md`](docs/pipeline.md).
