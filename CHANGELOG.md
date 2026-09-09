@@ -10,6 +10,16 @@ Planejado para a v2, detalhado em [`docs/v2.md`](docs/v2.md).
 
 ---
 
+## [1.3.1] — 2026-09-09
+
+### Corrigido
+
+- **O "?" abria um verbete com outro nome.** O mapa de gráfico para indicador era um para um contra um glossário de 17 verbetes, então 19 dos 22 gráficos abriam um painel com título diferente do que foi clicado: "Tração contra capacidade" abria "Share de tokens". Agora o painel abre com o título **do gráfico** e mostra o conjunto de indicadores que aquele gráfico usa, com um caminho de volta para a lista completa. Verbete continua morando num lugar só: três gráficos falam de rotatividade do top 10 e o texto não é duplicado.
+- **Painel sem formatação.** Os rótulos "o que é", "como é calculado" e "o que não conclui" ficavam colados no texto, lendo "o que éSe os pesos do modelo…". As regras de estilo estavam presas ao seletor da seção, e o conteúdo clonado no painel caía fora dele. O painel passou a herdar o mesmo bloco de estilo, e o rótulo virou linha própria, em maiúsculas, com o "o que não conclui" na cor de alerta.
+- Três gráficos apontavam para o indicador errado por descuido do mapa: `anfam` para "Share de tokens" quando mostra volume absoluto, `board` e `mudou` sem o verbete que de fato explica o que está na tela.
+
+---
+
 ## [1.3.0] — 2026-09-09
 
 ### Adicionado

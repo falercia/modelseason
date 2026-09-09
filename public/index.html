@@ -228,9 +228,13 @@ footer p{margin:0 0 6px}
 .met .body{padding:0 14px 14px;font-size:13px;color:var(--ink-2);line-height:1.62}
 .met .body p{margin:0 0 8px}
 .met .body p:last-child{margin:0}
-.met .k{display:inline-block;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-right:6px}
-.met .nao{border-left:2px solid var(--bad);padding-left:9px}
-.met .fo{border-left:2px solid var(--accent);padding-left:9px}
+.met .k{display:block;font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 3px}
+.met .body p{margin:0 0 12px}
+.met .nao .k{color:var(--bad)}
+.met .fo .k{color:var(--accent)}
+.met .nao{border-left:2px solid var(--bad);padding-left:10px}
+.met .fo{border-left:2px solid var(--accent);padding-left:10px}
 .cmp-sel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0 14px}
 .cmp-sel label{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
 .cmp-sel input{width:100%;border:1px solid var(--axis);background:var(--surface);color:var(--ink);
@@ -318,10 +322,15 @@ footer p{margin:0 0 6px}
 .painel-h h2{margin:0;font-size:17px;letter-spacing:-.01em}
 .painel-x{font:inherit;font-size:22px;line-height:1;background:none;border:0;color:var(--ink-2);cursor:pointer;padding:2px 6px}
 .painel-x:hover{color:var(--ink)}
-.painel-c{overflow-y:auto;padding:18px 22px 40px;flex:1 1 auto}
-.painel-c details{border:1px solid var(--ring);border-radius:9px;margin-bottom:8px;background:var(--bg)}
-.painel-c summary{cursor:pointer;padding:11px 14px;font-weight:600;font-size:13.5px}
-.painel-c .body{padding:0 14px 12px;font-size:13px;line-height:1.6}
+.painel-c{overflow-y:auto;padding:14px 22px 40px;flex:1 1 auto}
+.painel-nota{margin:0;padding:12px 22px 0;font-size:12.5px;color:var(--ink-3);flex:0 0 auto;
+  display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.painel-nota button{font:inherit;color:var(--accent);background:none;border:0;padding:0;cursor:pointer;
+  text-decoration:underline;text-underline-offset:2px}
+.painel-c.met{display:block}
+.painel-c.met details{margin-bottom:8px}
+.painel-c.met details:last-child{margin-bottom:0}
+.painel-c > p{font-size:13px;color:var(--ink-2);line-height:1.6;margin:0 0 14px}
 .painel-c details.destaque{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in oklch,var(--accent) 22%,transparent)}
 @media (max-width:600px){.painel{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -334,7 +343,8 @@ footer p{margin:0 0 6px}
     <h2 id="painel-met-t">Como ler esta página</h2>
     <button id="painel-x" class="painel-x" aria-label="Fechar">×</button>
   </div>
-  <div id="painel-corpo" class="painel-c"></div>
+  <p id="painel-nota" class="painel-nota" hidden></p>
+  <div id="painel-corpo" class="painel-c met"></div>
 </div>
 <div id="painel-fundo" class="painel-fundo" hidden></div>
 <div class="wrap">
@@ -803,19 +813,37 @@ function rangeFor(key, total, eixo){
     document.body.style.overflow='hidden'; fechar.focus(); };
   const sair=()=>{ pan.hidden=true; fun.hidden=true; btn.setAttribute('aria-expanded','false');
     document.body.style.overflow=''; if(antes&&antes.focus) antes.focus(); };
-  btn.addEventListener('click',()=>pan.hidden?abrir():sair());
-  // Chamado pelos "?" de cada gráfico: abre o painel ja no verbete pedido.
-  window.abrirMetodologia=(titulo)=>{
+  btn.addEventListener('click',()=>{ if(pan.hidden){ abrir(); abrirMetodologia(); } else sair(); });
+  const TIT_PADRAO='Como ler esta página';
+  const tituloEl=document.getElementById('painel-met-t');
+  const nota=document.getElementById('painel-nota');
+  // Chamado pelos "?" de cada grafico. O titulo do painel passa a ser o titulo
+  // DO GRAFICO clicado, e nao o nome do indicador: clicar em "Tração contra
+  // capacidade" e ler um cabecalho escrito "Share de tokens" faz o leitor achar
+  // que abriu a coisa errada.
+  window.abrirMetodologia=(tituloGrafico, verbetes)=>{
     if(pan.hidden) abrir();
-    if(!titulo) return;
-    const alvo=[...corpo.querySelectorAll('details')]
-      .find(d=>d.querySelector('summary').textContent.trim()===titulo);
-    if(!alvo) return;
-    corpo.querySelectorAll('details').forEach(d=>{ d.open=false; d.classList.remove('destaque'); });
-    alvo.open=true; alvo.classList.add('destaque');
-    alvo.scrollIntoView({block:'start'});
-    alvo.querySelector('summary').focus();
-    setTimeout(()=>alvo.classList.remove('destaque'),2600);
+    const todos=[...corpo.querySelectorAll('details')];
+    todos.forEach(d=>{ d.open=false; d.classList.remove('destaque'); d.hidden=false; });
+    if(!tituloGrafico || !verbetes || !verbetes.length){
+      tituloEl.textContent=TIT_PADRAO; nota.hidden=true; corpo.scrollTop=0; return;
+    }
+    const achados=verbetes
+      .map(t=>todos.find(d=>d.querySelector('summary').textContent.trim()===t))
+      .filter(Boolean);
+    if(!achados.length){ tituloEl.textContent=TIT_PADRAO; nota.hidden=true; return; }
+    tituloEl.textContent=tituloGrafico;
+    nota.hidden=false;
+    nota.innerHTML=(achados.length===1
+      ? 'Indicador usado neste gráfico.'
+      : `Os ${achados.length} indicadores usados neste gráfico.`)+
+      ' <button type="button" id="painel-todos">Ver todos os indicadores</button>';
+    todos.forEach(d=>{ d.hidden = !achados.includes(d); });
+    achados.forEach(d=>{ d.open=true; d.classList.add('destaque'); });
+    corpo.scrollTop=0;
+    achados[0].querySelector('summary').focus();
+    setTimeout(()=>achados.forEach(d=>d.classList.remove('destaque')),2600);
+    document.getElementById('painel-todos')?.addEventListener('click',()=>abrirMetodologia());
   };
   fechar.addEventListener('click',sair);
   fun.addEventListener('click',sair);
@@ -2614,17 +2642,35 @@ function montarPesos(){
 // Cada gráfico aponta para a entrada correspondente em "Como ler cada indicador".
 // O texto vive num lugar só: duplicar a definição no card garante divergência
 // assim que uma das duas for editada.
+// Cada grafico usa UM OU MAIS indicadores. O mapa anterior era 1 para 1 e
+// mandava, por exemplo, "Tração contra capacidade" abrir "Share de tokens":
+// o leitor clicava numa coisa e lia sobre outra. Agora o painel abre com o
+// nome do proprio grafico no topo e mostra os indicadores que ele usa, sem
+// duplicar verbete (tres graficos falam da rotatividade do top 10, e o texto
+// dela mora num lugar so).
 const EXPLICA={
-  volume:'Tokens por semana', conc:'Share dos 5 maiores e HHI',
-  vendor:'Share de tokens', board:'Share de tokens',
-  origin:'Origem do laboratório', weights:'Licença dos pesos', free:'Cobrança',
-  anshare:'Share de tokens', anfam:'Share de tokens', antenure:'Rotatividade e idade do top 10',
-  churn:'Rotatividade e idade do top 10', age:'Rotatividade e idade do top 10',
-  cohort:'Tempo até o pico e meia-vida', life:'A forma de uma temporada',
-  spend:'Gasto estimado', vsmoney:'Razão dinheiro sobre volume',
-  quality:'Índice de Inteligência', varia:'Variação de share em quatro semanas',
-  mudou:'Variação de share em quatro semanas', mapa:'Share de tokens',
-  sinais:'Sinais e extrapolação', projecao:'Sinais e extrapolação',
+  volume:['Tokens por semana'],
+  conc:['Share dos 5 maiores e HHI'],
+  vendor:['Share de tokens'],
+  board:['Share de tokens','A linha agregada da fonte'],
+  origin:['Origem do laboratório'],
+  weights:['Licença dos pesos'],
+  free:['Cobrança'],
+  anshare:['Share de tokens'],
+  anfam:['Tokens por semana'],
+  antenure:['Rotatividade e idade do top 10'],
+  churn:['Rotatividade e idade do top 10'],
+  age:['Rotatividade e idade do top 10'],
+  cohort:['Tempo até o pico e meia-vida'],
+  life:['A forma de uma temporada'],
+  spend:['Gasto estimado'],
+  vsmoney:['Razão dinheiro sobre volume','Gasto estimado'],
+  quality:['Índice de Inteligência','Share de tokens'],
+  varia:['Variação de share em quatro semanas'],
+  mudou:['Rotatividade e idade do top 10','Variação de share em quatro semanas'],
+  mapa:['Índice de Inteligência','Share de tokens','Faixa de preço e janela de contexto'],
+  sinais:['Sinais e extrapolação'],
+  projecao:['Sinais e extrapolação'],
 };
 function acharVerbete(titulo){
   return [...document.querySelectorAll('#metodologia details')]
@@ -2632,18 +2678,21 @@ function acharVerbete(titulo){
 }
 function montarExplicacoes(){
   document.querySelectorAll('.card[data-chart]').forEach(c=>{
-    const alvo=EXPLICA[c.dataset.chart]; if(!alvo) return;
+    const alvos=EXPLICA[c.dataset.chart]; if(!alvos||!alvos.length) return;
     const h=c.querySelector('.card-h h3'); if(!h || h.querySelector('.expl')) return;
-    const verbete=acharVerbete(alvo); if(!verbete) return;
-    const resumo=(verbete.querySelector('.body p')?.textContent||'').replace(/^o que é/i,'').trim();
+    const primeiro=acharVerbete(alvos[0]); if(!primeiro) return;
+    // Pegar so os nos de texto perdia o <span data-per>, e o titulo virava
+    // "Gasto  estimado". Clonar e tirar o proprio botao preserva tudo.
+    const clone=h.cloneNode(true); clone.querySelector('.expl')?.remove();
+    const titulo=clone.textContent.replace(/\s+/g,' ').trim();
+    const resumo=(primeiro.querySelector('.body p')?.textContent||'').replace(/^o que é/i,'').trim();
     const b=document.createElement('button');
     b.type='button'; b.className='expl'; b.textContent='?';
-    b.title=resumo.slice(0,220);
-    b.setAttribute('aria-label',`O que é ${alvo}: ${resumo.slice(0,140)}. Abrir a explicação completa.`);
+    b.title=`Como ler "${titulo}": ${resumo.slice(0,200)}`;
+    b.setAttribute('aria-label',`Como ler o gráfico ${titulo}. Abrir a explicação.`);
     // Rolar o leitor ate o fim da pagina para ler dois paragrafos e perder o
-    // lugar. O painel abre por cima, ja no verbete certo, e o Escape devolve
-    // exatamente onde estava.
-    b.addEventListener('click',()=>{ abrirMetodologia(alvo); });
+    // lugar. O painel abre por cima, com o nome deste grafico no topo.
+    b.addEventListener('click',()=>{ abrirMetodologia(titulo, alvos); });
     h.appendChild(b);
   });
 }

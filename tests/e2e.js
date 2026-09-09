@@ -335,7 +335,35 @@ const perto = (a, b, tol) => Math.abs(a - b) <= tol;
     return { aberto, destacado, rolou: Math.abs(window.scrollY - antes) > 40 };
   });
   checa(q !== null && q.aberto, 'o "?" do gráfico abre o painel de metodologia');
-  checa(q !== null && q.destacado === 1, 'o painel abre exatamente o verbete daquele gráfico', q ? String(q.destacado) : '');
+  checa(q !== null && q.destacado >= 1, 'o painel abre o verbete daquele gráfico', q ? String(q.destacado) : '');
+
+  // Todo "?" precisa abrir o painel com o titulo DO GRAFICO clicado. O mapa
+  // antigo era 1 para 1 contra um glossario de indicadores, entao "Tração
+  // contra capacidade" abria um painel escrito "Share de tokens" e o leitor
+  // achava que tinha clicado errado.
+  const titulos = await p.evaluate(async () => {
+    const ruins = [];
+    for (const c of document.querySelectorAll('.card[data-chart]')) {
+      const b = c.querySelector('.card-h h3 .expl'); if (!b) continue;
+      const clone = c.querySelector('.card-h h3').cloneNode(true);
+      clone.querySelector('.expl')?.remove();
+      const card = clone.textContent.replace(/\s+/g, ' ').trim();
+      b.click(); await new Promise(r => setTimeout(r, 120));
+      const tit = document.getElementById('painel-met-t').textContent.trim();
+      const vis = [...document.querySelectorAll('#painel-corpo details')].filter(d => !d.hidden);
+      if (tit !== card || vis.length === 0) ruins.push(`${card} → ${tit} (${vis.length})`);
+    }
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    await new Promise(r => setTimeout(r, 200));
+    return ruins;
+  });
+  checa(titulos.length === 0, 'o painel abre com o título do gráfico clicado', titulos.slice(0, 3).join(' | '));
+
+  const semExpl = await p.evaluate(() =>
+    [...document.querySelectorAll('.card[data-chart]')]
+      .filter(c => c.querySelector('.plot') && !c.querySelector('.card-h h3 .expl'))
+      .map(c => c.dataset.chart));
+  checa(semExpl.length <= 1, 'quase todo gráfico tem o "?"', semExpl.join(','));
   checa(q !== null && !q.rolou, 'o "?" não arrasta o leitor para o fim da página');
 
   // ---------- 6m. leitura do ciclo de vida nomeia os 10 ----------
