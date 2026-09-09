@@ -143,6 +143,25 @@ section{margin-bottom:56px}
 footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--grid);font-size:12.5px;color:var(--ink-3);max-width:90ch}
 footer p{margin:0 0 6px}
 .ctrls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.fbar{background:var(--surface);border:1px solid var(--grid);border-radius:12px;padding:12px 14px;margin:0 0 18px}
+.fbar-h{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.fbar-h b{font-size:13px;font-weight:700}
+.fbar-h .st{font-size:12.5px;color:var(--ink-3)}
+.fbar-h .st b{color:var(--ink);font-weight:700}
+.fbar-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px 18px;margin-top:10px}
+.fg{min-width:0}
+.fg .t{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.fg .opts{display:flex;flex-wrap:wrap;gap:4px}
+.fg button{border:1px solid var(--axis);background:transparent;color:var(--ink-2);border-radius:999px;padding:2px 9px;font:500 12px "DM Sans",sans-serif;cursor:pointer;white-space:nowrap}
+.fg button:hover{border-color:var(--ink-3)}
+.fg button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.fg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.fbar .clear{border:1px solid var(--axis);background:transparent;color:var(--ink-2);border-radius:6px;padding:3px 10px;font:500 12px "DM Sans",sans-serif;cursor:pointer}
+.fbar .clear[disabled]{opacity:.4;cursor:default}
+.fbar .toggle{border:0;background:transparent;color:var(--ink-3);font:500 12px "DM Sans",sans-serif;cursor:pointer;padding:3px 6px}
+.fbar[data-open="false"] .fbar-body{display:none}
+.warn{margin-top:9px;font-size:12.5px;color:var(--ink-2);background:var(--surface-2);border-radius:8px;padding:7px 10px}
+@media (max-width:600px){.fbar-body{grid-template-columns:1fr}}
 .views{display:inline-flex;border:1px solid var(--axis);border-radius:6px;overflow:hidden}
 .views button{border:0;background:transparent;color:var(--ink-3);padding:3px 10px;font:500 12px "DM Sans",sans-serif;cursor:pointer;white-space:nowrap}
 .views button+button{border-left:1px solid var(--axis)}
@@ -211,6 +230,17 @@ footer p{margin:0 0 6px}
   <button class="chip" data-range="13" aria-pressed="false">Últimas 13 semanas</button>
 </div>
 
+<div class="fbar" id="fbar" data-open="false">
+  <div class="fbar-h">
+    <b>Filtros</b>
+    <span class="st" id="fstat"></span>
+    <span style="flex:1"></span>
+    <button class="clear" id="fclear" disabled>limpar</button>
+    <button class="toggle" id="ftoggle" aria-expanded="false">mostrar filtros ▾</button>
+  </div>
+  <div class="fbar-body" id="fbody"></div>
+  <div class="warn" id="fwarn" hidden></div>
+</div>
 <div class="tiles" id="tiles"></div>
 
 <!-- 1. MERCADO -->
@@ -387,6 +417,16 @@ const col = slot => css(slot);
 
 // ---- helpers
 function card(name){ return document.querySelector(`.card[data-chart="${name}"]`); }
+// Estado vazio explicito. Qualquer grafico pode ficar sem dado sob um recorte;
+// a resposta certa e dizer isso, nunca lancar excecao e derrubar a pagina inteira.
+function vazio(name, msg){
+  const c=card(name); if(!c) return true;
+  const plot=c.querySelector('.plot');
+  plot.innerHTML=`<div style="padding:34px 8px;color:var(--ink-3);font-size:13px">${msg}</div>`;
+  const lg=c.querySelector('.legend'); if(lg) lg.innerHTML='';
+  const tb=c.querySelector('.tbl'); if(tb) tb.innerHTML='';
+  return true;
+}
 function tip(plot){ let t=plot.querySelector('.tip'); if(!t){t=document.createElement('div');t.className='tip';plot.appendChild(t);} return t; }
 function showTip(t, plot, x, y, html){ t.innerHTML=html; t.style.display='block'; const pw=plot.clientWidth; const tw=t.offsetWidth; t.style.left=(x+16+tw>pw? x-16-tw : x+16)+'px'; t.style.top=Math.max(0,y-10)+'px'; }
 // Estado de series ocultas, por grafico. A legenda e o controle: clicar liga e
@@ -445,6 +485,7 @@ const tipRow=(c,k,v)=>`<div class="r"><span><i style="background:${c}"></i>${k}<
 function stackedShare(name, series, slots, labels, opts={}){
   const c=card(name), plot=c.querySelector('.plot'), ii=idx();
   const todas=Object.keys(series);
+  if(!todas.length) return vazio(name,'Nenhuma categoria no recorte atual.');
   const keys=visiveis(name, todas);
   const f=frame(plot, 300, {t:12,r:16,b:30,l:44});
   const x=xScale(f,ii), y=d3.scaleLinear().domain([0,100]).range([f.h-f.m.b,f.m.t]);
@@ -463,6 +504,7 @@ function stackedShare(name, series, slots, labels, opts={}){
 
 // ---- single line/area
 function lineChart(name, vals, {fmt=fmtP, color='--s1', area=true, label, ymax, integer=false, h=240}={}){
+  if(!vals || !vals.length) return vazio(name,'Sem dado no recorte atual.');
   const c=card(name), plot=c.querySelector('.plot'), ii=idx().filter(i=>vals[i]!=null);
   const f=frame(plot, h, {t:14,r:16,b:30,l:44});
   const x=xScale(f,ii), y=d3.scaleLinear().domain([0, ymax||d3.max(ii,i=>vals[i])*1.1]).nice().range([f.h-f.m.b,f.m.t]);
@@ -481,6 +523,11 @@ function lineChart(name, vals, {fmt=fmtP, color='--s1', area=true, label, ymax, 
 // ---- multi-line with emphasis
 function emphasisLines(name, series, focus, slots, labels){
   const c=card(name), plot=c.querySelector('.plot'), ii=idx();
+  const outras=Object.keys(series).filter(k=>k!==focus);
+  if(!series[focus] && !outras.length)
+    return vazio(name,'Nenhum laboratório no recorte atual.');
+  if(!series[focus])
+    series={...series, [focus]:new Array(N).fill(0)};
   const last0=ii[ii.length-1];
   // O foco nao ocupa slot de cor: ele veste TINTA, que e enfase, nao identidade.
   // Sobram 4 slots para os 4 maiores concorrentes da ultima semana; o restante
@@ -529,6 +576,7 @@ function emphasisLines(name, series, focus, slots, labels){
 function stackedAbs(name, series, slots){
   const c=card(name), plot=c.querySelector('.plot'), ii=idx();
   const todas=Object.keys(slots).filter(k=>series[k]);
+  if(!todas.length) return vazio(name,'Sem volume no recorte atual.');
   const keys=visiveis(name, todas);
   const f=frame(plot, 280, {t:12,r:16,b:30,l:44});
   const data=ii.map(i=>{const o={i}; keys.forEach(k=>o[k]=series[k][i]); return o;});
@@ -580,6 +628,221 @@ function cohortBars(name, rows){
 }
 
 // ---- lifecycle spaghetti (share over time per model)
+// ===========================================================================
+// Motor de filtros.
+//
+// A pagina deixa de consumir series pre-agregadas e passa a recalcular tudo a
+// partir da matriz modelo x semana. Isso e o que permite perguntar "so modelos
+// pagos, de pesos abertos, acima de 128k de contexto" e ver TODOS os graficos
+// responderem ao mesmo recorte.
+//
+// A linha "other" da fonte (volume fora do top 50 diario) nao tem metadado, entao
+// ela sai de qualquer recorte filtrado. A pagina avisa quanto do volume ficou de
+// fora em vez de fingir que o total continua completo.
+// ===========================================================================
+const MX=D.matriz, NW=MX.semanas.length;
+const DIMI={}; MX.dims.forEach((d,i)=>DIMI[d]=i);
+const FILTROS={};                       // {dim: Set(indice do valor)}
+
+// Rotulos e ordem de exibicao dos grupos de filtro. Dimensoes com dezenas de
+// valores (vendor) ficam de fora: quem quer isolar um lab usa a legenda.
+const GRUPOS=[
+  ['cobranca','Cobrança'],
+  ['pesos','Licença dos pesos'],
+  ['origin','País-sede do lab'],
+  ['faixa_preco','Faixa de preço (por 1M tokens)'],
+  ['faixa_ctx','Janela de contexto'],
+  ['multimodal','Modalidade'],
+  ['raciocinio','Raciocínio'],
+];
+const ORDEM={
+  faixa_preco:['Gratuito','Até $0,20','$0,20 a $1','$1 a $5','Acima de $5','Não identificado'],
+  faixa_ctx:['Até 32k','33k a 128k','129k a 400k','Acima de 400k','Não identificado'],
+  cobranca:['Pago','Endpoint gratuito','Modelo gratuito','Não identificado'],
+};
+
+function serie(i){ const a=MX.t0[i], v=MX.v[i], s=new Array(NW).fill(0);
+  for(let j=0;j<v.length;j++) s[a+j]=v[j]; return s; }
+const SERIES=MX.modelos.map((_,i)=>serie(i));
+
+function filtrando(){ return Object.values(FILTROS).some(s=>s && s.size); }
+function passa(mod){
+  if(!filtrando()) return true;
+  if(!mod.m) return false;                       // sem metadado sai de recorte
+  for(const d in FILTROS){ const s=FILTROS[d];
+    if(s && s.size && !s.has(mod.d[DIMI[d]])) return false; }
+  return true;
+}
+function selecionados(){ return MX.modelos.map((m,i)=>[m,i]).filter(([m])=>passa(m)); }
+
+// Agrega a matriz por uma chave qualquer. peso: 'tok' ou 'usd'.
+function agregar(chaveFn, peso='tok'){
+  const out={}, tot=new Array(NW).fill(0);
+  for(const [m,i] of selecionados()){
+    const k=chaveFn(m); if(k==null) continue;
+    const s=SERIES[i];
+    const fator = peso==='usd'
+      ? ((m.p && MX.dic.cobranca[m.d[DIMI.cobranca]]!=='Endpoint gratuito') ? m.p : 0)
+      : 1;
+    if(peso==='usd' && !fator) continue;
+    if(!out[k]) out[k]=new Array(NW).fill(0);
+    for(let w=0;w<NW;w++){ const v=s[w]*fator; out[k][w]+=v; tot[w]+=v; }
+  }
+  return {porChave:out, total:tot};
+}
+function paraShare(a){ const o={};
+  for(const k in a.porChave) o[k]=a.porChave[k].map((v,w)=>a.total[w]? +(100*v/a.total[w]).toFixed(2):0);
+  return o; }
+const rotulo=(dim,i)=>MX.dic[dim][i];
+
+// Recalcula todas as series que os graficos consomem, a partir do recorte atual.
+function recalcular(){
+  const sel=selecionados();
+  const porTok=agregar(m=>'t');
+  const tot=porTok.total;                                   // milhoes de tokens
+  D.weekly_total_T=tot.map(v=>+(v/1e6).toFixed(3));
+
+  // A linha "other" da fonte agrega o volume fora do top 50 diario. Ela conta no
+  // total, mas nao e um laboratorio nem um modelo: entra como "Outros" nos
+  // recortes por lab e fica fora do leaderboard.
+  const ehOther=m=>m.s==='other';
+  const porVendor=agregar(m=>ehOther(m)?'Outros':rotulo('vendor',m.d[DIMI.vendor]));
+  const shV=paraShare(porVendor);
+  const ult=NW-1;
+  // "Outros" fica fora do ranking: ele e o resto por definicao, e incluir no
+  // top 8 fazia a fatia ser contada duas vezes (o teste pegou 10,7pp faltando).
+  const rank=Object.keys(shV).filter(k=>k!=='Outros').sort((a,b)=>shV[b][ult]-shV[a][ult]);
+  const top8=rank.slice(0,8);
+  D.vendor_share={}; top8.forEach(k=>D.vendor_share[k]=shV[k]);
+  D.vendor_share['Outros']=tot.map((_,w)=>+Math.max(0,100-top8.reduce((s,k)=>s+shV[k][w],0)).toFixed(2));
+
+  D.origin_share=paraShare(agregar(m=>rotulo('origin',m.d[DIMI.origin])));
+  D.weights_share=paraShare(agregar(m=>rotulo('pesos',m.d[DIMI.pesos])));
+  const cob=paraShare(agregar(m=>rotulo('cobranca',m.d[DIMI.cobranca])));
+  D.free_share=(cob['Endpoint gratuito']||new Array(NW).fill(0));
+  D.cobranca_share=cob;
+
+  // concentracao e HHI recalculados sobre os modelos do recorte
+  // Concentracao. A linha "other" nao e um modelo, entao sai do ranking, mas
+  // CONTINUA no denominador do top 5: a pergunta e "quanto do mercado os 5
+  // maiores modelos capturam", nao "quanto dos modelos nomeados". O HHI, por
+  // depender de participacoes bem definidas, normaliza so sobre os nomeados.
+  const semOther=sel.filter(([m])=>!ehOther(m));
+  D.top5=[]; D.hhi=[];
+  for(let w=0;w<NW;w++){
+    const vs=semOther.map(([,i])=>SERIES[i][w]).filter(v=>v>0).sort((a,b)=>b-a);
+    const sNom=vs.reduce((a,b)=>a+b,0);
+    const sTot=tot[w];
+    D.top5.push(sTot? +(100*vs.slice(0,5).reduce((a,b)=>a+b,0)/sTot).toFixed(2):0);
+    D.hhi.push(sNom? Math.round(vs.reduce((a,v)=>a+Math.pow(100*v/sNom,2),0)):0);
+  }
+
+  // Anthropic e concorrentes
+  D.an_share=shV['anthropic']||new Array(NW).fill(0);
+  const comp={}; ['anthropic',...rank.filter(k=>k!=='anthropic').slice(0,8)]
+    .forEach(k=>{ if(shV[k]) comp[k]=shV[k]; });
+  D.comp_share=comp;
+
+  // leaderboard da ultima semana
+  const linhas=sel.filter(([m])=>!ehOther(m)).map(([m,i])=>({model:m.s, T:SERIES[i][ult]/1e6,
+      vendor:rotulo('vendor',m.d[DIMI.vendor]), origin:rotulo('origin',m.d[DIMI.origin]),
+      weights:rotulo('pesos',m.d[DIMI.pesos])}))
+    .filter(r=>r.T>0).sort((a,b)=>b.T-a.T);
+  const somaT=linhas.reduce((s,r)=>s+r.T,0)||1;
+  linhas.forEach(r=>{ r.share=+(100*r.T/somaT).toFixed(2); r.T=+r.T.toFixed(2); });
+  D.boards=D.boards||{}; D.boards.last=linhas.slice(0,15);
+
+  // Coluna "Há 12 sem" tem que usar o MESMO recorte, senao compara a posicao
+  // dentro do filtro com a posicao no mercado inteiro, e o numero mente.
+  const doze=Math.max(0, ult-12);
+  D.boards.prev12=sel.filter(([m])=>!ehOther(m))
+    .map(([m,i])=>({model:m.s, T:SERIES[i][doze]}))
+    .filter(r=>r.T>0).sort((a,b)=>b.T-a.T).slice(0,15);
+  const anoAtras=Math.max(0, ult-52);
+  D.boards.yearago=sel.filter(([m])=>!ehOther(m))
+    .map(([m,i])=>({model:m.s, T:SERIES[i][anoAtras]}))
+    .filter(r=>r.T>0).sort((a,b)=>b.T-a.T).slice(0,15);
+
+  // volume absoluto por lab, em trilhoes
+  D.vendor_abs={}; for(const k in porVendor.porChave)
+    D.vendor_abs[k]=porVendor.porChave[k].map(v=>+(v/1e6).toFixed(3));
+
+  // familias e modelos da Anthropic, derivados do slug em vez de pre-agregados
+  const FAM=['Haiku','Sonnet','Opus','Fable'];
+  const fam={}; FAM.forEach(f=>fam[f]=new Array(NW).fill(0));
+  const anModelos={};
+  for(const [m,i] of sel){
+    if(m.d[DIMI.vendor]!==MX.dic.vendor.indexOf('anthropic')) continue;
+    const s=SERIES[i], nome=m.s.toLowerCase();
+    const f=FAM.find(x=>nome.includes(x.toLowerCase()));
+    if(f) for(let w=0;w<NW;w++) fam[f][w]+=s[w]/1e6;
+    anModelos[m.s]=s.map(v=>+(v/1e6).toFixed(3));
+  }
+  D.an_fam_abs={}; FAM.forEach(f=>{ if(d3.max(fam[f])>0) D.an_fam_abs[f]=fam[f].map(v=>+v.toFixed(3)); });
+  D.an_models=anModelos;
+
+  // cobertura do recorte, para a barra de status
+  const totalGeral=MX.modelos.reduce((s,m,i)=>s+SERIES[i][ult],0);
+  return {modelos:sel.length, totalModelos:MX.modelos.length,
+          pct: totalGeral? 100*tot[ult]/totalGeral : 0};
+}
+
+// ---- interface da barra
+function montarFiltros(){
+  const body=document.getElementById('fbody');
+  body.innerHTML=GRUPOS.map(([dim,rot])=>{
+    let vals=MX.dic[dim].map((v,i)=>[v,i]);
+    if(ORDEM[dim]) vals.sort((a,b)=>{
+      const ia=ORDEM[dim].indexOf(a[0]), ib=ORDEM[dim].indexOf(b[0]);
+      return (ia<0?99:ia)-(ib<0?99:ib); });
+    return `<div class="fg"><div class="t">${rot}</div><div class="opts">`+
+      vals.map(([v,i])=>`<button type="button" data-dim="${dim}" data-i="${i}" aria-pressed="false">${v}</button>`).join('')+
+      `</div></div>`;
+  }).join('');
+  body.querySelectorAll('button[data-dim]').forEach(b=>b.addEventListener('click',()=>{
+    const d=b.dataset.dim, i=+b.dataset.i;
+    FILTROS[d]=FILTROS[d]||new Set();
+    if(FILTROS[d].has(i)) FILTROS[d].delete(i); else FILTROS[d].add(i);
+    b.setAttribute('aria-pressed', String(FILTROS[d].has(i)));
+    aplicar();
+  }));
+}
+function sincronizarBotoes(){
+  document.querySelectorAll('#fbody button[data-dim]').forEach(b=>{
+    const s=FILTROS[b.dataset.dim];
+    b.setAttribute('aria-pressed', String(!!(s && s.has(+b.dataset.i))));
+  });
+}
+function paraURL(){
+  const p=new URLSearchParams();
+  for(const d in FILTROS){ const s=FILTROS[d];
+    if(s && s.size) p.set(d, [...s].map(i=>MX.dic[d][i]).join('|')); }
+  const q=p.toString();
+  history.replaceState(null,'', q? location.pathname+'?'+q : location.pathname);
+}
+function daURL(){
+  const p=new URLSearchParams(location.search);
+  MX.dims.forEach(d=>{ const v=p.get(d); if(!v) return;
+    const s=new Set(); v.split('|').forEach(x=>{ const i=MX.dic[d].indexOf(x); if(i>=0) s.add(i); });
+    if(s.size) FILTROS[d]=s; });
+}
+function aplicar(){
+  const info=recalcular();
+  const fil=filtrando();
+  document.getElementById('fclear').disabled=!fil;
+  document.getElementById('fstat').innerHTML = fil
+    ? `<b>${info.modelos}</b> de ${info.totalModelos} modelos · <b>${info.pct.toFixed(1)}%</b> do volume da última semana`
+    : `${info.totalModelos} modelos, sem recorte`;
+  const w=document.getElementById('fwarn');
+  if(fil){
+    w.hidden=false;
+    w.innerHTML=`Com filtro ativo, os percentuais são calculados <b>dentro do recorte</b>, não sobre o mercado inteiro. `+
+      `Modelos sem metadado, incluindo a linha <span class="mono">other</span> da fonte, ficam de fora.`;
+  } else w.hidden=true;
+  paraURL();
+  renderStatic(); renderAll();
+}
+
 let TRAJ_VIEW='forma';
 
 // ---- Trajetoria alinhada no lancamento
@@ -705,6 +968,7 @@ function trajectory(name){
 // ---- leaderboard
 function board(){
   const c=card('board'), plot=c.querySelector('.plot'); const rows=D.boards.last; const y=D.boards.yearago, p=D.boards.prev12;
+  if(!rows || !rows.length){ document.getElementById('board-sub').textContent=''; return vazio('board','Nenhum modelo no recorte atual.'); }
   const max=rows[0].share;
   const pos=(arr,m)=>{const i=arr.findIndex(r=>r.model===m); return i<0?null:i+1;};
   plot.innerHTML=`<table class="board"><thead><tr><th>#</th><th>Modelo</th><th></th><th class="num">Share</th><th class="num">Tokens/sem</th><th class="num">Há 12 sem</th></tr></thead><tbody>${rows.map((r,i)=>{const pp=pos(p,r.model); return `<tr><td class="mono">${i+1}</td><td><span class="m">${r.model}</span><span class="pill">${r.origin}</span><span class="pill">${r.weights}</span></td><td style="width:22%"><div class="bar" style="width:${(r.share/max*100).toFixed(1)}%;background:${col(ORIGIN_SLOT[r.origin]||'--s0')}"></div></td><td class="num">${fmtP(r.share)}</td><td class="num mono">${fmtT(r.T)}</td><td class="num mono" style="color:var(--ink-3)">${pp?'#'+pp:'fora do top 15'}</td></tr>`;}).join('')}</tbody></table>`;
@@ -712,41 +976,148 @@ function board(){
 }
 
 // ---- tiles
+// Tiles do topo.
+//
+// Sob recorte, a primeira semana pode ter volume proximo de zero, e ai qualquer
+// razao vira lixo ("×66716 desde 06 jan 25 (0.00T)"). Entao a base de comparacao
+// nao e a primeira semana da serie, e a primeira semana em que o recorte teve
+// volume relevante. Sem base valida, o tile mostra a estreia em vez de inventar
+// um multiplicador.
 function tiles(){
-  const last=N-1, first=0;
-  const an=D.an_share, tot=D.weekly_total_T, cn=D.origin_share['China'], ow=D.weights_share['Open-weights'], t5=D.top5;
-  const anPeakI=an.indexOf(d3.max(an));
+  const last=N-1;
+  const tot=D.weekly_total_T, an=D.an_share||[];
+  const cn=(D.origin_share&&D.origin_share['China'])||[];
+  const ow=(D.weights_share&&D.weights_share['Open-weights'])||[];
+  const t5=D.top5, fil=filtrando();
+
+  // primeira semana com pelo menos 1% do volume atual: base honesta de comparacao
+  const baseIdx=(()=>{ const alvo=(tot[last]||0)*0.01;
+    for(let i=0;i<N;i++) if((tot[i]||0)>alvo) return i; return -1; })();
+  const estreia=(()=>{ for(let i=0;i<N;i++) if((tot[i]||0)>0) return i; return -1; })();
+  const cmp=(serie,fmt)=>{
+    if(baseIdx<0) return estreia>=0? `estreia em ${fD(W[estreia])}` : 'sem volume no recorte';
+    const v=serie[baseIdx];
+    return (v==null||!isFinite(v))? `desde ${fD(W[baseIdx])}` : `era ${fmt(v)} em ${fD(W[baseIdx])}`;
+  };
+  const cresc=(()=>{
+    if(baseIdx<0 || !tot[baseIdx]) return null;
+    const r=tot[last]/tot[baseIdx];
+    return isFinite(r)&&r>=1.05? `×${r>=10?Math.round(r):r.toFixed(1).replace('.',',')} desde ${fD(W[baseIdx])} (${fmtT(tot[baseIdx])})` : null;
+  })();
+
+  const anPeak=an.length?an.indexOf(d3.max(an)):-1;
+  const semAn=!an.length || d3.max(an)===0;
+  const hhiTxt=(D.hhi[baseIdx>=0?baseIdx:0]!=null)
+    ? ` · HHI ${D.hhi[baseIdx>=0?baseIdx:0]}→${D.hhi[last]}` : '';
+
   const items=[
-    ['Tokens por semana', fmtT(tot[last]), `×${Math.round(tot[last]/tot[first])} desde ${fD(W[first])} (${fmtT(tot[first])})`, 'up'],
-    ['Share de labs chineses', fmtP(cn[last]), `era ${fmtP(cn[first])} em ${fD(W[first])}`, 'up'],
-    ['Share open-weights', fmtP(ow[last]), `era ${fmtP(ow[first])} em ${fD(W[first])}`, 'up'],
-    ['Share da Anthropic', fmtP(an[last]), `pico de ${fmtP(an[anPeakI])} em ${fD(W[anPeakI])}`, 'down'],
-    ['Top 5 modelos', fmtP(t5[last]), `do volume; era ${fmtP(t5[first])} · HHI ${D.hhi[first]}→${D.hhi[last]}`, 'down'],
+    ['Tokens por semana', fmtT(tot[last]),
+      cresc || (estreia>=0?`estreia em ${fD(W[estreia])}`:'sem volume'), 'up'],
+    ['Share de labs chineses', fmtP(cn[last]||0), cmp(cn,fmtP), 'up'],
+    ['Share open-weights', fmtP(ow[last]||0), cmp(ow,fmtP), 'up'],
+    ['Share da Anthropic', semAn?'—':fmtP(an[last]),
+      semAn? (fil?'sem volume no recorte':'sem volume')
+           : `pico de ${fmtP(an[anPeak])} em ${fD(W[anPeak])}`, 'down'],
+    ['Top 5 modelos', fmtP(t5[last]),
+      (baseIdx>=0? `do volume; era ${fmtP(t5[baseIdx])}`:'do volume')+hhiTxt, 'down'],
   ];
-  document.getElementById('tiles').innerHTML=items.map(([k,v,d,cls])=>`<div class="tile"><div class="k">${k}</div><div><div class="v">${v}</div><div class="d ${cls}">${d}</div></div></div>`).join('');
+  document.getElementById('tiles').innerHTML=items.map(([k,v,d,cls])=>
+    `<div class="tile"><div class="k">${k}</div><div><div class="v">${v}</div><div class="d ${cls}">${d}</div></div></div>`).join('');
 }
 
-// ---- readings (insight text)
 function readings(){
-  const last=N-1; const tot=D.weekly_total_T, an=D.an_share, ab=D.vendor_abs.anthropic;
-  const stealth=D.boards.last.find(r=>r.vendor==='stealth');
-  const set=(id,html)=>{document.getElementById(id).innerHTML=html;};
-  set('read-volume',`<h4>Leitura</h4><p>O volume semanal foi de <b>${fmtT(tot[0])}</b> para <b>${fmtT(tot[last])}</b>: ×${Math.round(tot[last]/tot[0])} em ${N} semanas. A curva não é linear; os degraus coincidem com lançamentos de modelos baratos e :free (DeepSeek V3, MiMo, HY3, Nemotron Ultra).</p><p><span class="flag">caveat</span>A última semana traz <b>${fmtP(stealth?stealth.share:0)}</b> em <span class="mono">stealth/ox-alpha</span>, um modelo anônimo gratuito em teste. Tráfego assim é transitório e infla o topo.</p><p>Comparar volumes absolutos entre 2025 e 2026 exige normalização: qualquer share de 2025 vale muito menos em tokens.</p>`);
-  set('read-conc',`<h4>Leitura</h4><p>Os 5 maiores modelos caíram de <b>${fmtP(D.top5[0])}</b> para <b>${fmtP(D.top5[last])}</b> do volume. O HHI (base modelo) foi de <b>${D.hhi[0]}</b> para <b>${D.hhi[last]}</b>: saiu de "moderadamente concentrado" para "não concentrado" na escala antitruste convencional.</p><p>Implicação para roteamento: o mercado hoje oferece substitutos próximos em cada faixa de preço. Lock-in em um modelo específico é uma decisão, não uma inevitabilidade.</p>`);
-  const vs=D.vendor_share; const ord=Object.keys(vs).filter(k=>k!=='Outros').sort((a,b)=>vs[b][last]-vs[a][last]);
-  set('read-vendor',`<h4>Leitura</h4><p>Na primeira semana da série (${fD(W[0])}), Anthropic (<b>${fmtP(vs.anthropic[0])}</b>) e Google (<b>${fmtP(vs.google[0])}</b>) somavam dois terços. Na última, o líder é <b>${VENDOR_LABEL[ord[0]]} (${fmtP(vs[ord[0]][last])})</b>, seguido de ${VENDOR_LABEL[ord[1]]} (${fmtP(vs[ord[1]][last])}) e ${VENDOR_LABEL[ord[2]]} (${fmtP(vs[ord[2]][last])}).</p><p>Xiaomi, Tencent, MiniMax e Z.ai tinham share zero até o início de 2026. Quatro labs que não existiam no ranking em 2025 hoje somam <b>${fmtP(vs.xiaomi[last]+vs.tencent[last]+vs.minimax[last]+vs['z-ai'][last])}</b>.</p><p>Google chegou a <b>${fmtP(d3.max(D.comp_share.google))}</b> com Gemini 2.0/2.5 Flash e recuou para ${fmtP(vs.google[last])}. Liderança em share aqui tem durado dois a três trimestres.</p>`);
-  const b=D.boards.last; const cnTop=b.slice(0,10).filter(r=>r.origin==='China').length, owTop=b.slice(0,10).filter(r=>r.weights==='Open-weights').length;
-  set('read-board',`<h4>Leitura</h4><p>Dos 10 mais usados na última semana, <b>${cnTop}</b> são de labs chineses e <b>${owTop}</b> são open-weights. Proprietários americanos no top 10: <b>${b.slice(0,10).filter(r=>r.origin==='EUA/Canadá'&&r.weights==='Proprietário').length}</b>.</p><p>${(()=>{const i=b.findIndex(r=>r.vendor==='anthropic'); const top=Object.entries(D.an_models).sort((x,y)=>y[1][N-1]-x[1][N-1])[0]; return i>=0? `O modelo Anthropic mais usado (<span class="mono">${b[i].model}</span>) está em #${i+1}.` : `Nenhum modelo Anthropic aparece no top 15 desta semana; o mais usado é <span class="mono">${top[0]}</span> com ${fmtT(top[1][N-1])}.`;})()} Note o padrão: modelos de fronteira dos labs americanos aparecem com share menor, mas em tarefas de maior valor; a métrica é tokens, não receita nem qualidade.</p>`);
-  const ws=D.weights_share, os=D.origin_share, fr=D.free_share;
-  set('read-weights',`<h4>Leitura</h4><p>Open-weights foi de <b>${fmtP(ws['Open-weights'][0])}</b> para <b>${fmtP(ws['Open-weights'][last])}</b> do volume; labs chineses de <b>${fmtP(os.China[0])}</b> para <b>${fmtP(os.China[last])}</b>. As duas curvas andam quase juntas porque a maioria dos open-weights relevantes é chinesa (DeepSeek, GLM, Kimi, HY3, MiniMax). Exceção notável: Nemotron 3 Ultra da NVIDIA.</p><p>Tráfego em variantes :free chegou a <b>${fmtP(d3.max(fr))}</b> e está em <b>${fmtP(fr[last])}</b>. Parte relevante do crescimento de volume é demanda subsidiada, não demanda paga.</p><p><span class="flag">implicação</span>Para quem opera inferência própria, o deslocamento para pesos abertos abre a opção de self-hosting, mas o custo de manter avaliação contínua de qualidade cresce com a rotatividade mostrada na seção 05.</p>`);
-  const peakI=an.indexOf(d3.max(an));
-  set('read-anshare',`<h4>Leitura</h4><p>Share da Anthropic: <b>${fmtP(an[0])}</b> em ${fD(W[0])}, pico de <b>${fmtP(an[peakI])}</b> em ${fD(W[peakI])}, <b>${fmtP(an[last])}</b> em ${fD(W[last])}. Em tokens absolutos a história é outra: de ${fmtT(ab[0])} para <b>${fmtT(ab[last])}</b> por semana (×${Math.round(ab[last]/ab[0])}), com pico de ${fmtT(d3.max(ab))}.</p><p>Ou seja, a Anthropic cresceu ~${Math.round(ab[last]/ab[0])}× enquanto o mercado cresceu ~${Math.round(tot[last]/tot[0])}×. O share caiu porque o denominador explodiu com tráfego barato e gratuito, não porque o uso de Claude encolheu.</p><p>OpenAI e Google seguem a mesma trajetória de share, em menor grau. Os três labs americanos proprietários somam <b>${fmtP(an[last]+D.comp_share.google[last]+D.comp_share.openai[last])}</b> hoje.</p>`);
-  const fam=D.an_fam_abs; const famTot=Object.keys(fam).reduce((s,k)=>s+fam[k][last],0);
-  const ten=D.life.filter(m=>m.vendor==='anthropic'&&!/beta|thinking|3-5-haiku|3.5-sonnet/.test(m.model)).sort((a,b)=>a.first<b.first?-1:1).map(m=>`${m.model.replace('anthropic/claude-','').replace(/-20\d{6}$/,'')} ${m.weeks_in_top10} sem`);
-  const tenureTxt=ten.join(', ');
-  set('read-anfam',`<h4>Leitura</h4><p>Mix Anthropic na última semana: Opus <b>${fmtP(fam.Opus[last]/famTot*100)}</b>, Sonnet <b>${fmtP(fam.Sonnet[last]/famTot*100)}</b>, Haiku <b>${fmtP(fam.Haiku[last]/famTot*100)}</b>, Fable ${fmtP((fam.Fable?fam.Fable[last]:0)/famTot*100)}. Opus superou Sonnet em volume em 2026, o inverso do padrão de 2025. Haiku é residual no OpenRouter; não generalize para cargas enterprise via API direta ou Bedrock, onde o roteamento por custo tem outro perfil.</p><p>Permanência no top 10: ${tenureTxt}. A cadência de lançamento acelerou e cada geração dura menos no topo, canibalizada pela seguinte. Para quem calibra prompts e avaliações por modelo, a janela útil de cada versão encurtou para um trimestre.</p>`);
-  const ch=D.churn.filter(v=>v!=null); const ageMed=d3.median(D.age.slice(12));
-  set('read-cohort',`<h4>Leitura</h4><p>A cada 4 semanas, em mediana <b>${d3.median(ch)}</b> dos 10 modelos mais usados são novos no top 10. A idade mediana do top 10 gira em torno de <b>${ageMed} semanas</b> desde a estreia no ranking.</p><p>Modelos que atingiram ≥ 2% do volume levam em mediana <b>${d3.median(D.life.map(m=>m.weeks_to_peak))} semanas</b> até o pico e perdem metade do share em <b>${d3.median(D.life.filter(m=>m.half_life_weeks!=null).map(m=>m.half_life_weeks))} semanas</b> depois dele. Open-weights sobem e caem mais rápido que proprietários (mediana 2 vs. 4 semanas até o pico).</p><p><span class="flag">tese</span>Nenhum modelo sustenta liderança por mais de dois trimestres neste dataset. O ativo durável é o método de avaliação e troca, não a escolha do modelo.</p>`);
+  const last=N-1;
+  const S=(o,k)=>Array.isArray(o&&o[k])?o[k]:new Array(N).fill(0);   // acesso seguro
+  const num=v=>Number.isFinite(v)?v:0;
+  const vez=(a,b)=>(b>0&&Number.isFinite(a/b))?Math.round(a/b):null;
+  const set=(id,html)=>{const el=document.getElementById(id); if(el) el.innerHTML=html;};
+  const LAB=k=>VENDOR_LABEL[k]||k;
+  const fil=filtrando();
+  const nota=fil?`<p><span class="flag">recorte</span>Os números abaixo consideram apenas os modelos do filtro ativo.</p>`:'';
+
+  const tot=D.weekly_total_T, an=D.an_share, ab=S(D.vendor_abs,'anthropic');
+  const vs=D.vendor_share||{};
+  const ord=Object.keys(vs).filter(k=>k!=='Outros').sort((a,b)=>num(vs[b][last])-num(vs[a][last]));
+  const b=(D.boards&&D.boards.last)||[];
+
+  // 01 volume
+  const cresc=vez(tot[last],tot[0]);
+  const st=b.find(r=>r.vendor==='stealth');
+  set('read-volume',`<h4>Leitura</h4>${nota}<p>O volume semanal foi de <b>${fmtT(tot[0])}</b> para <b>${fmtT(tot[last])}</b>`+
+    (cresc?`: ×${cresc} em ${N} semanas`:'')+`. A curva não é linear: os degraus coincidem com a chegada de modelos baratos e de endpoints gratuitos.</p>`+
+    (st?`<p><span class="flag">caveat</span>A última semana traz <b>${fmtP(st.share)}</b> em <span class="mono">${st.model}</span>, um modelo anônimo em teste. Tráfego assim é transitório e infla o topo.</p>`:'')+
+    `<p>Comparar volumes absolutos entre o início e o fim da série exige normalização: qualquer share do começo vale muito menos em tokens.</p>`);
+
+  // 02 concentracao
+  const h0=D.hhi[0], h1=D.hhi[last];
+  const faixa=v=>v>=2500?'altamente concentrado':v>=1500?'moderadamente concentrado':'não concentrado';
+  set('read-conc',`<h4>Leitura</h4>${nota}<p>Os 5 maiores modelos foram de <b>${fmtP(D.top5[0])}</b> para <b>${fmtP(D.top5[last])}</b> do volume. O HHI, na base modelo, foi de <b>${h0}</b> para <b>${h1}</b>`+
+    (faixa(h0)!==faixa(h1)?`: saiu de "${faixa(h0)}" para "${faixa(h1)}" na escala antitruste convencional`:`, o que o mantém como "${faixa(h1)}" na escala antitruste convencional`)+`.</p>`+
+    `<p>Implicação para roteamento: existem substitutos próximos em cada faixa de preço. Ficar preso a um modelo específico é uma decisão, não uma inevitabilidade.</p>`);
+
+  // 03 labs
+  const novos=ord.filter(k=>num(vs[k][0])<0.5 && num(vs[k][last])>=1);
+  const somaNovos=novos.reduce((s,k)=>s+num(vs[k][last]),0);
+  const lider0=ord.slice().sort((a,b2)=>num(vs[b2][0])-num(vs[a][0]))[0];
+  set('read-vendor',`<h4>Leitura</h4>${nota}`+
+    (lider0?`<p>Na primeira semana da série (${fD(W[0])}), o maior era <b>${LAB(lider0)}</b>, com ${fmtP(vs[lider0][0])}.</p>`:'')+
+    (ord.length?`<p>Na última, o líder é <b>${LAB(ord[0])} (${fmtP(vs[ord[0]][last])})</b>`+
+      (ord[1]?`, seguido de ${LAB(ord[1])} (${fmtP(vs[ord[1]][last])})`:'')+
+      (ord[2]?` e ${LAB(ord[2])} (${fmtP(vs[ord[2]][last])})`:'')+`.</p>`:'')+
+    (novos.length?`<p>${novos.length===1?'Um laboratório que':'Laboratórios que'} não tinha${novos.length===1?'':'m'} share relevante no início da série: ${novos.slice(0,5).map(LAB).join(', ')}. Hoje soma${novos.length===1?'':'m'} <b>${fmtP(somaNovos)}</b>.</p>`:'')+
+    `<p>Liderança em share, neste dataset, tem durado de dois a três trimestres.</p>`);
+
+  // 04 leaderboard
+  const t10=b.slice(0,10);
+  const cn=t10.filter(r=>r.origin==='China').length, ow=t10.filter(r=>r.weights==='Open-weights').length;
+  const usProp=t10.filter(r=>r.origin==='EUA/Canadá'&&r.weights==='Proprietário').length;
+  const iAn=b.findIndex(r=>r.vendor==='anthropic');
+  const anTop=Object.entries(D.an_models||{}).sort((x,y)=>num(y[1][last])-num(x[1][last]))[0];
+  set('read-board',`<h4>Leitura</h4>${nota}`+
+    (t10.length?`<p>Dos ${t10.length} mais usados na última semana, <b>${cn}</b> ${cn===1?'é de laboratório chinês':'são de laboratórios chineses'} e <b>${ow}</b> ${ow===1?'é':'são'} de pesos abertos. Proprietários americanos: <b>${usProp}</b>.</p>`:'<p>Nenhum modelo no recorte atual.</p>')+
+    `<p>`+(iAn>=0
+      ? `O modelo Anthropic mais usado (<span class="mono">${b[iAn].model}</span>) está em #${iAn+1}.`
+      : (anTop&&num(anTop[1][last])>0
+          ? `Nenhum modelo Anthropic aparece neste top; o mais usado dela é <span class="mono">${anTop[0]}</span>, com ${fmtT(anTop[1][last])}.`
+          : `Nenhum modelo Anthropic aparece neste recorte.`))+
+    ` A métrica aqui é tokens, não receita nem qualidade: modelos de fronteira aparecem com share menor e uso de maior valor.</p>`);
+
+  // 05 pesos e origem
+  const ow2=S(D.weights_share,'Open-weights'), cn2=S(D.origin_share,'China'), fr=D.free_share||new Array(N).fill(0);
+  set('read-weights',`<h4>Leitura</h4>${nota}<p>Pesos abertos foram de <b>${fmtP(ow2[0])}</b> para <b>${fmtP(ow2[last])}</b> do volume; laboratórios chineses, de <b>${fmtP(cn2[0])}</b> para <b>${fmtP(cn2[last])}</b>. As duas curvas andam quase juntas porque a maioria dos pesos abertos relevantes hoje é chinesa. São o mesmo fenômeno visto de dois ângulos, não duas tendências independentes.</p>`+
+    `<p>Tráfego em endpoints gratuitos chegou a <b>${fmtP(d3.max(fr)||0)}</b> e está em <b>${fmtP(fr[last])}</b>. Parte relevante do crescimento é demanda subsidiada, que ainda não foi testada contra preço.</p>`+
+    `<p><span class="flag">implicação</span>Para quem opera inferência própria, o deslocamento para pesos abertos abre a opção de self-hosting, mas o custo de manter avaliação contínua cresce com a rotatividade da seção 05.</p>`);
+
+  // 06 Anthropic
+  const peak=an.indexOf(d3.max(an));
+  const cAn=vez(ab[last],ab[0]), cTot=vez(tot[last],tot[0]);
+  const trio=['anthropic','openai','google'].reduce((s,k)=>s+num((D.comp_share&&D.comp_share[k]||[])[last]),0);
+  set('read-anshare',`<h4>Leitura</h4>${nota}<p>Share da Anthropic: <b>${fmtP(an[0])}</b> em ${fD(W[0])}, pico de <b>${fmtP(an[peak])}</b> em ${fD(W[peak])}, <b>${fmtP(an[last])}</b> em ${fD(W[last])}. Em tokens absolutos a história é outra: de ${fmtT(ab[0])} para <b>${fmtT(ab[last])}</b> por semana`+
+    (cAn?` (×${cAn})`:'')+`.</p>`+
+    (cAn&&cTot?`<p>Ou seja, a Anthropic cresceu ~${cAn}× enquanto o mercado cresceu ~${cTot}×. O share caiu porque o denominador explodiu com tráfego barato e gratuito, não porque o uso encolheu. Ler share sem ler o absoluto produz a conclusão oposta da correta.</p>`:'')+
+    (trio>0?`<p>Os três maiores laboratórios americanos proprietários somam <b>${fmtP(trio)}</b> hoje.</p>`:''));
+
+  // 07 familias Anthropic
+  const fam=D.an_fam_abs||{}; const chaves=Object.keys(fam);
+  const famTot=chaves.reduce((s,k)=>s+num(fam[k][last]),0);
+  const mix=chaves.map(k=>[k,num(fam[k][last])]).sort((x,y)=>y[1]-x[1])
+    .filter(([,v])=>v>0).map(([k,v])=>`${k} <b>${fmtP(100*v/famTot)}</b>`).join(', ');
+  const ten=(D.life||[]).filter(m=>m.vendor==='anthropic'&&m.weeks_in_top10>0)
+    .sort((x,y)=>x.first<y.first?-1:1)
+    .map(m=>`${m.model.replace('anthropic/claude-','').replace(/-20\d{6}$/,'')} ${m.weeks_in_top10} sem`);
+  set('read-anfam',`<h4>Leitura</h4>${nota}`+
+    (famTot>0?`<p>Mix Anthropic na última semana: ${mix}. Haiku é residual no OpenRouter; não generalize para cargas enterprise via API direta ou Bedrock, onde o roteamento por custo tem outro perfil.</p>`:`<p>Sem volume Anthropic no recorte atual.</p>`)+
+    (ten.length?`<p>Permanência no top 10: ${ten.join(', ')}. A cadência de lançamento acelerou e cada geração dura menos no topo, canibalizada pela seguinte. Para quem calibra prompts e avaliações por modelo, a janela útil de cada versão encurtou.</p>`:''));
+
+  // 08 ciclo de vida (nao depende do recorte: e sobre o historico dos modelos)
+  const ch=D.churn.filter(v=>v!=null);
+  const idade=d3.median(D.age.slice(12));
+  const ttp=d3.median(D.life.map(m=>m.weeks_to_peak));
+  const half=d3.median(D.life.filter(m=>m.half_life_weeks!=null).map(m=>m.half_life_weeks));
+  set('read-cohort',`<h4>Leitura</h4><p>A cada 4 semanas, em mediana <b>${d3.median(ch)}</b> dos 10 modelos mais usados são novos no top 10. A idade mediana do top 10 gira em torno de <b>${idade} semanas</b> desde a estreia.</p>`+
+    `<p>Modelos que atingiram ≥ 2% do volume levam em mediana <b>${ttp} semanas</b> até o pico e perdem metade do share <b>${half} semanas</b> depois dele.</p>`+
+    `<p><span class="flag">tese</span>Nenhum modelo sustenta liderança por mais de dois trimestres neste dataset. O ativo durável é o método de avaliação e troca, não a escolha do modelo.</p>`+
+    `<p class="mono" style="font-size:11.5px;color:var(--ink-3)">Esta seção descreve o histórico completo dos modelos e não responde aos filtros.</p>`);
 }
 
 function renderAll(){
@@ -776,7 +1147,25 @@ function renderStatic(){
 }
 // attach per-model series to lifecycle entries (built from weekly model shares embedded in D.life_series)
 D.life.forEach(m=>{ m.series=D.life_series[m.model]; });
-renderStatic(); renderAll();
+// Ponto de inspecao publico. Os testes automatizados comparam o que a pagina
+// calcula com o que o pipeline calculou; qualquer leitor pode auditar o mesmo.
+window.MS={ get D(){return D}, MX, FILTROS, filtrando, recalcular, aplicar,
+            agregar, selecionados, versao:D.as_of };
+montarFiltros(); daURL(); sincronizarBotoes(); aplicar();
+
+document.getElementById('ftoggle').addEventListener('click',()=>{
+  const bar=document.getElementById('fbar'), b=document.getElementById('ftoggle');
+  const abrir=bar.dataset.open!=='true';
+  bar.dataset.open=String(abrir);
+  b.setAttribute('aria-expanded',String(abrir));
+  b.textContent=abrir?'ocultar filtros ▴':'mostrar filtros ▾';
+});
+document.getElementById('fclear').addEventListener('click',()=>{
+  Object.keys(FILTROS).forEach(k=>delete FILTROS[k]);
+  sincronizarBotoes(); aplicar();
+});
+// filtro vindo na URL abre a barra sozinho, para o leitor ver o recorte aplicado
+if(filtrando()) document.getElementById('ftoggle').click();
 document.querySelectorAll('.views button').forEach(b=>b.addEventListener('click',()=>{
   const g=b.parentElement;
   g.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed', String(o===b)));

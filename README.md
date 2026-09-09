@@ -30,7 +30,11 @@ Esta página existe para sustentar esse argumento com série histórica, não co
 
 **Ciclo de vida.** Rotatividade do top 10, idade mediana dos modelos em uso, tempo até o pico e meia-vida depois dele, por trimestre de lançamento. É a seção que sustenta a tese.
 
-Cada seção tem um painel de leitura ao lado, com a interpretação e os caveats. Todo gráfico abre em tabela.
+Cada seção tem um painel de leitura ao lado, com a interpretação e os caveats. Todo gráfico abre em tabela, e a legenda é clicável: dá para ligar e desligar séries para comparar só o que interessa.
+
+**Filtros.** Uma barra no topo recorta o mercado inteiro por cobrança, licença dos pesos, país-sede do laboratório, faixa de preço, janela de contexto, modalidade e suporte a raciocínio. Todos os gráficos respondem ao mesmo recorte, e o filtro vai para a URL: um link já filtrado abre no mesmo estado para quem receber.
+
+Com filtro ativo, os percentuais passam a ser calculados dentro do recorte, e a página diz quanto do volume ficou de fora.
 
 ## O que os dados já mostram
 

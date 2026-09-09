@@ -1,0 +1,51 @@
+name: Testes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pipeline/requirements.txt
+      - run: pip install -r pipeline/requirements.txt
+
+      - name: Reconstruir data.json a partir dos CSVs versionados
+        run: python pipeline/build.py
+
+      - name: Build é reprodutível
+        run: |
+          if ! git diff --quiet -- public/data.json; then
+            echo "::error::public/data.json commitado difere do que build.py gera a partir dos CSVs."
+            git diff --stat -- public/data.json
+            exit 1
+          fi
+          echo "data.json commitado bate com o build."
+
+      - name: Invariantes do data.json
+        run: python pipeline/selftest.py
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Instalar navegador de teste
+        run: npm i -D playwright@1 && npx playwright install --with-deps chromium
+
+      - name: Testes de ponta a ponta
+        run: |
+          python -m http.server 8099 --directory public &
+          for i in $(seq 1 20); do curl -sf http://localhost:8099/index.html >/dev/null && break; sleep 0.5; done
+          node tests/e2e.js http://localhost:8099

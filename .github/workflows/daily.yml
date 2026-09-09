@@ -79,6 +79,9 @@ jobs:
       - name: Regerar card social
         run: python pipeline/make_og.py
 
+      - name: Invariantes do data.json
+        run: python pipeline/selftest.py
+
       - name: Commitar se houver mudança
         run: |
           git config user.name "modelseason-bot"

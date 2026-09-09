@@ -127,3 +127,36 @@ As tags `og:image` e `twitter:image` em `public/index.html` apontam para `https:
 | `qualidade` | Últimos 60 modelos por share, com Intelligence Index, Elo, preço, contexto e lançamento |
 | `cobertura`, `cobertura_ultima_semana` | Quanto do volume tem metadado. Número honesto que a página precisa mostrar |
 | `blend` | A mistura presumida entre prompt e completion |
+
+## Testes
+
+A página é ferramenta de mercado: número errado publicado em silêncio custa mais caro do que build que falha. Por isso a confiabilidade é verificada, não prometida.
+
+```bash
+python pipeline/selftest.py                       # invariantes do data.json
+npm i -D playwright && npx playwright install chromium
+python -m http.server 8000 --directory public &
+node tests/e2e.js http://localhost:8000           # 24 verificações no navegador
+```
+
+**`pipeline/selftest.py`** roda no pipeline diário, antes do commit. Verifica que a matriz reconcilia com o CSV bruto, que todo conjunto de shares soma 100% em toda semana, que não há NaN nem infinito, que as chaves que a página consome existem com o tamanho certo, e que o leaderboard é consistente com a matriz.
+
+**`tests/e2e.js`** roda no CI a cada push. Carrega a página em navegador real e compara o que ela calcula no cliente com o que o pipeline calculou em Python. Também exercita filtros, verifica que as partes somam o todo, que o estado vai e volta pela URL, que não há transbordo horizontal em 390, 768 e 1440px, e que o tema escuro desenha.
+
+**`.github/workflows/tests.yml`** ainda checa que o `public/data.json` commitado é exatamente o que `build.py` gera a partir dos CSVs versionados. Isso impede que alguém edite o JSON à mão e a página passe a mostrar número que o pipeline não produz.
+
+Três bugs reais foram encontrados por esses testes antes de qualquer deploy: a linha `other` entrando no leaderboard como se fosse modelo, o `top5` mudando de semântica no cliente, e a fatia "Outros" contada duas vezes no gráfico por laboratório.
+
+## Motor de filtros
+
+A página não consome mais séries pré-agregadas: ela recalcula tudo a partir de `matriz`, uma tabela modelo × semana esparsa com tokens em milhões inteiros. São ~17 KB comprimidos para 403 modelos e 85 semanas.
+
+Sem isso, filtro é impossível: para responder "só modelos pagos acima de 128k de contexto" o navegador precisa dos números por modelo, não do total.
+
+`window.MS` expõe o estado para auditoria: `MS.D` são as séries do recorte atual, `MS.MX` a matriz, `MS.FILTROS` o recorte, `MS.agregar(fn, peso)` a função de agregação. Os testes usam esse mesmo ponto de entrada.
+
+**Duas decisões que mudam a leitura dos números sob filtro:**
+
+A linha `other` da fonte agrega o volume fora do top 50 diário e não tem metadado. Ela conta no total geral, mas sai de qualquer recorte filtrado, porque não dá para saber a composição dela. A página avisa isso explicitamente em vez de fingir que o total continua completo.
+
+O `top5` exclui `other` do ranking mas mantém no denominador: a pergunta é "quanto do mercado os cinco maiores modelos capturam", não "quanto dos modelos nomeados". O HHI, que depende de participações bem definidas, normaliza apenas sobre os nomeados.

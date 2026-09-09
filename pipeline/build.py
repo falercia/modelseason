@@ -294,6 +294,80 @@ out["trajetoria"] = {
     "coortes": coortes,
 }
 
+# ---------------------------------------------------------------------------
+# Matriz modelo x semana.
+#
+# Ate aqui a pagina consumia series ja agregadas, o que impede qualquer filtro:
+# para responder "so modelos pagos acima de 128k de contexto" o navegador precisa
+# dos numeros por modelo, nao do total. A matriz e esparsa (primeiro indice + fatia
+# ate o ultimo valor nao nulo) e os tokens vao em MILHOES inteiros. Custa ~17 KB
+# comprimidos para 403 modelos e 85 semanas, e substitui a maioria das series
+# pre-agregadas, entao o data.json nao cresce de forma relevante.
+#
+# A linha "other" da fonte entra como modelo sem metadado: ela some de qualquer
+# recorte filtrado, porque nao da para saber a composicao dela, e a pagina precisa
+# dizer isso ao leitor em vez de fingir que o total continua completo.
+# ---------------------------------------------------------------------------
+DIMS = ["vendor", "origin", "pesos", "cobranca", "faixa_preco", "faixa_ctx",
+        "multimodal", "raciocinio"]
+
+mat = (E.pivot_table(index="model_permaslug", columns="week", values="total_tokens",
+                     aggfunc="sum", fill_value=0)
+        .reindex(columns=SEM, fill_value=0))
+slugs = mat.index.tolist()
+Mv = np.round(mat.values / 1e6).astype(int)   # tokens em milhoes
+
+# Metadado por modelo, uma linha por slug, com categorias codificadas por indice.
+primeira = (E.sort_values("week").groupby("model_permaslug")
+             .agg({d: "last" for d in DIMS}))
+extra = (E.sort_values("week").groupby("model_permaslug")
+          .agg(nome=("name", "last"), preco=("preco_misto_M", "last"),
+               ctx=("context_length", "last"), lanc=("created_at", "last"),
+               aa=("aa_intelligence", "last"), elo=("da_elo_models", "last"),
+               tem_meta=("tem_meta", "last")))
+
+dic = {d: sorted(primeira[d].dropna().astype(str).unique()) for d in DIMS}
+idx_de = {d: {v: i for i, v in enumerate(dic[d])} for d in DIMS}
+
+def limpo(v, casas=2):
+    if v is None or (isinstance(v, float) and (np.isnan(v) or np.isinf(v))):
+        return None
+    return round(float(v), casas)
+
+modelos_meta = []
+for s in slugs:
+    r, x = primeira.loc[s], extra.loc[s]
+    modelos_meta.append({
+        "s": s,
+        "n": None if pd.isna(x.nome) else str(x.nome),
+        "d": [idx_de[d].get(str(r[d]), -1) for d in DIMS],
+        "p": limpo(x.preco, 3),
+        "c": None if pd.isna(x.ctx) else int(x.ctx),
+        "l": None if pd.isna(x.lanc) else str(x.lanc),
+        "q": limpo(x.aa, 1),
+        "e": limpo(x.elo, 0),
+        "m": bool(x.tem_meta),
+    })
+
+t0, vals = [], []
+for row in Mv:
+    nz = np.nonzero(row)[0]
+    if len(nz) == 0:
+        t0.append(0); vals.append([])
+    else:
+        a, b = int(nz[0]), int(nz[-1])
+        t0.append(a); vals.append(row[a:b + 1].tolist())
+
+out["matriz"] = {
+    "semanas": sem_str,
+    "dims": DIMS,
+    "dic": dic,
+    "modelos": modelos_meta,
+    "t0": t0,
+    "v": vals,
+    "unidade": "milhões de tokens",
+}
+
 out["blend"] = {"prompt": enrich.BLEND_PROMPT, "completion": enrich.BLEND_COMPLETION}
 out["cobertura"] = enrich.cobertura(E)
 out["cobertura_ultima_semana"] = enrich.cobertura(ult)
