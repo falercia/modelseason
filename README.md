@@ -42,18 +42,32 @@ O workflow `.github/workflows/daily.yml` roda às 06:30 UTC (03:30 America/Sao_P
 
 - aborta cedo, com mensagem clara, se o secret não estiver configurado;
 - tenta o `fetch.py` até 3 vezes, com 60s entre as tentativas, para absorver 429 e instabilidade da API;
-- roda `pipeline/check_freshness.py`, que **falha se o último dia do CSV estiver mais de 2 dias atrás de ontem (UTC)**. Esse guard existe porque o modo de falha perigoso não é o erro barulhento, é o silencioso: a API responde 200 com dado velho, nada muda no commit e a página fica congelada parecendo atualizada;
-- em caso de falha, abre (ou comenta em) uma issue com a label `pipeline`, contendo o link do run e um checklist de diagnóstico. O GitHub notifica por e-mail;
+- roda `pipeline/check_freshness.py`, o guard de integridade descrito abaixo;
+- em caso de falha, abre (ou comenta em) uma issue com a label `pipeline`, contendo o link do run e um checklist de diagnóstico. O GitHub notifica por e-mail. Se o problema persistir, ele comenta na issue existente em vez de abrir outra;
 - quando volta a funcionar, comenta e fecha a issue automaticamente.
 
-Para receber também o e-mail nativo de falha do Actions: GitHub → Settings → Notifications → Actions → "Send notifications for failed workflows only".
+### Guard de integridade
 
-Rodar o guard localmente:
+`pipeline/check_freshness.py` roda depois do fetch e faz três verificações, em ordem de gravidade.
+
+| Verificação | Comportamento | Por que existe |
+|---|---|---|
+| **Duplicatas** por `(date, model_permaslug)` | **Falha sempre** | É a falha mais cara e a mais silenciosa. Se o dedupe do `fetch.py` quebrar, a agregação semanal soma o mesmo volume duas vezes e todo número da página fica errado sem nada parecer anormal |
+| **Frescor** | **Avisa** a partir de 2 dias de atraso, **falha** a partir de 10 | A fonte atrasa publicação com alguma frequência. O aviso aparece no run e não abre issue; a falha abre |
+| **Buracos** no histórico | Informativo | `2025-06-15` e `2025-07-15` nunca foram publicados pela fonte e estão catalogados em `BURACOS_CONHECIDOS`. Um dia ausente fora dessa lista vira aviso |
+
+A separação entre aviso e falha é deliberada: alerta que dispara por atraso da fonte, e não por defeito do pipeline, treina você a ignorar alerta.
+
+Rodar localmente:
 
 ```bash
-python pipeline/check_freshness.py                    # tolerância padrão de 2 dias
-python pipeline/check_freshness.py --max-lag-days 5   # tolerância maior
+python pipeline/check_freshness.py                                  # avisa em 2d, falha em 10d
+python pipeline/check_freshness.py --max-lag-days 5 --warn-lag-days 1
 ```
+
+O `workflow_dispatch` aceita `max_lag_days` e `warn_lag_days` como parâmetros, então dá para testar outro limite sem editar arquivo.
+
+Para receber também o e-mail nativo de falha do Actions: GitHub → Settings → Notifications → Actions → "Send notifications for failed workflows only".
 
 ## Limites conhecidos da API
 

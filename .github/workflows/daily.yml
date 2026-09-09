@@ -6,7 +6,11 @@ on:
   workflow_dispatch:
     inputs:
       max_lag_days:
-        description: "Atraso máximo tolerado no CSV, em dias"
+        description: "Atraso no CSV a partir do qual o guard FALHA, em dias"
+        required: false
+        default: "10"
+      warn_lag_days:
+        description: "Atraso no CSV a partir do qual o guard apenas AVISA, em dias"
         required: false
         default: "2"
 
@@ -44,7 +48,7 @@ jobs:
           echo "Secret presente."
 
       - name: Estado antes
-        run: python pipeline/check_freshness.py --max-lag-days 3650 || true
+        run: python pipeline/check_freshness.py --max-lag-days 3650 --warn-lag-days 3650 || true
 
       - name: Buscar dados novos
         env:
@@ -60,8 +64,11 @@ jobs:
           echo "::error::fetch.py falhou nas 3 tentativas."
           exit 1
 
-      - name: Guardar frescor dos dados
-        run: python pipeline/check_freshness.py --max-lag-days "${{ inputs.max_lag_days || 2 }}"
+      - name: Guardar integridade e frescor dos dados
+        run: |
+          python pipeline/check_freshness.py \
+            --max-lag-days "${{ inputs.max_lag_days || 10 }}" \
+            --warn-lag-days "${{ inputs.warn_lag_days || 2 }}"
 
       - name: Recalcular agregados
         run: python pipeline/build.py
