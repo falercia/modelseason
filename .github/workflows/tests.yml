@@ -40,15 +40,35 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
 
       # Sem cache do npm: ele exige package-lock.json versionado, e a unica
       # dependencia aqui e o playwright, com versao presa no package.json.
       - name: Instalar dependências de teste
-        run: npm install --no-audit --no-fund
+        run: |
+          npm install --no-audit --no-fund
+          echo "playwright instalado: $(node -p "require('playwright/package.json').version")"
 
+      # Usa o binario LOCAL (./node_modules/.bin) em vez de `npx playwright`.
+      # O npx pode ignorar a versao instalada e tentar buscar outra do registry,
+      # o que falha em runner sem interatividade. E qualquer erro daqui vira
+      # anotacao do GitHub, para o diagnostico nao depender de acesso ao log.
       - name: Instalar Chromium
-        run: npx playwright install --with-deps chromium
+        run: |
+          BIN=./node_modules/.bin/playwright
+          test -x "$BIN" || { echo "::error::binario do playwright nao encontrado em $BIN"; ls -la node_modules/.bin | head -20; exit 1; }
+          if ! saida=$("$BIN" install --with-deps chromium 2>&1); then
+            echo "::error::playwright install --with-deps falhou: $(echo "$saida" | tail -6 | tr '\n' ' § ')"
+            echo "$saida" | tail -40
+            echo "Tentando sem --with-deps..."
+            if ! saida2=$("$BIN" install chromium 2>&1); then
+              echo "::error::playwright install chromium tambem falhou: $(echo "$saida2" | tail -6 | tr '\n' ' § ')"
+              echo "$saida2" | tail -40
+              exit 1
+            fi
+            echo "::warning::Chromium instalado sem as dependencias de sistema."
+          fi
+          "$BIN" --version
 
       - name: Testes de ponta a ponta
         run: |
@@ -57,4 +77,9 @@ jobs:
             curl -sf http://localhost:8099/index.html >/dev/null && break
             sleep 0.5
           done
-          npm run test:ci
+          if ! saida=$(npm run test:ci 2>&1); then
+            echo "$saida"
+            echo "::error::testes de ponta a ponta falharam: $(echo "$saida" | grep -E '^  X' | head -4 | tr '\n' ' § ')"
+            exit 1
+          fi
+          echo "$saida"
