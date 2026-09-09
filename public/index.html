@@ -34,7 +34,11 @@
   --ground:#f4f5f7; --surface:#ffffff; --surface-2:#eceef2;
   --ink:#121417; --ink-2:#4b5160; --ink-3:#7d8394; --grid:#e3e5ea; --axis:#c5c9d2; --ring:rgba(18,20,23,.10);
   --accent:#199e70;
-  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --s0:#b4b8c2;
+  /* 4 categoricas, validadas em --pairs all nos dois temas. A quinta cor sempre
+     viola o piso de visao normal ou o de daltonismo, porque o tema escuro exige
+     luminancia numa faixa estreita. Alem de 4 series: dobra em Outros,
+     small multiples, ou enfase em tinta. */
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#ad51a7; --s0:#9aa0ad;
   --good:#006300; --bad:#d03b3b;
 }
 @media (prefers-color-scheme: dark){
@@ -43,7 +47,7 @@
     --ground:#0e1013; --surface:#15181d; --surface-2:#1c2026;
     --ink:#eef0f3; --ink-2:#b3b8c4; --ink-3:#7d8394; --grid:#242830; --axis:#343943; --ring:rgba(255,255,255,.10);
     --accent:#22b381;
-    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s0:#4f5561;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#b357ad; --s0:#6b7280;
     --good:#0ca30c; --bad:#e66767;
   }
 }
@@ -52,7 +56,7 @@
   --ground:#0e1013; --surface:#15181d; --surface-2:#1c2026;
   --ink:#eef0f3; --ink-2:#b3b8c4; --ink-3:#7d8394; --grid:#242830; --axis:#343943; --ring:rgba(255,255,255,.10);
   --accent:#22b381;
-  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s0:#4f5561;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#b357ad; --s0:#6b7280;
   --good:#0ca30c; --bad:#e66767;
 }
 *{box-sizing:border-box}
@@ -92,8 +96,16 @@ section{margin-bottom:56px}
 .card-h p{margin:2px 0 0;font-size:12.5px;color:var(--ink-3)}
 .tbtn{border:1px solid var(--axis);background:transparent;color:var(--ink-3);border-radius:6px;padding:3px 9px;font:500 12px "DM Sans",sans-serif;cursor:pointer;white-space:nowrap}
 .tbtn[aria-pressed="true"]{color:var(--ink);border-color:var(--ink-2)}
-.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--ink-2);margin:6px 0 4px}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend{display:flex;flex-wrap:wrap;gap:5px 6px;font-size:12.5px;color:var(--ink-2);margin:6px 0 4px;align-items:center}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;flex:none}
+.legend button{display:inline-flex;align-items:center;border:1px solid transparent;background:transparent;color:var(--ink-2);font:inherit;padding:2px 7px;border-radius:6px;cursor:pointer;line-height:1.5}
+.legend button:hover{background:var(--surface-2);border-color:var(--grid)}
+.legend button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.legend button[aria-pressed="false"]{color:var(--ink-3);opacity:.5}
+.legend button[aria-pressed="false"] i{background:transparent!important;box-shadow:inset 0 0 0 2px var(--axis)}
+.legend button[aria-pressed="false"] .lv{text-decoration:line-through}
+.legend .all{margin-left:2px;border:1px dashed var(--axis);color:var(--ink-3);font-size:11.5px}
+.legend .hint{color:var(--ink-3);font-size:11.5px;margin-left:2px}
 .plot{position:relative;width:100%}
 .plot svg{display:block;width:100%;height:auto;overflow:visible}
 .plot text{font-family:"DM Mono",monospace;font-size:11px;fill:var(--ink-3)}
@@ -130,7 +142,48 @@ section{margin-bottom:56px}
 .note{font-size:12.5px;color:var(--ink-3);margin:14px 0 0;max-width:80ch}
 footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--grid);font-size:12.5px;color:var(--ink-3);max-width:90ch}
 footer p{margin:0 0 6px}
-@media (max-width:980px){.tiles{grid-template-columns:repeat(2,1fr)}.row,.row.two{grid-template-columns:1fr}header{grid-template-columns:1fr}.meta{text-align:left}}
+.ctrls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.views{display:inline-flex;border:1px solid var(--axis);border-radius:6px;overflow:hidden}
+.views button{border:0;background:transparent;color:var(--ink-3);padding:3px 10px;font:500 12px "DM Sans",sans-serif;cursor:pointer;white-space:nowrap}
+.views button+button{border-left:1px solid var(--axis)}
+.views button[aria-pressed="true"]{background:var(--surface-2);color:var(--ink)}
+.views button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.sm{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sm .p{border:1px solid var(--grid);border-radius:8px;padding:6px 4px 2px}
+.sm .p h4{margin:0 0 2px 6px;font-size:11.5px;font-weight:600;color:var(--ink-2)}
+.sm .p .n{font-size:10.5px;color:var(--ink-3);margin-left:6px}
+
+@media (max-width:980px){.tiles{grid-template-columns:repeat(2,1fr)}.row,.row.two{grid-template-columns:1fr}header{grid-template-columns:1fr}.meta{text-align:left}.sm{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){
+  .wrap{padding:20px 14px 56px}
+  h1{font-size:30px}
+  .sub{font-size:14.5px}
+  .tiles{grid-template-columns:1fr;gap:8px;margin-bottom:28px}
+  .tile{padding:12px 14px}
+  .tile .v{font-size:26px}
+  .filters{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+  .filters::-webkit-scrollbar{display:none}
+  .card{padding:14px 12px}
+  .card-h{flex-direction:column;align-items:stretch}
+  .card-h h3{font-size:14.5px}
+  .ctrls{justify-content:flex-start}
+  .sm{grid-template-columns:1fr}
+  /* Leaderboard: some as colunas de contexto, sobra o que decide */
+  .board th:nth-child(1),.board td:nth-child(1),
+  .board th:nth-child(4),.board td:nth-child(4),
+  .board th:nth-child(6),.board td:nth-child(6){display:none}
+  .board{font-size:12px}
+  .board th,.board td{padding:5px 4px}
+  .board .m{font-size:11px;word-break:break-all}
+  .board .pill{display:none}
+  .board .m{display:block;white-space:normal}
+  .chip{white-space:nowrap;padding:4px 10px}
+  .filters .lbl{display:none}
+  .tbl table{font-size:11px}
+  .tbl th,.tbl td{padding:3px 5px}
+  .read{font-size:13px}
+  footer{font-size:12px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -184,7 +237,7 @@ footer p{margin:0 0 6px}
   <div class="sec-head"><span class="n">02</span><h2>Share por laboratório</h2></div>
   <div class="row">
     <div class="card" data-chart="vendor">
-      <div class="card-h"><div><h3>Fatia semanal de tokens por lab</h3><p>Top 8 labs por volume acumulado; o resto em Outros</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Fatia semanal de tokens por lab</h3><p>Os quatro maiores labs por volume acumulado; todos os demais somados em Outros</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-vendor"></aside>
@@ -265,7 +318,15 @@ footer p{margin:0 0 6px}
   </div>
   <div class="row wide">
     <div class="card" data-chart="life">
-      <div class="card-h"><div><h3>Trajetória dos modelos relevantes</h3><p>Cada linha é um modelo que atingiu ≥ 2% do volume semanal; do lançamento ao pico e ao decaimento. Passe o mouse para ler.</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>A forma de uma temporada</h3><p id="traj-sub"></p></div>
+        <div class="ctrls">
+          <div class="views" role="group" aria-label="Modo de visualização">
+            <button data-view="forma" aria-pressed="true">Todos</button>
+            <button data-view="coorte" aria-pressed="false">Por trimestre</button>
+          </div>
+          <button class="tbtn" aria-pressed="false">Tabela</button>
+        </div>
+      </div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
   </div>
@@ -303,18 +364,57 @@ document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
 const idx = () => d3.range(range[0],range[1]+1);
 
 // ---- entity colors (fixed, never by rank)
-const VENDOR_SLOT = {deepseek:'--s1',google:'--s2',anthropic:'--s3',openai:'--s4',xiaomi:'--s5',tencent:'--s6',minimax:'--s7','z-ai':'--s8',Outros:'--s0'};
+// Cor segue a ENTIDADE, nunca a posicao no ranking: os quatro slots sao fixos e
+// escolhidos pelos quatro maiores em volume acumulado. Todo o resto vira Outros,
+// em neutro. Um filtro que muda a quantidade de series nao repinta os sobreviventes.
+const VENDOR_SLOT = {deepseek:'--s1',openai:'--s2',tencent:'--s3','z-ai':'--s4',Outros:'--s0'};
+const VENDOR_HUES = ['deepseek','openai','tencent','z-ai'];
+// Dobra as series alem das quatro fixas em "Outros", somando os valores.
+function dobrar(series, manter){
+  const out={}; manter.forEach(k=>{ if(series[k]) out[k]=series[k].slice(); });
+  const n=(series[manter[0]]||Object.values(series)[0]||[]).length;
+  const outros=new Array(n).fill(0); let houve=false;
+  Object.keys(series).forEach(k=>{ if(manter.includes(k)) return; houve=true;
+    series[k].forEach((v,i)=>outros[i]+=(v||0)); });
+  if(houve) out['Outros']=outros.map(v=>Math.round(v*100)/100);
+  return out;
+}
 const VENDOR_LABEL = {deepseek:'DeepSeek',google:'Google',anthropic:'Anthropic',openai:'OpenAI',xiaomi:'Xiaomi',tencent:'Tencent',minimax:'MiniMax','z-ai':'Z.ai (GLM)',Outros:'Outros','x-ai':'xAI'};
-const ORIGIN_SLOT = {'EUA/Canadá':'--s1','China':'--s2','Europa':'--s3','Coreia':'--s4','Outros':'--s5','Não identificado':'--s0'};
+const ORIGIN_SLOT = {'EUA/Canadá':'--s1','China':'--s2','Europa':'--s3','Coreia':'--s4','Outros':'--s0','Não identificado':'--s0'};
 const WEIGHTS_SLOT = {'Proprietário':'--s1','Open-weights':'--s3','Não identificado':'--s0'};
-const FAM_SLOT = {Haiku:'--s4',Sonnet:'--s3',Opus:'--s1',Fable:'--s7'};
+const FAM_SLOT = {Haiku:'--s2',Sonnet:'--s3',Opus:'--s1',Fable:'--s4'};
 const col = slot => css(slot);
 
 // ---- helpers
 function card(name){ return document.querySelector(`.card[data-chart="${name}"]`); }
 function tip(plot){ let t=plot.querySelector('.tip'); if(!t){t=document.createElement('div');t.className='tip';plot.appendChild(t);} return t; }
 function showTip(t, plot, x, y, html){ t.innerHTML=html; t.style.display='block'; const pw=plot.clientWidth; const tw=t.offsetWidth; t.style.left=(x+16+tw>pw? x-16-tw : x+16)+'px'; t.style.top=Math.max(0,y-10)+'px'; }
-function legend(el, items){ if(!el) return; el.innerHTML=items.map(([k,c,label])=>`<span><i style="background:${c}"></i>${label||k}</span>`).join(''); }
+// Estado de series ocultas, por grafico. A legenda e o controle: clicar liga e
+// desliga a serie. Resolve a sobreposicao sem esconder informacao por padrao, e
+// permite ao leitor isolar o que ele quer comparar.
+const HIDDEN={};
+function hid(name){ return (HIDDEN[name] = HIDDEN[name] || new Set()); }
+function visiveis(name, keys){ const h=hid(name); const v=keys.filter(k=>!h.has(k)); return v.length?v:keys; }
+function legend(el, items, name, redraw){
+  if(!el) return;
+  const h = name ? hid(name) : null;
+  el.innerHTML = items.map(([k,c,label])=>
+    `<button type="button" data-k="${String(k).replace(/"/g,'&quot;')}" aria-pressed="${h?!h.has(k):true}">`+
+    `<i style="background:${c}"></i><span class="lv">${label||k}</span></button>`).join('')
+    + (h && h.size ? `<button type="button" class="all">mostrar tudo</button>` : '')
+    + (h && !h.size ? `<span class="hint">clique para isolar séries</span>` : '');
+  if(!name || !redraw) return;
+  el.querySelectorAll('button[data-k]').forEach(b=>b.addEventListener('click',()=>{
+    const k=b.dataset.k;
+    // Nao deixa esconder tudo: se sobrar so uma visivel, o clique nela reexibe todas.
+    const todas=items.map(i=>String(i[0]));
+    if(!h.has(k) && todas.filter(x=>!h.has(x)).length<=1){ h.clear(); }
+    else if(h.has(k)) h.delete(k); else h.add(k);
+    redraw();
+  }));
+  const all=el.querySelector('.all');
+  if(all) all.addEventListener('click',()=>{ h.clear(); redraw(); });
+}
 function table(el, cols, rows){ el.innerHTML = `<table><thead><tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table>`; }
 document.querySelectorAll('.tbtn').forEach(b=>b.addEventListener('click',()=>{const c=b.closest('.card');const on=!c.classList.contains('table-mode');c.classList.toggle('table-mode',on);b.setAttribute('aria-pressed',String(on));b.textContent=on?'Gráfico':'Tabela';}));
 
@@ -344,7 +444,8 @@ const tipRow=(c,k,v)=>`<div class="r"><span><i style="background:${c}"></i>${k}<
 // ---- generic stacked share area
 function stackedShare(name, series, slots, labels, opts={}){
   const c=card(name), plot=c.querySelector('.plot'), ii=idx();
-  const keys=Object.keys(series);
+  const todas=Object.keys(series);
+  const keys=visiveis(name, todas);
   const f=frame(plot, 300, {t:12,r:16,b:30,l:44});
   const x=xScale(f,ii), y=d3.scaleLinear().domain([0,100]).range([f.h-f.m.b,f.m.t]);
   const data=ii.map(i=>{const o={i}; keys.forEach(k=>o[k]=series[k][i]); return o;});
@@ -355,7 +456,7 @@ function stackedShare(name, series, slots, labels, opts={}){
   // direct labels at right for segments > 6%
   const last=ii[ii.length-1];
   st.forEach(s=>{const seg=s[s.length-1]; if(seg[1]-seg[0]>7){ f.svg.append('text').attr('class','dl').attr('x',x(W[last])-6).attr('y',y((seg[0]+seg[1])/2)+4).attr('text-anchor','end').attr('fill','#fff').style('fill','#fff').text((labels[s.key]||s.key)+' '+Math.round(series[s.key][last])+'%'); }});
-  legend(c.querySelector('.legend'), keys.map(k=>[k,col(slots[k]),labels[k]||k]));
+  legend(c.querySelector('.legend'), todas.slice().sort((a,b)=>series[b][last]-series[a][last]).map(k=>[k,col(slots[k]),(labels[k]||k)+' '+fmtP(series[k][last])]), name, ()=>stackedShare(name,series,slots,labels,opts));
   crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+keys.slice().sort((a,b)=>series[b][i]-series[a][i]).filter(k=>series[k][i]>0.05).map(k=>tipRow(col(slots[k]),labels[k]||k,fmtP(series[k][i]))).join(''));
   table(c.querySelector('.tbl'),['Semana',...keys.map(k=>labels[k]||k)], ii.map(i=>[fD(W[i]),...keys.map(k=>fmtP(series[k][i]))]));
 }
@@ -380,35 +481,62 @@ function lineChart(name, vals, {fmt=fmtP, color='--s1', area=true, label, ymax, 
 // ---- multi-line with emphasis
 function emphasisLines(name, series, focus, slots, labels){
   const c=card(name), plot=c.querySelector('.plot'), ii=idx();
-  const keys=Object.keys(series).filter(k=>d3.max(series[k])>=2);
-  const f=frame(plot, 320, {t:14,r:96,b:30,l:44});
-  const x=xScale(f,ii), y=d3.scaleLinear().domain([0,d3.max(keys,k=>d3.max(ii,i=>series[k][i]))*1.08]).nice().range([f.h-f.m.b,f.m.t]);
+  const last0=ii[ii.length-1];
+  // O foco nao ocupa slot de cor: ele veste TINTA, que e enfase, nao identidade.
+  // Sobram 4 slots para os 4 maiores concorrentes da ultima semana; o restante
+  // e somado em Outros, em neutro, para nao inventar uma quinta cor.
+  const conc=Object.keys(series).filter(k=>k!==focus)
+    .sort((a,b)=>series[b][last0]-series[a][last0]);
+  const nomeados=conc.slice(0,4), resto=conc.slice(4);
+  const S={}; S[focus]=series[focus].slice();
+  nomeados.forEach(k=>S[k]=series[k].slice());
+  if(resto.length){ const n=series[focus].length; const o=new Array(n).fill(0);
+    resto.forEach(k=>series[k].forEach((v,x)=>o[x]+=(v||0)));
+    S['Outros']=o.map(v=>Math.round(v*100)/100); }
+  const SL={}; SL[focus]='ink'; nomeados.forEach((k,x)=>SL[k]='--s'+(x+1)); SL['Outros']='--s0';
+  const cor=k=>SL[k]==='ink'?css('--ink'):col(SL[k]);
+  const LB=k=>k==='Outros'?('Outros ('+resto.length+' labs)'):(labels[k]||k);
+
+  const todas=Object.keys(S);
+  const keys=visiveis(name, todas);
+  const f=frame(plot, 320, {t:14,r:104,b:30,l:44});
+  const x=xScale(f,ii), y=d3.scaleLinear().domain([0,d3.max(keys,k=>d3.max(ii,i=>S[k][i]))*1.08]).nice().range([f.h-f.m.b,f.m.t]);
   axes(f,x,y,v=>v+'%');
-  const line=k=>d3.line().x(i=>x(W[i])).y(i=>y(series[k][i])).curve(d3.curveMonotoneX);
-  const others=keys.filter(k=>k!==focus);
-  others.forEach(k=>f.svg.append('path').datum(ii).attr('d',line(k)).attr('fill','none').attr('stroke',col(slots[k])).attr('stroke-width',1.25).attr('opacity',.55));
-  f.svg.append('path').datum(ii).attr('d',line(focus)).attr('fill','none').attr('stroke',col(slots[focus])).attr('stroke-width',2.5);
-  // end labels, collision-avoided
+  const line=k=>d3.line().x(i=>x(W[i])).y(i=>y(S[k][i])).curve(d3.curveMonotoneX);
+  keys.filter(k=>k!==focus).forEach(k=>f.svg.append('path').datum(ii).attr('d',line(k))
+    .attr('fill','none').attr('stroke',cor(k)).attr('stroke-width',1.5).attr('opacity',.75));
+  f.svg.append('path').datum(ii).attr('d',line(focus)).attr('fill','none')
+    .attr('stroke',cor(focus)).attr('stroke-width',3);
+
+  // rotulo direto em todas as series: sao 6, e cabem sem colidir
   const last=ii[ii.length-1];
-  let lab=keys.map(k=>({k,y:y(series[k][last]),v:series[k][last]})).sort((a,b)=>a.y-b.y);
-  for(let i=1;i<lab.length;i++){ if(lab[i].y-lab[i-1].y<13) lab[i].y=lab[i-1].y+13; }
-  const maxY=f.h-f.m.b-2; if(lab.length&&lab[lab.length-1].y>maxY){ lab[lab.length-1].y=maxY; for(let i=lab.length-2;i>=0;i--){ if(lab[i+1].y-lab[i].y<13) lab[i].y=lab[i+1].y-13; } }
-  lab.forEach(l=>f.svg.append('text').attr('class','dl').attr('x',x(W[last])+8).attr('y',l.y+4).style('fill',l.k===focus?css('--ink'):css('--ink-3')).style('font-weight',l.k===focus?700:500).text(`${labels[l.k]||l.k} ${Math.round(l.v)}%`));
-  legend(c.querySelector('.legend'), keys.map(k=>[k,col(slots[k]),labels[k]||k]));
-  crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+keys.slice().sort((a,b)=>series[b][i]-series[a][i]).map(k=>tipRow(col(slots[k]),labels[k]||k,fmtP(series[k][i]))).join(''));
-  table(c.querySelector('.tbl'),['Semana',...keys.map(k=>labels[k]||k)], ii.map(i=>[fD(W[i]),...keys.map(k=>fmtP(series[k][i]))]));
+  let lab=keys.map(k=>({k,y:y(S[k][last]),v:S[k][last]})).sort((a,b)=>a.y-b.y);
+  for(let i=1;i<lab.length;i++){ if(lab[i].y-lab[i-1].y<14) lab[i].y=lab[i-1].y+14; }
+  const maxY=f.h-f.m.b-2; if(lab.length&&lab[lab.length-1].y>maxY){ lab[lab.length-1].y=maxY;
+    for(let i=lab.length-2;i>=0;i--){ if(lab[i+1].y-lab[i].y<14) lab[i].y=lab[i+1].y-14; } }
+  lab.forEach(l=>f.svg.append('text').attr('class','dl').attr('x',x(W[last])+8).attr('y',l.y+4)
+    .style('fill',l.k===focus?css('--ink'):css('--ink-3'))
+    .style('font-weight',l.k===focus?700:500)
+    .text(`${LB(l.k)} ${Math.round(l.v)}%`));
+
+  legend(c.querySelector('.legend'), todas.map(k=>[k,cor(k),LB(k)+' '+fmtP(S[k][last])]), name, ()=>emphasisLines(name,series,focus,slots,labels));
+  crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+keys.slice().sort((a,b)=>S[b][i]-S[a][i]).map(k=>tipRow(cor(k),LB(k),fmtP(S[k][i]))).join(''));
+  table(c.querySelector('.tbl'),['Semana',...Object.keys(series).map(k=>labels[k]||k)],
+    ii.map(i=>[fD(W[i]),...Object.keys(series).map(k=>fmtP(series[k][i]))]));
 }
 
 // ---- stacked absolute area (Anthropic families)
 function stackedAbs(name, series, slots){
-  const c=card(name), plot=c.querySelector('.plot'), ii=idx(); const keys=Object.keys(slots).filter(k=>series[k]);
+  const c=card(name), plot=c.querySelector('.plot'), ii=idx();
+  const todas=Object.keys(slots).filter(k=>series[k]);
+  const keys=visiveis(name, todas);
   const f=frame(plot, 280, {t:12,r:16,b:30,l:44});
   const data=ii.map(i=>{const o={i}; keys.forEach(k=>o[k]=series[k][i]); return o;});
   const st=d3.stack().keys(keys)(data);
   const x=xScale(f,ii), y=d3.scaleLinear().domain([0,d3.max(st[st.length-1],d=>d[1])*1.08]).nice().range([f.h-f.m.b,f.m.t]);
   axes(f,x,y,fmtT);
   f.svg.append('g').selectAll('path').data(st).join('path').attr('d',d3.area().x(d=>x(W[d.data.i])).y0(d=>y(d[0])).y1(d=>y(d[1])).curve(d3.curveMonotoneX)).attr('fill',d=>col(slots[d.key])).attr('stroke',css('--surface')).attr('stroke-width',1.5).attr('opacity',.92);
-  legend(c.querySelector('.legend'), keys.map(k=>[k,col(slots[k]),k]));
+  legend(c.querySelector('.legend'), todas.map(k=>[k,col(slots[k]),k]), name, ()=>stackedAbs(name,series,slots));
   crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+keys.slice().reverse().map(k=>tipRow(col(slots[k]),k,fmtT(series[k][i]))).join('')+tipRow('transparent','Total',fmtT(keys.reduce((s,k)=>s+series[k][i],0))));
   table(c.querySelector('.tbl'),['Semana',...keys,'Total'], ii.map(i=>[fD(W[i]),...keys.map(k=>fmtT(series[k][i])),fmtT(keys.reduce((s,k)=>s+series[k][i],0))]));
 }
@@ -452,20 +580,126 @@ function cohortBars(name, rows){
 }
 
 // ---- lifecycle spaghetti (share over time per model)
-function lifeLines(name){
-  const c=card(name), plot=c.querySelector('.plot'), ii=idx();
-  const L=D.life.filter(m=>m.peak_share>=2);
-  const f=frame(plot, 340, {t:14,r:16,b:30,l:44});
-  const x=xScale(f,ii), y=d3.scaleLinear().domain([0,d3.max(L,m=>m.peak_share)*1.05]).nice().range([f.h-f.m.b,f.m.t]);
-  axes(f,x,y,v=>v+'%');
-  const oslot=m=>ORIGIN_SLOT[m.origin]||'--s0';
-  const ln=d3.line().defined(d=>d[1]>0).x(d=>x(W[d[0]])).y(d=>y(d[1])).curve(d3.curveMonotoneX);
-  const t=tip(plot);
-  const paths=f.svg.append('g').selectAll('path').data(L).join('path').attr('d',m=>ln(ii.map(i=>[i,m.series[i]]))).attr('fill','none').attr('stroke',m=>col(oslot(m))).attr('stroke-width',1.4).attr('opacity',.7)
-    .on('mousemove',(ev,m)=>{paths.attr('opacity',q=>q===m?1:.15).attr('stroke-width',q=>q===m?2.5:1.2); const [mx,my]=d3.pointer(ev); const sx=plot.getBoundingClientRect().width/f.w; showTip(t,plot,mx*sx,my*sx,`<div class="t">${m.model}</div>${tipRow(col(oslot(m)),'Origem',m.origin)}${tipRow('transparent','Pesos',m.weights)}${tipRow('transparent','Lançado',m.first)}${tipRow('transparent','Pico',fmtP(m.peak_share)+' · '+m.peak_week)}${tipRow('transparent','Semanas até pico',m.weeks_to_peak)}${tipRow('transparent','Meia-vida',m.half_life_weeks==null?'ainda não caiu 50%':m.half_life_weeks+' sem')}${tipRow('transparent','Semanas no top 10',m.weeks_in_top10)}`);})
-    .on('mouseleave',()=>{paths.attr('opacity',.7).attr('stroke-width',1.4); t.style.display='none';});
-  legend(c.querySelector('.legend'), Object.entries(ORIGIN_SLOT).filter(([k])=>L.some(m=>m.origin===k)).map(([k,s])=>[k,col(s),k]));
-  table(c.querySelector('.tbl'),['Modelo','Origem','Pesos','Lançado','Pico share','Semana do pico','Sem. até pico','Meia-vida','Sem. top 10'], L.map(m=>[m.model,m.origin,m.weights,m.first,fmtP(m.peak_share),m.peak_week,m.weeks_to_peak,m.half_life_weeks==null?'—':m.half_life_weeks,m.weeks_in_top10]));
+let TRAJ_VIEW='forma';
+
+// ---- Trajetoria alinhada no lancamento
+// O grafico anterior empilhava 126 series no eixo do calendario e virava novelo.
+// Aqui o eixo x e a IDADE do modelo, em semanas desde a estreia, e o y e o share
+// como % do proprio pico. Curvas de 2025 e de 2026 passam a ser comparaveis, e o
+// que aparece nao e um modelo, e o formato que todos repetem.
+function trajectory(name){
+  const c=card(name), plot=c.querySelector('.plot'), T=D.trajetoria;
+  document.getElementById('traj-sub').textContent =
+    TRAJ_VIEW==='forma'
+      ? `${T.modelos.length} modelos alinhados na semana de estreia, cada um normalizado pelo próprio pico. A linha grossa é a mediana; a faixa, o intervalo entre o 1º e o 3º quartil.`
+      : 'Mediana por trimestre de lançamento, contra a mediana geral em cinza. Mostra se a temporada está encurtando.';
+
+  const E=T.envelope_geral, K=E.mediana.length;
+  const yFmt=v=>v+'%';
+
+  if(TRAJ_VIEW==='forma'){
+    const f=frame(plot, 360, {t:14,r:16,b:34,l:46});
+    const x=d3.scaleLinear().domain([0,K-1]).range([f.m.l, f.w-f.m.r]);
+    const y=d3.scaleLinear().domain([0,100]).range([f.h-f.m.b,f.m.t]);
+
+    // eixos com rotulo em semanas
+    f.svg.append('g').attr('class','grid').selectAll('line').data(y.ticks(4)).join('line')
+      .attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',y).attr('y2',y);
+    f.svg.append('g').attr('class','ax').selectAll('text').data(y.ticks(4)).join('text')
+      .attr('x',f.m.l-8).attr('y',d=>y(d)+4).attr('text-anchor','end').text(yFmt);
+    f.svg.append('g').attr('class','ax').selectAll('text').data(x.ticks(8)).join('text')
+      .attr('x',x).attr('y',f.h-f.m.b+18).attr('text-anchor','middle').text(d=>d===0?'estreia':d+' sem');
+
+    const ln=d3.line().defined(d=>d[1]!=null).x(d=>x(d[0])).y(d=>y(d[1])).curve(d3.curveMonotoneX);
+    const ar=d3.area().x((d,i)=>x(i)).y0(d=>y(d[0])).y1(d=>y(d[1])).curve(d3.curveMonotoneX);
+
+    // faixa interquartil
+    f.svg.append('path').datum(E.p25.map((v,i)=>[v,E.p75[i]]))
+      .attr('d',ar).attr('fill',col('--s1')).attr('opacity',.10);
+
+    // curvas individuais, recessivas, coloridas por origem
+    const oslot=m=>ORIGIN_SLOT[m.origin]||'--s0';
+    const origens=[...new Set(T.modelos.map(m=>m.origin))];
+    const vis=new Set(visiveis('life-origem', origens));
+    const mostrados=T.modelos.filter(m=>vis.has(m.origin));
+    const t_=tip(plot);
+    const paths=f.svg.append('g').selectAll('path').data(mostrados).join('path')
+      .attr('d',m=>ln(m.rel.map((v,i)=>[i,v])))
+      .attr('fill','none').attr('stroke',m=>col(oslot(m)))
+      .attr('stroke-width',1).attr('opacity',.16)
+      .style('cursor','pointer')
+      .on('mousemove',(ev,m)=>{
+        paths.attr('opacity',q=>q===m?1:.06).attr('stroke-width',q=>q===m?2.5:1);
+        const [mx,my]=d3.pointer(ev); const sx=plot.getBoundingClientRect().width/f.w;
+        showTip(t_,plot,mx*sx,my*sx,
+          `<div class="t">${m.model}</div>`+
+          tipRow(col(oslot(m)),'Origem',m.origin)+
+          tipRow('transparent','Pesos',m.weights)+
+          tipRow('transparent','Estreia',m.first)+
+          tipRow('transparent','Pico',fmtP(m.peak_share))+
+          tipRow('transparent','Semanas até o pico',m.weeks_to_peak)+
+          tipRow('transparent','Meia-vida',m.half_life_weeks==null?'ainda não caiu 50%':m.half_life_weeks+' semanas')+
+          tipRow('transparent','Ainda em uso',m.still_alive?'sim':'não'));
+      })
+      .on('mouseleave',()=>{paths.attr('opacity',.16).attr('stroke-width',1); t_.style.display='none';});
+
+    // mediana por cima
+    f.svg.append('path').datum(E.mediana.map((v,i)=>[i,v]))
+      .attr('d',ln).attr('fill','none').attr('stroke',css('--ink')).attr('stroke-width',2.5)
+      .style('pointer-events','none');
+
+    // rotulos diretos em pontos que importam
+    const pico=E.mediana.indexOf(d3.max(E.mediana));
+    const meia=E.mediana.findIndex((v,i)=>i>pico && v<=E.mediana[pico]/2);
+    [[pico,'pico da mediana'],[meia,'metade do pico']].filter(([i])=>i>0).forEach(([i,txt])=>{
+      f.svg.append('circle').attr('cx',x(i)).attr('cy',y(E.mediana[i])).attr('r',4)
+        .attr('fill',css('--ink')).attr('stroke',css('--surface')).attr('stroke-width',2).style('pointer-events','none');
+      f.svg.append('text').attr('class','dl').attr('x',x(i)+9).attr('y',y(E.mediana[i])-6)
+        .style('fill',css('--ink-2')).style('font-weight',600)
+        .text(`${txt}: semana ${i}`).style('pointer-events','none');
+    });
+
+    legend(c.querySelector('.legend'),
+      origens.map(k=>[k,col(ORIGIN_SLOT[k]||'--s0'),k+' ('+T.modelos.filter(m=>m.origin===k).length+')']),
+      'life-origem', ()=>trajectory('life'));
+    // a mediana nao entra na legenda clicavel: ela e referencia, nao categoria
+    c.querySelector('.legend').insertAdjacentHTML('afterbegin',
+      `<span style="display:inline-flex;align-items:center;padding:2px 7px"><i style="background:${css('--ink')}"></i>Mediana dos ${T.modelos.length}</span>`);
+  } else {
+    // small multiples por trimestre de lancamento
+    plot.innerHTML='';
+    const wrap=document.createElement('div'); wrap.className='sm'; plot.appendChild(wrap);
+    T.coortes.forEach(q=>{
+      const E2=T.envelope_coorte[q]; if(!E2) return;
+      const box=document.createElement('div'); box.className='p';
+      box.innerHTML=`<h4>${q} <span class="n">n=${E2.n[0]}</span></h4>`;
+      const holder=document.createElement('div'); box.appendChild(holder); wrap.appendChild(box);
+      const w=Math.max(150, holder.clientWidth||holder.parentElement.clientWidth), h=132;
+      const svg=d3.select(holder).append('svg').attr('viewBox',`0 0 ${w} ${h}`).attr('width','100%').attr('height',h);
+      const m={t:8,r:8,b:18,l:26};
+      const x=d3.scaleLinear().domain([0,K-1]).range([m.l,w-m.r]);
+      const y=d3.scaleLinear().domain([0,100]).range([h-m.b,m.t]);
+      svg.append('g').attr('class','grid').selectAll('line').data([0,50,100]).join('line')
+        .attr('x1',m.l).attr('x2',w-m.r).attr('y1',y).attr('y2',y);
+      svg.append('g').attr('class','ax').selectAll('text').data([0,50,100]).join('text')
+        .attr('x',m.l-5).attr('y',d=>y(d)+3.5).attr('text-anchor','end').style('font-size','9.5px').text(d=>d+'%');
+      svg.append('g').attr('class','ax').selectAll('text').data([0,12,24,36]).join('text')
+        .attr('x',x).attr('y',h-4).attr('text-anchor','middle').style('font-size','9.5px').text(d=>d);
+      const ln=d3.line().x((d,i)=>x(i)).y(d=>y(d)).curve(d3.curveMonotoneX);
+      svg.append('path').datum(E.mediana).attr('d',ln).attr('fill','none')
+        .attr('stroke',css('--ink-3')).attr('stroke-width',1.5).attr('stroke-dasharray','3 3');
+      svg.append('path').datum(E2.mediana).attr('d',ln).attr('fill','none')
+        .attr('stroke',col('--s1')).attr('stroke-width',2.5);
+    });
+    legend(c.querySelector('.legend'),
+      [['q',col('--s1'),'Mediana do trimestre'],['g',css('--ink-3'),'Mediana geral']]);
+  }
+
+  const L=T.modelos;
+  table(c.querySelector('.tbl'),
+    ['Modelo','Origem','Pesos','Estreia','Trimestre','Pico share','Sem. até pico','Meia-vida','Ainda em uso'],
+    L.map(m=>[m.model,m.origin,m.weights,m.first,m.cohort,fmtP(m.peak_share),m.weeks_to_peak,
+              m.half_life_weeks==null?'—':m.half_life_weeks+' sem',m.still_alive?'sim':'não']));
 }
 
 // ---- leaderboard
@@ -516,7 +750,7 @@ function readings(){
 }
 
 function renderAll(){
-  stackedShare('vendor', D.vendor_share, VENDOR_SLOT, VENDOR_LABEL);
+  stackedShare('vendor', dobrar(D.vendor_share, VENDOR_HUES), VENDOR_SLOT, VENDOR_LABEL);
   stackedShare('origin', D.origin_share, ORIGIN_SLOT, {});
   stackedShare('weights', D.weights_share, WEIGHTS_SLOT, {});
   lineChart('volume', D.weekly_total_T, {fmt:fmtT, color:'--s1', label:'Tokens/semana'});
@@ -525,8 +759,8 @@ function renderAll(){
   emphasisLines('anshare', D.comp_share, 'anthropic', {...VENDOR_SLOT,'x-ai':'--s0'}, VENDOR_LABEL);
   stackedAbs('anfam', D.an_fam_abs, FAM_SLOT);
   lineChart('churn', D.churn, {fmt:v=>v, color:'--s2', label:'Novos no top 10 (vs. 4 sem antes)', integer:true, ymax:10, area:false});
-  lineChart('age', D.age.map((v,i)=>i<12?null:v), {fmt:v=>v+' sem', color:'--s7', label:'Idade mediana (semanas)', area:false});
-  lifeLines('life');
+  lineChart('age', D.age.map((v,i)=>i<12?null:v), {fmt:v=>v+' sem', color:'--s4', label:'Idade mediana (semanas)', area:false});
+  trajectory('life');
 }
 function renderStatic(){
   tiles(); readings(); board();
@@ -543,6 +777,11 @@ function renderStatic(){
 // attach per-model series to lifecycle entries (built from weekly model shares embedded in D.life_series)
 D.life.forEach(m=>{ m.series=D.life_series[m.model]; });
 renderStatic(); renderAll();
+document.querySelectorAll('.views button').forEach(b=>b.addEventListener('click',()=>{
+  const g=b.parentElement;
+  g.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed', String(o===b)));
+  TRAJ_VIEW=b.dataset.view; trajectory('life');
+}));
 let rt; window.addEventListener('resize',()=>{clearTimeout(rt); rt=setTimeout(renderAll,150);});
 const mq=matchMedia('(prefers-color-scheme: dark)'); mq.addEventListener('change',()=>{renderStatic();renderAll();});
 }

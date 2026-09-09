@@ -233,6 +233,67 @@ out["qualidade"] = [
     for _, r in q.sort_values("share", ascending=False).head(60).iterrows()
 ]
 
+# ---------------------------------------------------------------------------
+# Trajetoria alinhada no lancamento.
+#
+# O grafico antigo empilhava 125 series no mesmo eixo de tempo e virava novelo.
+# Alinhar cada modelo na propria semana de estreia e normalizar pelo pico revela
+# a unica coisa que interessa ali: o FORMATO da temporada. Sobe rapido, atinge o
+# pico, decai. O eixo x deixa de ser calendario e passa a ser idade do modelo,
+# entao curvas de 2025 e de 2026 ficam comparaveis.
+# ---------------------------------------------------------------------------
+MAX_IDADE = 40  # semanas apos a estreia; alem disso a amostra fica rala demais
+
+traj = []
+for m in life:
+    s = life_series.get(m["model"])
+    if not s or not m.get("peak_share"):
+        continue
+    inicio = next((i for i, v in enumerate(s) if v and v > 0), None)
+    if inicio is None:
+        continue
+    bruto = s[inicio:inicio + MAX_IDADE + 1]
+    pico = max(bruto) or 1
+    traj.append({
+        "model": m["model"],
+        "vendor": m["vendor"],
+        "origin": m["origin"],
+        "weights": m["weights"],
+        "first": m["first"],
+        "cohort": f'{pd.Timestamp(m["first"]).year} Q{pd.Timestamp(m["first"]).quarter}',
+        "peak_share": m["peak_share"],
+        "weeks_to_peak": m["weeks_to_peak"],
+        "half_life_weeks": m["half_life_weeks"],
+        "still_alive": m.get("still_alive"),
+        "abs": [round(v, 3) for v in bruto],
+        "rel": [round(100 * v / pico, 1) for v in bruto],
+    })
+
+def envelope(grupo, chave="rel"):
+    """Mediana e faixa interquartil da forma, semana a semana desde a estreia."""
+    if not grupo:
+        return None
+    med, p25, p75, n = [], [], [], []
+    for k in range(MAX_IDADE + 1):
+        vals = [t[chave][k] for t in grupo if len(t[chave]) > k]
+        if len(vals) < 3:
+            break
+        ser = pd.Series(vals)
+        med.append(round(float(ser.median()), 1))
+        p25.append(round(float(ser.quantile(.25)), 1))
+        p75.append(round(float(ser.quantile(.75)), 1))
+        n.append(len(vals))
+    return {"mediana": med, "p25": p25, "p75": p75, "n": n}
+
+coortes = sorted({t["cohort"] for t in traj})
+out["trajetoria"] = {
+    "max_idade": MAX_IDADE,
+    "modelos": sorted(traj, key=lambda t: -t["peak_share"]),
+    "envelope_geral": envelope(traj),
+    "envelope_coorte": {c: envelope([t for t in traj if t["cohort"] == c]) for c in coortes},
+    "coortes": coortes,
+}
+
 out["blend"] = {"prompt": enrich.BLEND_PROMPT, "completion": enrich.BLEND_COMPLETION}
 out["cobertura"] = enrich.cobertura(E)
 out["cobertura_ultima_semana"] = enrich.cobertura(ult)
