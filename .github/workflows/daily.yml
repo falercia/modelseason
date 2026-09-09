@@ -1,0 +1,42 @@
+name: Atualizar dados diariamente
+
+on:
+  schedule:
+    - cron: "30 6 * * *"   # 06:30 UTC = 03:30 America/Sao_Paulo; o dia UTC anterior já está fechado
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pipeline/requirements.txt
+      - run: pip install -r pipeline/requirements.txt
+      - name: Buscar dados novos
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python pipeline/fetch.py
+      - name: Recalcular agregados
+        run: python pipeline/build.py
+      - name: Commitar se houver mudança
+        run: |
+          git config user.name "modelseason-bot"
+          git config user.email "modelseason-bot@users.noreply.github.com"
+          git add data/rankings_daily.csv public/data.json
+          if git diff --cached --quiet; then
+            echo "Sem mudanças."
+          else
+            git commit -m "data: atualização $(date -u +%F)"
+            git push
+          fi

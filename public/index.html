@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Season</title>
+<meta name="description" content="Para onde vai o tráfego de tokens dos modelos de linguagem no OpenRouter: share por lab, open-weights vs. proprietário, ciclo de vida dos modelos. Atualizado diariamente.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --ground:#f4f5f7; --surface:#ffffff; --surface-2:#eceef2;
+  --ink:#121417; --ink-2:#4b5160; --ink-3:#7d8394; --grid:#e3e5ea; --axis:#c5c9d2; --ring:rgba(18,20,23,.10);
+  --accent:#199e70;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948; --s0:#b4b8c2;
+  --good:#006300; --bad:#d03b3b;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0e1013; --surface:#15181d; --surface-2:#1c2026;
+    --ink:#eef0f3; --ink-2:#b3b8c4; --ink-3:#7d8394; --grid:#242830; --axis:#343943; --ring:rgba(255,255,255,.10);
+    --accent:#22b381;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s0:#4f5561;
+    --good:#0ca30c; --bad:#e66767;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0e1013; --surface:#15181d; --surface-2:#1c2026;
+  --ink:#eef0f3; --ink-2:#b3b8c4; --ink-3:#7d8394; --grid:#242830; --axis:#343943; --ring:rgba(255,255,255,.10);
+  --accent:#22b381;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767; --s0:#4f5561;
+  --good:#0ca30c; --bad:#e66767;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.mono{font-family:"DM Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+.wrap{max-width:1240px;margin:0 auto;padding:36px 28px 72px}
+header{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding-bottom:22px;border-bottom:1px solid var(--grid)}
+.eyebrow{font-family:"DM Mono",monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+h1{margin:6px 0 4px;font-size:34px;line-height:1.1;letter-spacing:-.02em;font-weight:700;text-wrap:balance}
+.sub{color:var(--ink-2);max-width:62ch;margin:0}
+.meta{font-family:"DM Mono",monospace;font-size:12px;color:var(--ink-3);text-align:right;line-height:1.7}
+.meta b{color:var(--ink-2);font-weight:500}
+/* filter row */
+.filters{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:22px 0 26px}
+.filters .lbl{font-size:12.5px;color:var(--ink-3);margin-right:4px}
+.chip{border:1px solid var(--axis);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:5px 12px;font:500 13px "DM Sans",sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.chip:focus-visible,.tbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:40px}
+.tile{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:16px 18px 14px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between}
+.tile .k{font-size:12.5px;color:var(--ink-3);letter-spacing:.01em}
+.tile .v{font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1;margin:8px 0 6px}
+.tile .d{font-size:12.5px;color:var(--ink-2)}
+.tile .d.up{color:var(--good)} .tile .d.down{color:var(--bad)}
+/* sections */
+section{margin-bottom:56px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}
+.sec-head h2{margin:0;font-size:22px;letter-spacing:-.015em;font-weight:700}
+.sec-head .n{font-family:"DM Mono",monospace;font-size:12px;color:var(--ink-3)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;margin-bottom:18px}
+.row.wide{grid-template-columns:1fr}
+.row.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.card{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:18px 18px 12px;min-width:0}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px}
+.card-h h3{margin:0;font-size:15.5px;font-weight:700}
+.card-h p{margin:2px 0 0;font-size:12.5px;color:var(--ink-3)}
+.tbtn{border:1px solid var(--axis);background:transparent;color:var(--ink-3);border-radius:6px;padding:3px 9px;font:500 12px "DM Sans",sans-serif;cursor:pointer;white-space:nowrap}
+.tbtn[aria-pressed="true"]{color:var(--ink);border-color:var(--ink-2)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--ink-2);margin:6px 0 4px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.plot{position:relative;width:100%}
+.plot svg{display:block;width:100%;height:auto;overflow:visible}
+.plot text{font-family:"DM Mono",monospace;font-size:11px;fill:var(--ink-3)}
+.plot .dl{font-family:"DM Sans",sans-serif;font-size:11.5px;font-weight:500;fill:var(--ink-2)}
+.plot .grid line{stroke:var(--grid);stroke-width:1}
+.plot .axis line,.plot .axis path{stroke:var(--axis)}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--ring);box-shadow:0 6px 24px rgba(0,0,0,.18);border-radius:8px;padding:8px 10px;font-size:12px;color:var(--ink);min-width:160px;z-index:5;display:none}
+.tip .t{font-family:"DM Mono",monospace;color:var(--ink-3);font-size:11px;margin-bottom:4px}
+.tip .r{display:flex;justify-content:space-between;gap:14px;line-height:1.55}
+.tip .r i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px}
+.tip .r b{font-weight:500;font-variant-numeric:tabular-nums}
+.tbl{display:none;overflow-x:auto;max-height:360px;overflow-y:auto;margin-top:8px}
+.tbl table{border-collapse:collapse;width:100%;font-size:12px;font-variant-numeric:tabular-nums}
+.tbl th,.tbl td{text-align:right;padding:4px 8px;border-bottom:1px solid var(--grid);white-space:nowrap}
+.tbl th:first-child,.tbl td:first-child{text-align:left;font-family:"DM Mono",monospace;color:var(--ink-2)}
+.tbl th{position:sticky;top:0;background:var(--surface);color:var(--ink-3);font-weight:500}
+.card.table-mode .plot,.card.table-mode .legend{display:none}
+.card.table-mode .tbl{display:block}
+/* reading panel */
+.read{background:var(--surface-2);border-radius:10px;padding:18px 20px;font-size:14px;color:var(--ink-2)}
+.read h4{margin:0 0 8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-family:"DM Mono",monospace;font-weight:500}
+.read p{margin:0 0 10px}
+.read p:last-child{margin:0}
+.read b{color:var(--ink);font-weight:600}
+.read .flag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:4px;background:var(--surface);border:1px solid var(--ring);color:var(--ink-3);margin-right:6px;vertical-align:1px}
+/* leaderboard */
+.board{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.board th{font-size:11.5px;color:var(--ink-3);font-weight:500;text-align:left;padding:6px 8px;border-bottom:1px solid var(--grid)}
+.board td{padding:6px 8px;border-bottom:1px solid var(--grid);vertical-align:middle}
+.board td.num,.board th.num{text-align:right}
+.board .bar{height:6px;border-radius:3px;background:var(--s1)}
+.board .m{font-family:"DM Mono",monospace;font-size:12px;color:var(--ink)}
+.pill{display:inline-block;font-size:10.5px;padding:1px 6px;border-radius:4px;border:1px solid var(--ring);color:var(--ink-3);margin-left:6px;vertical-align:1px}
+.note{font-size:12.5px;color:var(--ink-3);margin:14px 0 0;max-width:80ch}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--grid);font-size:12.5px;color:var(--ink-3);max-width:90ch}
+footer p{margin:0 0 6px}
+@media (max-width:980px){.tiles{grid-template-columns:repeat(2,1fr)}.row,.row.two{grid-template-columns:1fr}header{grid-template-columns:1fr}.meta{text-align:left}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <div class="eyebrow">Inteligência de mercado · Modelos de linguagem</div>
+    <h1>Model Season</h1>
+    <p class="sub">Para onde vai o tráfego de tokens dos modelos de linguagem, semana a semana: quem cresce, quem perde, quanto tempo um modelo dura no topo e o que isso diz sobre a posição da Anthropic.</p>
+  </div>
+  <div class="meta">
+    Fonte: <b>OpenRouter · rankings-daily</b><br>
+    Janela: <b id="m-range"></b><br>
+    Semanas completas: <b id="m-weeks"></b> · Modelos distintos: <b id="m-models"></b><br>
+    Atualizado em <b id="m-asof"></b> · dados até <b id="m-daily"></b> · CC BY 4.0
+  </div>
+</header>
+
+<div class="filters" role="group" aria-label="Janela de tempo">
+  <span class="lbl">Janela</span>
+  <button class="chip" data-range="all" aria-pressed="true">Tudo</button>
+  <button class="chip" data-range="52" aria-pressed="false">Últimas 52 semanas</button>
+    <button class="chip" data-range="26" aria-pressed="false">Últimas 26 semanas</button>
+  <button class="chip" data-range="13" aria-pressed="false">Últimas 13 semanas</button>
+</div>
+
+<div class="tiles" id="tiles"></div>
+
+<!-- 1. MERCADO -->
+<section>
+  <div class="sec-head"><span class="n">01</span><h2>Tamanho e concentração do mercado</h2></div>
+  <div class="row">
+    <div class="card" data-chart="volume">
+      <div class="card-h"><div><h3>Tokens por semana</h3><p>Trilhões de tokens processados via OpenRouter, top 50 + resto</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-volume"></aside>
+  </div>
+  <div class="row">
+    <div class="card" data-chart="conc">
+      <div class="card-h"><div><h3>Concentração: share dos 5 maiores modelos</h3><p>% do volume semanal capturado pelos 5 modelos mais usados</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-conc"></aside>
+  </div>
+</section>
+
+<!-- 2. LABS -->
+<section>
+  <div class="sec-head"><span class="n">02</span><h2>Share por laboratório</h2></div>
+  <div class="row">
+    <div class="card" data-chart="vendor">
+      <div class="card-h"><div><h3>Fatia semanal de tokens por lab</h3><p>Top 8 labs por volume acumulado; o resto em Outros</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-vendor"></aside>
+  </div>
+  <div class="row">
+    <div class="card" data-chart="board">
+      <div class="card-h"><div><h3>Top 15 da última semana completa</h3><p id="board-sub"></p></div></div>
+      <div class="plot"></div>
+    </div>
+    <aside class="read" id="read-board"></aside>
+  </div>
+</section>
+
+<!-- 3. GEOGRAFIA E PESOS -->
+<section>
+  <div class="sec-head"><span class="n">03</span><h2>Open-weights vs. proprietário, China vs. EUA</h2></div>
+  <div class="row two">
+    <div class="card" data-chart="origin">
+      <div class="card-h"><div><h3>Origem do lab</h3><p>% do volume semanal por país-sede do laboratório</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <div class="card" data-chart="weights">
+      <div class="card-h"><div><h3>Licença dos pesos</h3><p>% do volume semanal em modelos de pesos abertos vs. fechados</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card" data-chart="free">
+      <div class="card-h"><div><h3>Tráfego em variantes :free</h3><p>% do volume semanal em endpoints gratuitos</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-weights"></aside>
+  </div>
+</section>
+
+<!-- 4. ANTHROPIC -->
+<section>
+  <div class="sec-head"><span class="n">04</span><h2>Posição da Anthropic</h2></div>
+  <div class="row">
+    <div class="card" data-chart="anshare">
+      <div class="card-h"><div><h3>Share da Anthropic vs. concorrentes</h3><p>% do volume semanal; Anthropic em destaque</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-anshare"></aside>
+  </div>
+  <div class="row two">
+    <div class="card" data-chart="anfam">
+      <div class="card-h"><div><h3>Volume Anthropic por família</h3><p>Trilhões de tokens por semana: Haiku, Sonnet, Opus, Fable</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <div class="card" data-chart="antenure">
+      <div class="card-h"><div><h3>Semanas no top 10 por modelo Claude</h3><p>Permanência entre os 10 mais usados, por ordem de lançamento</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+  </div>
+  <aside class="read" id="read-anfam" style="margin-top:0"></aside>
+</section>
+
+<!-- 5. CICLO DE VIDA -->
+<section>
+  <div class="sec-head"><span class="n">05</span><h2>Ciclo de vida dos modelos</h2></div>
+  <div class="row two">
+    <div class="card" data-chart="churn">
+      <div class="card-h"><div><h3>Rotatividade do top 10</h3><p>Quantos dos 10 mais usados não estavam no top 10 quatro semanas antes</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+    <div class="card" data-chart="age">
+      <div class="card-h"><div><h3>Idade mediana do top 10</h3><p>Semanas desde a primeira aparição no ranking (primeiras 12 semanas censuradas pelo início do dataset)</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card" data-chart="cohort">
+      <div class="card-h"><div><h3>Tempo até o pico e meia-vida, por trimestre de lançamento</h3><p>Mediana em semanas, modelos que atingiram ≥ 2% do volume semanal (n por coorte no rótulo)</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-cohort"></aside>
+  </div>
+  <div class="row wide">
+    <div class="card" data-chart="life">
+      <div class="card-h"><div><h3>Trajetória dos modelos relevantes</h3><p>Cada linha é um modelo que atingiu ≥ 2% do volume semanal; do lançamento ao pico e ao decaimento. Passe o mouse para ler.</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><b>Método.</b> Dados do endpoint público <span class="mono">GET /api/v1/datasets/rankings-daily</span> (period=day), agregados por semana ISO (segunda a domingo); apenas semanas completas. A linha "other" da API é o volume fora do top 50 diário; modelos que oscilam na fronteira do top 50 têm o volume semanal subcontado. Tokens contados pelo tokenizador de cada provedor.</p>
+  <p><b>Classificações.</b> Origem e licença dos pesos foram atribuídas por laboratório e por padrão de nome do modelo; casos ambíguos (MiMo Pro, variantes Qwen, Mistral) seguem a política de lançamento conhecida e podem conter erro. Modelos stealth/alpha (OpenRouter, "stealth/*") são testes anônimos de labs não identificados, gratuitos e geralmente de curta duração.</p>
+  <p><b>Viés da fonte.</b> OpenRouter concentra tráfego de desenvolvedores, agentes de código, roleplay e uso sensível a preço. Não representa o consumo enterprise direto via API dos labs nem via Bedrock/Vertex. Share aqui é share de tokens, não de receita.</p>
+</footer>
+</div>
+
+<script src="./vendor/d3.v7.min.js"></script>
+<script>
+fetch('./data.json',{cache:'no-cache'}).then(r=>r.json()).then(init).catch(e=>{document.getElementById('tiles').innerHTML='<p style="color:var(--bad)">Não foi possível carregar data.json: '+e.message+'</p>';});
+function init(D){
+const W = D.weeks.map(s=>new Date(s+'T00:00:00'));
+const N = W.length;
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmtT = v => v>=10? d3.format('.0f')(v)+'T' : v>=1? d3.format('.1f')(v)+'T' : d3.format('.2f')(v)+'T';
+const fmtP = v => d3.format('.1f')(v).replace('.',',')+'%';
+const fmtDate = d3.timeFormat('%d %b %y');
+const ptBR = {Jan:'jan',Feb:'fev',Mar:'mar',Apr:'abr',May:'mai',Jun:'jun',Jul:'jul',Aug:'ago',Sep:'set',Oct:'out',Nov:'nov',Dec:'dez'};
+const fD = d => fmtDate(d).replace(/[A-Z][a-z]{2}/, m=>ptBR[m]||m);
+const monthTick = d => { const m=d3.timeFormat('%b')(d); const y=d3.timeFormat('%y')(d); return (ptBR[m]||m)+(m==='Jan'?' '+y:''); };
+
+// ---- range filter
+let range=[0,N-1];
+const rangeFor = key => key==='all'?[0,N-1] : [Math.max(0,N-(+key)),N-1];
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true'); range=rangeFor(b.dataset.range); renderAll();
+}));
+const idx = () => d3.range(range[0],range[1]+1);
+
+// ---- entity colors (fixed, never by rank)
+const VENDOR_SLOT = {deepseek:'--s1',google:'--s2',anthropic:'--s3',openai:'--s4',xiaomi:'--s5',tencent:'--s6',minimax:'--s7','z-ai':'--s8',Outros:'--s0'};
+const VENDOR_LABEL = {deepseek:'DeepSeek',google:'Google',anthropic:'Anthropic',openai:'OpenAI',xiaomi:'Xiaomi',tencent:'Tencent',minimax:'MiniMax','z-ai':'Z.ai (GLM)',Outros:'Outros','x-ai':'xAI'};
+const ORIGIN_SLOT = {'EUA/Canadá':'--s1','China':'--s2','Europa':'--s3','Coreia':'--s4','Outros':'--s5','Não identificado':'--s0'};
+const WEIGHTS_SLOT = {'Proprietário':'--s1','Open-weights':'--s3','Não identificado':'--s0'};
+const FAM_SLOT = {Haiku:'--s4',Sonnet:'--s3',Opus:'--s1',Fable:'--s7'};
+const col = slot => css(slot);
+
+// ---- helpers
+function card(name){ return document.querySelector(`.card[data-chart="${name}"]`); }
+function tip(plot){ let t=plot.querySelector('.tip'); if(!t){t=document.createElement('div');t.className='tip';plot.appendChild(t);} return t; }
+function showTip(t, plot, x, y, html){ t.innerHTML=html; t.style.display='block'; const pw=plot.clientWidth; const tw=t.offsetWidth; t.style.left=(x+16+tw>pw? x-16-tw : x+16)+'px'; t.style.top=Math.max(0,y-10)+'px'; }
+function legend(el, items){ if(!el) return; el.innerHTML=items.map(([k,c,label])=>`<span><i style="background:${c}"></i>${label||k}</span>`).join(''); }
+function table(el, cols, rows){ el.innerHTML = `<table><thead><tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table>`; }
+document.querySelectorAll('.tbtn').forEach(b=>b.addEventListener('click',()=>{const c=b.closest('.card');const on=!c.classList.contains('table-mode');c.classList.toggle('table-mode',on);b.setAttribute('aria-pressed',String(on));b.textContent=on?'Gráfico':'Tabela';}));
+
+function frame(plot, h, m){ plot.innerHTML=''; const w=Math.max(320, plot.clientWidth); const svg=d3.select(plot).append('svg').attr('viewBox',`0 0 ${w} ${h}`).attr('width',w).attr('height',h); return {svg,w,h,m}; }
+function xScale(f, ii){ return d3.scaleTime().domain([W[ii[0]], W[ii[ii.length-1]]]).range([f.m.l, f.w-f.m.r]); }
+function axes(f, x, y, yfmt, ticksY=4){
+  const g=f.svg.append('g').attr('class','grid');
+  g.selectAll('line').data(y.ticks(ticksY)).join('line').attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',d=>y(d)).attr('y2',d=>y(d));
+  f.svg.append('g').selectAll('text').data(y.ticks(ticksY)).join('text').attr('x',f.m.l-8).attr('y',d=>y(d)+4).attr('text-anchor','end').text(yfmt);
+  const span=(x.domain()[1]-x.domain()[0])/864e5/7;
+  const ticks = span>60? d3.timeMonth.every(2).range(...x.domain()) : span>30? d3.timeMonth.range(...x.domain()) : d3.timeMonth.range(...x.domain());
+  f.svg.append('g').selectAll('text').data(ticks).join('text').attr('x',d=>x(d)).attr('y',f.h-f.m.b+18).attr('text-anchor','middle').text(monthTick);
+  f.svg.append('line').attr('class','axis').attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',y(0)).attr('y2',y(0)).attr('stroke',css('--axis'));
+}
+function crosshair(f, x, ii, onMove){
+  const plot=f.svg.node().parentNode; const t=tip(plot);
+  const line=f.svg.append('line').attr('y1',f.m.t).attr('y2',f.h-f.m.b).attr('stroke',css('--ink-3')).attr('stroke-width',1).style('display','none');
+  const dot=f.svg.append('g').style('display','none');
+  f.svg.append('rect').attr('x',f.m.l).attr('y',f.m.t).attr('width',f.w-f.m.l-f.m.r).attr('height',f.h-f.m.t-f.m.b).attr('fill','transparent')
+   .on('mousemove',ev=>{ const [mx,my]=d3.pointer(ev); const d0=x.invert(mx); let best=ii[0]; for(const i of ii){ if(Math.abs(W[i]-d0)<Math.abs(W[best]-d0)) best=i; }
+      line.style('display',null).attr('x1',x(W[best])).attr('x2',x(W[best])); dot.style('display',null);
+      const r=plot.getBoundingClientRect(); const sx=r.width/f.w; showTip(t,plot,x(W[best])*sx,my*sx,onMove(best,dot,x(W[best]))); })
+   .on('mouseleave',()=>{line.style('display','none');dot.style('display','none');t.style.display='none';});
+}
+const tipRow=(c,k,v)=>`<div class="r"><span><i style="background:${c}"></i>${k}</span><b>${v}</b></div>`;
+
+// ---- generic stacked share area
+function stackedShare(name, series, slots, labels, opts={}){
+  const c=card(name), plot=c.querySelector('.plot'), ii=idx();
+  const keys=Object.keys(series);
+  const f=frame(plot, 300, {t:12,r:16,b:30,l:44});
+  const x=xScale(f,ii), y=d3.scaleLinear().domain([0,100]).range([f.h-f.m.b,f.m.t]);
+  const data=ii.map(i=>{const o={i}; keys.forEach(k=>o[k]=series[k][i]); return o;});
+  const st=d3.stack().keys(keys)(data);
+  axes(f,x,y,v=>v+'%');
+  const area=d3.area().x(d=>x(W[d.data.i])).y0(d=>y(d[0])).y1(d=>y(d[1])).curve(d3.curveMonotoneX);
+  f.svg.append('g').selectAll('path').data(st).join('path').attr('d',area).attr('fill',d=>col(slots[d.key])).attr('stroke',css('--surface')).attr('stroke-width',1.5).attr('opacity',.92);
+  // direct labels at right for segments > 6%
+  const last=ii[ii.length-1];
+  st.forEach(s=>{const seg=s[s.length-1]; if(seg[1]-seg[0]>7){ f.svg.append('text').attr('class','dl').attr('x',x(W[last])-6).attr('y',y((seg[0]+seg[1])/2)+4).attr('text-anchor','end').attr('fill','#fff').style('fill','#fff').text((labels[s.key]||s.key)+' '+Math.round(series[s.key][last])+'%'); }});
+  legend(c.querySelector('.legend'), keys.map(k=>[k,col(slots[k]),labels[k]||k]));
+  crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+keys.slice().sort((a,b)=>series[b][i]-series[a][i]).filter(k=>series[k][i]>0.05).map(k=>tipRow(col(slots[k]),labels[k]||k,fmtP(series[k][i]))).join(''));
+  table(c.querySelector('.tbl'),['Semana',...keys.map(k=>labels[k]||k)], ii.map(i=>[fD(W[i]),...keys.map(k=>fmtP(series[k][i]))]));
+}
+
+// ---- single line/area
+function lineChart(name, vals, {fmt=fmtP, color='--s1', area=true, label, ymax, integer=false, h=240}={}){
+  const c=card(name), plot=c.querySelector('.plot'), ii=idx().filter(i=>vals[i]!=null);
+  const f=frame(plot, h, {t:14,r:16,b:30,l:44});
+  const x=xScale(f,ii), y=d3.scaleLinear().domain([0, ymax||d3.max(ii,i=>vals[i])*1.1]).nice().range([f.h-f.m.b,f.m.t]);
+  axes(f,x,y,v=>integer?v:fmt(v),4);
+  const cl=col(color);
+  if(area) f.svg.append('path').datum(ii).attr('d',d3.area().x(i=>x(W[i])).y0(y(0)).y1(i=>y(vals[i])).curve(d3.curveMonotoneX)).attr('fill',cl).attr('opacity',.12);
+  f.svg.append('path').datum(ii).attr('d',d3.line().x(i=>x(W[i])).y(i=>y(vals[i])).curve(d3.curveMonotoneX)).attr('fill','none').attr('stroke',cl).attr('stroke-width',2);
+  const last=ii[ii.length-1], first=ii[0];
+  f.svg.append('circle').attr('cx',x(W[last])).attr('cy',y(vals[last])).attr('r',4).attr('fill',cl).attr('stroke',css('--surface')).attr('stroke-width',2);
+  f.svg.append('text').attr('class','dl').attr('x',x(W[last])-8).attr('y',y(vals[last])-9).attr('text-anchor','end').text((integer?vals[last]:fmt(vals[last])));
+  f.svg.append('text').attr('class','dl').attr('x',x(W[first])+6).attr('y',y(vals[first])-9).text((integer?vals[first]:fmt(vals[first])));
+  crosshair(f,x,ii,(i,dot)=>{dot.selectAll('*').remove(); dot.append('circle').attr('cx',x(W[i])).attr('cy',y(vals[i])).attr('r',4).attr('fill',cl).attr('stroke',css('--surface')).attr('stroke-width',2); return `<div class="t">semana de ${fD(W[i])}</div>`+tipRow(cl,label||'',integer?vals[i]:fmt(vals[i]));});
+  table(c.querySelector('.tbl'),['Semana',label], ii.map(i=>[fD(W[i]),integer?vals[i]:fmt(vals[i])]));
+}
+
+// ---- multi-line with emphasis
+function emphasisLines(name, series, focus, slots, labels){
+  const c=card(name), plot=c.querySelector('.plot'), ii=idx();
+  const keys=Object.keys(series).filter(k=>d3.max(series[k])>=2);
+  const f=frame(plot, 320, {t:14,r:96,b:30,l:44});
+  const x=xScale(f,ii), y=d3.scaleLinear().domain([0,d3.max(keys,k=>d3.max(ii,i=>series[k][i]))*1.08]).nice().range([f.h-f.m.b,f.m.t]);
+  axes(f,x,y,v=>v+'%');
+  const line=k=>d3.line().x(i=>x(W[i])).y(i=>y(series[k][i])).curve(d3.curveMonotoneX);
+  const others=keys.filter(k=>k!==focus);
+  others.forEach(k=>f.svg.append('path').datum(ii).attr('d',line(k)).attr('fill','none').attr('stroke',col(slots[k])).attr('stroke-width',1.25).attr('opacity',.55));
+  f.svg.append('path').datum(ii).attr('d',line(focus)).attr('fill','none').attr('stroke',col(slots[focus])).attr('stroke-width',2.5);
+  // end labels, collision-avoided
+  const last=ii[ii.length-1];
+  let lab=keys.map(k=>({k,y:y(series[k][last]),v:series[k][last]})).sort((a,b)=>a.y-b.y);
+  for(let i=1;i<lab.length;i++){ if(lab[i].y-lab[i-1].y<13) lab[i].y=lab[i-1].y+13; }
+  const maxY=f.h-f.m.b-2; if(lab.length&&lab[lab.length-1].y>maxY){ lab[lab.length-1].y=maxY; for(let i=lab.length-2;i>=0;i--){ if(lab[i+1].y-lab[i].y<13) lab[i].y=lab[i+1].y-13; } }
+  lab.forEach(l=>f.svg.append('text').attr('class','dl').attr('x',x(W[last])+8).attr('y',l.y+4).style('fill',l.k===focus?css('--ink'):css('--ink-3')).style('font-weight',l.k===focus?700:500).text(`${labels[l.k]||l.k} ${Math.round(l.v)}%`));
+  legend(c.querySelector('.legend'), keys.map(k=>[k,col(slots[k]),labels[k]||k]));
+  crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+keys.slice().sort((a,b)=>series[b][i]-series[a][i]).map(k=>tipRow(col(slots[k]),labels[k]||k,fmtP(series[k][i]))).join(''));
+  table(c.querySelector('.tbl'),['Semana',...keys.map(k=>labels[k]||k)], ii.map(i=>[fD(W[i]),...keys.map(k=>fmtP(series[k][i]))]));
+}
+
+// ---- stacked absolute area (Anthropic families)
+function stackedAbs(name, series, slots){
+  const c=card(name), plot=c.querySelector('.plot'), ii=idx(); const keys=Object.keys(slots).filter(k=>series[k]);
+  const f=frame(plot, 280, {t:12,r:16,b:30,l:44});
+  const data=ii.map(i=>{const o={i}; keys.forEach(k=>o[k]=series[k][i]); return o;});
+  const st=d3.stack().keys(keys)(data);
+  const x=xScale(f,ii), y=d3.scaleLinear().domain([0,d3.max(st[st.length-1],d=>d[1])*1.08]).nice().range([f.h-f.m.b,f.m.t]);
+  axes(f,x,y,fmtT);
+  f.svg.append('g').selectAll('path').data(st).join('path').attr('d',d3.area().x(d=>x(W[d.data.i])).y0(d=>y(d[0])).y1(d=>y(d[1])).curve(d3.curveMonotoneX)).attr('fill',d=>col(slots[d.key])).attr('stroke',css('--surface')).attr('stroke-width',1.5).attr('opacity',.92);
+  legend(c.querySelector('.legend'), keys.map(k=>[k,col(slots[k]),k]));
+  crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+keys.slice().reverse().map(k=>tipRow(col(slots[k]),k,fmtT(series[k][i]))).join('')+tipRow('transparent','Total',fmtT(keys.reduce((s,k)=>s+series[k][i],0))));
+  table(c.querySelector('.tbl'),['Semana',...keys,'Total'], ii.map(i=>[fD(W[i]),...keys.map(k=>fmtT(series[k][i])),fmtT(keys.reduce((s,k)=>s+series[k][i],0))]));
+}
+
+// ---- horizontal bars (Anthropic tenure)
+function hbars(name, rows, {color='--s3'}={}){
+  const c=card(name), plot=c.querySelector('.plot');
+  const rh=22, f=frame(plot, rows.length*rh+40, {t:8,r:40,b:26,l:150});
+  const x=d3.scaleLinear().domain([0,d3.max(rows,r=>r.v)*1.05]).nice().range([f.m.l,f.w-f.m.r]);
+  const y=d3.scaleBand().domain(rows.map(r=>r.k)).range([f.m.t,f.h-f.m.b]).paddingInner(.28);
+  f.svg.append('g').attr('class','grid').selectAll('line').data(x.ticks(5)).join('line').attr('y1',f.m.t).attr('y2',f.h-f.m.b).attr('x1',d=>x(d)).attr('x2',d=>x(d));
+  f.svg.append('g').selectAll('text').data(x.ticks(5)).join('text').attr('x',d=>x(d)).attr('y',f.h-f.m.b+16).attr('text-anchor','middle').text(d=>d);
+  f.svg.append('g').selectAll('text').data(rows).join('text').attr('x',f.m.l-10).attr('y',r=>y(r.k)+y.bandwidth()/2+4).attr('text-anchor','end').style('fill',css('--ink-2')).text(r=>r.k);
+  const cl=col(color);
+  f.svg.append('g').selectAll('rect').data(rows).join('rect').attr('x',x(0)).attr('y',r=>y(r.k)).attr('width',r=>Math.max(0,x(r.v)-x(0))).attr('height',y.bandwidth()).attr('fill',cl).attr('rx',3);
+  f.svg.append('g').selectAll('text').data(rows).join('text').attr('class','dl').attr('x',r=>x(r.v)+6).attr('y',r=>y(r.k)+y.bandwidth()/2+4).text(r=>r.v+(r.alive?' ●':''));
+  const t=tip(plot);
+  f.svg.append('g').selectAll('rect.hit').data(rows).join('rect').attr('class','hit').attr('x',f.m.l).attr('y',r=>y(r.k)-3).attr('width',f.w-f.m.l-f.m.r).attr('height',y.bandwidth()+6).attr('fill','transparent')
+   .on('mousemove',(ev,r)=>{const [mx,my]=d3.pointer(ev); const sx=plot.getBoundingClientRect().width/f.w; showTip(t,plot,mx*sx,my*sx,`<div class="t">${r.k}</div>${tipRow(cl,'Semanas no top 10',r.v)}${tipRow('transparent','Lançado',r.first)}${tipRow('transparent','Pico de share',fmtP(r.peak))}${r.alive?tipRow('transparent','Status','ainda em alta'):''}`);})
+   .on('mouseleave',()=>t.style.display='none');
+  table(c.querySelector('.tbl'),['Modelo','Semanas top 10','Lançado','Pico share'], rows.map(r=>[r.k,r.v,r.first,fmtP(r.peak)]));
+}
+
+// ---- grouped bars (cohort)
+function cohortBars(name, rows){
+  const c=card(name), plot=c.querySelector('.plot');
+  const f=frame(plot, 260, {t:16,r:16,b:40,l:40});
+  const keys=[['ttp','Semanas até o pico','--s1'],['half','Meia-vida após o pico','--s2']];
+  const x0=d3.scaleBand().domain(rows.map(r=>r.q)).range([f.m.l,f.w-f.m.r]).paddingInner(.3), x1=d3.scaleBand().domain(keys.map(k=>k[0])).range([0,x0.bandwidth()]).paddingInner(.12);
+  const y=d3.scaleLinear().domain([0,d3.max(rows,r=>Math.max(r.ttp,r.half))*1.15]).nice().range([f.h-f.m.b,f.m.t]);
+  f.svg.append('g').attr('class','grid').selectAll('line').data(y.ticks(4)).join('line').attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',d=>y(d)).attr('y2',d=>y(d));
+  f.svg.append('g').selectAll('text').data(y.ticks(4)).join('text').attr('x',f.m.l-8).attr('y',d=>y(d)+4).attr('text-anchor','end').text(d=>d);
+  f.svg.append('g').selectAll('text').data(rows).join('text').attr('x',r=>x0(r.q)+x0.bandwidth()/2).attr('y',f.h-f.m.b+16).attr('text-anchor','middle').text(r=>r.q.replace('2025','25 ').replace('2026','26 '));
+  f.svg.append('g').selectAll('text.n').data(rows).join('text').attr('class','n').attr('x',r=>x0(r.q)+x0.bandwidth()/2).attr('y',f.h-f.m.b+30).attr('text-anchor','middle').style('fill',css('--ink-3')).text(r=>'n='+r.n);
+  const g=f.svg.append('g').selectAll('g').data(rows).join('g').attr('transform',r=>`translate(${x0(r.q)},0)`);
+  g.selectAll('rect').data(r=>keys.map(k=>({k:k[0],c:k[2],v:r[k[0]],q:r.q}))).join('rect').attr('x',d=>x1(d.k)).attr('y',d=>y(d.v)).attr('width',x1.bandwidth()).attr('height',d=>y(0)-y(d.v)).attr('fill',d=>col(d.c)).attr('rx',3);
+  g.selectAll('text').data(r=>keys.map(k=>({k:k[0],v:r[k[0]]}))).join('text').attr('class','dl').attr('x',d=>x1(d.k)+x1.bandwidth()/2).attr('y',d=>y(d.v)-5).attr('text-anchor','middle').text(d=>d.v);
+  f.svg.append('line').attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',y(0)).attr('y2',y(0)).attr('stroke',css('--axis'));
+  legend(c.querySelector('.legend'), keys.map(k=>[k[0],col(k[2]),k[1]]));
+  table(c.querySelector('.tbl'),['Trimestre','n','Semanas até pico (mediana)','Meia-vida (mediana)','% ainda em alta'], rows.map(r=>[r.q,r.n,r.ttp,r.half,Math.round(r.alive*100)+'%']));
+}
+
+// ---- lifecycle spaghetti (share over time per model)
+function lifeLines(name){
+  const c=card(name), plot=c.querySelector('.plot'), ii=idx();
+  const L=D.life.filter(m=>m.peak_share>=2);
+  const f=frame(plot, 340, {t:14,r:16,b:30,l:44});
+  const x=xScale(f,ii), y=d3.scaleLinear().domain([0,d3.max(L,m=>m.peak_share)*1.05]).nice().range([f.h-f.m.b,f.m.t]);
+  axes(f,x,y,v=>v+'%');
+  const oslot=m=>ORIGIN_SLOT[m.origin]||'--s0';
+  const ln=d3.line().defined(d=>d[1]>0).x(d=>x(W[d[0]])).y(d=>y(d[1])).curve(d3.curveMonotoneX);
+  const t=tip(plot);
+  const paths=f.svg.append('g').selectAll('path').data(L).join('path').attr('d',m=>ln(ii.map(i=>[i,m.series[i]]))).attr('fill','none').attr('stroke',m=>col(oslot(m))).attr('stroke-width',1.4).attr('opacity',.7)
+    .on('mousemove',(ev,m)=>{paths.attr('opacity',q=>q===m?1:.15).attr('stroke-width',q=>q===m?2.5:1.2); const [mx,my]=d3.pointer(ev); const sx=plot.getBoundingClientRect().width/f.w; showTip(t,plot,mx*sx,my*sx,`<div class="t">${m.model}</div>${tipRow(col(oslot(m)),'Origem',m.origin)}${tipRow('transparent','Pesos',m.weights)}${tipRow('transparent','Lançado',m.first)}${tipRow('transparent','Pico',fmtP(m.peak_share)+' · '+m.peak_week)}${tipRow('transparent','Semanas até pico',m.weeks_to_peak)}${tipRow('transparent','Meia-vida',m.half_life_weeks==null?'ainda não caiu 50%':m.half_life_weeks+' sem')}${tipRow('transparent','Semanas no top 10',m.weeks_in_top10)}`);})
+    .on('mouseleave',()=>{paths.attr('opacity',.7).attr('stroke-width',1.4); t.style.display='none';});
+  legend(c.querySelector('.legend'), Object.entries(ORIGIN_SLOT).filter(([k])=>L.some(m=>m.origin===k)).map(([k,s])=>[k,col(s),k]));
+  table(c.querySelector('.tbl'),['Modelo','Origem','Pesos','Lançado','Pico share','Semana do pico','Sem. até pico','Meia-vida','Sem. top 10'], L.map(m=>[m.model,m.origin,m.weights,m.first,fmtP(m.peak_share),m.peak_week,m.weeks_to_peak,m.half_life_weeks==null?'—':m.half_life_weeks,m.weeks_in_top10]));
+}
+
+// ---- leaderboard
+function board(){
+  const c=card('board'), plot=c.querySelector('.plot'); const rows=D.boards.last; const y=D.boards.yearago, p=D.boards.prev12;
+  const max=rows[0].share;
+  const pos=(arr,m)=>{const i=arr.findIndex(r=>r.model===m); return i<0?null:i+1;};
+  plot.innerHTML=`<table class="board"><thead><tr><th>#</th><th>Modelo</th><th></th><th class="num">Share</th><th class="num">Tokens/sem</th><th class="num">Há 12 sem</th></tr></thead><tbody>${rows.map((r,i)=>{const pp=pos(p,r.model); return `<tr><td class="mono">${i+1}</td><td><span class="m">${r.model}</span><span class="pill">${r.origin}</span><span class="pill">${r.weights}</span></td><td style="width:22%"><div class="bar" style="width:${(r.share/max*100).toFixed(1)}%;background:${col(ORIGIN_SLOT[r.origin]||'--s0')}"></div></td><td class="num">${fmtP(r.share)}</td><td class="num mono">${fmtT(r.T)}</td><td class="num mono" style="color:var(--ink-3)">${pp?'#'+pp:'fora do top 15'}</td></tr>`;}).join('')}</tbody></table>`;
+  document.getElementById('board-sub').textContent=`Semana de ${fD(new Date(D.last_week+'T00:00:00'))}; cor da barra = origem do lab`;
+}
+
+// ---- tiles
+function tiles(){
+  const last=N-1, first=0;
+  const an=D.an_share, tot=D.weekly_total_T, cn=D.origin_share['China'], ow=D.weights_share['Open-weights'], t5=D.top5;
+  const anPeakI=an.indexOf(d3.max(an));
+  const items=[
+    ['Tokens por semana', fmtT(tot[last]), `×${Math.round(tot[last]/tot[first])} desde ${fD(W[first])} (${fmtT(tot[first])})`, 'up'],
+    ['Share de labs chineses', fmtP(cn[last]), `era ${fmtP(cn[first])} em ${fD(W[first])}`, 'up'],
+    ['Share open-weights', fmtP(ow[last]), `era ${fmtP(ow[first])} em ${fD(W[first])}`, 'up'],
+    ['Share da Anthropic', fmtP(an[last]), `pico de ${fmtP(an[anPeakI])} em ${fD(W[anPeakI])}`, 'down'],
+    ['Top 5 modelos', fmtP(t5[last]), `do volume; era ${fmtP(t5[first])} · HHI ${D.hhi[first]}→${D.hhi[last]}`, 'down'],
+  ];
+  document.getElementById('tiles').innerHTML=items.map(([k,v,d,cls])=>`<div class="tile"><div class="k">${k}</div><div><div class="v">${v}</div><div class="d ${cls}">${d}</div></div></div>`).join('');
+}
+
+// ---- readings (insight text)
+function readings(){
+  const last=N-1; const tot=D.weekly_total_T, an=D.an_share, ab=D.vendor_abs.anthropic;
+  const stealth=D.boards.last.find(r=>r.vendor==='stealth');
+  const set=(id,html)=>{document.getElementById(id).innerHTML=html;};
+  set('read-volume',`<h4>Leitura</h4><p>O volume semanal foi de <b>${fmtT(tot[0])}</b> para <b>${fmtT(tot[last])}</b>: ×${Math.round(tot[last]/tot[0])} em ${N} semanas. A curva não é linear; os degraus coincidem com lançamentos de modelos baratos e :free (DeepSeek V3, MiMo, HY3, Nemotron Ultra).</p><p><span class="flag">caveat</span>A última semana traz <b>${fmtP(stealth?stealth.share:0)}</b> em <span class="mono">stealth/ox-alpha</span>, um modelo anônimo gratuito em teste. Tráfego assim é transitório e infla o topo.</p><p>Comparar volumes absolutos entre 2025 e 2026 exige normalização: qualquer share de 2025 vale muito menos em tokens.</p>`);
+  set('read-conc',`<h4>Leitura</h4><p>Os 5 maiores modelos caíram de <b>${fmtP(D.top5[0])}</b> para <b>${fmtP(D.top5[last])}</b> do volume. O HHI (base modelo) foi de <b>${D.hhi[0]}</b> para <b>${D.hhi[last]}</b>: saiu de "moderadamente concentrado" para "não concentrado" na escala antitruste convencional.</p><p>Implicação para roteamento: o mercado hoje oferece substitutos próximos em cada faixa de preço. Lock-in em um modelo específico é uma decisão, não uma inevitabilidade.</p>`);
+  const vs=D.vendor_share; const ord=Object.keys(vs).filter(k=>k!=='Outros').sort((a,b)=>vs[b][last]-vs[a][last]);
+  set('read-vendor',`<h4>Leitura</h4><p>Na primeira semana da série (${fD(W[0])}), Anthropic (<b>${fmtP(vs.anthropic[0])}</b>) e Google (<b>${fmtP(vs.google[0])}</b>) somavam dois terços. Na última, o líder é <b>${VENDOR_LABEL[ord[0]]} (${fmtP(vs[ord[0]][last])})</b>, seguido de ${VENDOR_LABEL[ord[1]]} (${fmtP(vs[ord[1]][last])}) e ${VENDOR_LABEL[ord[2]]} (${fmtP(vs[ord[2]][last])}).</p><p>Xiaomi, Tencent, MiniMax e Z.ai tinham share zero até o início de 2026. Quatro labs que não existiam no ranking em 2025 hoje somam <b>${fmtP(vs.xiaomi[last]+vs.tencent[last]+vs.minimax[last]+vs['z-ai'][last])}</b>.</p><p>Google chegou a <b>${fmtP(d3.max(D.comp_share.google))}</b> com Gemini 2.0/2.5 Flash e recuou para ${fmtP(vs.google[last])}. Liderança em share aqui tem durado dois a três trimestres.</p>`);
+  const b=D.boards.last; const cnTop=b.slice(0,10).filter(r=>r.origin==='China').length, owTop=b.slice(0,10).filter(r=>r.weights==='Open-weights').length;
+  set('read-board',`<h4>Leitura</h4><p>Dos 10 mais usados na última semana, <b>${cnTop}</b> são de labs chineses e <b>${owTop}</b> são open-weights. Proprietários americanos no top 10: <b>${b.slice(0,10).filter(r=>r.origin==='EUA/Canadá'&&r.weights==='Proprietário').length}</b>.</p><p>${(()=>{const i=b.findIndex(r=>r.vendor==='anthropic'); const top=Object.entries(D.an_models).sort((x,y)=>y[1][N-1]-x[1][N-1])[0]; return i>=0? `O modelo Anthropic mais usado (<span class="mono">${b[i].model}</span>) está em #${i+1}.` : `Nenhum modelo Anthropic aparece no top 15 desta semana; o mais usado é <span class="mono">${top[0]}</span> com ${fmtT(top[1][N-1])}.`;})()} Note o padrão: modelos de fronteira dos labs americanos aparecem com share menor, mas em tarefas de maior valor; a métrica é tokens, não receita nem qualidade.</p>`);
+  const ws=D.weights_share, os=D.origin_share, fr=D.free_share;
+  set('read-weights',`<h4>Leitura</h4><p>Open-weights foi de <b>${fmtP(ws['Open-weights'][0])}</b> para <b>${fmtP(ws['Open-weights'][last])}</b> do volume; labs chineses de <b>${fmtP(os.China[0])}</b> para <b>${fmtP(os.China[last])}</b>. As duas curvas andam quase juntas porque a maioria dos open-weights relevantes é chinesa (DeepSeek, GLM, Kimi, HY3, MiniMax). Exceção notável: Nemotron 3 Ultra da NVIDIA.</p><p>Tráfego em variantes :free chegou a <b>${fmtP(d3.max(fr))}</b> e está em <b>${fmtP(fr[last])}</b>. Parte relevante do crescimento de volume é demanda subsidiada, não demanda paga.</p><p><span class="flag">implicação</span>Para quem opera inferência própria, o deslocamento para pesos abertos abre a opção de self-hosting, mas o custo de manter avaliação contínua de qualidade cresce com a rotatividade mostrada na seção 05.</p>`);
+  const peakI=an.indexOf(d3.max(an));
+  set('read-anshare',`<h4>Leitura</h4><p>Share da Anthropic: <b>${fmtP(an[0])}</b> em ${fD(W[0])}, pico de <b>${fmtP(an[peakI])}</b> em ${fD(W[peakI])}, <b>${fmtP(an[last])}</b> em ${fD(W[last])}. Em tokens absolutos a história é outra: de ${fmtT(ab[0])} para <b>${fmtT(ab[last])}</b> por semana (×${Math.round(ab[last]/ab[0])}), com pico de ${fmtT(d3.max(ab))}.</p><p>Ou seja, a Anthropic cresceu ~${Math.round(ab[last]/ab[0])}× enquanto o mercado cresceu ~${Math.round(tot[last]/tot[0])}×. O share caiu porque o denominador explodiu com tráfego barato e gratuito, não porque o uso de Claude encolheu.</p><p>OpenAI e Google seguem a mesma trajetória de share, em menor grau. Os três labs americanos proprietários somam <b>${fmtP(an[last]+D.comp_share.google[last]+D.comp_share.openai[last])}</b> hoje.</p>`);
+  const fam=D.an_fam_abs; const famTot=Object.keys(fam).reduce((s,k)=>s+fam[k][last],0);
+  const ten=D.life.filter(m=>m.vendor==='anthropic'&&!/beta|thinking|3-5-haiku|3.5-sonnet/.test(m.model)).sort((a,b)=>a.first<b.first?-1:1).map(m=>`${m.model.replace('anthropic/claude-','').replace(/-20\d{6}$/,'')} ${m.weeks_in_top10} sem`);
+  const tenureTxt=ten.join(', ');
+  set('read-anfam',`<h4>Leitura</h4><p>Mix Anthropic na última semana: Opus <b>${fmtP(fam.Opus[last]/famTot*100)}</b>, Sonnet <b>${fmtP(fam.Sonnet[last]/famTot*100)}</b>, Haiku <b>${fmtP(fam.Haiku[last]/famTot*100)}</b>, Fable ${fmtP((fam.Fable?fam.Fable[last]:0)/famTot*100)}. Opus superou Sonnet em volume em 2026, o inverso do padrão de 2025. Haiku é residual no OpenRouter; não generalize para cargas enterprise via API direta ou Bedrock, onde o roteamento por custo tem outro perfil.</p><p>Permanência no top 10: ${tenureTxt}. A cadência de lançamento acelerou e cada geração dura menos no topo, canibalizada pela seguinte. Para quem calibra prompts e avaliações por modelo, a janela útil de cada versão encurtou para um trimestre.</p>`);
+  const ch=D.churn.filter(v=>v!=null); const ageMed=d3.median(D.age.slice(12));
+  set('read-cohort',`<h4>Leitura</h4><p>A cada 4 semanas, em mediana <b>${d3.median(ch)}</b> dos 10 modelos mais usados são novos no top 10. A idade mediana do top 10 gira em torno de <b>${ageMed} semanas</b> desde a estreia no ranking.</p><p>Modelos que atingiram ≥ 2% do volume levam em mediana <b>${d3.median(D.life.map(m=>m.weeks_to_peak))} semanas</b> até o pico e perdem metade do share em <b>${d3.median(D.life.filter(m=>m.half_life_weeks!=null).map(m=>m.half_life_weeks))} semanas</b> depois dele. Open-weights sobem e caem mais rápido que proprietários (mediana 2 vs. 4 semanas até o pico).</p><p><span class="flag">tese</span>Nenhum modelo sustenta liderança por mais de dois trimestres neste dataset. O ativo durável é o método de avaliação e troca, não a escolha do modelo.</p>`);
+}
+
+function renderAll(){
+  stackedShare('vendor', D.vendor_share, VENDOR_SLOT, VENDOR_LABEL);
+  stackedShare('origin', D.origin_share, ORIGIN_SLOT, {});
+  stackedShare('weights', D.weights_share, WEIGHTS_SLOT, {});
+  lineChart('volume', D.weekly_total_T, {fmt:fmtT, color:'--s1', label:'Tokens/semana'});
+  lineChart('conc', D.top5, {fmt:fmtP, color:'--s1', label:'Share top 5', ymax:100});
+  lineChart('free', D.free_share, {fmt:fmtP, color:'--s3', label:'Share :free'});
+  emphasisLines('anshare', D.comp_share, 'anthropic', {...VENDOR_SLOT,'x-ai':'--s0'}, VENDOR_LABEL);
+  stackedAbs('anfam', D.an_fam_abs, FAM_SLOT);
+  lineChart('churn', D.churn, {fmt:v=>v, color:'--s2', label:'Novos no top 10 (vs. 4 sem antes)', integer:true, ymax:10, area:false});
+  lineChart('age', D.age.map((v,i)=>i<12?null:v), {fmt:v=>v+' sem', color:'--s7', label:'Idade mediana (semanas)', area:false});
+  lifeLines('life');
+}
+function renderStatic(){
+  tiles(); readings(); board();
+  const an=D.life.filter(m=>m.vendor==='anthropic' && !/beta|thinking/.test(m.model) && m.weeks_in_top10>0).sort((a,b)=>a.first<b.first?-1:1);
+  hbars('antenure', an.map(m=>({k:m.model.replace('anthropic/','').replace(/-20\d{6}$/,''), v:m.weeks_in_top10, first:m.first, peak:m.peak_share, alive:m.still_alive})));
+  const byQ=d3.rollups(D.life, v=>({n:v.length, ttp:d3.median(v,m=>m.weeks_to_peak), half:d3.median(v.filter(m=>m.half_life_weeks!=null),m=>m.half_life_weeks)||0, alive:d3.mean(v,m=>m.still_alive?1:0)}), m=>{const d=new Date(m.first); return d.getFullYear()+'Q'+(Math.floor(d.getMonth()/3)+1);}).sort((a,b)=>a[0]<b[0]?-1:1);
+  cohortBars('cohort', byQ.map(([q,o])=>({q,...o})));
+  document.getElementById('m-range').textContent=`${fD(W[0])} → ${fD(new Date(D.weeks[N-1]+'T00:00:00'))} (+6d)`;
+  document.getElementById('m-asof').textContent=fD(new Date(D.as_of+'T00:00:00')); document.getElementById('m-daily').textContent=fD(new Date(D.daily_last+'T00:00:00'));
+  document.getElementById('m-weeks').textContent=N; document.getElementById('m-models').textContent=D.n_models;
+}
+// attach per-model series to lifecycle entries (built from weekly model shares embedded in D.life_series)
+D.life.forEach(m=>{ m.series=D.life_series[m.model]; });
+renderStatic(); renderAll();
+let rt; window.addEventListener('resize',()=>{clearTimeout(rt); rt=setTimeout(renderAll,150);});
+const mq=matchMedia('(prefers-color-scheme: dark)'); mq.addEventListener('change',()=>{renderStatic();renderAll();});
+}
+</script>
+</body>
+</html>
