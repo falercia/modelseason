@@ -254,6 +254,7 @@ footer p{margin:0 0 6px}
   <p><b>Método.</b> Dados do endpoint público <span class="mono">GET /api/v1/datasets/rankings-daily</span> (period=day), agregados por semana ISO (segunda a domingo); apenas semanas completas. A linha "other" da API é o volume fora do top 50 diário; modelos que oscilam na fronteira do top 50 têm o volume semanal subcontado. Tokens contados pelo tokenizador de cada provedor.</p>
   <p><b>Classificações.</b> Origem e licença dos pesos foram atribuídas por laboratório e por padrão de nome do modelo; casos ambíguos (MiMo Pro, variantes Qwen, Mistral) seguem a política de lançamento conhecida e podem conter erro. Modelos stealth/alpha (OpenRouter, "stealth/*") são testes anônimos de labs não identificados, gratuitos e geralmente de curta duração.</p>
   <p><b>Viés da fonte.</b> OpenRouter concentra tráfego de desenvolvedores, agentes de código, roleplay e uso sensível a preço. Não representa o consumo enterprise direto via API dos labs nem via Bedrock/Vertex. Share aqui é share de tokens, não de receita.</p>
+  <p id="attrib"><b>Atribuição.</b> Source: OpenRouter (<a href="https://openrouter.ai/rankings" rel="noopener">openrouter.ai/rankings</a>), as of <span id="attrib-asof" class="mono"></span>. Dados licenciados sob <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>. Model Season não é afiliado ao OpenRouter.</p>
 </footer>
 </div>
 
@@ -514,6 +515,7 @@ function renderStatic(){
   cohortBars('cohort', byQ.map(([q,o])=>({q,...o})));
   document.getElementById('m-range').textContent=`${fD(W[0])} → ${fD(new Date(D.weeks[N-1]+'T00:00:00'))} (+6d)`;
   document.getElementById('m-asof').textContent=fD(new Date(D.as_of+'T00:00:00')); document.getElementById('m-daily').textContent=fD(new Date(D.daily_last+'T00:00:00'));
+  document.getElementById('attrib-asof').textContent=D.as_of;
   document.getElementById('m-weeks').textContent=N; document.getElementById('m-models').textContent=D.n_models;
 }
 // attach per-model series to lifecycle entries (built from weekly model shares embedded in D.life_series)
