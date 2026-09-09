@@ -351,13 +351,36 @@ const perto = (a, b, tol) => Math.abs(a - b) <= tol;
       b.click(); await new Promise(r => setTimeout(r, 120));
       const tit = document.getElementById('painel-met-t').textContent.trim();
       const vis = [...document.querySelectorAll('#painel-corpo details')].filter(d => !d.hidden);
-      if (tit !== card || vis.length === 0) ruins.push(`${card} → ${tit} (${vis.length})`);
+      // Titulo certo com conteudo generico foi o defeito anterior: o painel
+      // precisa trazer o texto DESTE grafico, nao so a definicao do indicador.
+      const pg = document.getElementById('painel-grafico');
+      const blocos = pg.hidden ? 0 : pg.querySelectorAll('.pg-b').length;
+      const texto = pg.hidden ? '' : pg.textContent.replace(/\s+/g, ' ').trim();
+      if (tit !== card || vis.length === 0 || blocos !== 3 || texto.length < 200)
+        ruins.push(`${card} → ${tit} (verbetes ${vis.length}, blocos ${blocos}, ${texto.length} car.)`);
     }
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
     await new Promise(r => setTimeout(r, 200));
     return ruins;
   });
-  checa(titulos.length === 0, 'o painel abre com o título do gráfico clicado', titulos.slice(0, 3).join(' | '));
+  checa(titulos.length === 0, 'todo "?" abre título, texto próprio e indicador do gráfico', titulos.slice(0, 3).join(' | '));
+
+  // O texto de cada grafico precisa ser distinto: mapa com entrada repetida
+  // volta a mostrar a explicacao de outro grafico com o titulo certo.
+  const repetidos = await p.evaluate(async () => {
+    const vistos = new Map();
+    for (const c of document.querySelectorAll('.card[data-chart]')) {
+      const b = c.querySelector('.card-h h3 .expl'); if (!b) continue;
+      b.click(); await new Promise(r => setTimeout(r, 110));
+      const t = document.getElementById('painel-grafico').textContent.replace(/\s+/g, ' ').trim();
+      if (vistos.has(t)) vistos.set(t, vistos.get(t) + ',' + c.dataset.chart);
+      else vistos.set(t, c.dataset.chart);
+    }
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    await new Promise(r => setTimeout(r, 200));
+    return [...vistos.values()].filter(v => v.includes(','));
+  });
+  checa(repetidos.length === 0, 'nenhum gráfico reaproveita a explicação de outro', repetidos.join(' | '));
 
   const semExpl = await p.evaluate(() =>
     [...document.querySelectorAll('.card[data-chart]')]

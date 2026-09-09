@@ -10,6 +10,16 @@ Planejado para a v2, detalhado em [`docs/v2.md`](docs/v2.md).
 
 ---
 
+## [1.4.0] — 2026-09-09
+
+### Adicionado
+
+- **Explicação própria para cada um dos 23 gráficos.** A correção anterior fez o painel abrir com o título certo, mas o conteúdo continuava sendo a definição genérica do indicador: clicar em "Share da Anthropic vs. concorrentes" e ler o verbete de "share de tokens" não explica aquele gráfico. Cada um passou a ter três blocos escritos para ele, **como ler** (o que é cada eixo, cada marca, cada modo), **a pergunta que responde** (a decisão que o gráfico apoia) e **o que não mostra** (o limite honesto, na cor de alerta). A definição formal do indicador continua abaixo, para quem quiser conferir a conta.
+- O comparador ganhou o "?", que antes não tinha.
+- Duas travas no `tests/e2e.js`: uma exige que todo "?" traga título, texto próprio de pelo menos 200 caracteres e o indicador correspondente; outra falha se dois gráficos exibirem a mesma explicação, que é como um mapa com entrada repetida volta a mostrar o texto errado com o título certo.
+
+---
+
 ## [1.3.1] — 2026-09-09
 
 ### Corrigido
