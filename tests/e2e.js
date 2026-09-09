@@ -288,6 +288,61 @@ const perto = (a, b, tol) => Math.abs(a - b) <= tol;
   checa(pan.n === pan.naSecao && pan.n >= 12, 'painel espelha todos os indicadores da seção', `${pan.n} vs ${pan.naSecao}`);
   checa(pan.fechou === true && pan.expandido === 'false', 'Escape fecha o painel e devolve o estado');
 
+  // ---------- 6j. eixo de tempo sempre diz o ano ----------
+  // Sem isso o eixo mostrava dois "fev" e dois "abr" na mesma linha, e em tela
+  // estreita janeiro não virava marca, então o ano sumia da tela inteira.
+  const semAno = await p.evaluate(() => {
+    const ruins = [];
+    document.querySelectorAll('.card[data-chart] svg').forEach(s => {
+      const h = s.viewBox.baseVal.height;
+      const bx = [...s.querySelectorAll('text')]
+        .filter(t => +t.getAttribute('y') > h - 34)
+        .map(t => t.textContent.trim())
+        .filter(t => /^[a-z]{3}( \d{2})?$/.test(t));
+      if (bx.length >= 2 && !bx.some(t => /\d{2}$/.test(t)))
+        ruins.push((s.closest('.card').querySelector('h3')?.textContent || '').slice(0, 30) + ': ' + bx.join(','));
+    });
+    return ruins;
+  });
+  checa(semAno.length === 0, 'todo eixo de tempo mostra o ano em alguma marca', semAno.slice(0, 3).join(' | '));
+
+  // ---------- 6k. comparador busca em qualquer posição ----------
+  const busca = await p.evaluate(async () => {
+    const inp = document.getElementById('cmpA'); if (!inp) return null;
+    inp.focus(); inp.value = 'sonnet'; inp.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise(r => setTimeout(r, 200));
+    const itens = [...document.querySelectorAll('#cmpA-lista li[data-slug]')].map(l => l.dataset.slug);
+    inp.value = 'zzz-inexistente'; inp.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise(r => setTimeout(r, 200));
+    const vazio = document.querySelector('#cmpA-lista .vazio') !== null;
+    return { itens, vazio };
+  });
+  checa(busca !== null, 'comparador tem campo de busca');
+  checa(busca && busca.itens.length > 0 && busca.itens.every(s => /sonnet/i.test(s)),
+    'busca casa termo no meio do slug, não só no prefixo', busca ? busca.itens.join(',') : '');
+  checa(busca && busca.vazio, 'busca sem resultado avisa em vez de ficar em branco');
+
+  // ---------- 6l. "?" do gráfico abre o painel, não rola a página ----------
+  const q = await p.evaluate(async () => {
+    const antes = window.scrollY;
+    const b = document.querySelector('.card[data-chart] .expl'); if (!b) return null;
+    b.click(); await new Promise(r => setTimeout(r, 400));
+    const pn = document.getElementById('painel-met');
+    const aberto = !pn.hidden;
+    const destacado = document.querySelectorAll('#painel-corpo details[open]').length;
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    await new Promise(r => setTimeout(r, 250));
+    return { aberto, destacado, rolou: Math.abs(window.scrollY - antes) > 40 };
+  });
+  checa(q !== null && q.aberto, 'o "?" do gráfico abre o painel de metodologia');
+  checa(q !== null && q.destacado === 1, 'o painel abre exatamente o verbete daquele gráfico', q ? String(q.destacado) : '');
+  checa(q !== null && !q.rolou, 'o "?" não arrasta o leitor para o fim da página');
+
+  // ---------- 6m. leitura do ciclo de vida nomeia os 10 ----------
+  const coorte = await p.evaluate(() => document.getElementById('read-cohort')?.innerText || '');
+  checa(/10 desta semana/.test(coorte) && (coorte.match(/\//g) || []).length >= 10,
+    'a leitura do top 10 diz quais são os 10 modelos');
+
   // ---------- 7. sem transbordo horizontal em três larguras ----------
   for (const w of [390, 768, 1440]) {
     const t = await browser.newPage({ viewport: { width: w, height: 900 } });

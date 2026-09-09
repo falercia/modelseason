@@ -10,6 +10,24 @@ Planejado para a v2, detalhado em [`docs/v2.md`](docs/v2.md).
 
 ---
 
+## [1.3.0] — 2026-09-09
+
+### Adicionado
+
+- **Busca própria no comparador.** O `datalist` nativo só casa prefixo do valor, e como todo slug começa pelo laboratório, digitar "sonnet" não trazia nada e o campo parecia quebrado. A lista agora casa em qualquer posição, aceita várias palavras soltas, navega por teclado, mostra o share de cada modelo e avisa quando não há resultado.
+- **O "?" de cada gráfico abre o painel de metodologia no verbete daquele indicador**, em vez de arrastar o leitor até o fim da página e devolvê-lo perdido. Escape fecha e devolve o foco ao ponto de origem.
+- **A leitura do ciclo de vida nomeia os 10 modelos** que ela usa. Falar de "os 10 mais usados" sem dizer quais deixa o número inauditável.
+- Sete travas novas no `tests/e2e.js`, entre elas a que falha se algum eixo de tempo não mostrar o ano e a que falha se o "?" rolar a página.
+
+### Corrigido
+
+- **Eixo de tempo sem ano.** O ano só aparecia em janeiro, então uma série de 20 meses exibia dois "fev" e dois "abr" sem distinção; em tela estreita janeiro nem virava marca e o ano sumia da tela inteira. Agora o ano entra na primeira marca e sempre que ele vira.
+- **`US$ 0,450`** no comparador. O corte de zero sobrando rodava depois da troca de ponto por vírgula, então a expressão procurava um ponto que já não existia. Acima de um dólar o preço passa a ter sempre duas casas.
+- **"Mix Anthropic na última semana"** virou "na semana de 31 ago 26". Com o cabeçalho dizendo que os dados vão até ontem, "última semana" era ambíguo e não dava para conferir.
+- **Ordenação por "Lançamento"** renomeada para "Estreia", com a ressalva de que é a primeira aparição no ranking e não a data de lançamento: modelos que já existiam quando a série começa aparecem todos na primeira semana.
+
+---
+
 ## [1.2.0] — 2026-09-09
 
 ### Adicionado

@@ -300,6 +300,16 @@ footer p{margin:0 0 6px}
 /* display:flex sobrescreve o atributo hidden: sem isto o painel fica
    invisivel mas continua interceptando clique na pagina inteira. */
 .painel[hidden],.painel-fundo[hidden]{display:none!important}
+.cbx{position:relative}
+.cbx-lista{position:absolute;z-index:20;top:100%;left:0;right:0;margin:4px 0 0;padding:4px;list-style:none;
+  max-height:260px;overflow-y:auto;background:var(--surface);border:1px solid var(--ring);border-radius:9px;
+  box-shadow:0 12px 30px rgba(0,0,0,.14)}
+.cbx-lista li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:6px 9px;
+  border-radius:6px;cursor:pointer;font-size:12.5px}
+.cbx-lista li:hover,.cbx-lista li.on{background:var(--bg)}
+.cbx-lista li.on{outline:1px solid var(--ring)}
+.cbx-lista .sh{color:var(--ink-3);font-variant-numeric:tabular-nums;flex:0 0 auto}
+.cbx-lista .vazio{color:var(--ink-3);cursor:default;justify-content:flex-start}
 .painel-fundo{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:60}
 .painel{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--surface);
   border-left:1px solid var(--ring);z-index:61;display:flex;flex-direction:column;box-shadow:-18px 0 44px rgba(0,0,0,.13)}
@@ -312,6 +322,7 @@ footer p{margin:0 0 6px}
 .painel-c details{border:1px solid var(--ring);border-radius:9px;margin-bottom:8px;background:var(--bg)}
 .painel-c summary{cursor:pointer;padding:11px 14px;font-weight:600;font-size:13.5px}
 .painel-c .body{padding:0 14px 12px;font-size:13px;line-height:1.6}
+.painel-c details.destaque{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in oklch,var(--accent) 22%,transparent)}
 @media (max-width:600px){.painel{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -452,7 +463,7 @@ footer p{margin:0 0 6px}
         <div class="ctrls">
           <div class="views" role="group" aria-label="Ordenação">
             <button data-hbar="valor" aria-pressed="true">Permanência</button>
-            <button data-hbar="lancamento" aria-pressed="false">Lançamento</button>
+            <button data-hbar="lancamento" aria-pressed="false">Estreia</button>
           </div>
           <button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button>
         </div>
@@ -650,8 +661,14 @@ const fmtP = v => d3.format('.1f')(v).replace('.',',')+'%';
 // Preco em USD por 1M de tokens. Sem separador de milhar, porque o valor quase
 // sempre e menor que 100 e "US$ 1.251" era lido como mil duzentos e cinquenta.
 const fmtUSD = v => { if(v==null) return '—';
-  const s = br(v>=100 ? d3.format('.0f')(v) : (v>=1 ? v.toFixed(2) : v.toFixed(3)));
-  return 'US$ '+s.replace(/(\.\d*?)0+$/,'$1').replace(/\.$/,'').replace('.',','); };
+  // Cortar o zero sobrando ANTES de trocar o ponto pela virgula. Ao contrario,
+  // a regex procura um ponto que ja nao existe e "US$ 0,450" passa.
+  // Acima de 1 dolar, duas casas sempre: "US$ 1,50" e preco, "US$ 1,5" parece
+  // numero solto. Abaixo de 1, tres casas com o zero sobrando cortado.
+  const s = v>=100 ? d3.format('.0f')(v)
+          : v>=1   ? v.toFixed(2)
+          : v.toFixed(3).replace(/(\.\d*?)0+$/,'$1').replace(/\.$/,'');
+  return 'US$ '+br(s); };
 // Contexto em unidade redonda: "1M" comunica, "1.05M" finge precisao que a
 // diferenca entre 1048576 e 1050000 nao tem para quem le.
 const fmtCtx = v => { if(!v) return '—';
@@ -669,7 +686,14 @@ const fD = d => fmtDate(d).replace(/[A-Z][a-z]{2}/, m=>ptBR[m]||m);
 const fPer = d => (typeof GRAN!=='undefined' && GRAN==='mes')
   ? d3.timeFormat('%b %y')(d).replace(/[A-Z][a-z]{2}/, m=>ptBR[m]||m)
   : fD(d);
-const monthTick = d => { const m=d3.timeFormat('%b')(d); const y=d3.timeFormat('%y')(d); return (ptBR[m]||m)+(m==='Jan'?' '+y:''); };
+// O ano so aparecia em janeiro. Numa serie de 20 meses o eixo mostrava dois
+// "fev" e dois "abr" sem distincao, e em tela estreita janeiro nem virava
+// marca, entao o ano sumia da tela inteira. Agora o ano entra na primeira
+// marca e sempre que ele vira, que e quando o leitor precisa dele.
+const monthTicks = ticks => { let ant=null; return ticks.map(d=>{
+  const m=d3.timeFormat('%b')(d), y=d3.timeFormat('%y')(d);
+  const mostra = ant===null || y!==ant; ant=y;
+  return (ptBR[m]||m)+(mostra?' '+y:''); }); };
 
 // ---- range filter
 // ---- granularidade e janela --------------------------------------------
@@ -780,6 +804,19 @@ function rangeFor(key, total, eixo){
   const sair=()=>{ pan.hidden=true; fun.hidden=true; btn.setAttribute('aria-expanded','false');
     document.body.style.overflow=''; if(antes&&antes.focus) antes.focus(); };
   btn.addEventListener('click',()=>pan.hidden?abrir():sair());
+  // Chamado pelos "?" de cada gráfico: abre o painel ja no verbete pedido.
+  window.abrirMetodologia=(titulo)=>{
+    if(pan.hidden) abrir();
+    if(!titulo) return;
+    const alvo=[...corpo.querySelectorAll('details')]
+      .find(d=>d.querySelector('summary').textContent.trim()===titulo);
+    if(!alvo) return;
+    corpo.querySelectorAll('details').forEach(d=>{ d.open=false; d.classList.remove('destaque'); });
+    alvo.open=true; alvo.classList.add('destaque');
+    alvo.scrollIntoView({block:'start'});
+    alvo.querySelector('summary').focus();
+    setTimeout(()=>alvo.classList.remove('destaque'),2600);
+  };
   fechar.addEventListener('click',sair);
   fun.addEventListener('click',sair);
   document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!pan.hidden) sair(); });
@@ -920,7 +957,8 @@ function axes(f, x, y, yfmt, ticksY=4){
   // Contamos a partir do inicio do dominio, que garante espacamento uniforme.
   const todos=d3.timeMonth.range(...x.domain());
   const ticks=todos.filter((_,i)=>i%meses===0);
-  f.svg.append('g').selectAll('text').data(ticks).join('text').attr('x',d=>x(d)).attr('y',f.h-f.m.b+18).attr('text-anchor','middle').text(monthTick);
+  const rotulos=monthTicks(ticks);
+  f.svg.append('g').selectAll('text').data(ticks).join('text').attr('x',d=>x(d)).attr('y',f.h-f.m.b+18).attr('text-anchor','middle').text((d,i)=>rotulos[i]);
   f.svg.append('line').attr('class','axis').attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',y(0)).attr('y2',y(0)).attr('stroke',css('--axis'));
 }
 function crosshair(f, x, ii, onMove){
@@ -1961,7 +1999,7 @@ function readings(){
     .sort((x,y)=>x.first<y.first?-1:1)
     .map(m=>`${m.model.replace('anthropic/claude-','').replace(/-20\d{6}$/,'')} ${m.weeks_in_top10} sem`);
   set('read-anfam',`<h4>Leitura</h4>${nota}`+
-    (famTot>0?`<p>Mix Anthropic na última semana: ${mix}. Haiku é residual no OpenRouter; não generalize para cargas enterprise via API direta ou Bedrock, onde o roteamento por custo tem outro perfil.</p>`:`<p>Sem volume Anthropic no recorte atual.</p>`)+
+    (famTot>0?`<p>Mix Anthropic na semana de ${fD(W[N-1])}: ${mix}. Haiku é residual no OpenRouter; não generalize para cargas enterprise via API direta ou Bedrock, onde o roteamento por custo tem outro perfil.</p>`:`<p>Sem volume Anthropic no recorte atual.</p>`)+
     (ten.length?`<p>Permanência no top 10: ${ten.join(', ')}. A cadência de lançamento acelerou e cada geração dura menos no topo, canibalizada pela seguinte. Para quem calibra prompts e avaliações por modelo, a janela útil de cada versão encurtou.</p>`:''));
 
   // 09 dinheiro
@@ -2034,7 +2072,12 @@ function readings(){
   const idade=d3.median(jan(D.age).filter(v=>v!=null));
   const ttp=d3.median(D.life.map(m=>m.weeks_to_peak));
   const half=d3.median(D.life.filter(m=>m.half_life_weeks!=null).map(m=>m.half_life_weeks));
-  set('read-cohort',`<h4>Leitura</h4><p>A cada 4 semanas, em mediana <b>${d3.median(ch)}</b> dos 10 modelos mais usados são novos no top 10. A idade mediana do top 10 gira em torno de <b>${fmtNum(idade)} semanas</b> desde a estreia.</p>`+
+  // Falar de "os 10 mais usados" sem dizer quais deixa o numero inauditavel.
+  const top10=(D.boards&&D.boards.last||[]).slice(0,10);
+  const nomes=top10.length
+    ? `<p>Os 10 desta semana, em ordem de volume: ${top10.map(r=>`<span class="mono">${r.model}</span>`).join(', ')}.</p>`
+    : '';
+  set('read-cohort',`<h4>Leitura</h4><p>A cada 4 semanas, em mediana <b>${d3.median(ch)}</b> dos 10 modelos mais usados são novos no top 10. A idade mediana do top 10 gira em torno de <b>${fmtNum(idade)} semanas</b> desde a estreia.</p>`+nomes+
     `<p>Modelos que atingiram ≥ 2% do volume levam em mediana <b>${fmtNum(ttp)} semanas</b> até o pico e perdem metade do share <b>${fmtNum(half)} semanas</b> depois dele.</p>`+
     `<p><span class="flag">tese</span>Nenhum modelo sustenta liderança por mais de dois trimestres neste dataset. O ativo durável é o método de avaliação e troca, não a escolha do modelo.</p>`+
     `<p class="mono" style="font-size:11.5px;color:var(--ink-3)">Esta seção descreve o histórico completo dos modelos e não responde aos filtros.</p>`);
@@ -2324,26 +2367,57 @@ function comparador(){
   // biblioteca. Ordem alfabetica, porque a busca ja resolve encontrar o maior.
   const sel=document.getElementById('cmp-sel');
   const alfab=cand.slice().sort((a,b)=>a.slug.localeCompare(b.slug));
-  const opts=alfab.map(r=>`<option value="${r.slug}">${fmtP(r.share)} do volume</option>`).join('');
+  // O datalist nativo so casa PREFIXO do valor. Como todo slug comeca pelo lab
+  // ("anthropic/", "openai/"), digitar "sonnet" nao trazia nada e o campo
+  // parecia quebrado. Esta lista e propria: casa em qualquer posicao, aceita
+  // varias palavras soltas, navega por teclado e mostra o share de cada um.
   const campo=(id,val,rot)=>
-    `<div><label for="${id}">${rot}</label>`+
-    `<input id="${id}" list="cmp-lista" value="${val}" autocomplete="off" spellcheck="false" `+
-    `placeholder="digite para buscar, ex.: deepseek"></div>`;
-  sel.innerHTML=`<datalist id="cmp-lista">${opts}</datalist>`+
-                campo('cmpA',CMP[0],'Modelo A')+campo('cmpB',CMP[1],'Modelo B');
+    `<div class="cbx"><label for="${id}">${rot}</label>`+
+    `<input id="${id}" value="${val}" role="combobox" aria-expanded="false" aria-autocomplete="list" `+
+    `aria-controls="${id}-lista" autocomplete="off" spellcheck="false" `+
+    `placeholder="digite para buscar, ex.: sonnet"><ul id="${id}-lista" class="cbx-lista" role="listbox" hidden></ul></div>`;
+  sel.innerHTML=campo('cmpA',CMP[0],'Modelo A')+campo('cmpB',CMP[1],'Modelo B');
+
   ['cmpA','cmpB'].forEach((id,k)=>{
-    const inp=sel.querySelector('#'+id);
-    const aplicar=()=>{
-      const v=inp.value.trim();
-      const achado=cand.find(r=>r.slug===v)
-        || cand.filter(r=>r.slug.toLowerCase().includes(v.toLowerCase()))
-               .sort((a,b)=>b.share-a.share)[0];
-      if(achado){ inp.setCustomValidity(''); if(achado.slug!==CMP[k]){ CMP[k]=achado.slug; comparador(); } else inp.value=achado.slug; }
-      else { inp.value=CMP[k]; }
+    const inp=sel.querySelector('#'+id), lista=sel.querySelector('#'+id+'-lista');
+    let foco=-1, atuais=[];
+    const filtrar=q=>{
+      const termos=q.toLowerCase().split(/\s+/).filter(Boolean);
+      const base=termos.length? alfab.filter(r=>termos.every(t=>r.slug.toLowerCase().includes(t))) : alfab;
+      return base.slice(0,60);
     };
-    inp.addEventListener('change',aplicar);
-    inp.addEventListener('blur',aplicar);
-    inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); aplicar(); } });
+    const pintar=()=>{
+      lista.innerHTML=atuais.map((r,i)=>
+        `<li role="option" id="${id}-o${i}" aria-selected="${i===foco}" class="${i===foco?'on':''}" data-slug="${r.slug}">`+
+        `<span class="mono">${r.slug}</span><span class="sh">${fmtP(r.share)}</span></li>`).join('')
+        || `<li class="vazio">nenhum modelo com esse termo</li>`;
+      if(foco>=0) lista.children[foco]?.scrollIntoView({block:'nearest'});
+    };
+    const abrirL=q=>{ atuais=filtrar(q==null?'':q); foco=-1; pintar();
+      lista.hidden=false; inp.setAttribute('aria-expanded','true'); };
+    const fecharL=()=>{ lista.hidden=true; inp.setAttribute('aria-expanded','false'); inp.removeAttribute('aria-activedescendant'); };
+    const escolher=slug=>{ if(!slug) return; inp.value=slug; fecharL();
+      if(slug!==CMP[k]){ CMP[k]=slug; comparador(); } };
+
+    inp.addEventListener('focus',()=>abrirL(''));
+    inp.addEventListener('input',()=>abrirL(inp.value));
+    inp.addEventListener('keydown',e=>{
+      if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+        e.preventDefault(); if(lista.hidden) return abrirL(inp.value);
+        foco=Math.max(0,Math.min(atuais.length-1, foco+(e.key==='ArrowDown'?1:-1)));
+        inp.setAttribute('aria-activedescendant',`${id}-o${foco}`); pintar();
+      } else if(e.key==='Enter'){
+        e.preventDefault();
+        escolher(foco>=0? atuais[foco]?.slug : (atuais[0]?.slug));
+      } else if(e.key==='Escape'){ fecharL(); inp.value=CMP[k]; }
+    });
+    // mousedown, nao click: o blur do input dispararia antes do click
+    lista.addEventListener('mousedown',e=>{
+      const li=e.target.closest('li[data-slug]'); if(!li) return;
+      e.preventDefault(); escolher(li.dataset.slug);
+    });
+    inp.addEventListener('blur',()=>setTimeout(()=>{ fecharL();
+      if(!cand.some(r=>r.slug===inp.value)) inp.value=CMP[k]; },120));
   });
 
   const iA=MX.modelos.findIndex(m=>m.s===CMP[0]), iB=MX.modelos.findIndex(m=>m.s===CMP[1]);
@@ -2566,13 +2640,10 @@ function montarExplicacoes(){
     b.type='button'; b.className='expl'; b.textContent='?';
     b.title=resumo.slice(0,220);
     b.setAttribute('aria-label',`O que é ${alvo}: ${resumo.slice(0,140)}. Abrir a explicação completa.`);
-    b.addEventListener('click',()=>{
-      verbete.open=true;
-      verbete.classList.add('destaque');
-      verbete.scrollIntoView({behavior:'smooth',block:'center'});
-      verbete.querySelector('summary').focus();
-      setTimeout(()=>verbete.classList.remove('destaque'),2600);
-    });
+    // Rolar o leitor ate o fim da pagina para ler dois paragrafos e perder o
+    // lugar. O painel abre por cima, ja no verbete certo, e o Escape devolve
+    // exatamente onde estava.
+    b.addEventListener('click',()=>{ abrirMetodologia(alvo); });
     h.appendChild(b);
   });
 }
@@ -2684,7 +2755,7 @@ document.querySelectorAll('.views button[data-hbar]').forEach(b=>b.addEventListe
   const s=document.getElementById('ten-sub');
   if(s) s.textContent = HBAR_ORDEM==='valor'
     ? 'Permanência entre os 10 mais usados, do maior para o menor'
-    : 'Permanência entre os 10 mais usados, por ordem de lançamento';
+    : 'Permanência entre os 10 mais usados, por ordem de estreia no ranking. Não é a data de lançamento: modelos que já existiam quando a série começa aparecem todos na primeira semana';
 }));
 document.querySelectorAll('.views button[data-mapa]').forEach(b=>b.addEventListener('click',()=>{
   b.parentElement.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed', String(o===b)));
