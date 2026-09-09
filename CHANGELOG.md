@@ -10,6 +10,24 @@ Planejado para a v2, detalhado em [`docs/v2.md`](docs/v2.md).
 
 ---
 
+## [1.2.0] — 2026-09-09
+
+### Adicionado
+
+- **Botão "Como ler esta página"** no topo à direita, abrindo um painel lateral com os 17 indicadores documentados. O conteúdo não é duplicado: é clonado da seção 12 na primeira abertura, então existe uma fonte de verdade só. Fecha com Escape ou clique fora, prende o foco enquanto aberto e devolve o foco ao botão.
+- **Selo de variação nos tiles.** O número grande é sempre a última semana, que está em toda janela, então trocar a janela quase não mudava o que se via. Agora cada tile mostra ao lado quanto aquilo variou dentro da janela escolhida.
+- **Rótulo de período dinâmico.** A palavra "semanal" e o cabeçalho "Semana" viraram elementos marcados com `data-per`, trocados num lugar só quando o agrupamento muda para mês. Rótulo novo nasce correto.
+- Quatro travas novas no `tests/e2e.js`, entre elas a que falha se qualquer número aparecer na tela com ponto decimal, e a que falha se um gráfico continuar rotulado como semanal no modo mensal.
+
+### Corrigido
+
+- **Números em inglês espalhados pela página.** O eixo do gráfico principal mostrava `0.00T`, a leitura do ciclo de vida dizia `8.79 semanas`, e havia `2.5`, `0.11` e `53.4` em tabelas, tooltips e eixos. A correção estrutural está no helper `table()`, que agora formata qualquer célula numérica, e no `fmtNum`, usado por todos os rótulos de eixo. Tabela nova já nasce em português.
+- **Concordância** em "do último semana", que aparecia na barra de filtros no modo semanal.
+- **Cor com juízo de valor nos tiles.** A linha de apoio era verde fixo para China e pesos abertos, vermelha fixa para Anthropic e concentração. Isso é torcida, não dado. O selo agora usa seta para direção e cor neutra, e o leitor decide se aquilo é bom para ele.
+- Painel lateral com `display:flex` sobrescrevendo o atributo `hidden`, o que o deixava invisível mas ainda interceptando cliques na página inteira.
+
+---
+
 ## [1.1.0] — 2026-09-09
 
 ### Adicionado

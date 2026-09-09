@@ -81,7 +81,12 @@ h1{margin:6px 0 4px;font-size:34px;line-height:1.1;letter-spacing:-.02em;font-we
 .tile .k{font-size:12.5px;color:var(--ink-3);letter-spacing:.01em}
 .tile .v{font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1;margin:8px 0 6px}
 .tile .d{font-size:12.5px;color:var(--ink-2)}
-.tile .d.up{color:var(--good)} .tile .d.down{color:var(--bad)}
+/* A cor da linha de apoio era fixa por tile: verde para China e pesos abertos,
+   vermelho para Anthropic e concentracao. Isso e torcida, nao dado. */
+.tile .d{color:var(--ink-2)}
+.tile .v{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.dl{font-size:12.5px;font-weight:600;letter-spacing:0;white-space:nowrap}
+.dl{color:var(--ink-2)}
 /* sections */
 section{margin-bottom:56px}
 .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}
@@ -286,11 +291,41 @@ footer p{margin:0 0 6px}
   .read{font-size:13px}
   footer{font-size:12px}
 }
+
+.btn-met{font:inherit;font-size:12px;color:var(--ink-2);background:var(--surface);border:1px solid var(--ring);
+  border-radius:999px;padding:5px 12px;cursor:pointer;margin-bottom:8px;display:inline-flex;align-items:center;gap:6px}
+.btn-met:hover{border-color:var(--ink-3);color:var(--ink)}
+.btn-met span{display:inline-flex;width:15px;height:15px;align-items:center;justify-content:center;
+  border:1px solid currentColor;border-radius:50%;font-size:10px;line-height:1}
+/* display:flex sobrescreve o atributo hidden: sem isto o painel fica
+   invisivel mas continua interceptando clique na pagina inteira. */
+.painel[hidden],.painel-fundo[hidden]{display:none!important}
+.painel-fundo{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:60}
+.painel{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--surface);
+  border-left:1px solid var(--ring);z-index:61;display:flex;flex-direction:column;box-shadow:-18px 0 44px rgba(0,0,0,.13)}
+.painel-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;
+  border-bottom:1px solid var(--ring);flex:0 0 auto}
+.painel-h h2{margin:0;font-size:17px;letter-spacing:-.01em}
+.painel-x{font:inherit;font-size:22px;line-height:1;background:none;border:0;color:var(--ink-2);cursor:pointer;padding:2px 6px}
+.painel-x:hover{color:var(--ink)}
+.painel-c{overflow-y:auto;padding:18px 22px 40px;flex:1 1 auto}
+.painel-c details{border:1px solid var(--ring);border-radius:9px;margin-bottom:8px;background:var(--bg)}
+.painel-c summary{cursor:pointer;padding:11px 14px;font-weight:600;font-size:13.5px}
+.painel-c .body{padding:0 14px 12px;font-size:13px;line-height:1.6}
+@media (max-width:600px){.painel{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<div id="painel-met" class="painel" hidden role="dialog" aria-modal="true" aria-labelledby="painel-met-t">
+  <div class="painel-h">
+    <h2 id="painel-met-t">Como ler esta página</h2>
+    <button id="painel-x" class="painel-x" aria-label="Fechar">×</button>
+  </div>
+  <div id="painel-corpo" class="painel-c"></div>
+</div>
+<div id="painel-fundo" class="painel-fundo" hidden></div>
 <div class="wrap">
 <header>
   <div>
@@ -299,6 +334,9 @@ footer p{margin:0 0 6px}
     <p class="sub">Para onde vai o tráfego de tokens dos modelos de linguagem, semana a semana: quem cresce, quem perde, quanto tempo um modelo dura no topo e o que isso diz sobre a posição da Anthropic.</p>
   </div>
   <div class="meta">
+    <button id="btn-met" class="btn-met" aria-expanded="false" aria-controls="painel-met">
+      <span aria-hidden="true">?</span> Como ler esta página
+    </button><br>
     Fonte: <b>OpenRouter · rankings-daily</b><br>
     Dados de <b id="m-range"></b><br>
     Semanas completas nos gráficos: <b id="m-weeks"></b> · Modelos distintos: <b id="m-models"></b><br>
@@ -346,7 +384,7 @@ footer p{margin:0 0 6px}
   </div>
   <div class="row">
     <div class="card" data-chart="conc">
-      <div class="card-h"><div><h3>Concentração: share dos 5 maiores modelos</h3><p>% do volume semanal capturado pelos 5 modelos mais usados</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="card-h"><div><h3>Concentração: share dos 5 maiores modelos</h3><p>% do volume <span data-per="adj">semanal</span> capturado pelos 5 modelos mais usados</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-conc"></aside>
@@ -358,7 +396,7 @@ footer p{margin:0 0 6px}
   <div class="sec-head"><span class="n">02</span><h2>Share por laboratório</h2></div>
   <div class="row">
     <div class="card" data-chart="vendor">
-      <div class="card-h"><div><h3>Fatia semanal de tokens por lab</h3><p>Os quatro maiores labs por volume acumulado; todos os demais somados em Outros</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="card-h"><div><h3>Fatia <span data-per="adj">semanal</span> de tokens por lab</h3><p>Os quatro maiores labs por volume acumulado; todos os demais somados em Outros</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-vendor"></aside>
@@ -377,11 +415,11 @@ footer p{margin:0 0 6px}
   <div class="sec-head"><span class="n">03</span><h2>Open-weights vs. proprietário, China vs. EUA</h2></div>
   <div class="row two">
     <div class="card" data-chart="origin">
-      <div class="card-h"><div><h3>Origem do lab</h3><p>% do volume semanal por país-sede do laboratório</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="card-h"><div><h3>Origem do lab</h3><p>% do volume <span data-per="adj">semanal</span> por país-sede do laboratório</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
     <div class="card" data-chart="weights">
-      <div class="card-h"><div><h3>Licença dos pesos</h3><p>% do volume semanal em modelos de pesos abertos vs. fechados</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="card-h"><div><h3>Licença dos pesos</h3><p>% do volume <span data-per="adj">semanal</span> em modelos de pesos abertos vs. fechados</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
   </div>
@@ -399,7 +437,7 @@ footer p{margin:0 0 6px}
   <div class="sec-head"><span class="n">04</span><h2>Posição da Anthropic</h2></div>
   <div class="row">
     <div class="card" data-chart="anshare">
-      <div class="card-h"><div><h3>Share da Anthropic vs. concorrentes</h3><p>% do volume semanal; Anthropic em destaque</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="card-h"><div><h3>Share da Anthropic vs. concorrentes</h3><p>% do volume <span data-per="adj">semanal</span>; Anthropic em destaque</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-anshare"></aside>
@@ -440,7 +478,7 @@ footer p{margin:0 0 6px}
   </div>
   <div class="row">
     <div class="card" data-chart="cohort">
-      <div class="card-h"><div><h3>Tempo até o pico e meia-vida, por trimestre de lançamento</h3><p>Mediana em semanas, modelos que atingiram ≥ 2% do volume semanal (n por coorte no rótulo)</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="card-h"><div><h3>Tempo até o pico e meia-vida, por trimestre de lançamento</h3><p>Mediana em semanas, modelos que atingiram ≥ 2% do volume semanal (n por coorte no rótulo). Histórico completo, não responde à janela nem ao agrupamento</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-cohort"></aside>
@@ -465,7 +503,7 @@ footer p{margin:0 0 6px}
   <div class="sec-head"><span class="n">06</span><h2>Para onde vai o dinheiro</h2></div>
   <div class="row">
     <div class="card" data-chart="spend">
-      <div class="card-h"><div><h3>Gasto semanal estimado</h3><p id="spend-sub"></p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="card-h"><div><h3>Gasto <span data-per="adj">semanal</span> estimado</h3><p id="spend-sub"></p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-spend"></aside>
@@ -603,12 +641,16 @@ function init(D){
 let W = D.weeks.map(s=>new Date(s+'T00:00:00'));
 let N = W.length;
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-const fmtT = v => v>=10? d3.format('.0f')(v)+'T' : v>=1? d3.format('.1f')(v)+'T' : d3.format('.2f')(v)+'T';
+// Numero em portugues usa virgula. O separador vazava em fmtT ('0.00T' no eixo
+// do grafico principal) e nas medianas do ciclo de vida ('8.79 semanas').
+const br = s => String(s).replace('.',',');
+const fmtT = v => br(v>=10? d3.format('.0f')(v)+'T' : v>=1? d3.format('.1f')(v)+'T' : d3.format('.2f')(v)+'T');
+const fmtNum = (v,c=1) => v==null||!isFinite(v) ? '—' : br((+v).toFixed(c).replace(/,?0+$/,'').replace(/\.$/,'')||'0');
 const fmtP = v => d3.format('.1f')(v).replace('.',',')+'%';
 // Preco em USD por 1M de tokens. Sem separador de milhar, porque o valor quase
 // sempre e menor que 100 e "US$ 1.251" era lido como mil duzentos e cinquenta.
 const fmtUSD = v => { if(v==null) return '—';
-  const s = v>=100 ? d3.format('.0f')(v) : (v>=1 ? v.toFixed(2) : v.toFixed(3));
+  const s = br(v>=100 ? d3.format('.0f')(v) : (v>=1 ? v.toFixed(2) : v.toFixed(3)));
   return 'US$ '+s.replace(/(\.\d*?)0+$/,'$1').replace(/\.$/,'').replace('.',','); };
 // Contexto em unidade redonda: "1M" comunica, "1.05M" finge precisao que a
 // diferenca entre 1048576 e 1050000 nao tem para quem le.
@@ -712,6 +754,46 @@ function rangeFor(key, total, eixo){
   const pontos = GRAN==='semana' ? sem : Math.max(2, Math.round(sem/4.345));
   return [Math.max(0,total-pontos), fim];
 }
+// Painel de metodologia. O conteudo NAO e duplicado: e clonado da secao 12 na
+// primeira abertura, entao existe uma fonte de verdade so. Editar a secao muda
+// o painel de graca, e nao ha o risco classico de os dois divergirem.
+(()=>{
+  const btn=document.getElementById('btn-met'), pan=document.getElementById('painel-met'),
+        fun=document.getElementById('painel-fundo'), corpo=document.getElementById('painel-corpo'),
+        fechar=document.getElementById('painel-x');
+  if(!btn||!pan) return;
+  let montado=false, antes=null;
+  const monta=()=>{
+    if(montado) return; montado=true;
+    const sec=document.getElementById('metodologia'); if(!sec) return;
+    const intro=sec.querySelector('p');
+    if(intro) corpo.appendChild(intro.cloneNode(true));
+    sec.querySelectorAll('details').forEach(d=>{
+      const c=d.cloneNode(true); c.removeAttribute('open'); corpo.appendChild(c);
+    });
+    const met=sec.querySelector('p:last-of-type');
+    if(met && met!==intro) corpo.appendChild(met.cloneNode(true));
+  };
+  const abrir=()=>{ monta(); antes=document.activeElement;
+    pan.hidden=false; fun.hidden=false; btn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden'; fechar.focus(); };
+  const sair=()=>{ pan.hidden=true; fun.hidden=true; btn.setAttribute('aria-expanded','false');
+    document.body.style.overflow=''; if(antes&&antes.focus) antes.focus(); };
+  btn.addEventListener('click',()=>pan.hidden?abrir():sair());
+  fechar.addEventListener('click',sair);
+  fun.addEventListener('click',sair);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!pan.hidden) sair(); });
+  // foco preso dentro do painel enquanto ele esta aberto
+  pan.addEventListener('keydown',e=>{
+    if(e.key!=='Tab') return;
+    const f=[...pan.querySelectorAll('button,summary,a[href]')].filter(x=>x.offsetParent!==null);
+    if(!f.length) return;
+    const pri=f[0], ult=f[f.length-1];
+    if(e.shiftKey && document.activeElement===pri){ e.preventDefault(); ult.focus(); }
+    else if(!e.shiftKey && document.activeElement===ult){ e.preventDefault(); pri.focus(); }
+  });
+})();
+
 document.querySelectorAll('.chip[data-range]').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.chip[data-range]').forEach(x=>x.setAttribute('aria-pressed','false'));
   b.setAttribute('aria-pressed','true'); JANELA=b.dataset.range; aplicar();
@@ -800,7 +882,11 @@ function legend(el, items, name, redraw){
 function table(el, cols, rows){
   const card=el.closest('.card');
   const tit=card? (card.querySelector('h3')?.textContent||'').trim() : '';
-  el.innerHTML = `<table><caption class="vh">${tit}</caption><thead><tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table>`; }
+  // Celula que chega como numero cru sai com ponto decimal. Formatar caso a caso
+  // garante esquecer uma tabela, entao a conversao mora aqui, no unico lugar por
+  // onde toda tabela passa. Tabela nova ja nasce em portugues.
+  const cel = v => typeof v==='number' && isFinite(v) ? fmtNum(v,2) : v;
+  el.innerHTML = `<table><caption class="vh">${tit}</caption><thead><tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(v=>`<td>${cel(v)}</td>`).join('')}</tr>`).join('')}</tbody></table>`; }
 document.querySelectorAll('.tbtn').forEach(b=>b.addEventListener('click',()=>{const c=b.closest('.card');const on=!c.classList.contains('table-mode');c.classList.toggle('table-mode',on);b.setAttribute('aria-pressed',String(on));b.textContent=on?'Gráfico':'Tabela';}));
 
 function frame(plot, h, m){
@@ -867,7 +953,7 @@ function stackedShare(name, series, slots, labels, opts={}){
   st.forEach(s=>{const seg=s[s.length-1]; if(seg[1]-seg[0]>7){ f.svg.append('text').attr('class','dl').attr('x',x(W[last])-6).attr('y',y((seg[0]+seg[1])/2)+4).attr('text-anchor','end').attr('fill','#fff').style('fill','#fff').text((labels[s.key]||s.key)+' '+Math.round(series[s.key][last])+'%'); }});
   legend(c.querySelector('.legend'), todas.slice().sort((a,b)=>series[b][last]-series[a][last]).map(k=>[k,col(slots[k]),(labels[k]||k)+' '+fmtP(series[k][last])]), name, ()=>stackedShare(name,series,slots,labels,opts));
   crosshair(f,x,ii,(i)=>`<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+keys.slice().sort((a,b)=>series[b][i]-series[a][i]).filter(k=>series[k][i]>0.05).map(k=>tipRow(col(slots[k]),labels[k]||k,fmtP(series[k][i]))).join(''));
-  table(c.querySelector('.tbl'),['Semana',...keys.map(k=>labels[k]||k)], ii.map(i=>[fPer(W[i]),...keys.map(k=>fmtP(series[k][i]))]));
+  table(c.querySelector('.tbl'),[rotPer(),...keys.map(k=>labels[k]||k)], ii.map(i=>[fPer(W[i]),...keys.map(k=>fmtP(series[k][i]))]));
 }
 
 // ---- single line/area
@@ -888,7 +974,7 @@ function lineChart(name, vals, {fmt=fmtP, color='--s1', area=true, label, ymax, 
   f.svg.append('text').attr('class','dl').attr('x',x(W[last])-8).attr('y',y(vals[last])-9).attr('text-anchor','end').text((integer?vals[last]:fmt(vals[last])));
   f.svg.append('text').attr('class','dl').attr('x',x(W[first])+6).attr('y',y(vals[first])-9).text((integer?vals[first]:fmt(vals[first])));
   crosshair(f,x,ii,(i,dot)=>{dot.selectAll('*').remove(); dot.append('circle').attr('cx',x(W[i])).attr('cy',y(vals[i])).attr('r',4).attr('fill',cl).attr('stroke',css('--surface')).attr('stroke-width',2); return `<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+tipRow(cl,label||'',integer?vals[i]:fmt(vals[i]))+(extra?extra(i):'');});
-  table(c.querySelector('.tbl'), colsTab? colsTab.cols : ['Período',label],
+  table(c.querySelector('.tbl'), colsTab? colsTab.cols : [rotPer(),label],
     colsTab? ii.map(colsTab.linha) : ii.map(i=>[fPer(W[i]),integer?vals[i]:fmt(vals[i])]));
 }
 
@@ -940,7 +1026,7 @@ function emphasisLines(name, series, focus, slots, labels){
 
   legend(c.querySelector('.legend'), todas.map(k=>[k,cor(k),LB(k)+' '+fmtP(S[k][last])]), name, ()=>emphasisLines(name,series,focus,slots,labels));
   crosshair(f,x,ii,(i)=>`<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+keys.slice().sort((a,b)=>S[b][i]-S[a][i]).map(k=>tipRow(cor(k),LB(k),fmtP(S[k][i]))).join(''));
-  table(c.querySelector('.tbl'),['Semana',...Object.keys(series).map(k=>labels[k]||k)],
+  table(c.querySelector('.tbl'),[rotPer(),...Object.keys(series).map(k=>labels[k]||k)],
     ii.map(i=>[fPer(W[i]),...Object.keys(series).map(k=>fmtP(series[k][i]))]));
 }
 
@@ -958,7 +1044,7 @@ function stackedAbs(name, series, slots){
   f.svg.append('g').selectAll('path').data(st).join('path').attr('d',d3.area().x(d=>x(W[d.data.i])).y0(d=>y(d[0])).y1(d=>y(d[1])).curve(d3.curveMonotoneX)).attr('fill',d=>col(slots[d.key])).attr('stroke',css('--surface')).attr('stroke-width',1.5).attr('opacity',.92);
   legend(c.querySelector('.legend'), todas.map(k=>[k,col(slots[k]),k]), name, ()=>stackedAbs(name,series,slots));
   crosshair(f,x,ii,(i)=>`<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+keys.slice().reverse().map(k=>tipRow(col(slots[k]),k,fmtT(series[k][i]))).join('')+tipRow('transparent','Total',fmtT(keys.reduce((s,k)=>s+series[k][i],0))));
-  table(c.querySelector('.tbl'),['Semana',...keys,'Total'], ii.map(i=>[fD(W[i]),...keys.map(k=>fmtT(series[k][i])),fmtT(keys.reduce((s,k)=>s+series[k][i],0))]));
+  table(c.querySelector('.tbl'),[rotPer(),...keys,'Total'], ii.map(i=>[fD(W[i]),...keys.map(k=>fmtT(series[k][i])),fmtT(keys.reduce((s,k)=>s+series[k][i],0))]));
 }
 
 // ---- horizontal bars (Anthropic tenure)
@@ -974,11 +1060,11 @@ function hbars(name, rows, {color='--s3'}={}){
   const x=d3.scaleLinear().domain([0,d3.max(rows,r=>r.v)*1.05]).nice().range([f.m.l,f.w-f.m.r]);
   const y=d3.scaleBand().domain(rows.map(r=>r.k)).range([f.m.t,f.h-f.m.b]).paddingInner(.28);
   f.svg.append('g').attr('class','grid').selectAll('line').data(x.ticks(5)).join('line').attr('y1',f.m.t).attr('y2',f.h-f.m.b).attr('x1',d=>x(d)).attr('x2',d=>x(d));
-  f.svg.append('g').selectAll('text').data(x.ticks(5)).join('text').attr('x',d=>x(d)).attr('y',f.h-f.m.b+16).attr('text-anchor','middle').text(d=>d);
+  f.svg.append('g').selectAll('text').data(x.ticks(5)).join('text').attr('x',d=>x(d)).attr('y',f.h-f.m.b+16).attr('text-anchor','middle').text(d=>fmtNum(d,2));
   f.svg.append('g').selectAll('text').data(rows).join('text').attr('x',f.m.l-10).attr('y',r=>y(r.k)+y.bandwidth()/2+4).attr('text-anchor','end').style('fill',css('--ink-2')).text(r=>r.k);
   const cl=col(color);
   f.svg.append('g').selectAll('rect').data(rows).join('rect').attr('x',x(0)).attr('y',r=>y(r.k)).attr('width',r=>Math.max(0,x(r.v)-x(0))).attr('height',y.bandwidth()).attr('fill',cl).attr('rx',3);
-  f.svg.append('g').selectAll('text').data(rows).join('text').attr('class','dl').attr('x',r=>x(r.v)+6).attr('y',r=>y(r.k)+y.bandwidth()/2+4).text(r=>r.v+(r.alive?' ●':''));
+  f.svg.append('g').selectAll('text').data(rows).join('text').attr('class','dl').attr('x',r=>x(r.v)+6).attr('y',r=>y(r.k)+y.bandwidth()/2+4).text(r=>fmtNum(r.v,2)+(r.alive?' ●':''));
   const t=tip(plot);
   f.svg.append('g').selectAll('rect.hit').data(rows).join('rect').attr('class','hit').attr('x',f.m.l).attr('y',r=>y(r.k)-3).attr('width',f.w-f.m.l-f.m.r).attr('height',y.bandwidth()+6).attr('fill','transparent')
    .on('mousemove',(ev,r)=>{const [mx,my]=d3.pointer(ev); const sx=plot.getBoundingClientRect().width/f.w; showTip(t,plot,mx*sx,my*sx,`<div class="t">${r.k}</div>${tipRow(cl,'Semanas no top 10',r.v)}${tipRow('transparent','Lançado',r.first)}${tipRow('transparent','Pico de share',fmtP(r.peak))}${r.alive?tipRow('transparent','Status','ainda em alta'):''}`);})
@@ -994,15 +1080,15 @@ function cohortBars(name, rows){
   const x0=d3.scaleBand().domain(rows.map(r=>r.q)).range([f.m.l,f.w-f.m.r]).paddingInner(.3), x1=d3.scaleBand().domain(keys.map(k=>k[0])).range([0,x0.bandwidth()]).paddingInner(.12);
   const y=d3.scaleLinear().domain([0,d3.max(rows,r=>Math.max(r.ttp,r.half))*1.15]).nice().range([f.h-f.m.b,f.m.t]);
   f.svg.append('g').attr('class','grid').selectAll('line').data(y.ticks(4)).join('line').attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',d=>y(d)).attr('y2',d=>y(d));
-  f.svg.append('g').selectAll('text').data(y.ticks(4)).join('text').attr('x',f.m.l-8).attr('y',d=>y(d)+4).attr('text-anchor','end').text(d=>d);
+  f.svg.append('g').selectAll('text').data(y.ticks(4)).join('text').attr('x',f.m.l-8).attr('y',d=>y(d)+4).attr('text-anchor','end').text(d=>fmtNum(d,2));
   f.svg.append('g').selectAll('text').data(rows).join('text').attr('x',r=>x0(r.q)+x0.bandwidth()/2).attr('y',f.h-f.m.b+16).attr('text-anchor','middle').text(r=>r.q.replace('2025','25 ').replace('2026','26 '));
   f.svg.append('g').selectAll('text.n').data(rows).join('text').attr('class','n').attr('x',r=>x0(r.q)+x0.bandwidth()/2).attr('y',f.h-f.m.b+30).attr('text-anchor','middle').style('fill',css('--ink-3')).text(r=>'n='+r.n);
   const g=f.svg.append('g').selectAll('g').data(rows).join('g').attr('transform',r=>`translate(${x0(r.q)},0)`);
   g.selectAll('rect').data(r=>keys.map(k=>({k:k[0],c:k[2],v:r[k[0]],q:r.q}))).join('rect').attr('x',d=>x1(d.k)).attr('y',d=>y(d.v)).attr('width',x1.bandwidth()).attr('height',d=>y(0)-y(d.v)).attr('fill',d=>col(d.c)).attr('rx',3);
-  g.selectAll('text').data(r=>keys.map(k=>({k:k[0],v:r[k[0]]}))).join('text').attr('class','dl').attr('x',d=>x1(d.k)+x1.bandwidth()/2).attr('y',d=>y(d.v)-5).attr('text-anchor','middle').text(d=>d.v);
+  g.selectAll('text').data(r=>keys.map(k=>({k:k[0],v:r[k[0]]}))).join('text').attr('class','dl').attr('x',d=>x1(d.k)+x1.bandwidth()/2).attr('y',d=>y(d.v)-5).attr('text-anchor','middle').text(d=>fmtNum(d.v,2));
   f.svg.append('line').attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',y(0)).attr('y2',y(0)).attr('stroke',css('--axis'));
   legend(c.querySelector('.legend'), keys.map(k=>[k[0],col(k[2]),k[1]]));
-  table(c.querySelector('.tbl'),['Trimestre','n','Semanas até pico (mediana)','Meia-vida (mediana)','% ainda em alta'], rows.map(r=>[r.q,r.n,r.ttp,r.half,Math.round(r.alive*100)+'%']));
+  table(c.querySelector('.tbl'),['Trimestre','n','Semanas até pico (mediana)','Meia-vida (mediana)','% ainda em alta'], rows.map(r=>[r.q,r.n,fmtNum(r.ttp),fmtNum(r.half),Math.round(r.alive*100)+'%']));
 }
 
 // ---- lifecycle spaghetti (share over time per model)
@@ -1555,13 +1641,27 @@ function daURL(){
     const s=new Set(); v.split('|').forEach(x=>{ const i=MX.dic[d].indexOf(x); if(i>=0) s.add(i); });
     if(s.size) FILTROS[d]=s; });
 }
+// O periodo aparece em dezenas de rotulos. Cada um trocado a mao e um que sera
+// esquecido na proxima secao, entao a palavra virou elemento marcado com
+// data-per e a troca acontece aqui, num lugar so.
+const rotPer = () => GRAN==='mes' ? 'Mês' : 'Semana';
+function aplicarPeriodo(){
+  const adj = GRAN==='mes' ? 'mensal' : 'semanal';
+  const sub = GRAN==='mes' ? 'mês' : 'semana';
+  const cap = s => s.charAt(0).toUpperCase()+s.slice(1);
+  document.querySelectorAll('[data-per]').forEach(el=>{
+    const t=el.dataset.per;
+    el.textContent = t==='adj'?adj : t==='Adj'?cap(adj) : t==='sub'?sub : cap(sub);
+  });
+}
 function aplicar(){
   construirEixo();
+  aplicarPeriodo();
   const info=recalcular();
   const fil=filtrando();
   document.getElementById('fclear').disabled=!fil;
   document.getElementById('fstat').innerHTML = fil
-    ? `<b>${info.modelos}</b> de ${info.totalModelos} modelos · <b>${info.pct.toFixed(1)}%</b> do volume do último ${GRAN==='semana'?'semana':'mês'}`
+    ? `<b>${info.modelos}</b> de ${info.totalModelos} modelos · <b>${info.pct.toFixed(1)}%</b> do volume ${GRAN==='semana'?'da última semana':'do último mês'}`
     : `${info.totalModelos} modelos, sem recorte`;
   const w=document.getElementById('fwarn');
   if(fil){
@@ -1599,7 +1699,7 @@ function trajectory(name){
     f.svg.append('g').attr('class','grid').selectAll('line').data(y.ticks(4)).join('line')
       .attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',y).attr('y2',y);
     f.svg.append('g').attr('class','ax').selectAll('text').data(y.ticks(4)).join('text')
-      .attr('x',f.m.l-8).attr('y',d=>y(d)+4).attr('text-anchor','end').text(yFmt);
+      .attr('x',f.m.l-8).attr('y',d=>y(d)+4).attr('text-anchor','end').text(d=>{const v=yFmt(d); return typeof v==='number'?fmtNum(v,2):br(String(v));});
     f.svg.append('g').attr('class','ax').selectAll('text').data(x.ticks(8)).join('text')
       .attr('x',x).attr('y',f.h-f.m.b+18).attr('text-anchor','middle').text(d=>d===0?'estreia':d+' sem');
 
@@ -1631,7 +1731,7 @@ function trajectory(name){
           tipRow('transparent','Estreia',m.first)+
           tipRow('transparent','Pico',fmtP(m.peak_share))+
           tipRow('transparent','Semanas até o pico',m.weeks_to_peak)+
-          tipRow('transparent','Meia-vida',m.half_life_weeks==null?'ainda não caiu 50%':m.half_life_weeks+' semanas')+
+          tipRow('transparent','Meia-vida',m.half_life_weeks==null?'ainda não caiu 50%':fmtNum(m.half_life_weeks)+' semanas')+
           tipRow('transparent','Ainda em uso',m.still_alive?'sim':'não'));
       })
       .on('mouseleave',()=>{paths.attr('opacity',.16).attr('stroke-width',1); t_.style.display='none';});
@@ -1692,7 +1792,7 @@ function trajectory(name){
   table(c.querySelector('.tbl'),
     ['Modelo','Origem','Pesos','Estreia','Trimestre','Pico share','Sem. até pico','Meia-vida','Ainda em uso'],
     L.map(m=>[m.model,m.origin,m.weights,m.first,m.cohort,fmtP(m.peak_share),m.weeks_to_peak,
-              m.half_life_weeks==null?'—':m.half_life_weeks+' sem',m.still_alive?'sim':'não']));
+              m.half_life_weeks==null?'—':fmtNum(m.half_life_weeks)+' sem',m.still_alive?'sim':'não']));
 }
 
 // ---- leaderboard
@@ -1735,7 +1835,8 @@ function tiles(){
   const cresc=(()=>{
     if(baseIdx<0 || !tot[baseIdx]) return null;
     const r=tot[last]/tot[baseIdx];
-    return isFinite(r)&&r>=1.05? `×${fmtVez(r)} desde ${fD(W[baseIdx])} (${fmtT(tot[baseIdx])})` : null;
+    // O multiplicador ja vai no selo ao lado do valor; repetir aqui era redundante.
+    return isFinite(r)&&r>=1.05? `desde ${fD(W[baseIdx])} (${fmtT(tot[baseIdx])})` : null;
   })();
 
   const janela=s=>(s||[]).slice(ini,last+1);
@@ -1745,15 +1846,31 @@ function tiles(){
   const hhiTxt=(D.hhi[baseIdx>=0?baseIdx:0]!=null)
     ? ` · HHI ${D.hhi[baseIdx>=0?baseIdx:0]}→${D.hhi[last]}` : '';
 
+  // O valor grande e sempre a ultima semana, que esta em toda janela. Trocar a
+  // janela mexia so na linha de apoio, entao batia o olho e parecia travado.
+  // A variacao DENTRO da janela e o que muda, e agora ela aparece ao lado.
+  const delta=(serie,unid)=>{
+    if(baseIdx<0) return '';
+    const a=serie[baseIdx], b=serie[last];
+    if(a==null||b==null||!isFinite(a)||!isFinite(b)) return '';
+    const d=b-a;
+    // Sem verde e vermelho aqui. Pintar "share de labs chineses subindo" de verde
+    // e emitir juizo de valor, e a pagina nao torce por lado nenhum. A seta diz a
+    // direcao, o leitor decide se aquilo e bom para ele.
+    if(unid==='pp' && Math.abs(d)<0.05) return '<span class="dl">estável na janela</span>';
+    if(unid==='x'){ const r=a>0? b/a : null; return (r&&isFinite(r)&&Math.abs(r-1)>=0.05)
+      ? `<span class="dl">${r>1?'↑':'↓'} ${r>1?'×':'÷'}${fmtVez(r>1?r:1/r)} na janela</span>` : ''; }
+    return `<span class="dl">${d>0?'↑':'↓'} ${br(Math.abs(d).toFixed(1))}pp na janela</span>`;
+  };
   const items=[
-    ['Tokens por semana', fmtT(tot[last]),
+    ['Tokens por semana', fmtT(tot[last])+delta(tot,'x'),
       cresc || (estreia>=0?`estreia em ${fD(W[estreia])}`:'sem volume'), 'up'],
-    ['Share de labs chineses', fmtP(cn[last]||0), cmp(cn,fmtP), 'up'],
-    ['Share open-weights', fmtP(ow[last]||0), cmp(ow,fmtP), 'up'],
-    ['Share da Anthropic', semAn?'—':fmtP(an[last]),
+    ['Share de labs chineses', fmtP(cn[last]||0)+delta(cn,'pp'), cmp(cn,fmtP), 'up'],
+    ['Share open-weights', fmtP(ow[last]||0)+delta(ow,'pp'), cmp(ow,fmtP), 'up'],
+    ['Share da Anthropic', semAn?'—':fmtP(an[last])+delta(an,'pp'),
       semAn? (fil?'sem volume no recorte':'sem volume')
            : `pico de ${fmtP(an[anPeak])} em ${fD(W[anPeak])}`, 'down'],
-    ['Top 5 modelos', fmtP(t5[last]),
+    ['Top 5 modelos', fmtP(t5[last])+delta(t5,'pp'),
       (baseIdx>=0? `do volume; era ${fmtP(t5[baseIdx])}`:'do volume')+hhiTxt, 'down'],
   ];
   document.getElementById('tiles').innerHTML=items.map(([k,v,d,cls])=>
@@ -1855,8 +1972,8 @@ function readings(){
   const caro=vd.slice().sort((a,b)=>b.razao-a.razao)[0];
   const barato=vd.slice().sort((a,b)=>a.razao-b.razao)[0];
   set('read-spend',`<h4>Leitura</h4>${nota}<p>A preço de tabela, o tráfego da última semana equivale a <b>${fmtU(g[last])}</b>, dentro de uma faixa de ${fmtU(lo[last])} a ${fmtU(hi[last])}. A largura da faixa não é imprecisão do cálculo: a fonte soma prompt e completion sem separar, e completion custa várias vezes mais.</p>`+
-    `<p>O preço efetivo do mercado está em <b>US$ ${d3.format('.2f')(pe[last]||0)}</b> por milhão de tokens`+
-    (pe[0]?`, contra US$ ${d3.format('.2f')(pe[0])} no início da série`:'')+`. Queda aqui pode significar duas coisas diferentes: os modelos ficaram mais baratos, ou a demanda migrou para os baratos. É a segunda que domina neste dataset.</p>`+
+    `<p>O preço efetivo do mercado está em <b>US$ ${br(d3.format('.2f')(pe[last]||0))}</b> por milhão de tokens`+
+    (pe[0]?`, contra US$ ${br(d3.format('.2f')(pe[0]))} no início da série`:'')+`. Queda aqui pode significar duas coisas diferentes: os modelos ficaram mais baratos, ou a demanda migrou para os baratos. É a segunda que domina neste dataset.</p>`+
     `<p><span class="flag">método</span>Gasto é estimativa a preço de tabela, com mistura de ${Math.round(bl.prompt*100)}% prompt. Não considera desconto, cache, batch nem contrato. Endpoint gratuito conta como zero.</p>`);
 
   set('read-vsmoney',`<h4>Leitura</h4>${nota}`+
@@ -1874,8 +1991,8 @@ function readings(){
   const sobreusado=comAA?qs.filter(r=>r.aa<medAA&&r.share>medSh).sort((a,b)=>b.share-a.share)[0]:null;
   set('read-quality',`<h4>Leitura</h4>${nota}`+
     (comAA?`<p>Dos ${totQ} modelos com volume nesta semana, <b>${comAA}</b> têm índice de inteligência publicado. A mediana do índice é <b>${medAA.toFixed(1).replace('.',',')}</b> e a de share é ${fmtP(medSh)}.</p>`:'<p>Nenhum modelo do recorte tem índice de inteligência publicado.</p>')+
-    (subusado?`<p>O caso mais claro de qualidade sem adoção é <span class="mono">${subusado.slug}</span>: índice ${subusado.aa}, share de apenas ${fmtP(subusado.share)}.</p>`:'')+
-    (sobreusado?`<p>E o inverso, adoção sem índice alto: <span class="mono">${sobreusado.slug}</span>, índice ${sobreusado.aa} e share de ${fmtP(sobreusado.share)}.</p>`:'')+
+    (subusado?`<p>O caso mais claro de qualidade sem adoção é <span class="mono">${subusado.slug}</span>: índice ${fmtNum(subusado.aa,1)}, share de apenas ${fmtP(subusado.share)}.</p>`:'')+
+    (sobreusado?`<p>E o inverso, adoção sem índice alto: <span class="mono">${sobreusado.slug}</span>, índice ${fmtNum(sobreusado.aa,1)} e share de ${fmtP(sobreusado.share)}.</p>`:'')+
     `<p>Os dois eixos medem coisas diferentes e nenhum dos dois está errado. Benchmark diz o que o modelo consegue fazer; share diz o que as pessoas escolheram pagar para rodar. Quando divergem, normalmente a diferença é preço, latência ou disponibilidade de endpoint, não capacidade.</p>`+
     `<p><span class="flag">fonte</span>Índice de inteligência produzido pela Artificial Analysis e distribuído pela API do OpenRouter.</p>`);
 
@@ -1917,8 +2034,8 @@ function readings(){
   const idade=d3.median(jan(D.age).filter(v=>v!=null));
   const ttp=d3.median(D.life.map(m=>m.weeks_to_peak));
   const half=d3.median(D.life.filter(m=>m.half_life_weeks!=null).map(m=>m.half_life_weeks));
-  set('read-cohort',`<h4>Leitura</h4><p>A cada 4 semanas, em mediana <b>${d3.median(ch)}</b> dos 10 modelos mais usados são novos no top 10. A idade mediana do top 10 gira em torno de <b>${idade} semanas</b> desde a estreia.</p>`+
-    `<p>Modelos que atingiram ≥ 2% do volume levam em mediana <b>${ttp} semanas</b> até o pico e perdem metade do share <b>${half} semanas</b> depois dele.</p>`+
+  set('read-cohort',`<h4>Leitura</h4><p>A cada 4 semanas, em mediana <b>${d3.median(ch)}</b> dos 10 modelos mais usados são novos no top 10. A idade mediana do top 10 gira em torno de <b>${fmtNum(idade)} semanas</b> desde a estreia.</p>`+
+    `<p>Modelos que atingiram ≥ 2% do volume levam em mediana <b>${fmtNum(ttp)} semanas</b> até o pico e perdem metade do share <b>${fmtNum(half)} semanas</b> depois dele.</p>`+
     `<p><span class="flag">tese</span>Nenhum modelo sustenta liderança por mais de dois trimestres neste dataset. O ativo durável é o método de avaliação e troca, não a escolha do modelo.</p>`+
     `<p class="mono" style="font-size:11.5px;color:var(--ink-3)">Esta seção descreve o histórico completo dos modelos e não responde aos filtros.</p>`);
 }
@@ -1938,7 +2055,7 @@ function spendChart(name){
     `Milhões de dólares por semana, a preço de tabela. A faixa vai de "tudo prompt" a "tudo completion"; a linha usa ${Math.round(bl.prompt*100)}% prompt.`;
   const f=frame(plot, 260, {t:14,r:16,b:30,l:52});
   const x=xScale(f,ii), y=d3.scaleLinear().domain([0,d3.max(ii,i=>hi[i])*1.06]).nice().range([f.h-f.m.b,f.m.t]);
-  const fmtU=n=>'US$ '+(n>=1000? d3.format('.1f')(n/1000)+'B' : d3.format('.0f')(n)+'M');
+  const fmtU=n=>'US$ '+br(n>=1000? d3.format('.1f')(n/1000)+'B' : d3.format('.0f')(n)+'M');
   axes(f,x,y,fmtU,4);
   f.svg.append('path').datum(ii).attr('fill',col('--s3')).attr('opacity',.16)
     .attr('d',d3.area().x(i=>x(W[i])).y0(i=>y(lo[i])).y1(i=>y(hi[i])).curve(d3.curveMonotoneX));
@@ -1954,9 +2071,9 @@ function spendChart(name){
     tipRow(col('--s3'),'Estimativa',fmtU(v[i]))+
     tipRow('transparent','Piso (tudo prompt)',fmtU(lo[i]))+
     tipRow('transparent','Teto (tudo completion)',fmtU(hi[i]))+
-    tipRow('transparent','Preço efetivo',`US$ ${d3.format('.2f')(D.preco_efetivo[i])} / 1M tokens`));
-  table(c.querySelector('.tbl'),['Semana','Estimativa','Piso','Teto','US$/1M tokens'],
-    ii.map(i=>[fPer(W[i]),fmtU(v[i]),fmtU(lo[i]),fmtU(hi[i]),d3.format('.2f')(D.preco_efetivo[i])]));
+    tipRow('transparent','Preço efetivo',`US$ ${br(d3.format('.2f')(D.preco_efetivo[i]))} / 1M tokens`));
+  table(c.querySelector('.tbl'),[rotPer(),'Estimativa','Piso','Teto','US$/1M tokens'],
+    ii.map(i=>[fPer(W[i]),fmtU(v[i]),fmtU(lo[i]),fmtU(hi[i]),br(d3.format('.2f')(D.preco_efetivo[i]))]));
 }
 
 // Volume x dinheiro: duas barras por lab, no MESMO eixo percentual. Nunca dois
@@ -1987,7 +2104,7 @@ function vsMoney(name){
     const razao=r.razao;
     f.svg.append('text').attr('class','dl').attr('x',f.w-f.m.r+8).attr('y',y(r.lab)+y.bandwidth()/2+4)
       .style('fill',razao>=1.3?css('--ink'):css('--ink-3')).style('font-weight',razao>=1.3?700:500)
-      .text(razao==null?'—':`${razao.toFixed(2).replace('.',',')}×`);
+      .text(razao==null?'—':`${br(razao.toFixed(2))}×`);
     f.svg.append('rect').attr('x',f.m.l).attr('y',y(r.lab)-3).attr('width',f.w-f.m.l-f.m.r)
       .attr('height',y.bandwidth()+6).attr('fill','transparent')
       .on('mousemove',ev=>{const [mx,my]=d3.pointer(ev); const sx=plot.getBoundingClientRect().width/f.w;
@@ -2001,7 +2118,7 @@ function vsMoney(name){
     .style('fill',css('--ink-3')).text('dinheiro/volume');
   legend(c.querySelector('.legend'),[['t',col('--s1'),'Share de tokens'],['g',col('--s2'),'Share do gasto estimado']]);
   table(c.querySelector('.tbl'),['Laboratório','Share de tokens','Share do gasto','Razão'],
-    rows.map(r=>[VENDOR_LABEL[r.lab]||capital(r.lab),fmtP(r.share_tokens),fmtP(r.share_gasto),r.razao==null?'—':r.razao.toFixed(2)]));
+    rows.map(r=>[VENDOR_LABEL[r.lab]||capital(r.lab),fmtP(r.share_tokens),fmtP(r.share_gasto),r.razao==null?'—':br(r.razao.toFixed(2))]));
 }
 
 // ===========================================================================
@@ -2039,7 +2156,7 @@ function quality(name){
   f.svg.append('g').attr('class','grid').selectAll('line').data(y.ticks(4)).join('line')
     .attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',y).attr('y2',y);
   f.svg.append('g').attr('class','ax').selectAll('text').data(y.ticks(4)).join('text')
-    .attr('x',f.m.l-8).attr('y',d=>y(d)+4).attr('text-anchor','end').text(d=>d+'%');
+    .attr('x',f.m.l-8).attr('y',d=>y(d)+4).attr('text-anchor','end').text(d=>fmtNum(d,2)+'%');
   // Escala log com `ticks(5)` devolve dezenas de marcas e os rotulos viram
   // "$0,03$0,04$0,05". Geramos a serie 1-2-5 por decada e descartamos tudo que
   // ficaria a menos de 46px do rotulo anterior.
@@ -2050,8 +2167,8 @@ function quality(name){
     xt=[]; let ultimo=-1e9;
     cand.forEach(v=>{ if(x(v)-ultimo>=46){ xt.push(v); ultimo=x(v); } });
   } else xt=x.ticks(6);
-  const rotX=d=>QX!=='preco' ? d
-    : '$'+(d>=1 ? d3.format('~f')(d) : d.toFixed(d<0.1?3:2).replace(/0+$/,'').replace(/\.$/,'').replace('.',','));
+  const rotX=d=>QX!=='preco' ? fmtNum(d,2)
+    : '$'+(d>=1 ? br(d3.format('~f')(d)) : d.toFixed(d<0.1?3:2).replace(/0+$/,'').replace(/\.$/,'').replace('.',','));
   f.svg.append('g').attr('class','ax').selectAll('text').data(xt).join('text')
     .attr('x',x).attr('y',f.h-f.m.b+18).attr('text-anchor','middle').text(rotX);
   // marca de grade vertical ajuda a ler a escala log, que nao e intuitiva
@@ -2088,7 +2205,7 @@ function quality(name){
         tipRow(col(oslot(p)),'Origem',p.origin)+
         tipRow('transparent','Share',fmtP(p.share))+
         tipRow('transparent','Tokens/semana',fmtT(p.T))+
-        (p.aa!=null?tipRow('transparent','Inteligência',p.aa):'')+
+        (p.aa!=null?tipRow('transparent','Inteligência',fmtNum(p.aa,2)):'')+
         (p.elo!=null?tipRow('transparent','Elo (arena de modelos)',Math.round(p.elo)):'')+
         (p.preco!=null?tipRow('transparent','Preço /1M',fmtUSD(p.preco)):'')+
         (p.ctx?tipRow('transparent','Contexto',fmtCtx(p.ctx)):'')+
@@ -2174,7 +2291,7 @@ function varia(name){
     .attr('stroke',css('--axis'));
   f.svg.append('g').attr('class','ax').selectAll('text').data(x.ticks(5)).join('text')
     .attr('x',x).attr('y',f.h-f.m.b+16).attr('text-anchor','middle')
-    .text(d=>(d>0?'+':'')+d3.format('.1f')(d)+'pp');
+    .text(d=>(d>0?'+':'')+br(d3.format('.1f')(d))+'pp');
   rows.forEach(r=>{
     const sobe=r.delta>=0;
     f.svg.append('rect').attr('x',sobe?zero:x(r.delta)).attr('y',y(r.s))
@@ -2247,7 +2364,7 @@ function comparador(){
     }
     return `<div class="cmp-row"><span class="lbl">${rot}</span>${marca(a.t,ma)}${marca(b.t,mb)}</div>`;
   };
-  const nn=v=>v==null?{t:'—',n:null}:{t:v,n:v};
+  const nn=v=>v==null?{t:'—',n:null}:{t:fmtNum(v,2),n:v};
   document.getElementById('cmp-grid').innerHTML=
     `<div class="cmp-row"><span class="lbl">Modelo</span><b class="mono">${A.slug}</b><b class="mono">${B.slug}</b></div>`+
     linha('Share atual',{t:fmtP(A.share),n:A.share},{t:fmtP(B.share),n:B.share},'maior')+
@@ -2355,7 +2472,7 @@ function mapa(name){
     .on('mouseout',function(){ d3.select(this).attr('opacity',.48); })
     .on('mousemove',(ev,o)=>{const [mx,my]=d3.pointer(ev); const sx=plot.getBoundingClientRect().width/f.w;
       const comp = modo==='indice'
-        ? tipRow('transparent','Melhor Índice de Inteligência', o.aa)
+        ? tipRow('transparent','Melhor Índice de Inteligência', fmtNum(o.aa,2))
         : ['ctx','multi','rac','ampl','cad'].map(k=>tipRow('transparent',ROT_PESO[k],pc(o.pct[k]))).join('');
       showTip(t_,plot,mx*sx,my*sx,
         `<div class="t">${VENDOR_LABEL[o.lab]||capital(o.lab)}</div>`+
@@ -2508,14 +2625,14 @@ function renderAll(){
       return `<div class="r" style="opacity:.7;margin-top:5px"><span>quais são</span><b></b></div>`+
         m.map((r,k)=>tipRow('transparent',`${k+1}. ${r.s}`,fmtP(r.share))).join('');
     },
-    colsTab:{cols:['Período','Share dos 5 maiores','1º','2º','3º','4º','5º'],
+    colsTab:{cols:[rotPer(),'Share dos 5 maiores','1º','2º','3º','4º','5º'],
       linha:(i)=>{ const m=(D.top5_modelos&&D.top5_modelos[i])||[];
         return [fPer(W[i]),fmtP(D.top5[i]),...[0,1,2,3,4].map(k=>m[k]?`${m[k].s} (${fmtP(m[k].share)})`:'—')]; }}});
   lineChart('free', D.free_share, {fmt:fmtP, color:'--s3', label:'Share :free'});
   emphasisLines('anshare', D.comp_share, 'anthropic', {...VENDOR_SLOT,'x-ai':'--s0'}, VENDOR_LABEL);
   stackedAbs('anfam', D.an_fam_abs, FAM_SLOT);
   lineChart('churn', D.churn, {fmt:v=>v, color:'--s2', label:'Novos no top 10 (vs. 4 sem antes)', integer:true, ymax:10, area:false});
-  lineChart('age', D.age, {fmt:v=>v+' sem', color:'--s4', label:'Idade mediana (semanas)', area:false});
+  lineChart('age', D.age, {fmt:v=>fmtNum(v)+' sem', color:'--s4', label:'Idade mediana (semanas)', area:false});
   trajectory('life');
   spendChart('spend'); vsMoney('vsmoney'); quality('quality');
   mudou('mudou'); varia('varia'); mapa('mapa'); comparador();

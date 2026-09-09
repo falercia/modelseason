@@ -227,6 +227,67 @@ const perto = (a, b, tol) => Math.abs(a - b) <= tol;
   checa(!/0 padr[õo]/.test(txtSinais) && !/NaN|undefined/.test(txtSinais), 'seção de sinais sem texto degenerado');
   await p.click('.chip[data-range="all"]'); await p.waitForTimeout(400);
 
+  // ---------- 6f. formatação brasileira ----------
+  // Trava estrutural: qualquer número com ponto decimal visível é erro de idioma.
+  // Foi assim que apareceram "0.00T" no eixo e "8.79 semanas" na leitura.
+  const pontos = await p.evaluate(() => {
+    const achados = [];
+    document.querySelectorAll('body *').forEach(el => {
+      if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') return;
+      const t = [...el.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim();
+      if (!t) return;
+      // ponto entre dígitos, ignorando slug de modelo, versão, URL e data
+      // ignora slug de modelo (claude-3.5-sonnet), versão de licença e caminho de API
+      const limpo = t.replace(/[\w.-]*\d+\.\d+[\w.-]*[a-zA-Z][\w.-]*/g, '')  // token com letra colada
+                     .replace(/CC BY \d+\.\d+/g, '')
+                     .replace(/\S*\/\S*/g, '');
+      if (/(?:^|[^\w.])\d+\.\d/.test(limpo)) achados.push(t.slice(0, 70));
+    });
+    return achados;
+  });
+  checa(pontos.length === 0, 'nenhum número com ponto decimal na tela', pontos.slice(0, 5).join(' | '));
+
+  // ---------- 6g. granularidade mensal não deixa rótulo dizendo "semanal" ----------
+  await p.click('.chip[data-gran="mes"]'); await p.waitForTimeout(700);
+  const vazamento = await p.evaluate(() => {
+    const alvos = [...document.querySelectorAll('.card-h p, .card-h h3')]
+      .filter(e => !/não responde à janela/i.test(e.closest('.card')?.textContent || ''));
+    return alvos.map(e => e.textContent.trim()).filter(t => /semanal/i.test(t));
+  });
+  checa(vazamento.length === 0, 'modo mensal não rotula gráfico como semanal', vazamento.slice(0, 4).join(' | '));
+  const cabMes = await p.evaluate(() => [...document.querySelectorAll('.tbl th:first-child')]
+    .map(e => e.textContent.trim()).filter(t => /^(Semana|M[êe]s|Per[íi]odo)$/i.test(t)));
+  const errado = cabMes.filter(t => t !== 'Mês');
+  checa(cabMes.length > 0 && errado.length === 0, 'tabela de série temporal usa "Mês" no modo mensal', errado.join(','));
+  await p.click('.chip[data-gran="semana"]'); await p.waitForTimeout(700);
+
+  // ---------- 6h. tiles reagem à janela ----------
+  const lerTiles = async (r) => {
+    await p.click(`.chip[data-range="${r}"]`); await p.waitForTimeout(450);
+    return p.evaluate(() => [...document.querySelectorAll('#tiles .dl')].map(e => e.textContent.trim()));
+  };
+  const tAll = await lerTiles('all'), t13 = await lerTiles('13'), t4 = await lerTiles('4');
+  checa(tAll.length >= 4, 'tiles mostram variação da janela', `${tAll.length} selos`);
+  checa(JSON.stringify(tAll) !== JSON.stringify(t13) && JSON.stringify(t13) !== JSON.stringify(t4),
+    'a variação do tile muda com a janela', `${tAll[1]} / ${t13[1]} / ${t4[1]}`);
+  await p.click('.chip[data-range="all"]'); await p.waitForTimeout(400);
+
+  // ---------- 6i. painel de metodologia ----------
+  const pan = await p.evaluate(async () => {
+    const b = document.getElementById('btn-met'), pn = document.getElementById('painel-met');
+    const antes = pn.hidden;
+    b.click(); await new Promise(r => setTimeout(r, 350));
+    const aberto = !pn.hidden, n = document.querySelectorAll('#painel-corpo details').length;
+    const naSecao = document.querySelectorAll('#metodologia details').length;
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    await new Promise(r => setTimeout(r, 250));
+    return { antes, aberto, n, naSecao, fechou: pn.hidden, expandido: b.getAttribute('aria-expanded') };
+  });
+  checa(pan.antes === true, 'painel começa fechado');
+  checa(pan.aberto === true, 'botão abre o painel de metodologia');
+  checa(pan.n === pan.naSecao && pan.n >= 12, 'painel espelha todos os indicadores da seção', `${pan.n} vs ${pan.naSecao}`);
+  checa(pan.fechou === true && pan.expandido === 'false', 'Escape fecha o painel e devolve o estado');
+
   // ---------- 7. sem transbordo horizontal em três larguras ----------
   for (const w of [390, 768, 1440]) {
     const t = await browser.newPage({ viewport: { width: w, height: 900 } });
