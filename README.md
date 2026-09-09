@@ -38,9 +38,15 @@ Esta página existe para sustentar esse argumento com série histórica, não co
 
 **Comparador.** Dois modelos lado a lado: adoção, preço, contexto, índice de inteligência, origem, pesos e a curva de share dos dois.
 
+**O mapa da temporada.** Cada laboratório posicionado por tração, no eixo vertical, contra capacidade, no horizontal, com o rastro de onde estava doze semanas antes. Quatro quadrantes: Líderes, Desafiantes, Promessas e Nichados. Os dois eixos são compostos, calculados a partir do mesmo pipeline que gera o resto da página, e os pesos de cada componente ficam abertos para o leitor ajustar.
+
+**Como ler cada indicador.** Dezesseis indicadores documentados, cada um respondendo três perguntas: o que é, como é calculado, e o que **não** conclui. A terceira é a que mais importa numa decisão.
+
 Cada seção tem um painel de leitura ao lado, com a interpretação e os caveats. Todo gráfico abre em tabela, e a legenda é clicável: dá para ligar e desligar séries para comparar só o que interessa.
 
 **Filtros.** Uma barra no topo recorta o mercado inteiro por cobrança, licença dos pesos, país-sede do laboratório, faixa de preço, janela de contexto, modalidade e suporte a raciocínio. Todos os gráficos respondem ao mesmo recorte, e o filtro vai para a URL: um link já filtrado abre no mesmo estado para quem receber.
+
+**Janela e granularidade.** Tudo, ano corrente, 52, 26, 13 ou 4 semanas, agrupado por semana ou por mês. Ao agrupar por mês, valores absolutos viram média semanal do mês, para que um mês de cinco semanas não pareça 25% maior que um de quatro.
 
 Com filtro ativo, os percentuais passam a ser calculados dentro do recorte, e a página diz quanto do volume ficou de fora.
 

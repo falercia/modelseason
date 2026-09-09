@@ -8,7 +8,9 @@
   "scripts": {
     "serve": "python3 -m http.server 8000 --directory public",
     "test": "node tests/e2e.js http://localhost:8000",
-    "test:ci": "node tests/e2e.js http://localhost:8099"
+    "test:ci": "node tests/e2e.js http://localhost:8099",
+    "fuzz": "node tests/fuzz.js http://localhost:8000",
+    "fuzz:ci": "node tests/fuzz.js http://localhost:8099"
   },
   "devDependencies": {
     "playwright": "1.63.0"

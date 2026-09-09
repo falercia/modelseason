@@ -114,6 +114,62 @@ const perto = (a, b, tol) => Math.abs(a - b) <= tol;
   checa(await p2.evaluate(() => window.MS.filtrando()), 'filtro da URL é aplicado na carga');
   await p2.close();
 
+  // ---------- 6b. granularidade mensal preserva os números ----------
+  // Absoluto vira média semanal dentro do mês, senão um mês de 5 semanas parece
+  // 25% maior sem nada ter acontecido. Share é razão de somas e não pode mudar.
+  await p.evaluate(() => { Object.keys(window.MS.FILTROS).forEach(k => delete window.MS.FILTROS[k]); window.MS.aplicar(); });
+  await p.waitForTimeout(400);
+  const semanal = await p.evaluate(() => ({ w: window.MS.D.weeks.slice(), tot: window.MS.D.weekly_total_T.slice(),
+                                            china: window.MS.D.origin_share['China'].slice() }));
+  await p.click('.chip[data-gran="mes"]'); await p.waitForTimeout(900);
+  const mensal = await p.evaluate(() => ({ m: window.MS.D.weeks.slice(), tot: window.MS.D.weekly_total_T.slice(),
+                                           china: window.MS.D.origin_share['China'].slice(),
+                                           gran: window.MS.gran }));
+  checa(mensal.gran === 'mes' && mensal.m.length < semanal.w.length, 'granularidade mensal reduz o número de pontos');
+  let piorAbs = 0, piorSh = 0;
+  mensal.m.forEach((mes, i) => {
+    const pref = mes.slice(0, 7);
+    let soma = 0, nsem = 0, num = 0, den = 0;
+    semanal.w.forEach((s, j) => {
+      if (s.slice(0, 7) !== pref) return;
+      soma += semanal.tot[j]; nsem++;
+      num += semanal.china[j] * semanal.tot[j]; den += semanal.tot[j];
+    });
+    if (!nsem) return;
+    piorAbs = Math.max(piorAbs, Math.abs(mensal.tot[i] * nsem - soma) / Math.max(soma, 1e-9) * 100);
+    piorSh = Math.max(piorSh, Math.abs((den ? num / den : 0) - mensal.china[i]));
+  });
+  checa(piorAbs < 0.1, 'média mensal × nº de semanas reconstitui a soma semanal', `erro ${piorAbs.toFixed(3)}%`);
+  checa(piorSh < 0.05, 'share mensal é a média ponderada das semanas', `desvio ${piorSh.toFixed(3)}pp`);
+  for (const r of ['52', '26', '13', '4', 'ytd', 'all']) {
+    await p.click(`.chip[data-range="${r}"]`); await p.waitForTimeout(200);
+  }
+  checa(erros.length === 0, 'trocar janela e granularidade não gera erro', erros.join(' | '));
+  await p.click('.chip[data-gran="semana"]'); await p.waitForTimeout(600);
+
+  // ---------- 6c. o mapa da temporada ----------
+  const mapa = await p.evaluate(() => {
+    const M = window.MS.D.mapa;
+    if (!M) return null;
+    const fora = M.labs.filter(o => o.y < 0 || o.y > 100 || (o.xRec != null && (o.xRec < 0 || o.xRec > 100)));
+    return { labs: M.labs.length, comIndice: M.com_indice, fora: fora.length,
+             semX: M.labs.filter(o => o.xRec == null).length };
+  });
+  checa(!!mapa && mapa.labs > 0, 'mapa tem laboratórios');
+  checa(mapa && mapa.fora === 0, 'percentis do mapa ficam entre 0 e 100', `${mapa && mapa.fora} fora da faixa`);
+  checa(mapa && mapa.semX === 0, 'todo laboratório tem posição no modo Recursos', `${mapa && mapa.semX} sem eixo x`);
+  await p.click('.views button[data-mapa="indice"]'); await p.waitForTimeout(600);
+  checa(erros.length === 0, 'alternar o modo do mapa não gera erro', erros.join(' | '));
+  await p.click('.views button[data-mapa="recursos"]'); await p.waitForTimeout(400);
+
+  // ---------- 6d. metodologia ----------
+  const met = await p.evaluate(() => ({
+    n: document.querySelectorAll('#metodologia details').length,
+    semNao: [...document.querySelectorAll('#metodologia details')].filter(d => !d.querySelector('.nao')).length,
+  }));
+  checa(met.n >= 12, 'seção de metodologia documenta os indicadores', `${met.n} blocos`);
+  checa(met.semNao === 0, 'todo indicador diz o que NÃO conclui', `${met.semNao} sem esse bloco`);
+
   // ---------- 7. sem transbordo horizontal em três larguras ----------
   for (const w of [390, 768, 1440]) {
     const t = await browser.newPage({ viewport: { width: w, height: 900 } });

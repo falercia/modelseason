@@ -83,3 +83,9 @@ jobs:
             exit 1
           fi
           echo "$saida"
+          if ! fz=$(npm run fuzz:ci 2>&1); then
+            echo "$fz"
+            echo "::error::varredura de recortes falhou: $(echo "$fz" | grep -E '^  X' | head -4 | tr '\n' ' § ')"
+            exit 1
+          fi
+          echo "$fz"

@@ -32,14 +32,14 @@
 :root{
   color-scheme:light;
   --ground:#f4f5f7; --surface:#ffffff; --surface-2:#eceef2;
-  --ink:#121417; --ink-2:#4b5160; --ink-3:#7d8394; --grid:#e3e5ea; --axis:#c5c9d2; --ring:rgba(18,20,23,.10);
-  --accent:#199e70;
+  --ink:#121417; --ink-2:#4b5160; --ink-3:#666d7d; --grid:#e3e5ea; --axis:#c5c9d2; --ring:rgba(18,20,23,.10);
+  --accent:#128054;
   /* 4 categoricas, validadas em --pairs all nos dois temas. A quinta cor sempre
      viola o piso de visao normal ou o de daltonismo, porque o tema escuro exige
      luminancia numa faixa estreita. Alem de 4 series: dobra em Outros,
      small multiples, ou enfase em tinta. */
   --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#ad51a7; --s0:#9aa0ad;
-  --good:#006300; --bad:#d03b3b;
+  --good:#006300; --bad:#c23232;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -142,6 +142,10 @@ section{margin-bottom:56px}
 .note{font-size:12.5px;color:var(--ink-3);margin:14px 0 0;max-width:80ch}
 footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--grid);font-size:12.5px;color:var(--ink-3);max-width:90ch}
 footer p{margin:0 0 6px}
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.pular{position:absolute;left:-9999px;top:8px;z-index:99;background:var(--surface);color:var(--ink);
+  border:1px solid var(--axis);border-radius:8px;padding:8px 14px;font:600 13px "DM Sans",sans-serif;text-decoration:none}
+.pular:focus{left:12px}
 .ctrls{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .fbar{background:var(--surface);border:1px solid var(--grid);border-radius:12px;padding:12px 14px;margin:0 0 18px}
 .fbar-h{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
@@ -160,6 +164,32 @@ footer p{margin:0 0 6px}
 .fbar .clear[disabled]{opacity:.4;cursor:default}
 .fbar .toggle{border:0;background:transparent;color:var(--ink-3);font:500 12px "DM Sans",sans-serif;cursor:pointer;padding:3px 6px}
 .fbar[data-open="false"] .fbar-body{display:none}
+.pesos{margin-top:10px;border-top:1px solid var(--grid);padding-top:8px}
+.pesos summary{cursor:pointer;font-size:12.5px;color:var(--ink-3);list-style:none}
+.pesos summary::-webkit-details-marker{display:none}
+.pesos summary::before{content:'▸ ';font-size:10px}
+.pesos[open] summary::before{content:'▾ '}
+.pesos summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.pbody{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:6px 18px;margin-top:10px;font-size:12.5px}
+.pbody .g{grid-column:1/-1;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-top:6px}
+.pbody label{display:flex;align-items:center;gap:8px;color:var(--ink-2)}
+.pbody label span{flex:1;min-width:0}
+.pbody input{width:84px}
+.pbody b{width:34px;text-align:right;font-variant-numeric:tabular-nums}
+.pbody .reset{grid-column:1/-1;justify-self:start;margin-top:8px;border:1px solid var(--axis);background:transparent;color:var(--ink-2);border-radius:6px;padding:3px 10px;font:500 12px "DM Sans",sans-serif;cursor:pointer}
+.met{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;align-items:start}
+.met details{border:1px solid var(--grid);border-radius:10px;background:var(--surface);padding:0}
+.met summary{cursor:pointer;padding:12px 14px;font-weight:700;font-size:14px;gap:8px;list-style:none;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.met summary::-webkit-details-marker{display:none}
+.met summary::after{content:'+';color:var(--ink-3);font-weight:400;font-size:16px}
+.met details[open] summary::after{content:'−'}
+.met summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:10px}
+.met .body{padding:0 14px 14px;font-size:13px;color:var(--ink-2);line-height:1.62}
+.met .body p{margin:0 0 8px}
+.met .body p:last-child{margin:0}
+.met .k{display:inline-block;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-right:6px}
+.met .nao{border-left:2px solid var(--bad);padding-left:9px}
+.met .fo{border-left:2px solid var(--accent);padding-left:9px}
 .cmp-sel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0 14px}
 .cmp-sel label{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
 .cmp-sel select{width:100%;border:1px solid var(--axis);background:var(--surface);color:var(--ink);border-radius:8px;padding:7px 9px;font:500 13px "DM Mono",monospace}
@@ -221,6 +251,7 @@ footer p{margin:0 0 6px}
 </style>
 </head>
 <body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <div class="wrap">
 <header>
   <div>
@@ -239,9 +270,15 @@ footer p{margin:0 0 6px}
 <div class="filters" role="group" aria-label="Janela de tempo">
   <span class="lbl">Janela</span>
   <button class="chip" data-range="all" aria-pressed="true">Tudo</button>
-  <button class="chip" data-range="52" aria-pressed="false">Últimas 52 semanas</button>
-    <button class="chip" data-range="26" aria-pressed="false">Últimas 26 semanas</button>
-  <button class="chip" data-range="13" aria-pressed="false">Últimas 13 semanas</button>
+  <button class="chip" data-range="52" aria-pressed="false">52 semanas</button>
+  <button class="chip" data-range="26" aria-pressed="false">26 semanas</button>
+  <button class="chip" data-range="13" aria-pressed="false">13 semanas</button>
+  <button class="chip" data-range="4" aria-pressed="false">4 semanas</button>
+  <button class="chip" data-range="ytd" aria-pressed="false">Ano corrente</button>
+  <span class="lbl" style="margin-left:10px">Agrupar por</span>
+  <button class="chip" data-gran="semana" aria-pressed="true">Semana</button>
+  <button class="chip" data-gran="mes" aria-pressed="false">Mês</button>
+  <span class="lbl" id="gran-nota" hidden>valores absolutos são média semanal do mês</span>
 </div>
 
 <div class="fbar" id="fbar" data-open="false">
@@ -256,20 +293,21 @@ footer p{margin:0 0 6px}
   <div class="warn" id="fwarn" hidden></div>
 </div>
 <div class="tiles" id="tiles"></div>
+<main id="conteudo">
 
 <!-- 1. MERCADO -->
 <section>
   <div class="sec-head"><span class="n">01</span><h2>Tamanho e concentração do mercado</h2></div>
   <div class="row">
     <div class="card" data-chart="volume">
-      <div class="card-h"><div><h3>Tokens por semana</h3><p>Trilhões de tokens processados via OpenRouter, top 50 + resto</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Tokens por semana</h3><p>Trilhões de tokens processados via OpenRouter, top 50 + resto</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-volume"></aside>
   </div>
   <div class="row">
     <div class="card" data-chart="conc">
-      <div class="card-h"><div><h3>Concentração: share dos 5 maiores modelos</h3><p>% do volume semanal capturado pelos 5 modelos mais usados</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Concentração: share dos 5 maiores modelos</h3><p>% do volume semanal capturado pelos 5 modelos mais usados</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-conc"></aside>
@@ -281,7 +319,7 @@ footer p{margin:0 0 6px}
   <div class="sec-head"><span class="n">02</span><h2>Share por laboratório</h2></div>
   <div class="row">
     <div class="card" data-chart="vendor">
-      <div class="card-h"><div><h3>Fatia semanal de tokens por lab</h3><p>Os quatro maiores labs por volume acumulado; todos os demais somados em Outros</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Fatia semanal de tokens por lab</h3><p>Os quatro maiores labs por volume acumulado; todos os demais somados em Outros</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-vendor"></aside>
@@ -300,17 +338,17 @@ footer p{margin:0 0 6px}
   <div class="sec-head"><span class="n">03</span><h2>Open-weights vs. proprietário, China vs. EUA</h2></div>
   <div class="row two">
     <div class="card" data-chart="origin">
-      <div class="card-h"><div><h3>Origem do lab</h3><p>% do volume semanal por país-sede do laboratório</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Origem do lab</h3><p>% do volume semanal por país-sede do laboratório</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
     <div class="card" data-chart="weights">
-      <div class="card-h"><div><h3>Licença dos pesos</h3><p>% do volume semanal em modelos de pesos abertos vs. fechados</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Licença dos pesos</h3><p>% do volume semanal em modelos de pesos abertos vs. fechados</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
   </div>
   <div class="row">
     <div class="card" data-chart="free">
-      <div class="card-h"><div><h3>Tráfego em variantes :free</h3><p>% do volume semanal em endpoints gratuitos</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Tráfego em variantes :free</h3><p>% do volume semanal em endpoints gratuitos</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-weights"></aside>
@@ -322,18 +360,18 @@ footer p{margin:0 0 6px}
   <div class="sec-head"><span class="n">04</span><h2>Posição da Anthropic</h2></div>
   <div class="row">
     <div class="card" data-chart="anshare">
-      <div class="card-h"><div><h3>Share da Anthropic vs. concorrentes</h3><p>% do volume semanal; Anthropic em destaque</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Share da Anthropic vs. concorrentes</h3><p>% do volume semanal; Anthropic em destaque</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-anshare"></aside>
   </div>
   <div class="row two">
     <div class="card" data-chart="anfam">
-      <div class="card-h"><div><h3>Volume Anthropic por família</h3><p>Trilhões de tokens por semana: Haiku, Sonnet, Opus, Fable</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Volume Anthropic por família</h3><p>Trilhões de tokens por semana: Haiku, Sonnet, Opus, Fable</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
     <div class="card" data-chart="antenure">
-      <div class="card-h"><div><h3>Semanas no top 10 por modelo Claude</h3><p>Permanência entre os 10 mais usados, por ordem de lançamento</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Semanas no top 10 por modelo Claude</h3><p>Permanência entre os 10 mais usados, por ordem de lançamento</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="plot"></div><div class="tbl"></div>
     </div>
   </div>
@@ -345,17 +383,17 @@ footer p{margin:0 0 6px}
   <div class="sec-head"><span class="n">05</span><h2>Ciclo de vida dos modelos</h2></div>
   <div class="row two">
     <div class="card" data-chart="churn">
-      <div class="card-h"><div><h3>Rotatividade do top 10</h3><p>Quantos dos 10 mais usados não estavam no top 10 quatro semanas antes</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Rotatividade do top 10</h3><p>Quantos dos 10 mais usados não estavam no top 10 quatro semanas antes</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="plot"></div><div class="tbl"></div>
     </div>
     <div class="card" data-chart="age">
-      <div class="card-h"><div><h3>Idade mediana do top 10</h3><p>Semanas desde a primeira aparição no ranking (primeiras 12 semanas censuradas pelo início do dataset)</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Idade mediana do top 10</h3><p>Semanas desde a primeira aparição no ranking (primeiras 12 semanas censuradas pelo início do dataset)</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="plot"></div><div class="tbl"></div>
     </div>
   </div>
   <div class="row">
     <div class="card" data-chart="cohort">
-      <div class="card-h"><div><h3>Tempo até o pico e meia-vida, por trimestre de lançamento</h3><p>Mediana em semanas, modelos que atingiram ≥ 2% do volume semanal (n por coorte no rótulo)</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Tempo até o pico e meia-vida, por trimestre de lançamento</h3><p>Mediana em semanas, modelos que atingiram ≥ 2% do volume semanal (n por coorte no rótulo)</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-cohort"></aside>
@@ -368,7 +406,7 @@ footer p{margin:0 0 6px}
             <button data-view="forma" aria-pressed="true">Todos</button>
             <button data-view="coorte" aria-pressed="false">Por trimestre</button>
           </div>
-          <button class="tbtn" aria-pressed="false">Tabela</button>
+          <button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button>
         </div>
       </div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
@@ -380,14 +418,14 @@ footer p{margin:0 0 6px}
   <div class="sec-head"><span class="n">06</span><h2>Para onde vai o dinheiro</h2></div>
   <div class="row">
     <div class="card" data-chart="spend">
-      <div class="card-h"><div><h3>Gasto semanal estimado</h3><p id="spend-sub"></p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Gasto semanal estimado</h3><p id="spend-sub"></p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-spend"></aside>
   </div>
   <div class="row">
     <div class="card" data-chart="vsmoney">
-      <div class="card-h"><div><h3>Volume contra dinheiro, por laboratório</h3><p>Share de tokens e share do gasto estimado na última semana completa. Barras iguais significam que o lab cobra o preço médio do mercado.</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Volume contra dinheiro, por laboratório</h3><p>Share de tokens e share do gasto estimado na última semana completa. Barras iguais significam que o lab cobra o preço médio do mercado.</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
     </div>
     <aside class="read" id="read-vsmoney"></aside>
@@ -404,7 +442,7 @@ footer p{margin:0 0 6px}
             <button data-qx="aa" aria-pressed="true">Inteligência</button>
             <button data-qx="preco" aria-pressed="false">Preço</button>
           </div>
-          <button class="tbtn" aria-pressed="false">Tabela</button>
+          <button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button>
         </div>
       </div>
       <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
@@ -421,7 +459,7 @@ footer p{margin:0 0 6px}
       <div class="plot"></div>
     </div>
     <div class="card" data-chart="varia">
-      <div class="card-h"><div><h3>Maiores variações de share</h3><p>Diferença em pontos percentuais nas últimas 4 semanas</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="card-h"><div><h3>Maiores variações de share</h3><p>Diferença em pontos percentuais nas últimas 4 semanas</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="plot"></div><div class="tbl"></div>
     </div>
   </div>
@@ -438,6 +476,51 @@ footer p{margin:0 0 6px}
   </div>
 </section>
 
+<section id="mapa">
+  <div class="sec-head"><span class="n">10</span><h2>O mapa da temporada</h2></div>
+  <div class="row">
+    <div class="card" data-chart="mapa">
+      <div class="card-h"><div><h3>Tração contra capacidade, por laboratório</h3><p id="mapa-sub"></p></div>
+        <div class="ctrls">
+          <div class="views" role="group" aria-label="Eixo de capacidade">
+            <button data-mapa="recursos" aria-pressed="true">Recursos</button>
+            <button data-mapa="indice" aria-pressed="false">Índice</button>
+          </div>
+          <button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button>
+        </div>
+      </div>
+      <div class="legend"></div><div class="plot"></div>
+      <details class="pesos"><summary>Ajustar os pesos dos eixos</summary><div class="pbody" id="pesos-body"></div></details>
+      <div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-mapa"></aside>
+  </div>
+</section>
+
+<section id="metodologia">
+  <div class="sec-head"><span class="n">11</span><h2>Como ler cada indicador</h2></div>
+  <p style="max-width:78ch;color:var(--ink-2);font-size:14px;margin:0 0 16px">Cada indicador abaixo responde três perguntas: o que é, como é calculado, e o que <b>não</b> conclui. A terceira é a que mais importa numa decisão, e a que quase nenhum painel publica.</p>
+  <div class="met">
+    <details><summary>Tokens por semana</summary><div class="body"><p><span class="k">o que é</span>Volume total processado via OpenRouter na semana, somando prompt e completion de todos os modelos do top 50 diário mais a linha agregada do resto.</p><p><span class="k">como é calculado</span>Soma dos totais diários da semana ISO, de segunda a domingo. Só semanas completas entram. Ao agrupar por mês, o valor exibido é a <b>média semanal do mês</b>, para que um mês de cinco semanas não pareça 25% maior que um de quatro.</p><p class="nao"><span class="k">o que não conclui</span>Não é o consumo mundial de IA. É o tráfego de um roteador, com o viés descrito no rodapé. Também não é comparável entre 2025 e 2026 sem normalizar: o denominador cresceu 231 vezes.</p></div></details>
+    <details><summary>Share de tokens</summary><div class="body"><p><span class="k">o que é</span>Fatia do volume semanal que cada modelo, laboratório ou categoria capturou.</p><p><span class="k">como é calculado</span>Tokens da entidade dividido pelo total da semana, incluindo a linha <span class='mono'>other</span> no denominador. Com filtro ativo, o denominador passa a ser o total do recorte.</p><p class="nao"><span class="k">o que não conclui</span>Não é market share de receita nem de usuários. Um modelo gratuito com muito tráfego tem share alto e receita zero. Compare sempre com o share do gasto.</p></div></details>
+    <details><summary>Share dos 5 maiores e HHI</summary><div class="body"><p><span class="k">o que é</span>Duas medidas de concentração: quanto os cinco maiores modelos capturam, e o índice Herfindahl-Hirschman sobre todos os modelos.</p><p><span class="k">como é calculado</span>O top 5 exclui a linha <span class='mono'>other</span> do ranking mas a mantém no denominador: a pergunta é quanto do mercado os cinco maiores capturam. O HHI soma o quadrado das participações percentuais, normalizando apenas sobre modelos nomeados, porque a linha agregada não tem participação definida. Abaixo de 1500 é considerado não concentrado na escala antitruste convencional.</p><p class="nao"><span class="k">o que não conclui</span>Concentração baixa não significa que trocar de modelo seja barato. Mede substitutos disponíveis, não custo de migração.</p></div></details>
+    <details><summary>Origem do laboratório</summary><div class="body"><p><span class="k">o que é</span>País-sede da organização que treinou o modelo.</p><p><span class="k">como é calculado</span>Atribuída por vendor, a partir do prefixo do slug. Modelos <span class='mono'>stealth/*</span> e <span class='mono'>openrouter/*</span> são testes anônimos e ficam como não identificados.</p><p class="nao"><span class="k">o que não conclui</span>Não diz onde a inferência roda, nem onde os dados trafegam. Um modelo chinês servido por provedor americano continua contando como chinês aqui.</p></div></details>
+    <details><summary>Licença dos pesos</summary><div class="body"><p><span class="k">o que é</span>Se os pesos do modelo estão publicamente disponíveis para download.</p><p><span class="k">como é calculado</span>Prova antes de heurística: a presença de <span class='mono'>hugging_face_id</span> no catálogo decide. Onde o campo não existe, cai numa heurística por padrão de nome, e o dado registra qual das duas respondeu.</p><p class="nao"><span class="k">o que não conclui</span>Pesos abertos não significa licença permissiva. Vários modelos aqui têm restrição de uso comercial, e a distinção não está no dado da fonte.</p></div></details>
+    <details><summary>Cobrança</summary><div class="body"><p><span class="k">o que é</span>Separa três coisas que costumam ser confundidas: modelo pago, endpoint gratuito de modelo pago, e modelo sem preço.</p><p><span class="k">como é calculado</span>Vem do campo de preço do catálogo. O sufixo <span class='mono'>:free</span> no slug identifica um endpoint gratuito do <b>mesmo</b> modelo, não um modelo diferente.</p><p class="nao"><span class="k">o que não conclui</span>Endpoint gratuito costuma ter limite de taxa e fila mais lenta. Volume ali não indica disposição a pagar.</p></div></details>
+    <details><summary>Faixa de preço e janela de contexto</summary><div class="body"><p><span class="k">o que é</span>Agrupamentos do preço misto por milhão de tokens e da janela de contexto máxima.</p><p><span class="k">como é calculado</span>Preço misto usa a mistura declarada de prompt e completion. As faixas são cortes fixos, publicados no código, não quantis móveis, para que o significado de cada faixa não mude de uma semana para a outra.</p><p class="nao"><span class="k">o que não conclui</span>Preço de tabela não é preço pago: desconto por volume, cache e contrato não aparecem. Contexto máximo anunciado também não garante qualidade em toda a janela.</p></div></details>
+    <details><summary>Gasto estimado</summary><div class="body"><p><span class="k">o que é</span>Quanto o tráfego da semana custaria a preço de tabela.</p><p><span class="k">como é calculado</span>Tokens multiplicados pelo preço de cada modelo. Como a fonte soma prompt e completion sem separar, e completion custa várias vezes mais, publicamos três números: piso (tudo prompt), teto (tudo completion) e a estimativa na mistura declarada. Endpoint gratuito custa zero.</p><p class="nao"><span class="k">o que não conclui</span>Não é receita de ninguém. Ignora desconto, cache, batch, contrato e o fato de parte do tráfego rodar em créditos promocionais. Serve para comparar posicionamento entre laboratórios, não para dimensionar faturamento.</p></div></details>
+    <details><summary>Preço efetivo do mercado</summary><div class="body"><p><span class="k">o que é</span>Quanto custa, em média, um milhão de tokens efetivamente consumidos.</p><p><span class="k">como é calculado</span>Gasto estimado da semana dividido pelo volume da semana.</p><p class="nao"><span class="k">o que não conclui</span>Queda no preço efetivo tem duas causas possíveis e o número não separa: os modelos ficaram mais baratos, ou a demanda migrou para os baratos. Neste dataset a segunda domina.</p></div></details>
+    <details><summary>Razão dinheiro sobre volume</summary><div class="body"><p><span class="k">o que é</span>Quanto do dinheiro um laboratório captura em relação ao quanto de tokens ele processa.</p><p><span class="k">como é calculado</span>Share do gasto estimado dividido pelo share de tokens. Razão 1 significa que o laboratório cobra o preço médio do mercado; acima de 1, cobra mais; abaixo, menos.</p><p class="nao"><span class="k">o que não conclui</span>Não mede margem nem eficiência. Um laboratório com razão alta pode simplesmente atender casos de uso mais caros, não ser mais lucrativo.</p></div></details>
+    <details><summary>Índice de Inteligência</summary><div class="body"><p><span class="k">o que é</span>Medida composta de capacidade dos modelos, produzida pela Artificial Analysis.</p><p><span class="k">como é calculado</span>Vem pronta pela API do OpenRouter, junto com os índices de código e agentes. Não recalculamos nada.</p><p class="nao"><span class="k">o que não conclui</span>A cobertura é parcial, em torno de um terço dos modelos com volume, e não é aleatória: modelos menos conhecidos são testados menos. Ausência de índice não é sinal de qualidade baixa.</p></div></details>
+    <details><summary>Rotatividade e idade do top 10</summary><div class="body"><p><span class="k">o que é</span>Quantos dos dez modelos mais usados são novos em relação a quatro semanas antes, e há quanto tempo os atuais estrearam no ranking.</p><p><span class="k">como é calculado</span>Rotatividade compara o conjunto atual com o de quatro semanas atrás. Idade mediana conta semanas desde a primeira aparição de cada modelo; as doze primeiras semanas da série são censuradas, porque não sabemos quando os modelos já presentes em janeiro de 2025 estrearam de fato.</p><p class="nao"><span class="k">o que não conclui</span>Rotatividade alta não significa que os modelos que saíram pioraram. Na maioria das vezes eles foram substituídos pela geração seguinte do mesmo laboratório.</p></div></details>
+    <details><summary>Tempo até o pico e meia-vida</summary><div class="body"><p><span class="k">o que é</span>Quantas semanas um modelo leva do lançamento até seu maior share, e quantas leva depois disso para perder metade dele.</p><p><span class="k">como é calculado</span>Calculado por modelo, sobre a série completa. Só entram modelos que atingiram ao menos 2% do volume semanal, para evitar que ruído de modelos minúsculos domine a mediana. Modelo que ainda não caiu à metade aparece sem meia-vida em vez de contar como zero.</p><p class="nao"><span class="k">o que não conclui</span>Meia-vida curta não é sinal de modelo ruim. É sinal de mercado com cadência alta de lançamento, e o efeito aparece em modelos bons e ruins igualmente.</p></div></details>
+    <details><summary>A forma de uma temporada</summary><div class="body"><p><span class="k">o que é</span>Curva média de adoção de um modelo, do lançamento ao decaimento.</p><p><span class="k">como é calculado</span>Cada modelo é alinhado na própria semana de estreia e normalizado pelo próprio pico, então o eixo horizontal vira idade do modelo e o vertical vira percentual do pico. A linha grossa é a mediana e a faixa é o intervalo entre o primeiro e o terceiro quartil.</p><p class="nao"><span class="k">o que não conclui</span>Não prevê a trajetória de um modelo específico. Descreve a distribuição observada, e a dispersão dentro da faixa é grande.</p></div></details>
+    <details><summary>Variação de share em quatro semanas</summary><div class="body"><p><span class="k">o que é</span>Diferença, em pontos percentuais, entre o share atual de um modelo e o de quatro semanas antes.</p><p><span class="k">como é calculado</span>Subtração simples de percentuais. Ao agrupar por mês, a comparação passa a ser com o mês anterior, que é o período equivalente.</p><p class="nao"><span class="k">o que não conclui</span>Ponto percentual não é percentual: sair de 1% para 2% é +1pp e também é dobrar. Para modelos pequenos, a variação relativa conta mais história.</p></div></details>
+    <details><summary>A linha agregada da fonte</summary><div class="body"><p><span class="k">o que é</span>Volume que ficou fora do top 50 de cada dia, agregado pela fonte numa única linha.</p><p><span class="k">como é calculado</span>Vem pronta da API. Conta no total e no denominador dos percentuais, mas não tem metadado: não sabemos quais modelos a compõem.</p><p class="nao"><span class="k">o que não conclui</span>Por isso ela <b>sai de qualquer recorte filtrado</b>. Com filtro ativo, os percentuais passam a ser calculados dentro do recorte, e a barra de filtros informa quanto do volume ficou de fora.</p></div></details>
+  </div>
+</section>
+
+</main>
 <footer>
   <p><b>Método.</b> Dados do endpoint público <span class="mono">GET /api/v1/datasets/rankings-daily</span> (period=day), agregados por semana ISO (segunda a domingo); apenas semanas completas. A linha "other" da API é o volume fora do top 50 diário; modelos que oscilam na fronteira do top 50 têm o volume semanal subcontado. Tokens contados pelo tokenizador de cada provedor.</p>
   <p><b>Classificações.</b> Origem e licença dos pesos foram atribuídas por laboratório e por padrão de nome do modelo; casos ambíguos (MiMo Pro, variantes Qwen, Mistral) seguem a política de lançamento conhecida e podem conter erro. Modelos stealth/alpha (OpenRouter, "stealth/*") são testes anônimos de labs não identificados, gratuitos e geralmente de curta duração.</p>
@@ -450,8 +533,11 @@ footer p{margin:0 0 6px}
 <script>
 fetch('./data.json',{cache:'no-cache'}).then(r=>r.json()).then(init).catch(e=>{document.getElementById('tiles').innerHTML='<p style="color:var(--bad)">Não foi possível carregar data.json: '+e.message+'</p>';});
 function init(D){
-const W = D.weeks.map(s=>new Date(s+'T00:00:00'));
-const N = W.length;
+// O eixo do tempo e MUTAVEL: a granularidade (semanal ou mensal) redefine
+// quantos pontos existem e o que cada ponto representa. Todos os graficos leem
+// W e N, entao trocar a granularidade e trocar estes dois.
+let W = D.weeks.map(s=>new Date(s+'T00:00:00'));
+let N = W.length;
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const fmtT = v => v>=10? d3.format('.0f')(v)+'T' : v>=1? d3.format('.1f')(v)+'T' : d3.format('.2f')(v)+'T';
 const fmtP = v => d3.format('.1f')(v).replace('.',',')+'%';
@@ -470,14 +556,84 @@ const capital = s => String(s).split(/[-_]/).map(w=>w.charAt(0).toUpperCase()+w.
 const fmtDate = d3.timeFormat('%d %b %y');
 const ptBR = {Jan:'jan',Feb:'fev',Mar:'mar',Apr:'abr',May:'mai',Jun:'jun',Jul:'jul',Aug:'ago',Sep:'set',Oct:'out',Nov:'nov',Dec:'dez'};
 const fD = d => fmtDate(d).replace(/[A-Z][a-z]{2}/, m=>ptBR[m]||m);
+// Rotulo do ponto no eixo, conforme a granularidade.
+const fPer = d => (typeof GRAN!=='undefined' && GRAN==='mes')
+  ? d3.timeFormat('%b %y')(d).replace(/[A-Z][a-z]{2}/, m=>ptBR[m]||m)
+  : fD(d);
 const monthTick = d => { const m=d3.timeFormat('%b')(d); const y=d3.timeFormat('%y')(d); return (ptBR[m]||m)+(m==='Jan'?' '+y:''); };
 
 // ---- range filter
+// ---- granularidade e janela --------------------------------------------
+// A janela e sempre declarada em SEMANAS, porque semana e a unidade nativa da
+// fonte. Ao agrupar por mes, a janela e convertida; assim "26 semanas" continua
+// significando o mesmo periodo, com menos pontos.
+let GRAN='semana', JANELA='all';
+let SEMANAS_ISO=D.matriz.semanas.slice();
+let MAPA_BUCKET=[];                       // indice da semana -> indice do bucket
+
+function construirEixo(){
+  const datas=SEMANAS_ISO.map(s=>new Date(s+'T00:00:00'));
+  if(GRAN==='semana'){
+    W=datas; MAPA_BUCKET=datas.map((_,i)=>i);
+  } else {
+    // Cada semana entra no mes do seu primeiro dia (segunda-feira). Semana que
+    // atravessa a virada de mes conta inteira no mes em que comecou; e a unica
+    // regra que preserva a soma total sem dividir tokens arbitrariamente.
+    const chave=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
+    const chaves=datas.map(chave), unicas=[...new Set(chaves)];
+    W=unicas.map(k=>new Date(k+'-01T00:00:00'));
+    MAPA_BUCKET=chaves.map(k=>unicas.indexOf(k));
+  }
+  N=W.length; NW=N;
+  SEMANAS_POR_BUCKET=new Array(N).fill(0);
+  MAPA_BUCKET.forEach(b=>SEMANAS_POR_BUCKET[b]++);
+  D.weeks=W.map(d=>d3.timeFormat('%Y-%m-%d')(d));
+  SERIES = (GRAN==='semana') ? SERIES_SEM : SERIES_SEM.map(colapsaSoma);
+  D.churn = (GRAN==='semana') ? CHURN_SEM : colapsaMedia(CHURN_SEM);
+  D.age   = (GRAN==='semana') ? AGE_SEM   : colapsaMedia(AGE_SEM);
+  range = rangeFor(JANELA);
+}
+// Quantas semanas caem em cada bucket. Mes tem 4 ou 5, e essa diferenca e a
+// armadilha da agregacao mensal: um mes de 5 semanas parece 25% maior que um de
+// 4 sem nada ter acontecido no mercado.
+let SEMANAS_POR_BUCKET=[];
+// Por isso valores ABSOLUTOS viram media semanal dentro do bucket, nao soma.
+// A unidade continua sendo "por semana" nas duas granularidades, os meses ficam
+// comparaveis entre si, e os percentuais nao mudam nada: share e razao de somas,
+// e dividir numerador e denominador pelo mesmo numero de semanas nao altera.
+function colapsaSoma(s){ const o=new Array(N).fill(0);
+  for(let w=0;w<s.length;w++) o[MAPA_BUCKET[w]]+=(s[w]||0);
+  return o.map((v,i)=>v/(SEMANAS_POR_BUCKET[i]||1)); }
+// Media, para indicadores que nao sao somaveis (rotatividade, idade mediana).
+function colapsaMedia(s){
+  const soma=new Array(N).fill(0), n=new Array(N).fill(0);
+  for(let w=0;w<s.length;w++){ const v=s[w]; if(v==null) continue;
+    soma[MAPA_BUCKET[w]]+=v; n[MAPA_BUCKET[w]]++; }
+  return soma.map((v,i)=>n[i]? +(v/n[i]).toFixed(2) : null);
+}
+
 let range=[0,N-1];
-const rangeFor = key => key==='all'?[0,N-1] : [Math.max(0,N-(+key)),N-1];
-document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));
-  b.setAttribute('aria-pressed','true'); range=rangeFor(b.dataset.range); renderAll();
+function rangeFor(key){
+  if(key==='all') return [0,N-1];
+  if(key==='ytd'){
+    const ano=W[N-1].getFullYear();
+    let i=W.findIndex(d=>d.getFullYear()===ano);
+    return [i<0?0:i, N-1];
+  }
+  const sem=+key;
+  const pontos = GRAN==='semana' ? sem : Math.max(2, Math.round(sem/4.345));
+  return [Math.max(0,N-pontos), N-1];
+}
+document.querySelectorAll('.chip[data-range]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.chip[data-range]').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true'); JANELA=b.dataset.range; range=rangeFor(JANELA); renderStatic(); renderAll();
+}));
+document.querySelectorAll('.chip[data-gran]').forEach(b=>b.addEventListener('click',()=>{
+  if(b.dataset.gran===GRAN) return;
+  document.querySelectorAll('.chip[data-gran]').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true'); GRAN=b.dataset.gran;
+  document.getElementById('gran-nota').hidden = (GRAN!=='mes');
+  aplicar();
 }));
 const idx = () => d3.range(range[0],range[1]+1);
 
@@ -497,7 +653,15 @@ function dobrar(series, manter){
   if(houve) out['Outros']=outros.map(v=>Math.round(v*100)/100);
   return out;
 }
-const VENDOR_LABEL = {deepseek:'DeepSeek',google:'Google',anthropic:'Anthropic',openai:'OpenAI',xiaomi:'Xiaomi',tencent:'Tencent',minimax:'MiniMax','z-ai':'Z.ai (GLM)',Outros:'Outros','x-ai':'xAI'};
+const VENDOR_LABEL = {deepseek:'DeepSeek',google:'Google',anthropic:'Anthropic',openai:'OpenAI',
+  xiaomi:'Xiaomi',tencent:'Tencent',minimax:'MiniMax','z-ai':'Z.ai (GLM)',Outros:'Outros','x-ai':'xAI',
+  nvidia:'NVIDIA',mistralai:'Mistral AI',moonshotai:'Moonshot AI',thinkingmachines:'Thinking Machines',
+  stepfun:'StepFun',inclusionai:'InclusionAI',poolside:'Poolside',upstage:'Upstage',qwen:'Qwen',
+  meta:'Meta','meta-llama':'Meta',alibaba:'Alibaba',bytedance:'ByteDance','bytedance-seed':'ByteDance',
+  'arcee-ai':'Arcee AI',cohere:'Cohere',microsoft:'Microsoft',amazon:'Amazon',perplexity:'Perplexity',
+  liquid:'Liquid AI',baai:'BAAI',kwaipilot:'KwaiPilot','nex-agi':'Nex AGI','dots-studio':'Dots Studio',
+  'tngtech:':'TNG',tngtech:'TNG',nousresearch:'Nous Research',openchat:'OpenChat',
+  'ibm-granite':'IBM Granite',stealth:'Anônimo (stealth)',openrouter:'OpenRouter (teste)'};
 const ORIGIN_SLOT = {'EUA/Canadá':'--s1','China':'--s2','Europa':'--s3','Coreia':'--s4','Outros':'--s0','Não identificado':'--s0'};
 const WEIGHTS_SLOT = {'Proprietário':'--s1','Open-weights':'--s3','Não identificado':'--s0'};
 const FAM_SLOT = {Haiku:'--s2',Sonnet:'--s3',Opus:'--s1',Fable:'--s4'};
@@ -543,10 +707,27 @@ function legend(el, items, name, redraw){
   const all=el.querySelector('.all');
   if(all) all.addEventListener('click',()=>{ h.clear(); redraw(); });
 }
-function table(el, cols, rows){ el.innerHTML = `<table><thead><tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table>`; }
+function table(el, cols, rows){
+  const card=el.closest('.card');
+  const tit=card? (card.querySelector('h3')?.textContent||'').trim() : '';
+  el.innerHTML = `<table><caption class="vh">${tit}</caption><thead><tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table>`; }
 document.querySelectorAll('.tbtn').forEach(b=>b.addEventListener('click',()=>{const c=b.closest('.card');const on=!c.classList.contains('table-mode');c.classList.toggle('table-mode',on);b.setAttribute('aria-pressed',String(on));b.textContent=on?'Gráfico':'Tabela';}));
 
-function frame(plot, h, m){ plot.innerHTML=''; const w=Math.max(320, plot.clientWidth); const svg=d3.select(plot).append('svg').attr('viewBox',`0 0 ${w} ${h}`).attr('width',w).attr('height',h); return {svg,w,h,m}; }
+function frame(plot, h, m){
+  plot.innerHTML='';
+  const w=Math.max(320, plot.clientWidth);
+  // O grafico e imagem para leitor de tela, e a alternativa textual e a tabela
+  // que todo card ja tem. Sem role/aria-label o SVG e lido como um monte de
+  // caminhos sem significado.
+  const card=plot.closest('.card');
+  const tit=card? (card.querySelector('h3')?.textContent||'').trim() : '';
+  const sub=card? (card.querySelector('.card-h p')?.textContent||'').trim() : '';
+  const svg=d3.select(plot).append('svg')
+    .attr('viewBox',`0 0 ${w} ${h}`).attr('width',w).attr('height',h)
+    .attr('role','img')
+    .attr('aria-label', (tit+(sub?'. '+sub:'')+'. Use o botão Tabela para ver os números.').slice(0,300));
+  return {svg,w,h,m};
+}
 function xScale(f, ii){ return d3.scaleTime().domain([W[ii[0]], W[ii[ii.length-1]]]).range([f.m.l, f.w-f.m.r]); }
 function axes(f, x, y, yfmt, ticksY=4){
   const g=f.svg.append('g').attr('class','grid');
@@ -595,8 +776,8 @@ function stackedShare(name, series, slots, labels, opts={}){
   const last=ii[ii.length-1];
   st.forEach(s=>{const seg=s[s.length-1]; if(seg[1]-seg[0]>7){ f.svg.append('text').attr('class','dl').attr('x',x(W[last])-6).attr('y',y((seg[0]+seg[1])/2)+4).attr('text-anchor','end').attr('fill','#fff').style('fill','#fff').text((labels[s.key]||s.key)+' '+Math.round(series[s.key][last])+'%'); }});
   legend(c.querySelector('.legend'), todas.slice().sort((a,b)=>series[b][last]-series[a][last]).map(k=>[k,col(slots[k]),(labels[k]||k)+' '+fmtP(series[k][last])]), name, ()=>stackedShare(name,series,slots,labels,opts));
-  crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+keys.slice().sort((a,b)=>series[b][i]-series[a][i]).filter(k=>series[k][i]>0.05).map(k=>tipRow(col(slots[k]),labels[k]||k,fmtP(series[k][i]))).join(''));
-  table(c.querySelector('.tbl'),['Semana',...keys.map(k=>labels[k]||k)], ii.map(i=>[fD(W[i]),...keys.map(k=>fmtP(series[k][i]))]));
+  crosshair(f,x,ii,(i)=>`<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+keys.slice().sort((a,b)=>series[b][i]-series[a][i]).filter(k=>series[k][i]>0.05).map(k=>tipRow(col(slots[k]),labels[k]||k,fmtP(series[k][i]))).join(''));
+  table(c.querySelector('.tbl'),['Semana',...keys.map(k=>labels[k]||k)], ii.map(i=>[fPer(W[i]),...keys.map(k=>fmtP(series[k][i]))]));
 }
 
 // ---- single line/area
@@ -613,7 +794,7 @@ function lineChart(name, vals, {fmt=fmtP, color='--s1', area=true, label, ymax, 
   f.svg.append('circle').attr('cx',x(W[last])).attr('cy',y(vals[last])).attr('r',4).attr('fill',cl).attr('stroke',css('--surface')).attr('stroke-width',2);
   f.svg.append('text').attr('class','dl').attr('x',x(W[last])-8).attr('y',y(vals[last])-9).attr('text-anchor','end').text((integer?vals[last]:fmt(vals[last])));
   f.svg.append('text').attr('class','dl').attr('x',x(W[first])+6).attr('y',y(vals[first])-9).text((integer?vals[first]:fmt(vals[first])));
-  crosshair(f,x,ii,(i,dot)=>{dot.selectAll('*').remove(); dot.append('circle').attr('cx',x(W[i])).attr('cy',y(vals[i])).attr('r',4).attr('fill',cl).attr('stroke',css('--surface')).attr('stroke-width',2); return `<div class="t">semana de ${fD(W[i])}</div>`+tipRow(cl,label||'',integer?vals[i]:fmt(vals[i]));});
+  crosshair(f,x,ii,(i,dot)=>{dot.selectAll('*').remove(); dot.append('circle').attr('cx',x(W[i])).attr('cy',y(vals[i])).attr('r',4).attr('fill',cl).attr('stroke',css('--surface')).attr('stroke-width',2); return `<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+tipRow(cl,label||'',integer?vals[i]:fmt(vals[i]));});
   table(c.querySelector('.tbl'),['Semana',label], ii.map(i=>[fD(W[i]),integer?vals[i]:fmt(vals[i])]));
 }
 
@@ -664,9 +845,9 @@ function emphasisLines(name, series, focus, slots, labels){
     .text(`${LB(l.k)} ${Math.round(l.v)}%`));
 
   legend(c.querySelector('.legend'), todas.map(k=>[k,cor(k),LB(k)+' '+fmtP(S[k][last])]), name, ()=>emphasisLines(name,series,focus,slots,labels));
-  crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+keys.slice().sort((a,b)=>S[b][i]-S[a][i]).map(k=>tipRow(cor(k),LB(k),fmtP(S[k][i]))).join(''));
+  crosshair(f,x,ii,(i)=>`<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+keys.slice().sort((a,b)=>S[b][i]-S[a][i]).map(k=>tipRow(cor(k),LB(k),fmtP(S[k][i]))).join(''));
   table(c.querySelector('.tbl'),['Semana',...Object.keys(series).map(k=>labels[k]||k)],
-    ii.map(i=>[fD(W[i]),...Object.keys(series).map(k=>fmtP(series[k][i]))]));
+    ii.map(i=>[fPer(W[i]),...Object.keys(series).map(k=>fmtP(series[k][i]))]));
 }
 
 // ---- stacked absolute area (Anthropic families)
@@ -682,7 +863,7 @@ function stackedAbs(name, series, slots){
   axes(f,x,y,fmtT);
   f.svg.append('g').selectAll('path').data(st).join('path').attr('d',d3.area().x(d=>x(W[d.data.i])).y0(d=>y(d[0])).y1(d=>y(d[1])).curve(d3.curveMonotoneX)).attr('fill',d=>col(slots[d.key])).attr('stroke',css('--surface')).attr('stroke-width',1.5).attr('opacity',.92);
   legend(c.querySelector('.legend'), todas.map(k=>[k,col(slots[k]),k]), name, ()=>stackedAbs(name,series,slots));
-  crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+keys.slice().reverse().map(k=>tipRow(col(slots[k]),k,fmtT(series[k][i]))).join('')+tipRow('transparent','Total',fmtT(keys.reduce((s,k)=>s+series[k][i],0))));
+  crosshair(f,x,ii,(i)=>`<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+keys.slice().reverse().map(k=>tipRow(col(slots[k]),k,fmtT(series[k][i]))).join('')+tipRow('transparent','Total',fmtT(keys.reduce((s,k)=>s+series[k][i],0))));
   table(c.querySelector('.tbl'),['Semana',...keys,'Total'], ii.map(i=>[fD(W[i]),...keys.map(k=>fmtT(series[k][i])),fmtT(keys.reduce((s,k)=>s+series[k][i],0))]));
 }
 
@@ -737,7 +918,7 @@ function cohortBars(name, rows){
 // ela sai de qualquer recorte filtrado. A pagina avisa quanto do volume ficou de
 // fora em vez de fingir que o total continua completo.
 // ===========================================================================
-const MX=D.matriz, NW=MX.semanas.length;
+const MX=D.matriz; let NW=MX.semanas.length;
 const DIMI={}; MX.dims.forEach((d,i)=>DIMI[d]=i);
 const FILTROS={};                       // {dim: Set(indice do valor)}
 
@@ -760,7 +941,11 @@ const ORDEM={
 
 function serie(i){ const a=MX.t0[i], v=MX.v[i], s=new Array(NW).fill(0);
   for(let j=0;j<v.length;j++) s[a+j]=v[j]; return s; }
-const SERIES=MX.modelos.map((_,i)=>serie(i));
+const SERIES_SEM=MX.modelos.map((_,i)=>serie(i));   // sempre semanal, fonte
+let SERIES=SERIES_SEM;                              // visao na granularidade atual
+// Indicadores de ciclo de vida sao medias, nao somas: guardamos o original
+// semanal para nunca colapsar duas vezes ao trocar de granularidade.
+const CHURN_SEM=(D.churn||[]).slice(), AGE_SEM=(D.age||[]).slice();
 
 function filtrando(){ return Object.values(FILTROS).some(s=>s && s.size); }
 function passa(mod){
@@ -851,11 +1036,11 @@ function recalcular(){
 
   // Coluna "Há 12 sem" tem que usar o MESMO recorte, senao compara a posicao
   // dentro do filtro com a posicao no mercado inteiro, e o numero mente.
-  const doze=Math.max(0, ult-12);
+  const doze=Math.max(0, ult-(GRAN==='semana'?12:3));
   D.boards.prev12=sel.filter(([m])=>!ehOther(m))
     .map(([m,i])=>({model:m.s, T:SERIES[i][doze]}))
     .filter(r=>r.T>0).sort((a,b)=>b.T-a.T).slice(0,15);
-  const anoAtras=Math.max(0, ult-52);
+  const anoAtras=Math.max(0, ult-(GRAN==='semana'?52:12));
   D.boards.yearago=sel.filter(([m])=>!ehOther(m))
     .map(([m,i])=>({model:m.s, T:SERIES[i][anoAtras]}))
     .filter(r=>r.T>0).sort((a,b)=>b.T-a.T).slice(0,15);
@@ -938,8 +1123,98 @@ function recalcular(){
         pesos:rotulo('pesos',m.d[DIMI.pesos])}))
     .filter(r=>r.T>0).sort((a,b)=>b.share-a.share);
 
+  // ---- O mapa da temporada ------------------------------------------------
+  // Dois eixos compostos, ambos calculados, nenhum subjetivo. A posicao de cada
+  // laboratorio e o percentil dele entre os labs presentes, nao um valor
+  // absoluto: e um mapa de posicao relativa, como todo quadrante de mercado.
+  //
+  // O eixo de capacidade tem dois modos porque a cobertura obriga. O indice de
+  // inteligencia so existe para 12 dos 19 labs com volume, e a lider de volume
+  // do mercado nao tem nenhum modelo testado. Um mapa que deixa a lider de fora
+  // nao e um mapa, e um recorte enviesado a favor de quem ja foi avaliado. Por
+  // isso o modo padrao usa atributos com cobertura total.
+  const HOJE=new Date(MX.semanas[MX.semanas.length-1]+'T00:00:00');
+  function perfilLabs(indice){
+    const L={};
+    for(const [m,i] of sel){
+      if(ehOther(m)) continue;
+      const k=rotulo('vendor',m.d[DIMI.vendor]);
+      const tk=SERIES[i][indice]||0;
+      if(!L[k]) L[k]={lab:k, tokens:0, gasto:0, ctx:0, multi:0, rac:0, ampl:0, cad:0, aa:null,
+                      origem:{}, modelos:0};
+      const o=L[k]; o.modelos++;
+      o.tokens+=tk;
+      const pr=precoDe(m); if(pr) o.gasto+=tk*pr.mix;
+      if(tk>0){
+        o.ampl++;
+        o.ctx=Math.max(o.ctx, m.c||0);
+        if(rotulo('multimodal',m.d[DIMI.multimodal])==='Multimodal') o.multi++;
+        if(rotulo('raciocinio',m.d[DIMI.raciocinio])==='Com raciocínio') o.rac++;
+        if(m.q!=null) o.aa=Math.max(o.aa??0, m.q);
+        const org=rotulo('origin',m.d[DIMI.origin]);
+        o.origem[org]=(o.origem[org]||0)+tk;
+        if(m.l){ const dias=(HOJE-new Date(m.l+'T00:00:00'))/864e5; if(dias<=180) o.cad++; }
+      }
+    }
+    return Object.values(L).filter(o=>o.tokens>0).map(o=>({
+      ...o,
+      multi_p: o.ampl? o.multi/o.ampl : 0,
+      rac_p:   o.ampl? o.rac/o.ampl : 0,
+      origem:  Object.entries(o.origem).sort((a,b)=>b[1]-a[1])[0][0],
+    }));
+  }
+  // Percentil entre os labs presentes, 0 a 100. Percentil e nao valor bruto
+  // porque um unico lab com contexto de 2M distorceria toda a escala.
+  function percentis(arr, campo){
+    const vals=arr.map(o=>o[campo]??0);
+    const ord=[...vals].sort((a,b)=>a-b);
+    return vals.map(v=>{
+      const menores=ord.filter(x=>x<v).length, iguais=ord.filter(x=>x===v).length;
+      return 100*(menores+iguais/2)/ord.length;
+    });
+  }
+  const PESOS_PADRAO={tracao:{share:40,gasto:30,cresc:30},
+                      cap:{ctx:25,multi:20,rac:20,ampl:20,cad:15}};
+  const PESOS = D._pesosMapa || (D._pesosMapa=JSON.parse(JSON.stringify(PESOS_PADRAO)));
+  function comporta(perfil, anterior, modo){
+    const somaT=perfil.reduce((s,o)=>s+o.tokens,0)||1;
+    const somaG=perfil.reduce((s,o)=>s+o.gasto,0)||1;
+    const antMap={}; (anterior||[]).forEach(o=>antMap[o.lab]=o);
+    const somaTa=(anterior||[]).reduce((s,o)=>s+o.tokens,0)||1;
+    perfil.forEach(o=>{
+      o.share=100*o.tokens/somaT;
+      o.shareG=100*o.gasto/somaG;
+      const a=antMap[o.lab];
+      o.cresc=o.share-(a? 100*a.tokens/somaTa : 0);
+    });
+    const P={}; ['share','shareG','cresc','ctx','multi_p','rac_p','ampl','cad'].forEach(c=>P[c]=percentis(perfil,c));
+    const wT=PESOS.tracao, sT=wT.share+wT.gasto+wT.cresc||1;
+    const wC=PESOS.cap, sC=wC.ctx+wC.multi+wC.rac+wC.ampl+wC.cad||1;
+    perfil.forEach((o,i)=>{
+      o.pct={share:P.share[i], gasto:P.shareG[i], cresc:P.cresc[i],
+             ctx:P.ctx[i], multi:P.multi_p[i], rac:P.rac_p[i], ampl:P.ampl[i], cad:P.cad[i]};
+      o.y=(wT.share*P.share[i]+wT.gasto*P.shareG[i]+wT.cresc*P.cresc[i])/sT;
+      o.xRec=(wC.ctx*P.ctx[i]+wC.multi*P.multi_p[i]+wC.rac*P.rac_p[i]+wC.ampl*P.ampl[i]+wC.cad*P.cad[i])/sC;
+    });
+    const comAA=perfil.filter(o=>o.aa!=null);
+    const pAA=percentis(comAA,'aa');
+    comAA.forEach((o,i)=>o.xAA=pAA[i]);
+    perfil.forEach(o=>{ o.x = modo==='indice' ? o.xAA : o.xRec; });
+    return perfil;
+  }
+  const atras=Math.max(0, ult-(GRAN==='semana'?12:3));
+  const perfilAgora=comporta(perfilLabs(ult), perfilLabs(atras), 'recursos');
+  const antesRaw=comporta(perfilLabs(atras), null, 'recursos');
+  const antesMap={}; antesRaw.forEach(o=>antesMap[o.lab]={x:o.xRec, xAA:o.xAA, y:o.y});
+  D.mapa={ labs:perfilAgora, antes:antesMap, pesos:PESOS, pesos_padrao:PESOS_PADRAO,
+           periodos_atras:(GRAN==='semana'?12:3),
+           com_indice:perfilAgora.filter(o=>o.aa!=null).length, total:perfilAgora.length };
+
   // ---- o que mudou nas ultimas 4 semanas ---------------------------------
-  const ant=Math.max(0, ult-4);
+  // "ultimas 4 semanas" tem que significar o mesmo periodo nas duas
+  // granularidades: 4 pontos semanais ou 1 ponto mensal.
+  const passo4 = GRAN==='semana' ? 4 : 1;
+  const ant=Math.max(0, ult-passo4);
   const topN=(w,n)=>sel.filter(([m])=>!ehOther(m))
     .map(([m,i])=>({s:m.s, v:SERIES[i][w]})).filter(r=>r.v>0)
     .sort((a,b)=>b.v-a.v).slice(0,n).map(r=>r.s);
@@ -1012,11 +1287,12 @@ function daURL(){
     if(s.size) FILTROS[d]=s; });
 }
 function aplicar(){
+  construirEixo();
   const info=recalcular();
   const fil=filtrando();
   document.getElementById('fclear').disabled=!fil;
   document.getElementById('fstat').innerHTML = fil
-    ? `<b>${info.modelos}</b> de ${info.totalModelos} modelos · <b>${info.pct.toFixed(1)}%</b> do volume da última semana`
+    ? `<b>${info.modelos}</b> de ${info.totalModelos} modelos · <b>${info.pct.toFixed(1)}%</b> do volume do último ${GRAN==='semana'?'semana':'mês'}`
     : `${info.totalModelos} modelos, sem recorte`;
   const w=document.getElementById('fwarn');
   if(fil){
@@ -1326,6 +1602,31 @@ function readings(){
     `<p>Os dois eixos medem coisas diferentes e nenhum dos dois está errado. Benchmark diz o que o modelo consegue fazer; share diz o que as pessoas escolheram pagar para rodar. Quando divergem, normalmente a diferença é preço, latência ou disponibilidade de endpoint, não capacidade.</p>`+
     `<p><span class="flag">fonte</span>Índice de inteligência produzido pela Artificial Analysis e distribuído pela API do OpenRouter.</p>`);
 
+  // 12 o mapa
+  const MP=D.mapa;
+  if(MP && MP.labs.length){
+    const modo=(typeof MAPA_MODO!=='undefined')?MAPA_MODO:'recursos';
+    const com=MP.labs.map(o=>({...o,x:modo==='indice'?o.xAA:o.xRec})).filter(o=>o.x!=null);
+    const q=(o)=>o.y>=50 ? (o.x>=50?'Líderes':'Desafiantes') : (o.x>=50?'Promessas':'Nichados');
+    const grupos={'Líderes':[],'Desafiantes':[],'Promessas':[],'Nichados':[]};
+    com.forEach(o=>grupos[q(o)].push(o));
+    const lista=k=>grupos[k].sort((a,b)=>b.tokens-a.tokens).map(o=>LAB(o.lab)).join(', ')||'nenhum';
+    const maior=(k)=>{const a=MP.antes; return com.filter(o=>a[o.lab]).map(o=>({o,d:o.y-a[o.lab].y}))
+      .sort((p,r)=>k==='sobe'? r.d-p.d : p.d-r.d)[0];};
+    const sobe=maior('sobe'), desce=maior('desce');
+    const per=MP.periodos_atras, unid=GRAN==='semana'?'semanas':'meses';
+    set('read-mapa',`<h4>Leitura</h4>${nota}`+
+      `<p><b>Líderes</b> (tração e capacidade acima da mediana): ${lista('Líderes')}.</p>`+
+      `<p><b>Desafiantes</b>, muito uso com capacidade declarada abaixo da mediana: ${lista('Desafiantes')}. É o quadrante que a tese prevê: tração construída sobre preço e disponibilidade, não sobre recurso técnico de fronteira.</p>`+
+      `<p><b>Promessas</b>, capacidade alta e tração baixa: ${lista('Promessas')}. <b>Nichados</b>: ${lista('Nichados')}.</p>`+
+      (sobe&&Math.abs(sobe.d)>=3?`<p>Maior avanço em tração nas últimas ${per} ${unid}: <b>${LAB(sobe.o.lab)}</b>, ${sobe.d>=0?'+':''}${Math.round(sobe.d)} pontos de percentil.`+
+        (desce&&desce.d<=-3?` Maior recuo: <b>${LAB(desce.o.lab)}</b>, ${Math.round(desce.d)}.`:'')+`</p>`:'')+
+      `<p><span class="flag">método</span>Os dois eixos são percentis entre os laboratórios presentes, não valores absolutos: é um mapa de posição relativa. Os pesos de cada componente são editoriais e estão abertos para ajuste logo abaixo do gráfico. Nenhum número aqui é julgamento de analista, todos saem do mesmo pipeline que gera o resto da página.</p>`+
+      (modo==='indice'&&MP.com_indice<MP.total
+        ? `<p><span class="flag">cobertura</span>${MP.total-MP.com_indice} de ${MP.total} laboratórios não têm nenhum modelo com índice publicado e ficam fora deste modo, incluindo alguns com volume relevante. O modo "Recursos" coloca todos no mapa.</p>`
+        : ''));
+  } else { set('read-mapa',`<h4>Leitura</h4>${nota}<p>Nenhum laboratório com volume no recorte atual.</p>`); }
+
   // 11 o que mudou
   const M=D.mudancas||{};
   const sub=(M.subiram||[])[0], cai=(M.cairam||[])[0];
@@ -1372,13 +1673,13 @@ function spendChart(name){
   f.svg.append('text').attr('class','dl').attr('x',x(W[last])-4).attr('y',y(v[last])-10)
     .attr('text-anchor','end').style('fill',css('--ink')).style('font-weight',700).text(fmtU(v[last]));
   legend(c.querySelector('.legend'),[['e',col('--s3'),'Estimativa'],['b',css('--ink-3'),'Faixa piso a teto']]);
-  crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+
+  crosshair(f,x,ii,(i)=>`<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+
     tipRow(col('--s3'),'Estimativa',fmtU(v[i]))+
     tipRow('transparent','Piso (tudo prompt)',fmtU(lo[i]))+
     tipRow('transparent','Teto (tudo completion)',fmtU(hi[i]))+
     tipRow('transparent','Preço efetivo',`US$ ${d3.format('.2f')(D.preco_efetivo[i])} / 1M tokens`));
   table(c.querySelector('.tbl'),['Semana','Estimativa','Piso','Teto','US$/1M tokens'],
-    ii.map(i=>[fD(W[i]),fmtU(v[i]),fmtU(lo[i]),fmtU(hi[i]),d3.format('.2f')(D.preco_efetivo[i])]));
+    ii.map(i=>[fPer(W[i]),fmtU(v[i]),fmtU(lo[i]),fmtU(hi[i]),d3.format('.2f')(D.preco_efetivo[i])]));
 }
 
 // Volume x dinheiro: duas barras por lab, no MESMO eixo percentual. Nunca dois
@@ -1435,10 +1736,20 @@ function quality(name){
   const campo=QX==='aa'?'aa':'preco';
   const pts=(D.qualidade||[]).filter(r=>r[campo]!=null && r.share>0);
   const cobertura=(D.qualidade||[]).filter(r=>r.share>0);
-  document.getElementById('qual-sub').textContent = QX==='aa'
-    ? `Índice de Inteligência da Artificial Analysis, exposto pela API do OpenRouter. ${pts.length} de ${cobertura.length} modelos da última semana têm o índice.`
-    : `Preço misto por 1M de tokens contra adoção. ${pts.length} de ${cobertura.length} modelos da última semana têm preço.`;
-  if(pts.length<4) return vazio(name,'Poucos modelos com esse atributo no recorte atual.');
+  const base = QX==='aa'
+    ? 'Índice de Inteligência da Artificial Analysis, exposto pela API do OpenRouter.'
+    : 'Preço misto por 1M de tokens contra adoção.';
+  const atributo = QX==='aa' ? 'o índice' : 'preço';
+  // Frase condicional ao que existe no recorte. "0 de 0 modelos têm o índice"
+  // e a mesma classe de bug que os paineis de leitura tinham: texto que assume
+  // um fato que o filtro pode remover.
+  document.getElementById('qual-sub').textContent =
+    cobertura.length===0 ? `${base} Nenhum modelo com volume no recorte atual.`
+    : pts.length===0     ? `${base} Nenhum dos ${cobertura.length} modelos do recorte tem ${atributo} publicado.`
+    : `${base} ${pts.length} de ${cobertura.length} modelos da última semana têm ${atributo}.`;
+  if(pts.length<4) return vazio(name, pts.length
+    ? `Apenas ${pts.length} ${pts.length===1?'modelo tem':'modelos têm'} esse atributo no recorte atual: poucos pontos para um gráfico de dispersão. A tabela abaixo continua disponível.`
+    : 'Nenhum modelo do recorte atual tem esse atributo publicado.');
 
   const f=frame(plot, 380, {t:16,r:20,b:38,l:52});
   const xd=d3.extent(pts,r=>r[campo]);
@@ -1576,8 +1887,8 @@ function comparador(){
 
   const sel=document.getElementById('cmp-sel');
   const opts=t2=>cand.map(r=>`<option value="${r.slug}"${r.slug===t2?' selected':''}>${r.slug} · ${fmtP(r.share)}</option>`).join('');
-  sel.innerHTML=`<div><label>Modelo A</label><select id="cmpA">${opts(CMP[0])}</select></div>`+
-                `<div><label>Modelo B</label><select id="cmpB">${opts(CMP[1])}</select></div>`;
+  sel.innerHTML=`<div><label for="cmpA">Modelo A</label><select id="cmpA">${opts(CMP[0])}</select></div>`+
+                `<div><label for="cmpB">Modelo B</label><select id="cmpB">${opts(CMP[1])}</select></div>`;
   sel.querySelector('#cmpA').addEventListener('change',e=>{CMP[0]=e.target.value; comparador();});
   sel.querySelector('#cmpB').addEventListener('change',e=>{CMP[1]=e.target.value; comparador();});
 
@@ -1620,8 +1931,156 @@ function comparador(){
     f.svg.append('path').datum(ii).attr('fill','none').attr('stroke',col(slot)).attr('stroke-width',2.2)
       .attr('d',d3.line().x(i=>x(W[i])).y(i=>y(s[i])).curve(d3.curveMonotoneX)));
   legend(c.querySelector('.legend'),[[A.slug,col('--s1'),A.slug],[B.slug,col('--s2'),B.slug]]);
-  crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+
+  crosshair(f,x,ii,(i)=>`<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+
     tipRow(col('--s1'),A.slug,fmtP(shA[i]))+tipRow(col('--s2'),B.slug,fmtP(shB[i])));
+}
+
+// ===========================================================================
+// Seção 10: O mapa da temporada
+// ===========================================================================
+let MAPA_MODO='recursos';
+const ROT_PESO={share:'Share de tokens',gasto:'Share do gasto',cresc:'Crescimento de share',
+                ctx:'Janela de contexto',multi:'Multimodalidade',rac:'Suporte a raciocínio',
+                ampl:'Amplitude do catálogo',cad:'Cadência de lançamento'};
+
+function mapa(name){
+  const c=card(name), plot=c.querySelector('.plot'), M=D.mapa;
+  if(!M || !M.labs.length) return vazio(name,'Nenhum laboratório com volume no recorte atual.');
+  const modo=MAPA_MODO;
+  let labs=M.labs.map(o=>({...o, x: modo==='indice'? o.xAA : o.xRec}));
+  const semX=labs.filter(o=>o.x==null);
+  labs=labs.filter(o=>o.x!=null);
+  const per=M.periodos_atras, unid=GRAN==='semana'?'semanas':'meses';
+
+  document.getElementById('mapa-sub').innerHTML = modo==='recursos'
+    ? `Posição relativa entre os <b>${M.total}</b> laboratórios com volume. Vertical: tração, do share de tokens, do gasto e do crescimento. Horizontal: capacidade declarada, da janela de contexto, multimodalidade, raciocínio, amplitude do catálogo e cadência de lançamento. O rastro mostra onde cada um estava ${per} ${unid} atrás.`
+    : `Vertical: tração. Horizontal: melhor Índice de Inteligência do catálogo do laboratório. <b>${M.com_indice} de ${M.total}</b> laboratórios têm ao menos um modelo com índice publicado; os demais ficam fora deste modo.`;
+
+  if(labs.length<3) return vazio(name, modo==='indice'
+    ? 'Menos de três laboratórios do recorte têm modelo com índice publicado.'
+    : 'Poucos laboratórios no recorte atual.');
+
+  const f=frame(plot, 460, {t:22,r:26,b:44,l:52});
+  const x=d3.scaleLinear().domain([0,100]).range([f.m.l,f.w-f.m.r]);
+  const y=d3.scaleLinear().domain([0,100]).range([f.h-f.m.b,f.m.t]);
+  const r=d3.scaleSqrt().domain([0,d3.max(labs,o=>o.tokens)]).range([5,26]);
+
+  // grade e eixos em percentil
+  [0,25,50,75,100].forEach(v=>{
+    f.svg.append('line').attr('class','grid').attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',y(v)).attr('y2',y(v));
+    f.svg.append('text').attr('class','ax').attr('x',f.m.l-8).attr('y',y(v)+4).attr('text-anchor','end').text(v);
+    f.svg.append('text').attr('class','ax').attr('x',x(v)).attr('y',f.h-f.m.b+18).attr('text-anchor','middle').text(v);
+  });
+  // linhas do quadrante na mediana, que em percentil e sempre 50
+  [[x(50),f.m.t,x(50),f.h-f.m.b],[f.m.l,y(50),f.w-f.m.r,y(50)]].forEach(([a,b,cc,d])=>
+    f.svg.append('line').attr('x1',a).attr('y1',b).attr('x2',cc).attr('y2',d)
+      .attr('stroke',css('--axis')).attr('stroke-width',1.5));
+
+  const quad=(px,py,txt,anchor)=>f.svg.append('text').attr('class','ax').attr('x',px).attr('y',py)
+    .attr('text-anchor',anchor).style('fill',css('--ink-3')).style('font-size','11px')
+    .style('letter-spacing','.05em').style('text-transform','uppercase').text(txt);
+  quad(f.w-f.m.r-6, f.m.t+13, 'Líderes', 'end');
+  quad(f.m.l+6,     f.m.t+13, 'Desafiantes', 'start');
+  quad(f.w-f.m.r-6, f.h-f.m.b-8, 'Promessas', 'end');
+  quad(f.m.l+6,     f.h-f.m.b-8, 'Nichados', 'start');
+  f.svg.append('text').attr('class','ax').attr('x',(f.m.l+f.w-f.m.r)/2).attr('y',f.h-6)
+    .attr('text-anchor','middle').style('fill',css('--ink-3'))
+    .text(modo==='indice' ? 'percentil do Índice de Inteligência →' : 'percentil de capacidade declarada →');
+  f.svg.append('text').attr('class','ax').attr('transform',`rotate(-90) translate(${-(f.m.t+f.h-f.m.b)/2}, 14)`)
+    .attr('text-anchor','middle').style('fill',css('--ink-3')).text('percentil de tração →');
+
+  // Rastro apenas dos oito maiores. Percentil de lab minusculo oscila muito por
+  // ruido, e vinte linhas tracejadas cruzando o plano escondem o que importa.
+  const comRastro=new Set(labs.slice().sort((a,b)=>b.tokens-a.tokens).slice(0,8).map(o=>o.lab));
+  labs.filter(o=>comRastro.has(o.lab)).forEach(o=>{
+    const a=M.antes[o.lab]; if(!a) return;
+    const ax=modo==='indice'? a.xAA : a.x; if(ax==null) return;
+    if(Math.abs(ax-o.x)<3 && Math.abs(a.y-o.y)<3) return;
+    // A linha para na borda da bolha, senao parece que atravessa o marcador.
+    const dx=x(o.x)-x(ax), dy=y(o.y)-y(a.y), d=Math.hypot(dx,dy)||1, rr=r(o.tokens)+2;
+    f.svg.append('line').attr('x1',x(ax)).attr('y1',y(a.y))
+      .attr('x2',x(o.x)-dx/d*rr).attr('y2',y(o.y)-dy/d*rr)
+      .attr('stroke',col(ORIGIN_SLOT[o.origem]||'--s0')).attr('stroke-width',1.4)
+      .attr('opacity',.5).attr('stroke-dasharray','3 3').attr('stroke-linecap','round');
+    f.svg.append('circle').attr('cx',x(ax)).attr('cy',y(a.y)).attr('r',3)
+      .attr('fill','none').attr('stroke',col(ORIGIN_SLOT[o.origem]||'--s0'))
+      .attr('stroke-width',1.4).attr('opacity',.55);
+  });
+
+  const t_=tip(plot);
+  const pc=v=>Math.round(v)+'º';
+  f.svg.append('g').selectAll('circle.b').data(labs.slice().sort((a,b)=>b.tokens-a.tokens)).join('circle')
+    .attr('class','b').attr('cx',o=>x(o.x)).attr('cy',o=>y(o.y)).attr('r',o=>r(o.tokens))
+    .attr('fill',o=>col(ORIGIN_SLOT[o.origem]||'--s0')).attr('opacity',.48)
+    .attr('stroke',o=>col(ORIGIN_SLOT[o.origem]||'--s0')).attr('stroke-width',1.6)
+    .style('cursor','pointer')
+    .on('mouseover',function(){ d3.select(this).attr('opacity',.85).raise(); })
+    .on('mouseout',function(){ d3.select(this).attr('opacity',.48); })
+    .on('mousemove',(ev,o)=>{const [mx,my]=d3.pointer(ev); const sx=plot.getBoundingClientRect().width/f.w;
+      const comp = modo==='indice'
+        ? tipRow('transparent','Melhor Índice de Inteligência', o.aa)
+        : ['ctx','multi','rac','ampl','cad'].map(k=>tipRow('transparent',ROT_PESO[k],pc(o.pct[k]))).join('');
+      showTip(t_,plot,mx*sx,my*sx,
+        `<div class="t">${VENDOR_LABEL[o.lab]||capital(o.lab)}</div>`+
+        tipRow(col(ORIGIN_SLOT[o.origem]||'--s0'),'Origem',o.origem)+
+        tipRow('transparent','Tração (percentil)',pc(o.y))+
+        tipRow('transparent','Capacidade (percentil)',pc(o.x))+
+        `<div class="r" style="opacity:.7;margin-top:4px"><span>decomposição</span><b></b></div>`+
+        tipRow('transparent',ROT_PESO.share,pc(o.pct.share))+
+        tipRow('transparent',ROT_PESO.gasto,pc(o.pct.gasto))+
+        tipRow('transparent',ROT_PESO.cresc,pc(o.pct.cresc))+comp+
+        `<div class="r" style="opacity:.7;margin-top:4px"><span>valores</span><b></b></div>`+
+        tipRow('transparent','Share de tokens',fmtP(o.share))+
+        tipRow('transparent','Share do gasto',fmtP(o.shareG))+
+        tipRow('transparent','Modelos com volume',o.ampl));})
+    .on('mouseleave',()=>t_.style.display='none');
+
+  // rotulo em todos: 19 laboratorios cabem com desvio vertical simples
+  const usados=[];
+  labs.slice().sort((a,b)=>b.tokens-a.tokens).forEach(o=>{
+    let py=y(o.y)-r(o.tokens)-7;
+    while(usados.some(u=>Math.abs(u.x-x(o.x))<62 && Math.abs(u.y-py)<12)) py-=12;
+    usados.push({x:x(o.x), y:py});
+    f.svg.append('text').attr('class','dl').attr('x',x(o.x)).attr('y',py).attr('text-anchor','middle')
+      .style('fill',css('--ink-2')).text(VENDOR_LABEL[o.lab]||capital(o.lab));
+  });
+
+  legend(c.querySelector('.legend'),
+    [...new Set(labs.map(o=>o.origem))].map(o=>[o,col(ORIGIN_SLOT[o]||'--s0'),o])
+      .concat([['r',css('--ink-3'),`rastro: posição ${per} ${unid} atrás (8 maiores)`]])
+      .concat(semX.length? [['x',css('--ink-3'),`${semX.length} sem índice, fora deste modo`]] : []));
+
+  montarPesos();
+  table(c.querySelector('.tbl'),
+    ['Laboratório','Origem','Tração','Capacidade','Share tokens','Share gasto','Cresc. (pp)','Modelos','Contexto','Índice'],
+    labs.slice().sort((a,b)=>b.y-a.y).map(o=>[VENDOR_LABEL[o.lab]||capital(o.lab),o.origem,
+      pc(o.y),pc(o.x),fmtP(o.share),fmtP(o.shareG),
+      (o.cresc>=0?'+':'')+o.cresc.toFixed(2).replace('.',','),o.ampl,fmtCtx(o.ctx),o.aa??'—']));
+}
+
+// Pesos ajustaveis. O mapa combina componentes, e a escolha dos pesos e
+// editorial. Deixar o leitor mexer transforma "confie em mim" em "veja voce
+// mesmo", que e a diferenca entre uma ferramenta e uma consultoria.
+function montarPesos(){
+  const el=document.getElementById('pesos-body'); if(!el) return;
+  const P=D.mapa.pesos;
+  const linha=(g,k)=>`<label><span>${ROT_PESO[k]}</span>`+
+    `<input type="range" min="0" max="50" step="5" value="${P[g][k]}" data-g="${g}" data-k="${k}" `+
+    `aria-label="Peso de ${ROT_PESO[k]}"><b>${P[g][k]}</b></label>`;
+  el.innerHTML=`<div class="g">Eixo vertical, tração</div>`+
+    Object.keys(P.tracao).map(k=>linha('tracao',k)).join('')+
+    `<div class="g">Eixo horizontal, capacidade declarada</div>`+
+    Object.keys(P.cap).map(k=>linha('cap',k)).join('')+
+    `<button class="reset" type="button">restaurar padrão</button>`;
+  el.querySelectorAll('input[type=range]').forEach(inp=>inp.addEventListener('input',()=>{
+    P[inp.dataset.g][inp.dataset.k]=+inp.value;
+    inp.nextElementSibling.textContent=inp.value;
+    recalcular(); mapa('mapa'); readings();
+  }));
+  el.querySelector('.reset').addEventListener('click',()=>{
+    D._pesosMapa=JSON.parse(JSON.stringify(D.mapa.pesos_padrao));
+    recalcular(); mapa('mapa'); readings();
+  });
 }
 
 function renderAll(){
@@ -1637,7 +2096,7 @@ function renderAll(){
   lineChart('age', D.age.map((v,i)=>i<12?null:v), {fmt:v=>v+' sem', color:'--s4', label:'Idade mediana (semanas)', area:false});
   trajectory('life');
   spendChart('spend'); vsMoney('vsmoney'); quality('quality');
-  mudou('mudou'); varia('varia'); comparador();
+  mudou('mudou'); varia('varia'); mapa('mapa'); comparador();
 }
 function renderStatic(){
   tiles(); readings(); board();
@@ -1656,7 +2115,9 @@ D.life.forEach(m=>{ m.series=D.life_series[m.model]; });
 // Ponto de inspecao publico. Os testes automatizados comparam o que a pagina
 // calcula com o que o pipeline calculou; qualquer leitor pode auditar o mesmo.
 window.MS={ get D(){return D}, MX, FILTROS, filtrando, recalcular, aplicar,
-            agregar, selecionados, versao:D.as_of };
+            agregar, selecionados, versao:D.as_of,
+            get gran(){return GRAN}, get janela(){return JANELA},
+            get semanasPorBucket(){return SEMANAS_POR_BUCKET} };
 montarFiltros(); daURL(); sincronizarBotoes(); aplicar();
 
 document.getElementById('ftoggle').addEventListener('click',()=>{
@@ -1675,6 +2136,10 @@ if(filtrando()) document.getElementById('ftoggle').click();
 document.querySelectorAll('.views button[data-view]').forEach(b=>b.addEventListener('click',()=>{
   b.parentElement.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed', String(o===b)));
   TRAJ_VIEW=b.dataset.view; trajectory('life');
+}));
+document.querySelectorAll('.views button[data-mapa]').forEach(b=>b.addEventListener('click',()=>{
+  b.parentElement.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed', String(o===b)));
+  MAPA_MODO=b.dataset.mapa; mapa('mapa'); readings();
 }));
 document.querySelectorAll('.views button[data-qx]').forEach(b=>b.addEventListener('click',()=>{
   b.parentElement.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed', String(o===b)));
