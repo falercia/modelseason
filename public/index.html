@@ -4,7 +4,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Model Season</title>
-<meta name="description" content="Para onde vai o tráfego de tokens dos modelos de linguagem no OpenRouter: share por lab, open-weights vs. proprietário, ciclo de vida dos modelos. Atualizado diariamente.">
+<meta name="description" content="Para onde vai o tráfego de tokens dos modelos de linguagem, semana a semana: share por laboratório, pesos abertos vs. proprietário, China vs. EUA e ciclo de vida dos modelos. Atualizado todo dia.">
+<link rel="canonical" href="https://modelseason.com/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Fabio Garcia">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Model Season">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://modelseason.com/">
+<meta property="og:title" content="Model Season">
+<meta property="og:description" content="Para onde vai o tráfego de tokens dos modelos de linguagem, semana a semana: share por laboratório, pesos abertos vs. proprietário, China vs. EUA e ciclo de vida dos modelos. Atualizado todo dia.">
+<meta property="og:image" content="https://modelseason.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Model Season: tokens por semana, share de laboratórios chineses, pesos abertos e rotatividade do top 10.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Model Season">
+<meta name="twitter:description" content="Para onde vai o tráfego de tokens dos modelos de linguagem, semana a semana: share por laboratório, pesos abertos vs. proprietário, China vs. EUA e ciclo de vida dos modelos. Atualizado todo dia.">
+<meta name="twitter:image" content="https://modelseason.com/og.png">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23199e70'/%3E%3Cpath d='M7 22V10l5 7 5-7v12' stroke='white' stroke-width='2.6' fill='none' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='12' r='2.6' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
 <style>
@@ -123,9 +144,9 @@ footer p{margin:0 0 6px}
   </div>
   <div class="meta">
     Fonte: <b>OpenRouter · rankings-daily</b><br>
-    Janela: <b id="m-range"></b><br>
-    Semanas completas: <b id="m-weeks"></b> · Modelos distintos: <b id="m-models"></b><br>
-    Atualizado em <b id="m-asof"></b> · dados até <b id="m-daily"></b> · CC BY 4.0
+    Dados de <b id="m-range"></b><br>
+    Semanas completas nos gráficos: <b id="m-weeks"></b> · Modelos distintos: <b id="m-models"></b><br>
+    Atualizado em <b id="m-asof"></b> · CC BY 4.0
   </div>
 </header>
 
@@ -513,8 +534,9 @@ function renderStatic(){
   hbars('antenure', an.map(m=>({k:m.model.replace('anthropic/','').replace(/-20\d{6}$/,''), v:m.weeks_in_top10, first:m.first, peak:m.peak_share, alive:m.still_alive})));
   const byQ=d3.rollups(D.life, v=>({n:v.length, ttp:d3.median(v,m=>m.weeks_to_peak), half:d3.median(v.filter(m=>m.half_life_weeks!=null),m=>m.half_life_weeks)||0, alive:d3.mean(v,m=>m.still_alive?1:0)}), m=>{const d=new Date(m.first); return d.getFullYear()+'Q'+(Math.floor(d.getMonth()/3)+1);}).sort((a,b)=>a[0]<b[0]?-1:1);
   cohortBars('cohort', byQ.map(([q,o])=>({q,...o})));
-  document.getElementById('m-range').textContent=`${fD(W[0])} → ${fD(new Date(D.weeks[N-1]+'T00:00:00'))} (+6d)`;
-  document.getElementById('m-asof').textContent=fD(new Date(D.as_of+'T00:00:00')); document.getElementById('m-daily').textContent=fD(new Date(D.daily_last+'T00:00:00'));
+  const fBR=d=>d.split('-').reverse().join('/');
+  document.getElementById('m-range').textContent=`${fBR(D.daily_first)} a ${fBR(D.daily_last)}`;
+  document.getElementById('m-asof').textContent=fBR(D.as_of);
   document.getElementById('attrib-asof').textContent=D.as_of;
   document.getElementById('m-weeks').textContent=N; document.getElementById('m-models').textContent=D.n_models;
 }

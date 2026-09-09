@@ -13,6 +13,11 @@ df=pd.read_csv(CSV, parse_dates=["date"], dtype={"total_tokens":"int64"})
 df=df.drop_duplicates(["date","model_permaslug"])
 df["vendor"]=df.model_permaslug.str.split("/").str[0]
 df["week"]=df.date.dt.to_period("W-SUN").dt.start_time
+# Extremos do dado BRUTO, antes de qualquer filtro. O cabecalho da pagina reporta
+# a cobertura real do CSV; os graficos usam apenas semanas completas. Sao numeros
+# diferentes de proposito, e misturar os dois faz a pagina anunciar uma data
+# anterior a que o repositorio publica.
+RAW_FIRST=df.date.min(); RAW_LAST=df.date.max(); RAW_DAYS=int(df.date.nunique())
 # drop incomplete last week (Aug 31 is Monday alone)
 full=df.groupby("week").date.nunique(); full_weeks=full[full==7].index
 df=df[df.week.isin(full_weeks)]
@@ -132,7 +137,9 @@ other_share=(df[df.model_permaslug=="other"].groupby("week").total_tokens.sum().
 life_series={m['model']:ms[m['model']].round(2).tolist() for m in life}
 out=dict(life_series=life_series,weeks=weeks,weekly_total_T=(wk/1e12).round(2).tolist(),vendor_share=vendor_share,vendor_abs=vendor_abs,origin_share=origin_share,weights_share=weights_share,free_share=free_share,top5=top5,hhi=hhi,an_share=an_share,an_fam_abs=an_fam_abs,an_models=an_models,comp_share=comp_share,life=life,churn=churn,age=age,entrants=entrants,boards=boards,monthly=monthly,other_share=other_share,last_week=last.strftime("%Y-%m-%d"),n_models=int(df.model_permaslug.nunique()))
 out["as_of"]=dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
-out["daily_last"]=df.date.max().strftime("%Y-%m-%d")
+out["daily_first"]=RAW_FIRST.strftime("%Y-%m-%d")
+out["daily_last"]=RAW_LAST.strftime("%Y-%m-%d")
+out["daily_days"]=RAW_DAYS
 OUT.parent.mkdir(parents=True,exist_ok=True)
 json.dump(out,open(OUT,"w"),ensure_ascii=False,separators=(",",":"))
 

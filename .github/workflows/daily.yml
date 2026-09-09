@@ -73,11 +73,14 @@ jobs:
       - name: Recalcular agregados
         run: python pipeline/build.py
 
+      - name: Regerar card social
+        run: python pipeline/make_og.py
+
       - name: Commitar se houver mudança
         run: |
           git config user.name "modelseason-bot"
           git config user.email "modelseason-bot@users.noreply.github.com"
-          git add data/rankings_daily.csv public/data.json
+          git add data/rankings_daily.csv public/data.json public/og.png
           if git diff --cached --quiet; then
             echo "Sem mudanças."
           else
