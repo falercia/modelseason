@@ -147,6 +147,38 @@ const perto = (a, b, tol) => Math.abs(a - b) <= tol;
   checa(erros.length === 0, 'trocar janela e granularidade não gera erro', erros.join(' | '));
   await p.click('.chip[data-gran="semana"]'); await p.waitForTimeout(600);
 
+  // ---------- 6b2. nenhum SVG com atributo NaN em nenhuma janela ----------
+  // Escala com domínio degenerado produz NaN e o gráfico sai quebrado em
+  // silêncio: o SVG existe, não lança exceção, e não desenha nada.
+  for (const g of ['semana', 'mes']) {
+    await p.click(`.chip[data-gran="${g}"]`); await p.waitForTimeout(500);
+    for (const r of ['all', '52', '26', '13', '4', 'ytd']) {
+      await p.click(`.chip[data-range="${r}"]`); await p.waitForTimeout(320);
+      const quebrados = await p.evaluate(() => {
+        const out = [];
+        document.querySelectorAll('.card[data-chart]').forEach(c => {
+          const n = [...c.querySelectorAll('svg *')]
+            .filter(e => [...e.attributes].some(a => /NaN/i.test(a.value)));
+          if (n.length) out.push(c.dataset.chart);
+        });
+        return out;
+      });
+      checa(quebrados.length === 0, `sem atributo NaN em ${g}/${r}`, quebrados.join(', '));
+    }
+  }
+  await p.click('.chip[data-gran="semana"]'); await p.waitForTimeout(400);
+  await p.click('.chip[data-range="all"]'); await p.waitForTimeout(500);
+
+  // ---------- 6b3. as leituras respondem à janela ----------
+  // Se o texto não muda quando a janela muda, ele está descrevendo outra coisa.
+  const leituraDe = async r => {
+    await p.click(`.chip[data-range="${r}"]`); await p.waitForTimeout(450);
+    return p.evaluate(() => document.getElementById('read-volume').innerText);
+  };
+  const lTudo = await leituraDe('all'), l13 = await leituraDe('13'), l4 = await leituraDe('4');
+  checa(lTudo !== l13 && l13 !== l4, 'painel de leitura muda quando a janela muda');
+  await p.click('.chip[data-range="all"]'); await p.waitForTimeout(400);
+
   // ---------- 6c. o mapa da temporada ----------
   const mapa = await p.evaluate(() => {
     const M = window.MS.D.mapa;
@@ -169,6 +201,31 @@ const perto = (a, b, tol) => Math.abs(a - b) <= tol;
   }));
   checa(met.n >= 12, 'seção de metodologia documenta os indicadores', `${met.n} blocos`);
   checa(met.semNao === 0, 'todo indicador diz o que NÃO conclui', `${met.semNao} sem esse bloco`);
+
+  // ---------- 6e. sinais da temporada ----------
+  // Esta secao ja nasceu com o bug classico da pagina: texto que nao reage a
+  // janela. Aqui a janela precisa mudar a BASE do estimador, nao so o recorte.
+  const lerSinais = async (range) => {
+    await p.click(`.chip[data-range="${range}"]`); await p.waitForTimeout(400);
+    return p.evaluate(() => {
+      const S = window.MS.D.sinais;
+      return { base: S.base, horiz: S.horiz, n: window.MS.D.weeks.length,
+               projs: S.projs.map(x => ({ taxa: x.taxa, alvo: x.alvo, rompe: !!x.rompe })) };
+    });
+  };
+  const sAll = await lerSinais('all'), s26 = await lerSinais('26'), s4 = await lerSinais('4');
+  checa(sAll.projs.length > 0, 'seção de sinais projeta séries');
+  checa(sAll.base !== s26.base && s26.base !== s4.base,
+    'a janela muda a base do estimador', `${sAll.base} / ${s26.base} / ${s4.base}`);
+  checa([sAll, s26, s4].every(s => s.horiz <= Math.max(2, Math.round(s.n / 4))),
+    'horizonte nunca passa de um quarto do observado');
+  const taxaZero = [sAll, s26, s4].flatMap(s => s.projs).filter(x => /^0,0(pp)?$/.test(x.taxa) || /^US\$ 0,00$/.test(x.taxa));
+  checa(taxaZero.length === 0, 'nenhuma projeção publica taxa que arredonda para zero', `${taxaZero.length} linhas`);
+  const alvoFurado = [sAll, s26, s4].flatMap(s => s.projs).filter(x => x.rompe && x.alvo !== null);
+  checa(alvoFurado.length === 0, 'reta que rompe o limite não publica valor de chegada', `${alvoFurado.length} linhas`);
+  const txtSinais = await p.evaluate(() => document.querySelector('#sinais').innerText);
+  checa(!/0 padr[õo]/.test(txtSinais) && !/NaN|undefined/.test(txtSinais), 'seção de sinais sem texto degenerado');
+  await p.click('.chip[data-range="all"]'); await p.waitForTimeout(400);
 
   // ---------- 7. sem transbordo horizontal em três larguras ----------
   for (const w of [390, 768, 1440]) {

@@ -194,6 +194,25 @@ footer p{margin:0 0 6px}
 .pbody input{width:84px}
 .pbody b{width:34px;text-align:right;font-variant-numeric:tabular-nums}
 .pbody .reset{grid-column:1/-1;justify-self:start;margin-top:8px;border:1px solid var(--axis);background:transparent;color:var(--ink-2);border-radius:6px;padding:3px 10px;font:500 12px "DM Sans",sans-serif;cursor:pointer}
+.sin{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.sin .s{border:1px solid var(--grid);border-radius:10px;padding:13px 14px;background:var(--surface)}
+.sin .s .rot{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.sin .s .val{font-size:24px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.sin .s .txt{font-size:13px;color:var(--ink-2);line-height:1.6}
+.prj{display:grid;gap:0}
+.prj .l{display:grid;grid-template-columns:minmax(180px,1.4fr) auto 1fr;gap:14px;align-items:baseline;
+  padding:11px 0;border-top:1px solid var(--grid);font-size:13.5px}
+.prj .l:first-child{border-top:0}
+.prj .nome{color:var(--ink)}
+.prj .agora{font-variant-numeric:tabular-nums;color:var(--ink-2);white-space:nowrap}
+.prj .quando{color:var(--ink-2)}
+.prj .quando b{color:var(--ink)}
+.prj .seta{color:var(--ink-3)}
+.prj .rompe{color:var(--bad)}
+.nota-prj{font-size:13px;color:var(--ink-2);padding:10px 0 0;line-height:1.5}
+.nota-prj .rompe{color:var(--bad);font-weight:600}
+.aviso{margin-top:12px;font-size:12.5px;color:var(--ink-2);background:var(--surface-2);border-radius:8px;padding:9px 11px}
+@media (max-width:600px){.prj .l{grid-template-columns:1fr;gap:2px;padding:10px 0}}
 .met{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;align-items:start}
 .met details{border:1px solid var(--grid);border-radius:10px;background:var(--surface);padding:0}
 .met summary{cursor:pointer;padding:12px 14px;font-weight:700;font-size:14px;gap:8px;list-style:none;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
@@ -487,7 +506,7 @@ footer p{margin:0 0 6px}
       <div class="plot"></div>
     </div>
     <div class="card" data-chart="varia">
-      <div class="card-h"><div><h3>Maiores variações de share</h3><p>Diferença em pontos percentuais nas últimas 4 semanas</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="card-h"><div><h3>Maiores variações de share</h3><p id="varia-sub">Diferença em pontos percentuais</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
       <div class="plot"></div><div class="tbl"></div>
     </div>
   </div>
@@ -525,8 +544,24 @@ footer p{margin:0 0 6px}
   </div>
 </section>
 
+<section id="sinais">
+  <div class="sec-head"><span class="n">11</span><h2>Sinais da temporada</h2></div>
+  <p style="max-width:80ch;color:var(--ink-2);font-size:14px;margin:0 0 16px">
+  O que está fora do padrão nesta janela, detectado automaticamente, e para onde os números vão
+  <b>se a taxa atual se mantiver</b>. A segunda parte não é previsão, e a página inteira existe
+  para mostrar que essas taxas mudam.</p>
+  <div class="card" data-chart="sinais">
+    <div class="card-h"><div><h3>Achados</h3><p id="sinais-sub"></p></div></div>
+    <div class="plot"></div>
+  </div>
+  <div class="card" data-chart="projecao" style="margin-top:14px">
+    <div class="card-h"><div><h3>Se o ritmo atual se mantiver</h3><p id="proj-sub"></p></div></div>
+    <div class="plot"></div>
+  </div>
+</section>
+
 <section id="metodologia">
-  <div class="sec-head"><span class="n">11</span><h2>Como ler cada indicador</h2></div>
+  <div class="sec-head"><span class="n">12</span><h2>Como ler cada indicador</h2></div>
   <p style="max-width:78ch;color:var(--ink-2);font-size:14px;margin:0 0 16px">Cada indicador abaixo responde três perguntas: o que é, como é calculado, e o que <b>não</b> conclui. A terceira é a que mais importa numa decisão, e a que quase nenhum painel publica.</p>
   <div class="met">
     <details><summary>Tokens por semana</summary><div class="body"><p><span class="k">o que é</span>Volume total processado via OpenRouter na semana, somando prompt e completion de todos os modelos do top 50 diário mais a linha agregada do resto.</p><p><span class="k">como é calculado</span>Soma dos totais diários da semana ISO, de segunda a domingo. Só semanas completas entram. Ao agrupar por mês, o valor exibido é a <b>média semanal do mês</b>, para que um mês de cinco semanas não pareça 25% maior que um de quatro.</p><p class="nao"><span class="k">o que não conclui</span>Não é o consumo mundial de IA. É o tráfego de um roteador, com o viés descrito no rodapé. Também não é comparável entre 2025 e 2026 sem normalizar: o denominador cresceu 231 vezes.</p></div></details>
@@ -544,6 +579,7 @@ footer p{margin:0 0 6px}
     <details><summary>Tempo até o pico e meia-vida</summary><div class="body"><p><span class="k">o que é</span>Quantas semanas um modelo leva do lançamento até seu maior share, e quantas leva depois disso para perder metade dele.</p><p><span class="k">como é calculado</span>Calculado por modelo, sobre a série completa. Só entram modelos que atingiram ao menos 2% do volume semanal, para evitar que ruído de modelos minúsculos domine a mediana. Modelo que ainda não caiu à metade aparece sem meia-vida em vez de contar como zero.</p><p class="nao"><span class="k">o que não conclui</span>Meia-vida curta não é sinal de modelo ruim. É sinal de mercado com cadência alta de lançamento, e o efeito aparece em modelos bons e ruins igualmente.</p></div></details>
     <details><summary>A forma de uma temporada</summary><div class="body"><p><span class="k">o que é</span>Curva média de adoção de um modelo, do lançamento ao decaimento.</p><p><span class="k">como é calculado</span>Cada modelo é alinhado na própria semana de estreia e normalizado pelo próprio pico, então o eixo horizontal vira idade do modelo e o vertical vira percentual do pico. A linha grossa é a mediana e a faixa é o intervalo entre o primeiro e o terceiro quartil.</p><p class="nao"><span class="k">o que não conclui</span>Não prevê a trajetória de um modelo específico. Descreve a distribuição observada, e a dispersão dentro da faixa é grande.</p></div></details>
     <details><summary>Variação de share em quatro semanas</summary><div class="body"><p><span class="k">o que é</span>Diferença, em pontos percentuais, entre o share atual de um modelo e o de quatro semanas antes.</p><p><span class="k">como é calculado</span>Subtração simples de percentuais. Ao agrupar por mês, a comparação passa a ser com o mês anterior, que é o período equivalente.</p><p class="nao"><span class="k">o que não conclui</span>Ponto percentual não é percentual: sair de 1% para 2% é +1pp e também é dobrar. Para modelos pequenos, a variação relativa conta mais história.</p></div></details>
+    <details><summary>Sinais e extrapolação</summary><div class="body"><p><span class="k">o que é</span>Duas coisas diferentes na mesma seção. <b>Achados</b> são fatos já medidos que contrariam o padrão dominante da janela. <b>Extrapolação</b> é a taxa recente estendida em linha reta.</p><p><span class="k">como é calculado</span>Cada achado tem uma regra fixa e publicada no código: aceleração acima de dois desvios da própria oscilação do modelo, ganho de share em modelo mais caro que a mediana, permanência no top 10 acima do dobro da idade mediana, inversão de sinal na tendência do HHI, e afastamento de mais de 4 pontos entre as curvas de China e de pesos abertos. A extrapolação é uma reta por mínimos quadrados sobre as últimas 8 observações, projetada até o próximo marco redondo.</p><p class="nao"><span class="k">o que não conclui</span><b>Nada aqui é previsão.</b> A reta assume que a taxa se mantém, e a tese desta página é que ela não se mantém: nenhum modelo sustentou liderança por mais de dois trimestres neste dataset. O número serve para dimensionar ordem de grandeza e provocar a pergunta certa, nunca para planejar. Um achado também não explica causa: ele diz que algo saiu do padrão, e o trabalho de descobrir por quê continua sendo seu.</p></div></details>
     <details><summary>A linha agregada da fonte</summary><div class="body"><p><span class="k">o que é</span>Volume que ficou fora do top 50 de cada dia, agregado pela fonte numa única linha.</p><p><span class="k">como é calculado</span>Vem pronta da API. Conta no total e no denominador dos percentuais, mas não tem metadado: não sabemos quais modelos a compõem.</p><p class="nao"><span class="k">o que não conclui</span>Por isso ela <b>sai de qualquer recorte filtrado</b>. Com filtro ativo, os percentuais passam a ser calculados dentro do recorte, e a barra de filtros informa quanto do volume ficou de fora.</p></div></details>
   </div>
 </section>
@@ -602,62 +638,83 @@ let GRAN='semana', JANELA='all';
 let SEMANAS_ISO=D.matriz.semanas.slice();
 let MAPA_BUCKET=[];                       // indice da semana -> indice do bucket
 
+// A JANELA FAZ PARTE DO DADO, nao de cada grafico ou painel.
+//
+// Antes, o recorte de tempo era aplicado na hora de desenhar: cada grafico
+// chamava idx() e cada painel de leitura precisava lembrar de usar range[0] em
+// vez de 0. Isso significa que todo painel novo nasce errado ate alguem lembrar,
+// e a pagina vai continuar crescendo. Mesma classe de fragilidade dos nomes de
+// laboratorio escritos no codigo.
+//
+// Agora W, N e SERIES ja saem recortados. Depois desta funcao, indice 0 e o
+// inicio da janela e N-1 e o fim, para todo mundo. Nao ha o que lembrar.
 function construirEixo(){
   const datas=SEMANAS_ISO.map(s=>new Date(s+'T00:00:00'));
+  let eixoTodo, mapaTodo;
   if(GRAN==='semana'){
-    W=datas; MAPA_BUCKET=datas.map((_,i)=>i);
+    eixoTodo=datas; mapaTodo=datas.map((_,i)=>i);
   } else {
     // Cada semana entra no mes do seu primeiro dia (segunda-feira). Semana que
     // atravessa a virada de mes conta inteira no mes em que comecou; e a unica
     // regra que preserva a soma total sem dividir tokens arbitrariamente.
     const chave=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
     const chaves=datas.map(chave), unicas=[...new Set(chaves)];
-    W=unicas.map(k=>new Date(k+'-01T00:00:00'));
-    MAPA_BUCKET=chaves.map(k=>unicas.indexOf(k));
+    eixoTodo=unicas.map(k=>new Date(k+'-01T00:00:00'));
+    mapaTodo=chaves.map(k=>unicas.indexOf(k));
   }
-  N=W.length; NW=N;
-  SEMANAS_POR_BUCKET=new Array(N).fill(0);
-  MAPA_BUCKET.forEach(b=>SEMANAS_POR_BUCKET[b]++);
+  const nTodo=eixoTodo.length;
+  const semTodo=new Array(nTodo).fill(0);
+  mapaTodo.forEach(b=>semTodo[b]++);
+
+  const serieTodo = (GRAN==='semana') ? SERIES_SEM
+    : SERIES_SEM.map(s=>{ const o=new Array(nTodo).fill(0);
+        for(let w=0;w<s.length;w++) o[mapaTodo[w]]+=(s[w]||0);
+        return o.map((v,i)=>v/(semTodo[i]||1)); });
+  const colMedia = s => { const soma=new Array(nTodo).fill(0), n=new Array(nTodo).fill(0);
+    for(let w=0;w<s.length;w++){ const v=s[w]; if(v==null) continue;
+      soma[mapaTodo[w]]+=v; n[mapaTodo[w]]++; }
+    return soma.map((v,i)=>n[i]? +(v/n[i]).toFixed(2) : null); };
+  const churnTodo = (GRAN==='semana') ? CHURN_SEM : colMedia(CHURN_SEM);
+  const ageTodo   = (GRAN==='semana') ? AGE_SEM   : colMedia(AGE_SEM);
+
+  // ---- recorte da janela, aplicado uma vez, aqui ----
+  const [a,b]=rangeFor(JANELA, nTodo, eixoTodo);
+  JANELA_INI=a; JANELA_TOTAL=nTodo;
+  W=eixoTodo.slice(a,b+1); N=W.length; NW=N;
+  SEMANAS_POR_BUCKET=semTodo.slice(a,b+1);
+  MAPA_BUCKET=mapaTodo;
+  SERIES=serieTodo.map(s=>s.slice(a,b+1));
+  D.churn=churnTodo.slice(a,b+1);
+  D.age=ageTodo.slice(a,b+1);
   D.weeks=W.map(d=>d3.timeFormat('%Y-%m-%d')(d));
-  SERIES = (GRAN==='semana') ? SERIES_SEM : SERIES_SEM.map(colapsaSoma);
-  D.churn = (GRAN==='semana') ? CHURN_SEM : colapsaMedia(CHURN_SEM);
-  D.age   = (GRAN==='semana') ? AGE_SEM   : colapsaMedia(AGE_SEM);
-  range = rangeFor(JANELA);
+  range=[0,N-1];
 }
 // Quantas semanas caem em cada bucket. Mes tem 4 ou 5, e essa diferenca e a
 // armadilha da agregacao mensal: um mes de 5 semanas parece 25% maior que um de
-// 4 sem nada ter acontecido no mercado.
+// 4 sem nada ter acontecido no mercado. Por isso valores ABSOLUTOS viram media
+// semanal dentro do bucket, nao soma. A unidade continua sendo "por semana" nas
+// duas granularidades, os meses ficam comparaveis, e os percentuais nao mudam:
+// share e razao de somas, e dividir os dois lados pelo mesmo numero nao altera.
+// O colapso propriamente dito acontece em construirEixo().
 let SEMANAS_POR_BUCKET=[];
-// Por isso valores ABSOLUTOS viram media semanal dentro do bucket, nao soma.
-// A unidade continua sendo "por semana" nas duas granularidades, os meses ficam
-// comparaveis entre si, e os percentuais nao mudam nada: share e razao de somas,
-// e dividir numerador e denominador pelo mesmo numero de semanas nao altera.
-function colapsaSoma(s){ const o=new Array(N).fill(0);
-  for(let w=0;w<s.length;w++) o[MAPA_BUCKET[w]]+=(s[w]||0);
-  return o.map((v,i)=>v/(SEMANAS_POR_BUCKET[i]||1)); }
-// Media, para indicadores que nao sao somaveis (rotatividade, idade mediana).
-function colapsaMedia(s){
-  const soma=new Array(N).fill(0), n=new Array(N).fill(0);
-  for(let w=0;w<s.length;w++){ const v=s[w]; if(v==null) continue;
-    soma[MAPA_BUCKET[w]]+=v; n[MAPA_BUCKET[w]]++; }
-  return soma.map((v,i)=>n[i]? +(v/n[i]).toFixed(2) : null);
-}
 
 let range=[0,N-1];
-function rangeFor(key){
-  if(key==='all') return [0,N-1];
+let JANELA_INI=0, JANELA_TOTAL=N;
+function rangeFor(key, total, eixo){
+  const fim=total-1;
+  if(key==='all') return [0,fim];
   if(key==='ytd'){
-    const ano=W[N-1].getFullYear();
-    let i=W.findIndex(d=>d.getFullYear()===ano);
-    return [i<0?0:i, N-1];
+    const ano=eixo[fim].getFullYear();
+    const i=eixo.findIndex(d=>d.getFullYear()===ano);
+    return [i<0?0:i, fim];
   }
   const sem=+key;
   const pontos = GRAN==='semana' ? sem : Math.max(2, Math.round(sem/4.345));
-  return [Math.max(0,N-pontos), N-1];
+  return [Math.max(0,total-pontos), fim];
 }
 document.querySelectorAll('.chip[data-range]').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.chip[data-range]').forEach(x=>x.setAttribute('aria-pressed','false'));
-  b.setAttribute('aria-pressed','true'); JANELA=b.dataset.range; range=rangeFor(JANELA); renderStatic(); renderAll();
+  b.setAttribute('aria-pressed','true'); JANELA=b.dataset.range; aplicar();
 }));
 document.querySelectorAll('.chip[data-gran]').forEach(b=>b.addEventListener('click',()=>{
   if(b.dataset.gran===GRAN) return;
@@ -666,7 +723,9 @@ document.querySelectorAll('.chip[data-gran]').forEach(b=>b.addEventListener('cli
   document.getElementById('gran-nota').hidden = (GRAN!=='mes');
   aplicar();
 }));
-const idx = () => d3.range(range[0],range[1]+1);
+// O dado ja chega recortado, entao idx() e simplesmente todo o eixo. A funcao
+// continua existindo para os graficos nao precisarem mudar.
+const idx = () => d3.range(0,N);
 
 // ---- entity colors (fixed, never by rank)
 // Cor segue a ENTIDADE, nunca a posicao no ranking: os quatro slots sao fixos e
@@ -815,6 +874,9 @@ function stackedShare(name, series, slots, labels, opts={}){
 function lineChart(name, vals, {fmt=fmtP, color='--s1', area=true, label, ymax, integer=false, h=240, extra=null, colsTab=null}={}){
   if(!vals || !vals.length) return vazio(name,'Sem dado no recorte atual.');
   const c=card(name), plot=c.querySelector('.plot'), ii=idx().filter(i=>vals[i]!=null);
+  // Sem nenhum ponto valido, as escalas produzem NaN e o SVG sai quebrado em
+  // silencio. Estado vazio explicito e a unica resposta honesta.
+  if(!ii.length) return vazio(name,'Sem pontos nesta janela: a série só começa depois do período selecionado.');
   const f=frame(plot, h, {t:14,r:16,b:30,l:44});
   const x=xScale(f,ii), y=d3.scaleLinear().domain([0, ymax||d3.max(ii,i=>vals[i])*1.1]).nice().range([f.h-f.m.b,f.m.t]);
   axes(f,x,y,v=>integer?v:fmt(v),4);
@@ -983,7 +1045,13 @@ const SERIES_SEM=MX.modelos.map((_,i)=>serie(i));   // sempre semanal, fonte
 let SERIES=SERIES_SEM;                              // visao na granularidade atual
 // Indicadores de ciclo de vida sao medias, nao somas: guardamos o original
 // semanal para nunca colapsar duas vezes ao trocar de granularidade.
-const CHURN_SEM=(D.churn||[]).slice(), AGE_SEM=(D.age||[]).slice();
+const CHURN_SEM=(D.churn||[]).slice();
+// As 12 primeiras semanas da serie sao censuradas na idade mediana: nao sabemos
+// quando os modelos ja presentes em janeiro de 2025 estrearam de fato. Isso e
+// propriedade do DADO, nao do desenho. Enquanto morava no render, com indice
+// absoluto (`i<12`), uma janela de 4 semanas apagava a serie inteira e o grafico
+// virava NaN. Aplicada aqui, ela sobrevive a qualquer recorte.
+const AGE_SEM=(D.age||[]).map((v,i)=>i<12?null:v);
 
 function filtrando(){ return Object.values(FILTROS).some(s=>s && s.size); }
 function passa(mod){
@@ -1084,7 +1152,11 @@ function recalcular(){
 
   // Coluna "Há 12 sem" tem que usar o MESMO recorte, senao compara a posicao
   // dentro do filtro com a posicao no mercado inteiro, e o numero mente.
+  // A janela pode ser mais curta que a distancia pedida. Em vez de silenciosamente
+  // comparar com o inicio da janela e continuar dizendo "12 semanas", guardamos a
+  // distancia REAL e o rotulo sai dela.
   const doze=Math.max(0, ult-(GRAN==='semana'?12:3));
+  D.dist_prev = ult-doze;
   D.boards.prev12=sel.filter(([m])=>!ehOther(m))
     .map(([m,i])=>({model:m.s, T:SERIES[i][doze]}))
     .filter(r=>r.T>0).sort((a,b)=>b.T-a.T).slice(0,15);
@@ -1251,11 +1323,12 @@ function recalcular(){
     return perfil;
   }
   const atras=Math.max(0, ult-(GRAN==='semana'?12:3));
+  const distMapa=ult-atras;
   const perfilAgora=comporta(perfilLabs(ult), perfilLabs(atras), 'recursos');
   const antesRaw=comporta(perfilLabs(atras), null, 'recursos');
   const antesMap={}; antesRaw.forEach(o=>antesMap[o.lab]={x:o.xRec, xAA:o.xAA, y:o.y});
   D.mapa={ labs:perfilAgora, antes:antesMap, pesos:PESOS, pesos_padrao:PESOS_PADRAO,
-           periodos_atras:(GRAN==='semana'?12:3),
+           periodos_atras:distMapa,
            com_indice:perfilAgora.filter(o=>o.aa!=null).length, total:perfilAgora.length };
 
   // ---- o que mudou nas ultimas 4 semanas ---------------------------------
@@ -1263,6 +1336,7 @@ function recalcular(){
   // granularidades: 4 pontos semanais ou 1 ponto mensal.
   const passo4 = GRAN==='semana' ? 4 : 1;
   const ant=Math.max(0, ult-passo4);
+  const distMud=ult-ant;
   const topN=(w,n)=>sel.filter(([m])=>!ehOther(m))
     .map(([m,i])=>({s:m.s, v:SERIES[i][w]})).filter(r=>r.v>0)
     .sort((a,b)=>b.v-a.v).slice(0,n).map(r=>r.s);
@@ -1280,7 +1354,7 @@ function recalcular(){
         origin:rotulo('origin',m.d[DIMI.origin]), lanc:m.l}))
       .sort((a,b)=>b.share-a.share);
   D.mudancas={
-    semana:MX.semanas[ult], comparada:MX.semanas[ant],
+    semana:D.weeks[ult], comparada:D.weeks[ant], distancia:distMud,
     entraram:t10b.filter(s=>!t10a.includes(s)),
     sairam:t10a.filter(s=>!t10b.includes(s)),
     subiram:varia.slice().sort((a,b)=>b.delta-a.delta).slice(0,6),
@@ -1288,6 +1362,153 @@ function recalcular(){
     estreantes:estreantes.slice(0,8),
     n_estreantes:estreantes.length,
   };
+
+  // ---- Sinais: achados automaticos e extrapolacao condicional -------------
+  // Nao e previsao. Achado e um fato ja medido que contraria o padrao dominante;
+  // extrapolacao e a taxa observada estendida, com a premissa dita em voz alta.
+  // A propria pagina existe para mostrar que essas taxas mudam, entao o numero
+  // serve para dimensionar ordem de grandeza, nunca para planejar.
+  const inclin=(s,n)=>{                       // minimos quadrados nas ultimas n
+    const a=Math.max(0,(s||[]).length-n);
+    const v=(s||[]).slice(a).filter(x=>x!=null&&isFinite(x));
+    if(v.length<3) return null;
+    const xm=(v.length-1)/2, ym=d3.mean(v);
+    let num=0, den=0; v.forEach((y,i)=>{ num+=(i-xm)*(y-ym); den+=(i-xm)*(i-xm); });
+    return den? num/den : null;
+  };
+  // Base e horizonte da secao inteira, derivados da janela. Ficavam fixos em 8
+  // periodos, entao "tudo", "52", "26" e "13" produziam a mesma leitura: o chip
+  // de janela nao fazia nada aqui.
+  const LOOK  = Math.max(4, Math.min(26, Math.round(N/3)));
+  // E nunca projetar mais do que um quarto do que foi observado. Estender 13
+  // semanas a partir de uma janela de 13 semanas e 100% de invencao.
+  const HORIZ = Math.max(2, Math.min(GRAN==='semana'?13:3, Math.round(N/4)));
+  const achados=[];
+  const per1=GRAN==='mes'?'mês':'semana', perN=GRAN==='mes'?'meses':'semanas';
+  const jan4=Math.min(4, ult);
+
+  // 1. aceleracao atipica: variacao recente muito acima da propria oscilacao
+  if(ult>=6){
+    let melhor=null;
+    for(const [m,i] of sel){
+      if(ehOther(m)) continue;
+      const s=SERIES[i]; const sh=s.map((v,w)=>tot[w]? 100*v/tot[w] : 0);
+      if(sh[ult]<0.5) continue;
+      const d=[]; for(let w=1;w<=ult;w++) d.push(sh[w]-sh[w-1]);
+      const dp=d3.deviation(d)||0, recente=sh[ult]-sh[ult-jan4];
+      if(dp<=0) continue;
+      const z=recente/(dp*Math.sqrt(jan4));
+      if(!melhor || z>melhor.z) melhor={s:m.s, z, recente, agora:sh[ult]};
+    }
+    if(melhor && melhor.z>=2)
+      achados.push({t:'Aceleração fora do padrão',
+        v:`+${melhor.recente.toFixed(1).replace('.',',')}pp`,
+        p:`<span class="mono">${melhor.s}</span> subiu ${melhor.recente.toFixed(1).replace('.',',')} pontos em ${jan4} ${jan4===1?per1:perN}, ${melhor.z.toFixed(1).replace('.',',')} desvios acima da própria oscilação típica. Chegou a ${fmtP(melhor.agora)} do volume.`});
+  }
+
+  // 2. contra a corrente do preco: caro e ganhando share
+  {
+    const precos=sel.filter(([m])=>!ehOther(m)&&m.p).map(([m])=>m.p);
+    const medP=precos.length? d3.median(precos) : null;
+    if(medP){
+      let melhor=null;
+      for(const [m,i] of sel){
+        if(ehOther(m)||!m.p||m.p<=medP) continue;
+        const s=SERIES[i], den0=tot[ult-jan4]||1, den1=tot[ult]||1;
+        const d=100*s[ult]/den1 - 100*s[ult-jan4]/den0;
+        if(d<=0.2) continue;
+        if(!melhor || d>melhor.d) melhor={s:m.s, d, preco:m.p, mult:m.p/medP};
+      }
+      if(melhor)
+        achados.push({t:'Ganhou share sendo mais caro',
+          v:`${melhor.mult.toFixed(1).replace('.',',')}× a mediana`,
+          p:`<span class="mono">${melhor.s}</span> custa ${fmtUSD(melhor.preco)} por 1M, ${melhor.mult.toFixed(1).replace('.',',')} vezes a mediana do mercado, e mesmo assim ganhou ${melhor.d.toFixed(1).replace('.',',')} pontos de share em ${jan4} ${jan4===1?per1:perN}. Contraria a força dominante do dataset, que é preço.`});
+    }
+  }
+
+  // 3. sobrevivente: modelo antigo que continua no topo
+  {
+    const hoje=new Date(MX.semanas[MX.semanas.length-1]+'T00:00:00');
+    const t10=sel.filter(([m])=>!ehOther(m)).map(([m,i])=>({m,v:SERIES[i][ult]}))
+      .filter(r=>r.v>0).sort((a,b)=>b.v-a.v).slice(0,10);
+    const idades=t10.filter(r=>r.m.l).map(r=>(hoje-new Date(r.m.l+'T00:00:00'))/6048e5);
+    if(idades.length>=4){
+      const med=d3.median(idades);
+      const velho=t10.filter(r=>r.m.l)
+        .map(r=>({s:r.m.s, sem:(hoje-new Date(r.m.l+'T00:00:00'))/6048e5}))
+        .sort((a,b)=>b.sem-a.sem)[0];
+      if(velho && velho.sem>=med*2)
+        achados.push({t:'Resistindo à temporada',
+          v:`${Math.round(velho.sem)} semanas`,
+          p:`<span class="mono">${velho.s}</span> foi lançado há ${Math.round(velho.sem)} semanas e continua no top 10, ${(velho.sem/med).toFixed(1).replace('.',',')} vezes a idade mediana do topo. A tese diz que isso é raro, e é exatamente por isso que vale olhar o que ele faz de diferente.`});
+    }
+  }
+
+  // 4. concentracao invertendo a tendencia
+  {
+    const curta=inclin(D.hhi, Math.min(LOOK,N)), longa=inclin(D.hhi, N);
+    if(curta!=null && longa!=null && Math.sign(curta)!==Math.sign(longa) && Math.abs(curta)>=8)
+      achados.push({t: curta>0 ? 'O mercado voltou a concentrar' : 'A concentração voltou a cair',
+        v:`HHI ${curta>0?'+':''}${Math.round(curta)}/${per1}`,
+        p:`O HHI vinha ${longa<0?'caindo':'subindo'} ao longo da janela e inverteu: nas últimas ${Math.min(LOOK,N)} ${perN} ele ${curta>0?'sobe':'cai'} ${Math.abs(Math.round(curta))} pontos por ${per1}. Reversão de concentração costuma anteceder a chegada de um modelo que domina, ou a saída de um que dominava.`});
+  }
+
+  // 5. China e pesos abertos descolando
+  {
+    const cn=(D.origin_share&&D.origin_share['China'])||[];
+    const ow=(D.weights_share&&D.weights_share['Open-weights'])||[];
+    if(cn.length===N && ow.length===N && ult>=8){
+      const g0=Math.abs(ow[ult-Math.min(12,ult)]-cn[ult-Math.min(12,ult)]);
+      const g1=Math.abs(ow[ult]-cn[ult]);
+      if(g1-g0>=4)
+        achados.push({t:'Pesos abertos descolando da China',
+          v:`${g1.toFixed(1).replace('.',',')}pp de distância`,
+          p:`As duas curvas costumam andar juntas, porque a maioria dos pesos abertos relevantes é chinesa. A distância entre elas passou de ${g0.toFixed(1).replace('.',',')} para ${g1.toFixed(1).replace('.',',')} pontos. Ou apareceu peso aberto fora da China, ou lab chinês fechando modelo.`});
+    }
+  }
+
+  // ---- extrapolacao condicional
+  // Horizonte fixo de um trimestre, nao "quando cruza o proximo numero redondo".
+  // Projetar ate o marco mais proximo produzia sempre "em 2 semanas", que nao diz
+  // nada. Treze periodos e o intervalo da propria tese: e nele que a temporada vira.
+  const projs=[];
+  const proj=(rot, serie, fmt, piso, teto, unidTaxa)=>{
+    const s=serie||[]; if(s.length<4) return;
+    const m=inclin(s, Math.min(LOOK,N)); const atual=s[s.length-1];
+    // "caindo 0,0pp por semana" e uma linha que se contradiz sozinha. O corte
+    // e o que o proprio display arredonda, nao um epsilon simbolico.
+    const minimo = unidTaxa==='pp' ? 0.05 : 0.005;
+    if(m==null || !isFinite(atual) || Math.abs(m)<minimo) return;
+    const bruto=atual+m*HORIZ;
+    // A reta furando o piso ou o teto nao e defeito do calculo, e a prova de que
+    // ela nao se sustenta. Isso vira a informacao, em vez de ser escondido.
+    // Nao basta furar dentro do horizonte. Uma reta que chega a US$ 0,01 no
+    // ultimo periodo tambem ja se desmentiu, so que sem disparar o teste. A
+    // margem de 1,5x pega esse caso: se o limite cai a uma distancia da mesma
+    // ordem do horizonte, a reta e o que esta errado, nao o mercado.
+    const MARGEM = HORIZ*1.5;
+    let rompe=null, n;
+    if(piso!=null && m<0 && (n=Math.ceil((piso-atual)/m))<=MARGEM) rompe={lim:fmt(piso), n};
+    if(teto!=null && m>0 && (n=Math.ceil((teto-atual)/m))<=MARGEM) rompe={lim:fmt(teto), n};
+    // Quando a reta fura o limite, o alvo e artefato do metodo, nao resultado.
+    // Publicar "Anthropic 4,5% -> 0,0%" e entregar uma manchete falsa que o
+    // aviso embaixo nao desfaz. O que se publica e o rompimento.
+    projs.push({rot, atual:fmt(atual), alvo: rompe? null : fmt(bruto),
+      n:HORIZ, dir:m>0?'sobe':'cai',
+      // Variacao de share e em PONTOS percentuais. Dizer "caindo 1,3% por semana"
+      // significa outra coisa (queda relativa), e a metodologia da pagina faz
+      // justamente essa distincao.
+      taxa: unidTaxa==='pp' ? Math.abs(m).toFixed(1).replace('.',',')+'pp' : fmt(Math.abs(m)),
+      rompe});
+  };
+  proj('Share de laboratórios chineses', (D.origin_share||{})['China'], fmtP, 0, 100, 'pp');
+  proj('Share de pesos abertos', (D.weights_share||{})['Open-weights'], fmtP, 0, 100, 'pp');
+  proj('Share da Anthropic', D.an_share, fmtP, 0, 100, 'pp');
+  proj('Tráfego em endpoints gratuitos', D.free_share, fmtP, 0, 100, 'pp');
+  proj('Concentração dos 5 maiores', D.top5, fmtP, 0, 100, 'pp');
+  proj('Preço efetivo do mercado', D.preco_efetivo, v=>'US$ '+v.toFixed(2).replace('.',','), 0, null);
+
+  D.sinais={achados, projs, base:Math.min(LOOK,N), horiz:HORIZ, per1, perN};
 
   // cobertura do recorte, para a barra de status
   const totalGeral=MX.modelos.reduce((s,m,i)=>s+SERIES[i][ult],0);
@@ -1493,9 +1714,8 @@ function board(){
 // volume relevante. Sem base valida, o tile mostra a estreia em vez de inventar
 // um multiplicador.
 function tiles(){
-  // A janela recorta os graficos; tile e leitura tem que falar da mesma fatia,
-  // senao o texto descreve uma serie que o leitor nao esta vendo.
-  const ini=range[0], last=range[1];
+  // W e SERIES ja vem recortados pela janela: 0 e o inicio dela, N-1 o fim.
+  const ini=0, last=N-1;
   const tot=D.weekly_total_T, an=D.an_share||[];
   const cn=(D.origin_share&&D.origin_share['China'])||[];
   const ow=(D.weights_share&&D.weights_share['Open-weights'])||[];
@@ -1541,8 +1761,9 @@ function tiles(){
 }
 
 function readings(){
-  // Mesma regra dos tiles: o texto descreve a JANELA visivel, nao a serie toda.
-  const ini=range[0], last=range[1], nPer=last-ini+1;
+  // W e SERIES ja vem recortados pela janela: 0 e o inicio dela, N-1 o fim.
+  // Painel novo escrito com [0] e [N-1] ja nasce correto, sem precisar lembrar.
+  const ini=0, last=N-1, nPer=N;
   const jan=s=>(s||[]).slice(ini,last+1);
   const S=(o,k)=>Array.isArray(o&&o[k])?o[k]:new Array(N).fill(0);   // acesso seguro
   const num=v=>Number.isFinite(v)?v:0;
@@ -1670,12 +1891,12 @@ function readings(){
     const maior=(k)=>{const a=MP.antes; return com.filter(o=>a[o.lab]).map(o=>({o,d:o.y-a[o.lab].y}))
       .sort((p,r)=>k==='sobe'? r.d-p.d : p.d-r.d)[0];};
     const sobe=maior('sobe'), desce=maior('desce');
-    const per=MP.periodos_atras, unid=GRAN==='semana'?'semanas':'meses';
+    const per=MP.periodos_atras, unid=per===1?(GRAN==='semana'?'semana':'mês'):(GRAN==='semana'?'semanas':'meses');
     set('read-mapa',`<h4>Leitura</h4>${nota}`+
       `<p><b>Líderes</b> (tração e capacidade acima da mediana): ${lista('Líderes')}.</p>`+
       `<p><b>Desafiantes</b>, muito uso com capacidade declarada abaixo da mediana: ${lista('Desafiantes')}. É o quadrante que a tese prevê: tração construída sobre preço e disponibilidade, não sobre recurso técnico de fronteira.</p>`+
       `<p><b>Promessas</b>, capacidade alta e tração baixa: ${lista('Promessas')}. <b>Nichados</b>: ${lista('Nichados')}.</p>`+
-      (sobe&&Math.abs(sobe.d)>=3?`<p>Maior avanço em tração nas últimas ${per} ${unid}: <b>${LAB(sobe.o.lab)}</b>, ${sobe.d>=0?'+':''}${Math.round(sobe.d)} pontos de percentil.`+
+      (sobe&&Math.abs(sobe.d)>=3?`<p>Maior avanço em tração ${per===1?'no último':'nos últimos'} ${per} ${unid}: <b>${LAB(sobe.o.lab)}</b>, ${sobe.d>=0?'+':''}${Math.round(sobe.d)} pontos de percentil.`+
         (desce&&desce.d<=-3?` Maior recuo: <b>${LAB(desce.o.lab)}</b>, ${Math.round(desce.d)}.`:'')+`</p>`:'')+
       `<p><span class="flag">método</span>Os dois eixos são percentis entre os laboratórios presentes, não valores absolutos: é um mapa de posição relativa. Os pesos de cada componente são editoriais e estão abertos para ajuste logo abaixo do gráfico. Nenhum número aqui é julgamento de analista, todos saem do mesmo pipeline que gera o resto da página.</p>`+
       (modo==='indice'&&MP.com_indice<MP.total
@@ -1937,6 +2158,9 @@ function mudou(name){
 function varia(name){
   const c=card(name), plot=c.querySelector('.plot'), M=D.mudancas;
   if(!M) return vazio(name,'Sem dados de variação.');
+  const sub=document.getElementById('varia-sub');
+  if(sub) sub.textContent=`Diferença em pontos percentuais nos últimos ${M.distancia||0} `+
+    ((M.distancia||0)===1?(GRAN==='mes'?'mês':'semana'):(GRAN==='mes'?'meses':'semanas'));
   const rows=[...M.subiram, ...M.cairam.slice().reverse()]
     .filter((r,i,a)=>a.findIndex(z=>z.s===r.s)===i);
   if(!rows.length) return vazio(name,'Nenhuma variação relevante no recorte atual.');
@@ -2063,7 +2287,7 @@ function mapa(name){
   let labs=M.labs.map(o=>({...o, x: modo==='indice'? o.xAA : o.xRec}));
   const semX=labs.filter(o=>o.x==null);
   labs=labs.filter(o=>o.x!=null);
-  const per=M.periodos_atras, unid=GRAN==='semana'?'semanas':'meses';
+  const per=M.periodos_atras, unid=per===1?(GRAN==='semana'?'semana':'mês'):(GRAN==='semana'?'semanas':'meses');
 
   document.getElementById('mapa-sub').innerHTML = modo==='recursos'
     ? `Posição relativa entre os <b>${M.total}</b> laboratórios com volume. Vertical: tração, do share de tokens, do gasto e do crescimento. Horizontal: capacidade declarada, da janela de contexto, multimodalidade, raciocínio, amplitude do catálogo e cadência de lançamento. O rastro mostra onde cada um estava ${per} ${unid} atrás.`
@@ -2209,6 +2433,7 @@ const EXPLICA={
   spend:'Gasto estimado', vsmoney:'Razão dinheiro sobre volume',
   quality:'Índice de Inteligência', varia:'Variação de share em quatro semanas',
   mudou:'Variação de share em quatro semanas', mapa:'Share de tokens',
+  sinais:'Sinais e extrapolação', projecao:'Sinais e extrapolação',
 };
 function acharVerbete(titulo){
   return [...document.querySelectorAll('#metodologia details')]
@@ -2234,6 +2459,43 @@ function montarExplicacoes(){
     h.appendChild(b);
   });
 }
+// ===========================================================================
+// Seção 11: sinais
+// ===========================================================================
+function sinais(name){
+  const c=card(name), plot=c.querySelector('.plot'), S=D.sinais;
+  const sub=document.getElementById('sinais-sub');
+  if(!S || !S.achados.length){
+    if(sub) sub.textContent='Nada fora do padrão nesta janela.';
+    return vazio(name,'Nenhum achado nesta janela. Isso também é informação: o mercado está se movendo dentro do padrão dele.');
+  }
+  if(sub) sub.textContent=`${S.achados.length} ${S.achados.length===1?'padrão quebrado':'padrões quebrados'} nesta janela, detectados por regra, não por curadoria.`;
+  plot.innerHTML=`<div class="sin">`+S.achados.map(a=>
+    `<div class="s"><div class="rot">${a.t}</div><div class="val">${a.v}</div><div class="txt">${a.p}</div></div>`
+  ).join('')+`</div>`;
+}
+
+function projecao(name){
+  const c=card(name), plot=c.querySelector('.plot'), S=D.sinais;
+  const sub=document.getElementById('proj-sub');
+  if(sub) sub.textContent=S? `Reta ajustada às últimas ${S.base} ${S.base===1?S.per1:S.perN}, estendida por mais ${S.horiz} ${S.horiz===1?S.per1:S.perN}.` : '';
+  if(!S || !S.projs.length)
+    return vazio(name,'Nenhuma série com movimento consistente o bastante nesta janela para projetar.');
+  plot.innerHTML=`<div class="prj">`+S.projs.map(p=>
+    `<div class="l"><span class="nome">${p.rot}</span>`+
+    (p.rompe
+      ? `<span class="agora">${p.atual} <span class="seta">→</span> <b class="rompe">${p.rompe.lim} em ${p.rompe.n} ${p.rompe.n===1?S.per1:S.perN}</b></span>`
+      : `<span class="agora">${p.atual} <span class="seta">→</span> <b>${p.alvo}</b></span>`)+
+    `<span class="quando">${p.dir==='sobe'?'subindo':'caindo'} ${p.taxa} por ${S.per1}</span></div>`
+  ).join('')+`</div>`+
+  (S.projs.some(p=>p.rompe)
+    ? `<div class="nota-prj">Em <span class="rompe">vermelho</span>, as séries cuja reta bate no piso ou no teto antes do fim do horizonte. Não é previsão de que vão zerar ou saturar, é a prova de que a taxa atual não se mantém por tanto tempo.</div>`
+    : '')+
+  `<div class="aviso"><b>Isto não é previsão.</b> É a taxa observada nas últimas ${S.base} ${S.perN} estendida em linha reta. `+
+  `A tese desta página é justamente que essas taxas mudam: nenhum modelo sustentou liderança por mais de dois trimestres aqui. `+
+  `Serve para dimensionar ordem de grandeza e provocar a pergunta certa, não para planejar.</div>`;
+}
+
 function renderAll(){
   stackedShare('vendor', dobrar(D.vendor_share, VENDOR_HUES), VENDOR_SLOT, VENDOR_LABEL);
   stackedShare('origin', D.origin_share, ORIGIN_SLOT, {});
@@ -2253,10 +2515,11 @@ function renderAll(){
   emphasisLines('anshare', D.comp_share, 'anthropic', {...VENDOR_SLOT,'x-ai':'--s0'}, VENDOR_LABEL);
   stackedAbs('anfam', D.an_fam_abs, FAM_SLOT);
   lineChart('churn', D.churn, {fmt:v=>v, color:'--s2', label:'Novos no top 10 (vs. 4 sem antes)', integer:true, ymax:10, area:false});
-  lineChart('age', D.age.map((v,i)=>i<12?null:v), {fmt:v=>v+' sem', color:'--s4', label:'Idade mediana (semanas)', area:false});
+  lineChart('age', D.age, {fmt:v=>v+' sem', color:'--s4', label:'Idade mediana (semanas)', area:false});
   trajectory('life');
   spendChart('spend'); vsMoney('vsmoney'); quality('quality');
   mudou('mudou'); varia('varia'); mapa('mapa'); comparador();
+  sinais('sinais'); projecao('projecao');
   montarExplicacoes();
 }
 function renderStatic(){

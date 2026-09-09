@@ -10,6 +10,26 @@ Planejado para a v2, detalhado em [`docs/v2.md`](docs/v2.md).
 
 ---
 
+## [1.1.0] — 2026-09-09
+
+### Adicionado
+
+- **Seção "Sinais da temporada".** Duas partes. *Achados* aplica cinco regras de anomalia sobre o recorte visível, sem curadoria manual: aceleração acima de dois desvios da própria oscilação, modelo ganhando share apesar de custar acima da mediana, sobrevivente no top 10 muito além da idade mediana do topo, inversão da tendência de concentração, e descolamento entre pesos abertos e China. *Se o ritmo atual se mantiver* estende a inclinação observada por mínimos quadrados, com aviso explícito de que não é previsão.
+- **`tests/e2e.js`** ganhou seis verificações sobre a seção nova, entre elas a de que a janela muda a base do estimador e a de que nenhuma linha publica taxa que arredonda para zero.
+
+### Corrigido
+
+- **A janela passou a fazer parte do dado, não do desenho.** Os painéis de leitura repetiam o mesmo texto em todas as janelas porque cada gráfico recortava a série por conta própria e os textos liam a série inteira. Agora `W`, `N` e `SERIES` já saem recortados, e o índice 0 é o início da janela para todo mundo. É uma correção estrutural: painel novo nasce correto sem precisar lembrar da regra.
+- **A projeção ignorava a janela.** A base do estimador era fixa em oito períodos, então "tudo", "52", "26" e "13" produziam a mesma reta até a casa decimal, e o chip de janela não mudava nada naquele cartão. Base e horizonte passaram a sair da própria janela, com o horizonte limitado a um quarto do que foi observado.
+- **Reta que fura o piso não publica mais o valor de chegada.** Extrapolar oito pontos por treze períodos levava qualquer série pequena a zero, e a página exibia "Anthropic 4,5% → 0,0%" como manchete, com a ressalva embaixo. Agora a informação publicada é o rompimento, em vermelho, com uma nota única explicando que ele é a prova de que a taxa não se sustenta.
+- Linhas de projeção com taxa que arredondava para zero, exibindo "caindo 0,0pp por semana".
+- Gráfico de idade gerando NaN na janela de quatro semanas. A censura dos primeiros doze pontos vivia no desenho, com índice absoluto, e não sobrevivia ao recorte.
+- Leituras que citavam laboratório por nome fixo e quebravam a página quando o filtro removia aquele laboratório.
+- Legendas dos gráficos passaram a ser clicáveis, com estado de série oculta e botão de restaurar.
+- Busca digitável e ordem alfabética no comparador de modelos; barras e linhas ordenadas por valor.
+
+---
+
 ## [1.0.0] — 2026-09-09
 
 ### Adicionado
