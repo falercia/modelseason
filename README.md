@@ -30,6 +30,14 @@ Esta página existe para sustentar esse argumento com série histórica, não co
 
 **Ciclo de vida.** Rotatividade do top 10, idade mediana dos modelos em uso, tempo até o pico e meia-vida depois dele, por trimestre de lançamento. É a seção que sustenta a tese.
 
+**Para onde vai o dinheiro.** Gasto semanal estimado a preço de tabela, com a faixa de incerteza, e share de tokens contra share do gasto por laboratório. É a divergência mais importante do dataset e quase nenhuma análise pública mostra.
+
+**Qualidade contra adoção.** Índice de inteligência no eixo horizontal, share de tokens no vertical. Os quadrantes separam o que é bom e usado do que é bom e ignorado.
+
+**O que mudou esta semana.** Entradas e saídas do top 10, estreias no ranking e as maiores variações de share em quatro semanas. É o que justifica a página ser diária.
+
+**Comparador.** Dois modelos lado a lado: adoção, preço, contexto, índice de inteligência, origem, pesos e a curva de share dos dois.
+
 Cada seção tem um painel de leitura ao lado, com a interpretação e os caveats. Todo gráfico abre em tabela, e a legenda é clicável: dá para ligar e desligar séries para comparar só o que interessa.
 
 **Filtros.** Uma barra no topo recorta o mercado inteiro por cobrança, licença dos pesos, país-sede do laboratório, faixa de preço, janela de contexto, modalidade e suporte a raciocínio. Todos os gráficos respondem ao mesmo recorte, e o filtro vai para a URL: um link já filtrado abre no mesmo estado para quem receber.

@@ -160,6 +160,20 @@ footer p{margin:0 0 6px}
 .fbar .clear[disabled]{opacity:.4;cursor:default}
 .fbar .toggle{border:0;background:transparent;color:var(--ink-3);font:500 12px "DM Sans",sans-serif;cursor:pointer;padding:3px 6px}
 .fbar[data-open="false"] .fbar-body{display:none}
+.cmp-sel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0 14px}
+.cmp-sel label{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+.cmp-sel select{width:100%;border:1px solid var(--axis);background:var(--surface);color:var(--ink);border-radius:8px;padding:7px 9px;font:500 13px "DM Mono",monospace}
+.cmp-grid{margin-bottom:16px}
+.cmp-row{display:grid;grid-template-columns:minmax(140px,1.1fr) 1fr 1fr;gap:14px;align-items:baseline;
+  border-top:1px solid var(--grid);padding:8px 0;font-size:13.5px}
+.cmp-row .lbl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.cmp-row b{font-variant-numeric:tabular-nums;font-weight:700;min-width:0;overflow-wrap:anywhere}
+@media (max-width:600px){
+  .cmp-row{grid-template-columns:1fr 1fr;gap:6px 14px}
+  .cmp-row .lbl{grid-column:1 / -1}
+}
+.cmp-win{color:var(--accent)}
+@media (max-width:600px){.cmp-sel{grid-template-columns:1fr}}
 .warn{margin-top:9px;font-size:12.5px;color:var(--ink-2);background:var(--surface-2);border-radius:8px;padding:7px 10px}
 @media (max-width:600px){.fbar-body{grid-template-columns:1fr}}
 .views{display:inline-flex;border:1px solid var(--axis);border-radius:6px;overflow:hidden}
@@ -362,6 +376,68 @@ footer p{margin:0 0 6px}
   </div>
 </section>
 
+<section>
+  <div class="sec-head"><span class="n">06</span><h2>Para onde vai o dinheiro</h2></div>
+  <div class="row">
+    <div class="card" data-chart="spend">
+      <div class="card-h"><div><h3>Gasto semanal estimado</h3><p id="spend-sub"></p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-spend"></aside>
+  </div>
+  <div class="row">
+    <div class="card" data-chart="vsmoney">
+      <div class="card-h"><div><h3>Volume contra dinheiro, por laboratório</h3><p>Share de tokens e share do gasto estimado na última semana completa. Barras iguais significam que o lab cobra o preço médio do mercado.</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-vsmoney"></aside>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="n">07</span><h2>Qualidade contra adoção</h2></div>
+  <div class="row">
+    <div class="card" data-chart="quality">
+      <div class="card-h"><div><h3>Índice de inteligência contra share de tokens</h3><p id="qual-sub"></p></div>
+        <div class="ctrls">
+          <div class="views" role="group" aria-label="Eixo de qualidade">
+            <button data-qx="aa" aria-pressed="true">Inteligência</button>
+            <button data-qx="preco" aria-pressed="false">Preço</button>
+          </div>
+          <button class="tbtn" aria-pressed="false">Tabela</button>
+        </div>
+      </div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-quality"></aside>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="n">08</span><h2>O que mudou esta semana</h2></div>
+  <div class="row two">
+    <div class="card" data-chart="mudou">
+      <div class="card-h"><div><h3>Entradas e saídas do top 10</h3><p id="mudou-sub"></p></div></div>
+      <div class="plot"></div>
+    </div>
+    <div class="card" data-chart="varia">
+      <div class="card-h"><div><h3>Maiores variações de share</h3><p>Diferença em pontos percentuais nas últimas 4 semanas</p></div><button class="tbtn" aria-pressed="false">Tabela</button></div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+  </div>
+  <aside class="read" id="read-mudou" style="margin-top:0"></aside>
+</section>
+
+<section>
+  <div class="sec-head"><span class="n">09</span><h2>Comparar dois modelos</h2></div>
+  <div class="card" data-chart="comparar">
+    <div class="card-h"><div><h3>Comparador</h3><p>Escolha dois modelos para ver adoção, preço, contexto e ciclo de vida lado a lado.</p></div></div>
+    <div class="cmp-sel" id="cmp-sel"></div>
+    <div class="cmp-grid" id="cmp-grid"></div>
+    <div class="legend"></div><div class="plot"></div>
+  </div>
+</section>
+
 <footer>
   <p><b>Método.</b> Dados do endpoint público <span class="mono">GET /api/v1/datasets/rankings-daily</span> (period=day), agregados por semana ISO (segunda a domingo); apenas semanas completas. A linha "other" da API é o volume fora do top 50 diário; modelos que oscilam na fronteira do top 50 têm o volume semanal subcontado. Tokens contados pelo tokenizador de cada provedor.</p>
   <p><b>Classificações.</b> Origem e licença dos pesos foram atribuídas por laboratório e por padrão de nome do modelo; casos ambíguos (MiMo Pro, variantes Qwen, Mistral) seguem a política de lançamento conhecida e podem conter erro. Modelos stealth/alpha (OpenRouter, "stealth/*") são testes anônimos de labs não identificados, gratuitos e geralmente de curta duração.</p>
@@ -379,6 +455,18 @@ const N = W.length;
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const fmtT = v => v>=10? d3.format('.0f')(v)+'T' : v>=1? d3.format('.1f')(v)+'T' : d3.format('.2f')(v)+'T';
 const fmtP = v => d3.format('.1f')(v).replace('.',',')+'%';
+// Preco em USD por 1M de tokens. Sem separador de milhar, porque o valor quase
+// sempre e menor que 100 e "US$ 1.251" era lido como mil duzentos e cinquenta.
+const fmtUSD = v => { if(v==null) return '—';
+  const s = v>=100 ? d3.format('.0f')(v) : (v>=1 ? v.toFixed(2) : v.toFixed(3));
+  return 'US$ '+s.replace(/(\.\d*?)0+$/,'$1').replace(/\.$/,'').replace('.',','); };
+// Contexto em unidade redonda: "1M" comunica, "1.05M" finge precisao que a
+// diferenca entre 1048576 e 1050000 nao tem para quem le.
+const fmtCtx = v => { if(!v) return '—';
+  if(v>=1e6) return (v/1048576>=0.98 && v/1048576<=1.02 ? '1M' : d3.format('.2~f')(v/1e6).replace('.',',')+'M');
+  if(v>=1000) return Math.round(v/1024)+'k';
+  return String(v); };
+const capital = s => String(s).split(/[-_]/).map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
 const fmtDate = d3.timeFormat('%d %b %y');
 const ptBR = {Jan:'jan',Feb:'fev',Mar:'mar',Apr:'abr',May:'mai',Jun:'jun',Jul:'jul',Aug:'ago',Sep:'set',Oct:'out',Nov:'nov',Dec:'dez'};
 const fD = d => fmtDate(d).replace(/[A-Z][a-z]{2}/, m=>ptBR[m]||m);
@@ -464,8 +552,17 @@ function axes(f, x, y, yfmt, ticksY=4){
   const g=f.svg.append('g').attr('class','grid');
   g.selectAll('line').data(y.ticks(ticksY)).join('line').attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',d=>y(d)).attr('y2',d=>y(d));
   f.svg.append('g').selectAll('text').data(y.ticks(ticksY)).join('text').attr('x',f.m.l-8).attr('y',d=>y(d)+4).attr('text-anchor','end').text(yfmt);
-  const span=(x.domain()[1]-x.domain()[0])/864e5/7;
-  const ticks = span>60? d3.timeMonth.every(2).range(...x.domain()) : span>30? d3.timeMonth.range(...x.domain()) : d3.timeMonth.range(...x.domain());
+  // Densidade de marcas no eixo x pela LARGURA disponivel, nao so pelo intervalo:
+  // em 390px os rotulos mensais colidiam e viravam "novjan 26mar".
+  const span=(x.domain()[1]-x.domain()[0])/864e5/7;          // semanas
+  const larg=(f.w-f.m.l-f.m.r);
+  const cabem=Math.max(3, Math.floor(larg/58));               // ~58px por rotulo
+  const meses=Math.max(1, Math.ceil((span/4.35)/cabem));      // de quantos em quantos meses
+  // d3.timeMonth.every(n) filtra por mes DO ANO (mes % n), entao na virada de
+  // dezembro para janeiro dois rotulos caem colados ("nov" e "jan 26").
+  // Contamos a partir do inicio do dominio, que garante espacamento uniforme.
+  const todos=d3.timeMonth.range(...x.domain());
+  const ticks=todos.filter((_,i)=>i%meses===0);
   f.svg.append('g').selectAll('text').data(ticks).join('text').attr('x',d=>x(d)).attr('y',f.h-f.m.b+18).attr('text-anchor','middle').text(monthTick);
   f.svg.append('line').attr('class','axis').attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',y(0)).attr('y2',y(0)).attr('stroke',css('--axis'));
 }
@@ -781,6 +878,94 @@ function recalcular(){
   D.an_fam_abs={}; FAM.forEach(f=>{ if(d3.max(fam[f])>0) D.an_fam_abs[f]=fam[f].map(v=>+v.toFixed(3)); });
   D.an_models=anModelos;
 
+  // ---- dinheiro estimado -------------------------------------------------
+  // tokens (milhoes) x preco (USD por 1M) = USD. Endpoint gratuito custa zero.
+  // A fonte soma prompt e completion sem separar, e os precos diferem, entao
+  // isto e ESTIMATIVA: publicamos piso (tudo prompt), teto (tudo completion) e
+  // a mistura declarada em D.blend. Todo grafico de dinheiro mostra a banda.
+  const iFree=MX.dic.cobranca.indexOf('Endpoint gratuito');
+  const bl=D.blend||{prompt:.75,completion:.25};
+  const precoDe=m=>{
+    if(!m.p || m.d[DIMI.cobranca]===iFree) return null;
+    return {mix:m.p, piso:m.pp!=null?m.pp:m.p, teto:m.pc!=null?m.pc:m.p};
+  };
+  const gastoLab={}, gastoTot=new Array(NW).fill(0);
+  const piso=new Array(NW).fill(0), teto=new Array(NW).fill(0);
+  for(const [m,i] of sel){
+    if(ehOther(m)) continue;
+    const pr=precoDe(m); if(!pr) continue;
+    const k=rotulo('vendor',m.d[DIMI.vendor]), s=SERIES[i];
+    if(!gastoLab[k]) gastoLab[k]=new Array(NW).fill(0);
+    for(let w=0;w<NW;w++){
+      const u=s[w]*pr.mix; gastoLab[k][w]+=u; gastoTot[w]+=u;
+      piso[w]+=s[w]*pr.piso; teto[w]+=s[w]*pr.teto;
+    }
+  }
+  D.spend_total_musd=gastoTot.map(v=>+(v/1e6).toFixed(2));
+  D.spend_band={piso:piso.map(v=>+(v/1e6).toFixed(2)), teto:teto.map(v=>+(v/1e6).toFixed(2))};
+  const shG={}; for(const k in gastoLab)
+    shG[k]=gastoLab[k].map((v,w)=>gastoTot[w]? +(100*v/gastoTot[w]).toFixed(2):0);
+  const rankG=Object.keys(shG).sort((a,b)=>shG[b][ult]-shG[a][ult]).slice(0,8);
+  D.spend_share={}; rankG.forEach(k=>D.spend_share[k]=shG[k]);
+  D.spend_share['Outros']=gastoTot.map((_,w)=>+Math.max(0,100-rankG.reduce((s,k)=>s+shG[k][w],0)).toFixed(2));
+
+  // preco efetivo do mercado: USD por 1M de tokens realmente consumidos
+  D.preco_efetivo=gastoTot.map((g,w)=>tot[w]? +(g/tot[w]).toFixed(3):0);
+
+  // volume x dinheiro, ultima semana
+  const vd={};
+  for(const [m,i] of sel){
+    if(ehOther(m)) continue;
+    const k=rotulo('vendor',m.d[DIMI.vendor]);
+    vd[k]=vd[k]||{tok:0,usd:0};
+    vd[k].tok+=SERIES[i][ult];
+    const pr=precoDe(m); if(pr) vd[k].usd+=SERIES[i][ult]*pr.mix;
+  }
+  const somaTok=Object.values(vd).reduce((s,o)=>s+o.tok,0)||1;
+  const somaUsd=Object.values(vd).reduce((s,o)=>s+o.usd,0)||1;
+  D.volume_vs_dinheiro=Object.entries(vd).filter(([,o])=>o.tok>0)
+    .map(([lab,o])=>({lab, share_tokens:+(100*o.tok/somaTok).toFixed(2),
+       share_gasto:+(100*o.usd/somaUsd).toFixed(2),
+       razao:o.tok? +((o.usd/somaUsd)/(o.tok/somaTok)).toFixed(2):null}))
+    .sort((a,b)=>b.share_tokens-a.share_tokens).slice(0,12);
+
+  // ---- qualidade contra adocao -------------------------------------------
+  D.qualidade=sel.filter(([m])=>!ehOther(m))
+    .map(([m,i])=>({slug:m.s, nome:m.n, aa:m.q, elo:m.e, preco:m.p, ctx:m.c, lanc:m.l,
+        T:+(SERIES[i][ult]/1e6).toFixed(3),
+        share:+(100*SERIES[i][ult]/(tot[ult]||1)).toFixed(3),
+        origin:rotulo('origin',m.d[DIMI.origin]),
+        pesos:rotulo('pesos',m.d[DIMI.pesos])}))
+    .filter(r=>r.T>0).sort((a,b)=>b.share-a.share);
+
+  // ---- o que mudou nas ultimas 4 semanas ---------------------------------
+  const ant=Math.max(0, ult-4);
+  const topN=(w,n)=>sel.filter(([m])=>!ehOther(m))
+    .map(([m,i])=>({s:m.s, v:SERIES[i][w]})).filter(r=>r.v>0)
+    .sort((a,b)=>b.v-a.v).slice(0,n).map(r=>r.s);
+  const t10a=topN(ant,10), t10b=topN(ult,10);
+  const totAnt=sel.reduce((s,[,i])=>s+SERIES[i][ant],0)||1;
+  const varia=sel.filter(([m])=>!ehOther(m)).map(([m,i])=>{
+      const a=100*SERIES[i][ant]/totAnt, b=100*SERIES[i][ult]/(tot[ult]||1);
+      return {s:m.s, de:+a.toFixed(2), para:+b.toFixed(2), delta:+(b-a).toFixed(2),
+              origin:rotulo('origin',m.d[DIMI.origin])};
+    }).filter(r=>Math.abs(r.delta)>=0.05);
+  const estreantes=sel.filter(([m,i])=>{
+      const s=SERIES[i]; if(!s[ult]) return false;
+      for(let w=0;w<=ant;w++) if(s[w]>0) return false; return true;
+    }).map(([m,i])=>({s:m.s, share:+(100*SERIES[i][ult]/(tot[ult]||1)).toFixed(2),
+        origin:rotulo('origin',m.d[DIMI.origin]), lanc:m.l}))
+      .sort((a,b)=>b.share-a.share);
+  D.mudancas={
+    semana:MX.semanas[ult], comparada:MX.semanas[ant],
+    entraram:t10b.filter(s=>!t10a.includes(s)),
+    sairam:t10a.filter(s=>!t10b.includes(s)),
+    subiram:varia.slice().sort((a,b)=>b.delta-a.delta).slice(0,6),
+    cairam:varia.slice().sort((a,b)=>a.delta-b.delta).slice(0,6),
+    estreantes:estreantes.slice(0,8),
+    n_estreantes:estreantes.length,
+  };
+
   // cobertura do recorte, para a barra de status
   const totalGeral=MX.modelos.reduce((s,m,i)=>s+SERIES[i][ult],0);
   return {modelos:sel.length, totalModelos:MX.modelos.length,
@@ -1031,7 +1216,7 @@ function readings(){
   const num=v=>Number.isFinite(v)?v:0;
   const vez=(a,b)=>(b>0&&Number.isFinite(a/b))?Math.round(a/b):null;
   const set=(id,html)=>{const el=document.getElementById(id); if(el) el.innerHTML=html;};
-  const LAB=k=>VENDOR_LABEL[k]||k;
+  const LAB=k=>VENDOR_LABEL[k]||capital(k);
   const fil=filtrando();
   const nota=fil?`<p><span class="flag">recorte</span>Os números abaixo consideram apenas os modelos do filtro ativo.</p>`:'';
 
@@ -1109,6 +1294,46 @@ function readings(){
     (famTot>0?`<p>Mix Anthropic na última semana: ${mix}. Haiku é residual no OpenRouter; não generalize para cargas enterprise via API direta ou Bedrock, onde o roteamento por custo tem outro perfil.</p>`:`<p>Sem volume Anthropic no recorte atual.</p>`)+
     (ten.length?`<p>Permanência no top 10: ${ten.join(', ')}. A cadência de lançamento acelerou e cada geração dura menos no topo, canibalizada pela seguinte. Para quem calibra prompts e avaliações por modelo, a janela útil de cada versão encurtou.</p>`:''));
 
+  // 09 dinheiro
+  const g=D.spend_total_musd||[], lo=D.spend_band.piso, hi=D.spend_band.teto, pe=D.preco_efetivo||[];
+  const bl=D.blend||{prompt:.75};
+  const fmtU=v=>'US$ '+(v>=1000?(v/1000).toFixed(1).replace('.',',')+'B':Math.round(v)+'M');
+  const vd=(D.volume_vs_dinheiro||[]).filter(r=>r.razao!=null&&r.share_tokens>=1);
+  const caro=vd.slice().sort((a,b)=>b.razao-a.razao)[0];
+  const barato=vd.slice().sort((a,b)=>a.razao-b.razao)[0];
+  set('read-spend',`<h4>Leitura</h4>${nota}<p>A preço de tabela, o tráfego da última semana equivale a <b>${fmtU(g[last])}</b>, dentro de uma faixa de ${fmtU(lo[last])} a ${fmtU(hi[last])}. A largura da faixa não é imprecisão do cálculo: a fonte soma prompt e completion sem separar, e completion custa várias vezes mais.</p>`+
+    `<p>O preço efetivo do mercado está em <b>US$ ${d3.format('.2f')(pe[last]||0)}</b> por milhão de tokens`+
+    (pe[0]?`, contra US$ ${d3.format('.2f')(pe[0])} no início da série`:'')+`. Queda aqui pode significar duas coisas diferentes: os modelos ficaram mais baratos, ou a demanda migrou para os baratos. É a segunda que domina neste dataset.</p>`+
+    `<p><span class="flag">método</span>Gasto é estimativa a preço de tabela, com mistura de ${Math.round(bl.prompt*100)}% prompt. Não considera desconto, cache, batch nem contrato. Endpoint gratuito conta como zero.</p>`);
+
+  set('read-vsmoney',`<h4>Leitura</h4>${nota}`+
+    (caro&&barato&&caro.lab!==barato.lab
+      ? `<p><b>${LAB(caro.lab)}</b> tem <b>${fmtP(caro.share_tokens)}</b> dos tokens e <b>${fmtP(caro.share_gasto)}</b> do dinheiro: razão de <b>${caro.razao.toFixed(2).replace('.',',')}×</b>. No outro extremo, <b>${LAB(barato.lab)}</b> tem ${fmtP(barato.share_tokens)} dos tokens e ${fmtP(barato.share_gasto)} do dinheiro, razão de ${barato.razao.toFixed(2).replace('.',',')}×.</p>`
+      : '')+
+    `<p>É a divergência mais importante do dataset e a que quase nenhuma análise pública mostra. "Laboratórios chineses dominam" é verdade em tokens e falso em receita. Toda conversa sobre share de modelos usa a métrica que favorece quem cobra menos.</p>`+
+    `<p><span class="flag">implicação</span>Se você compara fornecedores por share de tokens, está comparando volume de tráfego barato. Para decisão de contrato, a razão dinheiro/volume diz mais: ela aproxima o posicionamento de preço de cada laboratório dentro do mix real de uso.</p>`);
+
+  // 10 qualidade
+  const qs=(D.qualidade||[]).filter(r=>r.aa!=null&&r.share>0);
+  const comAA=qs.length, totQ=(D.qualidade||[]).filter(r=>r.share>0).length;
+  const medAA=comAA?d3.median(qs,r=>r.aa):null, medSh=comAA?d3.median(qs,r=>r.share):null;
+  const subusado=comAA?qs.filter(r=>r.aa>medAA&&r.share<medSh).sort((a,b)=>b.aa-a.aa)[0]:null;
+  const sobreusado=comAA?qs.filter(r=>r.aa<medAA&&r.share>medSh).sort((a,b)=>b.share-a.share)[0]:null;
+  set('read-quality',`<h4>Leitura</h4>${nota}`+
+    (comAA?`<p>Dos ${totQ} modelos com volume nesta semana, <b>${comAA}</b> têm índice de inteligência publicado. A mediana do índice é <b>${medAA.toFixed(1).replace('.',',')}</b> e a de share é ${fmtP(medSh)}.</p>`:'<p>Nenhum modelo do recorte tem índice de inteligência publicado.</p>')+
+    (subusado?`<p>O caso mais claro de qualidade sem adoção é <span class="mono">${subusado.slug}</span>: índice ${subusado.aa}, share de apenas ${fmtP(subusado.share)}.</p>`:'')+
+    (sobreusado?`<p>E o inverso, adoção sem índice alto: <span class="mono">${sobreusado.slug}</span>, índice ${sobreusado.aa} e share de ${fmtP(sobreusado.share)}.</p>`:'')+
+    `<p>Os dois eixos medem coisas diferentes e nenhum dos dois está errado. Benchmark diz o que o modelo consegue fazer; share diz o que as pessoas escolheram pagar para rodar. Quando divergem, normalmente a diferença é preço, latência ou disponibilidade de endpoint, não capacidade.</p>`+
+    `<p><span class="flag">fonte</span>Índice de inteligência produzido pela Artificial Analysis e distribuído pela API do OpenRouter.</p>`);
+
+  // 11 o que mudou
+  const M=D.mudancas||{};
+  const sub=(M.subiram||[])[0], cai=(M.cairam||[])[0];
+  set('read-mudou',`<h4>Leitura</h4>${nota}<p>Comparando a última semana completa com a de quatro semanas antes: <b>${(M.entraram||[]).length}</b> ${(M.entraram||[]).length===1?'modelo entrou':'modelos entraram'} no top 10 e <b>${(M.sairam||[]).length}</b> ${(M.sairam||[]).length===1?'saiu':'saíram'}. <b>${M.n_estreantes||0}</b> ${M.n_estreantes===1?'modelo estreou':'modelos estrearam'} no ranking.</p>`+
+    (sub?`<p>Maior alta: <span class="mono">${sub.s}</span>, ${sub.delta>=0?'+':''}${sub.delta.toFixed(2).replace('.',',')}pp, de ${fmtP(sub.de)} para ${fmtP(sub.para)}.</p>`:'')+
+    (cai?`<p>Maior queda: <span class="mono">${cai.s}</span>, ${cai.delta.toFixed(2).replace('.',',')}pp, de ${fmtP(cai.de)} para ${fmtP(cai.para)}.</p>`:'')+
+    `<p><span class="flag">tese</span>Esta seção é a razão de a página ser diária. Um retrato histórico muda pouco de um dia para o outro; a rotatividade do topo, não. Quatro semanas é o intervalo em que a temporada vira.</p>`);
+
   // 08 ciclo de vida (nao depende do recorte: e sobre o historico dos modelos)
   const ch=D.churn.filter(v=>v!=null);
   const idade=d3.median(D.age.slice(12));
@@ -1118,6 +1343,285 @@ function readings(){
     `<p>Modelos que atingiram ≥ 2% do volume levam em mediana <b>${ttp} semanas</b> até o pico e perdem metade do share <b>${half} semanas</b> depois dele.</p>`+
     `<p><span class="flag">tese</span>Nenhum modelo sustenta liderança por mais de dois trimestres neste dataset. O ativo durável é o método de avaliação e troca, não a escolha do modelo.</p>`+
     `<p class="mono" style="font-size:11.5px;color:var(--ink-3)">Esta seção descreve o histórico completo dos modelos e não responde aos filtros.</p>`);
+}
+
+// ===========================================================================
+// Seção 06: dinheiro
+// ===========================================================================
+// Gasto e ESTIMATIVA, nao medicao: a fonte soma prompt e completion sem separar
+// e os precos diferem. Por isso a banda piso-teto e desenhada junto com a linha.
+// Grafico de dinheiro sem a banda seria precisao falsa.
+function spendChart(name){
+  const c=card(name), plot=c.querySelector('.plot'), ii=idx();
+  const v=D.spend_total_musd, lo=D.spend_band.piso, hi=D.spend_band.teto;
+  if(!v || !d3.max(v)) return vazio(name,'Sem gasto estimável no recorte atual: os modelos selecionados não têm preço no catálogo.');
+  const bl=D.blend||{prompt:.75};
+  document.getElementById('spend-sub').textContent=
+    `Milhões de dólares por semana, a preço de tabela. A faixa vai de "tudo prompt" a "tudo completion"; a linha usa ${Math.round(bl.prompt*100)}% prompt.`;
+  const f=frame(plot, 260, {t:14,r:16,b:30,l:52});
+  const x=xScale(f,ii), y=d3.scaleLinear().domain([0,d3.max(ii,i=>hi[i])*1.06]).nice().range([f.h-f.m.b,f.m.t]);
+  const fmtU=n=>'US$ '+(n>=1000? d3.format('.1f')(n/1000)+'B' : d3.format('.0f')(n)+'M');
+  axes(f,x,y,fmtU,4);
+  f.svg.append('path').datum(ii).attr('fill',col('--s3')).attr('opacity',.16)
+    .attr('d',d3.area().x(i=>x(W[i])).y0(i=>y(lo[i])).y1(i=>y(hi[i])).curve(d3.curveMonotoneX));
+  f.svg.append('path').datum(ii).attr('fill','none').attr('stroke',col('--s3')).attr('stroke-width',2)
+    .attr('d',d3.line().x(i=>x(W[i])).y(i=>y(v[i])).curve(d3.curveMonotoneX));
+  const last=ii[ii.length-1];
+  f.svg.append('circle').attr('cx',x(W[last])).attr('cy',y(v[last])).attr('r',4)
+    .attr('fill',col('--s3')).attr('stroke',css('--surface')).attr('stroke-width',2);
+  f.svg.append('text').attr('class','dl').attr('x',x(W[last])-4).attr('y',y(v[last])-10)
+    .attr('text-anchor','end').style('fill',css('--ink')).style('font-weight',700).text(fmtU(v[last]));
+  legend(c.querySelector('.legend'),[['e',col('--s3'),'Estimativa'],['b',css('--ink-3'),'Faixa piso a teto']]);
+  crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+
+    tipRow(col('--s3'),'Estimativa',fmtU(v[i]))+
+    tipRow('transparent','Piso (tudo prompt)',fmtU(lo[i]))+
+    tipRow('transparent','Teto (tudo completion)',fmtU(hi[i]))+
+    tipRow('transparent','Preço efetivo',`US$ ${d3.format('.2f')(D.preco_efetivo[i])} / 1M tokens`));
+  table(c.querySelector('.tbl'),['Semana','Estimativa','Piso','Teto','US$/1M tokens'],
+    ii.map(i=>[fD(W[i]),fmtU(v[i]),fmtU(lo[i]),fmtU(hi[i]),d3.format('.2f')(D.preco_efetivo[i])]));
+}
+
+// Volume x dinheiro: duas barras por lab, no MESMO eixo percentual. Nunca dois
+// eixos: a comparacao so vale porque as duas medidas estao na mesma escala.
+function vsMoney(name){
+  const c=card(name), plot=c.querySelector('.plot');
+  const rows=(D.volume_vs_dinheiro||[]).filter(r=>r.share_tokens>=0.5).slice(0,10);
+  if(!rows.length) return vazio(name,'Sem laboratórios com preço no recorte atual.');
+  const h=Math.max(200, rows.length*38+40);
+  const f=frame(plot, h, {t:8,r:120,b:26,l:96});
+  const max=d3.max(rows,r=>Math.max(r.share_tokens,r.share_gasto))*1.12;
+  const x=d3.scaleLinear().domain([0,max]).range([f.m.l,f.w-f.m.r]);
+  const y=d3.scaleBand().domain(rows.map(r=>r.lab)).range([f.m.t,f.h-f.m.b]).paddingInner(.35);
+  f.svg.append('g').attr('class','grid').selectAll('line').data(x.ticks(5)).join('line')
+    .attr('x1',x).attr('x2',x).attr('y1',f.m.t).attr('y2',f.h-f.m.b);
+  f.svg.append('g').attr('class','ax').selectAll('text').data(x.ticks(5)).join('text')
+    .attr('x',x).attr('y',f.h-f.m.b+16).attr('text-anchor','middle').text(d=>d+'%');
+  f.svg.append('g').attr('class','ax').selectAll('text.l').data(rows).join('text')
+    .attr('x',f.m.l-8).attr('y',r=>y(r.lab)+y.bandwidth()/2+4).attr('text-anchor','end')
+    .style('fill',css('--ink-2')).text(r=>VENDOR_LABEL[r.lab]||capital(r.lab));
+  const bh=y.bandwidth()/2-1;
+  const t_=tip(plot);
+  rows.forEach(r=>{
+    [[r.share_tokens,'--s1',0],[r.share_gasto,'--s2',bh+2]].forEach(([v,slot,dy])=>{
+      f.svg.append('rect').attr('x',f.m.l).attr('y',y(r.lab)+dy).attr('width',Math.max(2,x(v)-f.m.l))
+        .attr('height',bh).attr('rx',3).attr('fill',col(slot));
+    });
+    const razao=r.razao;
+    f.svg.append('text').attr('class','dl').attr('x',f.w-f.m.r+8).attr('y',y(r.lab)+y.bandwidth()/2+4)
+      .style('fill',razao>=1.3?css('--ink'):css('--ink-3')).style('font-weight',razao>=1.3?700:500)
+      .text(razao==null?'—':`${razao.toFixed(2).replace('.',',')}×`);
+    f.svg.append('rect').attr('x',f.m.l).attr('y',y(r.lab)-3).attr('width',f.w-f.m.l-f.m.r)
+      .attr('height',y.bandwidth()+6).attr('fill','transparent')
+      .on('mousemove',ev=>{const [mx,my]=d3.pointer(ev); const sx=plot.getBoundingClientRect().width/f.w;
+        showTip(t_,plot,mx*sx,my*sx,`<div class="t">${VENDOR_LABEL[r.lab]||capital(r.lab)}</div>`+
+          tipRow(col('--s1'),'Share de tokens',fmtP(r.share_tokens))+
+          tipRow(col('--s2'),'Share do gasto',fmtP(r.share_gasto))+
+          tipRow('transparent','Razão dinheiro/volume',razao==null?'—':razao.toFixed(2)));})
+      .on('mouseleave',()=>t_.style.display='none');
+  });
+  f.svg.append('text').attr('class','ax').attr('x',f.w-f.m.r+8).attr('y',f.m.t-2)
+    .style('fill',css('--ink-3')).text('dinheiro/volume');
+  legend(c.querySelector('.legend'),[['t',col('--s1'),'Share de tokens'],['g',col('--s2'),'Share do gasto estimado']]);
+  table(c.querySelector('.tbl'),['Laboratório','Share de tokens','Share do gasto','Razão'],
+    rows.map(r=>[VENDOR_LABEL[r.lab]||capital(r.lab),fmtP(r.share_tokens),fmtP(r.share_gasto),r.razao==null?'—':r.razao.toFixed(2)]));
+}
+
+// ===========================================================================
+// Seção 07: qualidade contra adoção
+// ===========================================================================
+let QX='aa';
+function quality(name){
+  const c=card(name), plot=c.querySelector('.plot');
+  const campo=QX==='aa'?'aa':'preco';
+  const pts=(D.qualidade||[]).filter(r=>r[campo]!=null && r.share>0);
+  const cobertura=(D.qualidade||[]).filter(r=>r.share>0);
+  document.getElementById('qual-sub').textContent = QX==='aa'
+    ? `Índice de Inteligência da Artificial Analysis, exposto pela API do OpenRouter. ${pts.length} de ${cobertura.length} modelos da última semana têm o índice.`
+    : `Preço misto por 1M de tokens contra adoção. ${pts.length} de ${cobertura.length} modelos da última semana têm preço.`;
+  if(pts.length<4) return vazio(name,'Poucos modelos com esse atributo no recorte atual.');
+
+  const f=frame(plot, 380, {t:16,r:20,b:38,l:52});
+  const xd=d3.extent(pts,r=>r[campo]);
+  const x = QX==='preco'
+    ? d3.scaleLog().domain([Math.max(0.01,xd[0]*.8), xd[1]*1.2]).range([f.m.l,f.w-f.m.r])
+    : d3.scaleLinear().domain([xd[0]-2, xd[1]+2]).range([f.m.l,f.w-f.m.r]);
+  const y=d3.scaleLinear().domain([0, d3.max(pts,r=>r.share)*1.1]).nice().range([f.h-f.m.b,f.m.t]);
+  const r=d3.scaleSqrt().domain([0,d3.max(pts,p=>p.T)]).range([3,20]);
+
+  f.svg.append('g').attr('class','grid').selectAll('line').data(y.ticks(4)).join('line')
+    .attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',y).attr('y2',y);
+  f.svg.append('g').attr('class','ax').selectAll('text').data(y.ticks(4)).join('text')
+    .attr('x',f.m.l-8).attr('y',d=>y(d)+4).attr('text-anchor','end').text(d=>d+'%');
+  const xt = QX==='preco' ? x.ticks(5,'~g') : x.ticks(6);
+  f.svg.append('g').attr('class','ax').selectAll('text').data(xt).join('text')
+    .attr('x',x).attr('y',f.h-f.m.b+18).attr('text-anchor','middle')
+    .text(d=>QX==='preco'?('$'+(d>=1?d:d.toFixed(2).replace('.',','))):d);
+  f.svg.append('text').attr('class','ax').attr('x',(f.m.l+f.w-f.m.r)/2).attr('y',f.h-4)
+    .attr('text-anchor','middle').style('fill',css('--ink-3'))
+    .text(QX==='aa'?'Índice de Inteligência →':'US$ por 1M de tokens (escala log) →');
+
+  // linhas de mediana: dividem o plano em quadrantes de leitura
+  const mx=d3.median(pts,p=>p[campo]), my=d3.median(pts,p=>p.share);
+  [[x(mx),f.m.t,x(mx),f.h-f.m.b],[f.m.l,y(my),f.w-f.m.r,y(my)]].forEach(([a,b,cc,dd])=>
+    f.svg.append('line').attr('x1',a).attr('y1',b).attr('x2',cc).attr('y2',dd)
+      .attr('stroke',css('--axis')).attr('stroke-dasharray','4 4').attr('opacity',.7));
+  const quad=(tx,ty,txt,anchor)=>f.svg.append('text').attr('class','ax').attr('x',tx).attr('y',ty)
+    .attr('text-anchor',anchor).style('fill',css('--ink-3')).style('font-size','10.5px').text(txt);
+  if(QX==='aa'){ quad(f.w-f.m.r-4,f.m.t+12,'bom e muito usado','end'); quad(f.m.l+4,f.m.t+12,'fraco e muito usado','start'); }
+  else { quad(f.m.l+4,f.m.t+12,'barato e muito usado','start'); quad(f.w-f.m.r-4,f.m.t+12,'caro e muito usado','end'); }
+
+  const t_=tip(plot);
+  const oslot=p=>ORIGIN_SLOT[p.origin]||'--s0';
+  const g=f.svg.append('g').selectAll('circle').data(pts.slice().sort((a,b)=>b.T-a.T)).join('circle')
+    .attr('cx',p=>x(p[campo])).attr('cy',p=>y(p.share)).attr('r',p=>r(p.T))
+    .attr('fill',p=>col(oslot(p))).attr('opacity',.62)
+    .attr('stroke',css('--surface')).attr('stroke-width',2)
+    .on('mousemove',(ev,p)=>{const [mx2,my2]=d3.pointer(ev); const sx=plot.getBoundingClientRect().width/f.w;
+      showTip(t_,plot,mx2*sx,my2*sx,`<div class="t">${p.slug}</div>`+
+        tipRow(col(oslot(p)),'Origem',p.origin)+
+        tipRow('transparent','Share',fmtP(p.share))+
+        tipRow('transparent','Tokens/semana',fmtT(p.T))+
+        (p.aa!=null?tipRow('transparent','Inteligência',p.aa):'')+
+        (p.elo!=null?tipRow('transparent','Elo (arena de modelos)',Math.round(p.elo)):'')+
+        (p.preco!=null?tipRow('transparent','Preço /1M',fmtUSD(p.preco)):'')+
+        (p.ctx?tipRow('transparent','Contexto',fmtCtx(p.ctx)):'')+
+        (p.lanc?tipRow('transparent','Lançamento',p.lanc):''));})
+    .on('mouseleave',()=>t_.style.display='none');
+
+  // rotulo direto so nos 4 maiores: mais que isso vira sopa de texto
+  // Rotulo curto, mas mantendo a data quando dois modelos do mesmo nome estao
+  // no grafico: "deepseek-v4-flash" duas vezes nao identifica nada.
+  const curto=s=>s.split('/')[1].replace(/-20\d{6}$/,'');
+  const maiores=pts.slice().sort((a,b)=>b.share-a.share).slice(0,4);
+  const conta={}; pts.forEach(p=>{const k=curto(p.slug); conta[k]=(conta[k]||0)+1;});
+  maiores.forEach(p=>{
+    const base=curto(p.slug);
+    const dt=(p.slug.match(/-20(\d{6})$/)||[])[1];
+    const rot=(conta[base]>1&&dt)? `${base} ${dt.slice(2,4)}/${dt.slice(4,6)}` : base;
+    f.svg.append('text').attr('class','dl').attr('x',x(p[campo])).attr('y',y(p.share)-r(p.T)-6)
+      .attr('text-anchor','middle').style('fill',css('--ink-2')).text(rot.slice(0,26));
+  });
+
+  legend(c.querySelector('.legend'),
+    [...new Set(pts.map(p=>p.origin))].map(o=>[o,col(ORIGIN_SLOT[o]||'--s0'),o]));
+  table(c.querySelector('.tbl'),['Modelo','Origem','Share','Tokens/sem','Inteligência','Elo','US$/1M','Contexto','Lançamento'],
+    pts.slice().sort((a,b)=>b.share-a.share).map(p=>[p.slug,p.origin,fmtP(p.share),fmtT(p.T),
+      p.aa??'—',p.elo?Math.round(p.elo):'—',fmtUSD(p.preco),fmtCtx(p.ctx),p.lanc||'—']));
+}
+
+// ===========================================================================
+// Seção 08: o que mudou
+// ===========================================================================
+function mudou(name){
+  const c=card(name), plot=c.querySelector('.plot'), M=D.mudancas;
+  if(!M) return vazio(name,'Sem dados de variação.');
+  document.getElementById('mudou-sub').textContent=
+    `Semana de ${fD(new Date(M.semana+'T00:00:00'))} contra a de ${fD(new Date(M.comparada+'T00:00:00'))}`;
+  const bloco=(titulo,itens,cor,sinal)=>
+    `<div style="margin-bottom:14px"><div style="font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px">${titulo}</div>`+
+    (itens.length? itens.map(s=>`<div style="display:flex;gap:8px;align-items:baseline;padding:3px 0;font-size:12.5px">`+
+        `<span style="color:${cor};font-weight:700;flex:0 0 auto;min-width:14px;text-align:center">${sinal}</span>`+
+        `<span class="mono" style="word-break:break-all;min-width:0">${s}</span></div>`).join('')
+      : `<div style="font-size:12.5px;color:var(--ink-3)">nenhum</div>`)+`</div>`;
+  plot.innerHTML =
+    bloco(`Entraram no top 10 (${M.entraram.length})`, M.entraram, css('--good'),'+')+
+    bloco(`Saíram do top 10 (${M.sairam.length})`, M.sairam, css('--bad'),'−')+
+    bloco(`Estrearam no ranking (${M.n_estreantes})`,
+          M.estreantes.map(e=>`${e.s} · ${fmtP(e.share)}`), css('--accent'),'\u2022');
+}
+
+function varia(name){
+  const c=card(name), plot=c.querySelector('.plot'), M=D.mudancas;
+  if(!M) return vazio(name,'Sem dados de variação.');
+  const rows=[...M.subiram, ...M.cairam.slice().reverse()]
+    .filter((r,i,a)=>a.findIndex(z=>z.s===r.s)===i);
+  if(!rows.length) return vazio(name,'Nenhuma variação relevante no recorte atual.');
+  const h=Math.max(200, rows.length*26+46);
+  const f=frame(plot, h, {t:10,r:56,b:26,l:8});
+  const m=d3.max(rows,r=>Math.abs(r.delta))*1.15;
+  const x=d3.scaleLinear().domain([-m,m]).range([f.m.l+130, f.w-f.m.r]);
+  const y=d3.scaleBand().domain(rows.map(r=>r.s)).range([f.m.t,f.h-f.m.b]).paddingInner(.3);
+  const zero=x(0);
+  f.svg.append('line').attr('x1',zero).attr('x2',zero).attr('y1',f.m.t).attr('y2',f.h-f.m.b)
+    .attr('stroke',css('--axis'));
+  f.svg.append('g').attr('class','ax').selectAll('text').data(x.ticks(5)).join('text')
+    .attr('x',x).attr('y',f.h-f.m.b+16).attr('text-anchor','middle')
+    .text(d=>(d>0?'+':'')+d3.format('.1f')(d)+'pp');
+  rows.forEach(r=>{
+    const sobe=r.delta>=0;
+    f.svg.append('rect').attr('x',sobe?zero:x(r.delta)).attr('y',y(r.s))
+      .attr('width',Math.max(2,Math.abs(x(r.delta)-zero))).attr('height',y.bandwidth()).attr('rx',3)
+      .attr('fill',sobe?col('--s3'):col('--s2'));
+    f.svg.append('text').attr('class','ax').attr('x',f.m.l).attr('y',y(r.s)+y.bandwidth()/2+4)
+      .style('fill',css('--ink-2')).style('font-family','"DM Mono",monospace').style('font-size','11px')
+      .text(r.s.replace(/-20\d{6}$/,'').slice(0,30));
+    f.svg.append('text').attr('class','dl').attr('x',sobe?x(r.delta)+6:x(r.delta)-6)
+      .attr('y',y(r.s)+y.bandwidth()/2+4).attr('text-anchor',sobe?'start':'end')
+      .style('fill',css('--ink-2')).text((sobe?'+':'')+r.delta.toFixed(1).replace('.',',')+'pp');
+  });
+  table(c.querySelector('.tbl'),['Modelo','Share há 4 semanas','Share agora','Variação'],
+    rows.map(r=>[r.s,fmtP(r.de),fmtP(r.para),(r.delta>=0?'+':'')+r.delta.toFixed(2).replace('.',',')+'pp']));
+}
+
+// ===========================================================================
+// Seção 09: comparador
+// ===========================================================================
+let CMP=[null,null];
+function comparador(){
+  const c=card('comparar'), plot=c.querySelector('.plot');
+  const cand=(D.qualidade||[]).slice(0,80);
+  if(cand.length<2) return vazio('comparar','Poucos modelos no recorte atual para comparar.');
+  if(!CMP[0]||!cand.find(r=>r.slug===CMP[0])) CMP[0]=cand[0].slug;
+  if(!CMP[1]||!cand.find(r=>r.slug===CMP[1])) CMP[1]=(cand[1]||cand[0]).slug;
+
+  const sel=document.getElementById('cmp-sel');
+  const opts=t2=>cand.map(r=>`<option value="${r.slug}"${r.slug===t2?' selected':''}>${r.slug} · ${fmtP(r.share)}</option>`).join('');
+  sel.innerHTML=`<div><label>Modelo A</label><select id="cmpA">${opts(CMP[0])}</select></div>`+
+                `<div><label>Modelo B</label><select id="cmpB">${opts(CMP[1])}</select></div>`;
+  sel.querySelector('#cmpA').addEventListener('change',e=>{CMP[0]=e.target.value; comparador();});
+  sel.querySelector('#cmpB').addEventListener('change',e=>{CMP[1]=e.target.value; comparador();});
+
+  const iA=MX.modelos.findIndex(m=>m.s===CMP[0]), iB=MX.modelos.findIndex(m=>m.s===CMP[1]);
+  const A=cand.find(r=>r.slug===CMP[0]), B=cand.find(r=>r.slug===CMP[1]);
+  const sA=SERIES[iA], sB=SERIES[iB];
+  const totS=D.weekly_total_T.map(v=>v*1e6);
+  const shA=sA.map((v,w)=>totS[w]?100*v/totS[w]:0), shB=sB.map((v,w)=>totS[w]?100*v/totS[w]:0);
+  const picoA=d3.max(shA), picoB=d3.max(shB);
+
+  const linha=(rot,a,b,melhor)=>{
+    const marca=(v,ehMelhor)=>`<b${ehMelhor?' class="cmp-win"':''}>${v}</b>`;
+    // So destaca vencedor quando a diferenca e visivel no proprio texto. Marcar
+    // 1048576 como melhor que 1050000, ambos exibidos como "1M", seria ruido.
+    let ma=false,mb=false;
+    if(a.n!=null&&b.n!=null&&a.t!==b.t){
+      if(melhor==='maior'){ ma=a.n>b.n; mb=b.n>a.n; }
+      if(melhor==='menor'){ ma=a.n<b.n; mb=b.n<a.n; }
+    }
+    return `<div class="cmp-row"><span class="lbl">${rot}</span>${marca(a.t,ma)}${marca(b.t,mb)}</div>`;
+  };
+  const nn=v=>v==null?{t:'—',n:null}:{t:v,n:v};
+  document.getElementById('cmp-grid').innerHTML=
+    `<div class="cmp-row"><span class="lbl">Modelo</span><b class="mono">${A.slug}</b><b class="mono">${B.slug}</b></div>`+
+    linha('Share atual',{t:fmtP(A.share),n:A.share},{t:fmtP(B.share),n:B.share},'maior')+
+    linha('Tokens por semana',{t:fmtT(A.T),n:A.T},{t:fmtT(B.T),n:B.T},'maior')+
+    linha('Pico de share',{t:fmtP(picoA),n:picoA},{t:fmtP(picoB),n:picoB},'maior')+
+    linha('Preço por 1M',{t:fmtUSD(A.preco),n:A.preco},{t:fmtUSD(B.preco),n:B.preco},'menor')+
+    linha('Índice de inteligência',nn(A.aa),nn(B.aa),'maior')+
+    linha('Elo (arena de modelos)',nn(A.elo?Math.round(A.elo):null),nn(B.elo?Math.round(B.elo):null),'maior')+
+    linha('Janela de contexto',{t:fmtCtx(A.ctx),n:A.ctx},{t:fmtCtx(B.ctx),n:B.ctx},'maior')+
+    `<div class="cmp-row"><span class="lbl">Origem</span><b>${A.origin}</b><b>${B.origin}</b></div>`+
+    `<div class="cmp-row"><span class="lbl">Pesos</span><b>${A.pesos}</b><b>${B.pesos}</b></div>`+
+    `<div class="cmp-row"><span class="lbl">Lançamento</span><b>${A.lanc||'—'}</b><b>${B.lanc||'—'}</b></div>`;
+
+  const ii=idx(), f=frame(plot, 240, {t:14,r:16,b:30,l:44});
+  const x=xScale(f,ii), y=d3.scaleLinear().domain([0,Math.max(picoA,picoB)*1.12||1]).nice().range([f.h-f.m.b,f.m.t]);
+  axes(f,x,y,v=>v+'%');
+  [[shA,'--s1',A.slug],[shB,'--s2',B.slug]].forEach(([s,slot])=>
+    f.svg.append('path').datum(ii).attr('fill','none').attr('stroke',col(slot)).attr('stroke-width',2.2)
+      .attr('d',d3.line().x(i=>x(W[i])).y(i=>y(s[i])).curve(d3.curveMonotoneX)));
+  legend(c.querySelector('.legend'),[[A.slug,col('--s1'),A.slug],[B.slug,col('--s2'),B.slug]]);
+  crosshair(f,x,ii,(i)=>`<div class="t">semana de ${fD(W[i])}</div>`+
+    tipRow(col('--s1'),A.slug,fmtP(shA[i]))+tipRow(col('--s2'),B.slug,fmtP(shB[i])));
 }
 
 function renderAll(){
@@ -1132,6 +1636,8 @@ function renderAll(){
   lineChart('churn', D.churn, {fmt:v=>v, color:'--s2', label:'Novos no top 10 (vs. 4 sem antes)', integer:true, ymax:10, area:false});
   lineChart('age', D.age.map((v,i)=>i<12?null:v), {fmt:v=>v+' sem', color:'--s4', label:'Idade mediana (semanas)', area:false});
   trajectory('life');
+  spendChart('spend'); vsMoney('vsmoney'); quality('quality');
+  mudou('mudou'); varia('varia'); comparador();
 }
 function renderStatic(){
   tiles(); readings(); board();
@@ -1166,10 +1672,13 @@ document.getElementById('fclear').addEventListener('click',()=>{
 });
 // filtro vindo na URL abre a barra sozinho, para o leitor ver o recorte aplicado
 if(filtrando()) document.getElementById('ftoggle').click();
-document.querySelectorAll('.views button').forEach(b=>b.addEventListener('click',()=>{
-  const g=b.parentElement;
-  g.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed', String(o===b)));
+document.querySelectorAll('.views button[data-view]').forEach(b=>b.addEventListener('click',()=>{
+  b.parentElement.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed', String(o===b)));
   TRAJ_VIEW=b.dataset.view; trajectory('life');
+}));
+document.querySelectorAll('.views button[data-qx]').forEach(b=>b.addEventListener('click',()=>{
+  b.parentElement.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed', String(o===b)));
+  QX=b.dataset.qx; quality('quality'); readings();
 }));
 let rt; window.addEventListener('resize',()=>{clearTimeout(rt); rt=setTimeout(renderAll,150);});
 const mq=matchMedia('(prefers-color-scheme: dark)'); mq.addEventListener('change',()=>{renderStatic();renderAll();});

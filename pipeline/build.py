@@ -322,6 +322,7 @@ primeira = (E.sort_values("week").groupby("model_permaslug")
              .agg({d: "last" for d in DIMS}))
 extra = (E.sort_values("week").groupby("model_permaslug")
           .agg(nome=("name", "last"), preco=("preco_misto_M", "last"),
+               preco_p=("preco_prompt_M", "last"), preco_c=("preco_compl_M", "last"),
                ctx=("context_length", "last"), lanc=("created_at", "last"),
                aa=("aa_intelligence", "last"), elo=("da_elo_models", "last"),
                tem_meta=("tem_meta", "last")))
@@ -341,7 +342,9 @@ for s in slugs:
         "s": s,
         "n": None if pd.isna(x.nome) else str(x.nome),
         "d": [idx_de[d].get(str(r[d]), -1) for d in DIMS],
-        "p": limpo(x.preco, 3),
+        "p": limpo(x.preco, 3),       # preco misto por 1M, conforme BLEND
+        "pp": limpo(x.preco_p, 3),    # so prompt, piso da banda de gasto
+        "pc": limpo(x.preco_c, 3),    # so completion, teto da banda
         "c": None if pd.isna(x.ctx) else int(x.ctx),
         "l": None if pd.isna(x.lanc) else str(x.lanc),
         "q": limpo(x.aa, 1),

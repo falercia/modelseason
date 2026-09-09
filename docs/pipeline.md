@@ -160,3 +160,19 @@ Sem isso, filtro é impossível: para responder "só modelos pagos acima de 128k
 A linha `other` da fonte agrega o volume fora do top 50 diário e não tem metadado. Ela conta no total geral, mas sai de qualquer recorte filtrado, porque não dá para saber a composição dela. A página avisa isso explicitamente em vez de fingir que o total continua completo.
 
 O `top5` exclui `other` do ranking mas mantém no denominador: a pergunta é "quanto do mercado os cinco maiores modelos capturam", não "quanto dos modelos nomeados". O HHI, que depende de participações bem definidas, normaliza apenas sobre os nomeados.
+
+## Estimativa de gasto
+
+`tokens × preço de tabela`. Três decisões que o leitor precisa conhecer, todas explícitas na página:
+
+- A fonte soma prompt e completion sem separar, e completion custa várias vezes mais. Por isso o gráfico mostra uma **faixa**: piso (tudo prompt), teto (tudo completion) e a linha na mistura de `BLEND_PROMPT`, hoje 75% prompt. Gráfico de dinheiro sem a faixa seria precisão falsa.
+- **Endpoint gratuito custa zero**, sempre, mesmo quando o modelo base é pago.
+- É preço de tabela: não considera desconto por volume, cache, batch nem contrato. Serve para comparar posicionamento entre laboratórios, não para estimar receita.
+
+A razão dinheiro/volume de cada laboratório aproxima o posicionamento de preço dentro do mix real de uso. Um laboratório com razão 7× tem tráfego pequeno e caro; com razão 0,1×, tráfego grande e barato.
+
+## Índices de qualidade
+
+`aa_intelligence`, `aa_coding` e `aa_agentic` vêm da **Artificial Analysis** e chegam pela API do OpenRouter. `da_elo_models` é a mediana de Elo nas categorias da arena `models` do Design Arena.
+
+A cobertura é parcial, em torno de um terço dos modelos com volume, e a página informa a razão exata em cada carga. Modelo sem índice não aparece no gráfico de qualidade, e isso está escrito no subtítulo em vez de escondido.
