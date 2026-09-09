@@ -64,6 +64,9 @@ jobs:
           echo "::error::fetch.py falhou nas 3 tentativas."
           exit 1
 
+      - name: Atualizar catálogo de modelos
+        run: python pipeline/fetch_models.py
+
       - name: Guardar integridade e frescor dos dados
         run: |
           python pipeline/check_freshness.py \
@@ -80,7 +83,7 @@ jobs:
         run: |
           git config user.name "modelseason-bot"
           git config user.email "modelseason-bot@users.noreply.github.com"
-          git add data/rankings_daily.csv public/data.json public/og.png
+          git add data/rankings_daily.csv data/models_catalog.csv public/data.json public/og.png
           if git diff --cached --quiet; then
             echo "Sem mudanças."
           else

@@ -5,13 +5,14 @@ Documentação técnica do Model Season. O [README](../README.md) trata do produ
 ## Arquitetura
 
 ```
-API OpenRouter ──▶ pipeline/fetch.py ──▶ data/rankings_daily.csv
-                                                │
-                                                ▼
-                                       pipeline/build.py ──▶ public/data.json
-                                                                    │
+rankings-daily ──▶ fetch.py ───────▶ data/rankings_daily.csv ─┐
+                                                              ├─▶ enrich.py ─▶ build.py ─▶ public/data.json
+/api/v1/models ──▶ fetch_models.py ▶ data/models_catalog.csv ─┘                    │
+                                                                          make_og.py ─▶ public/og.png
 GitHub Actions (06:30 UTC) commita ──▶ Vercel redeploya ──▶ public/index.html
 ```
+
+`fetch.py` traz volume. `fetch_models.py` traz o que cada modelo é: preço, contexto, lançamento, modalidade, pesos e índices de qualidade. `enrich.py` casa os dois e deriva as dimensões que os gráficos usam.
 
 Toda a agregação vive em Python. A página lê um JSON e desenha com D3. Nenhum número é escrito à mão no HTML.
 
@@ -20,8 +21,10 @@ Toda a agregação vive em Python. A página lê um JSON e desenha com D3. Nenhu
 ```bash
 pip install -r pipeline/requirements.txt
 export OPENROUTER_API_KEY=sk-or-v1-...
-python pipeline/fetch.py      # incremental, busca só os dias que faltam
-python pipeline/build.py      # gera public/data.json
+python pipeline/fetch.py          # volume, incremental
+python pipeline/fetch_models.py   # catálogo de modelos, não exige chave
+python pipeline/build.py          # gera public/data.json
+python pipeline/make_og.py        # gera o card social
 python -m http.server 8000 --directory public
 ```
 
@@ -98,3 +101,29 @@ python pipeline/build.py && python pipeline/make_og.py
 ```
 
 As tags `og:image` e `twitter:image` em `public/index.html` apontam para `https://modelseason.com/og.png` com URL fixa, sem query de versão. Redes sociais fazem cache agressivo desse arquivo. Depois de uma mudança de layout do card, force a revalidação no [Post Inspector do LinkedIn](https://www.linkedin.com/post-inspector/) e no [Sharing Debugger do Facebook](https://developers.facebook.com/tools/debug/).
+
+## Enriquecimento
+
+`pipeline/enrich.py` casa `model_permaslug` com `canonical_slug` e deriva preço, gasto, faixas, modalidade e qualidade. Três decisões de modelagem que mudam a leitura de qualquer número:
+
+**Sufixos.** `deepseek/v4:free` não é outro modelo, é o mesmo servido por endpoint gratuito. O join usa o slug base e o sufixo vira coluna. A diferença entre tráfego pago e tráfego subsidiado do mesmo modelo é uma das leituras mais úteis do dataset, e antes disso os dois estavam contados como entidades separadas.
+
+**Gasto é estimativa, não medição.** `total_tokens` soma prompt e completion sem separar, e os preços são diferentes. Por isso o pipeline publica três números: piso (tudo prompt), teto (tudo completion) e a estimativa com a mistura declarada em `BLEND_PROMPT`, hoje 75% prompt e 25% completion. Endpoint gratuito custa zero para quem chama, sempre. Qualquer gráfico de dinheiro precisa mostrar a banda, não só a linha.
+
+**Pesos abertos: prova antes de heurística.** Onde `hugging_face_id` existe, ele decide. Onde não existe, cai na heurística por padrão de nome, e a coluna `origem_peso` registra qual das duas respondeu.
+
+## Chaves novas no `data.json`
+
+| Chave | O que é |
+|---|---|
+| `spend_share`, `spend_total_musd`, `spend_band` | Gasto estimado por laboratório e no total, com piso e teto |
+| `volume_vs_dinheiro` | Share de tokens contra share de gasto, por laboratório, e a razão entre os dois |
+| `preco_efetivo` | USD por 1M de tokens efetivamente consumidos, semana a semana |
+| `cobranca_share` | Pago, endpoint gratuito, modelo gratuito |
+| `pesos_share_v2` | Pesos abertos por prova, não por heurística |
+| `faixa_preco_share`, `faixa_ctx_share` | Distribuição do volume por faixa de preço e de contexto |
+| `multimodal_share`, `raciocinio_share` | Adoção por modalidade e por suporte a raciocínio |
+| `ctx_mediano` | Contexto mediano ponderado por volume |
+| `qualidade` | Últimos 60 modelos por share, com Intelligence Index, Elo, preço, contexto e lançamento |
+| `cobertura`, `cobertura_ultima_semana` | Quanto do volume tem metadado. Número honesto que a página precisa mostrar |
+| `blend` | A mistura presumida entre prompt e completion |

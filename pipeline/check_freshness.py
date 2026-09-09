@@ -1,4 +1,4 @@
-"""Guard de integridade de data/rankings_daily.csv.
+"""Guard de integridade dos datasets do Model Season.
 
 Existe porque o modo de falha perigoso do pipeline nao e o erro barulhento
 (chave revogada da 401 e o job quebra sozinho), e sim o silencioso: a API
@@ -16,6 +16,9 @@ Tres verificacoes, em ordem de gravidade:
                   a falha abre issue.
 3. BURACOS     -> apenas informativo. Dias ausentes no historico existem e
                   sao da propria fonte.
+4. CATALOGO    -> falha se houver slug duplicado (o join multiplicaria linhas)
+                  ou se a cobertura de metadado da ultima semana cair abaixo de
+                  --min-cobertura. Avisa se ficar abaixo de 99%.
 
 Uso:
     python pipeline/check_freshness.py
@@ -27,6 +30,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 CSV = ROOT / "data" / "rankings_daily.csv"
+CATALOGO = ROOT / "data" / "models_catalog.csv"
 
 # Dias que a fonte nunca publicou. Nao contam como buraco novo.
 BURACOS_CONHECIDOS = {dt.date(2025, 6, 15), dt.date(2025, 7, 15)}
@@ -46,6 +50,8 @@ def main() -> int:
                     help="atraso a partir do qual o guard falha (default: 10)")
     ap.add_argument("--warn-lag-days", type=int, default=2,
                     help="atraso a partir do qual apenas avisa (default: 2)")
+    ap.add_argument("--min-cobertura", type=float, default=90.0,
+                    help="%% minimo do volume da ultima semana com metadado (default: 90)")
     args = ap.parse_args()
 
     if not CSV.exists():
@@ -100,6 +106,39 @@ def main() -> int:
                f"{', '.join(d.isoformat() for d in novos[:10])}")
     else:
         print(f"Buracos: {len(ausentes)} dia(s), todos conhecidos.")
+
+    # 4. Catalogo de modelos e cobertura do join
+    if not CATALOGO.exists():
+        anotar("warning", f"{CATALOGO} nao existe. Rode pipeline/fetch_models.py. "
+                          f"Sem ele a pagina perde preco, contexto e qualidade.")
+    else:
+        cat = pd.read_csv(CATALOGO)
+        dup_cat = int(cat.duplicated("canonical_slug").sum())
+        if dup_cat:
+            anotar("error", f"{dup_cat} canonical_slug duplicado no catalogo. "
+                            f"O join vai multiplicar linhas do ranking e inflar todo volume.")
+            falhou = True
+
+        slugs = set(cat.canonical_slug)
+        ult_dia = df["date"].max()
+        semana = df[df["date"] > ult_dia - pd.Timedelta(days=7)]
+        semana = semana[semana.model_permaslug != "other"]
+        base = semana.model_permaslug.str.split(":").str[0]
+        vol_total = float(semana.total_tokens.sum())
+        vol_com = float(semana.loc[base.isin(slugs), "total_tokens"].sum())
+        pct = 100 * vol_com / vol_total if vol_total else 0.0
+        print(f"Catalogo: {len(cat)} modelos ({int(cat.active.astype(bool).sum())} ativos) | "
+              f"cobertura da ultima semana: {pct:.2f}% do volume")
+
+        if pct < args.min_cobertura:
+            anotar("error",
+                   f"Apenas {pct:.1f}% do volume da ultima semana tem metadado, abaixo do "
+                   f"minimo de {args.min_cobertura}%. Preco, gasto e qualidade ficam "
+                   f"incompletos e a pagina passa a publicar numero parcial como se fosse total. "
+                   f"Causa provavel: mudanca no formato do canonical_slug.")
+            falhou = True
+        elif pct < 99:
+            anotar("warning", f"Cobertura de metadado em {pct:.1f}%, abaixo do usual de ~100%.")
 
     return 1 if falhou else 0
 

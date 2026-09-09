@@ -4,8 +4,10 @@ Weekly aggregation (ISO weeks, Monday-Sunday, complete weeks only), vendor/origi
 license classification, concentration, Anthropic breakdown, lifecycle metrics.
 Run after fetch.py. No network access needed.
 """
-import pandas as pd, json, numpy as np, re, datetime as dt
+import pandas as pd, json, numpy as np, re, datetime as dt, sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import enrich
 ROOT = Path(__file__).resolve().parents[1]
 CSV = ROOT / "data" / "rankings_daily.csv"
 OUT = ROOT / "public" / "data.json"
@@ -140,6 +142,100 @@ out["as_of"]=dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
 out["daily_first"]=RAW_FIRST.strftime("%Y-%m-%d")
 out["daily_last"]=RAW_LAST.strftime("%Y-%m-%d")
 out["daily_days"]=RAW_DAYS
+
+# ---------------------------------------------------------------------------
+# Camada enriquecida: junta o catalogo de modelos e deriva preco, gasto,
+# contexto, modalidade e qualidade. Roda sobre as mesmas semanas completas
+# usadas acima, para que todo numero da pagina compartilhe o mesmo eixo.
+# ---------------------------------------------------------------------------
+E = enrich.juntar(df, openw_fallback=openw)
+E = E[E.week.isin(full_weeks)]
+SEM = sorted(E.week.unique())
+sem_str = [pd.Timestamp(w).strftime("%Y-%m-%d") for w in SEM]
+
+def serie_share(coluna, peso="total_tokens", top=None):
+    """Share percentual por semana, uma lista por categoria."""
+    piv = (E.pivot_table(index="week", columns=coluna, values=peso,
+                         aggfunc="sum", fill_value=0).reindex(SEM).fillna(0))
+    tot = piv.sum(axis=1).replace(0, np.nan)
+    piv = (piv.div(tot, axis=0) * 100).round(2).fillna(0)
+    if top:
+        piv = piv[piv.iloc[-1].sort_values(ascending=False).head(top).index]
+    return {str(c): piv[c].tolist() for c in piv.columns}
+
+sem_outros = E[E.model_permaslug != "other"]
+
+# Gasto estimado por laboratorio
+gasto_lab = (sem_outros.pivot_table(index="week", columns="vendor", values="gasto_est",
+                                    aggfunc="sum", fill_value=0).reindex(SEM).fillna(0))
+tot_gasto = gasto_lab.sum(axis=1).replace(0, np.nan)
+share_gasto = (gasto_lab.div(tot_gasto, axis=0) * 100).round(2).fillna(0)
+maiores = share_gasto.iloc[-1].sort_values(ascending=False).head(8).index.tolist()
+out["spend_share"] = {c: share_gasto[c].round(2).tolist() for c in maiores}
+out["spend_share"]["outros"] = (100 - share_gasto[maiores].sum(axis=1)).round(2).tolist()
+
+out["spend_total_musd"] = (gasto_lab.sum(axis=1) / 1e6).round(2).tolist()
+out["spend_band"] = {
+    "piso": (sem_outros.groupby("week").gasto_piso.sum().reindex(SEM).fillna(0) / 1e6).round(2).tolist(),
+    "teto": (sem_outros.groupby("week").gasto_teto.sum().reindex(SEM).fillna(0) / 1e6).round(2).tolist(),
+}
+
+# Volume contra dinheiro, ultima semana
+ult = sem_outros[sem_outros.week == SEM[-1]]
+gv = ult.groupby("vendor").agg(tok=("total_tokens", "sum"), usd=("gasto_est", "sum"))
+gv = gv[gv.tok > 0]
+st, su = gv.tok.sum(), gv.usd.sum()
+out["volume_vs_dinheiro"] = [
+    {"lab": v, "share_tokens": round(100 * r.tok / st, 2),
+     "share_gasto": round(100 * r.usd / su, 2) if su else 0.0,
+     "razao": round((r.usd / su) / (r.tok / st), 2) if su and r.tok else None}
+    for v, r in gv.sort_values("tok", ascending=False).head(14).iterrows()
+]
+
+# Preco efetivo do mercado: USD por 1M tokens realmente consumidos
+tk = sem_outros.groupby("week").total_tokens.sum().reindex(SEM).fillna(0)
+gs = sem_outros.groupby("week").gasto_est.sum().reindex(SEM).fillna(0)
+out["preco_efetivo"] = (gs / (tk / 1e6)).replace([np.inf, -np.inf], np.nan).round(3).fillna(0).tolist()
+
+# Cortes categoricos
+out["cobranca_share"] = serie_share("cobranca")
+out["pesos_share_v2"] = serie_share("pesos")
+out["faixa_preco_share"] = serie_share("faixa_preco")
+out["faixa_ctx_share"] = serie_share("faixa_ctx")
+out["multimodal_share"] = serie_share("multimodal")
+out["raciocinio_share"] = serie_share("raciocinio")
+
+# Contexto mediano ponderado por volume
+def ctx_mediano(g):
+    g = g.dropna(subset=["context_length"])
+    if g.empty: return None
+    g = g.sort_values("context_length")
+    acum = g.total_tokens.cumsum()
+    corte = g.total_tokens.sum() / 2
+    return float(g.loc[acum >= corte, "context_length"].iloc[0])
+out["ctx_mediano"] = [ctx_mediano(sem_outros[sem_outros.week == w]) for w in SEM]
+
+# Qualidade contra adocao, ultima semana
+q = (ult.groupby(["slug_base"])
+        .agg(tokens=("total_tokens", "sum"), aa=("aa_intelligence", "first"),
+             aa_cod=("aa_coding", "first"), elo=("da_elo_models", "first"),
+             preco=("preco_misto_M", "first"), ctx=("context_length", "first"),
+             nome=("name", "first"), lanc=("created_at", "first"),
+             pesos=("pesos", "first"), cobranca=("cobranca", "first"))
+        .reset_index())
+q["share"] = (100 * q.tokens / q.tokens.sum()).round(3)
+q["vendor"] = q.slug_base.str.split("/").str[0]
+q["origin"] = q.vendor.map(origin)
+q["T"] = (q.tokens / 1e12).round(3)
+out["qualidade"] = [
+    {k: (None if pd.isna(v) else (round(float(v), 2) if isinstance(v, (int, float, np.floating)) else v))
+     for k, v in r.items() if k not in ("tokens",)}
+    for _, r in q.sort_values("share", ascending=False).head(60).iterrows()
+]
+
+out["blend"] = {"prompt": enrich.BLEND_PROMPT, "completion": enrich.BLEND_COMPLETION}
+out["cobertura"] = enrich.cobertura(E)
+out["cobertura_ultima_semana"] = enrich.cobertura(ult)
 OUT.parent.mkdir(parents=True,exist_ok=True)
 json.dump(out,open(OUT,"w"),ensure_ascii=False,separators=(",",":"))
 
