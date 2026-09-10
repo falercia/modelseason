@@ -1,8 +1,38 @@
 ---
-// Entrega 1 da migracao: a pagina entra praticamente como estava. O estilo e o
-// script sao servidos como arquivo, e nao mais embutidos, mas o conteudo e o
-// mesmo byte a byte. O teste de foto (tests/foto.js) prova isso.
+// Entrega 2: o conteudo saiu do codigo. Os 17 verbetes e os 23 textos de
+// grafico vem de src/content, validados por schema, e a pagina renderiza a
+// partir dali. Nada de texto de interface escrito dentro do JavaScript.
+import { getCollection } from 'astro:content';
 import '../styles/global.css';
+
+const idioma = 'pt';
+const soIdioma = (e: { id: string }) => e.id.startsWith(idioma + '/');
+
+const indicadores = (await getCollection('indicadores')).filter(soIdioma);
+const graficos = (await getCollection('graficos')).filter(soIdioma);
+
+// A ordem dos verbetes na pagina e a ordem em que os graficos aparecem, e nao
+// alfabetica: quem le de cima para baixo encontra na mesma sequencia.
+const ORDEM = ['tokens-por-semana','share-de-tokens','share-dos-5-maiores-e-hhi','origem-do-laboratorio',
+  'licenca-dos-pesos','cobranca','faixa-de-preco-e-janela-de-contexto','gasto-estimado',
+  'preco-efetivo-do-mercado','razao-dinheiro-sobre-volume','indice-de-inteligencia',
+  'rotatividade-e-idade-do-top-10','tempo-ate-o-pico-e-meia-vida','a-forma-de-uma-temporada',
+  'variacao-de-share-em-quatro-semanas','sinais-e-extrapolacao','a-linha-agregada-da-fonte'];
+const chave = (e: { id: string }) => e.id.slice(idioma.length + 1);
+const verbetes = indicadores.slice().sort(
+  (a, b) => ORDEM.indexOf(chave(a)) - ORDEM.indexOf(chave(b)));
+
+// Mapa entregue ao script como JSON, para o painel de metodologia montar o
+// bloco de cada grafico sem nenhum texto escrito no codigo.
+const conteudoGraficos = Object.fromEntries(graficos.map((g) => [g.data.id, {
+  titulo: g.data.titulo,
+  tipo: g.data.tipo,
+  modos: g.data.modos,
+  indicadores: g.data.indicadores,
+  ler: g.data.comoLer,
+  perg: g.data.perguntaQueResponde,
+  nao: g.data.oQueNaoMostra,
+}]));
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -323,23 +353,16 @@ import '../styles/global.css';
   <div class="sec-head"><span class="n">12</span><h2>Como ler cada indicador</h2></div>
   <p style="max-width:78ch;color:var(--ink-2);font-size:14px;margin:0 0 16px">Cada indicador abaixo responde três perguntas: o que é, como é calculado, e o que <b>não</b> conclui. A terceira é a que mais importa numa decisão, e a que quase nenhum painel publica.</p>
   <div class="met">
-    <details><summary>Tokens por semana</summary><div class="body"><p><span class="k">o que é</span>Volume total processado via OpenRouter na semana, somando prompt e completion de todos os modelos do top 50 diário mais a linha agregada do resto.</p><p><span class="k">como é calculado</span>Soma dos totais diários da semana ISO, de segunda a domingo. Só semanas completas entram. Ao agrupar por mês, o valor exibido é a <b>média semanal do mês</b>, para que um mês de cinco semanas não pareça 25% maior que um de quatro.</p><p class="nao"><span class="k">o que não conclui</span>Não é o consumo mundial de IA. É o tráfego de um roteador, com o viés descrito no rodapé. Também não é comparável entre 2025 e 2026 sem normalizar: o denominador cresceu 231 vezes.</p></div></details>
-    <details><summary>Share de tokens</summary><div class="body"><p><span class="k">o que é</span>Fatia do volume semanal que cada modelo, laboratório ou categoria capturou.</p><p><span class="k">como é calculado</span>Tokens da entidade dividido pelo total da semana, incluindo a linha <span class='mono'>other</span> no denominador. Com filtro ativo, o denominador passa a ser o total do recorte.</p><p class="nao"><span class="k">o que não conclui</span>Não é market share de receita nem de usuários. Um modelo gratuito com muito tráfego tem share alto e receita zero. Compare sempre com o share do gasto.</p></div></details>
-    <details><summary>Share dos 5 maiores e HHI</summary><div class="body"><p><span class="k">o que é</span>Duas medidas de concentração: quanto os cinco maiores modelos capturam, e o índice Herfindahl-Hirschman sobre todos os modelos.</p><p><span class="k">como é calculado</span>O top 5 exclui a linha <span class='mono'>other</span> do ranking mas a mantém no denominador: a pergunta é quanto do mercado os cinco maiores capturam. O HHI soma o quadrado das participações percentuais, normalizando apenas sobre modelos nomeados, porque a linha agregada não tem participação definida. Abaixo de 1500 é considerado não concentrado na escala antitruste convencional.</p><p class="nao"><span class="k">o que não conclui</span>Concentração baixa não significa que trocar de modelo seja barato. Mede substitutos disponíveis, não custo de migração.</p></div></details>
-    <details><summary>Origem do laboratório</summary><div class="body"><p><span class="k">o que é</span>País-sede da organização que treinou o modelo.</p><p><span class="k">como é calculado</span>Atribuída por vendor, a partir do prefixo do slug. Modelos <span class='mono'>stealth/*</span> e <span class='mono'>openrouter/*</span> são testes anônimos e ficam como não identificados.</p><p class="nao"><span class="k">o que não conclui</span>Não diz onde a inferência roda, nem onde os dados trafegam. Um modelo chinês servido por provedor americano continua contando como chinês aqui.</p></div></details>
-    <details><summary>Licença dos pesos</summary><div class="body"><p><span class="k">o que é</span>Se os pesos do modelo estão publicamente disponíveis para download.</p><p><span class="k">como é calculado</span>Prova antes de heurística: a presença de <span class='mono'>hugging_face_id</span> no catálogo decide. Onde o campo não existe, cai numa heurística por padrão de nome, e o dado registra qual das duas respondeu.</p><p class="nao"><span class="k">o que não conclui</span>Pesos abertos não significa licença permissiva. Vários modelos aqui têm restrição de uso comercial, e a distinção não está no dado da fonte.</p></div></details>
-    <details><summary>Cobrança</summary><div class="body"><p><span class="k">o que é</span>Separa três coisas que costumam ser confundidas: modelo pago, endpoint gratuito de modelo pago, e modelo sem preço.</p><p><span class="k">como é calculado</span>Vem do campo de preço do catálogo. O sufixo <span class='mono'>:free</span> no slug identifica um endpoint gratuito do <b>mesmo</b> modelo, não um modelo diferente.</p><p class="nao"><span class="k">o que não conclui</span>Endpoint gratuito costuma ter limite de taxa e fila mais lenta. Volume ali não indica disposição a pagar.</p></div></details>
-    <details><summary>Faixa de preço e janela de contexto</summary><div class="body"><p><span class="k">o que é</span>Agrupamentos do preço misto por milhão de tokens e da janela de contexto máxima.</p><p><span class="k">como é calculado</span>Preço misto usa a mistura declarada de prompt e completion. As faixas são cortes fixos, publicados no código, não quantis móveis, para que o significado de cada faixa não mude de uma semana para a outra.</p><p class="nao"><span class="k">o que não conclui</span>Preço de tabela não é preço pago: desconto por volume, cache e contrato não aparecem. Contexto máximo anunciado também não garante qualidade em toda a janela.</p></div></details>
-    <details><summary>Gasto estimado</summary><div class="body"><p><span class="k">o que é</span>Quanto o tráfego da semana custaria a preço de tabela.</p><p><span class="k">como é calculado</span>Tokens multiplicados pelo preço de cada modelo. Como a fonte soma prompt e completion sem separar, e completion custa várias vezes mais, publicamos três números: piso (tudo prompt), teto (tudo completion) e a estimativa na mistura declarada. Endpoint gratuito custa zero.</p><p class="nao"><span class="k">o que não conclui</span>Não é receita de ninguém. Ignora desconto, cache, batch, contrato e o fato de parte do tráfego rodar em créditos promocionais. Serve para comparar posicionamento entre laboratórios, não para dimensionar faturamento.</p></div></details>
-    <details><summary>Preço efetivo do mercado</summary><div class="body"><p><span class="k">o que é</span>Quanto custa, em média, um milhão de tokens efetivamente consumidos.</p><p><span class="k">como é calculado</span>Gasto estimado da semana dividido pelo volume da semana.</p><p class="nao"><span class="k">o que não conclui</span>Queda no preço efetivo tem duas causas possíveis e o número não separa: os modelos ficaram mais baratos, ou a demanda migrou para os baratos. Neste dataset a segunda domina.</p></div></details>
-    <details><summary>Razão dinheiro sobre volume</summary><div class="body"><p><span class="k">o que é</span>Quanto do dinheiro um laboratório captura em relação ao quanto de tokens ele processa.</p><p><span class="k">como é calculado</span>Share do gasto estimado dividido pelo share de tokens. Razão 1 significa que o laboratório cobra o preço médio do mercado; acima de 1, cobra mais; abaixo, menos.</p><p class="nao"><span class="k">o que não conclui</span>Não mede margem nem eficiência. Um laboratório com razão alta pode simplesmente atender casos de uso mais caros, não ser mais lucrativo.</p></div></details>
-    <details><summary>Índice de Inteligência</summary><div class="body"><p><span class="k">o que é</span>Medida composta de capacidade dos modelos, produzida pela Artificial Analysis.</p><p><span class="k">como é calculado</span>Vem pronta pela API do OpenRouter, junto com os índices de código e agentes. Não recalculamos nada.</p><p class="nao"><span class="k">o que não conclui</span>A cobertura é parcial, em torno de um terço dos modelos com volume, e não é aleatória: modelos menos conhecidos são testados menos. Ausência de índice não é sinal de qualidade baixa.</p></div></details>
-    <details><summary>Rotatividade e idade do top 10</summary><div class="body"><p><span class="k">o que é</span>Quantos dos dez modelos mais usados são novos em relação a quatro semanas antes, e há quanto tempo os atuais estrearam no ranking.</p><p><span class="k">como é calculado</span>Rotatividade compara o conjunto atual com o de quatro semanas atrás. Idade mediana conta semanas desde a primeira aparição de cada modelo; as doze primeiras semanas da série são censuradas, porque não sabemos quando os modelos já presentes em janeiro de 2025 estrearam de fato.</p><p class="nao"><span class="k">o que não conclui</span>Rotatividade alta não significa que os modelos que saíram pioraram. Na maioria das vezes eles foram substituídos pela geração seguinte do mesmo laboratório.</p></div></details>
-    <details><summary>Tempo até o pico e meia-vida</summary><div class="body"><p><span class="k">o que é</span>Quantas semanas um modelo leva do lançamento até seu maior share, e quantas leva depois disso para perder metade dele.</p><p><span class="k">como é calculado</span>Calculado por modelo, sobre a série completa. Só entram modelos que atingiram ao menos 2% do volume semanal, para evitar que ruído de modelos minúsculos domine a mediana. Modelo que ainda não caiu à metade aparece sem meia-vida em vez de contar como zero.</p><p class="nao"><span class="k">o que não conclui</span>Meia-vida curta não é sinal de modelo ruim. É sinal de mercado com cadência alta de lançamento, e o efeito aparece em modelos bons e ruins igualmente.</p></div></details>
-    <details><summary>A forma de uma temporada</summary><div class="body"><p><span class="k">o que é</span>Curva média de adoção de um modelo, do lançamento ao decaimento.</p><p><span class="k">como é calculado</span>Cada modelo é alinhado na própria semana de estreia e normalizado pelo próprio pico, então o eixo horizontal vira idade do modelo e o vertical vira percentual do pico. A linha grossa é a mediana e a faixa é o intervalo entre o primeiro e o terceiro quartil.</p><p class="nao"><span class="k">o que não conclui</span>Não prevê a trajetória de um modelo específico. Descreve a distribuição observada, e a dispersão dentro da faixa é grande.</p></div></details>
-    <details><summary>Variação de share em quatro semanas</summary><div class="body"><p><span class="k">o que é</span>Diferença, em pontos percentuais, entre o share atual de um modelo e o de quatro semanas antes.</p><p><span class="k">como é calculado</span>Subtração simples de percentuais. Ao agrupar por mês, a comparação passa a ser com o mês anterior, que é o período equivalente.</p><p class="nao"><span class="k">o que não conclui</span>Ponto percentual não é percentual: sair de 1% para 2% é +1pp e também é dobrar. Para modelos pequenos, a variação relativa conta mais história.</p></div></details>
-    <details><summary>Sinais e extrapolação</summary><div class="body"><p><span class="k">o que é</span>Duas coisas diferentes na mesma seção. <b>Achados</b> são fatos já medidos que contrariam o padrão dominante da janela. <b>Extrapolação</b> é a taxa recente estendida em linha reta.</p><p><span class="k">como é calculado</span>Cada achado tem uma regra fixa e publicada no código: aceleração acima de dois desvios da própria oscilação do modelo, ganho de share em modelo mais caro que a mediana, permanência no top 10 acima do dobro da idade mediana, inversão de sinal na tendência do HHI, e afastamento de mais de 4 pontos entre as curvas de China e de pesos abertos. A extrapolação é uma reta por mínimos quadrados sobre as últimas 8 observações, projetada até o próximo marco redondo.</p><p class="nao"><span class="k">o que não conclui</span><b>Nada aqui é previsão.</b> A reta assume que a taxa se mantém, e a tese desta página é que ela não se mantém: nenhum modelo sustentou liderança por mais de dois trimestres neste dataset. O número serve para dimensionar ordem de grandeza e provocar a pergunta certa, nunca para planejar. Um achado também não explica causa: ele diz que algo saiu do padrão, e o trabalho de descobrir por quê continua sendo seu.</p></div></details>
-    <details><summary>A linha agregada da fonte</summary><div class="body"><p><span class="k">o que é</span>Volume que ficou fora do top 50 de cada dia, agregado pela fonte numa única linha.</p><p><span class="k">como é calculado</span>Vem pronta da API. Conta no total e no denominador dos percentuais, mas não tem metadado: não sabemos quais modelos a compõem.</p><p class="nao"><span class="k">o que não conclui</span>Por isso ela <b>sai de qualquer recorte filtrado</b>. Com filtro ativo, os percentuais passam a ser calculados dentro do recorte, e a barra de filtros informa quanto do volume ficou de fora.</p></div></details>
+    {verbetes.map((v) => (
+      <details>
+        <summary>{v.data.titulo}</summary>
+        <div class="body">
+          <p><span class="k">o que é</span><Fragment set:html={v.data.oQueE} /></p>
+          <p><span class="k">como é calculado</span><Fragment set:html={v.data.comoECalculado} /></p>
+          <p class="nao"><span class="k">o que não conclui</span><Fragment set:html={v.data.oQueNaoConclui} /></p>
+        </div>
+      </details>
+    ))}
   </div>
 </section>
 
@@ -351,6 +374,7 @@ import '../styles/global.css';
   <p id="attrib"><b>Atribuição.</b> Source: OpenRouter (<a href="https://openrouter.ai/rankings" rel="noopener">openrouter.ai/rankings</a>), as of <span id="attrib-asof" class="mono"></span>. Dados licenciados sob <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>. Model Season não é afiliado ao OpenRouter.</p>
 </footer>
 </div>
+<script type="application/json" id="conteudo-graficos" set:html={JSON.stringify(conteudoGraficos)}></script>
 <script src="/vendor/d3.v7.min.js" is:inline></script>
 <script src="/scripts/app.js" is:inline></script>
 </body>

@@ -394,6 +394,52 @@ const perto = (a, b, tol) => Math.abs(a - b) <= tol;
   checa(/10 desta semana/.test(coorte) && (coorte.match(/\//g) || []).length >= 10,
     'a leitura do top 10 diz quais são os 10 modelos');
 
+  // ---------- 6n. o tipo declarado bate com o que o gráfico desenha ----------
+  // Esta é a trava que não existia quando os 23 textos foram escritos. O
+  // conteúdo declara `tipo` em src/content/graficos, e aqui isso é conferido
+  // contra as marcas do SVG. Descrição que diz "área empilhada" num gráfico de
+  // linha para de passar despercebida.
+  const tipos = await p.evaluate(() => {
+    const conteudo = JSON.parse(document.getElementById('conteudo-graficos').textContent);
+    const ruins = [];
+    for (const [id, g] of Object.entries(conteudo)) {
+      const card = document.querySelector(`.card[data-chart="${id}"]`);
+      if (!card) { ruins.push(`${id}: sem cartão`); continue; }
+      const svg = card.querySelector('svg');
+      const n = (t) => (svg ? svg.querySelectorAll(t).length : 0);
+      let real;
+      if (!svg) real = 'texto';
+      else if (n('circle') > 5) real = 'dispersao';
+      else if (n('rect') > 3) real = 'barras';
+      else if (n('path') >= 3) real = 'area';
+      else real = 'linha';
+      if (real !== g.tipo) ruins.push(`${id}: declara ${g.tipo}, desenha ${real}`);
+
+      // modo declarado tem que existir como botão no cartão
+      const botoes = [...card.querySelectorAll('.views button')].map((b) => b.textContent.trim());
+      const faltando = (g.modos || []).filter((m) => !botoes.includes(m));
+      const sobrando = botoes.filter((b) => !(g.modos || []).includes(b));
+      if (faltando.length || sobrando.length)
+        ruins.push(`${id}: modos declarados ${JSON.stringify(g.modos)} vs. botões ${JSON.stringify(botoes)}`);
+    }
+    return ruins;
+  });
+  checa(tipos.length === 0, 'o tipo e os modos declarados batem com o que o gráfico desenha', tipos.slice(0, 4).join(' | '));
+
+  // O texto de "como ler" precisa citar cada modo, senão o leitor não descobre
+  // que o gráfico tem dois estados.
+  const modosNoTexto = await p.evaluate(() => {
+    const conteudo = JSON.parse(document.getElementById('conteudo-graficos').textContent);
+    return Object.entries(conteudo)
+      .filter(([, g]) => (g.modos || []).length > 0)
+      .filter(([, g]) => {
+        const t = (g.ler + ' ' + g.perg).toLowerCase();
+        return !g.modos.every((m) => t.includes(m.toLowerCase().slice(0, 6)));
+      })
+      .map(([id, g]) => `${id}: ${JSON.stringify(g.modos)}`);
+  });
+  checa(modosNoTexto.length === 0, 'o texto de todo gráfico com modos cita os modos', modosNoTexto.join(' | '));
+
   // ---------- 7. sem transbordo horizontal em três larguras ----------
   for (const w of [390, 768, 1440]) {
     const t = await browser.newPage({ viewport: { width: w, height: 900 } });

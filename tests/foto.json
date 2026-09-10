@@ -10855,28 +10855,28 @@
  "painel": {
   "volume": {
    "titulo": "Tokens por semana",
-   "texto": "como lerUma linha só, o total de tokens que passou pelo roteador em cada período. A área embaixo existe para dar peso visual à escala, não carrega informação extra.a pergunta que respondeO mercado está crescendo, e a que ritmo? É o denominador de quase todo o resto da página: share cai quando o denominador sobe, mesmo com o volume absoluto subindo.o que não mostraNão é o consumo mundial de IA. É o tráfego de um roteador, e a base cresceu 231 vezes desde jan/25, então comparar volume absoluto entre as pontas mistura crescimento do mercado com crescimento da própria fonte.A definição formal do indicador usado aqui:",
+   "texto": "como lerUma linha só, com o total de tokens processados em cada período e área sombreada embaixo para dar peso à escala. O ponto marcado é sempre o último período da janela.a pergunta que respondeO mercado está crescendo, e a que ritmo? É o denominador de quase todo o resto da página: share cai quando o denominador sobe, mesmo com o volume absoluto subindo.o que não mostraNão é o consumo mundial de IA. É o tráfego de um roteador, e a base cresceu 231 vezes desde jan/25, então comparar volume absoluto entre as pontas mistura crescimento do mercado com crescimento da própria fonte.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Tokens por semana"
    ]
   },
   "conc": {
    "titulo": "Concentração: share dos 5 maiores modelos",
-   "texto": "como lerA soma do share dos cinco modelos mais usados em cada período. Perto de 100% significa mercado dominado por poucos, perto de 20% significa tráfego espalhado.a pergunta que respondeTrocar de modelo é escolha real ou existem poucas opções de fato? Concentração caindo costuma anteceder a chegada de um modelo que domina, ou a saída de um que dominava.o que não mostraConcentração baixa não significa que migrar seja barato. Mede quantos substitutos existem, não o custo de refazer prompts, avaliações e integrações.A definição formal do indicador usado aqui:",
+   "texto": "como lerUma linha com a soma do share dos cinco modelos mais usados em cada período, com área sombreada embaixo para dar peso à escala. Perto de 100% significa mercado dominado por poucos, perto de 20% significa tráfego espalhado. A tabela abre quem são os cinco em cada período.a pergunta que respondeTrocar de modelo é escolha real ou existem poucas opções de fato? Concentração caindo costuma anteceder a chegada de um modelo que domina, ou a saída de um que dominava.o que não mostraConcentração baixa não significa que migrar seja barato. Mede quantos substitutos existem, não o custo de refazer prompts, avaliações e integrações.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Share dos 5 maiores e HHI"
    ]
   },
   "vendor": {
    "titulo": "Fatia semanal de tokens por lab",
-   "texto": "como lerÁrea empilhada: cada faixa é um laboratório, e a altura é a fatia dele no período. Os quatro maiores por volume acumulado aparecem nomeados, todo o resto vira Outros. Clique na legenda para tirar ou devolver uma faixa.a pergunta que respondeQuem está ganhando e quem está perdendo espaço, e com que velocidade. A leitura embaixo do gráfico já compara o início e o fim da janela escolhida.o que não mostraFaixa grande não é receita grande. Um laboratório com modelo gratuito de muito tráfego ocupa espaço aqui e não aparece na seção do dinheiro.A definição formal do indicador usado aqui:",
+   "texto": "como lerÁrea empilhada com cinco faixas: os quatro maiores laboratórios por volume acumulado, nomeados, e todo o resto somado em Outros. A altura de cada faixa é a fatia daquele laboratório no período. Clique na legenda para tirar ou devolver uma faixa.a pergunta que respondeQuem está ganhando e quem está perdendo espaço, e com que velocidade. A leitura embaixo do gráfico já compara o início e o fim da janela escolhida.o que não mostraFaixa grande não é receita grande. Um laboratório com modelo gratuito de muito tráfego ocupa espaço aqui e não aparece na seção do dinheiro.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Share de tokens"
    ]
   },
   "board": {
    "titulo": "Top 15 da última semana completa",
-   "texto": "como lerBarras horizontais com os 15 modelos de maior volume na última semana completa. A cor da barra é a origem do laboratório, não o laboratório em si.a pergunta que respondeQuem está no topo agora, e de onde vem. É a foto do momento, complementar às séries que mostram trajetória.o que não mostraÉ uma semana só, e semana única é o recorte mais volátil da página. Modelo em teste anônimo pode aparecer aqui e sumir na semana seguinte.As definições formais dos 2 indicadores usados aqui:",
+   "texto": "como lerBarras horizontais em HTML, não em SVG, com os 15 modelos de maior volume na última semana completa. A cor da barra é a origem do laboratório, não o laboratório em si.a pergunta que respondeQuem está no topo agora, e de onde vem. É a foto do momento, complementar às séries que mostram trajetória.o que não mostraÉ uma semana só, e semana única é o recorte mais volátil da página. Modelo em teste anônimo pode aparecer aqui e sumir na semana seguinte.As definições formais dos 2 indicadores usados aqui:",
    "verbetes": [
     "Share de tokens",
     "A linha agregada da fonte"
@@ -10884,84 +10884,84 @@
   },
   "origin": {
    "titulo": "Origem do lab",
-   "texto": "como lerÁrea empilhada por país-sede do laboratório que treinou o modelo. A atribuição vem do prefixo do slug.a pergunta que respondeO tráfego está migrando para modelos chineses, e a que velocidade? É uma das duas curvas que mais mudaram na série.o que não mostraNão diz onde a inferência roda nem por onde os dados trafegam. Modelo chinês servido por provedor americano continua contando como chinês aqui, e essa distinção importa para quem tem restrição de jurisdição.A definição formal do indicador usado aqui:",
+   "texto": "como lerÁrea empilhada por país-sede do laboratório que treinou o modelo, com seis faixas: China, EUA e Canadá, Europa, Coreia, Outros e não identificado. A atribuição vem do prefixo do slug, e modelos em teste anônimo caem em não identificado.a pergunta que respondeO tráfego está migrando para modelos chineses, e a que velocidade? É uma das duas curvas que mais mudaram na série.o que não mostraNão diz onde a inferência roda nem por onde os dados trafegam. Modelo chinês servido por provedor americano continua contando como chinês aqui, e essa distinção importa para quem tem restrição de jurisdição.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Origem do laboratório"
    ]
   },
   "weights": {
    "titulo": "Licença dos pesos",
-   "texto": "como lerÁrea empilhada separando modelos de pesos publicamente disponíveis dos fechados. A classificação usa prova antes de heurística.a pergunta que respondeO mercado está indo para modelos que dá para baixar e rodar por conta própria? Compare com o gráfico de origem ao lado: as duas curvas andam quase juntas, porque a maioria dos pesos abertos relevantes é chinesa.o que não mostraPesos abertos não significa licença permissiva. Vários modelos aqui têm restrição de uso comercial, e o dado da fonte não separa isso.A definição formal do indicador usado aqui:",
+   "texto": "como lerÁrea empilhada com três faixas, não duas: pesos abertos, proprietário e não identificado, que é o modelo sem informação suficiente para classificar. A faixa não identificada importa, porque ignorá-la infla artificialmente as outras duas.a pergunta que respondeO mercado está indo para modelos que dá para baixar e rodar por conta própria? Compare com o gráfico de origem ao lado: as duas curvas andam quase juntas, porque a maioria dos pesos abertos relevantes é chinesa.o que não mostraPesos abertos não significa licença permissiva. Vários modelos aqui têm restrição de uso comercial, e o dado da fonte não separa isso.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Licença dos pesos"
    ]
   },
   "free": {
    "titulo": "Tráfego em endpoints gratuitos",
-   "texto": "como lerLinha com a fatia do volume servida por endpoints sem cobrança, identificados pelo sufixo :free no slug.a pergunta que respondeQuanto do tráfego é gente testando de graça? Ajuda a calibrar todo share desta página, porque volume gratuito infla adoção sem indicar disposição a pagar.o que não mostraEndpoint gratuito costuma ter limite de taxa e fila mais lenta, então o volume ali não é comparável ao pago. E é o mesmo modelo do endpoint pago, não um modelo diferente.A definição formal do indicador usado aqui:",
+   "texto": "como lerLinha com a fatia do volume servida por endpoints sem cobrança, identificados pelo sufixo :free no slug, com área sombreada embaixo.a pergunta que respondeQuanto do tráfego é gente testando de graça? Ajuda a calibrar todo share desta página, porque volume gratuito infla adoção sem indicar disposição a pagar.o que não mostraEndpoint gratuito costuma ter limite de taxa e fila mais lenta, então o volume ali não é comparável ao pago. E é o mesmo modelo do endpoint pago, não um modelo diferente.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Cobrança"
    ]
   },
   "anshare": {
    "titulo": "Share da Anthropic vs. concorrentes",
-   "texto": "como lerÁrea empilhada de share por laboratório com a Anthropic destacada em tinta cheia e os concorrentes em cinza. O destaque é editorial, os números são os mesmos do gráfico da seção 02.a pergunta que respondeA Anthropic está ganhando ou perdendo espaço neste canal? A leitura abaixo mostra o contraste que importa: o share caiu porque o denominador explodiu, enquanto o volume absoluto da Anthropic subiu 22 vezes.o que não mostraEste é o tráfego de um roteador, onde a decisão é preço por token e a troca é de uma linha. Não representa consumo via API direta, Bedrock ou Vertex, onde o perfil de carga e o critério de escolha são outros.A definição formal do indicador usado aqui:",
+   "texto": "como lerÁrea empilhada de share por laboratório com a Anthropic em tinta cheia e os oito concorrentes seguintes em cinza. O destaque é editorial e os números são exatamente os mesmos do gráfico de share por laboratório da seção 02.a pergunta que respondeA Anthropic está ganhando ou perdendo espaço neste canal? A leitura abaixo mostra o contraste que importa: o share caiu porque o denominador explodiu, enquanto o volume absoluto da Anthropic subiu 22 vezes.o que não mostraEste é o tráfego de um roteador, onde a decisão é preço por token e a troca é de uma linha. Não representa consumo via API direta, Bedrock ou Vertex, onde o perfil de carga e o critério de escolha são outros.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Share de tokens"
    ]
   },
   "anfam": {
    "titulo": "Volume Anthropic por família",
-   "texto": "como lerÁrea empilhada em tokens absolutos, não em share, separando as famílias Haiku, Sonnet, Opus e Fable.a pergunta que respondeDentro da Anthropic, para onde o tráfego vai? Mostra o mix entre modelo caro e barato, que é uma decisão de arquitetura de quem consome.o que não mostraHaiku é residual neste canal, e isso não generaliza para carga corporativa via API direta, onde o roteamento por custo tem outro perfil.A definição formal do indicador usado aqui:",
+   "texto": "como lerÁrea empilhada em trilhões de tokens absolutos, não em share, separando as quatro famílias: Haiku, Sonnet, Opus e Fable. A tabela traz também o total, que é o número que some quando se olha só o share.a pergunta que respondeDentro da Anthropic, para onde o tráfego vai? Mostra o mix entre modelo caro e barato, que é uma decisão de arquitetura de quem consome.o que não mostraHaiku é residual neste canal, e isso não generaliza para carga corporativa via API direta, onde o roteamento por custo tem outro perfil.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Tokens por semana"
    ]
   },
   "antenure": {
    "titulo": "Semanas no top 10 por modelo Claude",
-   "texto": "como lerBarras horizontais com quantas semanas cada modelo Claude passou entre os 10 mais usados. Dois modos: por permanência, do maior para o menor, ou por estreia no ranking.a pergunta que respondeCada geração está durando mais ou menos no topo? No modo Estreia a cadência fica visível: os lançamentos ficaram mais próximos e cada versão dura menos, canibalizada pela seguinte.o que não mostraEstreia é a primeira aparição no ranking, não a data de lançamento. Modelos que já existiam quando a série começa aparecem todos empilhados na primeira semana.A definição formal do indicador usado aqui:",
+   "texto": "como lerBarras horizontais com quantas semanas cada um dos 11 modelos Claude passou entre os 10 mais usados. Dois modos: por permanência, do maior para o menor, ou por estreia no ranking. A tabela traz também a data de lançamento e o pico de share de cada um.a pergunta que respondeCada geração está durando mais ou menos no topo? No modo Estreia a cadência fica visível: os lançamentos ficaram mais próximos e cada versão dura menos, canibalizada pela seguinte.o que não mostraEstreia é a primeira aparição no ranking, não a data de lançamento. Modelos que já existiam quando a série começa aparecem todos empilhados na primeira semana.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Rotatividade e idade do top 10"
    ]
   },
   "churn": {
    "titulo": "Rotatividade do top 10",
-   "texto": "como lerLinha com quantos dos 10 mais usados não estavam no top 10 quatro semanas antes. Zero significa topo congelado, dez significa topo inteiramente trocado.a pergunta que respondeCom que frequência a lista de modelos que importam muda? É a medida mais direta da tese desta página.o que não mostraA janela de comparação é fixa em quatro semanas, independente do agrupamento escolhido, porque o indicador é definido assim. Rotatividade alta não diz se os que entraram são melhores.A definição formal do indicador usado aqui:",
+   "texto": "como lerLinha simples, sem área, com quantos dos 10 mais usados não estavam no top 10 quatro semanas antes. Zero significa topo congelado, dez significa topo inteiramente trocado. A série começa quatro períodos depois do início da janela, porque antes disso não há com o que comparar.a pergunta que respondeCom que frequência a lista de modelos que importam muda? É a medida mais direta da tese desta página.o que não mostraA janela de comparação é fixa em quatro semanas, independente do agrupamento escolhido, porque o indicador é definido assim. Rotatividade alta não diz se os que entraram são melhores.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Rotatividade e idade do top 10"
    ]
   },
   "age": {
    "titulo": "Idade mediana do top 10",
-   "texto": "como lerLinha com a idade mediana, em semanas, dos 10 modelos mais usados em cada período, contada desde a primeira aparição no ranking.a pergunta que respondeO topo está envelhecendo ou rejuvenescendo? Idade mediana caindo significa que modelos recém-lançados estão tomando o lugar dos estabelecidos.o que não mostraAs primeiras 12 semanas ficam censuradas: como a série começa em jan/25, todo modelo anterior aparece com idade zero ali, e o número seria falso.A definição formal do indicador usado aqui:",
+   "texto": "como lerLinha simples com a idade mediana, em semanas, dos 10 modelos mais usados, contada desde a primeira aparição no ranking. As 12 primeiras semanas ficam de fora da série, e é por isso que ela é mais curta que as outras.a pergunta que respondeO topo está envelhecendo ou rejuvenescendo? Idade mediana caindo significa que modelos recém-lançados estão tomando o lugar dos estabelecidos.o que não mostraAs primeiras 12 semanas ficam censuradas: como a série começa em jan/25, todo modelo anterior aparece com idade zero ali, e o número seria falso.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Rotatividade e idade do top 10"
    ]
   },
   "cohort": {
    "titulo": "Tempo até o pico e meia-vida, por trimestre de lançamento",
-   "texto": "como lerBarras agrupadas por trimestre de lançamento, com duas medianas: quantas semanas até o pico de share, e quantas semanas do pico até perder metade dele. Só modelos que chegaram a 2% do volume semanal entram, e o n de cada coorte está no rótulo.a pergunta que respondeA temporada de um modelo está ficando mais curta? Comparar coortes é o que separa tendência de ruído de um lançamento específico.o que não mostraDescreve o histórico completo e não responde à janela nem ao agrupamento. Coortes recentes têm viés de censura: modelos lançados há pouco ainda não tiveram tempo de cair, então a meia-vida deles parece maior do que será.A definição formal do indicador usado aqui:",
+   "texto": "como lerBarras agrupadas por trimestre de lançamento, duas por trimestre: a mediana de semanas até o pico de share, e a mediana de semanas do pico até perder metade dele. Só modelos que chegaram a 2% do volume semanal entram, e o n de cada coorte está no rótulo, porque coorte de três modelos não sustenta a mesma leitura que uma de vinte.a pergunta que respondeA temporada de um modelo está ficando mais curta? Comparar coortes é o que separa tendência de ruído de um lançamento específico.o que não mostraDescreve o histórico completo e não responde à janela nem ao agrupamento. Coortes recentes têm viés de censura: modelos lançados há pouco ainda não tiveram tempo de cair, então a meia-vida deles parece maior do que será.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Tempo até o pico e meia-vida"
    ]
   },
   "life": {
    "titulo": "A forma de uma temporada",
-   "texto": "como lerTodos os modelos com trajetória relevante alinhados na semana de estreia e normalizados pelo próprio pico, então 100% é o auge de cada um, não do mercado. A linha grossa é a mediana, a faixa é o intervalo entre o primeiro e o terceiro quartil.a pergunta que respondeQual é o formato típico de uma temporada? Subida rápida, pico cedo, queda longa. É o gráfico que sustenta a tese de que o ativo durável é o método de troca, não a escolha do modelo.o que não mostraNormalizar pelo próprio pico apaga a escala: um modelo que chegou a 30% e um que chegou a 0,5% desenham a mesma curva. Serve para comparar formato, não tamanho.A definição formal do indicador usado aqui:",
+   "texto": "como ler126 modelos alinhados na semana de estreia e normalizados pelo próprio pico, então 100% é o auge de cada um, não do mercado. A linha grossa é a mediana e a faixa é o intervalo entre o primeiro e o terceiro quartil. Dois modos: todos juntos, ou separados por trimestre de lançamento, que é onde se vê se a temporada está encurtando.a pergunta que respondeQual é o formato típico de uma temporada? Subida rápida, pico cedo, queda longa. É o gráfico que sustenta a tese de que o ativo durável é o método de troca, não a escolha do modelo.o que não mostraNormalizar pelo próprio pico apaga a escala: um modelo que chegou a 30% e um que chegou a 0,5% desenham a mesma curva. Serve para comparar formato, não tamanho.A definição formal do indicador usado aqui:",
    "verbetes": [
     "A forma de uma temporada"
    ]
   },
   "spend": {
    "titulo": "Gasto semanal estimado",
-   "texto": "como lerLinha do gasto estimado por período, com uma faixa em volta. A linha usa uma mistura de 75% prompt, e a faixa vai do cenário tudo prompt ao cenário tudo completion.a pergunta que respondeQuanto dinheiro esse tráfego representa a preço de tabela? Dá ordem de grandeza para conversas que normalmente acontecem sem nenhum número.o que não mostraÉ estimativa, não medição, e a largura da faixa não é imprecisão do cálculo: a fonte soma prompt e completion sem separar, e completion custa várias vezes mais. Preço de tabela também não é preço pago, porque desconto por volume, cache e contrato não aparecem.A definição formal do indicador usado aqui:",
+   "texto": "como lerLinha do gasto estimado por período com uma faixa em volta. A linha usa uma mistura de 75% prompt e 25% completion, e a faixa vai do cenário tudo prompt ao cenário tudo completion. A tabela abre estimativa, piso, teto e o preço efetivo por milhão de tokens.a pergunta que respondeQuanto dinheiro esse tráfego representa a preço de tabela? Dá ordem de grandeza para conversas que normalmente acontecem sem nenhum número.o que não mostraÉ estimativa, não medição, e a largura da faixa não é imprecisão do cálculo: a fonte soma prompt e completion sem separar, e completion custa várias vezes mais. Preço de tabela também não é preço pago, porque desconto por volume, cache e contrato não aparecem.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Gasto estimado"
    ]
   },
   "vsmoney": {
    "titulo": "Volume contra dinheiro, por laboratório",
-   "texto": "como lerDuas barras por laboratório na última semana completa: share de tokens e share do gasto estimado. Barras iguais significam que o laboratório cobra em torno do preço médio do mercado. A coluna da direita traz a razão entre as duas.a pergunta que respondeOnde está o dinheiro, em contraste com onde está o volume? É o gráfico que mais muda a conversa, porque separa quem tem tráfego de quem tem receita.o que não mostraHerda todas as ressalvas da estimativa de gasto. Razão alta não significa margem alta, significa preço de tabela alto por token.As definições formais dos 2 indicadores usados aqui:",
+   "texto": "como lerDuas barras por laboratório na última semana completa, para os 10 maiores: share de tokens e share do gasto estimado. Barras iguais significam que o laboratório cobra em torno do preço médio do mercado. A coluna da direita traz a razão entre as duas, que é o número que resume tudo.a pergunta que respondeOnde está o dinheiro, em contraste com onde está o volume? É o gráfico que mais muda a conversa, porque separa quem tem tráfego de quem tem receita.o que não mostraHerda todas as ressalvas da estimativa de gasto. Razão alta não significa margem alta, significa preço de tabela alto por token.As definições formais dos 2 indicadores usados aqui:",
    "verbetes": [
     "Gasto estimado",
     "Razão dinheiro sobre volume"
@@ -10969,7 +10969,7 @@
   },
   "quality": {
    "titulo": "Índice de inteligência contra share de tokens",
-   "texto": "como lerDispersão com um ponto por modelo: eixo vertical é share de tokens, horizontal é o Índice de Inteligência da Artificial Analysis ou o preço, conforme o modo escolhido. As linhas tracejadas marcam as medianas e dividem a área em quatro.a pergunta que respondeQualidade declarada explica adoção? Os quadrantes de cima à esquerda e de baixo à direita são os interessantes: muito uso com índice baixo, e índice alto com pouco uso.o que não mostraSó parte dos modelos tem índice publicado, e os que não têm ficam de fora do gráfico, não no zero. Índice é uma média de avaliações padronizadas, que não mede desempenho na sua carga específica.As definições formais dos 2 indicadores usados aqui:",
+   "texto": "como lerDispersão com um ponto para cada um dos 37 modelos que têm índice publicado. O eixo vertical é share de tokens, o horizontal alterna entre o Índice de Inteligência e o preço por milhão de tokens. As linhas tracejadas marcam as medianas e cortam a área em quatro quadrantes.a pergunta que respondeQualidade declarada explica adoção? Os quadrantes de cima à esquerda e de baixo à direita são os interessantes: muito uso com índice baixo, e índice alto com pouco uso.o que não mostraSó parte dos modelos tem índice publicado, e os que não têm ficam de fora do gráfico, não no zero. Índice é uma média de avaliações padronizadas, que não mede desempenho na sua carga específica.As definições formais dos 2 indicadores usados aqui:",
    "verbetes": [
     "Share de tokens",
     "Índice de Inteligência"
@@ -10977,7 +10977,7 @@
   },
   "mudou": {
    "titulo": "Entradas e saídas do top 10",
-   "texto": "como lerDuas colunas comparando o top 10 da última semana completa com o de quatro semanas antes: quem entrou e quem saiu.a pergunta que respondeO que mudou desde o mês passado, em uma olhada? É o resumo para quem acompanha o mercado semanalmente e quer só a diferença.o que não mostraSair do top 10 não é morrer: um modelo pode cair para a décima primeira posição com volume praticamente igual. A lista mostra movimento de ranking, não colapso de uso.As definições formais dos 2 indicadores usados aqui:",
+   "texto": "como lerDuas colunas em texto, sem gráfico, comparando o top 10 da última semana completa com o de quatro semanas antes: quem entrou e quem saiu, com o share de cada um.a pergunta que respondeO que mudou desde o mês passado, em uma olhada? É o resumo para quem acompanha o mercado semanalmente e quer só a diferença.o que não mostraSair do top 10 não é morrer: um modelo pode cair para a décima primeira posição com volume praticamente igual. A lista mostra movimento de ranking, não colapso de uso.As definições formais dos 2 indicadores usados aqui:",
    "verbetes": [
     "Rotatividade e idade do top 10",
     "Variação de share em quatro semanas"
@@ -10985,14 +10985,14 @@
   },
   "varia": {
    "titulo": "Maiores variações de share",
-   "texto": "como lerBarras com as maiores altas e quedas de share em pontos percentuais nas últimas quatro semanas.a pergunta que respondeQuem está acelerando e quem está desabando agora? Serve para achar o modelo que vale investigar antes que ele apareça em thread de rede social.o que não mostraVariação em pontos percentuais favorece quem já é grande: sair de 0,1% para 0,4% quadruplica o uso e mostra +0,3pp, quase invisível ao lado de quem oscila cinco pontos.A definição formal do indicador usado aqui:",
+   "texto": "como lerDoze barras com as maiores altas e quedas de share em pontos percentuais nas últimas quatro semanas. A tabela ao lado mostra o share de antes, o de agora e a diferença, que é como se confere se a variação veio de uma base grande ou pequena.a pergunta que respondeQuem está acelerando e quem está desabando agora? Serve para achar o modelo que vale investigar antes que ele apareça em thread de rede social.o que não mostraVariação em pontos percentuais favorece quem já é grande: sair de 0,1% para 0,4% quadruplica o uso e mostra +0,3pp, quase invisível ao lado de quem oscila cinco pontos.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Variação de share em quatro semanas"
    ]
   },
   "comparar": {
    "titulo": "Comparador",
-   "texto": "como lerDois modelos lado a lado, com adoção, preço, janela de contexto, índice de inteligência e ciclo de vida. O valor melhor de cada linha aparece destacado, e o campo de busca casa qualquer parte do slug.a pergunta que respondeEstou decidindo entre dois modelos e quero os números na mesma tela, sem abrir três abas.o que não mostraCompara o que o dado da fonte tem: adoção, preço de tabela e metadado do catálogo. Não substitui avaliação na sua carga, que é a única comparação que decide de verdade.As definições formais dos 2 indicadores usados aqui:",
+   "texto": "como lerDois modelos lado a lado em duas partes. Em cima, um gráfico com a trajetória de share dos dois na mesma escala, para ver quem subiu quando. Embaixo, a tabela com adoção, preço, janela de contexto, índice de inteligência e ciclo de vida, com o valor melhor de cada linha destacado. O campo de busca casa qualquer parte do slug.a pergunta que respondeEstou decidindo entre dois modelos e quero os números na mesma tela, sem abrir três abas.o que não mostraCompara o que o dado da fonte tem: adoção, preço de tabela e metadado do catálogo. Não substitui avaliação na sua carga, que é a única comparação que decide de verdade.As definições formais dos 2 indicadores usados aqui:",
    "verbetes": [
     "Share de tokens",
     "Faixa de preço e janela de contexto"
@@ -11000,7 +11000,7 @@
   },
   "mapa": {
    "titulo": "Tração contra capacidade, por laboratório",
-   "texto": "como lerCada laboratório vira um ponto posicionado por percentil entre os 19 com volume, não por valor absoluto. Vertical é tração, combinando share de tokens, share do gasto e crescimento. Horizontal é capacidade, em dois modos: recursos declarados, que cobre todos os laboratórios, ou o Índice de Inteligência, que só cobre parte deles. O rastro mostra onde cada um estava 12 semanas antes.a pergunta que respondeQuem lidera, quem desafia, quem promete e quem é de nicho, numa tela só. Os pesos dos componentes são ajustáveis, então dá para testar se a posição de alguém depende de uma escolha sua.o que não mostraPercentil é posição relativa: subir aqui pode significar que os outros pioraram. E capacidade declarada é o que o catálogo anuncia, não desempenho medido.As definições formais dos 3 indicadores usados aqui:",
+   "texto": "como lerUm ponto para cada um dos 19 laboratórios com volume, posicionado por percentil dentro do próprio grupo e não por valor absoluto. Vertical é tração, combinando share de tokens, share do gasto e crescimento. Horizontal é capacidade, em dois modos: recursos declarados, que cobre os 19, ou o Índice de Inteligência, que cobre só parte deles. O rastro mostra onde cada um estava 12 semanas antes.a pergunta que respondeQuem lidera, quem desafia, quem promete e quem é de nicho, numa tela só. Os pesos dos componentes são ajustáveis, então dá para testar se a posição de alguém depende de uma escolha sua.o que não mostraPercentil é posição relativa: subir aqui pode significar que os outros pioraram. E capacidade declarada é o que o catálogo anuncia, não desempenho medido.As definições formais dos 3 indicadores usados aqui:",
    "verbetes": [
     "Share de tokens",
     "Faixa de preço e janela de contexto",
@@ -11009,14 +11009,14 @@
   },
   "sinais": {
    "titulo": "Achados",
-   "texto": "como lerCinco regras varrem o recorte visível procurando padrão quebrado: aceleração acima de dois desvios da própria oscilação, modelo ganhando share apesar de custar acima da mediana, sobrevivente no top 10 muito além da idade mediana, inversão da tendência de concentração, e descolamento entre pesos abertos e China.a pergunta que respondeO que está fora do padrão nesta janela, sem depender de alguém ter reparado. Detecção por regra, não por curadoria.o que não mostraRegra dispara em coincidência também. Cada achado é ponto de partida para investigar, não conclusão, e o conjunto muda conforme a janela escolhida.A definição formal do indicador usado aqui:",
+   "texto": "como lerCartões em texto, sem gráfico. Cinco regras varrem o recorte visível procurando padrão quebrado: aceleração acima de dois desvios da própria oscilação, modelo ganhando share apesar de custar acima da mediana, sobrevivente no top 10 muito além da idade mediana, inversão da tendência de concentração, e descolamento entre pesos abertos e China. Só aparece o que alguma regra disparou.a pergunta que respondeO que está fora do padrão nesta janela, sem depender de alguém ter reparado. Detecção por regra, não por curadoria.o que não mostraRegra dispara em coincidência também. Cada achado é ponto de partida para investigar, não conclusão, e o conjunto muda conforme a janela escolhida.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Sinais e extrapolação"
    ]
   },
   "projecao": {
    "titulo": "Se o ritmo atual se mantiver",
-   "texto": "como lerA inclinação observada por mínimos quadrados nos últimos períodos, estendida em linha reta. A base e o horizonte saem da janela escolhida, e o horizonte nunca passa de um quarto do que foi observado.a pergunta que respondeSe nada mudar, onde esses números estão daqui a um trimestre? Serve para dimensionar ordem de grandeza e provocar a pergunta certa.o que não mostraNão é previsão, e a página inteira existe para mostrar que essas taxas mudam. Quando a reta bate no piso ou no teto antes do fim do horizonte, o valor de chegada não é publicado, porque ali a reta já se desmentiu.A definição formal do indicador usado aqui:",
+   "texto": "como lerUma linha de texto por indicador, sem gráfico. Mostra o valor atual, para onde a reta ajustada por mínimos quadrados leva, e a que ritmo. A base e o horizonte saem da janela escolhida, e o horizonte nunca passa de um quarto do que foi observado.a pergunta que respondeSe nada mudar, onde esses números estão daqui a um trimestre? Serve para dimensionar ordem de grandeza e provocar a pergunta certa.o que não mostraNão é previsão, e a página inteira existe para mostrar que essas taxas mudam. Quando a reta bate no piso ou no teto antes do fim do horizonte, o valor de chegada não é publicado, porque ali a reta já se desmentiu.A definição formal do indicador usado aqui:",
    "verbetes": [
     "Sinais e extrapolação"
    ]

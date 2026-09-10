@@ -1998,68 +1998,16 @@ function montarPesos(){
 // Cada gráfico aponta para a entrada correspondente em "Como ler cada indicador".
 // O texto vive num lugar só: duplicar a definição no card garante divergência
 // assim que uma das duas for editada.
-// O painel abria com o titulo certo mas com conteudo generico: clicar em
-// "Share da Anthropic vs. concorrentes" e ler a definicao de "share de tokens"
-// nao explica AQUELE grafico. Cada um ganha texto proprio, com como ler, a
-// pergunta que responde e o que ele nao mostra. Os verbetes de indicador
-// continuam existindo embaixo, para a definicao formal.
-const GRAFICO={
-  volume:{ler:`Uma linha só, o total de tokens que passou pelo roteador em cada período. A área embaixo existe para dar peso visual à escala, não carrega informação extra.`,perg:`O mercado está crescendo, e a que ritmo? É o denominador de quase todo o resto da página: share cai quando o denominador sobe, mesmo com o volume absoluto subindo.`,nao:`Não é o consumo mundial de IA. É o tráfego de um roteador, e a base cresceu 231 vezes desde jan/25, então comparar volume absoluto entre as pontas mistura crescimento do mercado com crescimento da própria fonte.`},
-  conc:{ler:`A soma do share dos cinco modelos mais usados em cada período. Perto de 100% significa mercado dominado por poucos, perto de 20% significa tráfego espalhado.`,perg:`Trocar de modelo é escolha real ou existem poucas opções de fato? Concentração caindo costuma anteceder a chegada de um modelo que domina, ou a saída de um que dominava.`,nao:`Concentração baixa não significa que migrar seja barato. Mede quantos substitutos existem, não o custo de refazer prompts, avaliações e integrações.`},
-  vendor:{ler:`Área empilhada: cada faixa é um laboratório, e a altura é a fatia dele no período. Os quatro maiores por volume acumulado aparecem nomeados, todo o resto vira Outros. Clique na legenda para tirar ou devolver uma faixa.`,perg:`Quem está ganhando e quem está perdendo espaço, e com que velocidade. A leitura embaixo do gráfico já compara o início e o fim da janela escolhida.`,nao:`Faixa grande não é receita grande. Um laboratório com modelo gratuito de muito tráfego ocupa espaço aqui e não aparece na seção do dinheiro.`},
-  board:{ler:`Barras horizontais com os 15 modelos de maior volume na última semana completa. A cor da barra é a origem do laboratório, não o laboratório em si.`,perg:`Quem está no topo agora, e de onde vem. É a foto do momento, complementar às séries que mostram trajetória.`,nao:`É uma semana só, e semana única é o recorte mais volátil da página. Modelo em teste anônimo pode aparecer aqui e sumir na semana seguinte.`},
-  origin:{ler:`Área empilhada por país-sede do laboratório que treinou o modelo. A atribuição vem do prefixo do slug.`,perg:`O tráfego está migrando para modelos chineses, e a que velocidade? É uma das duas curvas que mais mudaram na série.`,nao:`Não diz onde a inferência roda nem por onde os dados trafegam. Modelo chinês servido por provedor americano continua contando como chinês aqui, e essa distinção importa para quem tem restrição de jurisdição.`},
-  weights:{ler:`Área empilhada separando modelos de pesos publicamente disponíveis dos fechados. A classificação usa prova antes de heurística.`,perg:`O mercado está indo para modelos que dá para baixar e rodar por conta própria? Compare com o gráfico de origem ao lado: as duas curvas andam quase juntas, porque a maioria dos pesos abertos relevantes é chinesa.`,nao:`Pesos abertos não significa licença permissiva. Vários modelos aqui têm restrição de uso comercial, e o dado da fonte não separa isso.`},
-  free:{ler:`Linha com a fatia do volume servida por endpoints sem cobrança, identificados pelo sufixo :free no slug.`,perg:`Quanto do tráfego é gente testando de graça? Ajuda a calibrar todo share desta página, porque volume gratuito infla adoção sem indicar disposição a pagar.`,nao:`Endpoint gratuito costuma ter limite de taxa e fila mais lenta, então o volume ali não é comparável ao pago. E é o mesmo modelo do endpoint pago, não um modelo diferente.`},
-  anshare:{ler:`Área empilhada de share por laboratório com a Anthropic destacada em tinta cheia e os concorrentes em cinza. O destaque é editorial, os números são os mesmos do gráfico da seção 02.`,perg:`A Anthropic está ganhando ou perdendo espaço neste canal? A leitura abaixo mostra o contraste que importa: o share caiu porque o denominador explodiu, enquanto o volume absoluto da Anthropic subiu 22 vezes.`,nao:`Este é o tráfego de um roteador, onde a decisão é preço por token e a troca é de uma linha. Não representa consumo via API direta, Bedrock ou Vertex, onde o perfil de carga e o critério de escolha são outros.`},
-  anfam:{ler:`Área empilhada em tokens absolutos, não em share, separando as famílias Haiku, Sonnet, Opus e Fable.`,perg:`Dentro da Anthropic, para onde o tráfego vai? Mostra o mix entre modelo caro e barato, que é uma decisão de arquitetura de quem consome.`,nao:`Haiku é residual neste canal, e isso não generaliza para carga corporativa via API direta, onde o roteamento por custo tem outro perfil.`},
-  antenure:{ler:`Barras horizontais com quantas semanas cada modelo Claude passou entre os 10 mais usados. Dois modos: por permanência, do maior para o menor, ou por estreia no ranking.`,perg:`Cada geração está durando mais ou menos no topo? No modo Estreia a cadência fica visível: os lançamentos ficaram mais próximos e cada versão dura menos, canibalizada pela seguinte.`,nao:`Estreia é a primeira aparição no ranking, não a data de lançamento. Modelos que já existiam quando a série começa aparecem todos empilhados na primeira semana.`},
-  churn:{ler:`Linha com quantos dos 10 mais usados não estavam no top 10 quatro semanas antes. Zero significa topo congelado, dez significa topo inteiramente trocado.`,perg:`Com que frequência a lista de modelos que importam muda? É a medida mais direta da tese desta página.`,nao:`A janela de comparação é fixa em quatro semanas, independente do agrupamento escolhido, porque o indicador é definido assim. Rotatividade alta não diz se os que entraram são melhores.`},
-  age:{ler:`Linha com a idade mediana, em semanas, dos 10 modelos mais usados em cada período, contada desde a primeira aparição no ranking.`,perg:`O topo está envelhecendo ou rejuvenescendo? Idade mediana caindo significa que modelos recém-lançados estão tomando o lugar dos estabelecidos.`,nao:`As primeiras 12 semanas ficam censuradas: como a série começa em jan/25, todo modelo anterior aparece com idade zero ali, e o número seria falso.`},
-  cohort:{ler:`Barras agrupadas por trimestre de lançamento, com duas medianas: quantas semanas até o pico de share, e quantas semanas do pico até perder metade dele. Só modelos que chegaram a 2% do volume semanal entram, e o n de cada coorte está no rótulo.`,perg:`A temporada de um modelo está ficando mais curta? Comparar coortes é o que separa tendência de ruído de um lançamento específico.`,nao:`Descreve o histórico completo e não responde à janela nem ao agrupamento. Coortes recentes têm viés de censura: modelos lançados há pouco ainda não tiveram tempo de cair, então a meia-vida deles parece maior do que será.`},
-  life:{ler:`Todos os modelos com trajetória relevante alinhados na semana de estreia e normalizados pelo próprio pico, então 100% é o auge de cada um, não do mercado. A linha grossa é a mediana, a faixa é o intervalo entre o primeiro e o terceiro quartil.`,perg:`Qual é o formato típico de uma temporada? Subida rápida, pico cedo, queda longa. É o gráfico que sustenta a tese de que o ativo durável é o método de troca, não a escolha do modelo.`,nao:`Normalizar pelo próprio pico apaga a escala: um modelo que chegou a 30% e um que chegou a 0,5% desenham a mesma curva. Serve para comparar formato, não tamanho.`},
-  spend:{ler:`Linha do gasto estimado por período, com uma faixa em volta. A linha usa uma mistura de 75% prompt, e a faixa vai do cenário tudo prompt ao cenário tudo completion.`,perg:`Quanto dinheiro esse tráfego representa a preço de tabela? Dá ordem de grandeza para conversas que normalmente acontecem sem nenhum número.`,nao:`É estimativa, não medição, e a largura da faixa não é imprecisão do cálculo: a fonte soma prompt e completion sem separar, e completion custa várias vezes mais. Preço de tabela também não é preço pago, porque desconto por volume, cache e contrato não aparecem.`},
-  vsmoney:{ler:`Duas barras por laboratório na última semana completa: share de tokens e share do gasto estimado. Barras iguais significam que o laboratório cobra em torno do preço médio do mercado. A coluna da direita traz a razão entre as duas.`,perg:`Onde está o dinheiro, em contraste com onde está o volume? É o gráfico que mais muda a conversa, porque separa quem tem tráfego de quem tem receita.`,nao:`Herda todas as ressalvas da estimativa de gasto. Razão alta não significa margem alta, significa preço de tabela alto por token.`},
-  quality:{ler:`Dispersão com um ponto por modelo: eixo vertical é share de tokens, horizontal é o Índice de Inteligência da Artificial Analysis ou o preço, conforme o modo escolhido. As linhas tracejadas marcam as medianas e dividem a área em quatro.`,perg:`Qualidade declarada explica adoção? Os quadrantes de cima à esquerda e de baixo à direita são os interessantes: muito uso com índice baixo, e índice alto com pouco uso.`,nao:`Só parte dos modelos tem índice publicado, e os que não têm ficam de fora do gráfico, não no zero. Índice é uma média de avaliações padronizadas, que não mede desempenho na sua carga específica.`},
-  mudou:{ler:`Duas colunas comparando o top 10 da última semana completa com o de quatro semanas antes: quem entrou e quem saiu.`,perg:`O que mudou desde o mês passado, em uma olhada? É o resumo para quem acompanha o mercado semanalmente e quer só a diferença.`,nao:`Sair do top 10 não é morrer: um modelo pode cair para a décima primeira posição com volume praticamente igual. A lista mostra movimento de ranking, não colapso de uso.`},
-  varia:{ler:`Barras com as maiores altas e quedas de share em pontos percentuais nas últimas quatro semanas.`,perg:`Quem está acelerando e quem está desabando agora? Serve para achar o modelo que vale investigar antes que ele apareça em thread de rede social.`,nao:`Variação em pontos percentuais favorece quem já é grande: sair de 0,1% para 0,4% quadruplica o uso e mostra +0,3pp, quase invisível ao lado de quem oscila cinco pontos.`},
-  comparar:{ler:`Dois modelos lado a lado, com adoção, preço, janela de contexto, índice de inteligência e ciclo de vida. O valor melhor de cada linha aparece destacado, e o campo de busca casa qualquer parte do slug.`,perg:`Estou decidindo entre dois modelos e quero os números na mesma tela, sem abrir três abas.`,nao:`Compara o que o dado da fonte tem: adoção, preço de tabela e metadado do catálogo. Não substitui avaliação na sua carga, que é a única comparação que decide de verdade.`},
-  mapa:{ler:`Cada laboratório vira um ponto posicionado por percentil entre os 19 com volume, não por valor absoluto. Vertical é tração, combinando share de tokens, share do gasto e crescimento. Horizontal é capacidade, em dois modos: recursos declarados, que cobre todos os laboratórios, ou o Índice de Inteligência, que só cobre parte deles. O rastro mostra onde cada um estava 12 semanas antes.`,perg:`Quem lidera, quem desafia, quem promete e quem é de nicho, numa tela só. Os pesos dos componentes são ajustáveis, então dá para testar se a posição de alguém depende de uma escolha sua.`,nao:`Percentil é posição relativa: subir aqui pode significar que os outros pioraram. E capacidade declarada é o que o catálogo anuncia, não desempenho medido.`},
-  sinais:{ler:`Cinco regras varrem o recorte visível procurando padrão quebrado: aceleração acima de dois desvios da própria oscilação, modelo ganhando share apesar de custar acima da mediana, sobrevivente no top 10 muito além da idade mediana, inversão da tendência de concentração, e descolamento entre pesos abertos e China.`,perg:`O que está fora do padrão nesta janela, sem depender de alguém ter reparado. Detecção por regra, não por curadoria.`,nao:`Regra dispara em coincidência também. Cada achado é ponto de partida para investigar, não conclusão, e o conjunto muda conforme a janela escolhida.`},
-  projecao:{ler:`A inclinação observada por mínimos quadrados nos últimos períodos, estendida em linha reta. A base e o horizonte saem da janela escolhida, e o horizonte nunca passa de um quarto do que foi observado.`,perg:`Se nada mudar, onde esses números estão daqui a um trimestre? Serve para dimensionar ordem de grandeza e provocar a pergunta certa.`,nao:`Não é previsão, e a página inteira existe para mostrar que essas taxas mudam. Quando a reta bate no piso ou no teto antes do fim do horizonte, o valor de chegada não é publicado, porque ali a reta já se desmentiu.`},
-};
 
-// Cada grafico usa UM OU MAIS indicadores. O mapa anterior era 1 para 1 e
-// mandava, por exemplo, "Tração contra capacidade" abrir "Share de tokens":
-// o leitor clicava numa coisa e lia sobre outra. Agora o painel abre com o
-// nome do proprio grafico no topo e mostra os indicadores que ele usa, sem
-// duplicar verbete (tres graficos falam da rotatividade do top 10, e o texto
-// dela mora num lugar so).
-const EXPLICA={
-  volume:['Tokens por semana'],
-  conc:['Share dos 5 maiores e HHI'],
-  vendor:['Share de tokens'],
-  board:['Share de tokens','A linha agregada da fonte'],
-  origin:['Origem do laboratório'],
-  weights:['Licença dos pesos'],
-  free:['Cobrança'],
-  anshare:['Share de tokens'],
-  anfam:['Tokens por semana'],
-  antenure:['Rotatividade e idade do top 10'],
-  churn:['Rotatividade e idade do top 10'],
-  age:['Rotatividade e idade do top 10'],
-  cohort:['Tempo até o pico e meia-vida'],
-  life:['A forma de uma temporada'],
-  spend:['Gasto estimado'],
-  vsmoney:['Razão dinheiro sobre volume','Gasto estimado'],
-  quality:['Índice de Inteligência','Share de tokens'],
-  varia:['Variação de share em quatro semanas'],
-  mudou:['Rotatividade e idade do top 10','Variação de share em quatro semanas'],
-  mapa:['Índice de Inteligência','Share de tokens','Faixa de preço e janela de contexto'],
-  sinais:['Sinais e extrapolação'],
-  projecao:['Sinais e extrapolação'],
-  comparar:['Share de tokens','Faixa de preço e janela de contexto'],
-};
+// Conteudo dos graficos: texto e indicadores vem de src/content, validados por
+// schema no build. Nenhum texto de interface mora mais neste arquivo, entao
+// revisar os 23 e ler 23 arquivos, e nao cacar dentro de 2.800 linhas.
+const CONTEUDO = (() => {
+  try { return JSON.parse(document.getElementById('conteudo-graficos').textContent); }
+  catch { return {}; }
+})();
+const GRAFICO = CONTEUDO;
+const EXPLICA = Object.fromEntries(Object.entries(CONTEUDO).map(([k, v]) => [k, v.indicadores]));
 function acharVerbete(titulo){
   return [...document.querySelectorAll('#metodologia details')]
     .find(d=>d.querySelector('summary').textContent.trim()===titulo);
