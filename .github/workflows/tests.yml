@@ -42,12 +42,32 @@ jobs:
         with:
           node-version: "24"
 
-      # Sem cache do npm: ele exige package-lock.json versionado, e a unica
-      # dependencia aqui e o playwright, com versao presa no package.json.
-      - name: Instalar dependências de teste
+      # package-lock.json passou a ser versionado na migracao para Astro, entao
+      # o cache do npm funciona e a instalacao vira `npm ci`, que e reproduzivel.
+      - name: Instalar dependências
         run: |
-          npm install --no-audit --no-fund
+          npm ci --no-audit --no-fund
           echo "playwright instalado: $(node -p "require('playwright/package.json').version")"
+
+      - name: Verificar tipos e conteúdo
+        run: |
+          if ! saida=$(npx astro check 2>&1); then
+            echo "$saida"
+            echo "::error::astro check falhou: $(echo "$saida" | grep -iE 'error' | head -4 | tr '\n' ' § ')"
+            exit 1
+          fi
+          echo "$saida" | tail -5
+
+      # O build valida o schema do conteudo: grafico sem 'o que nao mostra', com
+      # tipo invalido ou apontando para indicador inexistente derruba aqui.
+      - name: Build
+        run: |
+          if ! saida=$(npm run build 2>&1); then
+            echo "$saida"
+            echo "::error::astro build falhou: $(echo "$saida" | tail -6 | tr '\n' ' § ')"
+            exit 1
+          fi
+          echo "$saida" | tail -4
 
       # Usa o binario LOCAL (./node_modules/.bin) em vez de `npx playwright`.
       # O npx pode ignorar a versao instalada e tentar buscar outra do registry,
@@ -72,7 +92,7 @@ jobs:
 
       - name: Testes de ponta a ponta
         run: |
-          python -m http.server 8099 --directory public &
+          python -m http.server 8099 --directory dist &
           for i in $(seq 1 30); do
             curl -sf http://localhost:8099/index.html >/dev/null && break
             sleep 0.5
@@ -85,6 +105,12 @@ jobs:
           echo "$saida"
           if ! fz=$(npm run fuzz:ci 2>&1); then
             echo "$fz"
+          if ! ft=$(node tests/foto.js http://localhost:8099 2>&1); then
+            echo "$ft"
+            echo "::error::a foto mudou: $(echo "$ft" | grep -E '^  foto\.' | head -4 | tr '\n' ' § ')"
+            exit 1
+          fi
+          echo "$ft"
             echo "::error::varredura de recortes falhou: $(echo "$fz" | grep -E '^  X' | head -4 | tr '\n' ' § ')"
             exit 1
           fi

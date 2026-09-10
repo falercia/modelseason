@@ -376,6 +376,6 @@ const conteudoGraficos = Object.fromEntries(graficos.map((g) => [g.data.id, {
 </div>
 <script type="application/json" id="conteudo-graficos" set:html={JSON.stringify(conteudoGraficos)}></script>
 <script src="/vendor/d3.v7.min.js" is:inline></script>
-<script src="/scripts/app.js" is:inline></script>
+<script>import '../scripts/app.js';</script>
 </body>
 </html>

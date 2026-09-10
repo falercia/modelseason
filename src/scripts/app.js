@@ -1,62 +1,25 @@
+import { ST, definirJanela, definirGran, definirOrdemBarras, definirTrajetoria,
+  definirEixoQualidade, definirModoMapa, definirComparados } from './estado.js';
+import { css, br, fmtT, fmtNum, fmtP, fmtUSD, fmtCtx, fmtVez, capital,
+  fmtDate, ptBR, fD, fPer, monthTicks } from './formato.js';
+
 fetch('./data.json',{cache:'no-cache'}).then(r=>r.json()).then(init).catch(e=>{document.getElementById('tiles').innerHTML='<p style="color:var(--bad)">Não foi possível carregar data.json: '+e.message+'</p>';});
 function init(D){
 // O eixo do tempo e MUTAVEL: a granularidade (semanal ou mensal) redefine
 // quantos pontos existem e o que cada ponto representa. Todos os graficos leem
 // W e N, entao trocar a granularidade e trocar estes dois.
-let W = D.weeks.map(s=>new Date(s+'T00:00:00'));
-let N = W.length;
-const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-// Numero em portugues usa virgula. O separador vazava em fmtT ('0.00T' no eixo
-// do grafico principal) e nas medianas do ciclo de vida ('8.79 semanas').
-const br = s => String(s).replace('.',',');
-const fmtT = v => br(v>=10? d3.format('.0f')(v)+'T' : v>=1? d3.format('.1f')(v)+'T' : d3.format('.2f')(v)+'T');
-const fmtNum = (v,c=1) => v==null||!isFinite(v) ? '—' : br((+v).toFixed(c).replace(/,?0+$/,'').replace(/\.$/,'')||'0');
-const fmtP = v => d3.format('.1f')(v).replace('.',',')+'%';
-// Preco em USD por 1M de tokens. Sem separador de milhar, porque o valor quase
-// sempre e menor que 100 e "US$ 1.251" era lido como mil duzentos e cinquenta.
-const fmtUSD = v => { if(v==null) return '—';
-  // Cortar o zero sobrando ANTES de trocar o ponto pela virgula. Ao contrario,
-  // a regex procura um ponto que ja nao existe e "US$ 0,450" passa.
-  // Acima de 1 dolar, duas casas sempre: "US$ 1,50" e preco, "US$ 1,5" parece
-  // numero solto. Abaixo de 1, tres casas com o zero sobrando cortado.
-  const s = v>=100 ? d3.format('.0f')(v)
-          : v>=1   ? v.toFixed(2)
-          : v.toFixed(3).replace(/(\.\d*?)0+$/,'$1').replace(/\.$/,'');
-  return 'US$ '+br(s); };
-// Contexto em unidade redonda: "1M" comunica, "1.05M" finge precisao que a
-// diferenca entre 1048576 e 1050000 nao tem para quem le.
-const fmtCtx = v => { if(!v) return '—';
-  if(v>=1e6) return (v/1048576>=0.98 && v/1048576<=1.02 ? '1M' : d3.format('.2~f')(v/1e6).replace('.',',')+'M');
-  if(v>=1000) return Math.round(v/1024)+'k';
-  return String(v); };
-// Multiplicador com uma casa quando ainda importa. Tile e leitura precisam usar
-// o MESMO formatador, senao a mesma janela mostra "×2,6" num lugar e "×3" no outro.
-const fmtVez = r => (!isFinite(r)||r<=0) ? null : (r>=10? String(Math.round(r)) : r.toFixed(1).replace('.',','));
-const capital = s => String(s).split(/[-_]/).map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
-const fmtDate = d3.timeFormat('%d %b %y');
-const ptBR = {Jan:'jan',Feb:'fev',Mar:'mar',Apr:'abr',May:'mai',Jun:'jun',Jul:'jul',Aug:'ago',Sep:'set',Oct:'out',Nov:'nov',Dec:'dez'};
-const fD = d => fmtDate(d).replace(/[A-Z][a-z]{2}/, m=>ptBR[m]||m);
-// Rotulo do ponto no eixo, conforme a granularidade.
-const fPer = d => (typeof GRAN!=='undefined' && GRAN==='mes')
-  ? d3.timeFormat('%b %y')(d).replace(/[A-Z][a-z]{2}/, m=>ptBR[m]||m)
-  : fD(d);
-// O ano so aparecia em janeiro. Numa serie de 20 meses o eixo mostrava dois
-// "fev" e dois "abr" sem distincao, e em tela estreita janeiro nem virava
-// marca, entao o ano sumia da tela inteira. Agora o ano entra na primeira
-// marca e sempre que ele vira, que e quando o leitor precisa dele.
-const monthTicks = ticks => { let ant=null; return ticks.map(d=>{
-  const m=d3.timeFormat('%b')(d), y=d3.timeFormat('%y')(d);
-  const mostra = ant===null || y!==ant; ant=y;
-  return (ptBR[m]||m)+(mostra?' '+y:''); }); };
-
+ST.W = D.weeks.map(s=>new Date(s+'T00:00:00'));
+ST.N = ST.W.length;
+// Formatadores e estado vem de modulos. O resto deste arquivo ainda e o
+// monolito original, e a entrega 3 continua de onde parou (docs/arquitetura.md).
 // ---- range filter
 // ---- granularidade e janela --------------------------------------------
 // A janela e sempre declarada em SEMANAS, porque semana e a unidade nativa da
 // fonte. Ao agrupar por mes, a janela e convertida; assim "26 semanas" continua
 // significando o mesmo periodo, com menos pontos.
-let GRAN='semana', JANELA='all';
-let SEMANAS_ISO=D.matriz.semanas.slice();
-let MAPA_BUCKET=[];                       // indice da semana -> indice do bucket
+ST.GRAN='semana'; ST.JANELA='all';
+ST.SEMANAS_ISO=D.matriz.semanas.slice();
+ST.MAPA_BUCKET=[];                       // indice da semana -> indice do bucket
 
 // A JANELA FAZ PARTE DO DADO, nao de cada grafico ou painel.
 //
@@ -69,9 +32,9 @@ let MAPA_BUCKET=[];                       // indice da semana -> indice do bucke
 // Agora W, N e SERIES ja saem recortados. Depois desta funcao, indice 0 e o
 // inicio da janela e N-1 e o fim, para todo mundo. Nao ha o que lembrar.
 function construirEixo(){
-  const datas=SEMANAS_ISO.map(s=>new Date(s+'T00:00:00'));
+  const datas=ST.SEMANAS_ISO.map(s=>new Date(s+'T00:00:00'));
   let eixoTodo, mapaTodo;
-  if(GRAN==='semana'){
+  if(ST.GRAN==='semana'){
     eixoTodo=datas; mapaTodo=datas.map((_,i)=>i);
   } else {
     // Cada semana entra no mes do seu primeiro dia (segunda-feira). Semana que
@@ -86,7 +49,7 @@ function construirEixo(){
   const semTodo=new Array(nTodo).fill(0);
   mapaTodo.forEach(b=>semTodo[b]++);
 
-  const serieTodo = (GRAN==='semana') ? SERIES_SEM
+  const serieTodo = (ST.GRAN==='semana') ? SERIES_SEM
     : SERIES_SEM.map(s=>{ const o=new Array(nTodo).fill(0);
         for(let w=0;w<s.length;w++) o[mapaTodo[w]]+=(s[w]||0);
         return o.map((v,i)=>v/(semTodo[i]||1)); });
@@ -94,20 +57,20 @@ function construirEixo(){
     for(let w=0;w<s.length;w++){ const v=s[w]; if(v==null) continue;
       soma[mapaTodo[w]]+=v; n[mapaTodo[w]]++; }
     return soma.map((v,i)=>n[i]? +(v/n[i]).toFixed(2) : null); };
-  const churnTodo = (GRAN==='semana') ? CHURN_SEM : colMedia(CHURN_SEM);
-  const ageTodo   = (GRAN==='semana') ? AGE_SEM   : colMedia(AGE_SEM);
+  const churnTodo = (ST.GRAN==='semana') ? CHURN_SEM : colMedia(CHURN_SEM);
+  const ageTodo   = (ST.GRAN==='semana') ? AGE_SEM   : colMedia(AGE_SEM);
 
   // ---- recorte da janela, aplicado uma vez, aqui ----
-  const [a,b]=rangeFor(JANELA, nTodo, eixoTodo);
-  JANELA_INI=a; JANELA_TOTAL=nTodo;
-  W=eixoTodo.slice(a,b+1); N=W.length; NW=N;
-  SEMANAS_POR_BUCKET=semTodo.slice(a,b+1);
-  MAPA_BUCKET=mapaTodo;
-  SERIES=serieTodo.map(s=>s.slice(a,b+1));
+  const [a,b]=rangeFor(ST.JANELA, nTodo, eixoTodo);
+  ST.JANELA_INI=a; ST.JANELA_TOTAL=nTodo;
+  ST.W=eixoTodo.slice(a,b+1); ST.N=ST.W.length; ST.NW=ST.N;
+  ST.SEMANAS_POR_BUCKET=semTodo.slice(a,b+1);
+  ST.MAPA_BUCKET=mapaTodo;
+  ST.SERIES=serieTodo.map(s=>s.slice(a,b+1));
   D.churn=churnTodo.slice(a,b+1);
   D.age=ageTodo.slice(a,b+1);
-  D.weeks=W.map(d=>d3.timeFormat('%Y-%m-%d')(d));
-  range=[0,N-1];
+  D.weeks=ST.W.map(d=>d3.timeFormat('%Y-%m-%d')(d));
+  ST.range=[0,ST.N-1];
 }
 // Quantas semanas caem em cada bucket. Mes tem 4 ou 5, e essa diferenca e a
 // armadilha da agregacao mensal: um mes de 5 semanas parece 25% maior que um de
@@ -116,10 +79,10 @@ function construirEixo(){
 // duas granularidades, os meses ficam comparaveis, e os percentuais nao mudam:
 // share e razao de somas, e dividir os dois lados pelo mesmo numero nao altera.
 // O colapso propriamente dito acontece em construirEixo().
-let SEMANAS_POR_BUCKET=[];
+ST.SEMANAS_POR_BUCKET=[];
 
-let range=[0,N-1];
-let JANELA_INI=0, JANELA_TOTAL=N;
+ST.range=[0,ST.N-1];
+ST.JANELA_INI=0; ST.JANELA_TOTAL=ST.N;
 function rangeFor(key, total, eixo){
   const fim=total-1;
   if(key==='all') return [0,fim];
@@ -129,7 +92,7 @@ function rangeFor(key, total, eixo){
     return [i<0?0:i, fim];
   }
   const sem=+key;
-  const pontos = GRAN==='semana' ? sem : Math.max(2, Math.round(sem/4.345));
+  const pontos = ST.GRAN==='semana' ? sem : Math.max(2, Math.round(sem/4.345));
   return [Math.max(0,total-pontos), fim];
 }
 // Painel de metodologia. O conteudo NAO e duplicado: e clonado da secao 12 na
@@ -217,18 +180,18 @@ function rangeFor(key, total, eixo){
 
 document.querySelectorAll('.chip[data-range]').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.chip[data-range]').forEach(x=>x.setAttribute('aria-pressed','false'));
-  b.setAttribute('aria-pressed','true'); JANELA=b.dataset.range; aplicar();
+  b.setAttribute('aria-pressed','true'); ST.JANELA=b.dataset.range; aplicar();
 }));
 document.querySelectorAll('.chip[data-gran]').forEach(b=>b.addEventListener('click',()=>{
-  if(b.dataset.gran===GRAN) return;
+  if(b.dataset.gran===ST.GRAN) return;
   document.querySelectorAll('.chip[data-gran]').forEach(x=>x.setAttribute('aria-pressed','false'));
-  b.setAttribute('aria-pressed','true'); GRAN=b.dataset.gran;
-  document.getElementById('gran-nota').hidden = (GRAN!=='mes');
+  b.setAttribute('aria-pressed','true'); ST.GRAN=b.dataset.gran;
+  document.getElementById('gran-nota').hidden = (ST.GRAN!=='mes');
   aplicar();
 }));
 // O dado ja chega recortado, entao idx() e simplesmente todo o eixo. A funcao
 // continua existindo para os graficos nao precisarem mudar.
-const idx = () => d3.range(0,N);
+const idx = () => d3.range(0,ST.N);
 
 // ---- entity colors (fixed, never by rank)
 // Cor segue a ENTIDADE, nunca a posicao no ranking: os quatro slots sao fixos e
@@ -325,7 +288,7 @@ function frame(plot, h, m){
     .attr('aria-label', (tit+(sub?'. '+sub:'')+'. Use o botão Tabela para ver os números.').slice(0,300));
   return {svg,w,h,m};
 }
-function xScale(f, ii){ return d3.scaleTime().domain([W[ii[0]], W[ii[ii.length-1]]]).range([f.m.l, f.w-f.m.r]); }
+function xScale(f, ii){ return d3.scaleTime().domain([ST.W[ii[0]], ST.W[ii[ii.length-1]]]).range([f.m.l, f.w-f.m.r]); }
 function axes(f, x, y, yfmt, ticksY=4){
   const g=f.svg.append('g').attr('class','grid');
   g.selectAll('line').data(y.ticks(ticksY)).join('line').attr('x1',f.m.l).attr('x2',f.w-f.m.r).attr('y1',d=>y(d)).attr('y2',d=>y(d));
@@ -350,9 +313,9 @@ function crosshair(f, x, ii, onMove){
   const line=f.svg.append('line').attr('y1',f.m.t).attr('y2',f.h-f.m.b).attr('stroke',css('--ink-3')).attr('stroke-width',1).style('display','none');
   const dot=f.svg.append('g').style('display','none');
   f.svg.append('rect').attr('x',f.m.l).attr('y',f.m.t).attr('width',f.w-f.m.l-f.m.r).attr('height',f.h-f.m.t-f.m.b).attr('fill','transparent')
-   .on('mousemove',ev=>{ const [mx,my]=d3.pointer(ev); const d0=x.invert(mx); let best=ii[0]; for(const i of ii){ if(Math.abs(W[i]-d0)<Math.abs(W[best]-d0)) best=i; }
-      line.style('display',null).attr('x1',x(W[best])).attr('x2',x(W[best])); dot.style('display',null);
-      const r=plot.getBoundingClientRect(); const sx=r.width/f.w; showTip(t,plot,x(W[best])*sx,my*sx,onMove(best,dot,x(W[best]))); })
+   .on('mousemove',ev=>{ const [mx,my]=d3.pointer(ev); const d0=x.invert(mx); let best=ii[0]; for(const i of ii){ if(Math.abs(ST.W[i]-d0)<Math.abs(ST.W[best]-d0)) best=i; }
+      line.style('display',null).attr('x1',x(ST.W[best])).attr('x2',x(ST.W[best])); dot.style('display',null);
+      const r=plot.getBoundingClientRect(); const sx=r.width/f.w; showTip(t,plot,x(ST.W[best])*sx,my*sx,onMove(best,dot,x(ST.W[best]))); })
    .on('mouseleave',()=>{line.style('display','none');dot.style('display','none');t.style.display='none';});
 }
 const tipRow=(c,k,v)=>`<div class="r"><span><i style="background:${c}"></i>${k}</span><b>${v}</b></div>`;
@@ -368,14 +331,14 @@ function stackedShare(name, series, slots, labels, opts={}){
   const data=ii.map(i=>{const o={i}; keys.forEach(k=>o[k]=series[k][i]); return o;});
   const st=d3.stack().keys(keys)(data);
   axes(f,x,y,v=>v+'%');
-  const area=d3.area().x(d=>x(W[d.data.i])).y0(d=>y(d[0])).y1(d=>y(d[1])).curve(d3.curveMonotoneX);
+  const area=d3.area().x(d=>x(ST.W[d.data.i])).y0(d=>y(d[0])).y1(d=>y(d[1])).curve(d3.curveMonotoneX);
   f.svg.append('g').selectAll('path').data(st).join('path').attr('d',area).attr('fill',d=>col(slots[d.key])).attr('stroke',css('--surface')).attr('stroke-width',1.5).attr('opacity',.92);
   // direct labels at right for segments > 6%
   const last=ii[ii.length-1];
-  st.forEach(s=>{const seg=s[s.length-1]; if(seg[1]-seg[0]>7){ f.svg.append('text').attr('class','dl').attr('x',x(W[last])-6).attr('y',y((seg[0]+seg[1])/2)+4).attr('text-anchor','end').attr('fill','#fff').style('fill','#fff').text((labels[s.key]||s.key)+' '+Math.round(series[s.key][last])+'%'); }});
+  st.forEach(s=>{const seg=s[s.length-1]; if(seg[1]-seg[0]>7){ f.svg.append('text').attr('class','dl').attr('x',x(ST.W[last])-6).attr('y',y((seg[0]+seg[1])/2)+4).attr('text-anchor','end').attr('fill','#fff').style('fill','#fff').text((labels[s.key]||s.key)+' '+Math.round(series[s.key][last])+'%'); }});
   legend(c.querySelector('.legend'), todas.slice().sort((a,b)=>series[b][last]-series[a][last]).map(k=>[k,col(slots[k]),(labels[k]||k)+' '+fmtP(series[k][last])]), name, ()=>stackedShare(name,series,slots,labels,opts));
-  crosshair(f,x,ii,(i)=>`<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+keys.slice().sort((a,b)=>series[b][i]-series[a][i]).filter(k=>series[k][i]>0.05).map(k=>tipRow(col(slots[k]),labels[k]||k,fmtP(series[k][i]))).join(''));
-  table(c.querySelector('.tbl'),[rotPer(),...keys.map(k=>labels[k]||k)], ii.map(i=>[fPer(W[i]),...keys.map(k=>fmtP(series[k][i]))]));
+  crosshair(f,x,ii,(i)=>`<div class="t">${ST.GRAN==="mes"?"mês de":"semana de"} ${fPer(ST.W[i])}${ST.GRAN==="mes"?` · ${ST.SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+keys.slice().sort((a,b)=>series[b][i]-series[a][i]).filter(k=>series[k][i]>0.05).map(k=>tipRow(col(slots[k]),labels[k]||k,fmtP(series[k][i]))).join(''));
+  table(c.querySelector('.tbl'),[rotPer(),...keys.map(k=>labels[k]||k)], ii.map(i=>[fPer(ST.W[i]),...keys.map(k=>fmtP(series[k][i]))]));
 }
 
 // ---- single line/area
@@ -389,15 +352,15 @@ function lineChart(name, vals, {fmt=fmtP, color='--s1', area=true, label, ymax, 
   const x=xScale(f,ii), y=d3.scaleLinear().domain([0, ymax||d3.max(ii,i=>vals[i])*1.1]).nice().range([f.h-f.m.b,f.m.t]);
   axes(f,x,y,v=>integer?v:fmt(v),4);
   const cl=col(color);
-  if(area) f.svg.append('path').datum(ii).attr('d',d3.area().x(i=>x(W[i])).y0(y(0)).y1(i=>y(vals[i])).curve(d3.curveMonotoneX)).attr('fill',cl).attr('opacity',.12);
-  f.svg.append('path').datum(ii).attr('d',d3.line().x(i=>x(W[i])).y(i=>y(vals[i])).curve(d3.curveMonotoneX)).attr('fill','none').attr('stroke',cl).attr('stroke-width',2);
+  if(area) f.svg.append('path').datum(ii).attr('d',d3.area().x(i=>x(ST.W[i])).y0(y(0)).y1(i=>y(vals[i])).curve(d3.curveMonotoneX)).attr('fill',cl).attr('opacity',.12);
+  f.svg.append('path').datum(ii).attr('d',d3.line().x(i=>x(ST.W[i])).y(i=>y(vals[i])).curve(d3.curveMonotoneX)).attr('fill','none').attr('stroke',cl).attr('stroke-width',2);
   const last=ii[ii.length-1], first=ii[0];
-  f.svg.append('circle').attr('cx',x(W[last])).attr('cy',y(vals[last])).attr('r',4).attr('fill',cl).attr('stroke',css('--surface')).attr('stroke-width',2);
-  f.svg.append('text').attr('class','dl').attr('x',x(W[last])-8).attr('y',y(vals[last])-9).attr('text-anchor','end').text((integer?vals[last]:fmt(vals[last])));
-  f.svg.append('text').attr('class','dl').attr('x',x(W[first])+6).attr('y',y(vals[first])-9).text((integer?vals[first]:fmt(vals[first])));
-  crosshair(f,x,ii,(i,dot)=>{dot.selectAll('*').remove(); dot.append('circle').attr('cx',x(W[i])).attr('cy',y(vals[i])).attr('r',4).attr('fill',cl).attr('stroke',css('--surface')).attr('stroke-width',2); return `<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+tipRow(cl,label||'',integer?vals[i]:fmt(vals[i]))+(extra?extra(i):'');});
+  f.svg.append('circle').attr('cx',x(ST.W[last])).attr('cy',y(vals[last])).attr('r',4).attr('fill',cl).attr('stroke',css('--surface')).attr('stroke-width',2);
+  f.svg.append('text').attr('class','dl').attr('x',x(ST.W[last])-8).attr('y',y(vals[last])-9).attr('text-anchor','end').text((integer?vals[last]:fmt(vals[last])));
+  f.svg.append('text').attr('class','dl').attr('x',x(ST.W[first])+6).attr('y',y(vals[first])-9).text((integer?vals[first]:fmt(vals[first])));
+  crosshair(f,x,ii,(i,dot)=>{dot.selectAll('*').remove(); dot.append('circle').attr('cx',x(ST.W[i])).attr('cy',y(vals[i])).attr('r',4).attr('fill',cl).attr('stroke',css('--surface')).attr('stroke-width',2); return `<div class="t">${ST.GRAN==="mes"?"mês de":"semana de"} ${fPer(ST.W[i])}${ST.GRAN==="mes"?` · ${ST.SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+tipRow(cl,label||'',integer?vals[i]:fmt(vals[i]))+(extra?extra(i):'');});
   table(c.querySelector('.tbl'), colsTab? colsTab.cols : [rotPer(),label],
-    colsTab? ii.map(colsTab.linha) : ii.map(i=>[fPer(W[i]),integer?vals[i]:fmt(vals[i])]));
+    colsTab? ii.map(colsTab.linha) : ii.map(i=>[fPer(ST.W[i]),integer?vals[i]:fmt(vals[i])]));
 }
 
 // ---- multi-line with emphasis
@@ -407,7 +370,7 @@ function emphasisLines(name, series, focus, slots, labels){
   if(!series[focus] && !outras.length)
     return vazio(name,'Nenhum laboratório no recorte atual.');
   if(!series[focus])
-    series={...series, [focus]:new Array(N).fill(0)};
+    series={...series, [focus]:new Array(ST.N).fill(0)};
   const last0=ii[ii.length-1];
   // O foco nao ocupa slot de cor: ele veste TINTA, que e enfase, nao identidade.
   // Sobram 4 slots para os 4 maiores concorrentes da ultima semana; o restante
@@ -429,7 +392,7 @@ function emphasisLines(name, series, focus, slots, labels){
   const f=frame(plot, 320, {t:14,r:104,b:30,l:44});
   const x=xScale(f,ii), y=d3.scaleLinear().domain([0,d3.max(keys,k=>d3.max(ii,i=>S[k][i]))*1.08]).nice().range([f.h-f.m.b,f.m.t]);
   axes(f,x,y,v=>v+'%');
-  const line=k=>d3.line().x(i=>x(W[i])).y(i=>y(S[k][i])).curve(d3.curveMonotoneX);
+  const line=k=>d3.line().x(i=>x(ST.W[i])).y(i=>y(S[k][i])).curve(d3.curveMonotoneX);
   keys.filter(k=>k!==focus).forEach(k=>f.svg.append('path').datum(ii).attr('d',line(k))
     .attr('fill','none').attr('stroke',cor(k)).attr('stroke-width',1.5).attr('opacity',.75));
   f.svg.append('path').datum(ii).attr('d',line(focus)).attr('fill','none')
@@ -441,15 +404,15 @@ function emphasisLines(name, series, focus, slots, labels){
   for(let i=1;i<lab.length;i++){ if(lab[i].y-lab[i-1].y<14) lab[i].y=lab[i-1].y+14; }
   const maxY=f.h-f.m.b-2; if(lab.length&&lab[lab.length-1].y>maxY){ lab[lab.length-1].y=maxY;
     for(let i=lab.length-2;i>=0;i--){ if(lab[i+1].y-lab[i].y<14) lab[i].y=lab[i+1].y-14; } }
-  lab.forEach(l=>f.svg.append('text').attr('class','dl').attr('x',x(W[last])+8).attr('y',l.y+4)
+  lab.forEach(l=>f.svg.append('text').attr('class','dl').attr('x',x(ST.W[last])+8).attr('y',l.y+4)
     .style('fill',l.k===focus?css('--ink'):css('--ink-3'))
     .style('font-weight',l.k===focus?700:500)
     .text(`${LB(l.k)} ${Math.round(l.v)}%`));
 
   legend(c.querySelector('.legend'), todas.map(k=>[k,cor(k),LB(k)+' '+fmtP(S[k][last])]), name, ()=>emphasisLines(name,series,focus,slots,labels));
-  crosshair(f,x,ii,(i)=>`<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+keys.slice().sort((a,b)=>S[b][i]-S[a][i]).map(k=>tipRow(cor(k),LB(k),fmtP(S[k][i]))).join(''));
+  crosshair(f,x,ii,(i)=>`<div class="t">${ST.GRAN==="mes"?"mês de":"semana de"} ${fPer(ST.W[i])}${ST.GRAN==="mes"?` · ${ST.SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+keys.slice().sort((a,b)=>S[b][i]-S[a][i]).map(k=>tipRow(cor(k),LB(k),fmtP(S[k][i]))).join(''));
   table(c.querySelector('.tbl'),[rotPer(),...Object.keys(series).map(k=>labels[k]||k)],
-    ii.map(i=>[fPer(W[i]),...Object.keys(series).map(k=>fmtP(series[k][i]))]));
+    ii.map(i=>[fPer(ST.W[i]),...Object.keys(series).map(k=>fmtP(series[k][i]))]));
 }
 
 // ---- stacked absolute area (Anthropic families)
@@ -463,19 +426,19 @@ function stackedAbs(name, series, slots){
   const st=d3.stack().keys(keys)(data);
   const x=xScale(f,ii), y=d3.scaleLinear().domain([0,d3.max(st[st.length-1],d=>d[1])*1.08]).nice().range([f.h-f.m.b,f.m.t]);
   axes(f,x,y,fmtT);
-  f.svg.append('g').selectAll('path').data(st).join('path').attr('d',d3.area().x(d=>x(W[d.data.i])).y0(d=>y(d[0])).y1(d=>y(d[1])).curve(d3.curveMonotoneX)).attr('fill',d=>col(slots[d.key])).attr('stroke',css('--surface')).attr('stroke-width',1.5).attr('opacity',.92);
+  f.svg.append('g').selectAll('path').data(st).join('path').attr('d',d3.area().x(d=>x(ST.W[d.data.i])).y0(d=>y(d[0])).y1(d=>y(d[1])).curve(d3.curveMonotoneX)).attr('fill',d=>col(slots[d.key])).attr('stroke',css('--surface')).attr('stroke-width',1.5).attr('opacity',.92);
   legend(c.querySelector('.legend'), todas.map(k=>[k,col(slots[k]),k]), name, ()=>stackedAbs(name,series,slots));
-  crosshair(f,x,ii,(i)=>`<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+keys.slice().reverse().map(k=>tipRow(col(slots[k]),k,fmtT(series[k][i]))).join('')+tipRow('transparent','Total',fmtT(keys.reduce((s,k)=>s+series[k][i],0))));
-  table(c.querySelector('.tbl'),[rotPer(),...keys,'Total'], ii.map(i=>[fD(W[i]),...keys.map(k=>fmtT(series[k][i])),fmtT(keys.reduce((s,k)=>s+series[k][i],0))]));
+  crosshair(f,x,ii,(i)=>`<div class="t">${ST.GRAN==="mes"?"mês de":"semana de"} ${fPer(ST.W[i])}${ST.GRAN==="mes"?` · ${ST.SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+keys.slice().reverse().map(k=>tipRow(col(slots[k]),k,fmtT(series[k][i]))).join('')+tipRow('transparent','Total',fmtT(keys.reduce((s,k)=>s+series[k][i],0))));
+  table(c.querySelector('.tbl'),[rotPer(),...keys,'Total'], ii.map(i=>[fD(ST.W[i]),...keys.map(k=>fmtT(series[k][i])),fmtT(keys.reduce((s,k)=>s+series[k][i],0))]));
 }
 
 // ---- horizontal bars (Anthropic tenure)
 // Ordem padrao por valor, que e o que a barra comunica. A ordem de lancamento
 // conta outra historia (a cadencia encurtando) e continua disponivel no toggle.
-let HBAR_ORDEM='valor';
+ST.HBAR_ORDEM='valor';
 function hbars(name, rows, {color='--s3'}={}){
   const c=card(name), plot=c.querySelector('.plot');
-  rows = rows.slice().sort(HBAR_ORDEM==='valor'
+  rows = rows.slice().sort(ST.HBAR_ORDEM==='valor'
     ? (a,b)=>b.v-a.v || (a.first<b.first?-1:1)
     : (a,b)=>(a.first<b.first?-1:a.first>b.first?1:0) || b.v-a.v);
   const rh=22, f=frame(plot, rows.length*rh+40, {t:8,r:40,b:26,l:150});
@@ -526,7 +489,7 @@ function cohortBars(name, rows){
 // ela sai de qualquer recorte filtrado. A pagina avisa quanto do volume ficou de
 // fora em vez de fingir que o total continua completo.
 // ===========================================================================
-const MX=D.matriz; let NW=MX.semanas.length;
+const MX=D.matriz; ST.NW=MX.semanas.length;
 const DIMI={}; MX.dims.forEach((d,i)=>DIMI[d]=i);
 const FILTROS={};                       // {dim: Set(indice do valor)}
 
@@ -547,10 +510,10 @@ const ORDEM={
   cobranca:['Pago','Endpoint gratuito','Modelo gratuito','Não identificado'],
 };
 
-function serie(i){ const a=MX.t0[i], v=MX.v[i], s=new Array(NW).fill(0);
+function serie(i){ const a=MX.t0[i], v=MX.v[i], s=new Array(ST.NW).fill(0);
   for(let j=0;j<v.length;j++) s[a+j]=v[j]; return s; }
 const SERIES_SEM=MX.modelos.map((_,i)=>serie(i));   // sempre semanal, fonte
-let SERIES=SERIES_SEM;                              // visao na granularidade atual
+ST.SERIES=SERIES_SEM;                              // visao na granularidade atual
 // Indicadores de ciclo de vida sao medias, nao somas: guardamos o original
 // semanal para nunca colapsar duas vezes ao trocar de granularidade.
 const CHURN_SEM=(D.churn||[]).slice();
@@ -573,16 +536,16 @@ function selecionados(){ return MX.modelos.map((m,i)=>[m,i]).filter(([m])=>passa
 
 // Agrega a matriz por uma chave qualquer. peso: 'tok' ou 'usd'.
 function agregar(chaveFn, peso='tok'){
-  const out={}, tot=new Array(NW).fill(0);
+  const out={}, tot=new Array(ST.NW).fill(0);
   for(const [m,i] of selecionados()){
     const k=chaveFn(m); if(k==null) continue;
-    const s=SERIES[i];
+    const s=ST.SERIES[i];
     const fator = peso==='usd'
       ? ((m.p && MX.dic.cobranca[m.d[DIMI.cobranca]]!=='Endpoint gratuito') ? m.p : 0)
       : 1;
     if(peso==='usd' && !fator) continue;
-    if(!out[k]) out[k]=new Array(NW).fill(0);
-    for(let w=0;w<NW;w++){ const v=s[w]*fator; out[k][w]+=v; tot[w]+=v; }
+    if(!out[k]) out[k]=new Array(ST.NW).fill(0);
+    for(let w=0;w<ST.NW;w++){ const v=s[w]*fator; out[k][w]+=v; tot[w]+=v; }
   }
   return {porChave:out, total:tot};
 }
@@ -604,7 +567,7 @@ function recalcular(){
   const ehOther=m=>m.s==='other';
   const porVendor=agregar(m=>ehOther(m)?'Outros':rotulo('vendor',m.d[DIMI.vendor]));
   const shV=paraShare(porVendor);
-  const ult=NW-1;
+  const ult=ST.NW-1;
   // "Outros" fica fora do ranking: ele e o resto por definicao, e incluir no
   // top 8 fazia a fatia ser contada duas vezes (o teste pegou 10,7pp faltando).
   const rank=Object.keys(shV).filter(k=>k!=='Outros').sort((a,b)=>shV[b][ult]-shV[a][ult]);
@@ -615,7 +578,7 @@ function recalcular(){
   D.origin_share=paraShare(agregar(m=>rotulo('origin',m.d[DIMI.origin])));
   D.weights_share=paraShare(agregar(m=>rotulo('pesos',m.d[DIMI.pesos])));
   const cob=paraShare(agregar(m=>rotulo('cobranca',m.d[DIMI.cobranca])));
-  D.free_share=(cob['Endpoint gratuito']||new Array(NW).fill(0));
+  D.free_share=(cob['Endpoint gratuito']||new Array(ST.NW).fill(0));
   D.cobranca_share=cob;
 
   // concentracao e HHI recalculados sobre os modelos do recorte
@@ -625,8 +588,8 @@ function recalcular(){
   // depender de participacoes bem definidas, normaliza so sobre os nomeados.
   const semOther=sel.filter(([m])=>!ehOther(m));
   D.top5=[]; D.hhi=[];
-  for(let w=0;w<NW;w++){
-    const vs=semOther.map(([,i])=>SERIES[i][w]).filter(v=>v>0).sort((a,b)=>b-a);
+  for(let w=0;w<ST.NW;w++){
+    const vs=semOther.map(([,i])=>ST.SERIES[i][w]).filter(v=>v>0).sort((a,b)=>b-a);
     const sNom=vs.reduce((a,b)=>a+b,0);
     const sTot=tot[w];
     D.top5.push(sTot? +(100*vs.slice(0,5).reduce((a,b)=>a+b,0)/sTot).toFixed(2):0);
@@ -636,21 +599,21 @@ function recalcular(){
   // Composicao do top 5 em cada periodo: sem isso o grafico de concentracao
   // mostra um numero sem dizer de quem ele e.
   D.top5_modelos=[];
-  for(let w=0;w<NW;w++){
-    const linhas=semOther.map(([m,i])=>({s:m.s, v:SERIES[i][w]})).filter(r=>r.v>0)
+  for(let w=0;w<ST.NW;w++){
+    const linhas=semOther.map(([m,i])=>({s:m.s, v:ST.SERIES[i][w]})).filter(r=>r.v>0)
       .sort((a,b)=>b.v-a.v).slice(0,5);
     const den=tot[w]||1;
     D.top5_modelos.push(linhas.map(r=>({s:r.s, share:+(100*r.v/den).toFixed(2)})));
   }
 
   // Anthropic e concorrentes
-  D.an_share=shV['anthropic']||new Array(NW).fill(0);
+  D.an_share=shV['anthropic']||new Array(ST.NW).fill(0);
   const comp={}; ['anthropic',...rank.filter(k=>k!=='anthropic').slice(0,8)]
     .forEach(k=>{ if(shV[k]) comp[k]=shV[k]; });
   D.comp_share=comp;
 
   // leaderboard da ultima semana
-  const linhas=sel.filter(([m])=>!ehOther(m)).map(([m,i])=>({model:m.s, T:SERIES[i][ult]/1e6,
+  const linhas=sel.filter(([m])=>!ehOther(m)).map(([m,i])=>({model:m.s, T:ST.SERIES[i][ult]/1e6,
       vendor:rotulo('vendor',m.d[DIMI.vendor]), origin:rotulo('origin',m.d[DIMI.origin]),
       weights:rotulo('pesos',m.d[DIMI.pesos])}))
     .filter(r=>r.T>0).sort((a,b)=>b.T-a.T);
@@ -663,14 +626,14 @@ function recalcular(){
   // A janela pode ser mais curta que a distancia pedida. Em vez de silenciosamente
   // comparar com o inicio da janela e continuar dizendo "12 semanas", guardamos a
   // distancia REAL e o rotulo sai dela.
-  const doze=Math.max(0, ult-(GRAN==='semana'?12:3));
+  const doze=Math.max(0, ult-(ST.GRAN==='semana'?12:3));
   D.dist_prev = ult-doze;
   D.boards.prev12=sel.filter(([m])=>!ehOther(m))
-    .map(([m,i])=>({model:m.s, T:SERIES[i][doze]}))
+    .map(([m,i])=>({model:m.s, T:ST.SERIES[i][doze]}))
     .filter(r=>r.T>0).sort((a,b)=>b.T-a.T).slice(0,15);
-  const anoAtras=Math.max(0, ult-(GRAN==='semana'?52:12));
+  const anoAtras=Math.max(0, ult-(ST.GRAN==='semana'?52:12));
   D.boards.yearago=sel.filter(([m])=>!ehOther(m))
-    .map(([m,i])=>({model:m.s, T:SERIES[i][anoAtras]}))
+    .map(([m,i])=>({model:m.s, T:ST.SERIES[i][anoAtras]}))
     .filter(r=>r.T>0).sort((a,b)=>b.T-a.T).slice(0,15);
 
   // volume absoluto por lab, em trilhoes
@@ -679,13 +642,13 @@ function recalcular(){
 
   // familias e modelos da Anthropic, derivados do slug em vez de pre-agregados
   const FAM=['Haiku','Sonnet','Opus','Fable'];
-  const fam={}; FAM.forEach(f=>fam[f]=new Array(NW).fill(0));
+  const fam={}; FAM.forEach(f=>fam[f]=new Array(ST.NW).fill(0));
   const anModelos={};
   for(const [m,i] of sel){
     if(m.d[DIMI.vendor]!==MX.dic.vendor.indexOf('anthropic')) continue;
-    const s=SERIES[i], nome=m.s.toLowerCase();
+    const s=ST.SERIES[i], nome=m.s.toLowerCase();
     const f=FAM.find(x=>nome.includes(x.toLowerCase()));
-    if(f) for(let w=0;w<NW;w++) fam[f][w]+=s[w]/1e6;
+    if(f) for(let w=0;w<ST.NW;w++) fam[f][w]+=s[w]/1e6;
     anModelos[m.s]=s.map(v=>+(v/1e6).toFixed(3));
   }
   D.an_fam_abs={}; FAM.forEach(f=>{ if(d3.max(fam[f])>0) D.an_fam_abs[f]=fam[f].map(v=>+v.toFixed(3)); });
@@ -702,14 +665,14 @@ function recalcular(){
     if(!m.p || m.d[DIMI.cobranca]===iFree) return null;
     return {mix:m.p, piso:m.pp!=null?m.pp:m.p, teto:m.pc!=null?m.pc:m.p};
   };
-  const gastoLab={}, gastoTot=new Array(NW).fill(0);
-  const piso=new Array(NW).fill(0), teto=new Array(NW).fill(0);
+  const gastoLab={}, gastoTot=new Array(ST.NW).fill(0);
+  const piso=new Array(ST.NW).fill(0), teto=new Array(ST.NW).fill(0);
   for(const [m,i] of sel){
     if(ehOther(m)) continue;
     const pr=precoDe(m); if(!pr) continue;
-    const k=rotulo('vendor',m.d[DIMI.vendor]), s=SERIES[i];
-    if(!gastoLab[k]) gastoLab[k]=new Array(NW).fill(0);
-    for(let w=0;w<NW;w++){
+    const k=rotulo('vendor',m.d[DIMI.vendor]), s=ST.SERIES[i];
+    if(!gastoLab[k]) gastoLab[k]=new Array(ST.NW).fill(0);
+    for(let w=0;w<ST.NW;w++){
       const u=s[w]*pr.mix; gastoLab[k][w]+=u; gastoTot[w]+=u;
       piso[w]+=s[w]*pr.piso; teto[w]+=s[w]*pr.teto;
     }
@@ -731,8 +694,8 @@ function recalcular(){
     if(ehOther(m)) continue;
     const k=rotulo('vendor',m.d[DIMI.vendor]);
     vd[k]=vd[k]||{tok:0,usd:0};
-    vd[k].tok+=SERIES[i][ult];
-    const pr=precoDe(m); if(pr) vd[k].usd+=SERIES[i][ult]*pr.mix;
+    vd[k].tok+=ST.SERIES[i][ult];
+    const pr=precoDe(m); if(pr) vd[k].usd+=ST.SERIES[i][ult]*pr.mix;
   }
   const somaTok=Object.values(vd).reduce((s,o)=>s+o.tok,0)||1;
   const somaUsd=Object.values(vd).reduce((s,o)=>s+o.usd,0)||1;
@@ -745,8 +708,8 @@ function recalcular(){
   // ---- qualidade contra adocao -------------------------------------------
   D.qualidade=sel.filter(([m])=>!ehOther(m))
     .map(([m,i])=>({slug:m.s, nome:m.n, aa:m.q, elo:m.e, preco:m.p, ctx:m.c, lanc:m.l,
-        T:+(SERIES[i][ult]/1e6).toFixed(3),
-        share:+(100*SERIES[i][ult]/(tot[ult]||1)).toFixed(3),
+        T:+(ST.SERIES[i][ult]/1e6).toFixed(3),
+        share:+(100*ST.SERIES[i][ult]/(tot[ult]||1)).toFixed(3),
         origin:rotulo('origin',m.d[DIMI.origin]),
         pesos:rotulo('pesos',m.d[DIMI.pesos])}))
     .filter(r=>r.T>0).sort((a,b)=>b.share-a.share);
@@ -767,7 +730,7 @@ function recalcular(){
     for(const [m,i] of sel){
       if(ehOther(m)) continue;
       const k=rotulo('vendor',m.d[DIMI.vendor]);
-      const tk=SERIES[i][indice]||0;
+      const tk=ST.SERIES[i][indice]||0;
       if(!L[k]) L[k]={lab:k, tokens:0, gasto:0, ctx:0, multi:0, rac:0, ampl:0, cad:0, aa:null,
                       origem:{}, modelos:0};
       const o=L[k]; o.modelos++;
@@ -830,7 +793,7 @@ function recalcular(){
     perfil.forEach(o=>{ o.x = modo==='indice' ? o.xAA : o.xRec; });
     return perfil;
   }
-  const atras=Math.max(0, ult-(GRAN==='semana'?12:3));
+  const atras=Math.max(0, ult-(ST.GRAN==='semana'?12:3));
   const distMapa=ult-atras;
   const perfilAgora=comporta(perfilLabs(ult), perfilLabs(atras), 'recursos');
   const antesRaw=comporta(perfilLabs(atras), null, 'recursos');
@@ -842,23 +805,23 @@ function recalcular(){
   // ---- o que mudou nas ultimas 4 semanas ---------------------------------
   // "ultimas 4 semanas" tem que significar o mesmo periodo nas duas
   // granularidades: 4 pontos semanais ou 1 ponto mensal.
-  const passo4 = GRAN==='semana' ? 4 : 1;
+  const passo4 = ST.GRAN==='semana' ? 4 : 1;
   const ant=Math.max(0, ult-passo4);
   const distMud=ult-ant;
   const topN=(w,n)=>sel.filter(([m])=>!ehOther(m))
-    .map(([m,i])=>({s:m.s, v:SERIES[i][w]})).filter(r=>r.v>0)
+    .map(([m,i])=>({s:m.s, v:ST.SERIES[i][w]})).filter(r=>r.v>0)
     .sort((a,b)=>b.v-a.v).slice(0,n).map(r=>r.s);
   const t10a=topN(ant,10), t10b=topN(ult,10);
-  const totAnt=sel.reduce((s,[,i])=>s+SERIES[i][ant],0)||1;
+  const totAnt=sel.reduce((s,[,i])=>s+ST.SERIES[i][ant],0)||1;
   const varia=sel.filter(([m])=>!ehOther(m)).map(([m,i])=>{
-      const a=100*SERIES[i][ant]/totAnt, b=100*SERIES[i][ult]/(tot[ult]||1);
+      const a=100*ST.SERIES[i][ant]/totAnt, b=100*ST.SERIES[i][ult]/(tot[ult]||1);
       return {s:m.s, de:+a.toFixed(2), para:+b.toFixed(2), delta:+(b-a).toFixed(2),
               origin:rotulo('origin',m.d[DIMI.origin])};
     }).filter(r=>Math.abs(r.delta)>=0.05);
   const estreantes=sel.filter(([m,i])=>{
-      const s=SERIES[i]; if(!s[ult]) return false;
+      const s=ST.SERIES[i]; if(!s[ult]) return false;
       for(let w=0;w<=ant;w++) if(s[w]>0) return false; return true;
-    }).map(([m,i])=>({s:m.s, share:+(100*SERIES[i][ult]/(tot[ult]||1)).toFixed(2),
+    }).map(([m,i])=>({s:m.s, share:+(100*ST.SERIES[i][ult]/(tot[ult]||1)).toFixed(2),
         origin:rotulo('origin',m.d[DIMI.origin]), lanc:m.l}))
       .sort((a,b)=>b.share-a.share);
   D.mudancas={
@@ -887,12 +850,12 @@ function recalcular(){
   // Base e horizonte da secao inteira, derivados da janela. Ficavam fixos em 8
   // periodos, entao "tudo", "52", "26" e "13" produziam a mesma leitura: o chip
   // de janela nao fazia nada aqui.
-  const LOOK  = Math.max(4, Math.min(26, Math.round(N/3)));
+  const LOOK  = Math.max(4, Math.min(26, Math.round(ST.N/3)));
   // E nunca projetar mais do que um quarto do que foi observado. Estender 13
   // semanas a partir de uma janela de 13 semanas e 100% de invencao.
-  const HORIZ = Math.max(2, Math.min(GRAN==='semana'?13:3, Math.round(N/4)));
+  const HORIZ = Math.max(2, Math.min(ST.GRAN==='semana'?13:3, Math.round(ST.N/4)));
   const achados=[];
-  const per1=GRAN==='mes'?'mês':'semana', perN=GRAN==='mes'?'meses':'semanas';
+  const per1=ST.GRAN==='mes'?'mês':'semana', perN=ST.GRAN==='mes'?'meses':'semanas';
   const jan4=Math.min(4, ult);
 
   // 1. aceleracao atipica: variacao recente muito acima da propria oscilacao
@@ -900,7 +863,7 @@ function recalcular(){
     let melhor=null;
     for(const [m,i] of sel){
       if(ehOther(m)) continue;
-      const s=SERIES[i]; const sh=s.map((v,w)=>tot[w]? 100*v/tot[w] : 0);
+      const s=ST.SERIES[i]; const sh=s.map((v,w)=>tot[w]? 100*v/tot[w] : 0);
       if(sh[ult]<0.5) continue;
       const d=[]; for(let w=1;w<=ult;w++) d.push(sh[w]-sh[w-1]);
       const dp=d3.deviation(d)||0, recente=sh[ult]-sh[ult-jan4];
@@ -922,7 +885,7 @@ function recalcular(){
       let melhor=null;
       for(const [m,i] of sel){
         if(ehOther(m)||!m.p||m.p<=medP) continue;
-        const s=SERIES[i], den0=tot[ult-jan4]||1, den1=tot[ult]||1;
+        const s=ST.SERIES[i], den0=tot[ult-jan4]||1, den1=tot[ult]||1;
         const d=100*s[ult]/den1 - 100*s[ult-jan4]/den0;
         if(d<=0.2) continue;
         if(!melhor || d>melhor.d) melhor={s:m.s, d, preco:m.p, mult:m.p/medP};
@@ -937,7 +900,7 @@ function recalcular(){
   // 3. sobrevivente: modelo antigo que continua no topo
   {
     const hoje=new Date(MX.semanas[MX.semanas.length-1]+'T00:00:00');
-    const t10=sel.filter(([m])=>!ehOther(m)).map(([m,i])=>({m,v:SERIES[i][ult]}))
+    const t10=sel.filter(([m])=>!ehOther(m)).map(([m,i])=>({m,v:ST.SERIES[i][ult]}))
       .filter(r=>r.v>0).sort((a,b)=>b.v-a.v).slice(0,10);
     const idades=t10.filter(r=>r.m.l).map(r=>(hoje-new Date(r.m.l+'T00:00:00'))/6048e5);
     if(idades.length>=4){
@@ -954,18 +917,18 @@ function recalcular(){
 
   // 4. concentracao invertendo a tendencia
   {
-    const curta=inclin(D.hhi, Math.min(LOOK,N)), longa=inclin(D.hhi, N);
+    const curta=inclin(D.hhi, Math.min(LOOK,ST.N)), longa=inclin(D.hhi, ST.N);
     if(curta!=null && longa!=null && Math.sign(curta)!==Math.sign(longa) && Math.abs(curta)>=8)
       achados.push({t: curta>0 ? 'O mercado voltou a concentrar' : 'A concentração voltou a cair',
         v:`HHI ${curta>0?'+':''}${Math.round(curta)}/${per1}`,
-        p:`O HHI vinha ${longa<0?'caindo':'subindo'} ao longo da janela e inverteu: nas últimas ${Math.min(LOOK,N)} ${perN} ele ${curta>0?'sobe':'cai'} ${Math.abs(Math.round(curta))} pontos por ${per1}. Reversão de concentração costuma anteceder a chegada de um modelo que domina, ou a saída de um que dominava.`});
+        p:`O HHI vinha ${longa<0?'caindo':'subindo'} ao longo da janela e inverteu: nas últimas ${Math.min(LOOK,ST.N)} ${perN} ele ${curta>0?'sobe':'cai'} ${Math.abs(Math.round(curta))} pontos por ${per1}. Reversão de concentração costuma anteceder a chegada de um modelo que domina, ou a saída de um que dominava.`});
   }
 
   // 5. China e pesos abertos descolando
   {
     const cn=(D.origin_share&&D.origin_share['China'])||[];
     const ow=(D.weights_share&&D.weights_share['Open-weights'])||[];
-    if(cn.length===N && ow.length===N && ult>=8){
+    if(cn.length===ST.N && ow.length===ST.N && ult>=8){
       const g0=Math.abs(ow[ult-Math.min(12,ult)]-cn[ult-Math.min(12,ult)]);
       const g1=Math.abs(ow[ult]-cn[ult]);
       if(g1-g0>=4)
@@ -982,7 +945,7 @@ function recalcular(){
   const projs=[];
   const proj=(rot, serie, fmt, piso, teto, unidTaxa)=>{
     const s=serie||[]; if(s.length<4) return;
-    const m=inclin(s, Math.min(LOOK,N)); const atual=s[s.length-1];
+    const m=inclin(s, Math.min(LOOK,ST.N)); const atual=s[s.length-1];
     // "caindo 0,0pp por semana" e uma linha que se contradiz sozinha. O corte
     // e o que o proprio display arredonda, nao um epsilon simbolico.
     const minimo = unidTaxa==='pp' ? 0.05 : 0.005;
@@ -1016,10 +979,10 @@ function recalcular(){
   proj('Concentração dos 5 maiores', D.top5, fmtP, 0, 100, 'pp');
   proj('Preço efetivo do mercado', D.preco_efetivo, v=>'US$ '+v.toFixed(2).replace('.',','), 0, null);
 
-  D.sinais={achados, projs, base:Math.min(LOOK,N), horiz:HORIZ, per1, perN};
+  D.sinais={achados, projs, base:Math.min(LOOK,ST.N), horiz:HORIZ, per1, perN};
 
   // cobertura do recorte, para a barra de status
-  const totalGeral=MX.modelos.reduce((s,m,i)=>s+SERIES[i][ult],0);
+  const totalGeral=MX.modelos.reduce((s,m,i)=>s+ST.SERIES[i][ult],0);
   return {modelos:sel.length, totalModelos:MX.modelos.length,
           pct: totalGeral? 100*tot[ult]/totalGeral : 0};
 }
@@ -1066,10 +1029,10 @@ function daURL(){
 // O periodo aparece em dezenas de rotulos. Cada um trocado a mao e um que sera
 // esquecido na proxima secao, entao a palavra virou elemento marcado com
 // data-per e a troca acontece aqui, num lugar so.
-const rotPer = () => GRAN==='mes' ? 'Mês' : 'Semana';
+const rotPer = () => ST.GRAN==='mes' ? 'Mês' : 'Semana';
 function aplicarPeriodo(){
-  const adj = GRAN==='mes' ? 'mensal' : 'semanal';
-  const sub = GRAN==='mes' ? 'mês' : 'semana';
+  const adj = ST.GRAN==='mes' ? 'mensal' : 'semanal';
+  const sub = ST.GRAN==='mes' ? 'mês' : 'semana';
   const cap = s => s.charAt(0).toUpperCase()+s.slice(1);
   document.querySelectorAll('[data-per]').forEach(el=>{
     const t=el.dataset.per;
@@ -1083,7 +1046,7 @@ function aplicar(){
   const fil=filtrando();
   document.getElementById('fclear').disabled=!fil;
   document.getElementById('fstat').innerHTML = fil
-    ? `<b>${info.modelos}</b> de ${info.totalModelos} modelos · <b>${info.pct.toFixed(1)}%</b> do volume ${GRAN==='semana'?'da última semana':'do último mês'}`
+    ? `<b>${info.modelos}</b> de ${info.totalModelos} modelos · <b>${info.pct.toFixed(1)}%</b> do volume ${ST.GRAN==='semana'?'da última semana':'do último mês'}`
     : `${info.totalModelos} modelos, sem recorte`;
   const w=document.getElementById('fwarn');
   if(fil){
@@ -1095,7 +1058,7 @@ function aplicar(){
   renderStatic(); renderAll();
 }
 
-let TRAJ_VIEW='forma';
+ST.TRAJ_VIEW='forma';
 
 // ---- Trajetoria alinhada no lancamento
 // O grafico anterior empilhava 126 series no eixo do calendario e virava novelo.
@@ -1105,14 +1068,14 @@ let TRAJ_VIEW='forma';
 function trajectory(name){
   const c=card(name), plot=c.querySelector('.plot'), T=D.trajetoria;
   document.getElementById('traj-sub').textContent =
-    TRAJ_VIEW==='forma'
+    ST.TRAJ_VIEW==='forma'
       ? `${T.modelos.length} modelos alinhados na semana de estreia, cada um normalizado pelo próprio pico. A linha grossa é a mediana; a faixa, o intervalo entre o 1º e o 3º quartil.`
       : 'Mediana por trimestre de lançamento, contra a mediana geral em cinza. Mostra se a temporada está encurtando.';
 
   const E=T.envelope_geral, K=E.mediana.length;
   const yFmt=v=>v+'%';
 
-  if(TRAJ_VIEW==='forma'){
+  if(ST.TRAJ_VIEW==='forma'){
     const f=frame(plot, 360, {t:14,r:16,b:34,l:46});
     const x=d3.scaleLinear().domain([0,K-1]).range([f.m.l, f.w-f.m.r]);
     const y=d3.scaleLinear().domain([0,100]).range([f.h-f.m.b,f.m.t]);
@@ -1237,7 +1200,7 @@ function board(){
 // um multiplicador.
 function tiles(){
   // W e SERIES ja vem recortados pela janela: 0 e o inicio dela, N-1 o fim.
-  const ini=0, last=N-1;
+  const ini=0, last=ST.N-1;
   const tot=D.weekly_total_T, an=D.an_share||[];
   const cn=(D.origin_share&&D.origin_share['China'])||[];
   const ow=(D.weights_share&&D.weights_share['Open-weights'])||[];
@@ -1250,15 +1213,15 @@ function tiles(){
   const baseIdx=(()=>{ for(let i=ini;i<=last;i++) if((tot[i]||0)>=0.005) return i; return -1; })();
   const estreia=(()=>{ for(let i=ini;i<=last;i++) if((tot[i]||0)>0) return i; return -1; })();
   const cmp=(serie,fmt)=>{
-    if(baseIdx<0) return estreia>=0? `estreia em ${fD(W[estreia])}` : 'sem volume no recorte';
+    if(baseIdx<0) return estreia>=0? `estreia em ${fD(ST.W[estreia])}` : 'sem volume no recorte';
     const v=serie[baseIdx];
-    return (v==null||!isFinite(v))? `desde ${fD(W[baseIdx])}` : `era ${fmt(v)} em ${fD(W[baseIdx])}`;
+    return (v==null||!isFinite(v))? `desde ${fD(ST.W[baseIdx])}` : `era ${fmt(v)} em ${fD(ST.W[baseIdx])}`;
   };
   const cresc=(()=>{
     if(baseIdx<0 || !tot[baseIdx]) return null;
     const r=tot[last]/tot[baseIdx];
     // O multiplicador ja vai no selo ao lado do valor; repetir aqui era redundante.
-    return isFinite(r)&&r>=1.05? `desde ${fD(W[baseIdx])} (${fmtT(tot[baseIdx])})` : null;
+    return isFinite(r)&&r>=1.05? `desde ${fD(ST.W[baseIdx])} (${fmtT(tot[baseIdx])})` : null;
   })();
 
   const janela=s=>(s||[]).slice(ini,last+1);
@@ -1286,12 +1249,12 @@ function tiles(){
   };
   const items=[
     ['Tokens por semana', fmtT(tot[last])+delta(tot,'x'),
-      cresc || (estreia>=0?`estreia em ${fD(W[estreia])}`:'sem volume'), 'up'],
+      cresc || (estreia>=0?`estreia em ${fD(ST.W[estreia])}`:'sem volume'), 'up'],
     ['Share de labs chineses', fmtP(cn[last]||0)+delta(cn,'pp'), cmp(cn,fmtP), 'up'],
     ['Share open-weights', fmtP(ow[last]||0)+delta(ow,'pp'), cmp(ow,fmtP), 'up'],
     ['Share da Anthropic', semAn?'—':fmtP(an[last])+delta(an,'pp'),
       semAn? (fil?'sem volume no recorte':'sem volume')
-           : `pico de ${fmtP(an[anPeak])} em ${fD(W[anPeak])}`, 'down'],
+           : `pico de ${fmtP(an[anPeak])} em ${fD(ST.W[anPeak])}`, 'down'],
     ['Top 5 modelos', fmtP(t5[last])+delta(t5,'pp'),
       (baseIdx>=0? `do volume; era ${fmtP(t5[baseIdx])}`:'do volume')+hhiTxt, 'down'],
   ];
@@ -1302,9 +1265,9 @@ function tiles(){
 function readings(){
   // W e SERIES ja vem recortados pela janela: 0 e o inicio dela, N-1 o fim.
   // Painel novo escrito com [0] e [N-1] ja nasce correto, sem precisar lembrar.
-  const ini=0, last=N-1, nPer=N;
+  const ini=0, last=ST.N-1, nPer=ST.N;
   const jan=s=>(s||[]).slice(ini,last+1);
-  const S=(o,k)=>Array.isArray(o&&o[k])?o[k]:new Array(N).fill(0);   // acesso seguro
+  const S=(o,k)=>Array.isArray(o&&o[k])?o[k]:new Array(ST.N).fill(0);   // acesso seguro
   const num=v=>Number.isFinite(v)?v:0;
   const vez=(a,b)=>(b>0&&Number.isFinite(a/b))?fmtVez(a/b):null;
   const set=(id,html)=>{const el=document.getElementById(id); if(el) el.innerHTML=html;};
@@ -1321,7 +1284,7 @@ function readings(){
   const cresc=vez(tot[last],tot[ini]);
   const st=b.find(r=>r.vendor==='stealth');
   set('read-volume',`<h4>Leitura</h4>${nota}<p>O volume semanal foi de <b>${fmtT(tot[ini])}</b> para <b>${fmtT(tot[last])}</b>`+
-    (cresc?`: ×${cresc} em ${nPer} ${GRAN==='mes'?'meses':'semanas'}`:'')+`. A curva não é linear: os degraus coincidem com a chegada de modelos baratos e de endpoints gratuitos.</p>`+
+    (cresc?`: ×${cresc} em ${nPer} ${ST.GRAN==='mes'?'meses':'semanas'}`:'')+`. A curva não é linear: os degraus coincidem com a chegada de modelos baratos e de endpoints gratuitos.</p>`+
     (st?`<p><span class="flag">caveat</span>A última semana traz <b>${fmtP(st.share)}</b> em <span class="mono">${st.model}</span>, um modelo anônimo em teste. Tráfego assim é transitório e infla o topo.</p>`:'')+
     `<p>Comparar volumes absolutos entre o início e o fim da série exige normalização: qualquer share do começo vale muito menos em tokens.</p>`);
 
@@ -1337,7 +1300,7 @@ function readings(){
   const somaNovos=novos.reduce((s,k)=>s+num(vs[k][last]),0);
   const lider0=ord.slice().sort((a,b2)=>num(vs[b2][ini])-num(vs[a][ini]))[0];
   set('read-vendor',`<h4>Leitura</h4>${nota}`+
-    (lider0?`<p>No início da janela (${fD(W[ini])}), o maior era <b>${LAB(lider0)}</b>, com ${fmtP(vs[lider0][ini])}.</p>`:'')+
+    (lider0?`<p>No início da janela (${fD(ST.W[ini])}), o maior era <b>${LAB(lider0)}</b>, com ${fmtP(vs[lider0][ini])}.</p>`:'')+
     (ord.length?`<p>Na última, o líder é <b>${LAB(ord[0])} (${fmtP(vs[ord[0]][last])})</b>`+
       (ord[1]?`, seguido de ${LAB(ord[1])} (${fmtP(vs[ord[1]][last])})`:'')+
       (ord[2]?` e ${LAB(ord[2])} (${fmtP(vs[ord[2]][last])})`:'')+`.</p>`:'')+
@@ -1360,7 +1323,7 @@ function readings(){
     ` A métrica aqui é tokens, não receita nem qualidade: modelos de fronteira aparecem com share menor e uso de maior valor.</p>`);
 
   // 05 pesos e origem
-  const ow2=S(D.weights_share,'Open-weights'), cn2=S(D.origin_share,'China'), fr=D.free_share||new Array(N).fill(0);
+  const ow2=S(D.weights_share,'Open-weights'), cn2=S(D.origin_share,'China'), fr=D.free_share||new Array(ST.N).fill(0);
   set('read-weights',`<h4>Leitura</h4>${nota}<p>Pesos abertos foram de <b>${fmtP(ow2[ini])}</b> para <b>${fmtP(ow2[last])}</b> do volume; laboratórios chineses, de <b>${fmtP(cn2[ini])}</b> para <b>${fmtP(cn2[last])}</b>. As duas curvas andam quase juntas porque a maioria dos pesos abertos relevantes hoje é chinesa. São o mesmo fenômeno visto de dois ângulos, não duas tendências independentes.</p>`+
     `<p>Tráfego em endpoints gratuitos chegou a <b>${fmtP(d3.max(jan(fr))||0)}</b> e está em <b>${fmtP(fr[last])}</b>. Parte relevante do crescimento é demanda subsidiada, que ainda não foi testada contra preço.</p>`+
     `<p><span class="flag">implicação</span>Para quem opera inferência própria, o deslocamento para pesos abertos abre a opção de self-hosting, mas o custo de manter avaliação contínua cresce com a rotatividade da seção 05.</p>`);
@@ -1369,7 +1332,7 @@ function readings(){
   const anJ=jan(an); const peak=anJ.length? ini+anJ.indexOf(d3.max(anJ)) : ini;
   const cAn=vez(ab[last],ab[ini]), cTot=vez(tot[last],tot[ini]);
   const trio=['anthropic','openai','google'].reduce((s,k)=>s+num((D.comp_share&&D.comp_share[k]||[])[last]),0);
-  set('read-anshare',`<h4>Leitura</h4>${nota}<p>Share da Anthropic: <b>${fmtP(an[ini])}</b> em ${fD(W[ini])}, pico de <b>${fmtP(an[peak])}</b> em ${fD(W[peak])}, <b>${fmtP(an[last])}</b> em ${fD(W[last])}. Em tokens absolutos a história é outra: de ${fmtT(ab[ini])} para <b>${fmtT(ab[last])}</b> por semana`+
+  set('read-anshare',`<h4>Leitura</h4>${nota}<p>Share da Anthropic: <b>${fmtP(an[ini])}</b> em ${fD(ST.W[ini])}, pico de <b>${fmtP(an[peak])}</b> em ${fD(ST.W[peak])}, <b>${fmtP(an[last])}</b> em ${fD(ST.W[last])}. Em tokens absolutos a história é outra: de ${fmtT(ab[ini])} para <b>${fmtT(ab[last])}</b> por semana`+
     (cAn?` (×${cAn})`:'')+`.</p>`+
     (cAn&&cTot?`<p>Ou seja, a Anthropic cresceu ${cAn}× enquanto o mercado cresceu ${cTot}×. O share caiu porque o denominador explodiu com tráfego barato e gratuito, não porque o uso encolheu. Ler share sem ler o absoluto produz a conclusão oposta da correta.</p>`:'')+
     (trio>0?`<p>Os três maiores laboratórios americanos proprietários somam <b>${fmtP(trio)}</b> hoje.</p>`:''));
@@ -1383,7 +1346,7 @@ function readings(){
     .sort((x,y)=>x.first<y.first?-1:1)
     .map(m=>`${m.model.replace('anthropic/claude-','').replace(/-20\d{6}$/,'')} ${m.weeks_in_top10} sem`);
   set('read-anfam',`<h4>Leitura</h4>${nota}`+
-    (famTot>0?`<p>Mix Anthropic na semana de ${fD(W[N-1])}: ${mix}. Haiku é residual no OpenRouter; não generalize para cargas enterprise via API direta ou Bedrock, onde o roteamento por custo tem outro perfil.</p>`:`<p>Sem volume Anthropic no recorte atual.</p>`)+
+    (famTot>0?`<p>Mix Anthropic na semana de ${fD(ST.W[ST.N-1])}: ${mix}. Haiku é residual no OpenRouter; não generalize para cargas enterprise via API direta ou Bedrock, onde o roteamento por custo tem outro perfil.</p>`:`<p>Sem volume Anthropic no recorte atual.</p>`)+
     (ten.length?`<p>Permanência no top 10: ${ten.join(', ')}. A cadência de lançamento acelerou e cada geração dura menos no topo, canibalizada pela seguinte. Para quem calibra prompts e avaliações por modelo, a janela útil de cada versão encurtou.</p>`:''));
 
   // 09 dinheiro
@@ -1421,7 +1384,7 @@ function readings(){
   // 12 o mapa
   const MP=D.mapa;
   if(MP && MP.labs.length){
-    const modo=(typeof MAPA_MODO!=='undefined')?MAPA_MODO:'recursos';
+    const modo=(typeof ST.MAPA_MODO!=='undefined')?ST.MAPA_MODO:'recursos';
     const com=MP.labs.map(o=>({...o,x:modo==='indice'?o.xAA:o.xRec})).filter(o=>o.x!=null);
     const q=(o)=>o.y>=50 ? (o.x>=50?'Líderes':'Desafiantes') : (o.x>=50?'Promessas':'Nichados');
     const grupos={'Líderes':[],'Desafiantes':[],'Promessas':[],'Nichados':[]};
@@ -1430,7 +1393,7 @@ function readings(){
     const maior=(k)=>{const a=MP.antes; return com.filter(o=>a[o.lab]).map(o=>({o,d:o.y-a[o.lab].y}))
       .sort((p,r)=>k==='sobe'? r.d-p.d : p.d-r.d)[0];};
     const sobe=maior('sobe'), desce=maior('desce');
-    const per=MP.periodos_atras, unid=per===1?(GRAN==='semana'?'semana':'mês'):(GRAN==='semana'?'semanas':'meses');
+    const per=MP.periodos_atras, unid=per===1?(ST.GRAN==='semana'?'semana':'mês'):(ST.GRAN==='semana'?'semanas':'meses');
     set('read-mapa',`<h4>Leitura</h4>${nota}`+
       `<p><b>Líderes</b> (tração e capacidade acima da mediana): ${lista('Líderes')}.</p>`+
       `<p><b>Desafiantes</b>, muito uso com capacidade declarada abaixo da mediana: ${lista('Desafiantes')}. É o quadrante que a tese prevê: tração construída sobre preço e disponibilidade, não sobre recurso técnico de fronteira.</p>`+
@@ -1485,22 +1448,22 @@ function spendChart(name){
   const fmtU=n=>'US$ '+br(n>=1000? d3.format('.1f')(n/1000)+'B' : d3.format('.0f')(n)+'M');
   axes(f,x,y,fmtU,4);
   f.svg.append('path').datum(ii).attr('fill',col('--s3')).attr('opacity',.16)
-    .attr('d',d3.area().x(i=>x(W[i])).y0(i=>y(lo[i])).y1(i=>y(hi[i])).curve(d3.curveMonotoneX));
+    .attr('d',d3.area().x(i=>x(ST.W[i])).y0(i=>y(lo[i])).y1(i=>y(hi[i])).curve(d3.curveMonotoneX));
   f.svg.append('path').datum(ii).attr('fill','none').attr('stroke',col('--s3')).attr('stroke-width',2)
-    .attr('d',d3.line().x(i=>x(W[i])).y(i=>y(v[i])).curve(d3.curveMonotoneX));
+    .attr('d',d3.line().x(i=>x(ST.W[i])).y(i=>y(v[i])).curve(d3.curveMonotoneX));
   const last=ii[ii.length-1];
-  f.svg.append('circle').attr('cx',x(W[last])).attr('cy',y(v[last])).attr('r',4)
+  f.svg.append('circle').attr('cx',x(ST.W[last])).attr('cy',y(v[last])).attr('r',4)
     .attr('fill',col('--s3')).attr('stroke',css('--surface')).attr('stroke-width',2);
-  f.svg.append('text').attr('class','dl').attr('x',x(W[last])-4).attr('y',y(v[last])-10)
+  f.svg.append('text').attr('class','dl').attr('x',x(ST.W[last])-4).attr('y',y(v[last])-10)
     .attr('text-anchor','end').style('fill',css('--ink')).style('font-weight',700).text(fmtU(v[last]));
   legend(c.querySelector('.legend'),[['e',col('--s3'),'Estimativa'],['b',css('--ink-3'),'Faixa piso a teto']]);
-  crosshair(f,x,ii,(i)=>`<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+
+  crosshair(f,x,ii,(i)=>`<div class="t">${ST.GRAN==="mes"?"mês de":"semana de"} ${fPer(ST.W[i])}${ST.GRAN==="mes"?` · ${ST.SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+
     tipRow(col('--s3'),'Estimativa',fmtU(v[i]))+
     tipRow('transparent','Piso (tudo prompt)',fmtU(lo[i]))+
     tipRow('transparent','Teto (tudo completion)',fmtU(hi[i]))+
     tipRow('transparent','Preço efetivo',`US$ ${br(d3.format('.2f')(D.preco_efetivo[i]))} / 1M tokens`));
   table(c.querySelector('.tbl'),[rotPer(),'Estimativa','Piso','Teto','US$/1M tokens'],
-    ii.map(i=>[fPer(W[i]),fmtU(v[i]),fmtU(lo[i]),fmtU(hi[i]),br(d3.format('.2f')(D.preco_efetivo[i]))]));
+    ii.map(i=>[fPer(ST.W[i]),fmtU(v[i]),fmtU(lo[i]),fmtU(hi[i]),br(d3.format('.2f')(D.preco_efetivo[i]))]));
 }
 
 // Volume x dinheiro: duas barras por lab, no MESMO eixo percentual. Nunca dois
@@ -1551,16 +1514,16 @@ function vsMoney(name){
 // ===========================================================================
 // Seção 07: qualidade contra adoção
 // ===========================================================================
-let QX='aa';
+ST.QX='aa';
 function quality(name){
   const c=card(name), plot=c.querySelector('.plot');
-  const campo=QX==='aa'?'aa':'preco';
+  const campo=ST.QX==='aa'?'aa':'preco';
   const pts=(D.qualidade||[]).filter(r=>r[campo]!=null && r.share>0);
   const cobertura=(D.qualidade||[]).filter(r=>r.share>0);
-  const base = QX==='aa'
+  const base = ST.QX==='aa'
     ? 'Índice de Inteligência da Artificial Analysis, exposto pela API do OpenRouter.'
     : 'Preço misto por 1M de tokens contra adoção.';
-  const atributo = QX==='aa' ? 'o índice' : 'preço';
+  const atributo = ST.QX==='aa' ? 'o índice' : 'preço';
   // Frase condicional ao que existe no recorte. "0 de 0 modelos têm o índice"
   // e a mesma classe de bug que os paineis de leitura tinham: texto que assume
   // um fato que o filtro pode remover.
@@ -1574,7 +1537,7 @@ function quality(name){
 
   const f=frame(plot, 400, {t:34,r:24,b:40,l:54});
   const xd=d3.extent(pts,r=>r[campo]);
-  const x = QX==='preco'
+  const x = ST.QX==='preco'
     ? d3.scaleLog().domain([Math.max(0.01,xd[0]*.8), xd[1]*1.2]).range([f.m.l,f.w-f.m.r])
     : d3.scaleLinear().domain([xd[0]-2, xd[1]+2]).range([f.m.l,f.w-f.m.r]);
   const y=d3.scaleLinear().domain([0, d3.max(pts,r=>r.share)*1.1]).nice().range([f.h-f.m.b,f.m.t]);
@@ -1588,13 +1551,13 @@ function quality(name){
   // "$0,03$0,04$0,05". Geramos a serie 1-2-5 por decada e descartamos tudo que
   // ficaria a menos de 46px do rotulo anterior.
   let xt;
-  if(QX==='preco'){
+  if(ST.QX==='preco'){
     const [lo,hi]=x.domain(); const cand=[];
     for(let e=-3;e<=3;e++) for(const m of [1,2,5]){ const v=m*Math.pow(10,e); if(v>=lo&&v<=hi) cand.push(v); }
     xt=[]; let ultimo=-1e9;
     cand.forEach(v=>{ if(x(v)-ultimo>=46){ xt.push(v); ultimo=x(v); } });
   } else xt=x.ticks(6);
-  const rotX=d=>QX!=='preco' ? fmtNum(d,2)
+  const rotX=d=>ST.QX!=='preco' ? fmtNum(d,2)
     : '$'+(d>=1 ? br(d3.format('~f')(d)) : d.toFixed(d<0.1?3:2).replace(/0+$/,'').replace(/\.$/,'').replace('.',','));
   f.svg.append('g').attr('class','ax').selectAll('text').data(xt).join('text')
     .attr('x',x).attr('y',f.h-f.m.b+18).attr('text-anchor','middle').text(rotX);
@@ -1603,7 +1566,7 @@ function quality(name){
     .attr('x1',x).attr('x2',x).attr('y1',f.m.t).attr('y2',f.h-f.m.b).attr('opacity',.55);
   f.svg.append('text').attr('class','ax').attr('x',(f.m.l+f.w-f.m.r)/2).attr('y',f.h-4)
     .attr('text-anchor','middle').style('fill',css('--ink-3'))
-    .text(QX==='aa'?'Índice de Inteligência →':'US$ por 1M de tokens (escala log) →');
+    .text(ST.QX==='aa'?'Índice de Inteligência →':'US$ por 1M de tokens (escala log) →');
 
   // linhas de mediana: dividem o plano em quadrantes de leitura
   const mx=d3.median(pts,p=>p[campo]), my=d3.median(pts,p=>p.share);
@@ -1612,7 +1575,7 @@ function quality(name){
       .attr('stroke',css('--axis')).attr('stroke-dasharray','4 4').attr('opacity',.7));
   const quad=(tx,ty,txt,anchor)=>f.svg.append('text').attr('class','ax').attr('x',tx).attr('y',ty)
     .attr('text-anchor',anchor).style('fill',css('--ink-3')).style('font-size','10.5px').text(txt);
-  if(QX==='aa'){
+  if(ST.QX==='aa'){
     quad(f.m.l+4, f.m.t-16, 'índice abaixo da mediana, muito usado','start');
     quad(f.w-f.m.r-4, f.m.t-16, 'índice acima da mediana, muito usado','end');
   } else {
@@ -1704,7 +1667,7 @@ function varia(name){
   if(!M) return vazio(name,'Sem dados de variação.');
   const sub=document.getElementById('varia-sub');
   if(sub) sub.textContent=`Diferença em pontos percentuais nos últimos ${M.distancia||0} `+
-    ((M.distancia||0)===1?(GRAN==='mes'?'mês':'semana'):(GRAN==='mes'?'meses':'semanas'));
+    ((M.distancia||0)===1?(ST.GRAN==='mes'?'mês':'semana'):(ST.GRAN==='mes'?'meses':'semanas'));
   const rows=[...M.subiram, ...M.cairam.slice().reverse()]
     .filter((r,i,a)=>a.findIndex(z=>z.s===r.s)===i);
   if(!rows.length) return vazio(name,'Nenhuma variação relevante no recorte atual.');
@@ -1738,13 +1701,13 @@ function varia(name){
 // ===========================================================================
 // Seção 09: comparador
 // ===========================================================================
-let CMP=[null,null];
+ST.CMP=[null,null];
 function comparador(){
   const c=card('comparar'), plot=c.querySelector('.plot');
   const cand=(D.qualidade||[]).slice(0,80);
   if(cand.length<2) return vazio('comparar','Poucos modelos no recorte atual para comparar.');
-  if(!CMP[0]||!cand.find(r=>r.slug===CMP[0])) CMP[0]=cand[0].slug;
-  if(!CMP[1]||!cand.find(r=>r.slug===CMP[1])) CMP[1]=(cand[1]||cand[0]).slug;
+  if(!ST.CMP[0]||!cand.find(r=>r.slug===ST.CMP[0])) ST.CMP[0]=cand[0].slug;
+  if(!ST.CMP[1]||!cand.find(r=>r.slug===ST.CMP[1])) ST.CMP[1]=(cand[1]||cand[0]).slug;
 
   // Campo de busca em vez de select: com 80 modelos, rolar uma lista suspensa e
   // pior do que digitar tres letras. datalist e nativo, acessivel e funciona sem
@@ -1760,7 +1723,7 @@ function comparador(){
     `<input id="${id}" value="${val}" role="combobox" aria-expanded="false" aria-autocomplete="list" `+
     `aria-controls="${id}-lista" autocomplete="off" spellcheck="false" `+
     `placeholder="digite para buscar, ex.: sonnet"><ul id="${id}-lista" class="cbx-lista" role="listbox" hidden></ul></div>`;
-  sel.innerHTML=campo('cmpA',CMP[0],'Modelo A')+campo('cmpB',CMP[1],'Modelo B');
+  sel.innerHTML=campo('cmpA',ST.CMP[0],'Modelo A')+campo('cmpB',ST.CMP[1],'Modelo B');
 
   ['cmpA','cmpB'].forEach((id,k)=>{
     const inp=sel.querySelector('#'+id), lista=sel.querySelector('#'+id+'-lista');
@@ -1781,7 +1744,7 @@ function comparador(){
       lista.hidden=false; inp.setAttribute('aria-expanded','true'); };
     const fecharL=()=>{ lista.hidden=true; inp.setAttribute('aria-expanded','false'); inp.removeAttribute('aria-activedescendant'); };
     const escolher=slug=>{ if(!slug) return; inp.value=slug; fecharL();
-      if(slug!==CMP[k]){ CMP[k]=slug; comparador(); } };
+      if(slug!==ST.CMP[k]){ ST.CMP[k]=slug; comparador(); } };
 
     inp.addEventListener('focus',()=>abrirL(''));
     inp.addEventListener('input',()=>abrirL(inp.value));
@@ -1793,7 +1756,7 @@ function comparador(){
       } else if(e.key==='Enter'){
         e.preventDefault();
         escolher(foco>=0? atuais[foco]?.slug : (atuais[0]?.slug));
-      } else if(e.key==='Escape'){ fecharL(); inp.value=CMP[k]; }
+      } else if(e.key==='Escape'){ fecharL(); inp.value=ST.CMP[k]; }
     });
     // mousedown, nao click: o blur do input dispararia antes do click
     lista.addEventListener('mousedown',e=>{
@@ -1801,12 +1764,12 @@ function comparador(){
       e.preventDefault(); escolher(li.dataset.slug);
     });
     inp.addEventListener('blur',()=>setTimeout(()=>{ fecharL();
-      if(!cand.some(r=>r.slug===inp.value)) inp.value=CMP[k]; },120));
+      if(!cand.some(r=>r.slug===inp.value)) inp.value=ST.CMP[k]; },120));
   });
 
-  const iA=MX.modelos.findIndex(m=>m.s===CMP[0]), iB=MX.modelos.findIndex(m=>m.s===CMP[1]);
-  const A=cand.find(r=>r.slug===CMP[0]), B=cand.find(r=>r.slug===CMP[1]);
-  const sA=SERIES[iA], sB=SERIES[iB];
+  const iA=MX.modelos.findIndex(m=>m.s===ST.CMP[0]), iB=MX.modelos.findIndex(m=>m.s===ST.CMP[1]);
+  const A=cand.find(r=>r.slug===ST.CMP[0]), B=cand.find(r=>r.slug===ST.CMP[1]);
+  const sA=ST.SERIES[iA], sB=ST.SERIES[iB];
   const totS=D.weekly_total_T.map(v=>v*1e6);
   const shA=sA.map((v,w)=>totS[w]?100*v/totS[w]:0), shB=sB.map((v,w)=>totS[w]?100*v/totS[w]:0);
   const picoA=d3.max(shA), picoB=d3.max(shB);
@@ -1841,16 +1804,16 @@ function comparador(){
   axes(f,x,y,v=>v+'%');
   [[shA,'--s1',A.slug],[shB,'--s2',B.slug]].forEach(([s,slot])=>
     f.svg.append('path').datum(ii).attr('fill','none').attr('stroke',col(slot)).attr('stroke-width',2.2)
-      .attr('d',d3.line().x(i=>x(W[i])).y(i=>y(s[i])).curve(d3.curveMonotoneX)));
+      .attr('d',d3.line().x(i=>x(ST.W[i])).y(i=>y(s[i])).curve(d3.curveMonotoneX)));
   legend(c.querySelector('.legend'),[[A.slug,col('--s1'),A.slug],[B.slug,col('--s2'),B.slug]]);
-  crosshair(f,x,ii,(i)=>`<div class="t">${GRAN==="mes"?"mês de":"semana de"} ${fPer(W[i])}${GRAN==="mes"?` · ${SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+
+  crosshair(f,x,ii,(i)=>`<div class="t">${ST.GRAN==="mes"?"mês de":"semana de"} ${fPer(ST.W[i])}${ST.GRAN==="mes"?` · ${ST.SEMANAS_POR_BUCKET[i]} semanas`:""}</div>`+
     tipRow(col('--s1'),A.slug,fmtP(shA[i]))+tipRow(col('--s2'),B.slug,fmtP(shB[i])));
 }
 
 // ===========================================================================
 // Seção 10: O mapa da temporada
 // ===========================================================================
-let MAPA_MODO='recursos';
+ST.MAPA_MODO='recursos';
 const ROT_PESO={share:'Share de tokens',gasto:'Share do gasto',cresc:'Crescimento de share',
                 ctx:'Janela de contexto',multi:'Multimodalidade',rac:'Suporte a raciocínio',
                 ampl:'Amplitude do catálogo',cad:'Cadência de lançamento'};
@@ -1858,11 +1821,11 @@ const ROT_PESO={share:'Share de tokens',gasto:'Share do gasto',cresc:'Cresciment
 function mapa(name){
   const c=card(name), plot=c.querySelector('.plot'), M=D.mapa;
   if(!M || !M.labs.length) return vazio(name,'Nenhum laboratório com volume no recorte atual.');
-  const modo=MAPA_MODO;
+  const modo=ST.MAPA_MODO;
   let labs=M.labs.map(o=>({...o, x: modo==='indice'? o.xAA : o.xRec}));
   const semX=labs.filter(o=>o.x==null);
   labs=labs.filter(o=>o.x!=null);
-  const per=M.periodos_atras, unid=per===1?(GRAN==='semana'?'semana':'mês'):(GRAN==='semana'?'semanas':'meses');
+  const per=M.periodos_atras, unid=per===1?(ST.GRAN==='semana'?'semana':'mês'):(ST.GRAN==='semana'?'semanas':'meses');
 
   document.getElementById('mapa-sub').innerHTML = modo==='recursos'
     ? `Posição relativa entre os <b>${M.total}</b> laboratórios com volume. Vertical: tração, do share de tokens, do gasto e do crescimento. Horizontal: capacidade declarada, da janela de contexto, multimodalidade, raciocínio, amplitude do catálogo e cadência de lançamento. O rastro mostra onde cada um estava ${per} ${unid} atrás.`
@@ -2083,7 +2046,7 @@ function renderAll(){
     },
     colsTab:{cols:[rotPer(),'Share dos 5 maiores','1º','2º','3º','4º','5º'],
       linha:(i)=>{ const m=(D.top5_modelos&&D.top5_modelos[i])||[];
-        return [fPer(W[i]),fmtP(D.top5[i]),...[0,1,2,3,4].map(k=>m[k]?`${m[k].s} (${fmtP(m[k].share)})`:'—')]; }}});
+        return [fPer(ST.W[i]),fmtP(D.top5[i]),...[0,1,2,3,4].map(k=>m[k]?`${m[k].s} (${fmtP(m[k].share)})`:'—')]; }}});
   lineChart('free', D.free_share, {fmt:fmtP, color:'--s3', label:'Share :free'});
   emphasisLines('anshare', D.comp_share, 'anthropic', {...VENDOR_SLOT,'x-ai':'--s0'}, VENDOR_LABEL);
   stackedAbs('anfam', D.an_fam_abs, FAM_SLOT);
@@ -2105,7 +2068,7 @@ function renderStatic(){
   document.getElementById('m-range').textContent=`${fBR(D.daily_first)} a ${fBR(D.daily_last)}`;
   document.getElementById('m-asof').textContent=fBR(D.as_of);
   document.getElementById('attrib-asof').textContent=D.as_of;
-  document.getElementById('m-weeks').textContent=N; document.getElementById('m-models').textContent=D.n_models;
+  document.getElementById('m-weeks').textContent=ST.N; document.getElementById('m-models').textContent=D.n_models;
 }
 // attach per-model series to lifecycle entries (built from weekly model shares embedded in D.life_series)
 D.life.forEach(m=>{ m.series=D.life_series[m.model]; });
@@ -2113,8 +2076,8 @@ D.life.forEach(m=>{ m.series=D.life_series[m.model]; });
 // calcula com o que o pipeline calculou; qualquer leitor pode auditar o mesmo.
 window.MS={ get D(){return D}, MX, FILTROS, filtrando, recalcular, aplicar,
             agregar, selecionados, versao:D.as_of,
-            get gran(){return GRAN}, get janela(){return JANELA},
-            get semanasPorBucket(){return SEMANAS_POR_BUCKET} };
+            get gran(){return ST.GRAN}, get janela(){return ST.JANELA},
+            get semanasPorBucket(){return ST.SEMANAS_POR_BUCKET} };
 montarFiltros(); daURL(); sincronizarBotoes(); aplicar();
 
 document.getElementById('ftoggle').addEventListener('click',()=>{
@@ -2132,23 +2095,23 @@ document.getElementById('fclear').addEventListener('click',()=>{
 if(filtrando()) document.getElementById('ftoggle').click();
 document.querySelectorAll('.views button[data-view]').forEach(b=>b.addEventListener('click',()=>{
   b.parentElement.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed', String(o===b)));
-  TRAJ_VIEW=b.dataset.view; trajectory('life');
+  ST.TRAJ_VIEW=b.dataset.view; trajectory('life');
 }));
 document.querySelectorAll('.views button[data-hbar]').forEach(b=>b.addEventListener('click',()=>{
   b.parentElement.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed', String(o===b)));
-  HBAR_ORDEM=b.dataset.hbar; renderStatic();
+  ST.HBAR_ORDEM=b.dataset.hbar; renderStatic();
   const s=document.getElementById('ten-sub');
-  if(s) s.textContent = HBAR_ORDEM==='valor'
+  if(s) s.textContent = ST.HBAR_ORDEM==='valor'
     ? 'Permanência entre os 10 mais usados, do maior para o menor'
     : 'Permanência entre os 10 mais usados, por ordem de estreia no ranking. Não é a data de lançamento: modelos que já existiam quando a série começa aparecem todos na primeira semana';
 }));
 document.querySelectorAll('.views button[data-mapa]').forEach(b=>b.addEventListener('click',()=>{
   b.parentElement.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed', String(o===b)));
-  MAPA_MODO=b.dataset.mapa; mapa('mapa'); readings();
+  ST.MAPA_MODO=b.dataset.mapa; mapa('mapa'); readings();
 }));
 document.querySelectorAll('.views button[data-qx]').forEach(b=>b.addEventListener('click',()=>{
   b.parentElement.querySelectorAll('button').forEach(o=>o.setAttribute('aria-pressed', String(o===b)));
-  QX=b.dataset.qx; quality('quality'); readings();
+  ST.QX=b.dataset.qx; quality('quality'); readings();
 }));
 let rt; window.addEventListener('resize',()=>{clearTimeout(rt); rt=setTimeout(renderAll,150);});
 const mq=matchMedia('(prefers-color-scheme: dark)'); mq.addEventListener('change',()=>{renderStatic();renderAll();});

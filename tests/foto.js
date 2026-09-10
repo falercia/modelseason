@@ -8,7 +8,7 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 
-const BASE = process.env.BASE || 'http://localhost:8000';
+const BASE = process.argv.find((a) => a.startsWith('http')) || process.env.BASE || 'http://localhost:8000';
 const REF = path.join(__dirname, 'foto.json');
 const GRAVAR = process.argv.includes('--gravar');
 
