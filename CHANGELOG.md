@@ -6,7 +6,32 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ## [Não lançado]
 
-Planejado para a v2, detalhado em [`docs/v2.md`](docs/v2.md).
+Na branch `arquitetura`, ainda não publicada. Ver [`docs/arquitetura.md`](docs/arquitetura.md).
+
+---
+
+## [2.0.0] — 2026-09-10 · branch `arquitetura`
+
+Migração de arquitetura em quatro entregas, cada uma verificada antes da seguinte.
+
+### Adicionado
+
+- **403 páginas por modelo**, estáticas, uma para cada modelo com volume no histórico. Cada uma traz share da última semana, pico com data, tokens acumulados, a série semanal desenhada em SVG pelo servidor e a ficha completa de metadado. **Zero JavaScript no cliente**: o teste roda com JavaScript desligado justamente para provar que quem chega de busca vê número na primeira pintura. O site sai de uma URL indexável para 404, que era a maior restrição do projeto.
+- **`tests/foto.js`**, teste de foto que captura texto, estrutura e assinatura de cada SVG em 13 configurações e exige igualdade byte a byte. Foi a rede de segurança de toda a migração, e provou em cada passo que o render não mudou.
+- **Conteúdo com schema.** Os 23 textos de gráfico e os 17 verbetes viraram arquivos em `src/content`, validados por Zod no build: gráfico sem "o que não mostra", com tipo inválido ou apontando para indicador inexistente derruba o build.
+- **Estado explícito.** As 17 variáveis mutáveis que viviam soltas dentro de `init()` viraram um objeto com mutadores nomeados. A troca foi feita com renomeação consciente de escopo, e não com expressão regular: 226 referências trocadas, nenhuma variável local afetada.
+- Sitemap gerado no build com as 404 URLs, no lugar do arquivo estático de uma linha escrito à mão.
+- 13 checagens novas cobrindo páginas por modelo e sitemap, mais as travas que cruzam o tipo declarado de cada gráfico com o que o SVG realmente desenha.
+
+### Corrigido
+
+- **Os 23 textos de gráfico foram reescritos contra a verdade de campo**, extraída do render. Correções materiais: licença dos pesos tem três faixas e não duas, sendo a terceira "não identificado"; "a forma de uma temporada" e o comparador têm modos e um gráfico que as descrições ignoravam; origem tem seis faixas; rotatividade e idade são linha simples e não linha com área.
+
+### Mudanças de infraestrutura
+
+- Astro 7 com saída estática e sem adaptador de servidor: o build produz HTML, CSS e JS comuns, então a saída de emergência continua sendo jogar a ferramenta fora e ficar com os arquivos.
+- `package-lock.json` versionado, `npm ci` no CI, `astro check` e `astro build` como etapas obrigatórias, e o teste de foto na esteira.
+- Formato de diretório no build, para a URL limpa funcionar em qualquer host estático.
 
 ---
 
