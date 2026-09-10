@@ -15,7 +15,9 @@ classifications/task ─┐
 session-cost ─────────┤
 benchmarks ───────────┼─▶ snapshots.py ─▶ data/{tasks,sessions,benchmarks,endpoints,apps}/AAAA-MM-DD.json.gz
 models/{id}/endpoints ┤                   (GitHub Actions, 07:15 UTC, workflow próprio)
-app-rankings ─────────┘
+app-rankings ─────────┤
+providers, zdr ───────┤                   data/{providers,zdr}/  (públicas, sem chave)
+embeddings/images/videos models ┘         data/catalogs/{embeddings,images,videos}/
 ```
 
 `fetch.py` traz volume. `fetch_models.py` traz o que cada modelo é: preço, contexto, lançamento, modalidade, pesos e índices de qualidade. `enrich.py` casa os dois e deriva as dimensões que os gráficos usam.
@@ -84,13 +86,16 @@ Quatro fontes da API só mostram o presente: a foto de hoje apaga a de ontem. `p
 | `benchmarks` | `/benchmarks` | Artificial Analysis, Design Arena e avaliações do OpenRouter, com custo por tarefa | Nenhum |
 | `endpoints` | `/models/{id}/endpoints` | Preço e contexto do mesmo modelo em cada provedor, para os 50 maiores | Nenhum, e não exige chave |
 | `apps` | `/datasets/app-rankings` | Top apps do dia, geral, trending, por categoria e por subcategoria | Aceita datas passadas desde 01/01/2025 |
+| `providers` | `/providers` | Os provedores de inferência, com país sede e páginas de privacidade e termos. Permite separar onde a inferência roda de quem fez o modelo | Nenhum, e não exige chave |
+| `zdr` | `/endpoints/zdr` | Todos os endpoints, de todos os modelos, que aceitam retenção zero de dados | Nenhum, e não exige chave |
+| `embeddings`, `images`, `videos` | `/embeddings/models`, `/images/models`, `/videos/models` | Catálogos de três mercados vizinhos ao de texto, com preço e data de lançamento. Como no `/models`, modelo que sai do ar some do catálogo | Nenhum, e não exigem chave |
 
 Regras do arquivador:
 
 - **Resposta bruta.** Nada é filtrado nem renomeado. O parser vem depois e pode ser refeito a partir do arquivo.
-- **Data da fonte no nome do arquivo**, nunca a do relógio. A exceção é `endpoints`, que não informa data e usa o dia UTC da coleta.
+- **Data da fonte no nome do arquivo**, nunca a do relógio. A exceção são as fontes públicas (`endpoints`, `providers`, `zdr` e os catálogos), que não informam data e usam o dia UTC da coleta.
 - **Nunca sobrescreve.** Mesmo conteúdo na mesma data não gera arquivo. Se a fonte revisar um dia já gravado, a revisão vira `AAAA-MM-DD.r2.json.gz` e o original fica intacto.
-- **Campos voláteis fora da comparação.** Em `endpoints`, status, uptime, latência e throughput de provedor mudam a cada minuto; em `apps`, o `meta.as_of` é o horário da consulta. Eles ficam no arquivo, mas não contam como revisão.
+- **Campos voláteis fora da comparação.** Em `endpoints` e `zdr`, status, uptime, latência e throughput de provedor mudam a cada minuto. Em `apps`, o `meta.as_of` é o horário da consulta e o `app_name` oscila entre apelidos do mesmo app, com posição e tokens idênticos. Eles ficam no arquivo, mas não contam como revisão. A comparação usa o hash recalculado pela regra atual, então tornar um campo volátil não gera revisão falsa nos arquivos antigos.
 - **Falha alto.** Resposta vazia é falha. Uma fonte que falha não impede as outras de gravar, e o workflow abre uma issue com label `pipeline`.
 - **gzip.** O JSON indentado dava cerca de 650 KB por dia só em `endpoints`; comprimido fica em torno de 30 KB. Para ler: `gzip -dc data/tasks/2026-09-10.json.gz | jq .`
 
@@ -99,7 +104,7 @@ O workflow é `.github/workflows/snapshots.yml`, separado do diário de propósi
 ```bash
 python pipeline/snapshots.py                          # todas as fontes, exige a chave
 python pipeline/snapshots.py --only tasks,sessions
-python pipeline/snapshots.py --only endpoints --out /tmp/teste   # sem chave
+python pipeline/snapshots.py --only endpoints,providers,zdr,embeddings,images,videos --out /tmp/teste   # sem chave
 python pipeline/snapshots.py --only apps --apps-day 2026-08-01   # recuperar um dia de apps
 python pipeline/test_snapshots.py                     # checagens offline, sem rede
 ```
@@ -109,7 +114,7 @@ Pelo Actions: *Run workflow* no "Arquivar fontes sem histórico", com `only` e `
 ## Limites da API
 
 - Janela máxima de 366 dias por chamada. O `fetch.py` fatia em blocos de 364.
-- 30 requisições por minuto por chave, 500 por dia por conta. O ciclo diário usa uma, o arquivador cerca de 27. `endpoints` é público e não conta.
+- 30 requisições por minuto por chave, 500 por dia por conta. O ciclo diário usa uma, o arquivador cerca de 27. As fontes públicas (`endpoints`, `providers`, `zdr` e catálogos) não contam.
 - O dataset começa em 2025-01-01.
 - `period=week` só existe com filtro de categoria, por isso a agregação semanal é feita localmente a partir do diário.
 

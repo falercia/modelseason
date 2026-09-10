@@ -1,6 +1,6 @@
 # data/
 
-Dois datasets tabulares, versionados a cada atualização diária, e cinco pastas de snapshots brutos das fontes que não guardam histórico.
+Dois datasets tabulares, versionados a cada atualização diária, e as pastas de snapshots brutos das fontes que não guardam histórico.
 
 ## `rankings_daily.csv`
 
@@ -41,7 +41,7 @@ Metadados de cada modelo: preço, contexto, data de lançamento, modalidade, pes
 
 **Consolidação de variantes.** Vários `id` compartilham o mesmo `canonical_slug`, por exemplo `:free`, `:batch` e `:thinking` do mesmo modelo. O `fetch_models.py` consolida por slug: preço vem da variante sem sufixo, que é o modelo de verdade, e os demais campos são coalescidos.
 
-## Snapshots brutos: `tasks/`, `sessions/`, `benchmarks/`, `endpoints/`, `apps/`
+## Snapshots brutos: `tasks/`, `sessions/`, `benchmarks/`, `endpoints/`, `apps/`, `providers/`, `zdr/`, `catalogs/`
 
 Uma foto por dia das fontes que só mostram o presente, gravada por `pipeline/snapshots.py`. Detalhes de cada fonte e das regras em [`docs/pipeline.md`](../docs/pipeline.md#arquivo-das-fontes-sem-histórico).
 

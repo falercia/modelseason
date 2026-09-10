@@ -61,6 +61,10 @@ def roteador(tasks=None, sessions_linhas=503):
             return {"data": [{"rank": 1, "app_id": 1, "app_name": "A", "total_tokens": "10", "total_requests": 1}],
                     "meta": {"as_of": "2026-09-10T02:00:00Z", "start_date": params["start_date"],
                              "end_date": params["end_date"], "version": "v1"}}
+        publicas = {"providers": 106, "endpoints/zdr": 845, "embeddings/models": 33,
+                    "images/models": 52, "videos/models": 28}
+        if caminho in publicas:
+            return {"data": [{"id": f"x/{i}", "status": 0} for i in range(publicas[caminho])]}
         return Resp(404, {"error": "not found"})
     return r
 
@@ -148,6 +152,44 @@ with tempfile.TemporaryDirectory() as tmp:
         return roteador()(caminho, params)
     as_of, _, _ = S.coletar_benchmarks(cliente(bench_vazio))
     check("benchmarks: resposta vazia nao define a data", as_of == "2026-09-05", as_of)
+
+    publicas = ["providers", "zdr", "embeddings", "images", "videos"]
+    cp = S.Cliente(None, sessao=Fake(roteador()), dormir=lambda s: None)
+    f = S.rodar(publicas, cp, base=base, agora=AGORA)
+    check("fontes publicas rodam sem chave", f == [] and cp.chamadas_com_chave == 0, (f, cp.chamadas_com_chave))
+    check("fontes publicas nao mandam cabecalho de autorizacao", all(not h for _, _, h in cp.s.log))
+    esperados = ["providers", "zdr", "catalogs/embeddings", "catalogs/images", "catalogs/videos"]
+    check("fontes publicas nas pastas certas, com o dia UTC da coleta",
+          all((base / d / "2026-09-10.json.gz").exists() for d in esperados),
+          [d for d in esperados if not (base / d / "2026-09-10.json.gz").exists()])
+    check("main nao exige chave quando so ha fontes publicas",
+          not any(x not in S.PUBLICAS for x in publicas))
+
+    def truncado(caminho, params):
+        return {"data": [{"id": "a"}] * 3}
+    f = S.rodar(["zdr"], S.Cliente(None, sessao=Fake(truncado), dormir=lambda s: None), base=base, agora=AGORA)
+    check("resposta publica truncada e falha", f == ["zdr"], f)
+
+    z1 = [{"path": "/endpoints/zdr", "params": {}, "response": {"data": [{"price": 1, "status": 0, "uptime_last_5m": 99}]}}]
+    z2 = [{"path": "/endpoints/zdr", "params": {}, "response": {"data": [{"price": 1, "status": -2, "uptime_last_5m": 80}]}}]
+    check("zdr: saude de provedor fica fora do hash", S.hash_conteudo(z1, "zdr") == S.hash_conteudo(z2, "zdr"))
+
+    n1 = [{"path": "/datasets/app-rankings", "params": {}, "response": {"data": [{"rank": 1, "app_id": 7, "app_name": "Legwork", "total_tokens": "10"}]}}]
+    n2 = [{"path": "/datasets/app-rankings", "params": {}, "response": {"data": [{"rank": 1, "app_id": 7, "app_name": "Legwork support chat", "total_tokens": "10"}]}}]
+    n3 = [{"path": "/datasets/app-rankings", "params": {}, "response": {"data": [{"rank": 1, "app_id": 7, "app_name": "Legwork", "total_tokens": "11"}]}}]
+    _, e1 = S.gravar("apps", "2026-09-01", n1, base=base)
+    _, e2 = S.gravar("apps", "2026-09-01", n2, base=base)
+    _, e3 = S.gravar("apps", "2026-09-01", n3, base=base)
+    check("apps: nome oscilando entre apelidos nao e revisao", (e1, e2) == ("novo", "igual"), (e1, e2))
+    check("apps: token diferente continua sendo revisao", e3 == "revisao", e3)
+
+    # Arquivo gravado com uma regra antiga (hash guardado diferente) nao vira revisao falsa.
+    arq = base / "apps" / "2026-09-01.json.gz"
+    env = S.ler(arq)
+    env["content_sha256"] = "hash-de-uma-regra-antiga"
+    arq.write_bytes(S.gzip.compress(S.json.dumps(env).encode(), mtime=0))
+    _, e4 = S.gravar("apps", "2026-09-01", n2, base=base)
+    check("comparacao usa o hash recalculado, nao o gravado", e4 == "igual", e4)
 
     modelos, _ = S.top_modelos()
     check("top modelos: 50 ids de API, sem sufixo de variante",

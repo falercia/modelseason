@@ -92,7 +92,7 @@ Três limites que valem para qualquer número da página:
 
 `data/rankings_daily.csv` guarda o histórico bruto diário desde 01/01/2025, uma linha por dia e modelo, versionado a cada atualização. Mais de 31 mil linhas, crescendo todo dia. O dicionário de colunas está em [`data/README.md`](data/README.md).
 
-Desde 10/09/2026, o repositório também arquiva uma foto diária das fontes que não guardam passado: para que a IA está sendo usada, custo por sessão em cada harness, benchmarks, preço por provedor e ranking de apps. Nenhuma delas tem histórico na origem, então essa série só existe aqui.
+Desde 10/09/2026, o repositório também arquiva uma foto diária das fontes que não guardam passado: para que a IA está sendo usada, custo por sessão em cada harness, benchmarks, preço por provedor, ranking de apps, país sede de cada provedor, oferta de retenção zero de dados e os catálogos de embeddings, imagem e vídeo. Nenhuma delas tem histórico na origem, então essa série só existe aqui.
 
 Use à vontade, inclusive comercialmente. A licença exige apenas atribuição.
 

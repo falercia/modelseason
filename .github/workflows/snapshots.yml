@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
     inputs:
       only:
-        description: "Fontes separadas por vírgula (vazio = todas): tasks,sessions,benchmarks,endpoints,apps"
+        description: "Fontes separadas por vírgula (vazio = todas): tasks,sessions,benchmarks,endpoints,apps,providers,zdr,embeddings,images,videos"
         required: false
         default: ""
       apps_day:
@@ -74,7 +74,7 @@ jobs:
         run: |
           git config user.name "modelseason-bot"
           git config user.email "modelseason-bot@users.noreply.github.com"
-          for d in data/tasks data/sessions data/benchmarks data/endpoints data/apps; do
+          for d in data/tasks data/sessions data/benchmarks data/endpoints data/apps data/providers data/zdr data/catalogs; do
             if [ -d "$d" ]; then git add "$d"; fi
           done
           if git diff --cached --quiet; then
@@ -111,7 +111,7 @@ jobs:
               `**Run:** ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
               `**Quando:** ${new Date().toISOString()}`,
               '',
-              '**Urgência:** cada dia sem coleta é um dia perdido para sempre em tasks, sessions, benchmarks e endpoints. `apps` pode ser recuperado depois com `apps_day`.',
+              '**Urgência:** cada dia sem coleta é um dia perdido para sempre em todas as fontes, exceto `apps`, que pode ser recuperado depois com `apps_day`.',
               '',
               'Checklist de diagnóstico:',
               '1. O passo "Coletar" mostra qual fonte falhou e o código HTTP.',

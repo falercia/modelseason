@@ -12,7 +12,12 @@ Planejado para a v2, detalhado em [`docs/v2.md`](docs/v2.md).
 
 - **Arquivo diário das fontes sem histórico.** `pipeline/snapshots.py` grava a resposta bruta de `/classifications/task`, `/datasets/session-cost`, `/benchmarks`, `/models/{id}/endpoints` dos 50 maiores modelos e `/datasets/app-rankings` por categoria e subcategoria, em `data/*/AAAA-MM-DD.json.gz`. Quatro dessas fontes apagam o passado a cada atualização, então cada dia sem coleta era perdido para sempre. O arquivo leva a data da fonte no nome, nunca sobrescreve (revisão vira `.r2`) e deixa fora da comparação os campos de saúde de provedor, que mudam a cada minuto.
 - Workflow próprio, `snapshots.yml`, às 07:15 UTC, separado do diário para que uma falha na coleta nova não afete a página. Abre issue com label `pipeline` quando alguma fonte falha e commita o que deu certo.
-- `pipeline/test_snapshots.py`, com 25 checagens offline: nome pela data da fonte, paginação, orçamento de chamadas, chave fora dos arquivos, revisão sem sobrescrita, resposta vazia tratada como falha e tolerância a 429. Roda no workflow de testes.
+- **Cinco fontes públicas no arquivo diário**, sem consumir a cota da chave: `/providers` (país sede de cada provedor), `/endpoints/zdr` (endpoints com retenção zero de dados, de todos os modelos) e os catálogos de embeddings, imagem e vídeo, em `data/providers/`, `data/zdr/` e `data/catalogs/`.
+- `pipeline/test_snapshots.py`, com 34 checagens offline: nome pela data da fonte, paginação, orçamento de chamadas, chave fora dos arquivos, revisão sem sobrescrita, resposta vazia tratada como falha e tolerância a 429. Roda no workflow de testes.
+
+### Corrigido
+
+- **Revisão falsa em `apps`.** A primeira execução no Actions gravou um `.r2` em que só o `app_name` de 7 apps mudava, alternando entre apelidos do mesmo app, com posição, id e tokens idênticos. O nome saiu da comparação, e a comparação passou a usar o hash recalculado pela regra atual. O `.r2` já gravado continua no repositório, porque arquivo bruto não se apaga. O `.r2` de `sessions` do mesmo dia é revisão legítima: a fonte entregou dois cálculos da mesma janela.
 
 ---
 
