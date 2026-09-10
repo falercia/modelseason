@@ -8,6 +8,8 @@ export default defineConfig({
   site: 'https://modelseason.com',
   output: 'static',
   trailingSlash: 'ignore',
-  build: { format: 'file' },
+  // Formato de diretorio: cada pagina vira pasta com index.html, entao a URL
+  // limpa funciona em QUALQUER host estatico, e nao so na Vercel com cleanUrls.
+  build: { format: 'directory' },
   devToolbar: { enabled: false },
 });

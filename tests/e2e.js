@@ -451,6 +451,46 @@ const perto = (a, b, tol) => Math.abs(a - b) <= tol;
     await t.close();
   }
 
+  // ---------- 7b. páginas por modelo ----------
+  // 403 páginas estáticas, uma por modelo, que é o que tira o site de uma URL
+  // indexável para mais de quatrocentas. Verificamos que elas existem, que os
+  // números vêm renderizados do servidor e que não dependem de JavaScript.
+  const mp = await browser.newPage({ viewport: { width: 1200, height: 900 }, javaScriptEnabled: false });
+  const eMp = []; mp.on('pageerror', (e) => eMp.push(e.message));
+  await mp.goto(BASE + '/m/anthropic/claude-opus-5-20260723/', { waitUntil: 'domcontentloaded' });
+  const pm = await mp.evaluate(() => ({
+    titulo: document.title,
+    h1: document.querySelector('h1')?.textContent.trim(),
+    desc: document.querySelector('meta[name="description"]')?.content || '',
+    canonical: document.querySelector('link[rel="canonical"]')?.href || '',
+    tiles: [...document.querySelectorAll('.tile .v')].map((e) => e.textContent.trim()),
+    caminhos: document.querySelectorAll('svg path').length,
+    linhasFicha: document.querySelectorAll('table tbody tr').length,
+    naoDiz: /não diz/i.test(document.body.innerText),
+    jsonld: !!document.querySelector('script[type="application/ld+json"]'),
+    texto: document.body.innerText,
+  }));
+  checa(/Claude Opus 5/.test(pm.h1 || ''), 'página do modelo renderiza o nome', pm.h1);
+  checa(pm.titulo.includes('Model Season'), 'página do modelo tem título próprio', pm.titulo);
+  checa(pm.desc.length > 80 && /%/.test(pm.desc), 'descrição do modelo traz número, não texto genérico', pm.desc.slice(0, 80));
+  checa(pm.canonical.endsWith('/m/anthropic/claude-opus-5-20260723'), 'canonical da página do modelo', pm.canonical);
+  checa(pm.tiles.length === 4 && pm.tiles.every((t) => t && t !== '—'), 'os quatro números do topo vêm preenchidos', pm.tiles.join(' '));
+  checa(pm.caminhos >= 2, 'a série semanal vem desenhada do servidor', `${pm.caminhos} caminhos`);
+  checa(pm.linhasFicha >= 10, 'ficha do modelo tem metadado', `${pm.linhasFicha} linhas`);
+  checa(pm.naoDiz, 'página do modelo publica o que ela não diz');
+  checa(pm.jsonld, 'página do modelo traz dados estruturados');
+  checa(!/NaN|undefined|\bnull\b/.test(pm.texto), 'página do modelo sem valor degenerado');
+  checa(eMp.length === 0, 'página do modelo sem erro de JavaScript', eMp.join(' | '));
+  // sem JavaScript o conteúdo tem que estar lá: é o que o buscador enxerga
+  checa(pm.texto.length > 900, 'a página do modelo funciona sem JavaScript', `${pm.texto.length} caracteres`);
+  await mp.close();
+
+  const sm = await browser.newPage();
+  await sm.goto(BASE + '/sitemap.xml', { waitUntil: 'domcontentloaded' });
+  const nUrls = (await sm.content()).split('<loc>').length - 1;
+  checa(nUrls > 300, 'sitemap lista as páginas por modelo', `${nUrls} URLs`);
+  await sm.close();
+
   // ---------- 8. tema escuro renderiza ----------
   const d = await browser.newPage({ viewport: { width: 1440, height: 900 }, colorScheme: 'dark' });
   const e4 = []; d.on('pageerror', e => e4.push(e.message));

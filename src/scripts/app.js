@@ -1,5 +1,6 @@
 import { ST, definirJanela, definirGran, definirOrdemBarras, definirTrajetoria,
   definirEixoQualidade, definirModoMapa, definirComparados } from './estado.js';
+import { VENDOR_LABEL } from './rotulos.js';
 import { css, br, fmtT, fmtNum, fmtP, fmtUSD, fmtCtx, fmtVez, capital,
   fmtDate, ptBR, fD, fPer, monthTicks } from './formato.js';
 
@@ -209,15 +210,6 @@ function dobrar(series, manter){
   if(houve) out['Outros']=outros.map(v=>Math.round(v*100)/100);
   return out;
 }
-const VENDOR_LABEL = {deepseek:'DeepSeek',google:'Google',anthropic:'Anthropic',openai:'OpenAI',
-  xiaomi:'Xiaomi',tencent:'Tencent',minimax:'MiniMax','z-ai':'Z.ai (GLM)',Outros:'Outros','x-ai':'xAI',
-  nvidia:'NVIDIA',mistralai:'Mistral AI',moonshotai:'Moonshot AI',thinkingmachines:'Thinking Machines',
-  stepfun:'StepFun',inclusionai:'InclusionAI',poolside:'Poolside',upstage:'Upstage',qwen:'Qwen',
-  meta:'Meta','meta-llama':'Meta',alibaba:'Alibaba',bytedance:'ByteDance','bytedance-seed':'ByteDance',
-  'arcee-ai':'Arcee AI',cohere:'Cohere',microsoft:'Microsoft',amazon:'Amazon',perplexity:'Perplexity',
-  liquid:'Liquid AI',baai:'BAAI',kwaipilot:'KwaiPilot','nex-agi':'Nex AGI','dots-studio':'Dots Studio',
-  'tngtech:':'TNG',tngtech:'TNG',nousresearch:'Nous Research',openchat:'OpenChat',
-  'ibm-granite':'IBM Granite',stealth:'Anônimo (stealth)',openrouter:'OpenRouter (teste)'};
 const ORIGIN_SLOT = {'EUA/Canadá':'--s1','China':'--s2','Europa':'--s3','Coreia':'--s4','Outros':'--s0','Não identificado':'--s0'};
 const WEIGHTS_SLOT = {'Proprietário':'--s1','Open-weights':'--s3','Não identificado':'--s0'};
 const FAM_SLOT = {Haiku:'--s2',Sonnet:'--s3',Opus:'--s1',Fable:'--s4'};

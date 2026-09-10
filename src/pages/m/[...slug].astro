@@ -1,0 +1,185 @@
+---
+// Uma pagina estatica por modelo com volume no historico. Este e o item que
+// tira o site de UMA url indexavel para mais de quatrocentas, cada uma
+// respondendo a uma busca real por nome de modelo.
+//
+// Tudo aqui e renderizado no build, sem JavaScript no cliente: o leitor que
+// chega de busca ve numero na primeira pintura, e o buscador tambem.
+import { carregar, serieDoModelo, fmtT, fmtP, fmtUSD, fmtCtx, fD } from '../../lib/dados.js';
+import { VENDOR_LABEL } from '../../scripts/rotulos.js';
+import '../../styles/global.css';
+
+export async function getStaticPaths() {
+  const d = carregar();
+  const MX = d.matriz;
+  const nSem = MX.semanas.length;
+  const totalSem = new Array(nSem).fill(0);
+  const series = MX.modelos.map((_, i) => serieDoModelo(MX, i));
+  series.forEach((s) => s.forEach((v, w) => { totalSem[w] += v; }));
+  const vidaPor = Object.fromEntries((d.life || []).map((l) => [l.model, l]));
+  const dic = MX.dic;
+  const rot = (dim, idx) => (idx == null ? null : (dic[dim] || [])[idx] ?? null);
+
+  return MX.modelos.map((m, i) => {
+    const s = series[i];
+    const share = s.map((v, w) => (totalSem[w] ? (100 * v) / totalSem[w] : 0));
+    let iPico = 0;
+    share.forEach((v, w) => { if (v > share[iPico]) iPico = w; });
+    const vivos = s.map((v, w) => (v > 0 ? w : -1)).filter((w) => w >= 0);
+    return {
+      params: { slug: m.s },
+      props: {
+        slug: m.s,
+        nome: m.n || m.s.split('/').pop(),
+        lab: m.s.split('/')[0],
+        origem: rot('origin', m.d?.[MX.dims.indexOf('origin')]),
+        pesos: rot('pesos', m.d?.[MX.dims.indexOf('pesos')]),
+        cobranca: rot('cobranca', m.d?.[MX.dims.indexOf('cobranca')]),
+        preco: m.p, precoPrompt: m.pp, precoCompl: m.pc,
+        ctx: m.c, lancamento: m.l, indice: m.q, elo: m.e, multimodal: m.m,
+        semanas: MX.semanas,
+        share,
+        totalT: s.reduce((a, b) => a + b, 0) / 1e6,
+        shareAtual: share[nSem - 1],
+        pico: share[iPico], semanaPico: MX.semanas[iPico],
+        estreia: vivos.length ? MX.semanas[vivos[0]] : null,
+        ultima: vivos.length ? MX.semanas[vivos.at(-1)] : null,
+        semanasAtivo: vivos.length,
+        vida: vidaPor[m.s.replace(/-20\d{6}$/, '')] || vidaPor[m.s] || null,
+        asOf: d.as_of,
+      },
+    };
+  });
+}
+
+const p = Astro.props;
+const lab = VENDOR_LABEL[p.lab] || p.lab;
+const titulo = `${p.nome} · adoção, preço e ciclo de vida`;
+const desc = `${p.nome} (${lab}) tem ${fmtP(p.shareAtual)} do tráfego de tokens no OpenRouter na última semana completa, com pico de ${fmtP(p.pico)}. Preço, janela de contexto e trajetória semanal.`;
+
+// Sparkline renderizada no servidor. Sem biblioteca e sem script: e um caminho
+// SVG calculado aqui e mandado pronto.
+// PADB maior que PAD: o rotulo do ano mora abaixo da linha de base, e nao
+// em cima dela.
+const W = 720, H = 140, PAD = 6, PADB = 22;
+const maxS = Math.max(...p.share, 0.0001);
+const px = (i) => PAD + (i * (W - 2 * PAD)) / Math.max(1, p.share.length - 1);
+const py = (v) => H - PADB - (v / maxS) * (H - PAD - PADB);
+const linha = p.share.map((v, i) => `${i ? 'L' : 'M'}${px(i).toFixed(1)},${py(v).toFixed(1)}`).join('');
+const area = `${linha}L${px(p.share.length - 1).toFixed(1)},${H - PADB}L${px(0).toFixed(1)},${H - PADB}Z`;
+const anos = p.semanas.map((s, i) => ({ i, ano: s.slice(0, 4) }))
+  .filter((x, i, a) => i === 0 || x.ano !== a[i - 1].ano);
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{p.nome} · Model Season</title>
+<meta name="description" content={desc}>
+<link rel="canonical" href={`https://modelseason.com/m/${p.slug}`}>
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:title" content={titulo}>
+<meta property="og:description" content={desc}>
+<meta property="og:url" content={`https://modelseason.com/m/${p.slug}`}>
+<meta property="og:image" content="https://modelseason.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'Dataset',
+  name: `${p.nome}: adoção no OpenRouter`, description: desc,
+  url: `https://modelseason.com/m/${p.slug}`,
+  temporalCoverage: `${p.semanas[0]}/${p.semanas.at(-1)}`,
+  isBasedOn: 'https://openrouter.ai/rankings',
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  creator: { '@type': 'Person', name: 'Fabio Garcia' },
+})}></script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow"><a href="/" style="color:inherit">Model Season</a> · {lab}</div>
+      <h1 style="font-size:32px">{p.nome}</h1>
+      <p class="sub mono" style="font-size:13px">{p.slug}</p>
+    </div>
+    <div class="meta">
+      Dados de <b>{fD(p.semanas[0])}</b> a <b>{fD(p.semanas.at(-1))}</b><br>
+      Atualizado em <b>{fD(p.asOf)}</b> · CC BY 4.0
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <div class="tiles" style="grid-template-columns:repeat(4,1fr)">
+      <div class="tile"><div class="k">Share na última semana</div>
+        <div><div class="v">{fmtP(p.shareAtual)}</div>
+        <div class="d">do volume total do roteador</div></div></div>
+      <div class="tile"><div class="k">Pico de share</div>
+        <div><div class="v">{fmtP(p.pico)}</div>
+        <div class="d">em {fD(p.semanaPico)}</div></div></div>
+      <div class="tile"><div class="k">Tokens acumulados</div>
+        <div><div class="v">{fmtT(p.totalT)}</div>
+        <div class="d">desde {fD(p.estreia)}</div></div></div>
+      <div class="tile"><div class="k">Semanas com volume</div>
+        <div><div class="v">{p.semanasAtivo}</div>
+        <div class="d">de {p.semanas.length} na série</div></div></div>
+    </div>
+
+    <section>
+      <div class="card">
+        <div class="card-h"><div><h3>Share semanal</h3>
+          <p>% do volume total do roteador capturado por este modelo em cada semana</p></div></div>
+        <div class="plot">
+          <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Share semanal de ${p.nome}, do mínimo de 0% ao pico de ${fmtP(p.pico)}`} style="width:100%;height:auto">
+            <path d={area} fill="var(--s1)" opacity="0.12"></path>
+            <path d={linha} fill="none" stroke="var(--s1)" stroke-width="2"></path>
+            {anos.map((a) => (
+              <text x={px(a.i)} y={H - 6} font-size="10" fill="var(--ink-3)">{a.ano}</text>
+            ))}
+            <text x={PAD} y="12" font-size="11" fill="var(--ink-3)">pico {fmtP(p.pico)} em {fD(p.semanaPico)}</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <div class="card-h"><div><h3>Ficha</h3><p>Metadado publicado no catálogo da fonte</p></div></div>
+        <div class="tbl" style="display:block">
+          <table><tbody>
+            <tr><th scope="row">Laboratório</th><td>{lab}</td></tr>
+            <tr><th scope="row">Origem</th><td>{p.origem || '—'}</td></tr>
+            <tr><th scope="row">Licença dos pesos</th><td>{p.pesos || '—'}</td></tr>
+            <tr><th scope="row">Cobrança</th><td>{p.cobranca || '—'}</td></tr>
+            <tr><th scope="row">Preço por 1M de tokens</th><td>{fmtUSD(p.preco)}{p.precoPrompt != null ? ` (prompt ${fmtUSD(p.precoPrompt)}, completion ${fmtUSD(p.precoCompl)})` : ''}</td></tr>
+            <tr><th scope="row">Janela de contexto</th><td>{fmtCtx(p.ctx)}</td></tr>
+            <tr><th scope="row">Multimodal</th><td>{p.multimodal ? 'sim' : 'não'}</td></tr>
+            <tr><th scope="row">Índice de Inteligência</th><td>{p.indice != null ? String(p.indice).replace('.', ',') : '—'}</td></tr>
+            <tr><th scope="row">Elo em arena</th><td>{p.elo != null ? p.elo : '—'}</td></tr>
+            <tr><th scope="row">Lançamento</th><td>{fD(p.lancamento)}</td></tr>
+            {p.vida && <tr><th scope="row">Semanas no top 10</th><td>{p.vida.weeks_in_top10}</td></tr>}
+            {p.vida && p.vida.half_life_weeks != null && <tr><th scope="row">Meia-vida após o pico</th><td>{p.vida.half_life_weeks} {p.vida.half_life_weeks === 1 ? 'semana' : 'semanas'}</td></tr>}
+          </tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <aside class="read" style="max-width:78ch">
+        <h4>O que esta página não diz</h4>
+        <p>Share aqui é fatia do tráfego de <b>um roteador</b>, onde a decisão costuma ser preço por token e a troca custa uma linha de configuração. Não é participação de mercado, de receita nem de usuários, e não representa consumo via API direta ou nuvem, onde o perfil de carga é outro.</p>
+        <p>Preço é o de tabela publicado no catálogo, sem desconto por volume, cache ou contrato. Janela de contexto é a anunciada, e não garante qualidade em toda a extensão dela.</p>
+        <p>Modelo servido também por endpoint gratuito aparece aqui separado do endpoint pago, porque a fonte os trata como slugs distintos.</p>
+      </aside>
+    </section>
+
+    <p style="margin:28px 0 0"><a href="/">← Voltar ao panorama do mercado</a></p>
+  </main>
+
+  <footer>
+    <p>Fonte: <a href="https://openrouter.ai/rankings" rel="noopener">OpenRouter · rankings-daily</a>, sob CC BY 4.0. Model Season não é afiliado ao OpenRouter.</p>
+  </footer>
+</div>
+</body>
+</html>
