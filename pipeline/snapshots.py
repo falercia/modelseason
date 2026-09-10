@@ -11,6 +11,11 @@ passado depois. Cada dia sem este script rodando e um dia perdido para sempre.
 | benchmarks  | /benchmarks                       | foto atual por fonte   | data/benchmarks/  |
 | endpoints   | /models/{id}/endpoints            | foto atual, sem as_of  | data/endpoints/   |
 | apps        | /datasets/app-rankings            | dia fechado (ontem)    | data/apps/        |
+| providers   | /providers                        | foto atual, sem as_of  | data/providers/   |
+| zdr         | /endpoints/zdr                    | foto atual, sem as_of  | data/zdr/         |
+| embeddings  | /embeddings/models                | foto atual, sem as_of  | data/catalogs/embeddings/ |
+| images      | /images/models                    | foto atual, sem as_of  | data/catalogs/images/     |
+| videos      | /videos/models                    | foto atual, sem as_of  | data/catalogs/videos/     |
 
 `apps` aceita datas passadas e pode ser retroagido. Entra aqui porque a foto
 diaria por categoria e subcategoria e barata e ja deixa a serie pronta.
@@ -19,8 +24,9 @@ Regras:
 - O arquivo guarda a resposta BRUTA. Nada e filtrado ou renomeado; o parser vem
   depois e pode ser refeito a partir daqui. O arquivo e a fonte de verdade.
 - O nome do arquivo e a data que a PROPRIA FONTE informa (`as_of`,
-  `window_end_date`, `end_date`), nunca a data do relogio. Excecao unica:
-  `endpoints`, que nao traz data nenhuma e usa o dia UTC da coleta.
+  `window_end_date`, `end_date`), nunca a data do relogio. Excecao: as fontes
+  publicas (`endpoints`, `providers`, `zdr` e os catalogos), que nao trazem data
+  nenhuma e usam o dia UTC da coleta.
 - Nunca sobrescreve. Mesma data com o mesmo conteudo: nao grava. Mesma data com
   conteudo diferente (a fonte revisou): grava `AAAA-MM-DD.r2.json.gz`, `r3`...
 - Campos que mudam a cada minuto (uptime, latencia, throughput de provedor) ficam
@@ -34,14 +40,14 @@ Regras:
 - A chave nunca e gravada nem impressa. Cabecalhos nao entram no arquivo.
 
 Orcamento: ~27 chamadas com chave por execucao (limite: 30/min, 500/dia por
-conta). `endpoints` e publico e nao consome a cota da chave.
+conta). As fontes publicas nao consomem a cota da chave.
 
-Env: OPENROUTER_API_KEY (obrigatoria para tudo, exceto `endpoints`).
+Env: OPENROUTER_API_KEY (obrigatoria para as fontes com chave).
 Uso:
     python pipeline/snapshots.py                      # todas as fontes
     python pipeline/snapshots.py --only tasks,apps
     python pipeline/snapshots.py --apps-day 2026-09-01
-    python pipeline/snapshots.py --only endpoints --out /tmp/teste   # sem chave
+    python pipeline/snapshots.py --only endpoints,providers,zdr,embeddings,images,videos --out /tmp/teste   # sem chave
 """
 import argparse
 import datetime as dt
@@ -69,12 +75,20 @@ TOP_ENDPOINTS = 50         # modelos cobertos no endpoint de provedores
 # arquivo, mas fora do hash de comparacao.
 # - endpoints: saude de provedor, medida em janelas de 5 min a 1 dia.
 # - apps: meta.as_of e o horario da consulta, nao a data do dado (visto na
-#   primeira coleta real: as_of 19:16:39 para um end_date de ontem).
+#   primeira coleta real: as_of 19:16:39 para um end_date de ontem). E app_name
+#   oscila entre apelidos do mesmo app ("Legwork" x "Legwork support chat") com
+#   rank, app_id e tokens identicos; a identidade do app e o app_id.
+# - zdr: mesma saude de provedor de `endpoints`.
+_SAUDE = {"status", "uptime_last_5m", "uptime_last_30m", "uptime_last_1d",
+          "latency_last_30m", "throughput_last_30m"}
 VOLATEIS = {
-    "endpoints": {"status", "uptime_last_5m", "uptime_last_30m", "uptime_last_1d",
-                  "latency_last_30m", "throughput_last_30m"},
-    "apps": {"as_of"},
+    "endpoints": _SAUDE,
+    "zdr": _SAUDE,
+    "apps": {"as_of", "app_name"},
 }
+
+# Fontes que nao exigem chave e nao consomem a cota.
+PUBLICAS = {"endpoints", "providers", "zdr", "embeddings", "images", "videos"}
 
 APP_CATEGORIAS = ["coding", "creative", "productivity", "entertainment"]
 APP_SUBCATEGORIAS = [
@@ -165,8 +179,10 @@ def gravar(fonte, as_of, requisicoes, base=None, agora=None):
     h = hash_conteudo(requisicoes, fonte)
     existentes = sorted(pasta.glob(f"{as_of}.json.gz")) + sorted(pasta.glob(f"{as_of}.r*.json.gz"))
     for arq in existentes:
+        # Compara com o hash RECALCULADO pela regra atual, nao com o gravado. Assim,
+        # quando um campo passa a ser volatil, o arquivo antigo nao vira revisao falsa.
         try:
-            if ler(arq)["content_sha256"] == h:
+            if hash_conteudo(ler(arq)["requests"], fonte) == h:
                 return arq, "igual"
         except (OSError, ValueError, KeyError):
             continue
@@ -311,15 +327,36 @@ def coletar_apps(c, apps_day=None, agora=None, **_):
     return fim, reqs, f"{linhas} linhas em {len(reqs)} recortes, dia {fim}"
 
 
+def _foto_publica(caminho, minimo):
+    """Fonte publica de uma chamada so, sem data: grava com o dia UTC da coleta."""
+    def coletar(c, agora=None, **_):
+        q = c.get(caminho, com_chave=False)
+        dados = q["response"].get("data") or []
+        if len(dados) < minimo:
+            raise FonteVazia(f"{len(dados)} itens, esperado ao menos {minimo}")
+        agora = agora or dt.datetime.now(dt.timezone.utc)
+        return agora.date().isoformat(), [q], f"{len(dados)} itens"
+    return coletar
+
+
 FONTES = {
     "tasks": coletar_tasks,
     "sessions": coletar_sessions,
     "benchmarks": coletar_benchmarks,
     "endpoints": coletar_endpoints,
     "apps": coletar_apps,
+    # Minimos bem abaixo do observado em 10/09 (106, 845, 33, 52, 28): pegam
+    # resposta truncada ou vazia sem disparar por variacao normal do catalogo.
+    "providers": _foto_publica("providers", 50),
+    "zdr": _foto_publica("endpoints/zdr", 200),
+    "embeddings": _foto_publica("embeddings/models", 10),
+    "images": _foto_publica("images/models", 10),
+    "videos": _foto_publica("videos/models", 5),
 }
 PASTAS = {"tasks": "tasks", "sessions": "sessions", "benchmarks": "benchmarks",
-          "endpoints": "endpoints", "apps": "apps"}
+          "endpoints": "endpoints", "apps": "apps", "providers": "providers", "zdr": "zdr",
+          "embeddings": "catalogs/embeddings", "images": "catalogs/images",
+          "videos": "catalogs/videos"}
 
 
 # ---------------------------------------------------------------- main
@@ -355,7 +392,7 @@ def main(argv=None):
     if a.apps_day:
         dt.date.fromisoformat(a.apps_day)
     token = os.environ.get("OPENROUTER_API_KEY")
-    if not token and any(f != "endpoints" for f in fontes):
+    if not token and any(f not in PUBLICAS for f in fontes):
         print("OPENROUTER_API_KEY nao definida", file=sys.stderr)
         return 2
     falhas = rodar(fontes, Cliente(token), base=a.out, apps_day=a.apps_day)
