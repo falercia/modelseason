@@ -26,7 +26,7 @@ const falhas = [];
 let casos = 0;
 
 (async () => {
-  const browser = await chromium.launch();
+  const browser = await chromium.launch(process.env.PW_CHROMIUM ? { executablePath: process.env.PW_CHROMIUM } : {});
   const p = await browser.newPage({ viewport: { width: 1280, height: 900 } });
   const erros = [];
   p.on('pageerror', e => erros.push(e.message));

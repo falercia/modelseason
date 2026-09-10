@@ -6,13 +6,24 @@
   "homepage": "https://modelseason.com",
   "license": "MIT",
   "scripts": {
-    "serve": "python3 -m http.server 8000 --directory public",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "serve": "python3 -m http.server 8000 --directory dist",
     "test": "node tests/e2e.js http://localhost:8000",
     "test:ci": "node tests/e2e.js http://localhost:8099",
     "fuzz": "node tests/fuzz.js http://localhost:8000",
-    "fuzz:ci": "node tests/fuzz.js http://localhost:8099"
+    "fuzz:ci": "node tests/fuzz.js http://localhost:8099",
+    "foto": "node tests/foto.js http://localhost:8000",
+    "foto:gravar": "node tests/foto.js --gravar"
   },
   "devDependencies": {
-    "playwright": "1.63.0"
+    "@astrojs/check": "^0.9.10",
+    "playwright": "^1.63.0",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "astro": "^7.3.2"
   }
 }

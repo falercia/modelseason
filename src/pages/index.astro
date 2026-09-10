@@ -1,0 +1,357 @@
+---
+// Entrega 1 da migracao: a pagina entra praticamente como estava. O estilo e o
+// script sao servidos como arquivo, e nao mais embutidos, mas o conteudo e o
+// mesmo byte a byte. O teste de foto (tests/foto.js) prova isso.
+import '../styles/global.css';
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Season</title>
+<meta name="description" content="Para onde vai o tráfego de tokens dos modelos de linguagem, semana a semana: share por laboratório, pesos abertos vs. proprietário, China vs. EUA e ciclo de vida dos modelos. Atualizado todo dia.">
+<link rel="canonical" href="https://modelseason.com/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Fabio Garcia">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Model Season">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://modelseason.com/">
+<meta property="og:title" content="Model Season">
+<meta property="og:description" content="Para onde vai o tráfego de tokens dos modelos de linguagem, semana a semana: share por laboratório, pesos abertos vs. proprietário, China vs. EUA e ciclo de vida dos modelos. Atualizado todo dia.">
+<meta property="og:image" content="https://modelseason.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Model Season: tokens por semana, share de laboratórios chineses, pesos abertos e rotatividade do top 10.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Model Season">
+<meta name="twitter:description" content="Para onde vai o tráfego de tokens dos modelos de linguagem, semana a semana: share por laboratório, pesos abertos vs. proprietário, China vs. EUA e ciclo de vida dos modelos. Atualizado todo dia.">
+<meta name="twitter:image" content="https://modelseason.com/og.png">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23199e70'/%3E%3Cpath d='M7 22V10l5 7 5-7v12' stroke='white' stroke-width='2.6' fill='none' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='12' r='2.6' fill='white'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<div id="painel-met" class="painel" hidden role="dialog" aria-modal="true" aria-labelledby="painel-met-t">
+  <div class="painel-h">
+    <h2 id="painel-met-t">Como ler esta página</h2>
+    <button id="painel-x" class="painel-x" aria-label="Fechar">×</button>
+  </div>
+  <p id="painel-nota" class="painel-nota" hidden></p>
+  <div class="painel-c met"><div id="painel-grafico" class="pg" hidden></div>
+    <div id="painel-corpo" class="pg-verbetes"></div></div>
+</div>
+<div id="painel-fundo" class="painel-fundo" hidden></div>
+<div class="wrap">
+<header>
+  <div>
+    <div class="eyebrow">Inteligência de mercado · Modelos de linguagem</div>
+    <h1>Model Season</h1>
+    <p class="sub">Para onde vai o tráfego de tokens dos modelos de linguagem, semana a semana: quem cresce, quem perde, quanto tempo um modelo dura no topo e o que isso diz sobre a posição da Anthropic.</p>
+  </div>
+  <div class="meta">
+    <button id="btn-met" class="btn-met" aria-expanded="false" aria-controls="painel-met">
+      <span aria-hidden="true">?</span> Como ler esta página
+    </button><br>
+    Fonte: <b>OpenRouter · rankings-daily</b><br>
+    Dados de <b id="m-range"></b><br>
+    Semanas completas nos gráficos: <b id="m-weeks"></b> · Modelos distintos: <b id="m-models"></b><br>
+    Atualizado em <b id="m-asof"></b> · CC BY 4.0
+  </div>
+</header>
+
+<div class="filters" role="group" aria-label="Janela de tempo">
+  <span class="lbl">Janela</span>
+  <button class="chip" data-range="all" aria-pressed="true">Tudo</button>
+  <button class="chip" data-range="52" aria-pressed="false">52 semanas</button>
+  <button class="chip" data-range="26" aria-pressed="false">26 semanas</button>
+  <button class="chip" data-range="13" aria-pressed="false">13 semanas</button>
+  <button class="chip" data-range="4" aria-pressed="false">4 semanas</button>
+  <button class="chip" data-range="ytd" aria-pressed="false">Ano corrente</button>
+  <span class="lbl" style="margin-left:10px">Agrupar por</span>
+  <button class="chip" data-gran="semana" aria-pressed="true">Semana</button>
+  <button class="chip" data-gran="mes" aria-pressed="false">Mês</button>
+  <span class="lbl" id="gran-nota" hidden>valores absolutos são média semanal do mês</span>
+</div>
+
+<div class="fbar" id="fbar" data-open="false">
+  <div class="fbar-h">
+    <b>Filtros</b>
+    <span class="st" id="fstat"></span>
+    <span style="flex:1"></span>
+    <button class="clear" id="fclear" disabled>limpar</button>
+    <button class="toggle" id="ftoggle" aria-expanded="false">mostrar filtros ▾</button>
+  </div>
+  <div class="fbar-body" id="fbody"></div>
+  <div class="warn" id="fwarn" hidden></div>
+</div>
+<div class="tiles" id="tiles"></div>
+<main id="conteudo">
+
+<!-- 1. MERCADO -->
+<section>
+  <div class="sec-head"><span class="n">01</span><h2>Tamanho e concentração do mercado</h2></div>
+  <div class="row">
+    <div class="card" data-chart="volume">
+      <div class="card-h"><div><h3>Tokens por semana</h3><p>Trilhões de tokens processados via OpenRouter, top 50 + resto</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-volume"></aside>
+  </div>
+  <div class="row">
+    <div class="card" data-chart="conc">
+      <div class="card-h"><div><h3>Concentração: share dos 5 maiores modelos</h3><p>% do volume <span data-per="adj">semanal</span> capturado pelos 5 modelos mais usados</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-conc"></aside>
+  </div>
+</section>
+
+<!-- 2. LABS -->
+<section>
+  <div class="sec-head"><span class="n">02</span><h2>Share por laboratório</h2></div>
+  <div class="row">
+    <div class="card" data-chart="vendor">
+      <div class="card-h"><div><h3>Fatia <span data-per="adj">semanal</span> de tokens por lab</h3><p>Os quatro maiores labs por volume acumulado; todos os demais somados em Outros</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-vendor"></aside>
+  </div>
+  <div class="row">
+    <div class="card" data-chart="board">
+      <div class="card-h"><div><h3>Top 15 da última semana completa</h3><p id="board-sub"></p></div></div>
+      <div class="plot"></div>
+    </div>
+    <aside class="read" id="read-board"></aside>
+  </div>
+</section>
+
+<!-- 3. GEOGRAFIA E PESOS -->
+<section>
+  <div class="sec-head"><span class="n">03</span><h2>Open-weights vs. proprietário, China vs. EUA</h2></div>
+  <div class="row two">
+    <div class="card" data-chart="origin">
+      <div class="card-h"><div><h3>Origem do lab</h3><p>% do volume <span data-per="adj">semanal</span> por país-sede do laboratório</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <div class="card" data-chart="weights">
+      <div class="card-h"><div><h3>Licença dos pesos</h3><p>% do volume <span data-per="adj">semanal</span> em modelos de pesos abertos vs. fechados</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card" data-chart="free">
+      <div class="card-h"><div><h3>Tráfego em endpoints gratuitos</h3><p>% do volume em modelos servidos por um endpoint sem cobrança, marcado com o sufixo <span class="mono">:free</span> no slug. É o <b>mesmo modelo</b> do endpoint pago, não um modelo diferente.</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-weights"></aside>
+  </div>
+</section>
+
+<!-- 4. ANTHROPIC -->
+<section>
+  <div class="sec-head"><span class="n">04</span><h2>Posição da Anthropic</h2></div>
+  <div class="row">
+    <div class="card" data-chart="anshare">
+      <div class="card-h"><div><h3>Share da Anthropic vs. concorrentes</h3><p>% do volume <span data-per="adj">semanal</span>; Anthropic em destaque</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-anshare"></aside>
+  </div>
+  <div class="row two">
+    <div class="card" data-chart="anfam">
+      <div class="card-h"><div><h3>Volume Anthropic por família</h3><p>Trilhões de tokens por semana: Haiku, Sonnet, Opus, Fable</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <div class="card" data-chart="antenure">
+      <div class="card-h"><div><h3>Semanas no top 10 por modelo Claude</h3><p id="ten-sub">Permanência entre os 10 mais usados</p></div>
+        <div class="ctrls">
+          <div class="views" role="group" aria-label="Ordenação">
+            <button data-hbar="valor" aria-pressed="true">Permanência</button>
+            <button data-hbar="lancamento" aria-pressed="false">Estreia</button>
+          </div>
+          <button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button>
+        </div>
+      </div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+  </div>
+  <aside class="read" id="read-anfam" style="margin-top:0"></aside>
+</section>
+
+<!-- 5. CICLO DE VIDA -->
+<section>
+  <div class="sec-head"><span class="n">05</span><h2>Ciclo de vida dos modelos</h2></div>
+  <div class="row two">
+    <div class="card" data-chart="churn">
+      <div class="card-h"><div><h3>Rotatividade do top 10</h3><p>Quantos dos 10 mais usados não estavam no top 10 quatro semanas antes</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+    <div class="card" data-chart="age">
+      <div class="card-h"><div><h3>Idade mediana do top 10</h3><p>Semanas desde a primeira aparição no ranking (primeiras 12 semanas censuradas pelo início do dataset)</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card" data-chart="cohort">
+      <div class="card-h"><div><h3>Tempo até o pico e meia-vida, por trimestre de lançamento</h3><p>Mediana em semanas, modelos que atingiram ≥ 2% do volume semanal (n por coorte no rótulo). Histórico completo, não responde à janela nem ao agrupamento</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-cohort"></aside>
+  </div>
+  <div class="row wide">
+    <div class="card" data-chart="life">
+      <div class="card-h"><div><h3>A forma de uma temporada</h3><p id="traj-sub"></p></div>
+        <div class="ctrls">
+          <div class="views" role="group" aria-label="Modo de visualização">
+            <button data-view="forma" aria-pressed="true">Todos</button>
+            <button data-view="coorte" aria-pressed="false">Por trimestre</button>
+          </div>
+          <button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button>
+        </div>
+      </div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="n">06</span><h2>Para onde vai o dinheiro</h2></div>
+  <div class="row">
+    <div class="card" data-chart="spend">
+      <div class="card-h"><div><h3>Gasto <span data-per="adj">semanal</span> estimado</h3><p id="spend-sub"></p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-spend"></aside>
+  </div>
+  <div class="row">
+    <div class="card" data-chart="vsmoney">
+      <div class="card-h"><div><h3>Volume contra dinheiro, por laboratório</h3><p>Share de tokens e share do gasto estimado na última semana completa. Barras iguais significam que o lab cobra o preço médio do mercado.</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-vsmoney"></aside>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="n">07</span><h2>Qualidade contra adoção</h2></div>
+  <div class="row">
+    <div class="card" data-chart="quality">
+      <div class="card-h"><div><h3>Índice de inteligência contra share de tokens</h3><p id="qual-sub"></p></div>
+        <div class="ctrls">
+          <div class="views" role="group" aria-label="Eixo de qualidade">
+            <button data-qx="aa" aria-pressed="true">Inteligência</button>
+            <button data-qx="preco" aria-pressed="false">Preço</button>
+          </div>
+          <button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button>
+        </div>
+      </div>
+      <div class="legend"></div><div class="plot"></div><div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-quality"></aside>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="n">08</span><h2>O que mudou esta semana</h2></div>
+  <div class="row two">
+    <div class="card" data-chart="mudou">
+      <div class="card-h"><div><h3>Entradas e saídas do top 10</h3><p id="mudou-sub"></p></div></div>
+      <div class="plot"></div>
+    </div>
+    <div class="card" data-chart="varia">
+      <div class="card-h"><div><h3>Maiores variações de share</h3><p id="varia-sub">Diferença em pontos percentuais</p></div><button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button></div>
+      <div class="plot"></div><div class="tbl"></div>
+    </div>
+  </div>
+  <aside class="read" id="read-mudou" style="margin-top:0"></aside>
+</section>
+
+<section>
+  <div class="sec-head"><span class="n">09</span><h2>Comparar dois modelos</h2></div>
+  <div class="card" data-chart="comparar">
+    <div class="card-h"><div><h3>Comparador</h3><p>Escolha dois modelos para ver adoção, preço, contexto e ciclo de vida lado a lado.</p></div></div>
+    <div class="cmp-sel" id="cmp-sel"></div>
+    <div class="cmp-grid" id="cmp-grid"></div>
+    <div class="legend"></div><div class="plot"></div>
+  </div>
+</section>
+
+<section id="mapa">
+  <div class="sec-head"><span class="n">10</span><h2>O mapa da temporada</h2></div>
+  <div class="row">
+    <div class="card" data-chart="mapa">
+      <div class="card-h"><div><h3>Tração contra capacidade, por laboratório</h3><p id="mapa-sub"></p></div>
+        <div class="ctrls">
+          <div class="views" role="group" aria-label="Eixo de capacidade">
+            <button data-mapa="recursos" aria-pressed="true">Recursos</button>
+            <button data-mapa="indice" aria-pressed="false">Índice</button>
+          </div>
+          <button class="tbtn" aria-pressed="false"><span class="vh">Ver dados em tabela: </span>Tabela</button>
+        </div>
+      </div>
+      <div class="legend"></div><div class="plot"></div>
+      <details class="pesos"><summary>Ajustar os pesos dos eixos</summary><div class="pbody" id="pesos-body"></div></details>
+      <div class="tbl"></div>
+    </div>
+    <aside class="read" id="read-mapa"></aside>
+  </div>
+</section>
+
+<section id="sinais">
+  <div class="sec-head"><span class="n">11</span><h2>Sinais da temporada</h2></div>
+  <p style="max-width:80ch;color:var(--ink-2);font-size:14px;margin:0 0 16px">
+  O que está fora do padrão nesta janela, detectado automaticamente, e para onde os números vão
+  <b>se a taxa atual se mantiver</b>. A segunda parte não é previsão, e a página inteira existe
+  para mostrar que essas taxas mudam.</p>
+  <div class="card" data-chart="sinais">
+    <div class="card-h"><div><h3>Achados</h3><p id="sinais-sub"></p></div></div>
+    <div class="plot"></div>
+  </div>
+  <div class="card" data-chart="projecao" style="margin-top:14px">
+    <div class="card-h"><div><h3>Se o ritmo atual se mantiver</h3><p id="proj-sub"></p></div></div>
+    <div class="plot"></div>
+  </div>
+</section>
+
+<section id="metodologia">
+  <div class="sec-head"><span class="n">12</span><h2>Como ler cada indicador</h2></div>
+  <p style="max-width:78ch;color:var(--ink-2);font-size:14px;margin:0 0 16px">Cada indicador abaixo responde três perguntas: o que é, como é calculado, e o que <b>não</b> conclui. A terceira é a que mais importa numa decisão, e a que quase nenhum painel publica.</p>
+  <div class="met">
+    <details><summary>Tokens por semana</summary><div class="body"><p><span class="k">o que é</span>Volume total processado via OpenRouter na semana, somando prompt e completion de todos os modelos do top 50 diário mais a linha agregada do resto.</p><p><span class="k">como é calculado</span>Soma dos totais diários da semana ISO, de segunda a domingo. Só semanas completas entram. Ao agrupar por mês, o valor exibido é a <b>média semanal do mês</b>, para que um mês de cinco semanas não pareça 25% maior que um de quatro.</p><p class="nao"><span class="k">o que não conclui</span>Não é o consumo mundial de IA. É o tráfego de um roteador, com o viés descrito no rodapé. Também não é comparável entre 2025 e 2026 sem normalizar: o denominador cresceu 231 vezes.</p></div></details>
+    <details><summary>Share de tokens</summary><div class="body"><p><span class="k">o que é</span>Fatia do volume semanal que cada modelo, laboratório ou categoria capturou.</p><p><span class="k">como é calculado</span>Tokens da entidade dividido pelo total da semana, incluindo a linha <span class='mono'>other</span> no denominador. Com filtro ativo, o denominador passa a ser o total do recorte.</p><p class="nao"><span class="k">o que não conclui</span>Não é market share de receita nem de usuários. Um modelo gratuito com muito tráfego tem share alto e receita zero. Compare sempre com o share do gasto.</p></div></details>
+    <details><summary>Share dos 5 maiores e HHI</summary><div class="body"><p><span class="k">o que é</span>Duas medidas de concentração: quanto os cinco maiores modelos capturam, e o índice Herfindahl-Hirschman sobre todos os modelos.</p><p><span class="k">como é calculado</span>O top 5 exclui a linha <span class='mono'>other</span> do ranking mas a mantém no denominador: a pergunta é quanto do mercado os cinco maiores capturam. O HHI soma o quadrado das participações percentuais, normalizando apenas sobre modelos nomeados, porque a linha agregada não tem participação definida. Abaixo de 1500 é considerado não concentrado na escala antitruste convencional.</p><p class="nao"><span class="k">o que não conclui</span>Concentração baixa não significa que trocar de modelo seja barato. Mede substitutos disponíveis, não custo de migração.</p></div></details>
+    <details><summary>Origem do laboratório</summary><div class="body"><p><span class="k">o que é</span>País-sede da organização que treinou o modelo.</p><p><span class="k">como é calculado</span>Atribuída por vendor, a partir do prefixo do slug. Modelos <span class='mono'>stealth/*</span> e <span class='mono'>openrouter/*</span> são testes anônimos e ficam como não identificados.</p><p class="nao"><span class="k">o que não conclui</span>Não diz onde a inferência roda, nem onde os dados trafegam. Um modelo chinês servido por provedor americano continua contando como chinês aqui.</p></div></details>
+    <details><summary>Licença dos pesos</summary><div class="body"><p><span class="k">o que é</span>Se os pesos do modelo estão publicamente disponíveis para download.</p><p><span class="k">como é calculado</span>Prova antes de heurística: a presença de <span class='mono'>hugging_face_id</span> no catálogo decide. Onde o campo não existe, cai numa heurística por padrão de nome, e o dado registra qual das duas respondeu.</p><p class="nao"><span class="k">o que não conclui</span>Pesos abertos não significa licença permissiva. Vários modelos aqui têm restrição de uso comercial, e a distinção não está no dado da fonte.</p></div></details>
+    <details><summary>Cobrança</summary><div class="body"><p><span class="k">o que é</span>Separa três coisas que costumam ser confundidas: modelo pago, endpoint gratuito de modelo pago, e modelo sem preço.</p><p><span class="k">como é calculado</span>Vem do campo de preço do catálogo. O sufixo <span class='mono'>:free</span> no slug identifica um endpoint gratuito do <b>mesmo</b> modelo, não um modelo diferente.</p><p class="nao"><span class="k">o que não conclui</span>Endpoint gratuito costuma ter limite de taxa e fila mais lenta. Volume ali não indica disposição a pagar.</p></div></details>
+    <details><summary>Faixa de preço e janela de contexto</summary><div class="body"><p><span class="k">o que é</span>Agrupamentos do preço misto por milhão de tokens e da janela de contexto máxima.</p><p><span class="k">como é calculado</span>Preço misto usa a mistura declarada de prompt e completion. As faixas são cortes fixos, publicados no código, não quantis móveis, para que o significado de cada faixa não mude de uma semana para a outra.</p><p class="nao"><span class="k">o que não conclui</span>Preço de tabela não é preço pago: desconto por volume, cache e contrato não aparecem. Contexto máximo anunciado também não garante qualidade em toda a janela.</p></div></details>
+    <details><summary>Gasto estimado</summary><div class="body"><p><span class="k">o que é</span>Quanto o tráfego da semana custaria a preço de tabela.</p><p><span class="k">como é calculado</span>Tokens multiplicados pelo preço de cada modelo. Como a fonte soma prompt e completion sem separar, e completion custa várias vezes mais, publicamos três números: piso (tudo prompt), teto (tudo completion) e a estimativa na mistura declarada. Endpoint gratuito custa zero.</p><p class="nao"><span class="k">o que não conclui</span>Não é receita de ninguém. Ignora desconto, cache, batch, contrato e o fato de parte do tráfego rodar em créditos promocionais. Serve para comparar posicionamento entre laboratórios, não para dimensionar faturamento.</p></div></details>
+    <details><summary>Preço efetivo do mercado</summary><div class="body"><p><span class="k">o que é</span>Quanto custa, em média, um milhão de tokens efetivamente consumidos.</p><p><span class="k">como é calculado</span>Gasto estimado da semana dividido pelo volume da semana.</p><p class="nao"><span class="k">o que não conclui</span>Queda no preço efetivo tem duas causas possíveis e o número não separa: os modelos ficaram mais baratos, ou a demanda migrou para os baratos. Neste dataset a segunda domina.</p></div></details>
+    <details><summary>Razão dinheiro sobre volume</summary><div class="body"><p><span class="k">o que é</span>Quanto do dinheiro um laboratório captura em relação ao quanto de tokens ele processa.</p><p><span class="k">como é calculado</span>Share do gasto estimado dividido pelo share de tokens. Razão 1 significa que o laboratório cobra o preço médio do mercado; acima de 1, cobra mais; abaixo, menos.</p><p class="nao"><span class="k">o que não conclui</span>Não mede margem nem eficiência. Um laboratório com razão alta pode simplesmente atender casos de uso mais caros, não ser mais lucrativo.</p></div></details>
+    <details><summary>Índice de Inteligência</summary><div class="body"><p><span class="k">o que é</span>Medida composta de capacidade dos modelos, produzida pela Artificial Analysis.</p><p><span class="k">como é calculado</span>Vem pronta pela API do OpenRouter, junto com os índices de código e agentes. Não recalculamos nada.</p><p class="nao"><span class="k">o que não conclui</span>A cobertura é parcial, em torno de um terço dos modelos com volume, e não é aleatória: modelos menos conhecidos são testados menos. Ausência de índice não é sinal de qualidade baixa.</p></div></details>
+    <details><summary>Rotatividade e idade do top 10</summary><div class="body"><p><span class="k">o que é</span>Quantos dos dez modelos mais usados são novos em relação a quatro semanas antes, e há quanto tempo os atuais estrearam no ranking.</p><p><span class="k">como é calculado</span>Rotatividade compara o conjunto atual com o de quatro semanas atrás. Idade mediana conta semanas desde a primeira aparição de cada modelo; as doze primeiras semanas da série são censuradas, porque não sabemos quando os modelos já presentes em janeiro de 2025 estrearam de fato.</p><p class="nao"><span class="k">o que não conclui</span>Rotatividade alta não significa que os modelos que saíram pioraram. Na maioria das vezes eles foram substituídos pela geração seguinte do mesmo laboratório.</p></div></details>
+    <details><summary>Tempo até o pico e meia-vida</summary><div class="body"><p><span class="k">o que é</span>Quantas semanas um modelo leva do lançamento até seu maior share, e quantas leva depois disso para perder metade dele.</p><p><span class="k">como é calculado</span>Calculado por modelo, sobre a série completa. Só entram modelos que atingiram ao menos 2% do volume semanal, para evitar que ruído de modelos minúsculos domine a mediana. Modelo que ainda não caiu à metade aparece sem meia-vida em vez de contar como zero.</p><p class="nao"><span class="k">o que não conclui</span>Meia-vida curta não é sinal de modelo ruim. É sinal de mercado com cadência alta de lançamento, e o efeito aparece em modelos bons e ruins igualmente.</p></div></details>
+    <details><summary>A forma de uma temporada</summary><div class="body"><p><span class="k">o que é</span>Curva média de adoção de um modelo, do lançamento ao decaimento.</p><p><span class="k">como é calculado</span>Cada modelo é alinhado na própria semana de estreia e normalizado pelo próprio pico, então o eixo horizontal vira idade do modelo e o vertical vira percentual do pico. A linha grossa é a mediana e a faixa é o intervalo entre o primeiro e o terceiro quartil.</p><p class="nao"><span class="k">o que não conclui</span>Não prevê a trajetória de um modelo específico. Descreve a distribuição observada, e a dispersão dentro da faixa é grande.</p></div></details>
+    <details><summary>Variação de share em quatro semanas</summary><div class="body"><p><span class="k">o que é</span>Diferença, em pontos percentuais, entre o share atual de um modelo e o de quatro semanas antes.</p><p><span class="k">como é calculado</span>Subtração simples de percentuais. Ao agrupar por mês, a comparação passa a ser com o mês anterior, que é o período equivalente.</p><p class="nao"><span class="k">o que não conclui</span>Ponto percentual não é percentual: sair de 1% para 2% é +1pp e também é dobrar. Para modelos pequenos, a variação relativa conta mais história.</p></div></details>
+    <details><summary>Sinais e extrapolação</summary><div class="body"><p><span class="k">o que é</span>Duas coisas diferentes na mesma seção. <b>Achados</b> são fatos já medidos que contrariam o padrão dominante da janela. <b>Extrapolação</b> é a taxa recente estendida em linha reta.</p><p><span class="k">como é calculado</span>Cada achado tem uma regra fixa e publicada no código: aceleração acima de dois desvios da própria oscilação do modelo, ganho de share em modelo mais caro que a mediana, permanência no top 10 acima do dobro da idade mediana, inversão de sinal na tendência do HHI, e afastamento de mais de 4 pontos entre as curvas de China e de pesos abertos. A extrapolação é uma reta por mínimos quadrados sobre as últimas 8 observações, projetada até o próximo marco redondo.</p><p class="nao"><span class="k">o que não conclui</span><b>Nada aqui é previsão.</b> A reta assume que a taxa se mantém, e a tese desta página é que ela não se mantém: nenhum modelo sustentou liderança por mais de dois trimestres neste dataset. O número serve para dimensionar ordem de grandeza e provocar a pergunta certa, nunca para planejar. Um achado também não explica causa: ele diz que algo saiu do padrão, e o trabalho de descobrir por quê continua sendo seu.</p></div></details>
+    <details><summary>A linha agregada da fonte</summary><div class="body"><p><span class="k">o que é</span>Volume que ficou fora do top 50 de cada dia, agregado pela fonte numa única linha.</p><p><span class="k">como é calculado</span>Vem pronta da API. Conta no total e no denominador dos percentuais, mas não tem metadado: não sabemos quais modelos a compõem.</p><p class="nao"><span class="k">o que não conclui</span>Por isso ela <b>sai de qualquer recorte filtrado</b>. Com filtro ativo, os percentuais passam a ser calculados dentro do recorte, e a barra de filtros informa quanto do volume ficou de fora.</p></div></details>
+  </div>
+</section>
+
+</main>
+<footer>
+  <p><b>Método.</b> Dados do endpoint público <span class="mono">GET /api/v1/datasets/rankings-daily</span> (period=day), agregados por semana ISO (segunda a domingo); apenas semanas completas. A linha "other" da API é o volume fora do top 50 diário; modelos que oscilam na fronteira do top 50 têm o volume semanal subcontado. Tokens contados pelo tokenizador de cada provedor.</p>
+  <p><b>Classificações.</b> Origem e licença dos pesos foram atribuídas por laboratório e por padrão de nome do modelo; casos ambíguos (MiMo Pro, variantes Qwen, Mistral) seguem a política de lançamento conhecida e podem conter erro. Modelos stealth/alpha (OpenRouter, "stealth/*") são testes anônimos de labs não identificados, gratuitos e geralmente de curta duração.</p>
+  <p><b>Viés da fonte.</b> OpenRouter concentra tráfego de desenvolvedores, agentes de código, roleplay e uso sensível a preço. Não representa o consumo enterprise direto via API dos labs nem via Bedrock/Vertex. Share aqui é share de tokens, não de receita.</p>
+  <p id="attrib"><b>Atribuição.</b> Source: OpenRouter (<a href="https://openrouter.ai/rankings" rel="noopener">openrouter.ai/rankings</a>), as of <span id="attrib-asof" class="mono"></span>. Dados licenciados sob <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>. Model Season não é afiliado ao OpenRouter.</p>
+</footer>
+</div>
+<script src="/vendor/d3.v7.min.js" is:inline></script>
+<script src="/scripts/app.js" is:inline></script>
+</body>
+</html>
