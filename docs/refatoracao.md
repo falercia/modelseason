@@ -1,3 +1,8 @@
+> **Supersedido em 09/09/2026 por [`arquitetura.md`](arquitetura.md).** A decisão mudou: em vez de
+> módulos ES sem empacotador, o alvo passou a ser Astro com Content Collections, porque ele resolve
+> nativamente conteúdo com schema, bilíngue e as 403 páginas por modelo. O diagnóstico e o teste de
+> foto continuam válidos e foram levados para o documento novo.
+
 # Model Season, plano de quebra do `index.html`
 
 Anotado em 09/09/2026, para executar antes do bilíngue. Não iniciado.
