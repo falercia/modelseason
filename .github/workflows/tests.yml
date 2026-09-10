@@ -38,6 +38,9 @@ jobs:
       - name: Invariantes do data.json
         run: python pipeline/selftest.py
 
+      - name: Checagens do arquivador de fontes sem histórico
+        run: python pipeline/test_snapshots.py
+
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
