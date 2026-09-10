@@ -1,0 +1,161 @@
+name: Arquivar fontes sem histórico
+
+# Quatro fontes do OpenRouter só mostram o presente. Este workflow guarda uma foto
+# por dia de cada uma, porque o dado de ontem some quando a foto de hoje sai.
+# Roda separado do diário de propósito: se ele quebrar, a página e o ranking
+# seguem atualizando normalmente.
+
+on:
+  schedule:
+    - cron: "15 7 * * *"   # 07:15 UTC = 04:15 America/Sao_Paulo, depois do diário das 06:30
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Fontes separadas por vírgula (vazio = todas): tasks,sessions,benchmarks,endpoints,apps"
+        required: false
+        default: ""
+      apps_day:
+        description: "Dia UTC para apps, AAAA-MM-DD (vazio = ontem)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  issues: write
+
+# Mesmo grupo do diário: os dois commitam na mesma branch e não podem empurrar
+# ao mesmo tempo. Se o diário estiver rodando, este espera.
+concurrency:
+  group: daily-update
+  cancel-in-progress: false
+
+jobs:
+  arquivar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pipeline/requirements.txt
+
+      - run: pip install -r pipeline/requirements.txt
+
+      - name: Verificar se o secret existe
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          if [ -z "$OPENROUTER_API_KEY" ]; then
+            echo "::error::Secret OPENROUTER_API_KEY não configurado no repositório."
+            exit 1
+          fi
+          echo "Secret presente."
+
+      # continue-on-error: uma fonte que falha não pode impedir que as outras
+      # sejam commitadas. O passo "Falhar se alguma fonte falhou" devolve o erro
+      # depois do commit, e é ele que abre a issue.
+      - name: Coletar
+        id: coleta
+        continue-on-error: true
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ONLY: ${{ inputs.only }}
+          APPS_DAY: ${{ inputs.apps_day }}
+        run: |
+          args=()
+          if [ -n "$ONLY" ]; then args+=(--only "$ONLY"); fi
+          if [ -n "$APPS_DAY" ]; then args+=(--apps-day "$APPS_DAY"); fi
+          python pipeline/snapshots.py "${args[@]}"
+
+      - name: Commitar o que foi coletado
+        run: |
+          git config user.name "modelseason-bot"
+          git config user.email "modelseason-bot@users.noreply.github.com"
+          for d in data/tasks data/sessions data/benchmarks data/endpoints data/apps; do
+            if [ -d "$d" ]; then git add "$d"; fi
+          done
+          if git diff --cached --quiet; then
+            echo "Nada novo para arquivar."
+            exit 0
+          fi
+          git diff --cached --stat
+          git commit -m "data: snapshots $(date -u +%F)"
+          for tentativa in 1 2 3; do
+            if git pull --rebase origin "$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME"; then
+              exit 0
+            fi
+            echo "::warning::push falhou na tentativa $tentativa. Nova tentativa em 15s."
+            sleep 15
+          done
+          echo "::error::Não consegui empurrar os snapshots."
+          exit 1
+
+      - name: Falhar se alguma fonte falhou
+        if: steps.coleta.outcome == 'failure'
+        run: |
+          echo "::error::Uma ou mais fontes falharam. O que deu certo já foi commitado. Detalhes no passo Coletar."
+          exit 1
+
+      - name: Abrir issue se falhou
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const titulo = 'Falha no arquivamento das fontes sem histórico';
+            const corpo = [
+              'A coleta diária das fontes sem histórico falhou, total ou parcialmente.',
+              '',
+              `**Run:** ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              `**Quando:** ${new Date().toISOString()}`,
+              '',
+              '**Urgência:** cada dia sem coleta é um dia perdido para sempre em tasks, sessions, benchmarks e endpoints. `apps` pode ser recuperado depois com `apps_day`.',
+              '',
+              'Checklist de diagnóstico:',
+              '1. O passo "Coletar" mostra qual fonte falhou e o código HTTP.',
+              '2. 401 ou 403: a chave continua válida?',
+              '3. 404 ou campo ausente: o endpoint mudou de contrato? Conferir em openrouter.ai/openapi.json.',
+              '4. "resposta vazia": a fonte devolveu 200 sem dado. Verificar se é problema da fonte antes de mexer no código.',
+              '5. Para recuperar só a fonte que falhou: Actions → este workflow → Run workflow, com `only` preenchido.',
+            ].join('\n');
+
+            const abertas = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'pipeline'
+            });
+            const existente = abertas.data.find(i => i.title === titulo);
+            if (existente) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: existente.number, body: corpo
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo,
+                title: titulo, body: corpo, labels: ['pipeline']
+              });
+            }
+
+      - name: Fechar issue se voltou a funcionar
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const titulo = 'Falha no arquivamento das fontes sem histórico';
+            const abertas = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'pipeline'
+            });
+            for (const i of abertas.data.filter(i => i.title === titulo)) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number,
+                body: `Coleta voltou a funcionar: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number, state: 'closed'
+              });
+            }

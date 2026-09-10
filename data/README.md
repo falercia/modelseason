@@ -1,6 +1,6 @@
 # data/
 
-Dois datasets, ambos versionados a cada atualização diária.
+Dois datasets tabulares, versionados a cada atualização diária, e cinco pastas de snapshots brutos das fontes que não guardam histórico.
 
 ## `rankings_daily.csv`
 
@@ -41,9 +41,19 @@ Metadados de cada modelo: preço, contexto, data de lançamento, modalidade, pes
 
 **Consolidação de variantes.** Vários `id` compartilham o mesmo `canonical_slug`, por exemplo `:free`, `:batch` e `:thinking` do mesmo modelo. O `fetch_models.py` consolida por slug: preço vem da variante sem sufixo, que é o modelo de verdade, e os demais campos são coalescidos.
 
+## Snapshots brutos: `tasks/`, `sessions/`, `benchmarks/`, `endpoints/`, `apps/`
+
+Uma foto por dia das fontes que só mostram o presente, gravada por `pipeline/snapshots.py`. Detalhes de cada fonte e das regras em [`docs/pipeline.md`](../docs/pipeline.md#arquivo-das-fontes-sem-histórico).
+
+- **Nome:** `AAAA-MM-DD.json.gz`, com a data informada pela própria fonte. Revisão da fonte para um dia já gravado vira `AAAA-MM-DD.r2.json.gz`; o original nunca é alterado.
+- **Conteúdo:** um envelope com `source`, `as_of`, `fetched_at`, `content_sha256`, `citation`, `license` e `requests`, a lista de chamadas feitas com `path`, `params` e a `response` exatamente como a API devolveu.
+- **Ler:** `gzip -dc data/tasks/2026-09-10.json.gz | jq .`
+
+Estes arquivos são a fonte de verdade. Qualquer tabela derivada deles, inclusive o banco da v2, pode ser reconstruída a partir daqui.
+
 ## Licença e atribuição
 
-Ambos os arquivos derivam de endpoints públicos do OpenRouter e estão sob [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Ao republicar ou citar:
+Todos os arquivos derivam de endpoints públicos do OpenRouter e estão sob [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Ao republicar ou citar:
 
 > Source: OpenRouter (openrouter.ai/rankings), as of {as_of}.
 

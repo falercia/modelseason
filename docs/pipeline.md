@@ -10,6 +10,12 @@ rankings-daily ──▶ fetch.py ───────▶ data/rankings_daily.c
 /api/v1/models ──▶ fetch_models.py ▶ data/models_catalog.csv ─┘                    │
                                                                           make_og.py ─▶ public/og.png
 GitHub Actions (06:30 UTC) commita ──▶ Vercel redeploya ──▶ public/index.html
+
+classifications/task ─┐
+session-cost ─────────┤
+benchmarks ───────────┼─▶ snapshots.py ─▶ data/{tasks,sessions,benchmarks,endpoints,apps}/AAAA-MM-DD.json.gz
+models/{id}/endpoints ┤                   (GitHub Actions, 07:15 UTC, workflow próprio)
+app-rankings ─────────┘
 ```
 
 `fetch.py` traz volume. `fetch_models.py` traz o que cada modelo é: preço, contexto, lançamento, modalidade, pesos e índices de qualidade. `enrich.py` casa os dois e deriva as dimensões que os gráficos usam.
@@ -67,10 +73,43 @@ python pipeline/check_freshness.py --max-lag-days 5 --warn-lag-days 1
 
 O `workflow_dispatch` aceita `max_lag_days` e `warn_lag_days`, então dá para testar outro limite sem editar arquivo.
 
+## Arquivo das fontes sem histórico
+
+Quatro fontes da API só mostram o presente: a foto de hoje apaga a de ontem. `pipeline/snapshots.py` guarda uma foto por dia de cada uma, e com o tempo isso vira uma série que não existe em nenhum outro lugar.
+
+| Fonte | Endpoint | O que é | Histórico na fonte |
+|---|---|---|---|
+| `tasks` | `/classifications/task` | Share de uso por finalidade, com os modelos de cada tarefa | Nenhum, só os últimos 7 dias |
+| `sessions` | `/datasets/session-cost` | Custo mediano por sessão, por harness, modelo e faixa de turnos | Nenhum, atualiza semanalmente |
+| `benchmarks` | `/benchmarks` | Artificial Analysis, Design Arena e avaliações do OpenRouter, com custo por tarefa | Nenhum |
+| `endpoints` | `/models/{id}/endpoints` | Preço e contexto do mesmo modelo em cada provedor, para os 50 maiores | Nenhum, e não exige chave |
+| `apps` | `/datasets/app-rankings` | Top apps do dia, geral, trending, por categoria e por subcategoria | Aceita datas passadas desde 01/01/2025 |
+
+Regras do arquivador:
+
+- **Resposta bruta.** Nada é filtrado nem renomeado. O parser vem depois e pode ser refeito a partir do arquivo.
+- **Data da fonte no nome do arquivo**, nunca a do relógio. A exceção é `endpoints`, que não informa data e usa o dia UTC da coleta.
+- **Nunca sobrescreve.** Mesmo conteúdo na mesma data não gera arquivo. Se a fonte revisar um dia já gravado, a revisão vira `AAAA-MM-DD.r2.json.gz` e o original fica intacto.
+- **Campos voláteis fora da comparação.** Em `endpoints`, status, uptime, latência e throughput de provedor mudam a cada minuto; em `apps`, o `meta.as_of` é o horário da consulta. Eles ficam no arquivo, mas não contam como revisão.
+- **Falha alto.** Resposta vazia é falha. Uma fonte que falha não impede as outras de gravar, e o workflow abre uma issue com label `pipeline`.
+- **gzip.** O JSON indentado dava cerca de 650 KB por dia só em `endpoints`; comprimido fica em torno de 30 KB. Para ler: `gzip -dc data/tasks/2026-09-10.json.gz | jq .`
+
+O workflow é `.github/workflows/snapshots.yml`, separado do diário de propósito: se ele quebrar, a página segue atualizando. Divide o grupo de concorrência com o diário, então os dois nunca empurram ao mesmo tempo.
+
+```bash
+python pipeline/snapshots.py                          # todas as fontes, exige a chave
+python pipeline/snapshots.py --only tasks,sessions
+python pipeline/snapshots.py --only endpoints --out /tmp/teste   # sem chave
+python pipeline/snapshots.py --only apps --apps-day 2026-08-01   # recuperar um dia de apps
+python pipeline/test_snapshots.py                     # checagens offline, sem rede
+```
+
+Pelo Actions: *Run workflow* no "Arquivar fontes sem histórico", com `only` e `apps_day` opcionais.
+
 ## Limites da API
 
 - Janela máxima de 366 dias por chamada. O `fetch.py` fatia em blocos de 364.
-- 30 requisições por minuto por chave, 500 por dia por conta. O ciclo diário usa uma.
+- 30 requisições por minuto por chave, 500 por dia por conta. O ciclo diário usa uma, o arquivador cerca de 27. `endpoints` é público e não conta.
 - O dataset começa em 2025-01-01.
 - `period=week` só existe com filtro de categoria, por isso a agregação semanal é feita localmente a partir do diário.
 
