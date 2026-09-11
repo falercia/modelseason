@@ -8,6 +8,15 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ### Adicionado
 
+- **Versão em inglês** em `/en`, com todas as páginas, painéis do "?", filtros, tooltips, rótulos de eixo e textos gerados por regra. Português continua na raiz sem nenhuma URL alterada; `/pt/...` redireciona para a raiz e o 404 sai no idioma certo. Seletor PT/EN no topo preserva recorte e âncora. `hreflang` nos dois sentidos, sitemap com as duas línguas e card social próprio (`og-en.png`). Arquitetura e glossário em `docs/i18n.md`.
+- **Formatação por idioma** (`lib/format.ts`, `formatadores(lang)`): vírgula e ponto decimal, `US$ 3,00` e `$3.00`, `1,2 mi` e `1.2M`, `08 set 26` e `Sep 8, 2026`, ordinal `15º` e `15th`. O português é comparado, saída por saída, com a foto da formatação da v1 (`tests/format.test.ts`).
+- **Rótulos do dado por idioma** (`lib/rotulos.ts`): origem, licença, cobrança, faixas, famílias, tarefas, categorias de app e países. A chave do dado não muda; o teste falha se o `data.json` trouxer valor sem rótulo em inglês.
+- Conteúdo editorial em `content/*/en`, com paridade exigida pelo `scripts/conteudo.mjs` (mesmos gráficos, tipos e indicadores) e recusa de marca de português no inglês.
+
+### Alterado
+
+- O pipeline passou a publicar os números da manchete e de "o que mudou" (campo `dados` em `data/web/agora.json`), e o motor passou a devolver os sinais da seção 14 como tipo e números. As frases são montadas no front, em cada idioma. Os textos em português do pipeline continuam no JSON como referência.
+- Pequenas correções no português encontradas na revisão: plural de "1 modelo estreou", "1 tarefa", "1 modelo" nos turnos de sessão, concordância de "requisições classificadas" e de "nas últimas N semanas"; data de estreia em "o que mudou" agora formatada (`10 set 26`, antes `2026-09-10`); sinal de menos tipográfico nas variações em pp.
 - **Google Analytics 4**, inerte até existir `NEXT_PUBLIC_GA_ID` na Vercel (só Production). Consent Mode com publicidade negada por padrão e aviso no rodapé quando ativo. Testado com e sem a variável: sem ela, nenhum script de terceiro é carregado e o e2e passa inteiro.
 - **Foto diária do catálogo completo de modelos** (`/models?output_modalities=all`) em `data/catalogs/models/`. O `fetch_models.py` guarda só o preço de hoje e sobrescreve o de ontem; sem essa foto, o preço de cada dia se perde e o gasto histórico continua calculado com o preço atual. É a base da tabela de versões de preço do banco. Uma chamada pública por dia, sem consumir a cota da chave. Falha se a lista vier menor que o `total_count` ou abaixo de 250 modelos.
 

@@ -7,7 +7,7 @@
  */
 import { useId, useRef, useState } from 'react';
 import { cor } from '@/components/graficos/base';
-import { fmtP } from '@/lib/format';
+import { useIdioma } from '@/components/shell/Idioma';
 import s from './s12.module.css';
 
 export interface OpcaoModelo { slug: string; nome: string; lab: string; share: number; ativo: boolean }
@@ -19,6 +19,7 @@ export function Combobox({ rotulo, slot, valor, opcoes, onEscolher }: {
   rotulo: string; slot: string; valor: OpcaoModelo; opcoes: OpcaoModelo[]; onEscolher: (slug: string) => void;
 }) {
   const id = useId();
+  const { t, f } = useIdioma();
   const [texto, setTexto] = useState<string | null>(null); // null = mostrando o selecionado
   const [aberto, setAberto] = useState(false);
   const [foco, setFoco] = useState(-1);
@@ -27,7 +28,7 @@ export function Combobox({ rotulo, slot, valor, opcoes, onEscolher }: {
   const consulta = texto == null ? '' : normal(texto.trim());
   const termos = consulta.split(/\s+/).filter(Boolean);
   const achados = (termos.length
-    ? opcoes.filter(o => { const h = normal(`${o.nome} ${o.lab} ${o.slug}`); return termos.every(t => h.includes(t)); })
+    ? opcoes.filter(o => { const h = normal(`${o.nome} ${o.lab} ${o.slug}`); return termos.every(k => h.includes(k)); })
     : opcoes).slice(0, LIMITE);
 
   const fechar = () => { setAberto(false); setFoco(-1); setTexto(null); };
@@ -47,7 +48,7 @@ export function Combobox({ rotulo, slot, valor, opcoes, onEscolher }: {
         aria-expanded={aberto} aria-controls={id + 'l'} aria-autocomplete="list"
         aria-activedescendant={aberto && foco >= 0 ? `${id}o${foco}` : undefined}
         aria-describedby={id + 's'}
-        placeholder="digite parte do nome, ex.: sonnet"
+        placeholder={t({ pt: 'digite parte do nome, ex.: sonnet', en: 'type part of the name, e.g. sonnet' })}
         value={texto ?? valor.nome}
         onFocus={e => { setAberto(true); setFoco(-1); e.currentTarget.select(); }}
         onChange={e => { setTexto(e.target.value); setAberto(true); setFoco(-1); }}
@@ -59,17 +60,17 @@ export function Combobox({ rotulo, slot, valor, opcoes, onEscolher }: {
           else if (e.key === 'Escape') { if (aberto) { e.preventDefault(); fechar(); } }
         }}
       />
-      <span className={s.slug + ' mono'} id={id + 's'}>{valor.slug}{valor.ativo ? '' : ' · sem volume no último período'}</span>
-      <ul ref={lista} id={id + 'l'} role="listbox" aria-label={`Modelos para ${rotulo}`} className={s.lista} hidden={!aberto}>
+      <span className={s.slug + ' mono'} id={id + 's'}>{valor.slug}{valor.ativo ? '' : t({ pt: ' · sem volume no último período', en: ' · no volume in the latest period' })}</span>
+      <ul ref={lista} id={id + 'l'} role="listbox" aria-label={t({ pt: `Modelos para ${rotulo}`, en: `Options for ${rotulo}` })} className={s.lista} hidden={!aberto}>
         {achados.length ? achados.map((o, i) => (
           <li key={o.slug} id={`${id}o${i}`} role="option" aria-selected={i === foco}
             // mousedown, não click: o blur do campo fecharia a lista antes do clique.
             onMouseDown={e => { e.preventDefault(); escolher(o.slug); }}>
             <span className={s.nm}>{o.nome}</span>
             <small className="mono">{o.lab} · {o.slug}</small>
-            <b>{o.ativo ? fmtP(o.share, o.share < 1 ? 2 : 1) : 'sem volume'}</b>
+            <b>{o.ativo ? f.fmtP(o.share, o.share < 1 ? 2 : 1) : t({ pt: 'sem volume', en: 'no volume' })}</b>
           </li>
-        )) : <li className={s.nada} role="option" aria-disabled="true" aria-selected={false}>nenhum modelo do recorte com esse termo</li>}
+        )) : <li className={s.nada} role="option" aria-disabled="true" aria-selected={false}>{t({ pt: 'nenhum modelo do recorte com esse termo', en: 'no model in the filtered view matches that term' })}</li>}
       </ul>
     </div>
   );

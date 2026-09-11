@@ -10,6 +10,15 @@ export interface Lider {
   slug?: string; nome?: string; lab?: string; valor?: number; n?: number; inteligencia?: number;
   vice?: { nome: string; valor: number } | null; empate?: { slug: string; nome: string }[] | null;
 }
+/** Números e nomes da manchete; o texto é montado no front, por idioma. */
+export interface DadosManchete {
+  slug: string; nome: string; lab?: string; dias?: number; share?: number; de?: number | null; para?: number | null;
+  estreias?: number; delta_pp?: number; rank_anterior?: number | null; lider_30d?: string;
+}
+export interface DadosMudou {
+  nome: string; de?: number; para?: number; delta_pp?: number; primeiro_dia?: string;
+  share?: number; mesmo_lab?: { nome: string; delta_pp: number } | null;
+}
 export interface Agora {
   ultimo_dia: string; janelas: Record<string, [string, string]>;
   top7: LinhaTop[]; top30: LinhaTop[]; subiram: Movimento[]; cairam: Movimento[]; estreias: Estreia[];
@@ -20,8 +29,8 @@ export interface Agora {
     preco_efetivo: number | null; preco_cobertura_pct: number | null; top5_pct: number | null; hhi: number | null;
     china_pct: number; abertos_pct: number; estreias: number; diario_30d: { d: string; T: number }[];
   };
-  manchete: { regra: string; titulo: string; destaques: string[]; texto: string };
-  mudou: { tipo: string; slug: string; titulo: string; evidencia: string; observar: string }[];
+  manchete: { regra: string; titulo: string; destaques: string[]; texto: string; dados?: DadosManchete };
+  mudou: { tipo: string; slug: string; titulo: string; evidencia: string; observar: string; dados?: DadosMudou }[];
   lideres: Lider[];
 }
 export interface AppLinha { rank: number; app_id: number; nome: string; T: number; requisicoes: number | null }

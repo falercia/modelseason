@@ -1,6 +1,7 @@
 'use client';
 import type { ReactNode } from 'react';
 import { BotaoInfo, useInfo } from './Info';
+import { useIdioma } from './Idioma';
 
 /**
  * Cartão de gráfico. Título e subtítulo vêm do conteúdo cadastrado (content/
@@ -10,12 +11,13 @@ export function Cartao({ id, titulo, subtitulo, acoes, children, className, novo
   id: string; titulo?: ReactNode; subtitulo?: ReactNode; acoes?: ReactNode; children: ReactNode; className?: string; novo?: boolean;
 }) {
   const { conteudo } = useInfo();
+  const { t } = useIdioma();
   const g = conteudo.graficos[id];
   return (
     <div className={'card' + (className ? ' ' + className : '')} data-chart={id} data-tipo={g?.tipo}>
       <div className="card-h">
         <div style={{ minWidth: 0 }}>
-          <h3>{titulo ?? g?.titulo ?? id} {novo && <span className="badge" style={{ marginLeft: 6, verticalAlign: 2 }}>novo</span>}</h3>
+          <h3>{titulo ?? g?.titulo ?? id} {novo && <span className="badge" style={{ marginLeft: 6, verticalAlign: 2 }}>{t({ pt: 'novo', en: 'new' })}</span>}</h3>
           {(subtitulo ?? g?.subtitulo) && <p>{subtitulo ?? g?.subtitulo}</p>}
         </div>
         <div className="acoes">{acoes}<BotaoInfo id={id} /></div>

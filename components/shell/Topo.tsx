@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { BotaoComoLer } from './Info';
-import { urlModelo } from '@/lib/format';
+import { SeletorIdioma, useIdioma } from './Idioma';
 
 export type ItemBusca = { s: string; n: string; l: string; sh: number };
 
@@ -15,6 +15,7 @@ export function Busca({ itens }: { itens: ItemBusca[] }) {
   const [aberto, setAberto] = useState(false);
   const [sel, setSel] = useState(0);
   const router = useRouter();
+  const { t, f, modelo, nomeLab } = useIdioma();
   const box = useRef<HTMLDivElement>(null);
   const res = useMemo(() => {
     const t = normal(q.trim()); if (!t) return [];
@@ -31,11 +32,11 @@ export function Busca({ itens }: { itens: ItemBusca[] }) {
     };
     document.addEventListener('keydown', k); return () => document.removeEventListener('keydown', k);
   }, []);
-  const ir = (s: string) => { setAberto(false); setQ(''); router.push(urlModelo(s)); };
+  const ir = (s: string) => { setAberto(false); setQ(''); router.push(modelo(s)); };
   return (
     <div className="busca" ref={box} role="search">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><circle cx="7" cy="7" r="4.5" /><path d="M10.5 10.5L14 14" /></svg>
-      <input type="search" value={q} placeholder="Buscar modelo ou laboratório" aria-label="Buscar modelo ou laboratório"
+      <input type="search" value={q} placeholder={t({ pt: 'Buscar modelo ou laboratório', en: 'Search model or lab' })} aria-label={t({ pt: 'Buscar modelo ou laboratório', en: 'Search model or lab' })}
         role="combobox" aria-expanded={aberto && !!q} aria-controls="busca-lista" aria-autocomplete="list"
         onChange={e => { setQ(e.target.value); setAberto(true); setSel(0); }} onFocus={() => setAberto(true)}
         onKeyDown={e => {
@@ -48,12 +49,12 @@ export function Busca({ itens }: { itens: ItemBusca[] }) {
         <ul id="busca-lista" role="listbox">
           {res.length ? res.map((r, i) => (
             <li key={r.s} role="option" aria-selected={i === sel}>
-              <Link href={urlModelo(r.s)} onClick={() => { setAberto(false); setQ(''); }}>
-                <span>{r.n}</span><small>{r.l} · <span className="mono">{r.s}</span></small>
-                <b>{r.sh > 0 ? r.sh.toFixed(1).replace('.', ',') + '%' : 'fora da semana'}</b>
+              <Link href={modelo(r.s)} onClick={() => { setAberto(false); setQ(''); }}>
+                <span>{r.n}</span><small>{nomeLab(r.l)} · <span className="mono">{r.s}</span></small>
+                <b>{r.sh > 0 ? f.fmtP(r.sh) : t({ pt: 'fora da semana', en: 'not this week' })}</b>
               </Link>
             </li>
-          )) : <li className="nada">Nenhum modelo com esse nome.</li>}
+          )) : <li className="nada">{t({ pt: 'Nenhum modelo com esse nome.', en: 'No model by that name.' })}</li>}
         </ul>
       )}
     </div>
@@ -61,6 +62,7 @@ export function Busca({ itens }: { itens: ItemBusca[] }) {
 }
 
 export function Tema() {
+  const { t } = useIdioma();
   const [tema, setTema] = useState<'claro' | 'escuro' | null>(null);
   useEffect(() => {
     const t = document.documentElement.dataset.theme;
@@ -73,20 +75,23 @@ export function Tema() {
     setTema(novo);
   };
   return (
-    <button type="button" className="tbtn" onClick={trocar} aria-label={tema === 'escuro' ? 'Usar tema claro' : 'Usar tema escuro'} title="Alternar tema">
+    <button type="button" className="tbtn" onClick={trocar} aria-label={tema === 'escuro' ? t({ pt: 'Usar tema claro', en: 'Use light theme' }) : t({ pt: 'Usar tema escuro', en: 'Use dark theme' })}
+      title={t({ pt: 'Alternar tema', en: 'Toggle theme' })}>
       <span aria-hidden="true">◐</span>
     </button>
   );
 }
 
 export function Topo({ itens }: { itens: ItemBusca[] }) {
+  const { t, url } = useIdioma();
   return (
     <header className="top">
       <div className="top-in">
-        <Link href="/" className="brand">Model Season <span className="mono">temporadas de modelos</span></Link>
+        <Link href={url('/')} className="brand">Model Season <span className="mono">{t({ pt: 'temporadas de modelos', en: 'every model has a season' })}</span></Link>
         <Busca itens={itens} />
         <span className="sp" />
         <BotaoComoLer />
+        <SeletorIdioma />
         <Tema />
       </div>
     </header>
@@ -95,6 +100,7 @@ export function Topo({ itens }: { itens: ItemBusca[] }) {
 
 /** Índice lateral com a seção visível destacada. */
 export function Indice({ grupos }: { grupos: { lbl: string; itens: { href: string; n: string; t: string }[] }[] }) {
+  const { t } = useIdioma();
   const [atual, setAtual] = useState<string>('');
   useEffect(() => {
     const ids = grupos.flatMap(g => g.itens.map(i => i.href.slice(1)));
@@ -106,7 +112,7 @@ export function Indice({ grupos }: { grupos: { lbl: string; itens: { href: strin
     els.forEach(e => io.observe(e)); return () => io.disconnect();
   }, [grupos]);
   return (
-    <nav className="rail" aria-label="Índice da página">
+    <nav className="rail" aria-label={t({ pt: 'Índice da página', en: 'Page contents' })}>
       {grupos.map(g => (
         <div className="grp" key={g.lbl}>
           <p className="lbl">{g.lbl}</p>

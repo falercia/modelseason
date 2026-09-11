@@ -290,7 +290,11 @@ def pp(v):
 
 
 def escrever_manchete(top7, subiram, estreias, idade, top30):
-    """Manchete por regra, em ordem de prioridade. Nenhuma frase sem numero medido."""
+    """Manchete por regra, em ordem de prioridade. Nenhuma frase sem numero medido.
+
+    "dados" leva os numeros e nomes que a frase usa: o front monta o texto em cada
+    idioma a partir dele (lib/manchete.ts). Os campos de texto em portugues ficam
+    como referencia e para o teste de paridade, e o front nao os exibe."""
     novo_no_topo = [x for x in idade if x["dias"] <= 21 and x["slug"] in [t["slug"] for t in top7[:3]]]
     if novo_no_topo:
         x = novo_no_topo[0]
@@ -300,22 +304,27 @@ def escrever_manchete(top7, subiram, estreias, idade, top30):
         return {"regra": "lancamento_recente_no_topo",
                 "titulo": f"Um modelo lançado há {x['dias']} dias já leva {pp(x['share'])}% do tráfego.",
                 "destaques": [f"{x['dias']} dias", f"{pp(x['share'])}%"],
-                "texto": detalhe + (f" {len(estreias)} modelos estrearam nos últimos sete dias." if estreias else "")}
+                "texto": detalhe + (f" {len(estreias)} modelos estrearam nos últimos sete dias." if estreias else ""),
+                "dados": {"slug": x["slug"], "nome": x["nome"], "lab": x["lab"], "dias": x["dias"], "share": x["share"],
+                          "de": sub["de"] if sub else None, "para": sub["para"] if sub else None, "estreias": len(estreias)}}
     if subiram and subiram[0]["delta_pp"] >= 3:
         s = subiram[0]
         return {"regra": "maior_alta",
                 "titulo": f"{s['nome']} ganhou {pp(s['delta_pp'])} pontos de share em uma semana.",
                 "destaques": [f"{pp(s['delta_pp'])} pontos"],
-                "texto": f"Saiu de {pp(s['de'])}% para {pp(s['para'])}% do volume. É a maior alta entre as duas últimas janelas de sete dias."}
+                "texto": f"Saiu de {pp(s['de'])}% para {pp(s['para'])}% do volume. É a maior alta entre as duas últimas janelas de sete dias.",
+                "dados": {"slug": s["slug"], "nome": s["nome"], "delta_pp": s["delta_pp"], "de": s["de"], "para": s["para"]}}
     if top7 and top7[0]["rank_anterior"] not in (None, 1):
         x = top7[0]
         return {"regra": "troca_de_lider",
                 "titulo": f"{x['nome']} assumiu a liderança com {pp(x['share'])}% do tráfego.",
                 "destaques": [f"{pp(x['share'])}%"],
-                "texto": f"Na semana anterior ele era o {x['rank_anterior']}º."}
+                "texto": f"Na semana anterior ele era o {x['rank_anterior']}º.",
+                "dados": {"slug": x["slug"], "nome": x["nome"], "share": x["share"], "rank_anterior": x["rank_anterior"]}}
     x = top7[0]
     return {"regra": "lider_estavel", "titulo": f"{x['nome']} segue na liderança, com {pp(x['share'])}% do tráfego.",
-            "destaques": [f"{pp(x['share'])}%"], "texto": f"Em 30 dias, o líder é {top30[0]['nome']}."}
+            "destaques": [f"{pp(x['share'])}%"], "texto": f"Em 30 dias, o líder é {top30[0]['nome']}.",
+            "dados": {"slug": x["slug"], "nome": x["nome"], "share": x["share"], "lider_30d": top30[0]["nome"]}}
 
 
 def o_que_mudou(top7, sp7, tp7, subiram, cairam, estreias, cat):
@@ -326,7 +335,8 @@ def o_que_mudou(top7, sp7, tp7, subiram, cairam, estreias, cat):
         itens.append({"tipo": "subiu", "slug": s["slug"],
                       "titulo": f"{s['nome']} ganhou espaço",
                       "evidencia": f"Share de {pp(s['de'])}% para {pp(s['para'])}% entre as duas últimas janelas de 7 dias (+{pp(s['delta_pp'])} pp).",
-                      "observar": "Uma semana é pico ou tendência? A regra só chama de sustentado quando a alta se repete em janelas sem sobreposição."})
+                      "observar": "Uma semana é pico ou tendência? A regra só chama de sustentado quando a alta se repete em janelas sem sobreposição.",
+                      "dados": {"nome": s["nome"], "de": s["de"], "para": s["para"], "delta_pp": s["delta_pp"]}})
     if cairam:
         c = cairam[0]
         mesmo_lab = next((s for s in subiram if s["lab"] == c["lab"] and s["slug"] != c["slug"]), None)
@@ -334,12 +344,15 @@ def o_que_mudou(top7, sp7, tp7, subiram, cairam, estreias, cat):
                if mesmo_lab else "Queda de share pode ser crescimento dos outros. Confira o volume absoluto na página do modelo antes de concluir.")
         itens.append({"tipo": "caiu", "slug": c["slug"], "titulo": f"{c['nome']} perdeu espaço",
                       "evidencia": f"Share de {pp(c['de'])}% para {pp(c['para'])}% ({pp(c['delta_pp'])} pp).",
-                      "observar": obs})
+                      "observar": obs,
+                      "dados": {"nome": c["nome"], "de": c["de"], "para": c["para"], "delta_pp": c["delta_pp"],
+                                "mesmo_lab": {"nome": mesmo_lab["nome"], "delta_pp": mesmo_lab["delta_pp"]} if mesmo_lab else None}})
     if estreias:
         e = max(estreias, key=lambda x: x["share"])
         itens.append({"tipo": "estreou", "slug": e["slug"], "titulo": f"{e['nome']} estreou",
                       "evidencia": f"Primeiro volume registrado em {e['primeiro_dia']}, já com {pp(e['share'])}% do tráfego da semana.",
-                      "observar": "Estreia no roteador não é data de lançamento, e share de estreia costuma incluir tráfego de teste."})
+                      "observar": "Estreia no roteador não é data de lançamento, e share de estreia costuma incluir tráfego de teste.",
+                      "dados": {"nome": e["nome"], "primeiro_dia": e["primeiro_dia"], "share": e["share"]}})
     return itens[:3]
 
 

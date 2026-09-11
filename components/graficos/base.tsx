@@ -6,8 +6,9 @@
  */
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import * as d3 from 'd3';
-import { fPer } from '@/lib/format';
+import type { Fmt } from '@/lib/format';
 import type { Gran } from '@/lib/engine';
+import { useIdioma } from '@/components/shell/Idioma';
 
 const useIsoLayout = typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
@@ -32,8 +33,9 @@ export interface ItemSerie { key: string; label: string; values: (number | null)
 export interface Margem { t: number; r: number; b: number; l: number }
 
 export function Legenda({ itens, ocultos, alternar }: { itens: { key: string; label: string; slot: string }[]; ocultos?: Set<string>; alternar?: (k: string) => void }) {
+  const { t } = useIdioma();
   return (
-    <div className="legenda" role={alternar ? 'group' : undefined} aria-label={alternar ? 'Séries: clique para mostrar ou ocultar' : undefined}>
+    <div className="legenda" role={alternar ? 'group' : undefined} aria-label={alternar ? t({ pt: 'Séries: clique para mostrar ou ocultar', en: 'Series: click to show or hide' }) : undefined}>
       {itens.map(it => alternar
         ? <button key={it.key} type="button" aria-pressed={!ocultos?.has(it.key)} onClick={() => alternar(it.key)}><i style={{ background: cor(it.slot) }} />{it.label}</button>
         : <span key={it.key} className="item"><i style={{ background: cor(it.slot) }} />{it.label}</span>)}
@@ -51,9 +53,9 @@ export function useOcultos() {
  * Marcas do eixo x. Janela longa: uma marca por mês ou trimestre, com o ano na
  * primeira e sempre que ele vira. Janela curta (até ~3 meses): dia e mês, porque
  * "jun jun jun" não diz nada. Nunca menos de 3 marcas quando há pontos para isso.
+ * O rótulo segue o idioma: "08 set" / "Sep 8", "jan 26" / "Jan '26".
  */
-export function marcasTempo(x: d3.ScaleTime<number, number>, largura: number, datas?: Date[]) {
-  const MES = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+export function marcasTempo(x: d3.ScaleTime<number, number>, largura: number, datas: Date[] | undefined, f: Fmt) {
   const [d0, d1] = x.domain();
   const dias = (+d1 - +d0) / 864e5;
   const cabem = Math.max(3, Math.min(9, Math.floor(largura / 78)));
@@ -62,7 +64,7 @@ export function marcasTempo(x: d3.ScaleTime<number, number>, largura: number, da
     const base = datas && datas.length ? datas : x.ticks(cabem);
     const passo = Math.max(1, Math.ceil(base.length / cabem));
     const sel = base.filter((_, i) => i % passo === 0);
-    return sel.map(d => ({ d, rot: `${String(d.getDate()).padStart(2, '0')} ${MES[d.getMonth()]}` }));
+    return sel.map(d => ({ d, rot: f.marcaDia(d) }));
   }
   const meses = Math.max(1, Math.round(dias / 30.4));
   const k = [1, 2, 3, 4, 6, 12].find(v => meses / v <= cabem) ?? 12;
@@ -70,7 +72,7 @@ export function marcasTempo(x: d3.ScaleTime<number, number>, largura: number, da
   let anoAnt: number | null = null;
   return ticks.map(d => {
     const y = d.getFullYear(); const mostra = anoAnt === null || y !== anoAnt; anoAnt = y;
-    return { d, rot: MES[d.getMonth()] + (mostra ? ' ' + String(y).slice(2) : '') };
+    return { d, rot: f.marcaMes(d, mostra) };
   });
 }
 
@@ -92,6 +94,7 @@ export function Temporal({
 }) {
   const [ref, w] = useLargura<HTMLDivElement>();
   const [hover, setHover] = useState<number | null>(null);
+  const { t, f } = useIdioma();
   const N = eixo.length;
   const datas = eixo.map(s => new Date(s + 'T00:00:00'));
   const x = d3.scaleTime().domain([datas[0], datas[N - 1] ?? datas[0]]).range([m.l, w - m.r]);
@@ -109,7 +112,7 @@ export function Temporal({
   }
   const y = d3.scaleLinear().domain([ymin, topo]).nice(4).range([altura - m.b, m.t]);
   const yt = y.ticks(4).filter(t => !inteiro || Number.isInteger(t));
-  const marcas = N > 3 ? marcasTempo(x, w - m.l - m.r, datas) : datas.map(d => ({ d, rot: fPer(d3.timeFormat('%Y-%m-%d')(d), gran) }));
+  const marcas = N > 3 ? marcasTempo(x, w - m.l - m.r, datas, f) : datas.map(d => ({ d, rot: f.fPer(d3.timeFormat('%Y-%m-%d')(d), gran) }));
   const linha = d3.line<number | null>().defined(v => v != null).x((_, i) => x(datas[i])).y(v => y(v as number));
   const area = d3.area<number | null>().defined(v => v != null).x((_, i) => x(datas[i])).y0(y(Math.max(ymin, 0))).y1(v => y(v as number));
 
@@ -123,11 +126,11 @@ export function Temporal({
 
   const tip = hover != null ? (
     <div className="tip" style={{ left: Math.min(Math.max(0, x(datas[hover]) + 14), Math.max(0, w - 230)), top: 4 }}>
-      <div className="t">{fPer(eixo[hover], gran)}</div>
+      <div className="t">{f.fPer(eixo[hover], gran)}</div>
       {(modo === 'empilhada' ? [...series].reverse() : series).map(s => s.values[hover] != null && (
         <div className="r" key={s.key}><span><i style={{ background: cor(s.slot) }} />{s.label}</span><b>{fmt(s.values[hover] as number)}</b></div>
       ))}
-      {banda && <div className="r"><span>faixa</span><b>{fmt(banda.piso[hover])} a {fmt(banda.teto[hover])}</b></div>}
+      {banda && <div className="r"><span>{t({ pt: 'faixa', en: 'range' })}</span><b>{fmt(banda.piso[hover])} {t({ pt: 'a', en: 'to' })} {fmt(banda.teto[hover])}</b></div>}
       {tipExtra?.(hover).map((l, k) => <div className="r" key={'x' + k}><span>{l.cor && <i style={{ background: cor(l.cor) }} />}{l.rot}</span><b>{l.val}</b></div>)}
     </div>
   ) : null;
@@ -135,9 +138,9 @@ export function Temporal({
   return (
     <div className="plot" ref={ref} onPointerLeave={() => setHover(null)}>
       <svg viewBox={`0 0 ${w} ${altura}`} role="img" aria-label={rotuloAria} style={{ height: altura }}>
-        <g className="grid">{yt.map(t => <line key={t} x1={m.l} x2={w - m.r} y1={y(t)} y2={y(t)} />)}</g>
+        <g className="grid">{yt.map(v => <line key={v} x1={m.l} x2={w - m.r} y1={y(v)} y2={y(v)} />)}</g>
         <g className="ax">
-          {yt.map(t => <text key={t} x={m.l - 7} y={y(t) + 3.5} textAnchor="end">{(fmtEixo ?? fmt)(t)}</text>)}
+          {yt.map(v => <text key={v} x={m.l - 7} y={y(v) + 3.5} textAnchor="end">{(fmtEixo ?? fmt)(v)}</text>)}
           {marcas.map(({ d, rot }) => <text key={+d} x={x(d)} y={altura - m.b + 16} textAnchor="middle">{rot}</text>)}
         </g>
         {banda && (
@@ -198,15 +201,16 @@ function FragmentoBarra({ l, max, fmt }: { l: { key: string; rot: ReactNode; v: 
 }
 
 /** Tabela de dados por período, recolhida. Acessibilidade e auditoria. */
-export function TabelaSerie({ eixo, gran, series, fmt, rotulo = 'Ver os números' }: { eixo: string[]; gran: Gran; series: { label: string; values: (number | null)[] }[]; fmt: (v: number) => string; rotulo?: string }) {
+export function TabelaSerie({ eixo, gran, series, fmt, rotulo }: { eixo: string[]; gran: Gran; series: { label: string; values: (number | null)[] }[]; fmt: (v: number) => string; rotulo?: string }) {
+  const { t, f } = useIdioma();
   return (
     <details className="tab">
-      <summary>{rotulo}</summary>
+      <summary>{rotulo ?? t({ pt: 'Ver os números', en: 'See the numbers' })}</summary>
       <div className="tabwrap" style={{ maxHeight: 280, overflowY: 'auto' }}>
         <table className="t">
-          <thead><tr><th>{gran === 'mes' ? 'Mês' : 'Semana'}</th>{series.map(s => <th key={s.label} className="num">{s.label}</th>)}</tr></thead>
+          <thead><tr><th>{gran === 'mes' ? t({ pt: 'Mês', en: 'Month' }) : t({ pt: 'Semana', en: 'Week' })}</th>{series.map(s => <th key={s.label} className="num">{s.label}</th>)}</tr></thead>
           <tbody>{[...eixo.keys()].reverse().map(i => (
-            <tr key={eixo[i]}><td>{fPer(eixo[i], gran)}</td>{series.map(s => <td key={s.label} className="num">{s.values[i] == null ? '—' : fmt(s.values[i] as number)}</td>)}</tr>
+            <tr key={eixo[i]}><td>{f.fPer(eixo[i], gran)}</td>{series.map(s => <td key={s.label} className="num">{s.values[i] == null ? '—' : fmt(s.values[i] as number)}</td>)}</tr>
           ))}</tbody>
         </table>
       </div>

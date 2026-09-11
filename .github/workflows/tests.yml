@@ -71,6 +71,9 @@ jobs:
       - name: Motor da página contra o pipeline
         run: npm run test:engine
 
+      - name: Formatação e rótulos por idioma (português idêntico à v1)
+        run: npm run test:format
+
       - name: Conteúdo e tipos
         run: npm run typecheck
 

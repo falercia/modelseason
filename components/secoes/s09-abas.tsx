@@ -10,8 +10,9 @@
 import { useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import * as d3 from 'd3';
 import { cor, marcasTempo, useLargura } from '@/components/graficos/base';
-import { fPer, fmtP } from '@/lib/format';
+import type { Fmt } from '@/lib/format';
 import type { Gran } from '@/lib/engine';
+import { useIdioma } from '@/components/shell/Idioma';
 
 // ------------------------------------------------------------------ abas
 
@@ -64,17 +65,17 @@ export interface LinhaEnfase {
  * de calendário do base.tsx, com piso de 360px: em tela estreita a contagem
  * cairia para 2 ou 3 e o d3 passaria a marcar só a virada do ano.
  */
-function marcasLocais(x: d3.ScaleTime<number, number>, datas: Date[], gran: Gran, largura: number) {
+function marcasLocais(x: d3.ScaleTime<number, number>, datas: Date[], gran: Gran, largura: number, f: Fmt) {
   const N = datas.length;
   if ((gran === 'semana' && N <= 10) || (gran === 'mes' && N <= 12)) {
     const cabe = Math.max(2, Math.floor(largura / (gran === 'mes' ? 52 : 66)));
     const passo = Math.ceil(N / cabe);
-    return datas.filter((_, i) => (N - 1 - i) % passo === 0).map(d => ({ d, rot: fPer(d3.timeFormat('%Y-%m-%d')(d), gran) }));
+    return datas.filter((_, i) => (N - 1 - i) % passo === 0).map(d => ({ d, rot: f.fPer(d3.timeFormat('%Y-%m-%d')(d), gran) }));
   }
   // As marcas do base.tsx rotulam só o mês; quando o d3 escolhe marcas semanais,
   // o mesmo mês se repete. Fica a primeira marca de cada mês.
   const vistos = new Set<string>();
-  return marcasTempo(x, Math.max(360, largura)).filter(({ d }) => {
+  return marcasTempo(x, Math.max(360, largura), undefined, f).filter(({ d }) => {
     const k = `${d.getFullYear()}-${d.getMonth()}`;
     if (vistos.has(k)) return false;
     vistos.add(k); return true;
@@ -95,8 +96,9 @@ function Amostra({ l }: { l: LinhaEnfase }) {
 export function LegendaEnfase({ linhas, ocultos, alternar, valor }: {
   linhas: LinhaEnfase[]; ocultos: Set<string>; alternar: (k: string) => void; valor: (l: LinhaEnfase) => string;
 }) {
+  const { t } = useIdioma();
   return (
-    <div className="legenda" role="group" aria-label="Séries: clique para mostrar ou ocultar">
+    <div className="legenda" role="group" aria-label={t({ pt: 'Séries: clique para mostrar ou ocultar', en: 'Series: click to show or hide' })}>
       {linhas.map(l => (
         <button key={l.key} type="button" aria-pressed={!ocultos.has(l.key)} onClick={() => alternar(l.key)}
           style={l.foco ? { color: 'var(--ink)', fontWeight: 600 } : undefined}>
@@ -115,6 +117,7 @@ export function LegendaEnfase({ linhas, ocultos, alternar, valor }: {
 export function LinhasEnfase({ eixo, gran, linhas, rotuloAria, altura = 300 }: {
   eixo: string[]; gran: Gran; linhas: LinhaEnfase[]; rotuloAria: string; altura?: number;
 }) {
+  const { f } = useIdioma();
   const [ref, w] = useLargura<HTMLDivElement>();
   const [hover, setHover] = useState<number | null>(null);
   const N = eixo.length;
@@ -125,7 +128,7 @@ export function LinhasEnfase({ eixo, gran, linhas, rotuloAria, altura = 300 }: {
   const topo = (d3.max(linhas, l => d3.max(l.values)) ?? 1) * 1.08 || 1;
   const y = d3.scaleLinear().domain([0, topo]).nice(4).range([altura - m.b, m.t]);
   const yt = y.ticks(4);
-  const marcas = marcasLocais(x, datas, gran, w - m.l - m.r);
+  const marcas = marcasLocais(x, datas, gran, w - m.l - m.r, f);
   const linha = d3.line<number>().x((_, i) => x(datas[i])).y(v => y(v)).curve(d3.curveMonotoneX);
   const ult = N - 1;
 
@@ -152,7 +155,7 @@ export function LinhasEnfase({ eixo, gran, linhas, rotuloAria, altura = 300 }: {
       <svg viewBox={`0 0 ${w} ${altura}`} role="img" aria-label={rotuloAria} style={{ height: altura }}>
         <g className="grid">{yt.map(t => <line key={t} x1={m.l} x2={w - m.r} y1={y(t)} y2={y(t)} />)}</g>
         <g className="ax">
-          {yt.map(t => <text key={t} x={m.l - 7} y={y(t) + 3.5} textAnchor="end">{fmtP(t, 0)}</text>)}
+          {yt.map(t => <text key={t} x={m.l - 7} y={y(t) + 3.5} textAnchor="end">{f.fmtP(t, 0)}</text>)}
           {marcas.map(({ d, rot: r }) => <text key={+d} x={x(d)} y={altura - m.b + 16} textAnchor="middle">{r}</text>)}
         </g>
         {ordem.map(l => (
@@ -165,7 +168,7 @@ export function LinhasEnfase({ eixo, gran, linhas, rotuloAria, altura = 300 }: {
         {largo && rot.map(({ l, y: yy, v }) => (
           <text key={'r' + l.key} className="ax" x={x(datas[ult]) + 9} y={yy + 3.5}
             style={{ fill: l.foco ? 'var(--ink)' : 'var(--ink-3)', fontWeight: l.foco ? 700 : 500 }}>
-            {l.label} {fmtP(v, 1)}
+            {l.label} {f.fmtP(v, 1)}
           </text>
         ))}
         {hover != null && <line className="cross" x1={x(datas[hover])} x2={x(datas[hover])} y1={m.t} y2={altura - m.b} />}
@@ -177,11 +180,11 @@ export function LinhasEnfase({ eixo, gran, linhas, rotuloAria, altura = 300 }: {
       </svg>
       {hover != null && (
         <div className="tip" style={{ left: Math.min(Math.max(0, x(datas[hover]) + 14), Math.max(0, w - 230)), top: 4 }}>
-          <div className="t">{fPer(eixo[hover], gran)}</div>
+          <div className="t">{f.fPer(eixo[hover], gran)}</div>
           {[...linhas].sort((a, b) => (b.values[hover] ?? 0) - (a.values[hover] ?? 0)).map(l => (
             <div className="r" key={l.key}>
               <span style={l.foco ? { color: 'var(--ink)', fontWeight: 600 } : undefined}><i style={{ background: corDe(l.slot) }} />{l.label}</span>
-              <b>{fmtP(l.values[hover], 1)}</b>
+              <b>{f.fmtP(l.values[hover], 1)}</b>
             </div>
           ))}
         </div>

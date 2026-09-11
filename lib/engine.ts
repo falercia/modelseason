@@ -110,8 +110,20 @@ export function familiaDe(grupo: GrupoFamilias, slug: string): string {
 
 export interface Lider { model: string; T: number; share: number; vendor: string; origin: string; weights: string }
 export interface Variacao { s: string; de: number; para: number; delta: number; origin: string }
-export interface Achado { t: string; v: string; p: string; slug?: string }
-export interface Projecao { rot: string; atual: string; alvo: string | null; n: number; dir: 'sobe' | 'cai'; taxa: string; rompe: { lim: string; n: number } | null }
+/**
+ * Achado por regra. O motor devolve o tipo e os números; a frase é montada na
+ * seção 14, em cada idioma. d: aceleracao {recente, jan, z, agora}; caro {preco,
+ * mult, d, jan}; resistindo {sem, vezes}; concentrou/desconcentrou {curta, longa, n};
+ * descolando {g0, g1}.
+ */
+export type TipoAchado = 'aceleracao' | 'caro' | 'resistindo' | 'concentrou' | 'desconcentrou' | 'descolando';
+export interface Achado { tipo: TipoAchado; slug?: string; d: Record<string, number> }
+/** Série projetada. unidade 'pp' é share em %, 'usd' é dólar por 1M tokens. Valores crus: a seção formata. */
+export type IdProjecao = 'china' | 'abertos' | 'anthropic' | 'openai' | 'google' | 'gratuito' | 'top5' | 'preco';
+export interface Projecao {
+  id: IdProjecao; unidade: 'pp' | 'usd'; atual: number; alvo: number | null; n: number; dir: 'sobe' | 'cai'; taxa: number;
+  rompe: { lim: number; n: number } | null;
+}
 export interface PerfilLab {
   lab: string; tokens: number; gasto: number; ctx: number; multi: number; rac: number; ampl: number; cad: number;
   aa: number | null; origem: string; modelos: number; multi_p: number; rac_p: number;
@@ -138,20 +150,13 @@ export interface Recorte {
   qualidade: { slug: string; nome: string | null; aa: number | null; elo: number | null; preco: number | null; ctx: number | null; lanc: string | null; T: number; share: number; origin: string; pesos: string }[];
   mapa: { labs: PerfilLab[]; antes: Record<string, { x: number; xAA?: number; y: number }>; periodos_atras: number; com_indice: number; total: number };
   mudancas: { semana: string; comparada: string; distancia: number; entraram: string[]; sairam: string[]; subiram: Variacao[]; cairam: Variacao[]; estreantes: { s: string; share: number; origin: string; lanc: string | null }[]; n_estreantes: number };
-  sinais: { achados: Achado[]; projs: Projecao[]; base: number; horiz: number; per1: string; perN: string };
+  sinais: { achados: Achado[]; projs: Projecao[]; base: number; horiz: number };
   churn: (number | null)[]; age: (number | null)[];
   cobertura: { modelos: number; totalModelos: number; pct: number; filtrando: boolean };
 }
 
 // ------------------------------------------------------------------ utilidades
 
-const fmtP = (v: number) => d3.format('.1f')(v).replace('.', ',') + '%';
-const br = (s: string | number) => String(s).replace('.', ',');
-const fmtUSD = (v: number | null) => {
-  if (v == null) return '—';
-  const s = v >= 100 ? d3.format('.0f')(v) : v >= 1 ? v.toFixed(2) : v.toFixed(3).replace(/(\.\d*?)0+$/, '$1').replace(/\.$/, '');
-  return 'US$ ' + br(s);
-};
 
 function rangeFor(key: Janela, total: number, eixo: Date[], gran: Gran): [number, number] {
   const fim = total - 1;
@@ -460,9 +465,7 @@ export function recortar(D: DadosV1, SERIES_SEM: number[][], estado: Estado, pes
   const LOOK = Math.max(4, Math.min(26, Math.round(N / 3)));
   const HORIZ = Math.max(2, Math.min(gran === 'semana' ? 13 : 3, Math.round(N / 4)));
   const achados: Achado[] = [];
-  const per1 = gran === 'mes' ? 'mês' : 'semana', perN = gran === 'mes' ? 'meses' : 'semanas';
   const jan4 = Math.min(4, ult);
-  const b1 = (v: number) => v.toFixed(1).replace('.', ',');
   if (ult >= 6) {
     let melhor: any = null;
     for (const [m, i] of sel) {
@@ -476,8 +479,7 @@ export function recortar(D: DadosV1, SERIES_SEM: number[][], estado: Estado, pes
       if (!melhor || z > melhor.z) melhor = { s: m.s, z, recente, agora: sh[ult] };
     }
     if (melhor && melhor.z >= 2)
-      achados.push({ t: 'Aceleração fora do padrão', v: `+${b1(melhor.recente)}pp`, slug: melhor.s,
-        p: `${melhor.s} subiu ${b1(melhor.recente)} pontos em ${jan4} ${jan4 === 1 ? per1 : perN}, ${b1(melhor.z)} desvios acima da própria oscilação típica. Chegou a ${fmtP(melhor.agora)} do volume.` });
+      achados.push({ tipo: 'aceleracao', slug: melhor.s, d: { recente: melhor.recente, jan: jan4, z: melhor.z, agora: melhor.agora } });
   }
   {
     const precos = sel.filter(([m]) => !ehOther(m) && m.p).map(([m]) => m.p as number);
@@ -491,8 +493,7 @@ export function recortar(D: DadosV1, SERIES_SEM: number[][], estado: Estado, pes
         if (d <= 0.2) continue;
         if (!melhor || d > melhor.d) melhor = { s: m.s, d, preco: m.p, mult: m.p / medP };
       }
-      if (melhor) achados.push({ t: 'Ganhou share sendo mais caro', v: `${b1(melhor.mult)}× a mediana`, slug: melhor.s,
-        p: `${melhor.s} custa ${fmtUSD(melhor.preco)} por 1M, ${b1(melhor.mult)} vezes a mediana do mercado, e mesmo assim ganhou ${b1(melhor.d)} pontos de share em ${jan4} ${jan4 === 1 ? per1 : perN}. Contraria a força dominante do dataset, que é preço.` });
+      if (melhor) achados.push({ tipo: 'caro', slug: melhor.s, d: { preco: melhor.preco, mult: melhor.mult, d: melhor.d, jan: jan4 } });
     }
   }
   {
@@ -502,46 +503,42 @@ export function recortar(D: DadosV1, SERIES_SEM: number[][], estado: Estado, pes
       const med = d3.median(idades)!;
       const velho = t10.filter(r => r.m.l).map(r => ({ s: r.m.s, sem: (+HOJE - +dataDe(r.m.l!)) / 6048e5 })).sort((x, y) => y.sem - x.sem)[0];
       if (velho && velho.sem >= med * 2)
-        achados.push({ t: 'Resistindo à temporada', v: `${Math.round(velho.sem)} semanas`, slug: velho.s,
-          p: `${velho.s} foi lançado há ${Math.round(velho.sem)} semanas e continua no top 10, ${b1(velho.sem / med)} vezes a idade mediana do topo. A tese diz que isso é raro, e é exatamente por isso que vale olhar o que ele faz de diferente.` });
+        achados.push({ tipo: 'resistindo', slug: velho.s, d: { sem: Math.round(velho.sem), vezes: velho.sem / med } });
     }
   }
   {
     const curta = inclin(hhi, Math.min(LOOK, N)), longa = inclin(hhi, N);
     if (curta != null && longa != null && Math.sign(curta) !== Math.sign(longa) && Math.abs(curta) >= 8)
-      achados.push({ t: curta > 0 ? 'O mercado voltou a concentrar' : 'A concentração voltou a cair', v: `HHI ${curta > 0 ? '+' : ''}${Math.round(curta)}/${per1}`,
-        p: `O HHI vinha ${longa < 0 ? 'caindo' : 'subindo'} ao longo da janela e inverteu: nas últimas ${Math.min(LOOK, N)} ${perN} ele ${curta > 0 ? 'sobe' : 'cai'} ${Math.abs(Math.round(curta))} pontos por ${per1}. Reversão de concentração costuma anteceder a chegada de um modelo que domina, ou a saída de um que dominava.` });
+      achados.push({ tipo: curta > 0 ? 'concentrou' : 'desconcentrou', d: { curta, longa, n: Math.min(LOOK, N) } });
   }
   {
     const cn = origin_share['China'] || [], ow = weights_share['Open-weights'] || [];
     if (cn.length === N && ow.length === N && ult >= 8) {
       const g0 = Math.abs(ow[ult - Math.min(12, ult)] - cn[ult - Math.min(12, ult)]), g1 = Math.abs(ow[ult] - cn[ult]);
       if (g1 - g0 >= 4)
-        achados.push({ t: 'Pesos abertos descolando da China', v: `${b1(g1)}pp de distância`,
-          p: `As duas curvas costumam andar juntas, porque a maioria dos pesos abertos relevantes é chinesa. A distância entre elas passou de ${b1(g0)} para ${b1(g1)} pontos. Ou apareceu peso aberto fora da China, ou lab chinês fechando modelo.` });
+        achados.push({ tipo: 'descolando', d: { g0, g1 } });
     }
   }
   const projs: Projecao[] = [];
-  const proj = (rot: string, serie: number[] | undefined, fmt: (v: number) => string, pisoL: number | null, tetoL: number | null, unidTaxa?: 'pp') => {
+  const proj = (id: IdProjecao, serie: number[] | undefined, unidade: 'pp' | 'usd', pisoL: number | null, tetoL: number | null) => {
     const s = serie || []; if (s.length < 4) return;
     const m = inclin(s, Math.min(LOOK, N)); const atual = s[s.length - 1];
-    const minimo = unidTaxa === 'pp' ? 0.05 : 0.005;
+    const minimo = unidade === 'pp' ? 0.05 : 0.005;
     if (m == null || !isFinite(atual) || Math.abs(m) < minimo) return;
     const bruto = atual + m * HORIZ, MARGEM = HORIZ * 1.5;
-    let rompe: { lim: string; n: number } | null = null, n: number;
-    if (pisoL != null && m < 0 && (n = Math.ceil((pisoL - atual) / m)) <= MARGEM) rompe = { lim: fmt(pisoL), n };
-    if (tetoL != null && m > 0 && (n = Math.ceil((tetoL - atual) / m)) <= MARGEM) rompe = { lim: fmt(tetoL), n };
-    projs.push({ rot, atual: fmt(atual), alvo: rompe ? null : fmt(bruto), n: HORIZ, dir: m > 0 ? 'sobe' : 'cai',
-      taxa: unidTaxa === 'pp' ? Math.abs(m).toFixed(1).replace('.', ',') + 'pp' : fmt(Math.abs(m)), rompe });
+    let rompe: { lim: number; n: number } | null = null, n: number;
+    if (pisoL != null && m < 0 && (n = Math.ceil((pisoL - atual) / m)) <= MARGEM) rompe = { lim: pisoL, n };
+    if (tetoL != null && m > 0 && (n = Math.ceil((tetoL - atual) / m)) <= MARGEM) rompe = { lim: tetoL, n };
+    projs.push({ id, unidade, atual, alvo: rompe ? null : bruto, n: HORIZ, dir: m > 0 ? 'sobe' : 'cai', taxa: Math.abs(m), rompe });
   };
-  proj('Share de laboratórios chineses', origin_share['China'], fmtP, 0, 100, 'pp');
-  proj('Share de pesos abertos', weights_share['Open-weights'], fmtP, 0, 100, 'pp');
-  proj('Share da Anthropic', lab_share['anthropic'], fmtP, 0, 100, 'pp');
-  proj('Share da OpenAI', lab_share['openai'], fmtP, 0, 100, 'pp');
-  proj('Share do Google', lab_share['google'], fmtP, 0, 100, 'pp');
-  proj('Tráfego em endpoints gratuitos', free_share, fmtP, 0, 100, 'pp');
-  proj('Concentração dos 5 maiores', top5, fmtP, 0, 100, 'pp');
-  proj('Preço efetivo do mercado', preco_efetivo, v => 'US$ ' + v.toFixed(2).replace('.', ','), 0, null);
+  proj('china', origin_share['China'], 'pp', 0, 100);
+  proj('abertos', weights_share['Open-weights'], 'pp', 0, 100);
+  proj('anthropic', lab_share['anthropic'], 'pp', 0, 100);
+  proj('openai', lab_share['openai'], 'pp', 0, 100);
+  proj('google', lab_share['google'], 'pp', 0, 100);
+  proj('gratuito', free_share, 'pp', 0, 100);
+  proj('top5', top5, 'pp', 0, 100);
+  proj('preco', preco_efetivo, 'usd', 0, null);
 
   const totalGeral = MX.modelos.reduce((s, _m, i) => s + SERIES[i][ult], 0);
   return {
@@ -551,7 +548,7 @@ export function recortar(D: DadosV1, SERIES_SEM: number[][], estado: Estado, pes
     top5, hhi, top5_modelos, lab_share, comp_share, familias_abs, lab_modelos,
     boards, dist_prev: ult - doze,
     spend_total_musd, spend_band, spend_share, preco_efetivo, volume_vs_dinheiro, qualidade, mapa, mudancas,
-    sinais: { achados, projs, base: Math.min(LOOK, N), horiz: HORIZ, per1, perN },
+    sinais: { achados, projs, base: Math.min(LOOK, N), horiz: HORIZ },
     churn: churnTodo.slice(a, b + 1), age: ageTodo.slice(a, b + 1),
     cobertura: { modelos: sel.length, totalModelos: MX.modelos.length, pct: totalGeral ? 100 * tot[ult] / totalGeral : 0, filtrando },
   };

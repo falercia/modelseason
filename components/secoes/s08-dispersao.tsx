@@ -8,6 +8,7 @@
 import { useState } from 'react';
 import * as d3 from 'd3';
 import { cor, useLargura, type LinhaTip } from '@/components/graficos/base';
+import type { Fmt } from '@/lib/format';
 
 export interface PontoD {
   key: string; x: number; y: number; r: number; slot: string; opacidade?: number; forte?: boolean;
@@ -155,9 +156,12 @@ export function Dispersao({
   );
 }
 
-/** "US$ 0,031", "US$ 1,86", "US$ 0,00042": custo por tarefa pede mais casas que preço por 1M. */
-export const fmtCusto = (v: number | null | undefined) => {
+/**
+ * "US$ 0,031", "US$ 1,86", "US$ 0,00042" / "$0.031", "$1.86", "$0.00042": custo
+ * por tarefa pede mais casas que preço por 1M (e que o f.fmtCusto do kit).
+ */
+export const fmtCusto = (v: number | null | undefined, f: Fmt) => {
   if (v == null || !isFinite(v)) return '—';
   const s = v >= 1 ? v.toFixed(2) : v >= 0.01 ? v.toFixed(3) : String(+v.toPrecision(2));
-  return 'US$ ' + s.replace('.', ',');
+  return (f.lang === 'pt' ? 'US$ ' : '$') + f.dec(s);
 };

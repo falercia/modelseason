@@ -2,6 +2,7 @@
 import type { DadosV1 } from '@/lib/engine';
 import type { Mercado } from '@/lib/tipos';
 import { BarraFiltros, HistoricoProvider } from '@/components/shell/Historico';
+import { useIdioma } from '@/components/shell/Idioma';
 import S01 from './S01';
 import S02 from './S02';
 import S03 from './S03';
@@ -19,11 +20,15 @@ import S14 from './S14';
 import S15 from './S15';
 
 export function Historico({ D, M }: { D: DadosV1; M: Mercado }) {
+  const { t } = useIdioma();
   return (
     <HistoricoProvider D={D}>
       <div className="split" id="historico">
-        <h2>Histórico</h2>
-        <p>Daqui para baixo tudo responde à janela, ao agrupamento e aos filtros. Semanas completas, desde janeiro de 2025.</p>
+        <h2>{t({ pt: 'Histórico', en: 'History' })}</h2>
+        <p>{t({
+          pt: 'Daqui para baixo tudo responde à janela, ao agrupamento e aos filtros. Semanas completas, desde janeiro de 2025.',
+          en: 'From here down, everything responds to the window, grouping and filters. Full weeks, since January 2025.',
+        })}</p>
         <span className="ln" />
       </div>
       <BarraFiltros />

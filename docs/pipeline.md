@@ -8,7 +8,7 @@ Documentação técnica do Model Season. O [README](../README.md) trata do produ
 rankings-daily ──▶ fetch.py ───────▶ data/rankings_daily.csv ─┐
                                                               ├─▶ enrich.py ─▶ build.py ─▶ public/data.json
 /api/v1/models ──▶ fetch_models.py ▶ data/models_catalog.csv ─┘                    │
-                                                                          make_og.py ─▶ public/og.png
+                                                                          make_og.py ─▶ public/og.png, og-en.png
 rankings_daily.csv + catálogo + snapshots ──▶ build_web.py ──▶ data/web/{agora,mercado,modelos}.json
 GitHub Actions (06:30 UTC) commita ──▶ Vercel redeploya ──▶ Next.js lê public/data.json e data/web/
 
@@ -169,7 +169,7 @@ Correção de classificação é a contribuição mais útil ao projeto. Abra um
 
 ## Card social
 
-`pipeline/make_og.py` gera `public/og.png`, 1200×630, a partir do `public/data.json`. Roda no fim do ciclo diário, então o card que aparece no LinkedIn, no WhatsApp e no X carrega os números do dia, não um print congelado.
+`pipeline/make_og.py` gera `public/og.png` (português) e `public/og-en.png` (inglês, usado pelas páginas em `/en`), 1200×630, a partir do `public/data.json`. Roda no fim do ciclo diário, então o card que aparece no LinkedIn, no WhatsApp e no X carrega os números do dia, não um print congelado.
 
 Usa Pillow, não headless browser, para rodar em CI em segundos sem baixar navegador. Depende de DejaVu Sans, presente por padrão nos runners `ubuntu-latest`; o script tenta três caminhos de sistema e avisa no stderr se cair na fonte padrão do Pillow.
 
@@ -177,7 +177,7 @@ Usa Pillow, não headless browser, para rodar em CI em segundos sem baixar naveg
 python pipeline/build.py && python pipeline/make_og.py
 ```
 
-As tags `og:image` e `twitter:image` em `public/index.html` apontam para `https://modelseason.com/og.png` com URL fixa, sem query de versão. Redes sociais fazem cache agressivo desse arquivo. Depois de uma mudança de layout do card, force a revalidação no [Post Inspector do LinkedIn](https://www.linkedin.com/post-inspector/) e no [Sharing Debugger do Facebook](https://developers.facebook.com/tools/debug/).
+As tags `og:image` e `twitter:image` apontam para `https://modelseason.com/og.png` (ou `og-en.png` em `/en`) com URL fixa, sem query de versão. Redes sociais fazem cache agressivo desse arquivo. Depois de uma mudança de layout do card, force a revalidação no [Post Inspector do LinkedIn](https://www.linkedin.com/post-inspector/) e no [Sharing Debugger do Facebook](https://developers.facebook.com/tools/debug/).
 
 ## Enriquecimento
 

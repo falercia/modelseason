@@ -10,11 +10,13 @@ import { useMemo, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import * as d3 from 'd3';
 import type { Mercado } from '@/lib/tipos';
-import { seriesSemanais, rotuloLab, type DadosV1, type Estado, type ModeloMatriz, type Recorte } from '@/lib/engine';
+import { seriesSemanais, type DadosV1, type Estado, type ModeloMatriz, type Recorte } from '@/lib/engine';
 import { useHistorico } from '@/components/shell/Historico';
+import { useIdioma } from '@/components/shell/Idioma';
 import { Cartao, Secao } from '@/components/shell/Cartao';
 import { Legenda, TabelaSerie, Temporal, cor } from '@/components/graficos/base';
-import { br, curto, fD, fPer, fmtCtx, fmtNum, fmtP, fmtT, fmtUSD, fmtVez, urlModelo } from '@/lib/format';
+import { curto } from '@/lib/format';
+import { usePeriodo } from './s02-comum';
 import { Combobox, type OpcaoModelo } from './s12-combobox';
 import s from './s12.module.css';
 
@@ -22,7 +24,6 @@ const SLOT_A = '--s1', SLOT_B = '--s2';
 
 /** Nome de exibição: o catálogo traz "Laboratório: Nome"; sem nome, o slug encurtado. */
 export const nomeModelo = (slug: string, n: string | null | undefined) => (n ? n.replace(/^[^:]+:\s*/, '') : curto(slug));
-const pct = (v: number | null | undefined) => (v == null ? '—' : fmtP(v, v > 0 && v < 1 ? 2 : 1));
 
 interface Cand extends OpcaoModelo {
   i: number; preco: number | null; pp: number | null; pc: number | null; ctx: number | null; aa: number | null;
@@ -68,6 +69,7 @@ type Melhor = 'maior' | 'menor' | null;
 interface Celula { t: ReactNode; txt: string; n: number | null; sub?: ReactNode }
 
 function Linha({ rot, nota, a, b, melhor }: { rot: string; nota?: string; a: Celula; b: Celula; melhor: Melhor }) {
+  const { t } = useIdioma();
   // Só destaca quando a diferença aparece no próprio texto: marcar 1048576 como
   // melhor que 1050000, os dois exibidos como "1M", seria ruído. E sem dado de
   // um dos lados não há comparação, então não há destaque.
@@ -78,7 +80,7 @@ function Linha({ rot, nota, a, b, melhor }: { rot: string; nota?: string; a: Cel
   }
   const cel = (c: Celula, w: boolean) => (
     <td>
-      <b className={w ? s.win : undefined}>{c.t}{w && <span className="sr"> (melhor)</span>}</b>
+      <b className={w ? s.win : undefined}>{c.t}{w && <span className="sr"> {t({ pt: '(melhor)', en: '(better)' })}</span>}</b>
       {c.sub && <small className={s.sub}>{c.sub}</small>}
     </td>
   );
@@ -87,6 +89,10 @@ function Linha({ rot, nota, a, b, melhor }: { rot: string; nota?: string; a: Cel
 
 export default function S12({ M }: { M: Mercado }) {
   const { D, R, estado } = useHistorico();
+  const { t, f, modelo, lab, valor, tarefa, turnos } = useIdioma();
+  const { per: perR, quando, naQuando } = usePeriodo();
+  /** Share com uma casa, ou duas abaixo de 1%, para não virar "0,0%". */
+  const pct = (v: number | null | undefined) => (v == null ? '—' : f.fmtP(v, v > 0 && v < 1 ? 2 : 1));
   const SS = useMemo(() => seriesSemanais(D), [D]);
   const vida = useMemo(() => vidaCompleta(D, SS), [D, SS]);
   const idx = useMemo(() => new Map(D.matriz.modelos.map((m, i) => [m.s, i])), [D]);
@@ -99,7 +105,7 @@ export default function S12({ M }: { M: Mercado }) {
     MX.dims.forEach((d, i) => (DIMI[d] = i));
     const passa = criterio(D, estado), balde = baldes(D, R);
     const mk = (m: ModeloMatriz, i: number, share: number, T: number): Cand => ({
-      i, slug: m.s, nome: nomeModelo(m.s, m.n), lab: rotuloLab(MX.dic.vendor[m.d[DIMI.vendor]]), share, T, ativo: T > 0,
+      i, slug: m.s, nome: nomeModelo(m.s, m.n), lab: lab(MX.dic.vendor[m.d[DIMI.vendor]]), share, T, ativo: T > 0,
       preco: m.p, pp: m.pp, pc: m.pc, ctx: m.c, aa: m.q, lanc: m.l,
       origem: MX.dic.origin[m.d[DIMI.origin]], pesos: MX.dic.pesos[m.d[DIMI.pesos]],
     });
@@ -114,21 +120,24 @@ export default function S12({ M }: { M: Mercado }) {
       if (SS[i].some((v, w) => v > 0 && balde[w] >= 0)) cand.push(mk(m, i, 0, 0));
     });
     return { cand, passa, balde };
-  }, [D, R, estado, SS, idx]);
+  }, [D, R, estado, SS, idx, lab]);
 
   const porSlug = useMemo(() => new Map(cand.map(c => [c.slug, c])), [cand]);
 
   // Denominador de cada período: o total do recorte, somado com o mesmo critério do motor.
   const totBalde = useMemo(() => {
-    const t = new Array(R.N).fill(0);
-    D.matriz.modelos.forEach((m, i) => { if (!passa(m)) return; SS[i].forEach((v, w) => { if (balde[w] >= 0) t[balde[w]] += v; }); });
-    return t;
+    const tot = new Array(R.N).fill(0);
+    D.matriz.modelos.forEach((m, i) => { if (!passa(m)) return; SS[i].forEach((v, w) => { if (balde[w] >= 0) tot[balde[w]] += v; }); });
+    return tot;
   }, [D, SS, passa, balde, R.N]);
 
   if (cand.length < 2) {
     return (
-      <Secao id="s12" n="12" titulo="Comparar dois modelos">
-        <Cartao id="comparar"><p className="vazio">Menos de dois modelos com volume no recorte atual. Afrouxe o filtro ou aumente a janela para comparar.</p></Cartao>
+      <Secao id="s12" n="12" titulo={t({ pt: 'Comparar dois modelos', en: 'Compare two models' })}>
+        <Cartao id="comparar"><p className="vazio">{t({
+          pt: 'Menos de dois modelos com volume no recorte atual. Afrouxe o filtro ou aumente a janela para comparar.',
+          en: 'Fewer than two models have volume in the current filtered view. Loosen the filter or widen the window to compare.',
+        })}</p></Cartao>
       </Secao>
     );
   }
@@ -156,7 +165,7 @@ export default function S12({ M }: { M: Mercado }) {
     if (!T) return null;
     const base = c.slug.split(':')[0];
     return T.classificacoes.flatMap(cl => cl.modelos.filter(m => m.slug.split(':')[0] === base)
-      .map(m => ({ tag: cl.tag, nome: cl.nome, na: m.token_share, peso: cl.token_share * m.token_share })))
+      .map(m => ({ tag: cl.tag, nome: cl.nome, nome_fonte: cl.nome_fonte, na: m.token_share, peso: cl.token_share * m.token_share })))
       .sort((x, y) => y.peso - x.peso).slice(0, 3);
   };
   const usoCel = (c: Cand): Celula => {
@@ -165,8 +174,8 @@ export default function S12({ M }: { M: Mercado }) {
     return {
       txt: '', n: null,
       t: l.length ? (
-        <ul className={s.tarefas}>{l.map(x => <li key={x.tag}>{x.nome}<span>{br(x.na.toFixed(1))}%</span></li>)}</ul>
-      ) : <span className={s.fora}>fora do top de tarefas</span>,
+        <ul className={s.tarefas}>{l.map(x => <li key={x.tag}>{tarefa(x)}<span>{f.dec(x.na.toFixed(1))}%</span></li>)}</ul>
+      ) : <span className={s.fora}>{t({ pt: 'fora do top de tarefas', en: 'outside the top tasks' })}</span>,
     };
   };
 
@@ -178,36 +187,52 @@ export default function S12({ M }: { M: Mercado }) {
       const h = SE.harness.find(x => x.nome === r.harness); if (!h) continue;
       const ca = h.celulas.find(c => c.turnos === r.turnos && c.slug.split(':')[0] === ba);
       const cb = h.celulas.find(c => c.turnos === r.turnos && c.slug.split(':')[0] === bb);
-      if (ca && cb) return { rot: `${r.harness}, ${r.turnos_nome}`, ca: ca.custo, cb: cb.custo };
+      if (ca && cb) return { rot: `${r.harness}, ${turnos(r)}`, ca: ca.custo, cb: cb.custo };
     }
     return null;
   })();
 
   const ult = R.eixo[R.N - 1];
-  const per = fPer(ult, estado.gran);
-  const c = (t: string, n: number | null, sub?: ReactNode): Celula => ({ t, txt: t, n, sub });
-  const precoSub = (x: Cand) => (x.pp != null && x.pc != null ? `entrada ${fmtUSD(x.pp)} · saída ${fmtUSD(x.pc)}` : undefined);
-  const aaTxt = (v: number | null) => (v == null ? '—' : fmtNum(v, 1));
+  const per = f.fPer(ult, estado.gran);
+  // Em inglês o período vira "week of Sep 8, 2026" / "in the week of Sep 8, 2026"; o português continua com a data solta.
+  const perRot = t({ pt: per, en: quando(R, R.N - 1) }), emPer = t({ pt: `em ${per}`, en: naQuando(R, R.N - 1) });
+  const mensal = estado.gran === 'mes';
+  const c = (txt: string, n: number | null, sub?: ReactNode): Celula => ({ t: txt, txt, n, sub });
+  const precoSub = (x: Cand) => (x.pp != null && x.pc != null
+    ? t({ pt: `entrada ${f.fmtUSD(x.pp)} · saída ${f.fmtUSD(x.pc)}`, en: `input ${f.fmtUSD(x.pp)} · output ${f.fmtUSD(x.pc)}` }) : undefined);
+  const aaTxt = (v: number | null) => (v == null ? '—' : f.fmtNum(v, 1));
 
   // Leitura montada do dado.
   const frases: ReactNode[] = [];
   if (A.share > 0 && B.share > 0) {
     const [maior, menor] = A.share >= B.share ? [A, B] : [B, A];
-    const r = fmtVez(maior.share / menor.share);
-    if (r && r !== '1,0') frases.push(<span key="sh"><b>{maior.nome}</b> teve {r} vezes o share de {menor.nome} em {per}. </span>);
-    else frases.push(<span key="sh">Os dois tiveram share praticamente igual em {per}. </span>);
+    const r = f.fmtVez(maior.share / menor.share);
+    if (r && r !== f.dec('1.0')) frases.push(<span key="sh">{t({
+      pt: <><b>{maior.nome}</b> teve {r} vezes o share de {menor.nome} {emPer}. </>,
+      en: <><b>{maior.nome}</b> had {r} times the share of {menor.nome} {emPer}. </>,
+    })}</span>);
+    else frases.push(<span key="sh">{t({ pt: `Os dois tiveram share praticamente igual ${emPer}. `, en: `Both had nearly the same share ${emPer}. ` })}</span>);
   } else if (A.share > 0 || B.share > 0) {
     const [com, sem] = A.share > 0 ? [A, B] : [B, A];
-    frases.push(<span key="sh"><b>{sem.nome}</b> não teve volume registrado em {per}; {com.nome} teve {pct(com.share)}. </span>);
+    frases.push(<span key="sh">{t({
+      pt: <><b>{sem.nome}</b> não teve volume registrado {emPer}; {com.nome} teve {pct(com.share)}. </>,
+      en: <><b>{sem.nome}</b> had no recorded volume {emPer}; {com.nome} had {pct(com.share)}. </>,
+    })}</span>);
   }
   if (A.preco && B.preco && A.preco !== B.preco) {
     const [caro, barato] = A.preco > B.preco ? [A, B] : [B, A];
-    const r = fmtVez(caro.preco! / barato.preco!);
-    if (r) frases.push(<span key="pr">Por 1M tokens na mistura declarada, {caro.nome} custa {r} vezes {barato.nome}. </span>);
+    const r = f.fmtVez(caro.preco! / barato.preco!);
+    if (r) frases.push(<span key="pr">{t({
+      pt: `Por 1M tokens na mistura declarada, ${caro.nome} custa ${r} vezes ${barato.nome}. `,
+      en: `Per 1M tokens at the declared blend, ${caro.nome} costs ${r} times as much as ${barato.nome}. `,
+    })}</span>);
   }
   if (hA.top10 !== hB.top10) {
     const [mais, menos] = hA.top10 > hB.top10 ? [[A, hA], [B, hB]] as const : [[B, hB], [A, hA]] as const;
-    frases.push(<span key="t10">No histórico inteiro, {mais[0].nome} passou {mais[1].top10} {mais[1].top10 === 1 ? 'semana' : 'semanas'} no top 10, contra {menos[1].top10} de {menos[0].nome}.</span>);
+    frases.push(<span key="t10">{t({
+      pt: `No histórico inteiro, ${mais[0].nome} passou ${mais[1].top10} ${mais[1].top10 === 1 ? 'semana' : 'semanas'} no top 10, contra ${menos[1].top10} de ${menos[0].nome}.`,
+      en: `Across the full history, ${mais[0].nome} spent ${mais[1].top10} ${mais[1].top10 === 1 ? 'week' : 'weeks'} in the top 10, versus ${menos[1].top10} for ${menos[0].nome}.`,
+    })}</span>);
   }
 
   const eixoMax = d3.max([...shA, ...shB].filter((v): v is number => v != null)) ?? 1;
@@ -219,39 +244,57 @@ export default function S12({ M }: { M: Mercado }) {
   const cabeca = (x: Cand, slot: string) => (
     <th scope="col">
       <i style={{ background: cor(slot) }} aria-hidden="true" />
-      <Link href={urlModelo(x.slug)}>{x.nome}</Link>
+      <Link href={modelo(x.slug)}>{x.nome}</Link>
       <small>{x.lab}</small>
     </th>
   );
 
+  const picoA = pct(d3.max(shA.filter((v): v is number => v != null))), picoB = pct(d3.max(shB.filter((v): v is number => v != null)));
+  const inicioG = f.fPer(eixoG[0], estado.gran);
+
   return (
-    <Secao id="s12" n="12" titulo="Comparar dois modelos"
-      sub={<>Dois modelos lado a lado. Adoção e trajetória respondem à janela e ao filtro; pico e semanas no top 10 são do histórico inteiro, e as tarefas vêm da foto mais recente da fonte.</>}>
+    <Secao id="s12" n="12" titulo={t({ pt: 'Comparar dois modelos', en: 'Compare two models' })}
+      sub={t({
+        pt: <>Dois modelos lado a lado. Adoção e trajetória respondem à janela e ao filtro; pico e semanas no top 10 são do histórico inteiro, e as tarefas vêm da foto mais recente da fonte.</>,
+        en: <>Two models side by side. Adoption and trajectory respond to the window and the filter; peak and weeks in the top 10 cover the full history, and tasks come from the source&apos;s latest snapshot.</>,
+      })}>
       <Cartao id="comparar">
         <div className={s.sel}>
-          <Combobox rotulo="Modelo A" slot={SLOT_A} valor={A} opcoes={cand.filter(x => x.slug !== B.slug)} onEscolher={v => setEscolha([v, B.slug])} />
-          <Combobox rotulo="Modelo B" slot={SLOT_B} valor={B} opcoes={cand.filter(x => x.slug !== A.slug)} onEscolher={v => setEscolha([A.slug, v])} />
+          <Combobox rotulo={t({ pt: 'Modelo A', en: 'Model A' })} slot={SLOT_A} valor={A} opcoes={cand.filter(x => x.slug !== B.slug)} onEscolher={v => setEscolha([v, B.slug])} />
+          <Combobox rotulo={t({ pt: 'Modelo B', en: 'Model B' })} slot={SLOT_B} valor={B} opcoes={cand.filter(x => x.slug !== A.slug)} onEscolher={v => setEscolha([A.slug, v])} />
         </div>
         <div className={s.corpo}>
           <div className="tabwrap">
             <table className={'t ' + s.tab}>
-              <caption className="sr">Comparação entre {A.nome} e {B.nome}. O melhor valor de cada linha está marcado.</caption>
-              <thead><tr><th scope="col"><span className="sr">Indicador</span></th>{cabeca(A, SLOT_A)}{cabeca(B, SLOT_B)}</tr></thead>
+              <caption className="sr">{t({
+                pt: `Comparação entre ${A.nome} e ${B.nome}. O melhor valor de cada linha está marcado.`,
+                en: `Comparison of ${A.nome} and ${B.nome}. The better value in each row is marked.`,
+              })}</caption>
+              <thead><tr><th scope="col"><span className="sr">{t({ pt: 'Indicador', en: 'Indicator' })}</span></th>{cabeca(A, SLOT_A)}{cabeca(B, SLOT_B)}</tr></thead>
               <tbody>
-                <Linha rot="Share" nota={per} a={c(pct(A.ativo ? A.share : null), A.ativo ? A.share : null)} b={c(pct(B.ativo ? B.share : null), B.ativo ? B.share : null)} melhor="maior" />
-                <Linha rot={estado.gran === 'mes' ? 'Tokens por semana' : 'Tokens na semana'} nota={estado.gran === 'mes' ? `média de ${per}` : per}
-                  a={c(A.ativo ? fmtT(A.T) : '—', A.ativo ? A.T : null)} b={c(B.ativo ? fmtT(B.T) : '—', B.ativo ? B.T : null)} melhor="maior" />
-                <Linha rot="Preço por 1M" nota="mistura declarada" a={c(fmtUSD(A.preco), A.preco, precoSub(A))} b={c(fmtUSD(B.preco), B.preco, precoSub(B))} melhor="menor" />
-                <Linha rot="Janela de contexto" a={c(fmtCtx(A.ctx), A.ctx || null)} b={c(fmtCtx(B.ctx), B.ctx || null)} melhor="maior" />
-                <Linha rot="Índice de Inteligência" a={c(aaTxt(A.aa), A.aa)} b={c(aaTxt(B.aa), B.aa)} melhor="maior" />
-                <Linha rot="Lançamento" a={c(A.lanc ? fD(A.lanc) : '—', null)} b={c(B.lanc ? fD(B.lanc) : '—', null)} melhor={null} />
-                <Linha rot="Semanas no top 10" nota="histórico inteiro" a={c(String(hA.top10), hA.top10)} b={c(String(hB.top10), hB.top10)} melhor="maior" />
-                <Linha rot="Pico de share" nota="histórico inteiro"
-                  a={c(pct(hA.pico || null), hA.pico || null, hA.semana ? `semana de ${fD(hA.semana)}` : undefined)}
-                  b={c(pct(hB.pico || null), hB.pico || null, hB.semana ? `semana de ${fD(hB.semana)}` : undefined)} melhor="maior" />
-                {sessao && <Linha rot="Custo mediano por sessão" nota={sessao.rot} a={c(fmtUSD(sessao.ca), sessao.ca)} b={c(fmtUSD(sessao.cb), sessao.cb)} melhor="menor" />}
-                <Linha rot="Para que usam" nota={T ? `foto de ${fD(T.as_of)}, ${T.janela_dias} dias; % é a fatia do modelo na tarefa` : undefined} a={usoCel(A)} b={usoCel(B)} melhor={null} />
-                <Linha rot="Origem e pesos" a={c(`${A.origem} · ${A.pesos}`, null)} b={c(`${B.origem} · ${B.pesos}`, null)} melhor={null} />
+                <Linha rot="Share" nota={perRot} a={c(pct(A.ativo ? A.share : null), A.ativo ? A.share : null)} b={c(pct(B.ativo ? B.share : null), B.ativo ? B.share : null)} melhor="maior" />
+                <Linha rot={mensal ? t({ pt: 'Tokens por semana', en: 'Tokens per week' }) : t({ pt: 'Tokens na semana', en: 'Tokens for the week' })}
+                  nota={mensal ? t({ pt: `média de ${per}`, en: `${per} average` }) : perRot}
+                  a={c(A.ativo ? f.fmtT(A.T) : '—', A.ativo ? A.T : null)} b={c(B.ativo ? f.fmtT(B.T) : '—', B.ativo ? B.T : null)} melhor="maior" />
+                <Linha rot={t({ pt: 'Preço por 1M', en: 'Price per 1M' })} nota={t({ pt: 'mistura declarada', en: 'declared blend' })}
+                  a={c(f.fmtUSD(A.preco), A.preco, precoSub(A))} b={c(f.fmtUSD(B.preco), B.preco, precoSub(B))} melhor="menor" />
+                <Linha rot={t({ pt: 'Janela de contexto', en: 'Context window' })} a={c(f.fmtCtx(A.ctx), A.ctx || null)} b={c(f.fmtCtx(B.ctx), B.ctx || null)} melhor="maior" />
+                <Linha rot={t({ pt: 'Índice de Inteligência', en: 'Intelligence Index' })} a={c(aaTxt(A.aa), A.aa)} b={c(aaTxt(B.aa), B.aa)} melhor="maior" />
+                <Linha rot={t({ pt: 'Lançamento', en: 'Launch' })} a={c(A.lanc ? f.fD(A.lanc) : '—', null)} b={c(B.lanc ? f.fD(B.lanc) : '—', null)} melhor={null} />
+                <Linha rot={t({ pt: 'Semanas no top 10', en: 'Weeks in the top 10' })} nota={t({ pt: 'histórico inteiro', en: 'full history' })}
+                  a={c(String(hA.top10), hA.top10)} b={c(String(hB.top10), hB.top10)} melhor="maior" />
+                <Linha rot={t({ pt: 'Pico de share', en: 'Peak share' })} nota={t({ pt: 'histórico inteiro', en: 'full history' })}
+                  a={c(pct(hA.pico || null), hA.pico || null, hA.semana ? t({ pt: 'semana de ', en: 'week of ' }) + f.fD(hA.semana) : undefined)}
+                  b={c(pct(hB.pico || null), hB.pico || null, hB.semana ? t({ pt: 'semana de ', en: 'week of ' }) + f.fD(hB.semana) : undefined)} melhor="maior" />
+                {sessao && <Linha rot={t({ pt: 'Custo mediano por sessão', en: 'Median cost per session' })} nota={sessao.rot}
+                  a={c(f.fmtUSD(sessao.ca), sessao.ca)} b={c(f.fmtUSD(sessao.cb), sessao.cb)} melhor="menor" />}
+                <Linha rot={t({ pt: 'Para que usam', en: 'What it is used for' })}
+                  nota={T ? t({
+                    pt: `foto de ${f.fD(T.as_of)}, ${T.janela_dias} dias; % é a fatia do modelo na tarefa`,
+                    en: `${T.janela_dias}-day snapshot from ${f.fD(T.as_of)}; % is the model's share of the task`,
+                  }) : undefined} a={usoCel(A)} b={usoCel(B)} melhor={null} />
+                <Linha rot={t({ pt: 'Origem e pesos', en: 'Origin and weights' })}
+                  a={c(`${valor(A.origem)} · ${valor(A.pesos)}`, null)} b={c(`${valor(B.origem)} · ${valor(B.pesos)}`, null)} melhor={null} />
               </tbody>
             </table>
           </div>
@@ -260,10 +303,19 @@ export default function S12({ M }: { M: Mercado }) {
             {eixoG.length >= 2 ? (
               <Temporal eixo={eixoG} gran={estado.gran} altura={280} ymax={eixoMax * 1.12 || 1}
                 series={[{ key: 'a', label: A.nome, values: gA, slot: SLOT_A }, { key: 'b', label: B.nome, values: gB, slot: SLOT_B }]}
-                fmt={v => pct(v)} fmtEixo={v => fmtNum(v, 2) + '%'}
-                rotuloAria={`Share ${estado.gran === 'mes' ? 'mensal' : 'semanal'} de ${A.nome} e ${B.nome}, de ${fPer(eixoG[0], estado.gran)} a ${per}. Pico na janela: ${pct(d3.max(shA.filter((v): v is number => v != null)))} e ${pct(d3.max(shB.filter((v): v is number => v != null)))}.`} />
-            ) : <p className="vazio">A janela tem um período só; a trajetória precisa de pelo menos dois.</p>}
-            <p className="nota">Share {estado.gran === 'mes' ? 'mensal' : 'semanal'} dentro do recorte{ini > 0 ? `, a partir de ${fPer(eixoG[0], estado.gran)}, um período antes da primeira aparição de um dos dois` : ''}. Período sem volume registrado fica em branco, não em zero: fora do top 50 diário da fonte o volume do modelo é desconhecido.</p>
+                fmt={v => pct(v)} fmtEixo={v => f.fmtNum(v, 2) + '%'}
+                rotuloAria={t({
+                  pt: `Share ${perR(R).adj} de ${A.nome} e ${B.nome}, de ${inicioG} a ${per}. Pico na janela: ${picoA} e ${picoB}.`,
+                  en: `${mensal ? 'Monthly' : 'Weekly'} share of ${A.nome} and ${B.nome}, from ${inicioG} to ${per}. Peak in the window: ${picoA} and ${picoB}.`,
+                })} />
+            ) : <p className="vazio">{t({
+              pt: 'A janela tem um período só; a trajetória precisa de pelo menos dois.',
+              en: 'The window has only one period; a trajectory needs at least two.',
+            })}</p>}
+            <p className="nota">{t({
+              pt: `Share ${perR(R).adj} dentro do recorte${ini > 0 ? `, a partir de ${inicioG}, um período antes da primeira aparição de um dos dois` : ''}. Período sem volume registrado fica em branco, não em zero: fora do top 50 diário da fonte o volume do modelo é desconhecido.`,
+              en: `${mensal ? 'Monthly' : 'Weekly'} share within the filtered view${ini > 0 ? `, starting ${inicioG}, one period before either model first appears` : ''}. A period with no recorded volume is left blank, not set to zero: outside the source's daily top 50, the model's volume is unknown.`,
+            })}</p>
             <TabelaSerie eixo={eixoG} gran={estado.gran} series={[{ label: A.nome, values: gA }, { label: B.nome, values: gB }]} fmt={v => pct(v)} />
           </div>
         </div>

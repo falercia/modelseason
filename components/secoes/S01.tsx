@@ -9,8 +9,8 @@ import { useMemo, useRef, useState } from 'react';
 import type { Mercado } from '@/lib/tipos';
 import { Cartao, Modos, Secao } from '@/components/shell/Cartao';
 import { cor, useLargura } from '@/components/graficos/base';
-import { fD, urlModelo } from '@/lib/format';
-import { fmtVezes, pct, slotMacro } from '@/components/modelo/comum';
+import { slotMacro } from '@/components/modelo/comum';
+import { useIdioma } from '@/components/shell/Idioma';
 
 type Medida = 'token' | 'usage';
 type Classe = NonNullable<Mercado['tarefas']>['classificacoes'][number];
@@ -63,6 +63,7 @@ const CSS = `
 `;
 
 export default function S01({ M }: { M: Mercado }) {
+  const { t, f, pt, modelo, nomeLab, tarefa, macro: nomeMacro } = useIdioma();
   const T = M.tarefas;
   const [medida, setMedida] = useState<Medida>('token');
   const [macro, setMacro] = useState<string | null>(null);
@@ -77,20 +78,27 @@ export default function S01({ M }: { M: Mercado }) {
     () => classes.filter(c => !macro || c.macro === macro).sort((a, b) => val(b) - val(a)).slice(0, N_TAREFAS),
     [classes, macro, medida], // eslint-disable-line react-hooks/exhaustive-deps
   );
+  const titulo = t({ pt: 'Para que o mercado usa', en: 'What the market uses it for' });
 
   if (!T || !classes.length) {
     return (
-      <Secao id="s01" n="01" titulo="Para que o mercado usa">
-        <p className="vazio">A foto de finalidade ainda não foi arquivada. A seção aparece no primeiro dia em que o pipeline conseguir ler a fonte.</p>
+      <Secao id="s01" n="01" titulo={titulo}>
+        <p className="vazio">{t({
+          pt: 'A foto de finalidade ainda não foi arquivada. A seção aparece no primeiro dia em que o pipeline conseguir ler a fonte.',
+          en: 'The use-case snapshot has not been archived yet. This section appears on the first day the pipeline manages to read the source.',
+        })}</p>
       </Secao>
     );
   }
 
+  const { pct, fmtVezes, fD } = f;
   const macros = T.macro;
-  const nomeMacro = (k: string) => macros.find(m => m.key === k)?.nome ?? k;
   const somaMacro = macros.reduce((s, m) => s + val(m), 0) || 1;
   const maxLinha = Math.max(...linhas.map(val), 0) || 1;
   const razao = (c: { token_share: number; usage_share: number }) => (c.usage_share > 0 ? c.token_share / c.usage_share : null);
+  // Nome de tarefa no meio da frase. Em inglês só desce a primeira palavra comum:
+  // "Workflow execution" vira "workflow execution", mas "SQL and databases" e "DevOps configuration" ficam.
+  const minuscula = (s: string) => (pt ? s.toLowerCase() : s.replace(/^[A-Z][a-z]*(?=\s|$)/, w => w.toLowerCase()));
 
   // tarefa escolhida: clique na lista, ou o seletor; por padrão a de mais tokens
   const porTokens = [...classes].sort((a, b) => b.token_share - a.token_share);
@@ -114,24 +122,36 @@ export default function S01({ M }: { M: Mercado }) {
   const slotAtual = slotMacro(atual.macro);
   const grupos = macros.map(m => ({ ...m, itens: porTokens.filter(c => c.macro === m.key) })).filter(g => g.itens.length);
   const n = T.fotos_arquivadas;
-  const rotMedida = medida === 'token' ? 'dos tokens' : 'das requisições';
+  const porTok = medida === 'token';
+  const nomeAtual = tarefa(atual);
+  const lider0 = modelosAtual[0];
 
   return (
-    <Secao id="s01" n="01" titulo="Para que o mercado usa"
-      sub={<>Foto da janela móvel de {T.janela_dias} dias publicada pela fonte, terminando em <b>{fD(T.as_of)}</b>. É a mesma para qualquer recorte: esta seção <b>não responde à janela nem aos filtros do Histórico</b>. A fonte não guarda passado, então a série desta seção só existe porque o site arquiva uma foto por dia.</>}>
+    <Secao id="s01" n="01" titulo={titulo}
+      sub={t({
+        pt: <>Foto da janela móvel de {T.janela_dias} dias publicada pela fonte, terminando em <b>{fD(T.as_of)}</b>. É a mesma para qualquer recorte: esta seção <b>não responde à janela nem aos filtros do Histórico</b>. A fonte não guarda passado, então a série desta seção só existe porque o site arquiva uma foto por dia.</>,
+        en: <>Snapshot of the source&apos;s rolling {T.janela_dias}-day window, ending <b>{fD(T.as_of)}</b>. It is the same for any filtered view: this section <b>does not respond to the History window or filters</b>. The source keeps no history, so this section&apos;s series exists only because the site archives one snapshot a day.</>,
+      })}>
       <style href="s01-css" precedence="medium">{CSS}</style>
       <div className="grid2">
         <Cartao id="tarefas" novo
-          subtitulo={`Share ${rotMedida} classificados, por finalidade, nos ${T.janela_dias} dias até ${fD(T.as_of)}`}
-          acoes={<Modos valor={medida} onChange={setMedida} rotulo="Medir por" opcoes={[['token', 'Tokens'], ['usage', 'Requisições']]} />}>
+          subtitulo={t({
+            pt: `Share ${porTok ? 'dos tokens classificados' : 'das requisições classificadas'}, por finalidade, nos ${T.janela_dias} dias até ${fD(T.as_of)}`,
+            en: `Share of classified ${porTok ? 'tokens' : 'requests'} by use case, over the ${T.janela_dias} days through ${fD(T.as_of)}`,
+          })}
+          acoes={<Modos valor={medida} onChange={setMedida} rotulo={t({ pt: 'Medir por', en: 'Measure by' })}
+            opcoes={[['token', 'Tokens'], ['usage', t({ pt: 'Requisições', en: 'Requests' })]]} />}>
           <div className="plot" onPointerLeave={() => setDica(null)}>
             <div className="s01-pilha" ref={refPilha} role="img"
-              aria-label={`Repartição ${rotMedida} por macro categoria: ` + macros.map(m => `${m.nome} ${pct(val(m))}`).join(', ')}>
+              aria-label={t({
+                pt: `Repartição ${porTok ? 'dos tokens' : 'das requisições'} por macro categoria: `,
+                en: `Breakdown of ${porTok ? 'tokens' : 'requests'} by macro category: `,
+              }) + macros.map(m => `${nomeMacro(m.key)} ${pct(val(m))}`).join(', ')}>
               {macros.map(m => {
                 // rótulo só dentro do segmento quando cabe inteiro (estimativa de 6,9 px por caractere, mais o recuo)
                 const px = ((wPilha - 2 * (macros.length - 1)) * val(m)) / somaMacro;
-                const cabe = (t: string) => t.length * 6.9 + 16 <= px;
-                const longo = `${m.nome} ${pct(val(m))}`, curto = pct(val(m));
+                const cabe = (s: string) => s.length * 6.9 + 16 <= px;
+                const longo = `${nomeMacro(m.key)} ${pct(val(m))}`, curto = pct(val(m));
                 return (
                   <span key={m.key} data-apagado={macro && macro !== m.key ? '1' : undefined}
                     style={{ flex: `${val(m)} 1 0`, background: cor(slotMacro(m.key)) }}
@@ -145,32 +165,39 @@ export default function S01({ M }: { M: Mercado }) {
               const m = macros.find(x => x.key === dica)!;
               return (
                 <div className="tip" style={{ left: 0, top: 38 }}>
-                  <div className="t">{m.nome}</div>
+                  <div className="t">{nomeMacro(m.key)}</div>
                   <div className="r"><span>tokens</span><b>{pct(m.token_share)}</b></div>
-                  <div className="r"><span>requisições</span><b>{pct(m.usage_share)}</b></div>
-                  <div className="r"><span>tokens ÷ requisições</span><b>{fmtVezes(razao(m))}</b></div>
+                  <div className="r"><span>{t({ pt: 'requisições', en: 'requests' })}</span><b>{pct(m.usage_share)}</b></div>
+                  <div className="r"><span>{t({ pt: 'tokens ÷ requisições', en: 'tokens ÷ requests' })}</span><b>{fmtVezes(razao(m))}</b></div>
                 </div>
               );
             })()}
           </div>
-          <div className="s01-leg" role="group" aria-label="Macro categorias: clique para ver só as tarefas de uma">
+          <div className="s01-leg" role="group" aria-label={t({ pt: 'Macro categorias: clique para ver só as tarefas de uma', en: 'Macro categories: click one to see only its tasks' })}>
             {macros.map(m => (
               <button key={m.key} type="button" aria-pressed={macro === m.key} onClick={() => setMacro(x => (x === m.key ? null : m.key))}
-                title={macro === m.key ? 'Mostrar todas as tarefas' : `Mostrar só as tarefas de ${m.nome}`}>
-                <i style={{ background: cor(slotMacro(m.key)) }} />{m.nome} <b>{pct(val(m))}</b>
-                <small>{medida === 'token' ? `${pct(m.usage_share)} req.` : `${pct(m.token_share)} tok.`}</small>
+                title={macro === m.key
+                  ? t({ pt: 'Mostrar todas as tarefas', en: 'Show all tasks' })
+                  : t({ pt: `Mostrar só as tarefas de ${nomeMacro(m.key)}`, en: `Show only ${nomeMacro(m.key)} tasks` })}>
+                <i style={{ background: cor(slotMacro(m.key)) }} />{nomeMacro(m.key)} <b>{pct(val(m))}</b>
+                <small>{porTok ? `${pct(m.usage_share)} req.` : `${pct(m.token_share)} tok.`}</small>
               </button>
             ))}
           </div>
           <div className="s01-cab" aria-hidden="true">
-            <span>{macro ? `Tarefas de ${nomeMacro(macro)}` : `As ${linhas.length} maiores tarefas`}</span><span />
-            <span>{medida === 'token' ? '% tok.' : '% req.'}</span><span title="tokens ÷ requisições">tok÷req</span>
+            <span>{macro
+              ? t({ pt: `Tarefas de ${nomeMacro(macro)}`, en: `${nomeMacro(macro)} tasks` })
+              : t({ pt: `As ${linhas.length} maiores tarefas`, en: `The ${linhas.length} largest tasks` })}</span><span />
+            <span>{porTok ? '% tok.' : '% req.'}</span><span title={t({ pt: 'tokens ÷ requisições', en: 'tokens ÷ requests' })}>tok÷req</span>
           </div>
-          <div role="group" aria-label="Tarefas: clique para ver os modelos líderes">
+          <div role="group" aria-label={t({ pt: 'Tarefas: clique para ver os modelos líderes', en: 'Tasks: click one to see its leading models' })}>
             {linhas.map(c => (
               <button key={c.tag} type="button" className="s01-linha" aria-pressed={atual.tag === c.tag} onClick={() => escolher(c.tag)}
-                title={`${c.nome}: ${pct(c.token_share)} dos tokens, ${pct(c.usage_share)} das requisições. Clique para ver os modelos líderes.`}>
-                <span className="nm"><i style={{ background: cor(slotMacro(c.macro)) }} /><span>{c.nome}</span></span>
+                title={t({
+                  pt: `${tarefa(c)}: ${pct(c.token_share)} dos tokens, ${pct(c.usage_share)} das requisições. Clique para ver os modelos líderes.`,
+                  en: `${tarefa(c)}: ${pct(c.token_share)} of tokens, ${pct(c.usage_share)} of requests. Click to see the leading models.`,
+                })}>
+                <span className="nm"><i style={{ background: cor(slotMacro(c.macro)) }} /><span>{tarefa(c)}</span></span>
                 <span className="br"><i style={{ width: `${((100 * val(c)) / maxLinha).toFixed(1)}%`, background: cor(slotMacro(c.macro)) }} /></span>
                 <span className="v">{pct(val(c))}</span>
                 <span className="r">{fmtVezes(razao(c))}</span>
@@ -178,23 +205,30 @@ export default function S01({ M }: { M: Mercado }) {
             ))}
           </div>
           <p className="leitura">
-            Por tokens, <b>{lidTok.nome}</b> lidera com {pct(lidTok.token_share)}; por requisições, {lidReq.key === lidTok.key ? 'também' : <b>{lidReq.nome}</b>}, com {pct(lidReq.usage_share)}.
-            {pesada && leve && pesada.tag !== leve.tag && (
-              <> Entre as {topo.length} maiores tarefas, a carga mais pesada é <b>{pesada.nome}</b>: {pct(pesada.token_share)} dos tokens com {pct(pesada.usage_share)} das requisições ({fmtVezes(razao(pesada))}). A mais leve é <b>{leve.nome}</b>, com {pct(leve.usage_share)} das requisições e {pct(leve.token_share)} dos tokens.</>
-            )}
+            {t({
+              pt: <>Por tokens, <b>{nomeMacro(lidTok.key)}</b> lidera com {pct(lidTok.token_share)}; por requisições, {lidReq.key === lidTok.key ? 'também' : <b>{nomeMacro(lidReq.key)}</b>}, com {pct(lidReq.usage_share)}.</>,
+              en: <>By tokens, <b>{nomeMacro(lidTok.key)}</b> leads with {pct(lidTok.token_share)}; {lidReq.key === lidTok.key ? 'it also leads by requests' : <>by requests, <b>{nomeMacro(lidReq.key)}</b> leads</>}, with {pct(lidReq.usage_share)}.</>,
+            })}
+            {pesada && leve && pesada.tag !== leve.tag && t({
+              pt: <> Entre as {topo.length} maiores tarefas, a carga mais pesada é <b>{tarefa(pesada)}</b>: {pct(pesada.token_share)} dos tokens com {pct(pesada.usage_share)} das requisições ({fmtVezes(razao(pesada))}). A mais leve é <b>{tarefa(leve)}</b>, com {pct(leve.usage_share)} das requisições e {pct(leve.token_share)} dos tokens.</>,
+              en: <> Among the {topo.length} largest tasks, the heaviest workload is <b>{tarefa(pesada)}</b>: {pct(pesada.token_share)} of tokens from {pct(pesada.usage_share)} of requests ({fmtVezes(razao(pesada))}). The lightest is <b>{tarefa(leve)}</b>, with {pct(leve.usage_share)} of requests and {pct(leve.token_share)} of tokens.</>,
+            })}
           </p>
           <details className="tab">
-            <summary>Ver as {classes.length} tarefas</summary>
+            <summary>{t({ pt: `Ver as ${classes.length} tarefas`, en: `See all ${classes.length} tasks` })}</summary>
             <div className="tabwrap" style={{ maxHeight: 300, overflowY: 'auto' }}>
               <table className="t">
-                <thead><tr><th>Tarefa</th><th>Macro</th><th className="num">% tokens</th><th className="num">% req.</th><th className="num">tok÷req</th><th>Líder</th></tr></thead>
+                <thead><tr>
+                  <th>{t({ pt: 'Tarefa', en: 'Task' })}</th><th>Macro</th><th className="num">% tokens</th><th className="num">% req.</th><th className="num">tok÷req</th>
+                  <th>{t({ pt: 'Líder', en: 'Leader' })}</th>
+                </tr></thead>
                 <tbody>{porTokens.map(c => {
                   const l = [...c.modelos].sort((a, b) => b.token_share - a.token_share)[0];
                   return (
                     <tr key={c.tag}>
-                      <td>{c.nome}</td><td>{nomeMacro(c.macro)}</td>
+                      <td>{tarefa(c)}</td><td>{nomeMacro(c.macro)}</td>
                       <td className="num">{pct(c.token_share)}</td><td className="num">{pct(c.usage_share)}</td><td className="num">{fmtVezes(razao(c))}</td>
-                      <td>{l ? <a href={urlModelo(l.slug)}>{l.nome}</a> : '—'}</td>
+                      <td>{l ? <a href={modelo(l.slug)}>{l.nome}</a> : '—'}</td>
                     </tr>
                   );
                 })}</tbody>
@@ -204,61 +238,76 @@ export default function S01({ M }: { M: Mercado }) {
         </Cartao>
 
         <div ref={cartao2} style={{ scrollMarginTop: 'calc(var(--top-h) + 12px)', minWidth: 0 }}>
-          <Cartao id="tarefas-modelos" novo subtitulo="Clique numa tarefa no cartão ao lado, ou escolha aqui">
-            <label className="sr" htmlFor="s01-tarefa">Tarefa</label>
+          <Cartao id="tarefas-modelos" novo subtitulo={t({ pt: 'Clique numa tarefa no cartão ao lado, ou escolha aqui', en: 'Click a task in the adjacent card, or pick one here' })}>
+            <label className="sr" htmlFor="s01-tarefa">{t({ pt: 'Tarefa', en: 'Task' })}</label>
             <select id="s01-tarefa" className="s01-sel" value={atual.tag} onChange={e => setSel(e.target.value)}>
               {grupos.map(g => (
-                <optgroup key={g.key} label={g.nome}>
-                  {g.itens.map(c => <option key={c.tag} value={c.tag}>{c.nome} ({pct(c.token_share)})</option>)}
+                <optgroup key={g.key} label={nomeMacro(g.key)}>
+                  {g.itens.map(c => <option key={c.tag} value={c.tag}>{tarefa(c)} ({pct(c.token_share)})</option>)}
                 </optgroup>
               ))}
             </select>
             <div className="s01-resumo">
               <span><i style={{ display: 'inline-block', width: 8, height: 8, borderRadius: 2, background: cor(slotAtual), marginRight: 6 }} />{nomeMacro(atual.macro)}</span>
-              <span><b>{pct(atual.token_share)}</b> dos tokens</span>
-              <span><b>{pct(atual.usage_share)}</b> das requisições</span>
-              {atual.nome_fonte !== atual.nome && <span className="mono" style={{ fontSize: 10.5 }}>fonte: {atual.nome_fonte}</span>}
+              <span>{t({ pt: <><b>{pct(atual.token_share)}</b> dos tokens</>, en: <><b>{pct(atual.token_share)}</b> of tokens</> })}</span>
+              <span>{t({ pt: <><b>{pct(atual.usage_share)}</b> das requisições</>, en: <><b>{pct(atual.usage_share)}</b> of requests</> })}</span>
+              {atual.nome_fonte !== nomeAtual && <span className="mono" style={{ fontSize: 10.5 }}>{t({ pt: 'fonte', en: 'source' })}: {atual.nome_fonte}</span>}
             </div>
             {modelosAtual.length ? (
-              <div className="plot" role="img" aria-label={`Modelos líderes em ${atual.nome}: ` + modelosAtual.map(m => `${m.nome} ${pct(m.token_share)}`).join(', ')}>
+              <div className="plot" role="img" aria-label={t({ pt: `Modelos líderes em ${nomeAtual}: `, en: `Leading models in ${nomeAtual}: ` }) + modelosAtual.map(m => `${m.nome} ${pct(m.token_share)}`).join(', ')}>
                 <div className="s01-mod">
                   {modelosAtual.map((m, i) => (
                     <FragmentoModelo key={m.slug} i={i} m={m} max={maxMod} slot={slotAtual} />
                   ))}
                 </div>
               </div>
-            ) : <p className="vazio">A fonte não listou modelos para esta tarefa na foto de {fD(T.as_of)}.</p>}
-            {modelosAtual.length > 0 && (
-              <p className="leitura">
-                <b>{modelosAtual[0].nome}</b> ({modelosAtual[0].lab}) leva {pct(modelosAtual[0].token_share)} dos tokens de {atual.nome.toLowerCase()}.
-                {' '}Os {modelosAtual.length} listados somam {pct(somaMod)}; o resto se divide entre modelos que a fonte não lista.
-              </p>
+            ) : <p className="vazio">{t({
+              pt: `A fonte não listou modelos para esta tarefa na foto de ${fD(T.as_of)}.`,
+              en: `The source listed no models for this task in the ${fD(T.as_of)} snapshot.`,
+            })}</p>}
+            {lider0 && (
+              <p className="leitura">{t({
+                pt: <><b>{lider0.nome}</b> ({nomeLab(lider0.lab)}) leva {pct(lider0.token_share)} dos tokens de {minuscula(nomeAtual)}.
+                  {' '}Os {modelosAtual.length} listados somam {pct(somaMod)}; o resto se divide entre modelos que a fonte não lista.</>,
+                en: <><b>{lider0.nome}</b> ({nomeLab(lider0.lab)}) takes {pct(lider0.token_share)} of the tokens in {minuscula(nomeAtual)}.
+                  {' '}{modelosAtual.length === 1 ? 'The one model listed accounts for' : `The ${modelosAtual.length} models listed add up to`} {pct(somaMod)}; the rest is split among models the source does not list.</>,
+              })}</p>
             )}
-            <p className="nota">Share dentro da tarefa: tokens do modelo nesta tarefa divididos pelos tokens classificados nela. A fonte lista só os maiores de cada tarefa.</p>
+            <p className="nota">{t({
+              pt: 'Share dentro da tarefa: tokens do modelo nesta tarefa divididos pelos tokens classificados nela. A fonte lista só os maiores de cada tarefa.',
+              en: "Share within the task: the model's tokens in this task divided by all tokens classified in it. The source lists only the largest models in each task.",
+            })}</p>
           </Cartao>
         </div>
       </div>
 
       <p className="s01-arq">
-        <span className="pill" style={{ marginLeft: 0 }}>arquivo</span>
-        <span>
-          <b>{n} {n === 1 ? 'foto arquivada' : 'fotos arquivadas'}</b> até agora. {n === 1
+        <span className="pill" style={{ marginLeft: 0 }}>{t({ pt: 'arquivo', en: 'archive' })}</span>
+        <span>{t({
+          pt: <><b>{n} {n === 1 ? 'foto arquivada' : 'fotos arquivadas'}</b> até agora. {n === 1
             ? 'Esta é a primeira; a série histórica de finalidade aparece aqui à medida que o arquivo cresce.'
-            : 'A série histórica de finalidade aparece aqui à medida que o arquivo cresce.'}
-        </span>
+            : 'A série histórica de finalidade aparece aqui à medida que o arquivo cresce.'}</>,
+          en: <><b>{n} {n === 1 ? 'snapshot' : 'snapshots'} archived</b> so far. {n === 1
+            ? 'This is the first; the use-case time series builds up here as the archive grows.'
+            : 'The use-case time series builds up here as the archive grows.'}</>,
+        })}</span>
       </p>
-      <p className="nota">Amostra classificada pela fonte: só entra o tráfego que ela consegue atribuir a uma finalidade, e o balde <span className="mono">other</span> fica fora do denominador. Janelas móveis de {T.janela_dias} dias se sobrepõem, então duas fotos seguidas compartilham quase todo o volume.</p>
+      <p className="nota">{t({
+        pt: <>Amostra classificada pela fonte: só entra o tráfego que ela consegue atribuir a uma finalidade, e o balde <span className="mono">other</span> fica fora do denominador. Janelas móveis de {T.janela_dias} dias se sobrepõem, então duas fotos seguidas compartilham quase todo o volume.</>,
+        en: <>A sample classified by the source: only traffic it can attribute to a use case counts, and the <span className="mono">other</span> bucket stays out of the denominator. Rolling {T.janela_dias}-day windows overlap, so two consecutive snapshots share almost all of their volume.</>,
+      })}</p>
     </Secao>
   );
 }
 
 function FragmentoModelo({ i, m, max, slot }: { i: number; m: Classe['modelos'][number]; max: number; slot: string }) {
+  const { f, modelo, nomeLab } = useIdioma();
   return (
     <>
       <span className="p">{i + 1}</span>
-      <span className="quem"><a href={urlModelo(m.slug)}>{m.nome}</a><small>{m.lab}</small></span>
+      <span className="quem"><a href={modelo(m.slug)}>{m.nome}</a><small>{nomeLab(m.lab)}</small></span>
       <span className="br"><i style={{ width: `${((100 * m.token_share) / max).toFixed(1)}%`, background: cor(slot) }} /></span>
-      <span className="v">{pct(m.token_share)}</span>
+      <span className="v">{f.pct(m.token_share)}</span>
     </>
   );
 }

@@ -6,12 +6,12 @@
 import { useState } from 'react';
 import * as d3 from 'd3';
 import { cor, marcasTempo, TabelaSerie, useLargura } from '@/components/graficos/base';
-import { fD } from '@/lib/format';
-import { pct } from './comum';
+import { useIdioma } from '@/components/shell/Idioma';
 
 export function GraficoShare({ semanas, valores, pico, nome, slot = '--s1' }: {
   semanas: string[]; valores: number[]; pico: { v: number; semana: string } | null; nome: string; slot?: string;
 }) {
+  const { t, f } = useIdioma();
   const [ref, w] = useLargura<HTMLDivElement>();
   const [hover, setHover] = useState<number | null>(null);
   const N = semanas.length;
@@ -22,13 +22,13 @@ export function GraficoShare({ semanas, valores, pico, nome, slot = '--s1' }: {
   const y = d3.scaleLinear().domain([0, topo]).nice(4).range([altura - m.b, m.t]);
   const yt = y.ticks(4);
   const casas = topo < 2 ? 2 : 1;
-  const fmtEixo = (v: number) => d3.format(`.${topo < 2 ? 1 : 0}f`)(v).replace('.', ',') + '%';
+  const fmtEixo = (v: number) => f.dec(d3.format(`.${topo < 2 ? 1 : 0}f`)(v)) + '%';
   // até 16 semanas, marca por semana com dia e mês; acima disso, por mês
   const marcas = N <= 16 ? (() => {
     const cabe = Math.max(1, Math.floor((w - m.l - m.r) / 64));
     const passo = Math.max(1, Math.ceil(N / cabe));
-    return datas.map((d, i) => ({ d, rot: fD(semanas[i]).slice(0, 6), i })).filter(({ i }) => (N - 1 - i) % passo === 0);
-  })() : marcasTempo(x, w - m.l - m.r);
+    return datas.map((d, i) => ({ d, rot: f.marcaDia(d), i })).filter(({ i }) => (N - 1 - i) % passo === 0);
+  })() : marcasTempo(x, w - m.l - m.r, datas, f);
   const linha = d3.line<number>().x((_, i) => x(datas[i])).y(v => y(v));
   const area = d3.area<number>().x((_, i) => x(datas[i])).y0(y(0)).y1(v => y(v));
   const iPico = pico ? semanas.indexOf(pico.semana) : -1;
@@ -39,7 +39,9 @@ export function GraficoShare({ semanas, valores, pico, nome, slot = '--s1' }: {
     const i = d3.bisector((d: Date) => d).center(datas, x.invert(px));
     setHover(Math.max(0, Math.min(N - 1, i)));
   };
-  const rotPico = pico && iPico >= 0 ? `pico ${pct(pico.v)} em ${fD(pico.semana)}` : '';
+  const rotPico = pico && iPico >= 0
+    ? t({ pt: `pico ${f.pct(pico.v)} em ${f.fD(pico.semana)}`, en: `peak ${f.pct(pico.v)} on ${f.fD(pico.semana)}` })
+    : '';
   const xPico = iPico >= 0 ? x(datas[iPico]) : 0;
   const ancoraPico = xPico > w - 150 ? 'end' : xPico < m.l + 60 ? 'start' : 'middle';
 
@@ -47,10 +49,13 @@ export function GraficoShare({ semanas, valores, pico, nome, slot = '--s1' }: {
     <>
       <div className="plot" ref={ref} onPointerLeave={() => setHover(null)}>
         <svg viewBox={`0 0 ${w} ${altura}`} style={{ height: altura }} role="img"
-          aria-label={`Share semanal de ${nome}, de ${fD(semanas[0])} a ${fD(semanas[N - 1])}${rotPico ? `, ${rotPico}` : ''}, última semana ${pct(valores[N - 1])}`}>
-          <g className="grid">{yt.map(t => <line key={t} x1={m.l} x2={w - m.r} y1={y(t)} y2={y(t)} />)}</g>
+          aria-label={t({
+            pt: `Share semanal de ${nome}, de ${f.fD(semanas[0])} a ${f.fD(semanas[N - 1])}${rotPico ? `, ${rotPico}` : ''}, última semana ${f.pct(valores[N - 1])}`,
+            en: `Weekly share of ${nome}, ${f.fD(semanas[0])} to ${f.fD(semanas[N - 1])}${rotPico ? `, ${rotPico}` : ''}, latest week ${f.pct(valores[N - 1])}`,
+          })}>
+          <g className="grid">{yt.map(v => <line key={v} x1={m.l} x2={w - m.r} y1={y(v)} y2={y(v)} />)}</g>
           <g className="ax">
-            {yt.map(t => <text key={t} x={m.l - 7} y={y(t) + 3.5} textAnchor="end">{fmtEixo(t)}</text>)}
+            {yt.map(v => <text key={v} x={m.l - 7} y={y(v) + 3.5} textAnchor="end">{fmtEixo(v)}</text>)}
             {marcas.map(({ d, rot }) => <text key={+d} x={x(d)} y={altura - m.b + 16} textAnchor="middle">{rot}</text>)}
           </g>
           <path d={area(valores) ?? ''} fill={cor(slot)} opacity={0.14} />
@@ -74,13 +79,13 @@ export function GraficoShare({ semanas, valores, pico, nome, slot = '--s1' }: {
         </svg>
         {hover != null && (
           <div className="tip" style={{ left: Math.min(Math.max(0, x(datas[hover]) + 14), Math.max(0, w - 200)), top: 4 }}>
-            <div className="t">semana de {fD(semanas[hover])}</div>
-            <div className="r"><span><i style={{ background: cor(slot) }} />share</span><b>{d3.format(`.${casas + 1}f`)(valores[hover]).replace('.', ',')}%</b></div>
-            {pico && pico.v > 0 && <div className="r"><span>do pico</span><b>{Math.round((100 * valores[hover]) / pico.v)}%</b></div>}
+            <div className="t">{t({ pt: `semana de ${f.fD(semanas[hover])}`, en: `week of ${f.fD(semanas[hover])}` })}</div>
+            <div className="r"><span><i style={{ background: cor(slot) }} />share</span><b>{f.dec(d3.format(`.${casas + 1}f`)(valores[hover]))}%</b></div>
+            {pico && pico.v > 0 && <div className="r"><span>{t({ pt: 'do pico', en: 'of peak' })}</span><b>{Math.round((100 * valores[hover]) / pico.v)}%</b></div>}
           </div>
         )}
       </div>
-      <TabelaSerie eixo={semanas} gran="semana" series={[{ label: 'Share', values: valores }]} fmt={v => d3.format('.3f')(v).replace('.', ',') + '%'} />
+      <TabelaSerie eixo={semanas} gran="semana" series={[{ label: 'Share', values: valores }]} fmt={v => f.dec(d3.format('.3f')(v)) + '%'} />
     </>
   );
 }

@@ -4,7 +4,7 @@
 
 Para onde vai o tráfego de tokens dos modelos de linguagem, semana a semana. Quem cresce, quem perde, quanto tempo um modelo dura no topo.
 
-Atualizado todo dia.
+Atualizado todo dia. Em português na raiz e em inglês em [modelseason.com/en](https://modelseason.com/en).
 
 ---
 
@@ -95,6 +95,10 @@ Três limites que valem para qualquer número da página:
 Desde 10/09/2026, o repositório também arquiva uma foto diária das fontes que não guardam passado: para que a IA está sendo usada, custo por sessão em cada harness, benchmarks, preço por provedor, ranking de apps, país sede de cada provedor, oferta de retenção zero de dados, os catálogos de embeddings, imagem e vídeo e, desde 12/09/2026, o catálogo completo de modelos com preço, que vira o histórico de preço de cada modelo. Nenhuma delas tem histórico na origem, então essa série só existe aqui.
 
 Use à vontade, inclusive comercialmente. A licença exige apenas atribuição.
+
+## Idiomas
+
+O site é publicado em português, na raiz, e em inglês, em `/en`, com as mesmas páginas, os mesmos números e o seletor PT/EN no topo levando ao mesmo lugar no outro idioma. Nenhuma URL anterior ao inglês mudou. Números, moeda e datas seguem a convenção de cada idioma (`US$ 3,00` e `08 set 26`; `$3.00` e `Sep 8, 2026`), e o português é travado por teste contra a formatação da v1. Arquitetura, convenções e glossário em [`docs/i18n.md`](docs/i18n.md).
 
 ## Privacidade
 

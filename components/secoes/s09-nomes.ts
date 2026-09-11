@@ -4,7 +4,7 @@
  * de julho) viram o mesmo rótulo na mesma lista. Aqui a data volta só quando
  * há colisão, e o sufixo de endpoint (:free) aparece mesmo com data no slug.
  */
-import { curto, fD, fMes } from '@/lib/format';
+import { curto, type Fmt } from '@/lib/format';
 
 /** Nome curto do slug: sem laboratório, sem data (compacta ou ISO) e com o sufixo de endpoint entre parênteses. */
 export const nome = (slug: string) => {
@@ -20,8 +20,12 @@ function dataDoSlug(slug: string): string | null {
   return m ? `${m[1]}-${m[2]}-${m[3]}` : null;
 }
 
-/** Rotulador para uma lista: nome curto, e a data da versão quando dois slugs dariam o mesmo nome. */
-export function rotulador(slugs: string[]) {
+/**
+ * Rotulador para uma lista: nome curto, e a data da versão quando dois slugs
+ * dariam o mesmo nome. A data sai no formato do idioma (f de useIdioma()).
+ */
+export function rotulador(slugs: string[], f: Fmt) {
+  const { fD, fMes } = f;
   const unicos = [...new Set(slugs)];
   const cont = new Map<string, number>();
   for (const s of unicos) cont.set(nome(s), (cont.get(nome(s)) ?? 0) + 1);

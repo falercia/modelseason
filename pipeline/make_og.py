@@ -1,4 +1,5 @@
-"""Gera public/og.png, o card social de 1200x630, a partir de public/data.json.
+"""Gera os cards sociais de 1200x630 a partir de public/data.json: public/og.png
+(portugues) e public/og-en.png (ingles, usado pelas paginas em /en).
 
 Roda no fim do pipeline diario, entao o card que aparece no LinkedIn, no
 WhatsApp e no X carrega os numeros do dia, nao um print congelado. Usa Pillow
@@ -13,7 +14,22 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data.json"
-OUT = ROOT / "public" / "og.png"
+SAIDA = {"pt": ROOT / "public" / "og.png", "en": ROOT / "public" / "og-en.png"}
+
+# Texto de cada card. Os numeros sao os mesmos; so muda a lingua e o formato da data.
+TEXTO = {
+    "pt": {"kicker": "INTELIGÊNCIA DE MERCADO · MODELOS DE LINGUAGEM",
+           "linha1": "Para onde vai o tráfego de tokens dos modelos de linguagem,",
+           "linha2": "semana a semana. Atualizado todo dia.",
+           "metricas": ["tokens por semana", "laboratórios chineses", "pesos abertos", "trocam a cada 4 semanas"],
+           "rodape": "Dados: OpenRouter · CC BY 4.0 · as of {data}"},
+    "en": {"kicker": "MARKET INTELLIGENCE · LANGUAGE MODELS",
+           "linha1": "Where language model token traffic goes,",
+           "linha2": "week by week. Updated daily.",
+           "metricas": ["tokens per week", "Chinese labs", "open weights", "turn over every 4 weeks"],
+           "rodape": "Data: OpenRouter · CC BY 4.0 · as of {data}"},
+}
+MESES_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 W, H = 1200, 630
 TINTA = (18, 20, 23)          # --ink
@@ -44,6 +60,11 @@ def br(iso: str) -> str:
     return "/".join(reversed(iso.split("-")))
 
 
+def data_en(iso: str) -> str:
+    a, m, d = iso.split("-")
+    return f"{MESES_EN[int(m) - 1]} {int(d)}, {a}"
+
+
 def main() -> int:
     if not DATA.exists():
         print(f"ERRO: {DATA} nao existe. Rode pipeline/build.py antes.", file=sys.stderr)
@@ -54,7 +75,13 @@ def main() -> int:
     china = d["origin_share"]["China"][-1]
     abertos = d["weights_share"]["Open-weights"][-1]
     rotativ = d["churn"][-1]
+    for lang, out in SAIDA.items():
+        desenhar(lang, out, d, volume, china, abertos, rotativ)
+    return 0
 
+
+def desenhar(lang, out, d, volume, china, abertos, rotativ):
+    T = TEXTO[lang]
     img = Image.new("RGB", (W, H), FUNDO)
     dr = ImageDraw.Draw(img)
 
@@ -63,25 +90,16 @@ def main() -> int:
 
     m = 72  # margem
 
-    dr.text((m, 74), "INTELIGÊNCIA DE MERCADO · MODELOS DE LINGUAGEM",
-            font=fonte(19, True), fill=TINTA_3)
+    dr.text((m, 74), T["kicker"], font=fonte(19, True), fill=TINTA_3)
 
     dr.text((m, 116), "Model Season", font=fonte(78, True), fill=TINTA)
 
-    dr.text((m, 218),
-            "Para onde vai o tráfego de tokens dos modelos de linguagem,",
-            font=fonte(30), fill=TINTA_2)
-    dr.text((m, 258), "semana a semana. Atualizado todo dia.",
-            font=fonte(30), fill=TINTA_2)
+    dr.text((m, 218), T["linha1"], font=fonte(30), fill=TINTA_2)
+    dr.text((m, 258), T["linha2"], font=fonte(30), fill=TINTA_2)
 
     dr.line([m, 336, W - m, 336], fill=LINHA, width=2)
 
-    metricas = [
-        (f"{volume:.0f}T", "tokens por semana"),
-        (f"{china:.0f}%", "laboratórios chineses"),
-        (f"{abertos:.0f}%", "pesos abertos"),
-        (f"{rotativ}/10", "trocam a cada 4 semanas"),
-    ]
+    metricas = list(zip([f"{volume:.0f}T", f"{china:.0f}%", f"{abertos:.0f}%", f"{rotativ}/10"], T["metricas"]))
     largura = (W - 2 * m) // len(metricas)
     for i, (valor, rotulo) in enumerate(metricas):
         x = m + i * largura
@@ -91,14 +109,13 @@ def main() -> int:
     dr.line([m, 528, W - m, 528], fill=LINHA, width=2)
 
     dr.text((m, 556), "modelseason.com", font=fonte(25, True), fill=ACENTO)
-    rodape = f"Dados: OpenRouter · CC BY 4.0 · as of {br(d['as_of'])}"
+    rodape = T["rodape"].format(data=br(d["as_of"]) if lang == "pt" else data_en(d["as_of"]))
     caixa = dr.textbbox((0, 0), rodape, font=fonte(21))
     dr.text((W - m - (caixa[2] - caixa[0]), 559), rodape, font=fonte(21), fill=TINTA_3)
 
-    img.save(OUT, "PNG", optimize=True)
-    print(f"og.png gerado: {OUT.stat().st_size // 1024}KB · "
+    img.save(out, "PNG", optimize=True)
+    print(f"{out.name} gerado: {out.stat().st_size // 1024}KB · "
           f"{volume:.0f}T · China {china:.0f}% · abertos {abertos:.0f}% · churn {rotativ}")
-    return 0
 
 
 if __name__ == "__main__":
