@@ -29,6 +29,13 @@ A página foi reescrita em **Next.js 16, React 19 e TypeScript**, com D3 só par
 - Os textos de gráfico saíram do código para `content/`, validados no build: gráfico sem "o que não mostra" não vai ao ar.
 - Fontes hospedadas no próprio site.
 
+### Corrigido
+
+- **Teste de reprodutibilidade do `data.json` falhava em qualquer dia diferente do último commit do bot.** O `as_of` é a data do relógio no build, então muda todo dia sem dado nenhum mudar. O teste agora compara todas as chaves menos essa. O defeito existia desde a v1 e apareceu no primeiro push feito num dia sem commit do bot.
+
+- **Botão Voltar do navegador.** Depois de abrir a página de um modelo, Voltar mudava a URL e deixava o modelo na tela. O recorte do Histórico trocava a URL apagando o estado que o roteador guarda no histórico. Agora preserva, e Voltar devolve à home com o mesmo recorte e a mesma posição de rolagem. Teste de ponta a ponta cobre o caso.
+- **Seleção de laboratório da seção 09 parecia texto, não botão.** Virou três cartões clicáveis com a cor do laboratório, o share, a variação na janela, a curva e as famílias, e o cartão escolhido aponta para o painel de baixo.
+
 ### Removido
 
 - `public/index.html`, `public/vendor/`, `public/sitemap.xml`, `public/robots.txt` e os testes da v1 (`tests/e2e.js`, `tests/fuzz.js`).

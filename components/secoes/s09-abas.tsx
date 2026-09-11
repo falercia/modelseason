@@ -17,7 +17,7 @@ import type { Gran } from '@/lib/engine';
 
 export interface Aba { id: string; rotulo: ReactNode; conteudo: ReactNode }
 
-export function Abas({ prefixo, itens, rotulo }: { prefixo: string; itens: Aba[]; rotulo: string }) {
+export function Abas({ prefixo, itens, rotulo, classe = 'abas' }: { prefixo: string; itens: Aba[]; rotulo: string; classe?: string }) {
   const [ativa, setAtiva] = useState(0);
   const botoes = useRef<(HTMLButtonElement | null)[]>([]);
   const ir = (i: number) => {
@@ -31,7 +31,7 @@ export function Abas({ prefixo, itens, rotulo }: { prefixo: string; itens: Aba[]
   };
   return (
     <>
-      <div className="abas" role="tablist" aria-label={rotulo}>
+      <div className={classe} role="tablist" aria-label={rotulo}>
         {itens.map((it, i) => (
           <button key={it.id} ref={el => { botoes.current[i] = el; }} type="button" role="tab"
             id={`${prefixo}-aba-${it.id}`} aria-selected={i === ativa} aria-controls={`${prefixo}-painel-${it.id}`}

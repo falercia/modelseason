@@ -44,7 +44,12 @@ export function HistoricoProvider({ D, children }: { D: DadosV1; children: React
     if (estado.gran !== 'semana') p.set('agrupar', estado.gran);
     for (const d in estado.filtros) if (estado.filtros[d].length) p.set(d, estado.filtros[d].map(i => D.matriz.dic[d][i]).join('|'));
     const q = p.toString();
-    history.replaceState(null, '', (q ? '?' + q : location.pathname) + location.hash);
+    const destino = (q ? '?' + q : location.pathname) + location.hash;
+    // Só troca a URL quando ela muda, e PRESERVANDO history.state: o roteador do
+    // Next guarda ali a árvore da página. Com state null, o botão Voltar do
+    // navegador mudava a URL e deixava a página anterior na tela.
+    if (destino !== location.search + location.hash && destino !== location.pathname + location.search + location.hash)
+      history.replaceState(history.state, '', destino);
   }, [estado, D]);
   const R = useMemo(() => recortar(D, SS, estado, pesos), [D, SS, estado, pesos]);
   const v: Ctx = {

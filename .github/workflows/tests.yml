@@ -23,17 +23,28 @@ jobs:
           cache-dependency-path: pipeline/requirements.txt
       - run: pip install -r pipeline/requirements.txt
 
+      # O as_of do data.json é a data do relógio em que o build rodou ("pipeline
+      # atualizado em"), então muda todo dia sem nenhum dado mudar. A comparação
+      # ignora só esse campo; qualquer outra diferença é número que o pipeline
+      # não produz, e derruba o teste. Antes, o teste falhava sempre que rodava
+      # num dia diferente do último commit do bot.
       - name: Reconstruir data.json a partir dos CSVs versionados
-        run: python pipeline/build.py
+        run: |
+          cp public/data.json "$RUNNER_TEMP/data.commitado.json"
+          python pipeline/build.py
 
       - name: Build é reprodutível
         run: |
-          if ! git diff --quiet -- public/data.json; then
-            echo "::error::public/data.json commitado difere do que build.py gera a partir dos CSVs."
-            git diff --stat -- public/data.json
-            exit 1
-          fi
-          echo "data.json commitado bate com o build."
+          python - "$RUNNER_TEMP/data.commitado.json" public/data.json <<'PY'
+          import json, sys
+          a, b = (json.load(open(f)) for f in sys.argv[1:3])
+          a.pop("as_of", None); b.pop("as_of", None)
+          dif = sorted(k for k in set(a) | set(b) if a.get(k) != b.get(k))
+          if dif:
+              print("::error::public/data.json commitado difere do que build.py gera, nas chaves: " + ", ".join(dif))
+              sys.exit(1)
+          print("data.json commitado bate com o build (as_of ignorado).")
+          PY
 
       - name: Invariantes do data.json
         run: python pipeline/selftest.py

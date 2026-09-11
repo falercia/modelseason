@@ -12,7 +12,7 @@ import { Cartao, Modos, Secao } from '@/components/shell/Cartao';
 import { useHistorico } from '@/components/shell/Historico';
 import { Legenda, TabelaSerie, Temporal, cor, useOcultos, type ItemSerie } from '@/components/graficos/base';
 import { FAMILIAS, OUTROS_FAMILIA, familiaDe, rotuloLab, type GrupoFamilias, type Recorte, type Vida } from '@/lib/engine';
-import { FAMILIA_SLOT, LAB_SLOT } from '@/lib/cores';
+import { FAMILIA_SLOT, LAB_SLOT, iniciais, slotLab } from '@/lib/cores';
 import { br, curto, fD, fMes, fPer, fmtP, fmtT, fmtVez, urlModelo } from '@/lib/format';
 import { rotulador } from './s09-nomes';
 import { Abas, LegendaEnfase, LinhasEnfase, type LinhaEnfase } from './s09-abas';
@@ -310,20 +310,61 @@ function Painel({ g }: { g: GrupoFamilias }) {
   );
 }
 
+/**
+ * O seletor de laboratório. Na primeira versão eram abas de texto, e o leitor
+ * não percebia que dava para clicar. Agora cada laboratório é um cartão com a
+ * cor da entidade, o share no fim da janela, a variação e a curva, e o
+ * selecionado se liga visualmente ao painel de baixo.
+ */
+function CartaoLab({ g, R }: { g: GrupoFamilias; R: Recorte }) {
+  const sh = R.lab_share[g.lab] ?? [];
+  const ult = R.N - 1;
+  const i0 = baseDe(R.vendor_abs[g.lab]);
+  const agora = sh[ult] ?? 0;
+  const d = i0 >= 0 && i0 < ult ? agora - (sh[i0] ?? 0) : null;
+  const slot = slotLab(g.lab);
+  const w = 120, h = 30;
+  const max = d3.max(sh) || 1;
+  const x = d3.scaleLinear().domain([0, Math.max(1, sh.length - 1)]).range([1, w - 1]);
+  const y = d3.scaleLinear().domain([0, max]).range([h - 2, 2]);
+  const linha = d3.line<number>().x((_, i) => x(i)).y(v => y(v ?? 0))(sh) ?? '';
+  const area = d3.area<number>().x((_, i) => x(i)).y0(h).y1(v => y(v ?? 0))(sh) ?? '';
+  const familias = g.familias.map(f => f.nome.replace(/ \(.*\)$/, '').replace(/^Gemini /, '')).slice(0, 4).join(' · ');
+  return (
+    <span className="lab-c" style={{ ['--lab' as string]: cor(slot) }}>
+      <span className="lab-top">
+        <span className="ico" style={{ background: cor(slot) }} aria-hidden="true">{iniciais(g.rotulo)}</span>
+        <span className="lab-nome">{g.rotulo}</span>
+        <span className="lab-seta" aria-hidden="true" />
+      </span>
+      <span className="lab-num">
+        <span className="lab-v">{agora ? fmtP(agora) : '—'}</span>
+        {d != null && Math.abs(d) >= 0.05 && <span className="lab-d">{seta(d)} {br(Math.abs(d).toFixed(1))} pp na janela</span>}
+      </span>
+      <svg className="lab-spark" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" aria-hidden="true">
+        <path d={area} fill={cor(slot)} opacity={0.14} />
+        <path d={linha} fill="none" stroke={cor(slot)} strokeWidth={1.5} vectorEffect="non-scaling-stroke" />
+      </svg>
+      <span className="lab-fam">{familias}</span>
+      <span className="lab-cta"><span className="on">Mostrando abaixo</span><span className="off">Ver {g.rotulo} →</span></span>
+    </span>
+  );
+}
+
 export default function S09(_: { M: Mercado }) {
   const { R } = useHistorico();
   const ult = R.N - 1;
   const soma = FAMILIAS.reduce((s, g) => s + (R.lab_share[g.lab]?.[ult] ?? 0), 0);
   return (
     <Secao id="s09" n="09" titulo="Os três grandes: Anthropic, OpenAI e Google"
-      sub={<>A mesma leitura para os três, uma aba por laboratório: share contra os concorrentes, volume por família de modelo e permanência no top 10.
+      sub={<>A mesma leitura para os três: share contra os concorrentes, volume por família de modelo e permanência no top 10.
         {soma > 0 ? <> Juntos, somam <b>{fmtP(soma)}</b> do volume{R.cobertura.filtrando ? ' do recorte' : ''} em {fPer(R.eixo[ult], R.estado.gran)}.</> : <> Nenhum dos três tem volume no recorte atual.</>}</>}>
-      <Abas prefixo="s09" rotulo="Laboratório" itens={FAMILIAS.map(g => ({
+      <p className="kicker" style={{ marginBottom: 8 }}>Escolha o laboratório</p>
+      <Abas prefixo="s09" rotulo="Laboratório" classe="abas-lab" itens={FAMILIAS.map(g => ({
         id: g.lab,
-        rotulo: <>{g.rotulo}<span className="mono" style={{ fontSize: 11, fontWeight: 500, color: 'var(--ink-3)', marginLeft: 7 }}>{R.lab_share[g.lab]?.[ult] ? fmtP(R.lab_share[g.lab][ult]) : '—'}</span></>,
+        rotulo: <CartaoLab g={g} R={R} />,
         conteudo: <Painel g={g} />,
       }))} />
     </Secao>
   );
 }
-

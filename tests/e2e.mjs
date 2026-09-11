@@ -120,6 +120,22 @@ for (const tema of ['light', 'dark']) {
   await h.close();
 }
 
+// ---------------------------------------------------------------- botão Voltar
+{
+  // Regressão de 11/09: a URL voltava e a página do modelo ficava na tela,
+  // porque o recorte trocava a URL apagando o history.state do roteador.
+  const { page } = await abrir('/?janela=26&agrupar=mes');
+  await page.locator('#s03 table a[href^="/m/"]').first().click();
+  await page.waitForURL('**/m/**');
+  await page.waitForTimeout(500);
+  await page.goBack();
+  await page.waitForTimeout(1200);
+  ok('Voltar do modelo leva de volta à home', (await page.locator('h1').first().innerText()) === 'O que importa em IA hoje');
+  ok('Voltar preserva o recorte da URL', page.url().includes('janela=26') && page.url().includes('agrupar=mes'), page.url());
+  ok('Voltar restaura a janela escolhida nos filtros', (await page.locator('.filtros .chip', { hasText: '26 sem' }).getAttribute('aria-pressed')) === 'true');
+  await page.close();
+}
+
 // ---------------------------------------------------------------- sitemap e robots
 {
   const { page } = await abrir('/');
