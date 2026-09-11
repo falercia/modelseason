@@ -4,9 +4,44 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/). 
 
 O projeto foi construído em uma única sessão, então todas as versões abaixo carregam a mesma data. A separação em versões é lógica, não cronológica: cada uma marca um estado em que o site estava publicado e funcionando.
 
-## [Não lançado]
+## [2.0.0] — não lançado, na branch `dev`
 
-Planejado para a v2, detalhado em [`docs/v2.md`](docs/v2.md).
+A página foi reescrita em **Next.js 16, React 19 e TypeScript**, com D3 só para escala e geometria. O pipeline Python continua o mesmo e o site continua sem banco: tudo sai de arquivo versionado. O `index.html` monolítico da v1 (2.200 linhas de JavaScript) foi aposentado.
+
+### Adicionado
+
+- **Bloco "Agora"** com dado **diário** até o último dia publicado. A v1 mostrava a última semana fechada, com até dez dias de atraso. Manchete por regra, top 5 em 7 e 30 dias, quem subiu e caiu, estreias, idade do topo e termômetro. Gerado por `pipeline/build_web.py` em `data/web/agora.json`.
+- **Líderes por critério**: seis destaques separando desempenho em avaliação (geral, programação, agentes), uso observado (uso e ganho de participação) e adequação a um cenário (opção econômica). Empate no valor publicado vira grupo de líderes.
+- **O que mudou desde a semana passada**: até três mudanças, cada uma com evidência e o que observar, sem causa inventada.
+- **Seção 01, Para que o mercado usa**, a partir do arquivo diário de `/classifications/task`.
+- **Seção 05, Que carga o tráfego exige**: contexto, modalidade e raciocínio, filtráveis.
+- **Seção 06, Onde os modelos são usados**: apps por categoria e custo mediano por sessão por harness.
+- **Seção 09, Os três grandes**: Anthropic, OpenAI e Google em abas, com famílias de modelo para os três. Na v1 a seção era só da Anthropic.
+- **Custo por tarefa resolvida**, com fronteira de eficiência, e **onde ficam os provedores** de inferência.
+- **Página por modelo** em `/m/<slug>`: uma rota só, os 30 maiores pré-gerados e o resto renderizado no primeiro acesso e guardado em cache. Ficha, share semanal, finalidade, provedores e preços, avaliações e comparação com os maiores. Sitemap com todas.
+- Busca de modelo no topo (atalho `/`), índice lateral, tema claro e escuro, recorte na URL.
+- `pipeline/backfill.py` e o workflow manual `backfill.yml`, para retroagir o ranking por modalidade, contexto, categoria e tipo de linguagem, e o ranking semanal de apps.
+- Testes: `tests/engine.test.ts` compara o motor da página com o pipeline; `tests/e2e.mjs` confere a página rodando (todo "?" com texto próprio, nenhum NaN, sem rolagem lateral em 400px, links de modelo, 404, sitemap).
+
+### Mudou
+
+- **As quatro cores de laboratório** passaram a ser dos quatro maiores em volume acumulado desde jan/2025 (DeepSeek, Google, Anthropic e OpenAI). A lista anterior dizia isso e não era verdade. Um teste falha quando a lista deixar de bater com o dado.
+- Os textos de gráfico saíram do código para `content/`, validados no build: gráfico sem "o que não mostra" não vai ao ar.
+- Fontes hospedadas no próprio site.
+
+### Removido
+
+- `public/index.html`, `public/vendor/`, `public/sitemap.xml`, `public/robots.txt` e os testes da v1 (`tests/e2e.js`, `tests/fuzz.js`).
+
+### Limites conhecidos
+
+- O gasto histórico ainda usa o preço de tabela de hoje para todo o passado. A correção depende do histórico de preços.
+- Só existe uma foto de tarefas; a série de finalidade e os sinais de finalidade aparecem com o arquivo.
+- Edição em inglês ainda não existe.
+
+---
+
+## [1.5.0] — 2026-09-10
 
 ### Adicionado
 
