@@ -5,10 +5,17 @@ Uso: python pipeline/test_snapshots.py
 import datetime as dt
 import sys
 import tempfile
+import uuid
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import snapshots as S  # noqa: E402
+
+# Os testes negativos fazem o snapshots.py imprimir ::error:: e ::warning:: de
+# proposito. Sem esta pausa, o GitHub transforma cada um em anotacao vermelha
+# num run verde. O resultado real dos testes continua no codigo de saida.
+PAUSA = f"testes-{uuid.uuid4().hex}"
+print(f"::stop-commands::{PAUSA}")
 
 TOKEN = "sk-or-v1-TESTE-nao-pode-aparecer-em-arquivo"
 AGORA = dt.datetime(2026, 9, 10, 7, 15, tzinfo=dt.timezone.utc)
@@ -195,5 +202,6 @@ with tempfile.TemporaryDirectory() as tmp:
     check("top modelos: 50 ids de API, sem sufixo de variante",
           len(modelos) == 50 and all(":" not in m and "/" in m for m in modelos), modelos[:3])
 
+print(f"::{PAUSA}::")
 print(f"\n{'Falharam ' + str(len(falhas)) if falhas else 'Todas passaram'}.")
 sys.exit(1 if falhas else 0)

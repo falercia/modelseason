@@ -4,7 +4,7 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/). 
 
 O projeto foi construído em uma única sessão, então todas as versões abaixo carregam a mesma data. A separação em versões é lógica, não cronológica: cada uma marca um estado em que o site estava publicado e funcionando.
 
-## [2.0.0] — não lançado, na branch `dev`
+## [2.0.0] — 2026-09-11
 
 A página foi reescrita em **Next.js 16, React 19 e TypeScript**, com D3 só para escala e geometria. O pipeline Python continua o mesmo e o site continua sem banco: tudo sai de arquivo versionado. O `index.html` monolítico da v1 (2.200 linhas de JavaScript) foi aposentado.
 
@@ -28,6 +28,7 @@ A página foi reescrita em **Next.js 16, React 19 e TypeScript**, com D3 só par
 - **As quatro cores de laboratório** passaram a ser dos quatro maiores em volume acumulado desde jan/2025 (DeepSeek, Google, Anthropic e OpenAI). A lista anterior dizia isso e não era verdade. Um teste falha quando a lista deixar de bater com o dado.
 - Os textos de gráfico saíram do código para `content/`, validados no build: gráfico sem "o que não mostra" não vai ao ar.
 - Fontes hospedadas no próprio site.
+- Workflows nas versões das actions que rodam em Node 24 (`checkout@v5`, `setup-python@v6`, `setup-node@v5`, `github-script@v8`). O Node 20 sai dos runners do GitHub neste outono.
 
 ### Corrigido
 
@@ -35,6 +36,8 @@ A página foi reescrita em **Next.js 16, React 19 e TypeScript**, com D3 só par
 
 - **Botão Voltar do navegador.** Depois de abrir a página de um modelo, Voltar mudava a URL e deixava o modelo na tela. O recorte do Histórico trocava a URL apagando o estado que o roteador guarda no histórico. Agora preserva, e Voltar devolve à home com o mesmo recorte e a mesma posição de rolagem. Teste de ponta a ponta cobre o caso.
 - **Seleção de laboratório da seção 09 parecia texto, não botão.** Virou três cartões clicáveis com a cor do laboratório, o share, a variação na janela, a curva e as famílias, e o cartão escolhido aponta para o painel de baixo.
+
+- **Run verde com três anotações de erro.** Os testes negativos do `test_snapshots.py` fazem o arquivador imprimir `::error::` de propósito, e o GitHub exibia cada um como falha. Os testes agora pausam os comandos de workflow enquanto rodam.
 
 ### Removido
 
