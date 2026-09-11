@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
     inputs:
       only:
-        description: "Fontes separadas por vírgula (vazio = todas): tasks,sessions,benchmarks,endpoints,apps,providers,zdr,embeddings,images,videos"
+        description: "Fontes separadas por vírgula (vazio = todas): tasks,sessions,benchmarks,endpoints,apps,providers,zdr,embeddings,images,videos,models"
         required: false
         default: ""
       apps_day:

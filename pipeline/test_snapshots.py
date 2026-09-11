@@ -72,6 +72,9 @@ def roteador(tasks=None, sessions_linhas=503):
                     "images/models": 52, "videos/models": 28}
         if caminho in publicas:
             return {"data": [{"id": f"x/{i}", "status": 0} for i in range(publicas[caminho])]}
+        if caminho == "models":
+            n = 420 if params.get("output_modalities") == "all" else 351
+            return {"data": [{"id": f"x/{i}", "pricing": {"prompt": "0.000001"}} for i in range(n)], "total_count": n}
         return Resp(404, {"error": "not found"})
     return r
 
@@ -160,12 +163,12 @@ with tempfile.TemporaryDirectory() as tmp:
     as_of, _, _ = S.coletar_benchmarks(cliente(bench_vazio))
     check("benchmarks: resposta vazia nao define a data", as_of == "2026-09-05", as_of)
 
-    publicas = ["providers", "zdr", "embeddings", "images", "videos"]
+    publicas = ["providers", "zdr", "embeddings", "images", "videos", "models"]
     cp = S.Cliente(None, sessao=Fake(roteador()), dormir=lambda s: None)
     f = S.rodar(publicas, cp, base=base, agora=AGORA)
     check("fontes publicas rodam sem chave", f == [] and cp.chamadas_com_chave == 0, (f, cp.chamadas_com_chave))
     check("fontes publicas nao mandam cabecalho de autorizacao", all(not h for _, _, h in cp.s.log))
-    esperados = ["providers", "zdr", "catalogs/embeddings", "catalogs/images", "catalogs/videos"]
+    esperados = ["providers", "zdr", "catalogs/embeddings", "catalogs/images", "catalogs/videos", "catalogs/models"]
     check("fontes publicas nas pastas certas, com o dia UTC da coleta",
           all((base / d / "2026-09-10.json.gz").exists() for d in esperados),
           [d for d in esperados if not (base / d / "2026-09-10.json.gz").exists()])
@@ -176,6 +179,23 @@ with tempfile.TemporaryDirectory() as tmp:
         return {"data": [{"id": "a"}] * 3}
     f = S.rodar(["zdr"], S.Cliente(None, sessao=Fake(truncado), dormir=lambda s: None), base=base, agora=AGORA)
     check("resposta publica truncada e falha", f == ["zdr"], f)
+
+    pedidos = [p for c_, p, _ in cp.s.log if c_ == "models"]
+    check("models: pede o catalogo de todas as modalidades, sem paginar",
+          pedidos == [{"output_modalities": "all"}], pedidos)
+    env = S.ler(base / "catalogs" / "models" / "2026-09-10.json.gz")
+    check("models: guarda o preco bruto de cada modelo",
+          len(env["requests"][0]["response"]["data"]) == 420 and "pricing" in env["requests"][0]["response"]["data"][0])
+
+    def paginado(caminho, params):
+        return {"data": [{"id": f"x/{i}"} for i in range(300)], "total_count": 900}
+    f = S.rodar(["models"], S.Cliente(None, sessao=Fake(paginado), dormir=lambda s: None), base=base, agora=AGORA)
+    check("models: lista menor que total_count e falha", f == ["models"], f)
+
+    def curto(caminho, params):
+        return {"data": [{"id": "a"}] * 40, "total_count": 40}
+    f = S.rodar(["models"], S.Cliente(None, sessao=Fake(curto), dormir=lambda s: None), base=base, agora=AGORA)
+    check("models: catalogo abaixo do minimo e falha", f == ["models"], f)
 
     z1 = [{"path": "/endpoints/zdr", "params": {}, "response": {"data": [{"price": 1, "status": 0, "uptime_last_5m": 99}]}}]
     z2 = [{"path": "/endpoints/zdr", "params": {}, "response": {"data": [{"price": 1, "status": -2, "uptime_last_5m": 80}]}}]

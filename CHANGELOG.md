@@ -4,6 +4,12 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/). 
 
 O projeto foi construído em uma única sessão, então todas as versões abaixo carregam a mesma data. A separação em versões é lógica, não cronológica: cada uma marca um estado em que o site estava publicado e funcionando.
 
+## [Não lançado]
+
+### Adicionado
+
+- **Foto diária do catálogo completo de modelos** (`/models?output_modalities=all`) em `data/catalogs/models/`. O `fetch_models.py` guarda só o preço de hoje e sobrescreve o de ontem; sem essa foto, o preço de cada dia se perde e o gasto histórico continua calculado com o preço atual. É a base da tabela de versões de preço do banco. Uma chamada pública por dia, sem consumir a cota da chave. Falha se a lista vier menor que o `total_count` ou abaixo de 250 modelos.
+
 ## [2.0.0] — 2026-09-11
 
 A página foi reescrita em **Next.js 16, React 19 e TypeScript**, com D3 só para escala e geometria. O pipeline Python continua o mesmo e o site continua sem banco: tudo sai de arquivo versionado. O `index.html` monolítico da v1 (2.200 linhas de JavaScript) foi aposentado.

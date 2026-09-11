@@ -16,9 +16,15 @@ passado depois. Cada dia sem este script rodando e um dia perdido para sempre.
 | embeddings  | /embeddings/models                | foto atual, sem as_of  | data/catalogs/embeddings/ |
 | images      | /images/models                    | foto atual, sem as_of  | data/catalogs/images/     |
 | videos      | /videos/models                    | foto atual, sem as_of  | data/catalogs/videos/     |
+| models      | /models?output_modalities=all     | foto atual, sem as_of  | data/catalogs/models/     |
 
 `apps` aceita datas passadas e pode ser retroagido. Entra aqui porque a foto
 diaria por categoria e subcategoria e barata e ja deixa a serie pronta.
+
+`models` e o catalogo completo, de todas as modalidades, com preco. O
+`fetch_models.py` do diario guarda so o preco de HOJE, sobrescrito; esta foto
+bruta e o que permite reconstruir o preco de cada dia e calcular o gasto
+historico com o preco da epoca.
 
 Regras:
 - O arquivo guarda a resposta BRUTA. Nada e filtrado ou renomeado; o parser vem
@@ -47,7 +53,7 @@ Uso:
     python pipeline/snapshots.py                      # todas as fontes
     python pipeline/snapshots.py --only tasks,apps
     python pipeline/snapshots.py --apps-day 2026-09-01
-    python pipeline/snapshots.py --only endpoints,providers,zdr,embeddings,images,videos --out /tmp/teste   # sem chave
+    python pipeline/snapshots.py --only endpoints,providers,zdr,embeddings,images,videos,models --out /tmp/teste   # sem chave
 """
 import argparse
 import datetime as dt
@@ -88,7 +94,7 @@ VOLATEIS = {
 }
 
 # Fontes que nao exigem chave e nao consomem a cota.
-PUBLICAS = {"endpoints", "providers", "zdr", "embeddings", "images", "videos"}
+PUBLICAS = {"endpoints", "providers", "zdr", "embeddings", "images", "videos", "models"}
 
 APP_CATEGORIAS = ["coding", "creative", "productivity", "entertainment"]
 APP_SUBCATEGORIAS = [
@@ -339,6 +345,30 @@ def _foto_publica(caminho, minimo):
     return coletar
 
 
+
+MINIMO_MODELOS = 250  # 351 modelos so de texto ativos em 11/09
+
+
+def coletar_models(c, agora=None, **_):
+    """Catalogo inteiro do /models, todas as modalidades, numa chamada so.
+
+    Sem `limit` e `offset` a API devolve a lista completa. `output_modalities=all`
+    porque o padrao da API e so texto. Se `total_count` vier maior que a lista, a
+    resposta veio paginada ou truncada, e isso e falha, nao foto parcial.
+    """
+    q = c.get("models", {"output_modalities": "all"}, com_chave=False)
+    corpo = q["response"]
+    dados = corpo.get("data") or []
+    total = corpo.get("total_count")
+    if len(dados) < MINIMO_MODELOS:
+        raise FonteVazia(f"{len(dados)} modelos, esperado ao menos {MINIMO_MODELOS}")
+    if isinstance(total, int) and len(dados) < total:
+        raise FonteVazia(f"{len(dados)} de {total} modelos: resposta paginada ou truncada")
+    agora = agora or dt.datetime.now(dt.timezone.utc)
+    kb = len(json.dumps(corpo, ensure_ascii=False, separators=(",", ":")).encode()) // 1024
+    return agora.date().isoformat(), [q], f"{len(dados)} modelos, {kb} KB sem compressao"
+
+
 FONTES = {
     "tasks": coletar_tasks,
     "sessions": coletar_sessions,
@@ -352,11 +382,12 @@ FONTES = {
     "embeddings": _foto_publica("embeddings/models", 10),
     "images": _foto_publica("images/models", 10),
     "videos": _foto_publica("videos/models", 5),
+    "models": coletar_models,
 }
 PASTAS = {"tasks": "tasks", "sessions": "sessions", "benchmarks": "benchmarks",
           "endpoints": "endpoints", "apps": "apps", "providers": "providers", "zdr": "zdr",
           "embeddings": "catalogs/embeddings", "images": "catalogs/images",
-          "videos": "catalogs/videos"}
+          "videos": "catalogs/videos", "models": "catalogs/models"}
 
 
 # ---------------------------------------------------------------- main

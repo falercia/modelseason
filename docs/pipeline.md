@@ -18,7 +18,8 @@ benchmarks ───────────┼─▶ snapshots.py ─▶ data/{
 models/{id}/endpoints ┤                   (GitHub Actions, 07:15 UTC, workflow próprio)
 app-rankings ─────────┤
 providers, zdr ───────┤                   data/{providers,zdr}/  (públicas, sem chave)
-embeddings/images/videos models ┘         data/catalogs/{embeddings,images,videos}/
+embeddings/images/videos models ┤         data/catalogs/{embeddings,images,videos}/
+models (todas as modalidades) ──┘         data/catalogs/models/  (histórico de preço)
 ```
 
 `fetch.py` traz volume. `fetch_models.py` traz o que cada modelo é: preço, contexto, lançamento, modalidade, pesos e índices de qualidade. `enrich.py` casa os dois e deriva as dimensões que os gráficos usam.
@@ -111,6 +112,7 @@ Quatro fontes da API só mostram o presente: a foto de hoje apaga a de ontem. `p
 | `providers` | `/providers` | Os provedores de inferência, com país sede e páginas de privacidade e termos. Permite separar onde a inferência roda de quem fez o modelo | Nenhum, e não exige chave |
 | `zdr` | `/endpoints/zdr` | Todos os endpoints, de todos os modelos, que aceitam retenção zero de dados | Nenhum, e não exige chave |
 | `embeddings`, `images`, `videos` | `/embeddings/models`, `/images/models`, `/videos/models` | Catálogos de três mercados vizinhos ao de texto, com preço e data de lançamento. Como no `/models`, modelo que sai do ar some do catálogo | Nenhum, e não exigem chave |
+| `models` | `/models?output_modalities=all` | O catálogo inteiro, de todas as modalidades, com preço, contexto, parâmetros, avaliações e data de expiração. O `fetch_models.py` guarda só o preço de hoje, sobrescrito; esta foto é o que permite reconstruir o preço de cada dia e calcular o gasto histórico com o preço da época. Arquivado desde 12/09/2026; antes disso, o preço só existe nas versões do `models_catalog.csv` no git, a partir de 09/09 | Nenhum, e não exige chave |
 
 Regras do arquivador:
 
@@ -126,7 +128,7 @@ O workflow é `.github/workflows/snapshots.yml`, separado do diário de propósi
 ```bash
 python pipeline/snapshots.py                          # todas as fontes, exige a chave
 python pipeline/snapshots.py --only tasks,sessions
-python pipeline/snapshots.py --only endpoints,providers,zdr,embeddings,images,videos --out /tmp/teste   # sem chave
+python pipeline/snapshots.py --only endpoints,providers,zdr,embeddings,images,videos,models --out /tmp/teste   # sem chave
 python pipeline/snapshots.py --only apps --apps-day 2026-08-01   # recuperar um dia de apps
 python pipeline/test_snapshots.py                     # checagens offline, sem rede
 ```
