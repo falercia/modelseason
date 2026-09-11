@@ -96,6 +96,10 @@ Desde 10/09/2026, o repositório também arquiva uma foto diária das fontes que
 
 Use à vontade, inclusive comercialmente. A licença exige apenas atribuição.
 
+## Privacidade
+
+A página não tem login, cookie próprio nem anúncio. Quando a variável `NEXT_PUBLIC_GA_ID` está configurada na Vercel, carrega o Google Analytics 4 para contar visitas e ver quais seções são lidas, com todos os sinais de publicidade negados, e o rodapé avisa. Detalhes em [`docs/pipeline.md`](docs/pipeline.md#google-analytics).
+
 ## Fonte e licença
 
 Os dados vêm do endpoint público `rankings-daily` do [OpenRouter](https://openrouter.ai/rankings) e estão sob [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Ao republicar ou citar, a atribuição exigida é:

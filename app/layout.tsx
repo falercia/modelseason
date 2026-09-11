@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
+import { Analytics } from '@/components/shell/Analytics';
 
 // Fontes hospedadas no próprio site (SIL Open Font License): o build não depende
 // de rede externa e o leitor não faz requisição a terceiros.
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <a href="#conteudo" className="pular">Pular para o conteúdo</a>
         {children}
+        <Analytics />
       </body>
     </html>
   );

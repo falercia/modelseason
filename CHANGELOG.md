@@ -8,6 +8,7 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ### Adicionado
 
+- **Google Analytics 4**, inerte até existir `NEXT_PUBLIC_GA_ID` na Vercel (só Production). Consent Mode com publicidade negada por padrão e aviso no rodapé quando ativo. Testado com e sem a variável: sem ela, nenhum script de terceiro é carregado e o e2e passa inteiro.
 - **Foto diária do catálogo completo de modelos** (`/models?output_modalities=all`) em `data/catalogs/models/`. O `fetch_models.py` guarda só o preço de hoje e sobrescreve o de ontem; sem essa foto, o preço de cada dia se perde e o gasto histórico continua calculado com o preço atual. É a base da tabela de versões de preço do banco. Uma chamada pública por dia, sem consumir a cota da chave. Falha se a lista vier menor que o `total_count` ou abaixo de 250 modelos.
 
 ## [2.0.0] — 2026-09-11

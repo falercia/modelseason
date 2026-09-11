@@ -1,4 +1,5 @@
 import { fBR } from '@/lib/format';
+import { gaAtivo } from './Analytics';
 
 export function Rodape({ asOf, ultimoDia }: { asOf: string; ultimoDia: string }) {
   return (
@@ -13,6 +14,11 @@ export function Rodape({ asOf, ultimoDia }: { asOf: string; ultimoDia: string })
         <a href="https://github.com/falercia/modelseason">repositório público</a>, e nenhum é escrito à mão. Share é fatia do tráfego de um
         roteador, não participação de mercado, de receita ou de usuários.
       </p>
+      {gaAtivo && (
+        <p>
+          Esta página usa o Google Analytics para contar visitas e entender quais seções são lidas. Nenhum dado é usado para publicidade.
+        </p>
+      )}
     </footer>
   );
 }

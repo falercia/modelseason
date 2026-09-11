@@ -79,6 +79,15 @@ gh secret set OPENROUTER_API_KEY   # pede a chave por prompt
 
 Para o e-mail nativo do Actions: Settings → Notifications → Actions → "Send notifications for failed workflows only".
 
+### Google Analytics
+
+A página carrega o GA4 só quando existe `NEXT_PUBLIC_GA_ID` (formato `G-XXXXXXX`) nas variáveis de ambiente da Vercel. Sem a variável, nada é carregado, e é assim no CI e em desenvolvimento. O componente é `components/shell/Analytics.tsx`.
+
+- Configurar só no ambiente **Production** da Vercel, para preview não mandar visita para a propriedade. Como é `NEXT_PUBLIC_`, o valor entra no build: depois de criar ou trocar, é preciso redeployar.
+- Consent Mode com publicidade negada por padrão (`ad_storage`, `ad_user_data`, `ad_personalization`). A página não tem anúncio.
+- Com o GA ativo, o rodapé avisa que a página usa Google Analytics.
+- A troca de recorte (janela, agrupamento, filtro) muda a URL. As medições aprimoradas do GA4 podem contar isso como visualização de página; se poluir o relatório, desligar "alterações de página com base em eventos do histórico do navegador" na propriedade.
+
 ## Guard de integridade
 
 `pipeline/check_freshness.py` roda depois do fetch, com três verificações em ordem de gravidade.
