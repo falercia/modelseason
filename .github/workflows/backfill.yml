@@ -1,0 +1,58 @@
+name: Retroagir séries com histórico
+
+# Sob demanda. Busca o passado das séries que a fonte ainda entrega com data
+# (ranking diário por modalidade, contexto, categoria e tipo de linguagem; apps
+# por semana). Nada aqui se perde se esperar, então roda com teto de chamadas e
+# retoma de onde parou. Rodar "rankings" uma vez e "apps" em dois dias seguidos.
+
+on:
+  workflow_dispatch:
+    inputs:
+      serie:
+        description: "rankings ou apps"
+        required: true
+        default: "rankings"
+        type: choice
+        options: [rankings, apps]
+      max_chamadas:
+        description: "Teto de chamadas com chave nesta execução (o limite da conta é 500 por dia)"
+        required: false
+        default: "400"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-update
+  cancel-in-progress: false
+
+jobs:
+  retroagir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pipeline/requirements.txt
+      - run: pip install -r pipeline/requirements.txt
+      - name: Retroagir
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          SERIE: ${{ inputs.serie }}
+          MAX: ${{ inputs.max_chamadas }}
+        run: python pipeline/backfill.py --serie "$SERIE" --max-chamadas "$MAX"
+      - name: Commitar
+        run: |
+          git config user.name "modelseason-bot"
+          git config user.email "modelseason-bot@users.noreply.github.com"
+          if [ -d data/backfill ]; then git add data/backfill; fi
+          if git diff --cached --quiet; then echo "Nada novo."; exit 0; fi
+          git commit -m "data: retroativo ${{ inputs.serie }} $(date -u +%F)"
+          for t in 1 2 3; do
+            if git pull --rebase origin "$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME"; then exit 0; fi
+            sleep 15
+          done
+          exit 1

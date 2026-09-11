@@ -5,4 +5,7 @@ __pycache__/
 .vercel/
 .DS_Store
 node_modules/
-package-lock.json
+.next/
+next-env.d.ts
+*.tsbuildinfo
+content/conteudo.json

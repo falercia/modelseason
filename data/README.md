@@ -51,6 +51,20 @@ Uma foto por dia das fontes que só mostram o presente, gravada por `pipeline/sn
 
 Estes arquivos são a fonte de verdade. Qualquer tabela derivada deles, inclusive o banco da v2, pode ser reconstruída a partir daqui.
 
+## `web/`
+
+Gerado por `pipeline/build_web.py` a cada atualização, lido pela página. Não é fonte de verdade: sai inteiro dos arquivos acima.
+
+| Arquivo | O que tem |
+|---|---|
+| `agora.json` | Bloco Agora: janelas diárias de 7 e 30 dias, top, movimentos, estreias, termômetro, manchete, líderes por critério e o que mudou |
+| `mercado.json` | Resumo das fontes sem histórico: tarefas, apps, sessões, avaliações, provedores e retenção zero |
+| `modelos.json` | Uma ficha por modelo para as páginas `/m/<slug>` |
+
+## `backfill/`
+
+Séries que a fonte ainda entrega com data e que foram retroagidas por `pipeline/backfill.py`: ranking diário por modalidade e faixa de contexto, ranking semanal por categoria e tipo de linguagem, e ranking semanal de apps.
+
 ## Licença e atribuição
 
 Todos os arquivos derivam de endpoints públicos do OpenRouter e estão sob [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Ao republicar ou citar:

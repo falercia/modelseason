@@ -1,18 +1,38 @@
 {
   "name": "modelseason",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Para onde vai o tráfego de tokens dos modelos de linguagem, semana a semana.",
+  "description": "Para onde vai o tráfego de tokens dos modelos de linguagem, e para que ele está sendo usado.",
   "homepage": "https://modelseason.com",
   "license": "MIT",
   "scripts": {
-    "serve": "python3 -m http.server 8000 --directory public",
-    "test": "node tests/e2e.js http://localhost:8000",
-    "test:ci": "node tests/e2e.js http://localhost:8099",
-    "fuzz": "node tests/fuzz.js http://localhost:8000",
-    "fuzz:ci": "node tests/fuzz.js http://localhost:8099"
+    "predev": "node scripts/conteudo.mjs",
+    "dev": "next dev",
+    "prebuild": "node scripts/conteudo.mjs",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "node scripts/conteudo.mjs && tsc --noEmit",
+    "test:engine": "node --experimental-strip-types tests/engine.test.ts",
+    "test:e2e": "node tests/e2e.mjs"
+  },
+  "dependencies": {
+    "d3": "7.9.0",
+    "gray-matter": "4.0.3",
+    "next": "16.3.4",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
-    "playwright": "1.63.0"
+    "@types/d3": "7.4.3",
+    "@types/node": "22.20.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "playwright": "1.63.0",
+    "typescript": "5.9.3"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20.9"
   }
 }

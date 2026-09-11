@@ -9,7 +9,8 @@ rankings-daily ──▶ fetch.py ───────▶ data/rankings_daily.c
                                                               ├─▶ enrich.py ─▶ build.py ─▶ public/data.json
 /api/v1/models ──▶ fetch_models.py ▶ data/models_catalog.csv ─┘                    │
                                                                           make_og.py ─▶ public/og.png
-GitHub Actions (06:30 UTC) commita ──▶ Vercel redeploya ──▶ public/index.html
+rankings_daily.csv + catálogo + snapshots ──▶ build_web.py ──▶ data/web/{agora,mercado,modelos}.json
+GitHub Actions (06:30 UTC) commita ──▶ Vercel redeploya ──▶ Next.js lê public/data.json e data/web/
 
 classifications/task ─┐
 session-cost ─────────┤
@@ -22,7 +23,27 @@ embeddings/images/videos models ┘         data/catalogs/{embeddings,images,vid
 
 `fetch.py` traz volume. `fetch_models.py` traz o que cada modelo é: preço, contexto, lançamento, modalidade, pesos e índices de qualidade. `enrich.py` casa os dois e deriva as dimensões que os gráficos usam.
 
-Toda a agregação vive em Python. A página lê um JSON e desenha com D3. Nenhum número é escrito à mão no HTML.
+`build_web.py` gera o que a v2 lê além do `data.json`: o bloco Agora com dado **diário** (a v1 só via semanas fechadas), os líderes por critério, as fontes sem histórico já resumidas (tarefas, apps, sessões, avaliações, provedores) e uma ficha por modelo para as páginas `/m/<slug>`. Ele roda no diário e no workflow de snapshots, e o CI confere que o `data/web` commitado é exatamente o que ele gera.
+
+Toda a agregação de dados vive em Python. O recorte por janela, agrupamento e filtro acontece no navegador, em `lib/engine.ts`, a partir da matriz modelo × semana do `data.json` (porte do motor da v1, testado contra o pipeline). Nenhum número é escrito à mão na página nem nos textos de `content/`.
+
+## Front (v2)
+
+Next.js 16 (App Router), React 19 e TypeScript, hospedado na Vercel. D3 só calcula escala e geometria; React desenha o SVG.
+
+| Pasta | O que tem |
+|---|---|
+| `app/` | Rotas: `/` (estática), `/m/[...slug]` (página de modelo, 30 pré-geradas e o resto sob demanda, em cache até o próximo deploy), `sitemap.xml`, `robots.txt` |
+| `components/agora/` | Bloco Agora, líderes e o que mudou, renderizados no servidor |
+| `components/secoes/` | As 15 seções do Histórico, uma por arquivo (`S01.tsx` a `S15.tsx`) |
+| `components/modelo/` | A página de modelo |
+| `components/shell/` | Topo com busca, índice lateral, filtros, painel do "?" |
+| `components/graficos/base.tsx` | Primitivos: série temporal (linhas, área, empilhada, banda), barras, legenda, tabela |
+| `lib/engine.ts` | O motor de recorte (janela, agrupamento, filtros, famílias de modelo) |
+| `content/` | Um arquivo por gráfico e por indicador. `scripts/conteudo.mjs` valida e compila antes de todo build |
+
+Sem banco. Cada commit do pipeline gera um deploy, e o deploy é o cache. O Postgres entra quando houver dado que justifique, sem mudar as páginas: só a camada `lib/data.ts`.
+
 
 ## Rodar local
 
@@ -33,7 +54,8 @@ python pipeline/fetch.py          # volume, incremental
 python pipeline/fetch_models.py   # catálogo de modelos, não exige chave
 python pipeline/build.py          # gera public/data.json
 python pipeline/make_og.py        # gera o card social
-python -m http.server 8000 --directory public
+python pipeline/build_web.py      # gera data/web/*.json
+npm ci && npm run dev             # http://localhost:3000
 ```
 
 O CSV já vem com o histórico completo, então o primeiro `fetch.py` só busca a diferença. Sem a chave, `build.py` e a página funcionam com o dado que já está no repositório.
@@ -174,22 +196,22 @@ As tags `og:image` e `twitter:image` em `public/index.html` apontam para `https:
 
 ## Testes
 
-A página é ferramenta de mercado: número errado publicado em silêncio custa mais caro do que build que falha. Por isso a confiabilidade é verificada, não prometida.
+A página é ferramenta de mercado: número errado publicado em silêncio custa mais caro do que build que falha.
 
 ```bash
-python pipeline/selftest.py                       # invariantes do data.json
-npm i -D playwright && npx playwright install chromium
-python -m http.server 8000 --directory public &
-node tests/e2e.js http://localhost:8000           # 24 verificações no navegador
+python pipeline/selftest.py              # invariantes do data.json
+python pipeline/test_snapshots.py        # arquivador, offline
+npm run test:engine                      # motor da página contra o pipeline
+npm run typecheck                        # conteúdo de content/ e tipos
+npm run build && npx next start -p 3099 &
+node tests/e2e.mjs http://localhost:3099 # a página rodando, em navegador real
 ```
 
-**`pipeline/selftest.py`** roda no pipeline diário, antes do commit. Verifica que a matriz reconcilia com o CSV bruto, que todo conjunto de shares soma 100% em toda semana, que não há NaN nem infinito, que as chaves que a página consome existem com o tamanho certo, e que o leaderboard é consistente com a matriz.
+**`tests/engine.test.ts`** compara o motor do navegador com o `data.json` do Python: volume, top 5, HHI, origem, licença, share da Anthropic, gasto, famílias, janelas, agrupamento mensal e filtro. Também falha quando as quatro cores de laboratório deixarem de ser as dos quatro maiores em volume acumulado.
 
-**`tests/e2e.js`** roda no CI a cada push. Carrega a página em navegador real e compara o que ela calcula no cliente com o que o pipeline calculou em Python. Também exercita filtros, verifica que as partes somam o todo, que o estado vai e volta pela URL, que não há transbordo horizontal em 390, 768 e 1440px, e que o tema escuro desenha.
+**`tests/e2e.mjs`** carrega a página: o líder e a manchete do Agora batem com `agora.json`, todo cartão tem "?" com texto cadastrado e próprio, o painel abre com o título do gráfico, as três abas de família estão no HTML, janela e agrupamento vão para a URL, filtro por URL funciona, nada vira NaN, nada rola de lado em 400px nos dois temas, todo link de modelo abre, slug inexistente dá 404, e o sitemap lista as páginas de modelo.
 
-**`.github/workflows/tests.yml`** ainda checa que o `public/data.json` commitado é exatamente o que `build.py` gera a partir dos CSVs versionados. Isso impede que alguém edite o JSON à mão e a página passe a mostrar número que o pipeline não produz.
-
-Três bugs reais foram encontrados por esses testes antes de qualquer deploy: a linha `other` entrando no leaderboard como se fosse modelo, o `top5` mudando de semântica no cliente, e a fatia "Outros" contada duas vezes no gráfico por laboratório.
+**`.github/workflows/tests.yml`** roda tudo isso em todo push para `main` e `dev` e em todo PR, e ainda confere que `public/data.json` e `data/web/` commitados são exatamente o que o pipeline gera.
 
 ## Motor de filtros
 
@@ -197,7 +219,7 @@ A página não consome mais séries pré-agregadas: ela recalcula tudo a partir 
 
 Sem isso, filtro é impossível: para responder "só modelos pagos acima de 128k de contexto" o navegador precisa dos números por modelo, não do total.
 
-`window.MS` expõe o estado para auditoria: `MS.D` são as séries do recorte atual, `MS.MX` a matriz, `MS.FILTROS` o recorte, `MS.agregar(fn, peso)` a função de agregação. Os testes usam esse mesmo ponto de entrada.
+Na v2 o motor é `lib/engine.ts`, uma função pura `recortar(D, séries, estado, pesos)`. As seções só leem o recorte; nenhuma recorta nada por conta própria.
 
 **Duas decisões que mudam a leitura dos números sob filtro:**
 

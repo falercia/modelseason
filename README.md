@@ -20,33 +20,33 @@ Esta página existe para sustentar esse argumento com série histórica, não co
 
 ## O que a página mostra
 
-**Tamanho e concentração.** Volume semanal em trilhões de tokens, share dos cinco maiores modelos, índice HHI.
+A página tem duas partes, separadas por um divisor explícito.
 
-**Leaderboard semanal.** Os quinze modelos mais usados, com share, volume, país-sede do laboratório, licença dos pesos e a posição que ocupavam quatro semanas antes. É onde se enxerga quem entrou e quem sumiu.
+**Agora.** Fora do filtro, de propósito. O retrato do mercado no último dia publicado pela fonte, com dado diário, sem esperar a semana fechar: uma manchete gerada por regra, o top 5 em 7 e em 30 dias, quem subiu e quem caiu, estreias, idade do topo e um termômetro com volume, preço efetivo, concentração e share chinês. Logo abaixo, **líderes por critério**, com rótulos separados para desempenho em avaliação, uso observado e adequação a um cenário, e **o que mudou desde a semana passada**, com a evidência de cada mudança.
 
-**Origem e licença.** Share por país-sede do laboratório e por modelo de licenciamento dos pesos. Mais o tráfego em endpoints gratuitos, que muda a leitura de qualquer número de crescimento.
+**Histórico.** Tudo responde à janela, ao agrupamento e aos filtros de modelo:
 
-**Posição da Anthropic.** Share ao longo do tempo contra os oito maiores concorrentes, volume por família e permanência de cada modelo Claude no top 10.
+1. **Para que o mercado usa.** Share do volume por finalidade (código, dados, agentes, uso geral e 29 tarefas) e os modelos que lideram cada tarefa. A fonte não guarda passado; a série existe porque o site arquiva uma foto por dia desde 10/09/2026.
+2. **Tamanho e concentração.** Volume semanal e share dos cinco maiores, com o HHI.
+3. **Share por laboratório** e o top 15 da semana.
+4. **Origem, licença e cobrança**, e onde ficam os provedores que servem os modelos.
+5. **Que carga o tráfego exige.** Janela de contexto, modalidade e raciocínio ao longo do tempo.
+6. **Onde os modelos são usados.** Top apps por categoria e custo mediano por sessão em cada harness.
+7. **Para onde vai o dinheiro.** Gasto estimado com faixa piso e teto, e share de tokens contra share do gasto.
+8. **Qualidade contra adoção**, e custo por tarefa resolvida nas avaliações da fonte, com a fronteira de eficiência.
+9. **Os três grandes: Anthropic, OpenAI e Google**, em abas: share contra concorrentes, volume por família de modelo e permanência no top 10.
+10. **Ciclo de vida.** Rotatividade e idade do top 10, tempo até o pico, meia-vida e a forma de uma temporada. É a seção que sustenta a tese.
+11. **O que mudou** em quatro semanas.
+12. **Comparador** de dois modelos.
+13. **O mapa da temporada**, com pesos ajustáveis.
+14. **Sinais.** Achados por regra e extrapolação condicional, que não é previsão.
+15. **Como ler cada indicador.**
 
-**Ciclo de vida.** Rotatividade do top 10, idade mediana dos modelos em uso, tempo até o pico e meia-vida depois dele, por trimestre de lançamento. É a seção que sustenta a tese.
+Todo cartão tem um "?" com como ler, a pergunta que responde e o que **não** mostra. Todo gráfico temporal abre em tabela.
 
-**Para onde vai o dinheiro.** Gasto semanal estimado a preço de tabela, com a faixa de incerteza, e share de tokens contra share do gasto por laboratório. É a divergência mais importante do dataset e quase nenhuma análise pública mostra.
+**Página de modelo.** Cada modelo tem uma URL própria, `/m/<laboratório>/<modelo>`, com ficha, share semanal, para que ele é usado, onde rodar e a que preço, avaliações e a comparação com os maiores proprietários e de pesos abertos.
 
-**Qualidade contra adoção.** Índice de inteligência no eixo horizontal, share de tokens no vertical. Os quadrantes separam o que é bom e usado do que é bom e ignorado.
-
-**O que mudou esta semana.** Entradas e saídas do top 10, estreias no ranking e as maiores variações de share em quatro semanas. É o que justifica a página ser diária.
-
-**Comparador.** Dois modelos lado a lado: adoção, preço, contexto, índice de inteligência, origem, pesos e a curva de share dos dois.
-
-**O mapa da temporada.** Cada laboratório posicionado por tração, no eixo vertical, contra capacidade, no horizontal, com o rastro de onde estava doze semanas antes. Quatro quadrantes: Líderes, Desafiantes, Promessas e Nichados. Os dois eixos são compostos, calculados a partir do mesmo pipeline que gera o resto da página, e os pesos de cada componente ficam abertos para o leitor ajustar.
-
-**Como ler cada indicador.** Dezesseis indicadores documentados, cada um respondendo três perguntas: o que é, como é calculado, e o que **não** conclui. A terceira é a que mais importa numa decisão.
-
-Cada seção tem um painel de leitura ao lado, com a interpretação e os caveats. Todo gráfico abre em tabela, e a legenda é clicável: dá para ligar e desligar séries para comparar só o que interessa.
-
-**Filtros.** Uma barra no topo recorta o mercado inteiro por cobrança, licença dos pesos, país-sede do laboratório, faixa de preço, janela de contexto, modalidade e suporte a raciocínio. Todos os gráficos respondem ao mesmo recorte, e o filtro vai para a URL: um link já filtrado abre no mesmo estado para quem receber.
-
-**Janela e granularidade.** Tudo, ano corrente, 52, 26, 13 ou 4 semanas, agrupado por semana ou por mês. Ao agrupar por mês, valores absolutos viram média semanal do mês, para que um mês de cinco semanas não pareça 25% maior que um de quatro.
+**Filtros.** Cobrança, licença dos pesos, país-sede do laboratório, faixa de preço, janela de contexto, modalidade e raciocínio. **Janela:** tudo, 52, 26, 13 ou 4 semanas, por semana ou por mês. Ao agrupar por mês, valores absolutos viram média semanal do mês. O recorte vai para a URL e pode ser compartilhado por link.
 
 Com filtro ativo, os percentuais passam a ser calculados dentro do recorte, e a página diz quanto do volume ficou de fora.
 
@@ -110,4 +110,4 @@ O código deste repositório está sob [MIT](LICENSE). A licença dos dados é a
 
 ---
 
-Histórico de mudanças: [`CHANGELOG.md`](CHANGELOG.md). Plano da próxima versão: [`docs/v2.md`](docs/v2.md). Detalhes de pipeline, operação e contribuição: [`docs/pipeline.md`](docs/pipeline.md).
+Histórico de mudanças: [`CHANGELOG.md`](CHANGELOG.md). Detalhes de pipeline, front, operação e contribuição: [`docs/pipeline.md`](docs/pipeline.md).

@@ -2,7 +2,7 @@ name: Testes
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   pull_request:
   workflow_dispatch:
 
@@ -12,7 +12,7 @@ permissions:
 jobs:
   testes:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
 
@@ -41,54 +41,37 @@ jobs:
       - name: Checagens do arquivador de fontes sem histórico
         run: python pipeline/test_snapshots.py
 
+      - name: Dados da página (data/web) batem com o pipeline
+        run: |
+          python pipeline/build_web.py
+          if ! git diff --quiet -- data/web; then
+            echo "::error::data/web commitado difere do que build_web.py gera."
+            git diff --stat -- data/web
+            exit 1
+          fi
+
       - uses: actions/setup-node@v4
         with:
-          node-version: "24"
+          node-version: "22"
+          cache: npm
 
-      # Sem cache do npm: ele exige package-lock.json versionado, e a unica
-      # dependencia aqui e o playwright, com versao presa no package.json.
-      - name: Instalar dependências de teste
-        run: |
-          npm install --no-audit --no-fund
-          echo "playwright instalado: $(node -p "require('playwright/package.json').version")"
+      - run: npm ci --no-audit --no-fund
 
-      # Usa o binario LOCAL (./node_modules/.bin) em vez de `npx playwright`.
-      # O npx pode ignorar a versao instalada e tentar buscar outra do registry,
-      # o que falha em runner sem interatividade. E qualquer erro daqui vira
-      # anotacao do GitHub, para o diagnostico nao depender de acesso ao log.
+      - name: Motor da página contra o pipeline
+        run: npm run test:engine
+
+      - name: Conteúdo e tipos
+        run: npm run typecheck
+
+      - name: Build do Next
+        run: npm run build
+
+      # Binário local do playwright: o npx pode buscar outra versão do registry.
       - name: Instalar Chromium
-        run: |
-          BIN=./node_modules/.bin/playwright
-          test -x "$BIN" || { echo "::error::binario do playwright nao encontrado em $BIN"; ls -la node_modules/.bin | head -20; exit 1; }
-          if ! saida=$("$BIN" install --with-deps chromium 2>&1); then
-            echo "::error::playwright install --with-deps falhou: $(echo "$saida" | tail -6 | tr '\n' ' § ')"
-            echo "$saida" | tail -40
-            echo "Tentando sem --with-deps..."
-            if ! saida2=$("$BIN" install chromium 2>&1); then
-              echo "::error::playwright install chromium tambem falhou: $(echo "$saida2" | tail -6 | tr '\n' ' § ')"
-              echo "$saida2" | tail -40
-              exit 1
-            fi
-            echo "::warning::Chromium instalado sem as dependencias de sistema."
-          fi
-          "$BIN" --version
+        run: ./node_modules/.bin/playwright install --with-deps chromium
 
       - name: Testes de ponta a ponta
         run: |
-          python -m http.server 8099 --directory public &
-          for i in $(seq 1 30); do
-            curl -sf http://localhost:8099/index.html >/dev/null && break
-            sleep 0.5
-          done
-          if ! saida=$(npm run test:ci 2>&1); then
-            echo "$saida"
-            echo "::error::testes de ponta a ponta falharam: $(echo "$saida" | grep -E '^  X' | head -4 | tr '\n' ' § ')"
-            exit 1
-          fi
-          echo "$saida"
-          if ! fz=$(npm run fuzz:ci 2>&1); then
-            echo "$fz"
-            echo "::error::varredura de recortes falhou: $(echo "$fz" | grep -E '^  X' | head -4 | tr '\n' ' § ')"
-            exit 1
-          fi
-          echo "$fz"
+          npx next start -p 3099 &
+          for i in $(seq 1 60); do curl -sf http://localhost:3099/ >/dev/null && break; sleep 1; done
+          node tests/e2e.mjs http://localhost:3099

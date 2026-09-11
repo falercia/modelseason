@@ -76,6 +76,9 @@ jobs:
       - name: Recalcular agregados
         run: python pipeline/build.py
 
+      - name: Recalcular os dados da página (bloco Agora, mercado e páginas de modelo)
+        run: python pipeline/build_web.py
+
       - name: Regerar card social
         run: python pipeline/make_og.py
 
@@ -86,7 +89,7 @@ jobs:
         run: |
           git config user.name "modelseason-bot"
           git config user.email "modelseason-bot@users.noreply.github.com"
-          git add data/rankings_daily.csv data/models_catalog.csv public/data.json public/og.png
+          git add data/rankings_daily.csv data/models_catalog.csv public/data.json public/og.png data/web
           if git diff --cached --quiet; then
             echo "Sem mudanças."
           else

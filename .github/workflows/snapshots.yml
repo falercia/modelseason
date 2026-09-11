@@ -70,11 +70,18 @@ jobs:
           if [ -n "$APPS_DAY" ]; then args+=(--apps-day "$APPS_DAY"); fi
           python pipeline/snapshots.py "${args[@]}"
 
+      # As seções de tarefas, apps, sessões e as páginas de modelo leem os
+      # snapshots através de data/web. Sem este passo, a página mostraria a foto
+      # de ontem até o diário da madrugada seguinte.
+      - name: Recalcular os dados da página
+        if: always()
+        run: python pipeline/build_web.py
+
       - name: Commitar o que foi coletado
         run: |
           git config user.name "modelseason-bot"
           git config user.email "modelseason-bot@users.noreply.github.com"
-          for d in data/tasks data/sessions data/benchmarks data/endpoints data/apps data/providers data/zdr data/catalogs; do
+          for d in data/tasks data/sessions data/benchmarks data/endpoints data/apps data/providers data/zdr data/catalogs data/web; do
             if [ -d "$d" ]; then git add "$d"; fi
           done
           if git diff --cached --quiet; then
