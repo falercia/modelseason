@@ -20,6 +20,10 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 - **Google Analytics 4**, inerte até existir `NEXT_PUBLIC_GA_ID` na Vercel (só Production). Consent Mode com publicidade negada por padrão e aviso no rodapé quando ativo. Testado com e sem a variável: sem ela, nenhum script de terceiro é carregado e o e2e passa inteiro.
 - **Foto diária do catálogo completo de modelos** (`/models?output_modalities=all`) em `data/catalogs/models/`. O `fetch_models.py` guarda só o preço de hoje e sobrescreve o de ontem; sem essa foto, o preço de cada dia se perde e o gasto histórico continua calculado com o preço atual. É a base da tabela de versões de preço do banco. Uma chamada pública por dia, sem consumir a cota da chave. Falha se a lista vier menor que o `total_count` ou abaixo de 250 modelos.
 
+### Corrigido
+
+- **Textos sobre raciocínio obrigatório**, nos dois idiomas. O indicador "Modalidade e raciocínio declarados" e o gráfico "Raciocínio" afirmavam que o catálogo não diz se o raciocínio é obrigatório. A foto diária de `/models` mostrou que diz: o bloco `reasoning` traz `mandatory`, `default_enabled`, `default_effort` e `supported_efforts`, e parte dos modelos do catálogo não deixa desligar o raciocínio. Os textos passaram a dizer o que de fato acontece, que a série usa só a presença do bloco e ainda junta obrigatório e opcional no mesmo grupo.
+
 ## [2.0.0] — 2026-09-11
 
 A página foi reescrita em **Next.js 16, React 19 e TypeScript**, com D3 só para escala e geometria. O pipeline Python continua o mesmo e o site continua sem banco: tudo sai de arquivo versionado. O `index.html` monolítico da v1 (2.200 linhas de JavaScript) foi aposentado.

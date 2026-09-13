@@ -12,5 +12,5 @@ comoLer: >-
 perguntaQueResponde: >-
   Em que ritmo o tráfego migrou para modelos de raciocínio, e essa migração já terminou? Serve para datar a transição, não para acompanhar a próxima.
 oQueNaoMostra: >-
-  O catálogo diz se o modelo suporta raciocínio, não se ele é obrigatório nem quanto do volume foi de tokens de raciocínio. Modelo híbrido usado sem raciocínio conta como com raciocínio.
+  A série separa quem declara raciocínio de quem não declara, e junta no mesmo grupo o modelo que deixa desligar o raciocínio e o que não deixa, ainda que o catálogo declare essa diferença. Também não mostra quanto do volume foi de tokens de raciocínio. Modelo híbrido usado sem raciocínio conta como com raciocínio.
 ---
