@@ -47,7 +47,7 @@ jobs:
       - name: Commitar
         run: |
           git config user.name "modelseason-bot"
-          git config user.email "modelseason-bot@users.noreply.github.com"
+          git config user.email "falercia@gmail.com"
           if [ -d data/backfill ]; then git add data/backfill; fi
           if git diff --cached --quiet; then echo "Nada novo."; exit 0; fi
           git commit -m "data: retroativo ${{ inputs.serie }} $(date -u +%F)"

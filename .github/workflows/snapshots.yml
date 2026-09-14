@@ -80,7 +80,7 @@ jobs:
       - name: Commitar o que foi coletado
         run: |
           git config user.name "modelseason-bot"
-          git config user.email "modelseason-bot@users.noreply.github.com"
+          git config user.email "falercia@gmail.com"
           for d in data/tasks data/sessions data/benchmarks data/endpoints data/apps data/providers data/zdr data/catalogs data/web; do
             if [ -d "$d" ]; then git add "$d"; fi
           done
