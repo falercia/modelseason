@@ -47,6 +47,27 @@ export const CSS_RADAR = `
 .rd-fontes b{color:var(--ink-2); font-weight:600}
 .rd-fontes .dt{font-family:var(--font-mono),monospace; font-size:11px}
 .rd-ev.pauta{--cor:var(--ink-3)}
+.rd-mais{display:inline-block; margin-top:9px; font-size:12.5px; font-weight:600}
+.rd-intro{font-size:13px; color:var(--ink-2); margin:-4px 0 12px; max-width:70ch}
+.rd-ev.rd-cruz{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:0; padding:0; overflow:hidden}
+.rd-cruz + .rd-cruz{margin-top:12px}
+.rd-cruz .nt{padding:16px 18px}
+.rd-cruz.rd-destaque .nt{padding:20px 22px}
+.rd-cruz .dd{padding:16px 18px; background:var(--surface-2); border-left:1px solid var(--grid)}
+.rd-cruz .lbl{font-size:10px; letter-spacing:.11em; text-transform:uppercase; font-family:var(--font-mono),monospace; color:var(--ink-3); display:block; margin-bottom:6px}
+.rd-cruz .lbl b{color:var(--accent); font-weight:600}
+.rd-cruz h3{font-size:18px}
+.rd-cruz.rd-destaque h3{font-size:22px}
+.rd-cruz h3 a::after{content:" ↗"; font-size:.7em; color:var(--ink-3)}
+.rd-lab{padding:8px 0; border-top:1px solid var(--grid)}
+.rd-lab:first-of-type{border-top:0; padding-top:2px}
+.rd-lab .nm{font-weight:700; font-size:13.5px}
+.rd-lab .nums{display:flex; gap:14px; margin:3px 0 2px}
+.rd-lab .nums span{font-size:11.5px; color:var(--ink-3)}
+.rd-lab .nums b{display:block; font-size:18px; color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em}
+.rd-lab .ld{font-size:12.5px; color:var(--ink-2)}
+.rd-cruz .dd .vazio{font-size:12.5px; color:var(--ink-3)}
+@media (max-width:760px){ .rd-ev.rd-cruz{grid-template-columns:minmax(0,1fr)} .rd-cruz .dd{border-left:0; border-top:1px solid var(--grid)} }
 @media (max-width:700px){ .rd-grid{grid-template-columns:minmax(0,1fr)} .rd h1{font-size:25px} .rd-ev.rd-destaque h3{font-size:19px}
   .rd-arq li{grid-template-columns:minmax(0,1fr) auto} .rd-arq li .d{grid-column:1/-1} }
 `;
@@ -58,31 +79,59 @@ function Evento({ ev, dia, I, paginas, destaque }: { ev: EventoRadar; dia: strin
     <article className={'rd-ev' + (destaque ? ' rd-destaque' : '')} style={{ '--cor': `var(${slotLab(ev.vendor)})` } as React.CSSProperties}
       data-evento={ev.tipo} data-slug={ev.slug}>
       <span className="kicker">{F.rotulo} · {I.nomeLab(ev.lab)}</span>
-      <h3>{link ? <Link href={link}>{F.titulo}</Link> : F.titulo}</h3>
+      <h3>{F.titulo}</h3>
       <p>{F.texto}</p>
       {F.cruzamento && <p className="cz"><b>{I.t({ pt: 'O que o dado diz.', en: 'What the data says.' })}</b> {F.cruzamento}</p>}
+      {link && <Link className="rd-mais" href={link}>{I.t({ pt: `Ver ${ev.nome} no Model Season →`, en: `See ${ev.nome} on Model Season →` })}</Link>}
     </article>
   );
 }
 
-function Assunto({ a, I, destaque }: { a: AssuntoPauta; I: Idioma; destaque?: boolean }) {
+function Assunto({ a, I, paginas, destaque }: { a: AssuntoPauta; I: Idioma; paginas: Set<string>; destaque?: boolean }) {
+  const { t, f } = I;
   const F = textoAssunto(a, I);
   const pub = diaPublicacao(a.publicado_em);
-  const dia = (iso?: string | null) => { const x = diaPublicacao(iso); return x ? I.f.fD(x) : null; };
+  const dia = (iso?: string | null) => { const x = diaPublicacao(iso); return x ? f.fD(x) : null; };
+  // O título abre a matéria: a primeira fonte que não é discussão do Hacker News.
+  const principal = a.fontes.find(x => !/news\.ycombinator\.com/.test(x.link)) ?? a.fontes[0];
+  const labs = a.cruzamento ?? [];
   return (
-    <article className={'rd-ev pauta' + (destaque ? ' rd-destaque' : '')} data-assunto={a.id}>
-      <span className="kicker">{F.rotulo}{pub ? <> · <time dateTime={a.publicado_em ?? undefined}>{I.t({ pt: 'publicado em ', en: 'published ' })}{I.f.fD(pub)}</time></> : null}</span>
-      <h3>{F.titulo}</h3>
-      <p>{F.texto}</p>
-      {F.cruzamento && <p className="cz"><b>{I.t({ pt: 'O que o dado diz.', en: 'What the data says.' })}</b> {F.cruzamento}</p>}
-      <ul className="rd-fontes" aria-label={I.t({ pt: 'Fontes', en: 'Sources' })}>
-        {a.fontes.map(f => (
-          <li key={f.link}>
-            {dia(f.data) && <time className="dt" dateTime={f.data ?? undefined}>{dia(f.data)} · </time>}<b>{f.veiculo}</b>: <a href={f.link} rel="noopener noreferrer" target="_blank">{f.titulo}</a>
-            {f.discussao && f.pontos ? <> · <a href={f.discussao} rel="noopener noreferrer" target="_blank">{I.t({ pt: `${f.pontos} pontos no Hacker News`, en: `${f.pontos} points on Hacker News` })}</a></> : null}
-          </li>
-        ))}
-      </ul>
+    <article className={'rd-ev pauta rd-cruz' + (destaque ? ' rd-destaque' : '')} data-assunto={a.id}>
+      <div className="nt">
+        <span className="lbl"><b>{t({ pt: 'Notícia', en: 'News' })}</b> · {F.rotulo}{pub ? <> · <time dateTime={a.publicado_em ?? undefined}>{f.fD(pub)}</time></> : null}</span>
+        <h3>{principal ? <a href={principal.link} rel="noopener noreferrer" target="_blank" data-fonte-principal>{F.titulo}</a> : F.titulo}</h3>
+        <p>{F.texto}</p>
+        <ul className="rd-fontes" aria-label={t({ pt: 'Fontes', en: 'Sources' })}>
+          {a.fontes.map(x => (
+            <li key={x.link}>
+              {dia(x.data) && <time className="dt" dateTime={x.data ?? undefined}>{dia(x.data)} · </time>}<b>{x.veiculo}</b>: <a href={x.link} rel="noopener noreferrer" target="_blank">{x.titulo}</a>
+              {x.discussao && x.pontos ? <> · <a href={x.discussao} rel="noopener noreferrer" target="_blank">{t({ pt: `${x.pontos} pontos no Hacker News`, en: `${x.pontos} points on Hacker News` })}</a></> : null}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <aside className="dd" aria-label={t({ pt: 'O que o dado diz', en: 'What the data says' })}>
+        <span className="lbl"><b>{t({ pt: 'O que o dado diz', en: 'What the data says' })}</b> · {t({ pt: 'tráfego de 7 dias', en: '7-day traffic' })}</span>
+        {labs.length ? labs.map(c => (
+          <div className="rd-lab" key={c.vendor} data-lab={c.vendor}>
+            <div className="nm">{I.nomeLab(c.lab)}</div>
+            {c.share_tokens != null && c.share_gasto != null && (
+              <div className="nums">
+                <span><b>{f.fmtP(c.share_tokens)}</b>{t({ pt: 'dos tokens', en: 'of tokens' })}</span>
+                <span><b>{f.fmtP(c.share_gasto)}</b>{t({ pt: 'do gasto estimado', en: 'of estimated spend' })}</span>
+              </div>
+            )}
+            {c.lider && (
+              <div className="ld">
+                {t({ pt: 'Mais usado: ', en: 'Most used: ' })}
+                {paginas.has(c.lider.slug)
+                  ? <Link href={I.modelo(c.lider.slug)}>{c.lider.nome}</Link>
+                  : c.lider.nome} ({f.fmtP(c.lider.share_7d, 2)})
+              </div>
+            )}
+          </div>
+        )) : <p className="vazio">{t({ pt: 'Nenhum laboratório com tráfego medido neste assunto.', en: 'No lab with measured traffic in this story.' })}</p>}
+      </aside>
     </article>
   );
 }
@@ -97,10 +146,13 @@ export function Edicao({ ed, I, paginas, titulo }: { ed: EdicaoRadar; I: Idioma;
       {titulo && <h2>{titulo}</h2>}
       {assuntos.length > 0 && (
         <>
-          <h2 className="rd-sec">{t({ pt: 'Em pauta', en: 'In the news' })}</h2>
-          <Assunto a={assuntos[0]} I={I} destaque />
-          {assuntos.length > 1 && <div className="rd-grid">{assuntos.slice(1).map(a => <Assunto key={a.id} a={a} I={I} />)}</div>}
-          {p && <h2 className="rd-sec">{t({ pt: 'No dado', en: 'In the data' })}</h2>}
+          <h2 className="rd-sec">{t({ pt: 'Notícia × dado', en: 'News × data' })}</h2>
+          <p className="rd-intro">{t({
+            pt: 'O fato publicado lá fora, lado a lado com o que o tráfego real de tokens diz sobre quem está nele. O título abre a matéria original; o nome do modelo abre a página dele aqui.',
+            en: 'The story published out there, side by side with what real token traffic says about who is in it. The headline opens the original article; the model name opens its page here.',
+          })}</p>
+          {assuntos.map((a, i) => <Assunto key={a.id} a={a} I={I} paginas={paginas} destaque={i === 0} />)}
+          {p && <h2 className="rd-sec">{t({ pt: 'Mudanças no dado', en: 'Changes in the data' })}</h2>}
         </>
       )}
       {!p ? (!assuntos.length && <p className="rd-vazio">{t({ pt: 'Nada relevante mudou no catálogo nem no tráfego neste dia.', en: 'Nothing relevant changed in the catalog or in traffic on this day.' })}</p>) : (
@@ -119,7 +171,7 @@ export function Edicao({ ed, I, paginas, titulo }: { ed: EdicaoRadar; I: Idioma;
                   return (
                     <li key={ev.tipo + ev.slug} data-evento={ev.tipo}>
                       <span className="kicker">{F.rotulo}</span>
-                      <span className="t">{link ? <Link href={link}>{F.titulo}</Link> : F.titulo}. {F.texto}</span>
+                      <span className="t"><b>{F.titulo}.</b> {F.texto}{link && <> <Link href={link}>{I.t({ pt: 'Ver modelo →', en: 'See model →' })}</Link></>}</span>
                     </li>
                   );
                 })}
