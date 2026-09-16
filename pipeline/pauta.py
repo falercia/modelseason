@@ -371,7 +371,9 @@ class Claude:
             raise RuntimeError("nenhum modelo disponivel na conta")
         return ids[0]
 
-    def json(self, sistema, usuario, max_tokens=16000):
+    LIMITE_MINIMO = 16000
+
+    def json(self, sistema, usuario, max_tokens=LIMITE_MINIMO):
         """Uma chamada que precisa devolver JSON. Os modelos recentes podem raciocinar
         antes de responder e gastar o limite de saida nisso; por isso o limite e alto,
         o motivo da parada vai para o log e resposta sem JSON ganha nova tentativa."""
@@ -382,7 +384,7 @@ class Claude:
             t0 = time.time()
             try:
                 resp = self.s.post(f"{API}/messages", headers=self._h(), timeout=(15, 300), json={
-                    "model": self.modelo, "max_tokens": max_tokens,
+                    "model": self.modelo, "max_tokens": max(max_tokens, self.LIMITE_MINIMO),
                     "system": sistema, "messages": [{"role": "user", "content": usuario}]})
             except requests.RequestException as e:
                 ultimo = type(e).__name__
@@ -532,7 +534,7 @@ def redigir(claude, escolhidos, itens_por_id):
     msg = "Assuntos:\n" + json.dumps(pedido, ensure_ascii=False, indent=1)
     textos, problemas = {}, {}
     for rodada in range(2):
-        resp = claude.json(SISTEMA_REDIGIR, msg, max_tokens=3000)
+        resp = claude.json(SISTEMA_REDIGIR, msg)
         problemas = {}
         for x in resp.get("assuntos", []):
             a = next((a for a in escolhidos if a["id"] == x.get("id")), None)

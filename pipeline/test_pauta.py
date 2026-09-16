@@ -238,6 +238,10 @@ bom = {"content": [{"type": "text", "text": '{"assuntos": [1]}'}], "stop_reason"
 sr = SessaoRuim([so_pensou, bom])
 ok("API: resposta sem JSON ganha nova tentativa", P.Claude("k", sessao=sr, modelo="m").json("s", "u") == {"assuntos": [1]})
 ok("API: limite de saida alto", sr.enviados[0]["max_tokens"] >= 16000, sr.enviados[0]["max_tokens"])
+sr3 = SessaoRuim([bom])
+P.Claude("k", sessao=sr3, modelo="m").json("s", "u", max_tokens=3000)
+ok("API: limite menor pedido por quem chama e ignorado", sr3.enviados[0]["max_tokens"] >= 16000, sr3.enviados[0]["max_tokens"])
+ok("redacao nao fixa limite proprio", "max_tokens=" not in __import__("inspect").getsource(P.redigir))
 sr2 = SessaoRuim([so_pensou] * 3)
 try:
     P.Claude("k", sessao=sr2, modelo="m").json("s", "u")

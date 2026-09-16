@@ -12,6 +12,7 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ### Corrigido
 
+- **Pauta**: a etapa de redação ainda fixava 3 mil tokens de saída, e o modelo gastava tudo raciocinando. O limite agora tem piso de 16 mil em qualquer chamada.
 - **Pauta**: resposta da IA sem JSON derrubava o run. O limite de saída subiu para 16 mil tokens (os modelos recentes podem raciocinar antes de responder e gastar o limite nisso), resposta sem JSON ganha até duas novas tentativas e o log registra tempo, motivo de parada e tokens de cada chamada. Servidor que não aceita conexão do runner (a API da Câmara, no segundo run) desiste na segunda tentativa, em vez de consumir três minutos.
 - **Pauta**: a chamada à API deixou de enviar `temperature`, que os modelos recentes recusam com HTTP 400. Foi o que derrubou o primeiro run.
 
