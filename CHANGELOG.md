@@ -8,6 +8,14 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ### Adicionado
 
+- **Fontes novas na pauta**: pesos novos de 16 laboratórios no Hugging Face (DeepSeek, Qwen, Z.ai, Moonshot, MiniMax, Tencent, Xiaomi, ByteDance e outros), sem quantizações e rascunhos; notas de lançamento da DeepSeek; NIST e Comissão Europeia; tramitação do PL 2338/2023 na Câmara, sem as apensações de rotina; Simon Willison e Tecnoblog. O laboratório informado pela fonte entra no cruzamento mesmo que o agrupamento o omita. Termos de IA em português reconhecidos no filtro de tema.
+
+### Corrigido
+
+- **Pauta**: a chamada à API deixou de enviar `temperature`, que os modelos recentes recusam com HTTP 400. Foi o que derrubou o primeiro run.
+
+### Adicionado (continuação)
+
 - **Em pauta, no Radar**: assuntos de fora do catálogo e do tráfego (lançamentos, preços, regulação, segurança, mercado), com fontes linkadas e o cruzamento com o share dos laboratórios citados. `pipeline/pauta.py` coleta 10 fontes sem IA, agrupa e classifica com IA em categorias fixas, calcula a nota por fórmula e redige os três primeiros em PT e EN com trava de números e de travessão, tratando o conteúdo das fontes como dado. `pauta.yml` roda às 07:00 de Brasília e abre um PR diário para aprovação; PR sem merge em 48 horas é fechado. O site junta `data/pauta/` no build, sem passar por `data/web`, para o PR nunca conflitar com os commits do bot. Checagens offline em `pipeline/test_pauta.py` e checagens da pauta no e2e.
 - **Radar** (`/radar` e `/en/radar`): uma edição por dia com as mudanças do catálogo (modelo novo e removido, preço, desativação, raciocínio obrigatório, contexto, apelidos) e do tráfego (estreia, troca de líder, entrada no top 10, alta de 3 pp ou mais), cada uma cruzada com o share do modelo e do laboratório. Página por edição (`/radar/AAAA-MM-DD`), feed RSS por idioma, link no topo e chamada na home. `pipeline/news.py` grava edições imutáveis em `data/news/`; `build_web.py` gera o índice `data/web/radar.json`. Preço só entra quando o patamar novo se mantém por duas fotos e difere 10% ou mais do último patamar estável. Roda no `snapshots.yml`, com issue em caso de falha. Checagens offline em `pipeline/test_news.py` e 32 checagens novas no e2e.
 - **Versão em inglês** em `/en`, com todas as páginas, painéis do "?", filtros, tooltips, rótulos de eixo e textos gerados por regra. Português continua na raiz sem nenhuma URL alterada; `/pt/...` redireciona para a raiz e o 404 sai no idioma certo. Seletor PT/EN no topo preserva recorte e âncora. `hreflang` nos dois sentidos, sitemap com as duas línguas e card social próprio (`og-en.png`). Arquitetura e glossário em `docs/i18n.md`.

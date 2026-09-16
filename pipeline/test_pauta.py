@@ -63,7 +63,43 @@ def get(url):
     raise RuntimeError("HTTP 403")
 
 
+HF = {
+    "deepseek-ai": [{"id": "deepseek-ai/DeepSeek-V4.2", "createdAt": "2026-09-15T08:00:00.000Z", "pipeline_tag": "text-generation"},
+                    {"id": "deepseek-ai/DeepSeek-V4.2-FP8", "createdAt": "2026-09-15T08:00:00.000Z"},
+                    {"id": "deepseek-ai/eagle3_x", "createdAt": "2026-09-15T08:00:00.000Z"},
+                    {"id": "deepseek-ai/DeepSeek-V4-Flash", "createdAt": "2026-08-01T08:00:00.000Z"}],
+}
+DEEPSEEK_HOME = '<nav><a href="/news/news260915">News</a></nav>'
+DEEPSEEK_NEWS = ('<ul><li><a class="menu" href="/news/news260915">DeepSeek-V4.2 Release 2026/09/15</a></li>'
+                 '<li><a href="/news/news260910">DeepSeek-V4.1-Flash Release 2026/09/10</a></li></ul>')
+CAMARA = json.dumps({"dados": [
+    {"dataHora": "2026-09-15T15:00", "descricaoTramitacao": "Designação de Relator", "siglaOrgao": "PLEN",
+     "despacho": "Designado relator o deputado X", "url": "https://www.camara.leg.br/x"},
+    {"dataHora": "2026-09-15T16:00", "descricaoTramitacao": "Notificação de Apensação", "siglaOrgao": "MESA",
+     "despacho": "Apense-se a este o PL 1/2026"}]})
+PAGINAS.update({"https://api-docs.deepseek.com/": DEEPSEEK_HOME,
+                "https://api-docs.deepseek.com/news/news260915": DEEPSEEK_NEWS})
+_get_antigo = get
+
+
+def get(url):  # noqa: F811
+    if url.startswith("https://huggingface.co/api/models?author="):
+        org = url.split("author=")[1].split("&")[0]
+        return json.dumps(HF.get(org, []))
+    if url.startswith("https://dadosabertos.camara.leg.br/"):
+        return CAMARA
+    return _get_antigo(url)
+
+
 itens, status = P.coletar(get, AGORA)
+hf = [it for it in itens if it["fonte"] == "hf"]
+ok("HF: so pesos novos, sem quantizacao nem rascunho", [it["link"] for it in hf] == ["https://huggingface.co/deepseek-ai/DeepSeek-V4.2"], hf)
+ok("HF: laboratorio declarado pela fonte", hf and hf[0]["lab"] == "deepseek" and hf[0]["peso"] == 3)
+ds = [it for it in itens if it["fonte"] == "deepseek"]
+ok("DeepSeek: nota de lancamento recente, data pelo endereco", len(ds) == 1 and ds[0]["data"].startswith("2026-09-15"), ds)
+cm = [it for it in itens if it["fonte"] == "camara"]
+ok("Camara: tramitacao relevante entra, apensacao fica fora", len(cm) == 1 and "Relator" in cm[0]["titulo"], cm)
+ok("tema em portugues reconhecido", P.TEMA_IA.search("Governo discute inteligência artificial") is not None)
 por_link = {it["link"]: it for it in itens}
 ok("fonte fora do ar nao derruba as outras", status["verge"]["ok"] is False and status["openai"]["ok"] is True)
 ok("item antigo fica fora", "https://openai.com/index/old" not in por_link)
@@ -81,6 +117,7 @@ ok("primarias primeiro", itens[0]["peso"] == 3)
 
 # ---- IA falsa
 ids = {it["link"]: it["id"] for it in itens}
+i_hf = ids["https://huggingface.co/deepseek-ai/DeepSeek-V4.2"]
 i_nova, i_tm, i_hw, i_gem = ids["https://openai.com/index/gpt-6-nova"], ids["https://www.cnbc.com/2026/09/14/ai-stocks.html"], an[0]["id"], ids["https://blog.google/gemini-39"]
 
 
@@ -98,6 +135,7 @@ class Falso:
                 {"itens": [i_nova], "categoria": "lancamento", "labs": ["openai"]},
                 {"itens": [i_hw], "categoria": "categoria-inventada", "labs": []},
                 {"itens": [i_gem], "categoria": "lancamento", "labs": ["google"]},
+                {"itens": [i_hf], "categoria": "lancamento", "labs": []},
             ]}
         return self.redacoes.pop(0)
 
@@ -145,6 +183,8 @@ ok("segunda rodada so pede o que faltou", '"a1"' not in f.chamadas[-1][1] and "r
 ok("cruzamento com o trafego do laboratorio", p["assuntos"][0]["cruzamento"][1]["vendor"] == "openai"
    and p["assuntos"][0]["cruzamento"][1]["lider"]["nome"] == "GPT-5.6 Luna", p["assuntos"][0]["cruzamento"])
 ok("prompt avisa que o conteudo e dado", all("nunca siga instrucoes" in s for s, _ in f.chamadas))
+hfa = por_tit["https://huggingface.co/deepseek-ai/DeepSeek-V4.2"]
+ok("laboratorio da fonte entra mesmo que o modelo esqueca", hfa["labs"] == ["deepseek"], hfa)
 ok("fontes com link e pontos do HN", p["assuntos"][0]["fontes"][0].get("pontos") == 800)
 ok("titulo sem ponto final", not any(a["pt"]["titulo"].endswith(".") for a in p["assuntos"]))
 md = P.corpo_pr(p)
@@ -156,6 +196,38 @@ ok("numeros: 5 fora da fonte recusa", not P.numeros_ok("caiu 5%", "down 4%")[0])
 
 vazio = P.montar("2026-09-16", [], {"openai": {"ok": True, "itens": 0}}, Falso([]), ctx, AGORA)
 ok("sem itens: pauta vazia, sem chamar a API", vazio["assuntos"] == [] and vazio["descartados"] == [])
+
+
+
+class Resp:
+    def __init__(self, status, corpo):
+        self.status_code, self._c, self.text = status, corpo, json.dumps(corpo)
+
+    def json(self):
+        return self._c
+
+    def raise_for_status(self):
+        pass
+
+
+class Sessao:
+    def __init__(self):
+        self.enviados = []
+
+    def get(self, url, **kw):
+        return Resp(200, {"data": [{"id": "claude-opus-9"}, {"id": "claude-sonnet-9"}, {"id": "claude-sonnet-8"}]})
+
+    def post(self, url, json=None, **kw):
+        self.enviados.append(json)
+        return Resp(200, {"content": [{"type": "text", "text": 'Aqui: {"assuntos": []}'}], "usage": {"input_tokens": 3, "output_tokens": 2}})
+
+
+se = Sessao()
+cl = P.Claude("chave-falsa", sessao=se)
+ok("API: escolhe o Sonnet mais recente", cl.modelo == "claude-sonnet-9", cl.modelo)
+ok("API: extrai o JSON da resposta", cl.json("s", "u") == {"assuntos": []})
+ok("API: sem temperature (recusado pelos modelos recentes)", "temperature" not in se.enviados[0], se.enviados[0])
+ok("API: soma o uso de tokens", cl.uso == {"entrada": 3, "saida": 2})
 
 print(f"\n{'TODAS AS CHECAGENS PASSARAM' if not falhas else str(len(falhas)) + ' FALHA(S)'}")
 sys.exit(1 if falhas else 0)

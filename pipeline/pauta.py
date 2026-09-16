@@ -69,7 +69,8 @@ PRIMARIAS = {"openai.com": "OpenAI", "anthropic.com": "Anthropic", "blog.google"
 TEMA_IA = re.compile(
     r"\bAI\b|\bA\.I\.|artificial intelligence|\bLLMs?\b|OpenAI|Anthropic|\bClaude\b|Gemini|ChatGPT|\bGPT-?\d|"
     r"DeepSeek|Mistral|\bLlama\b|\bQwen\b|Nvidia|chatbot|xAI|\bGrok\b|Hugging ?Face|Copilot|Perplexity|"
-    r"language models?|frontier models?|\bagents?\b|Moonshot|Kimi|Zhipu|\bGLM\b|MiniMax|OpenRouter",
+    r"language models?|frontier models?|\bagents?\b|Moonshot|Kimi|Zhipu|\bGLM\b|MiniMax|OpenRouter|"
+    r"\bIA\b|intelig[eê]ncia artificial|AI Act",
     re.I)
 
 
@@ -204,6 +205,78 @@ def coletar_anthropic(get, desde):
     return out
 
 
+# Laboratorios acompanhados no Hugging Face: pesos novos aparecem la antes de
+# qualquer blog, e e a unica fonte direta dos laboratorios chineses, que levam a
+# maior parte do trafego medido. org no HF -> chave de laboratorio (LAB).
+ORGS_HF = {
+    "deepseek-ai": "deepseek", "Qwen": "qwen", "zai-org": "z-ai", "moonshotai": "moonshotai",
+    "MiniMaxAI": "minimax", "tencent": "tencent", "XiaomiMiMo": "xiaomi", "ByteDance-Seed": "bytedance-seed",
+    "stepfun-ai": "stepfun", "meta-llama": "meta", "mistralai": "mistralai", "google": "google",
+    "nvidia": "nvidia", "openai": "openai", "microsoft": "microsoft", "ibm-granite": "ibm-granite",
+}
+# Derivados que nao sao modelo novo: quantizacoes, rascunhos de decodificacao especulativa, formatos.
+DERIVADO = re.compile(r"(gguf|awq|gptq|fp8|fp4|int4|int8|nvfp4|mlx|bnb|eagle|mtp|draft|onnx|-4bit|-8bit)", re.I)
+
+
+def coletar_hf(get, desde):
+    out = []
+    for org, lab in ORGS_HF.items():
+        url = f"https://huggingface.co/api/models?author={org}&sort=createdAt&direction=-1&limit=10"
+        for m in json.loads(get(url)):
+            quando = data_rss(m.get("createdAt"))
+            nome = (m.get("id") or "").split("/", 1)[-1]
+            if not quando or quando < desde or not nome or DERIVADO.search(nome) or m.get("private"):
+                continue
+            nome_lab = LAB.get(lab, org)
+            tipo = m.get("pipeline_tag") or "model"
+            out.append(item("hf", 3, f"{nome_lab} published {nome} weights on Hugging Face",
+                            f"https://huggingface.co/{m['id']}", quando, f"{nome_lab} released {nome} ({tipo}).",
+                            "Hugging Face", lab=lab))
+    return out
+
+
+def coletar_deepseek(get, desde):
+    """Notas de lancamento da DeepSeek: a data esta no endereco (/news/newsAAMMDD)."""
+    home = get("https://api-docs.deepseek.com/")
+    ultima = re.search(r'href="(/news/news\d{6})"', home)
+    if not ultima:
+        raise RuntimeError("link de noticias nao encontrado")
+    pagina = get("https://api-docs.deepseek.com" + ultima.group(1))
+    out, vistos = [], set()
+    for m in re.finditer(r'<a[^>]+href="(/news/news(\d{2})(\d{2})(\d{2}))"[^>]*>(.*?)</a>', pagina, re.I | re.S):
+        href = m.group(1)
+        titulo = limpar(m.group(5), 160)
+        if href in vistos or not titulo or titulo.lower() == "news":
+            continue
+        vistos.add(href)
+        quando = dt.datetime(2000 + int(m.group(2)), int(m.group(3)), int(m.group(4)), 12, tzinfo=dt.timezone.utc)
+        if quando.date() < desde.date():
+            continue
+        out.append(item("deepseek", 3, titulo, "https://api-docs.deepseek.com" + href, quando, "", "DeepSeek", lab="deepseek"))
+    return out
+
+
+PL_IA = 2487262  # PL 2338/2023, marco legal da IA, na Camara
+
+
+def coletar_camara(get, desde):
+    """Tramitacao do PL 2338/2023. Apensacao de outros projetos e rotina e fica fora."""
+    url = (f"https://dadosabertos.camara.leg.br/api/v2/proposicoes/{PL_IA}/tramitacoes"
+           f"?dataInicio={desde.date().isoformat()}")
+    out = []
+    for t in json.loads(get(url)).get("dados", []):
+        desc = t.get("descricaoTramitacao") or ""
+        if re.search(r"apensa", desc + " " + (t.get("despacho") or ""), re.I):
+            continue
+        quando = data_rss((t.get("dataHora") or "") + ":00-0300") if t.get("dataHora") else None
+        if not quando or quando < desde:
+            continue
+        out.append(item("camara", 3, f"PL 2338/2023 (marco legal da IA): {desc}",
+                        t.get("url") or f"https://www.camara.leg.br/propostas-legislativas/{PL_IA}", quando,
+                        f"{t.get('siglaOrgao') or ''}. {t.get('despacho') or ''}", "Câmara dos Deputados"))
+    return out
+
+
 FONTES = {
     "openai": fonte_rss("openai", "https://openai.com/news/rss.xml", 3, "OpenAI"),
     "google": fonte_rss("google", "https://blog.google/rss/", 3, "Google", filtrar=True),
@@ -213,6 +286,13 @@ FONTES = {
     "mittr": fonte_rss("mittr", "https://www.technologyreview.com/topic/artificial-intelligence/feed", 2, "MIT Technology Review"),
     "verge": fonte_rss("verge", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", 2, "The Verge"),
     "ars": fonte_rss("ars", "https://feeds.arstechnica.com/arstechnica/technology-lab", 2, "Ars Technica", filtrar=True),
+    "simonwillison": fonte_rss("simonwillison", "https://simonwillison.net/atom/everything/", 2, "Simon Willison", filtrar=True),
+    "tecnoblog": fonte_rss("tecnoblog", "https://tecnoblog.net/feed/", 1, "Tecnoblog", filtrar=True),
+    "nist": fonte_rss("nist", "https://www.nist.gov/news-events/news/rss.xml", 3, "NIST", filtrar=True),
+    "ue": fonte_rss("ue", "https://digital-strategy.ec.europa.eu/en/rss.xml", 3, "Comissão Europeia", filtrar=True),
+    "hf": coletar_hf,
+    "deepseek": coletar_deepseek,
+    "camara": coletar_camara,
     "techmeme": coletar_techmeme,
     "hn": coletar_hn,
 }
@@ -288,8 +368,10 @@ class Claude:
 
     def json(self, sistema, usuario, max_tokens=4000):
         for tentativa in range(3):
+            # Sem temperature: os modelos recentes recusam o parametro. A consistencia
+            # vem das regras do prompt e da validacao da saida, nao da amostragem.
             resp = self.s.post(f"{API}/messages", headers=self._h(), timeout=180, json={
-                "model": self.modelo, "max_tokens": max_tokens, "temperature": 0,
+                "model": self.modelo, "max_tokens": max_tokens,
                 "system": sistema, "messages": [{"role": "user", "content": usuario}]})
             if resp.status_code in (429, 500, 502, 503, 529):
                 time.sleep(20 * (tentativa + 1))
@@ -455,10 +537,13 @@ def montar(dia, itens, status, claude, contexto, agora):
     share_labs = {k: float(v.get("share_tokens") or 0) for k, v in contexto.labs.items()}
     assuntos, textos, problemas = [], {}, {}
     if itens:
-        lista = [{"id": it["id"], "veiculo": it["veiculo"], "titulo": it["titulo"], "trecho": it["trecho"][:200]}
+        lista = [{"id": it["id"], "veiculo": it["veiculo"], "titulo": it["titulo"], "trecho": it["trecho"][:200],
+                  **({"lab": it["lab"]} if it.get("lab") else {})}
                  for it in itens[:MAX_ITENS_PROMPT]]
         grupos = valida_agrupamento(claude.json(SISTEMA_AGRUPAR, "Itens:\n" + json.dumps(lista, ensure_ascii=False, indent=1)), ids)
         for g in grupos:
+            # o laboratorio declarado pela propria fonte vale mesmo que o modelo esqueca
+            g["labs"] = sorted(set(g["labs"]) | {por_id[i]["lab"] for i in g["itens"] if por_id[i].get("lab") in LAB})
             g["nota"] = nota(g, por_id, share_labs)
         grupos.sort(key=lambda g: (-g["nota"], g["itens"][0]))
         for n, g in enumerate(grupos, 1):
