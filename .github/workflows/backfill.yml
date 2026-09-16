@@ -1,11 +1,18 @@
 name: Retroagir séries com histórico
 
-# Sob demanda. Busca o passado das séries que a fonte ainda entrega com data
-# (ranking diário por modalidade, contexto, categoria e tipo de linguagem; apps
-# por semana). Nada aqui se perde se esperar, então roda com teto de chamadas e
-# retoma de onde parou. Rodar "rankings" uma vez e "apps" em dois dias seguidos.
+# Busca o passado das séries que a fonte ainda entrega com data (ranking diário
+# por modalidade, contexto, categoria e tipo de linguagem; apps por semana).
+# Nada aqui se perde se esperar, então roda com teto de chamadas e retoma de
+# onde parou.
+#
+# Agendado só para "apps": semana já gravada é pulada, então o custo diário é
+# zero em seis dias e 5 chamadas no dia em que uma semana fecha. "rankings"
+# fica sob demanda, porque cada execução baixa e regrava o histórico inteiro
+# (~48 chamadas e ~3 MB novos no git).
 
 on:
+  schedule:
+    - cron: "0 8 * * *"   # 08:00 UTC, depois do diário (06:30) e do arquivador (07:15)
   workflow_dispatch:
     inputs:
       serie:
@@ -41,16 +48,18 @@ jobs:
       - name: Retroagir
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          SERIE: ${{ inputs.serie }}
-          MAX: ${{ inputs.max_chamadas }}
+          SERIE: ${{ inputs.serie || 'apps' }}
+          MAX: ${{ inputs.max_chamadas || '100' }}
         run: python pipeline/backfill.py --serie "$SERIE" --max-chamadas "$MAX"
       - name: Commitar
+        env:
+          SERIE: ${{ inputs.serie || 'apps' }}
         run: |
           git config user.name "modelseason-bot"
           git config user.email "falercia@gmail.com"
           if [ -d data/backfill ]; then git add data/backfill; fi
           if git diff --cached --quiet; then echo "Nada novo."; exit 0; fi
-          git commit -m "data: retroativo ${{ inputs.serie }} $(date -u +%F)"
+          git commit -m "data: retroativo $SERIE $(date -u +%F)"
           for t in 1 2 3; do
             if git pull --rebase origin "$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME"; then exit 0; fi
             sleep 15

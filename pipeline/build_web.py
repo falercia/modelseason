@@ -222,6 +222,20 @@ def construir_agora(df, cat):
         estreias.append({"slug": k, "nome": m["nome"], "lab": m["lab"], "share": r(100 * s7[k] / t7),
                          "primeiro_dia": primeira[k].strftime("%Y-%m-%d"), "lancamento": m.get("lancamento")})
 
+    # estreias de 30 dias, ordenadas pelo share de 7 dias: um lancamento de volume
+    # baixo continua visivel na home depois de sair da janela curta
+    rk7 = rank_de(s7)
+    estreias_30d = []
+    for k in s30.index:
+        p1 = primeira.get(k)
+        if p1 is None or p1 < j30[0]:
+            continue
+        m = meta_modelo(k, cat)
+        estreias_30d.append({"slug": k, "nome": m["nome"], "lab": m["lab"], "vendor": m["vendor"],
+                             "primeiro_dia": p1.strftime("%Y-%m-%d"), "lancamento": m.get("lancamento"),
+                             "share_7d": r(100 * s7.get(k, 0) / t7) if t7 else 0.0, "rank_7d": rk7.get(k)})
+    estreias_30d.sort(key=lambda x: (-x["share_7d"], x["primeiro_dia"]))
+
     # idade do topo
     idade = []
     for x in top7[:6]:
@@ -280,7 +294,7 @@ def construir_agora(df, cat):
                     "7d_anterior": [p7[0].strftime("%Y-%m-%d"), p7[1].strftime("%Y-%m-%d")],
                     "30d": [j30[0].strftime("%Y-%m-%d"), j30[1].strftime("%Y-%m-%d")]},
         "top7": top7, "top30": top30, "subiram": subiram, "cairam": cairam,
-        "estreias": sorted(estreias, key=lambda x: -x["share"]), "idade_topo": idade,
+        "estreias": sorted(estreias, key=lambda x: -x["share"]), "estreias_30d": estreias_30d, "idade_topo": idade,
         "termometro": termometro, "manchete": manchete, "mudou": mudou,
     }
 
@@ -347,8 +361,11 @@ def o_que_mudou(top7, sp7, tp7, subiram, cairam, estreias, cat):
                       "observar": obs,
                       "dados": {"nome": c["nome"], "de": c["de"], "para": c["para"], "delta_pp": c["delta_pp"],
                                 "mesmo_lab": {"nome": mesmo_lab["nome"], "delta_pp": mesmo_lab["delta_pp"]} if mesmo_lab else None}})
-    if estreias:
-        e = max(estreias, key=lambda x: x["share"])
+    # a estreia nao repete o modelo ja citado como alta da semana
+    usados = {x["slug"] for x in itens}
+    candidatas = [x for x in estreias if x["slug"] not in usados]
+    if candidatas:
+        e = max(candidatas, key=lambda x: x["share"])
         itens.append({"tipo": "estreou", "slug": e["slug"], "titulo": f"{e['nome']} estreou",
                       "evidencia": f"Primeiro volume registrado em {e['primeiro_dia']}, já com {pp(e['share'])}% do tráfego da semana.",
                       "observar": "Estreia no roteador não é data de lançamento, e share de estreia costuma incluir tráfego de teste.",

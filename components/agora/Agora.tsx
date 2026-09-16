@@ -286,15 +286,32 @@ export function Agora({ A, lang }: { A: TAgora; lang: Lang }) {
 
       <div className="grid2" style={{ marginTop: 14 }}>
         <div className="pod" data-chart="agora-estreias">
-          {cab({ pt: 'Estrearam nos últimos 7 dias', en: 'Debuted in the last 7 days' }, { pt: 'primeiro volume registrado na janela', en: 'first volume recorded in the window' }, 'agora-estreias')}
-          {A.estreias.length ? (
-            <table className="t"><tbody>
-              {A.estreias.slice(0, 5).map(e => (
-                <tr key={e.slug}><td><Link href={modelo(e.slug)}>{e.nome}</Link></td><td>{nomeLab(e.lab)}</td><td className="num">{f.fD(e.primeiro_dia)}</td><td className="num">{f.fmtP(e.share, 2)}</td></tr>
-              ))}
-            </tbody></table>
-          ) : <p className="vazio">{t({ pt: 'Nenhum modelo estreou nesta janela.', en: 'No model debuted in this window.' })}</p>}
-          {A.estreias.length > 5 && <p className="nota">{t({ pt: `e mais ${A.estreias.length - 5} com volume menor`, en: `and ${A.estreias.length - 5} more with lower volume` })}</p>}
+          {A.estreias_30d ? (<>
+            {cab({ pt: 'Estrearam nos últimos 30 dias', en: 'Debuted in the last 30 days' },
+              { pt: 'ordenadas pelo share dos últimos 7 dias, com a posição no ranking', en: 'sorted by share over the last 7 days, with ranking position' }, 'agora-estreias')}
+            {A.estreias_30d.length ? (
+              <table className="t"><tbody>
+                {A.estreias_30d.slice(0, 8).map(e => (
+                  <tr key={e.slug}>
+                    <td><Link href={modelo(e.slug)}>{e.nome}</Link></td><td>{nomeLab(e.lab)}</td>
+                    <td className="num">{f.fD(e.primeiro_dia)}</td>
+                    <td className="num">{e.rank_7d != null ? f.ord(e.rank_7d) : '—'}</td>
+                    <td className="num">{f.fmtP(e.share_7d, 2)}</td>
+                  </tr>
+                ))}
+              </tbody></table>
+            ) : <p className="vazio">{t({ pt: 'Nenhum modelo estreou nesta janela.', en: 'No model debuted in this window.' })}</p>}
+            {A.estreias_30d.length > 8 && <p className="nota">{t({ pt: `e mais ${A.estreias_30d.length - 8} com volume menor`, en: `and ${A.estreias_30d.length - 8} more with lower volume` })}</p>}
+          </>) : (<>
+            {cab({ pt: 'Estrearam nos últimos 7 dias', en: 'Debuted in the last 7 days' }, { pt: 'primeiro volume registrado na janela', en: 'first volume recorded in the window' }, 'agora-estreias')}
+            {A.estreias.length ? (
+              <table className="t"><tbody>
+                {A.estreias.slice(0, 5).map(e => (
+                  <tr key={e.slug}><td><Link href={modelo(e.slug)}>{e.nome}</Link></td><td>{nomeLab(e.lab)}</td><td className="num">{f.fD(e.primeiro_dia)}</td><td className="num">{f.fmtP(e.share, 2)}</td></tr>
+                ))}
+              </tbody></table>
+            ) : <p className="vazio">{t({ pt: 'Nenhum modelo estreou nesta janela.', en: 'No model debuted in this window.' })}</p>}
+          </>)}
         </div>
         <div className="pod" data-chart="agora-idade">
           {cab({ pt: 'Idade do topo', en: 'Age of the leaders' }, { pt: 'dias desde a entrada no catálogo, para os mais usados', en: 'days since entering the catalog, for the most used models' }, 'agora-idade')}

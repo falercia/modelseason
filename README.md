@@ -94,6 +94,8 @@ Três limites que valem para qualquer número da página:
 
 Desde 10/09/2026, o repositório também arquiva uma foto diária das fontes que não guardam passado: para que a IA está sendo usada, custo por sessão em cada harness, benchmarks, preço por provedor, ranking de apps, país sede de cada provedor, oferta de retenção zero de dados, os catálogos de embeddings, imagem e vídeo e, desde 12/09/2026, o catálogo completo de modelos com preço, que vira o histórico de preço de cada modelo. Nenhuma delas tem histórico na origem, então essa série só existe aqui.
 
+Em `data/backfill/` fica o passado das séries que a fonte ainda entrega com data: o ranking diário por modalidade, faixa de contexto, categoria de uso e tipo de linguagem, e o ranking semanal de apps desde janeiro de 2025. O ranking de apps é completado sozinho todo dia, gravando cada semana assim que ela fecha.
+
 Use à vontade, inclusive comercialmente. A licença exige apenas atribuição.
 
 ## Idiomas

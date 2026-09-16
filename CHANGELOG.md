@@ -15,6 +15,8 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ### Alterado
 
+- **Estreias na home cobrem 30 dias.** O card "Estrearam nos últimos 7 dias" virou "Estrearam nos últimos 30 dias", ordenado pelo share dos últimos sete dias e com a posição no ranking. Um lançamento de volume baixo, como o GPT-6 Astra (27º, 0,6%), sumia da home uma semana depois de estrear e parecia falha do dado. O pipeline publica `estreias_30d` em `data/web/agora.json`; a lista de 7 dias continua alimentando o termômetro e a manchete.
+- "O que mudou" não repete na estreia o mesmo modelo já citado como maior alta da semana.
 - O pipeline passou a publicar os números da manchete e de "o que mudou" (campo `dados` em `data/web/agora.json`), e o motor passou a devolver os sinais da seção 14 como tipo e números. As frases são montadas no front, em cada idioma. Os textos em português do pipeline continuam no JSON como referência.
 - Pequenas correções no português encontradas na revisão: plural de "1 modelo estreou", "1 tarefa", "1 modelo" nos turnos de sessão, concordância de "requisições classificadas" e de "nas últimas N semanas"; data de estreia em "o que mudou" agora formatada (`10 set 26`, antes `2026-09-10`); sinal de menos tipográfico nas variações em pp.
 - **Google Analytics 4**, inerte até existir `NEXT_PUBLIC_GA_ID` na Vercel (só Production). Consent Mode com publicidade negada por padrão e aviso no rodapé quando ativo. Testado com e sem a variável: sem ela, nenhum script de terceiro é carregado e o e2e passa inteiro.
@@ -22,6 +24,7 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ### Alterado (infraestrutura)
 
+- **Retroativo de apps agendado todo dia** (`backfill.yml`, 08:00 UTC). Semana já gravada é pulada, então custa zero chamadas em seis dias e cinco no dia em que uma semana fecha. `rankings` segue sob demanda, porque cada execução regrava o histórico inteiro.
 - **Autor dos commits do bot** passou a usar o e-mail da conta dona do repositório, mantendo `modelseason-bot` como nome exibido. A Vercel só cria deploy quando o autor do commit tem acesso ao projeto, e em repositório privado no plano Hobby isso significa ser o dono da conta. Sem essa troca, fechar o repositório pararia o deploy diário em silêncio, servindo build velho sem nenhum erro visível.
 
 ### Corrigido

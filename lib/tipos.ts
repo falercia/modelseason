@@ -5,6 +5,8 @@ export interface LinhaTop {
 }
 export interface Movimento { slug: string; nome: string; lab: string; origem: string; de: number; para: number; delta_pp: number; estreou: boolean }
 export interface Estreia { slug: string; nome: string; lab: string; share: number; primeiro_dia: string; lancamento: string | null }
+/** Estreia nos últimos 30 dias, com share e posição nos últimos 7. */
+export interface Estreia30 { slug: string; nome: string; lab: string; vendor: string; primeiro_dia: string; lancamento: string | null; share_7d: number; rank_7d: number | null }
 export interface Lider {
   id: string; rotulo: string; tipo: string; criterio: string; fonte: string; as_of: string | null; unidade: string;
   slug?: string; nome?: string; lab?: string; valor?: number; n?: number; inteligencia?: number;
@@ -21,7 +23,7 @@ export interface DadosMudou {
 }
 export interface Agora {
   ultimo_dia: string; janelas: Record<string, [string, string]>;
-  top7: LinhaTop[]; top30: LinhaTop[]; subiram: Movimento[]; cairam: Movimento[]; estreias: Estreia[];
+  top7: LinhaTop[]; top30: LinhaTop[]; subiram: Movimento[]; cairam: Movimento[]; estreias: Estreia[]; estreias_30d?: Estreia30[];
   idade_topo: { slug: string; nome: string; lab: string; dias: number; share: number }[];
   termometro: {
     volume_7d_T: number; volume_7d_ant_T: number; crescimento_7d_pct: number | null; volume_30d_T: number;
