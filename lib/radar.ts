@@ -6,7 +6,7 @@
  * Toda frase diz só o que o dado mostra. Causa não é inventada.
  */
 import type { Idioma } from './idioma';
-import type { EdicaoRadar, EventoRadar } from './tipos';
+import type { AssuntoPauta, EdicaoRadar, EventoRadar } from './tipos';
 
 export interface FraseRadar {
   /** Rótulo curto do tipo: "Preço", "Price". */
@@ -178,8 +178,47 @@ export function frase(ev: EventoRadar, dia: string, I: Idioma): FraseRadar {
   return { rotulo, titulo, texto, cruzamento: cruzamento(ev, I) };
 }
 
-/** Título da edição: a frase do evento principal, ou o aviso de dia sem mudança. */
+const CATEGORIA: Record<string, { pt: string; en: string }> = {
+  lancamento: { pt: 'Lançamento', en: 'Launch' },
+  preco: { pt: 'Preço', en: 'Pricing' },
+  regulacao: { pt: 'Regulação', en: 'Regulation' },
+  seguranca: { pt: 'Segurança', en: 'Safety' },
+  mercado: { pt: 'Mercado', en: 'Market' },
+  capacidade: { pt: 'Capacidade', en: 'Capability' },
+  infraestrutura: { pt: 'Infraestrutura', en: 'Infrastructure' },
+};
+
+/** Texto de um assunto da pauta no idioma, com o cruzamento dos laboratórios citados. */
+export function textoAssunto(a: AssuntoPauta, I: Idioma): FraseRadar {
+  const { t, f } = I;
+  const x = a[I.lang];
+  const partes = (a.cruzamento ?? []).map(c => {
+    const lab = I.nomeLab(c.lab);
+    const base = num(c.share_tokens) != null && num(c.share_gasto) != null
+      ? t({ pt: `${lab} tem ${f.fmtP(c.share_tokens)} dos tokens e ${f.fmtP(c.share_gasto)} do gasto estimado da semana`,
+          en: `${lab} has ${f.fmtP(c.share_tokens)} of tokens and ${f.fmtP(c.share_gasto)} of estimated spend this week` })
+      : null;
+    const lider = c.lider
+      ? t({ pt: `o modelo mais usado é o ${c.lider.nome}, com ${f.fmtP(c.lider.share_7d, 2)}`,
+          en: `its most used model is ${c.lider.nome}, with ${f.fmtP(c.lider.share_7d, 2)}` })
+      : null;
+    const s = [base, lider].filter(Boolean).join(t({ pt: ', e ', en: ', and ' }));
+    return s ? s.charAt(0).toUpperCase() + s.slice(1) + '.' : null;
+  }).filter((s): s is string => !!s);
+  return {
+    rotulo: t(CATEGORIA[a.categoria] ?? { pt: 'Pauta', en: 'News' }),
+    titulo: x.titulo, texto: x.resumo,
+    cruzamento: partes.length ? partes.join(' ') : null,
+  };
+}
+
+/** Título da edição: o assunto principal da pauta, senão o evento principal, senão o aviso de dia sem mudança. */
 export function tituloEdicao(ed: EdicaoRadar, I: Idioma): string {
+  const a = ed.assuntos?.[0];
+  if (a) return a[I.lang].titulo;
   const ev = ed.eventos[0];
   return ev ? frase(ev, ed.dia, I).titulo : I.t({ pt: 'Nenhuma mudança relevante', en: 'No relevant changes' });
 }
+
+/** Quantidade de itens da edição: assuntos da pauta e eventos do dado. */
+export const totalItens = (ed: EdicaoRadar) => (ed.assuntos?.length ?? 0) + ed.eventos.length;

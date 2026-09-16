@@ -6,7 +6,7 @@ import { agora, dadosV1, indiceBusca, modelos, radar } from '@/lib/data';
 import { ehIdioma, IDIOMAS, OG_LOCALE, type Lang } from '@/lib/i18n';
 import { idioma } from '@/lib/idioma';
 import { alternancias, OG_IMAGEM } from '@/lib/meta';
-import { frase, tituloEdicao } from '@/lib/radar';
+import { frase, textoAssunto, tituloEdicao, totalItens } from '@/lib/radar';
 import { InfoProvider } from '@/components/shell/Info';
 import { Topo } from '@/components/shell/Topo';
 import { Rodape } from '@/components/shell/Rodape';
@@ -34,7 +34,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const I = idioma(lang);
   if (!ed) return { title: 'Radar', robots: { index: false } };
   const titulo = `${I.t({ pt: 'Radar de', en: 'Radar,' })} ${I.f.fD(ed.dia)}: ${tituloEdicao(ed, I)}`;
-  const descricao = ed.eventos.slice(0, 3).map(ev => frase(ev, ed.dia, I).titulo).join('. ') + (ed.eventos.length ? '.' : '');
+  const titulos = [...(ed.assuntos ?? []).map(a => textoAssunto(a, I).titulo), ...ed.eventos.map(ev => frase(ev, ed.dia, I).titulo)];
+  const descricao = titulos.slice(0, 3).join('. ') + (titulos.length ? '.' : '');
   const alt = alternancias(lang, '/radar/' + ed.dia);
   return {
     title: titulo, description: descricao || titulo, alternates: alt,
@@ -57,7 +58,7 @@ export default async function Page({ params }: Props) {
         <span className="kicker"><Link href={url('/radar')}>Radar</Link> · {f.fD(ed.dia)}</span>
         <h1>{tituloEdicao(ed, I)}</h1>
         <div className="rd-meta">
-          <span>{ed.eventos.length} {t({ pt: ed.eventos.length === 1 ? 'mudança' : 'mudanças', en: ed.eventos.length === 1 ? 'change' : 'changes' })}</span>
+          <span>{totalItens(ed)} {t({ pt: totalItens(ed) === 1 ? 'item' : 'itens', en: totalItens(ed) === 1 ? 'item' : 'items' })}</span>
           <a href={url('/radar') + '/feed.xml'}>RSS</a>
         </div>
         <Edicao ed={ed} I={I} paginas={paginas} />

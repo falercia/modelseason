@@ -1,0 +1,102 @@
+name: Pauta do Radar
+
+# Coleta as fontes externas, agrupa e redige os assuntos do dia com IA e abre um
+# PR com data/pauta/AAAA-MM-DD.json. Nada é publicado sem o merge do dono.
+# PR sem merge em 48 horas é fechado aqui mesmo, e o dia sai só com o dado.
+#
+# Requer, em Settings > Actions > General > Workflow permissions, a opção
+# "Allow GitHub Actions to create and approve pull requests".
+
+on:
+  schedule:
+    - cron: "0 10 * * *"   # 10:00 UTC = 07:00 America/Sao_Paulo
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: pauta
+  cancel-in-progress: false
+
+jobs:
+  pauta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pipeline/requirements.txt
+
+      - run: pip install -r pipeline/requirements.txt
+
+      - name: Fechar pautas vencidas
+        run: |
+          gh label create pauta --color 0E8A16 --description "Pauta diária do Radar" --force >/dev/null
+          limite=$(date -u -d '48 hours ago' +%s)
+          gh pr list --label pauta --state open --json number,createdAt --jq '.[] | "\(.number) \(.createdAt)"' |
+          while read -r n criado; do
+            if [ "$(date -u -d "$criado" +%s)" -lt "$limite" ]; then
+              gh pr close "$n" --delete-branch --comment "Sem merge em 48 horas: este dia sai só com o dado."
+            fi
+          done
+
+      - name: Montar a pauta
+        id: pauta
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          dia=$(date -u +%F)
+          echo "dia=$dia" >> "$GITHUB_OUTPUT"
+          if [ -f "data/pauta/$dia.json" ]; then echo "Pauta de $dia já publicada."; exit 0; fi
+          if git ls-remote --exit-code --heads origin "pauta/$dia" >/dev/null; then echo "PR de $dia já aberto."; exit 0; fi
+          python pipeline/pauta.py --dia "$dia"
+          if [ -f "data/pauta/$dia.json" ]; then echo "novo=1" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Abrir o PR
+        if: steps.pauta.outputs.novo == '1'
+        env:
+          DIA: ${{ steps.pauta.outputs.dia }}
+        run: |
+          git config user.name "modelseason-bot"
+          git config user.email "falercia@gmail.com"
+          git checkout -b "pauta/$DIA"
+          git add "data/pauta/$DIA.json"
+          git commit -m "data: pauta $DIA"
+          git push origin "pauta/$DIA"
+          python pipeline/pauta.py --pr-md "data/pauta/$DIA.json" > "$RUNNER_TEMP/corpo.md"
+          gh pr create --base "$GITHUB_REF_NAME" --head "pauta/$DIA" --label pauta \
+            --title "Pauta do Radar $DIA" --body-file "$RUNNER_TEMP/corpo.md"
+
+      - name: Abrir issue se falhou
+        if: failure()
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const titulo = 'Falha na pauta do Radar';
+            const corpo = [
+              'A pauta diária do Radar não foi gerada. O Radar com dado de catálogo e tráfego segue normal.',
+              '',
+              `**Run:** ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              '',
+              'Checklist:',
+              '1. "Menos de três fontes responderam": problema de rede ou das fontes, tende a passar sozinho.',
+              '2. "API HTTP 401": a chave ANTHROPIC_API_KEY foi revogada ou o limite de gasto do workspace foi atingido.',
+              '3. Falha ao criar o PR: conferir a permissão "Allow GitHub Actions to create and approve pull requests".',
+              '4. Para refazer: Actions → este workflow → Run workflow.',
+            ].join('\n');
+            const abertas = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: 'pipeline' });
+            const existente = abertas.data.find(i => i.title === titulo);
+            if (existente) {
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: existente.number, body: corpo });
+            } else {
+              await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title: titulo, body: corpo, labels: ['pipeline'] });
+            }

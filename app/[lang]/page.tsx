@@ -5,7 +5,7 @@ import { agora, dadosV1, indiceBusca, mercado, radar } from '@/lib/data';
 import { ehIdioma, type Lang } from '@/lib/i18n';
 import { idioma } from '@/lib/idioma';
 import { alternancias } from '@/lib/meta';
-import { tituloEdicao } from '@/lib/radar';
+import { tituloEdicao, totalItens } from '@/lib/radar';
 import { InfoProvider } from '@/components/shell/Info';
 import { Indice, Topo } from '@/components/shell/Topo';
 import { Rodape } from '@/components/shell/Rodape';
@@ -66,7 +66,7 @@ export default async function Home({ params }: Props) {
                 pt: 'Quem lidera, o que mudou e para que os modelos de linguagem estão sendo usados, medido no tráfego real de tokens.',
                 en: 'Who leads, what changed and what language models are being used for, measured on real token traffic.',
               })}</p>
-              {R && R.eventos.length > 0 && (
+              {R && totalItens(R) > 0 && (
                 <Link className="radar-hoje" href={I.url('/radar')} data-radar-hoje>
                   <b>Radar {f.fD(R.dia)}:</b> {tituloEdicao(R, I)} →
                 </Link>

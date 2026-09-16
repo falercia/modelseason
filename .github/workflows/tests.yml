@@ -55,6 +55,9 @@ jobs:
       - name: Checagens do Radar
         run: python pipeline/test_news.py
 
+      - name: Checagens da pauta
+        run: python pipeline/test_pauta.py
+
       - name: Dados da página (data/web) batem com o pipeline
         run: |
           python pipeline/build_web.py

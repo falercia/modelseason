@@ -92,7 +92,9 @@ Três limites que valem para qualquer número da página:
 
 Em [modelseason.com/radar](https://modelseason.com/radar) sai uma edição por dia com o que mudou: modelo que entrou ou saiu do catálogo, preço que mudou de patamar, desativação anunciada, raciocínio que virou obrigatório, janela de contexto, apelido que passou a apontar para outro modelo, estreia no tráfego, troca de liderança e entrada no top 10. Cada fato vem com o que o histórico de uso diz sobre o modelo e o laboratório. Português e inglês, com feed RSS em `/radar/feed.xml` e `/en/radar/feed.xml`.
 
-A edição é gerada por regra (`pipeline/news.py`), sem texto escrito por IA, e gravada uma única vez em `data/news/AAAA-MM-DD.json`. Preço só vira notícia quando o novo valor se mantém por duas fotos, para não publicar oscilação de roteamento. A ordem segue uma fórmula fixa de relevância, declarada no próprio código.
+A parte do dado é gerada por regra (`pipeline/news.py`), sem texto escrito por IA, e gravada uma única vez em `data/news/AAAA-MM-DD.json`.
+
+**Em pauta.** Todo dia, `pipeline/pauta.py` lê fontes externas (blogs da OpenAI, do Google e da Anthropic, TechCrunch, MIT Technology Review, Hugging Face, The Verge, Ars Technica, Techmeme e Hacker News), agrupa por assunto com IA e dá nota por fórmula: peso das fontes, pontos no Hacker News, categoria e share dos laboratórios citados. Os três assuntos de maior nota ganham resumo em português e inglês escrito só com o que as fontes publicaram, e número que não está nas fontes derruba o texto. O workflow `pauta.yml` abre um PR com `data/pauta/AAAA-MM-DD.json`, e só o merge publica. PR sem merge em 48 horas é fechado. Preço só vira notícia quando o novo valor se mantém por duas fotos, para não publicar oscilação de roteamento. A ordem segue uma fórmula fixa de relevância, declarada no próprio código.
 
 ## Os dados
 

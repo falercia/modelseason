@@ -84,9 +84,19 @@ export interface EventoRadar {
   tipo: TipoEvento; slug: string; id: string | null; nome: string; lab: string; vendor: string;
   relevancia: number; dados: Record<string, string | number | boolean | null>; cruzamento: CruzamentoRadar;
 }
+/** Assunto da pauta (pipeline/pauta.py): texto por idioma, fontes com link e cruzamento com o tráfego. */
+export interface FontePauta { veiculo: string; titulo: string; link: string; discussao?: string; pontos?: number }
+export interface AssuntoPauta {
+  id: string; categoria: string; nota: number; labs: string[]; fontes: FontePauta[];
+  pt: { titulo: string; resumo: string }; en: { titulo: string; resumo: string };
+  cruzamento: { vendor: string; lab: string; share_tokens?: number | null; share_gasto?: number | null;
+    lider?: { slug: string; nome: string; share_7d: number; preco_misto: number | null } }[];
+}
 export interface EdicaoRadar {
   dia: string; revisao: number; principal: string | null;
+  /** Vazio quando o dia só tem pauta. */
   fontes: { catalogo: string[]; trafego: string | null };
   eventos: EventoRadar[];
+  assuntos?: AssuntoPauta[];
 }
 export interface Radar { edicoes: EdicaoRadar[] }

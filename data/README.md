@@ -88,3 +88,7 @@ Edições do Radar, uma por dia, geradas por `pipeline/news.py` a partir da foto
 | `eventos[]` | `tipo`, `slug` (chave do ranking), `id` (chave do catálogo), `nome`, `lab`, `vendor`, `relevancia`, `dados` (números do fato) e `cruzamento` (share do modelo e do laboratório) |
 
 Nenhum texto é gravado: a frase é montada no site, em cada idioma.
+
+## `pauta/`
+
+Pautas aprovadas do Radar, uma por dia, geradas por `pipeline/pauta.py` e publicadas só por merge de PR. Guardam os itens coletados (título, link, veículo, trecho curto), os assuntos publicados com texto em `pt` e `en`, fontes e cruzamento, e os descartados com o motivo. O site lê esta pasta direto no build.

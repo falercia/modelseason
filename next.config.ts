@@ -9,7 +9,6 @@ const config: NextConfig = {
   outputFileTracingIncludes: {
     '/[lang]/m/[...slug]': ['./data/web/modelos.json', './data/web/agora.json', './data/web/mercado.json', './public/data.json'],
     '/[lang]/[...resto]': ['./data/web/modelos.json', './data/web/agora.json', './public/data.json'],
-    '/[lang]/radar/[dia]': ['./data/web/radar.json', './data/web/modelos.json', './data/web/agora.json', './public/data.json'],
   },
   poweredByHeader: false,
   // Português na raiz, sem prefixo: toda URL que não começa com /en (nem é

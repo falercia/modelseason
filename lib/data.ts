@@ -5,10 +5,10 @@
  * deploy novo, e o deploy é o cache.
  */
 import 'server-only';
-import { readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { DadosV1 } from './engine';
-import type { Agora, Mercado, Modelos, Radar } from './tipos';
+import type { Agora, AssuntoPauta, EdicaoRadar, Mercado, Modelos, Radar } from './tipos';
 
 // Caminhos literais: o rastreador de arquivos da Vercel inclui só estes
 // JSON nas funções, e não o projeto inteiro.
@@ -19,7 +19,25 @@ export const dadosV1 = () => (cache.D ??= ler<DadosV1>(path.join(process.cwd(), 
 export const agora = () => (cache.agora ??= ler<Agora>(path.join(process.cwd(), 'data', 'web', 'agora.json')));
 export const mercado = () => (cache.mercado ??= ler<Mercado>(path.join(process.cwd(), 'data', 'web', 'mercado.json')));
 export const modelos = () => (cache.modelos ??= ler<Modelos>(path.join(process.cwd(), 'data', 'web', 'modelos.json')));
-export const radar = () => (cache.radar ??= ler<Radar>(path.join(process.cwd(), 'data', 'web', 'radar.json')));
+/**
+ * Radar = edições de data/web/radar.json + pautas aprovadas em data/pauta/.
+ * A pauta entra por PR e não passa pelo build_web.py: assim o PR diário só traz
+ * um arquivo novo e nunca conflita com os commits do bot em data/web.
+ */
+export const radar = () => (cache.radar ??= comPautas(ler<Radar>(path.join(process.cwd(), 'data', 'web', 'radar.json'))));
+
+function comPautas(R: Radar): Radar {
+  const pasta = path.join(process.cwd(), 'data', 'pauta');
+  if (!existsSync(pasta)) return R;
+  const porDia = new Map<string, EdicaoRadar>(R.edicoes.map(e => [e.dia, { ...e }]));
+  for (const arq of readdirSync(pasta).filter(a => /^\d{4}-\d{2}-\d{2}\.json$/.test(a))) {
+    const p = ler<{ dia: string; assuntos: AssuntoPauta[] }>(path.join(pasta, arq));
+    if (!p.assuntos?.length) continue;
+    const ed = porDia.get(p.dia) ?? { dia: p.dia, revisao: 1, principal: null, fontes: { catalogo: [], trafego: null }, eventos: [] };
+    porDia.set(p.dia, { ...ed, assuntos: p.assuntos });
+  }
+  return { edicoes: [...porDia.values()].sort((a, b) => b.dia.localeCompare(a.dia)) };
+}
 
 /** Lista leve para a busca: slug, nome, laboratório e share da semana. */
 export function indiceBusca() {

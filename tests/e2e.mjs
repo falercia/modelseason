@@ -10,7 +10,7 @@
  *
  * Uso: node tests/e2e.mjs [http://localhost:3000]
  */
-import { readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { chromium } from 'playwright';
 
 const BASE = process.argv[2] || 'http://localhost:3000';
@@ -268,13 +268,25 @@ const vazou = (txt) => {
 
 // ---------------------------------------------------------------- radar
 {
+  // mesma junção de lib/data.ts: radar.json + pautas aprovadas em data/pauta/
   const R = JSON.parse(readFileSync(new URL('../data/web/radar.json', import.meta.url), 'utf8'));
+  const pastaPauta = new URL('../data/pauta/', import.meta.url);
+  if (existsSync(pastaPauta)) {
+    for (const arq of readdirSync(pastaPauta).filter(a => /^\d{4}-\d{2}-\d{2}\.json$/.test(a))) {
+      const pa = JSON.parse(readFileSync(new URL(arq, pastaPauta), 'utf8'));
+      if (!pa.assuntos?.length) continue;
+      let e = R.edicoes.find(x => x.dia === pa.dia);
+      if (!e) { e = { dia: pa.dia, revisao: 1, principal: null, fontes: { catalogo: [], trafego: null }, eventos: [] }; R.edicoes.push(e); }
+      e.assuntos = pa.assuntos;
+    }
+    R.edicoes.sort((a, b) => b.dia.localeCompare(a.dia));
+  }
   const ed = R.edicoes[0];
   for (const [lang, pre] of [['pt', ''], ['en', '/en']]) {
     const { page, resp, erros } = await abrir(pre + '/radar');
     ok(`${lang}: /radar responde 200`, resp.status() === 200, String(resp.status()));
     ok(`${lang}: /radar com h1 Radar`, (await page.locator('h1').innerText()) === 'Radar');
-    if (ed?.eventos.length) {
+    if (ed?.eventos.length && !ed.assuntos?.length) {
       ok(`${lang}: evento principal é o primeiro do radar.json`, (await page.locator('.rd-ev.top').getAttribute('data-slug')) === ed.eventos[0].slug);
       ok(`${lang}: todos os eventos da edição aparecem`, (await page.locator('main [data-evento]').count()) === ed.eventos.length,
         `${await page.locator('main [data-evento]').count()} de ${ed.eventos.length}`);
@@ -312,9 +324,23 @@ const vazou = (txt) => {
       await m.close();
     }
   }
+  // pauta aprovada: assuntos com fontes externas, nos dois idiomas
+  const comPauta = R.edicoes.find(e => e.assuntos?.length);
+  if (comPauta) {
+    for (const [lang, pre] of [['pt', ''], ['en', '/en']]) {
+      const { page, erros } = await abrir(`${pre}/radar/${comPauta.dia}`);
+      ok(`${lang}: pauta mostra todos os assuntos`, (await page.locator('[data-assunto]').count()) === comPauta.assuntos.length);
+      ok(`${lang}: assunto principal vira o h1`, (await page.locator('h1').innerText()) === comPauta.assuntos[0][lang].titulo);
+      const ext = await page.locator('.rd-fontes a').evaluateAll(as => as.map(a => ({ h: a.getAttribute('href'), r: a.getAttribute('rel') })));
+      ok(`${lang}: fontes da pauta com link externo e noopener`, ext.length > 0 && ext.every(x => /^https?:\/\//.test(x.h) && /noopener/.test(x.r ?? '')));
+      if (lang === 'en') { const tx = await page.locator('main').innerText(); ok('en: pauta sem português', !vazou(tx), vazou(tx) || ''); }
+      ok(`${lang}: pauta sem erro de console`, erros.length === 0, erros.slice(0, 3).join(' | '));
+      await page.close();
+    }
+  }
   const { page: h } = await abrir('/');
   ok('home tem o link do Radar no topo', (await h.locator('header.top a.tnav').getAttribute('href')) === '/radar');
-  if (ed?.eventos.length) ok('home chama a edição do dia', (await h.locator('[data-radar-hoje]').count()) === 1);
+  if (ed && (ed.eventos.length || ed.assuntos?.length)) ok('home chama a edição do dia', (await h.locator('[data-radar-hoje]').count()) === 1);
   await h.close();
   const pg = await browser.newPage();
   const sm = await (await pg.request.get(BASE + '/sitemap.xml')).text();
