@@ -13,6 +13,10 @@ Tres etapas, e so a ultima escreve texto:
 O conteudo das fontes e dado, nunca instrucao: os prompts dizem isso e a saida
 do modelo e validada campo a campo.
 
+Nada repetido: link ja publicado nas ultimas DIAS_MEMORIA pautas sai antes da IA,
+e assunto que a IA reconhece como o mesmo fato de um ja publicado, sem desdobramento
+novo, vai para os descartados com o motivo.
+
 Saida: data/pauta/AAAA-MM-DD.json, uma vez por dia. O workflow pauta.yml abre
 um PR com esse arquivo; publicar e aprovar o PR. O site le data/pauta/ no build.
 
@@ -441,13 +445,15 @@ SISTEMA_AGRUPAR = f"""Você organiza a pauta diária de um site sobre o mercado 
 Tarefa: agrupar os itens que relatam o MESMO fato ou o MESMO anúncio. Tema parecido não basta: duas matérias
 sobre segurança em IA que contam fatos diferentes ficam em assuntos separados. Ignore itens que não são sobre IA.
 Responda somente com JSON no formato:
-{{"assuntos": [{{"itens": ["i1", "i7"], "categoria": "...", "labs": ["..."]}}]}}
+{{"assuntos": [{{"itens": ["i1", "i7"], "categoria": "...", "labs": ["..."], "repete": "p2"}}]}}
 Regras:
 - "itens": ids existentes; cada id em no máximo um assunto; assunto com um item só é permitido.
 - "categoria": exatamente uma de {sorted(CATEGORIAS)}.
   lancamento = modelo ou produto de IA novo; preco = preço, plano ou cota; regulacao = lei, governo, tribunal;
   seguranca = risco, alinhamento, incidente; mercado = ações, investimento, receita, aquisição, executivos;
   capacidade = avaliação, pesquisa, desempenho; infraestrutura = chips, data centers, energia.
+- "repete": se houver a lista "Já publicados", informe o id (p1, p2...) quando o assunto for o MESMO fato de um já publicado
+  e os itens não trouxerem desdobramento novo (decisão, número, reação oficial ou lançamento que não estava lá). Senão, omita o campo.
 - "labs": chaves desta lista para os laboratórios que o fato envolve diretamente, ou lista vazia: {sorted(set(LAB))}.
 """
 
@@ -479,7 +485,8 @@ SEM_ACENTO = re.compile(
     re.I)
 
 
-def valida_agrupamento(resp, ids):
+def valida_agrupamento(resp, ids, ref=None):
+    ref = ref or {}
     vistos, out = set(), []
     for a in (resp or {}).get("assuntos", []):
         its = [i for i in dict.fromkeys(a.get("itens", [])) if i in ids and i not in vistos]
@@ -488,7 +495,10 @@ def valida_agrupamento(resp, ids):
         cat = a.get("categoria") if a.get("categoria") in CATEGORIAS else "outro"
         labs = sorted({k for k in a.get("labs", []) if k in LAB})
         vistos.update(its)
-        out.append({"itens": its, "categoria": cat, "labs": labs})
+        g = {"itens": its, "categoria": cat, "labs": labs}
+        if a.get("repete") in ref:
+            g["repete"] = {"dia": ref[a["repete"]]["dia"], "titulo": ref[a["repete"]]["titulo"]}
+        out.append(g)
     return out
 
 
@@ -592,7 +602,36 @@ def redigir(claude, escolhidos, itens_por_id):
 
 # ------------------------------------------------------------------ pauta
 
-def montar(dia, itens, status, claude, contexto, agora):
+DIAS_MEMORIA = 10
+
+
+def norm_link(u):
+    return re.sub(r"[?#].*$", "", u or "").rstrip("/").lower()
+
+
+def publicados(dia, pasta=DESTINO, n=DIAS_MEMORIA):
+    """Assuntos publicados nas ultimas n pautas (so as que passaram por merge, que sao as que estao na pasta)."""
+    out = []
+    for arq in sorted(pasta.glob("????-??-??.json"), reverse=True):
+        d = arq.name[:10]
+        if d >= dia:
+            continue
+        for a in json.loads(arq.read_text()).get("assuntos", []):
+            out.append({"dia": d, "titulo": a["en"]["titulo"], "links": [norm_link(f["link"]) for f in a["fontes"]]})
+        if len({x["dia"] for x in out}) >= n:
+            break
+    return out
+
+
+def montar(dia, itens, status, claude, contexto, agora, historico=None):
+    """historico: assuntos ja publicados (publicados()). Evita noticia repetida em duas camadas:
+    link ja publicado sai antes da IA; assunto que a IA reconhece como ja publicado, sem fonte nova, vai para descartados."""
+    historico = historico or []
+    ja = {l for h in historico for l in h["links"]}
+    repetidos = [it for it in itens if norm_link(it["link"]) in ja]
+    itens = [it for it in itens if norm_link(it["link"]) not in ja]
+    if repetidos:
+        log(f"  {len(repetidos)} item(ns) com link ja publicado, fora da pauta")
     ids = {it["id"] for it in itens}
     por_id = {it["id"]: it for it in itens}
     share_labs = {k: float(v.get("share_tokens") or 0) for k, v in contexto.labs.items()}
@@ -602,7 +641,10 @@ def montar(dia, itens, status, claude, contexto, agora):
                   **({"lab": it["lab"]} if it.get("lab") else {})}
                  for it in itens[:MAX_ITENS_PROMPT]]
         log(f"  agrupando {len(lista)} itens com {claude.modelo}")
-        grupos = valida_agrupamento(claude.json(SISTEMA_AGRUPAR, "Itens:\n" + json.dumps(lista, ensure_ascii=False, indent=1)), ids)
+        ref = [{"id": f"p{k + 1}", "dia": h["dia"], "titulo": h["titulo"]} for k, h in enumerate(historico[:40])]
+        pedido = ("Já publicados nos últimos dias:\n" + json.dumps(ref, ensure_ascii=False, indent=1) + "\n\n" if ref else "") \
+            + "Itens:\n" + json.dumps(lista, ensure_ascii=False, indent=1)
+        grupos = valida_agrupamento(claude.json(SISTEMA_AGRUPAR, pedido), ids, {r["id"]: r for r in ref})
         log(f"  {len(grupos)} assuntos")
         for g in grupos:
             # o laboratorio declarado pela propria fonte vale mesmo que o modelo esqueca
@@ -611,7 +653,7 @@ def montar(dia, itens, status, claude, contexto, agora):
         grupos.sort(key=lambda g: (-g["nota"], g["itens"][0]))
         for n, g in enumerate(grupos, 1):
             g["id"] = f"a{n}"
-        escolhidos = [g for g in grupos if g["nota"] >= NOTA_MINIMA and g["categoria"] != "outro"][:MAX_ASSUNTOS]
+        escolhidos = [g for g in grupos if g["nota"] >= NOTA_MINIMA and g["categoria"] != "outro" and not g.get("repete")][:MAX_ASSUNTOS]
         if escolhidos:
             log(f"  redigindo {len(escolhidos)} assunto(s)")
             textos, problemas = redigir(claude, escolhidos, por_id)
@@ -630,7 +672,7 @@ def montar(dia, itens, status, claude, contexto, agora):
                 a["cruzamento"] = cruzar_labs(g["labs"], contexto)
                 assuntos.append(a)
             else:
-                a["motivo"] = problemas.get(g["id"]) or ("nota abaixo do corte" if g["nota"] < NOTA_MINIMA or g["categoria"] == "outro"
+                a["motivo"] = (f"já publicado em {g['repete']['dia']}: {g['repete']['titulo']}" if g.get("repete") else None) or problemas.get(g["id"]) or ("nota abaixo do corte" if g["nota"] < NOTA_MINIMA or g["categoria"] == "outro"
                                                         else "fora dos tres primeiros")
                 assuntos.append(a)
     publicados = [a for a in assuntos if "pt" in a]
@@ -696,7 +738,9 @@ def main(argv=None):
         return 2
     from news import Contexto, ler_json  # noqa: E402
     ctx = Contexto(ler_json(DATA / "web" / "modelos.json"), None, ler_json(ROOT / "public" / "data.json"))
-    p = montar(dia, itens, status, Claude(chave), ctx, agora)
+    hist = publicados(dia)
+    log(f"memória: {len(hist)} assunto(s) publicados nas últimas pautas")
+    p = montar(dia, itens, status, Claude(chave), ctx, agora, historico=hist)
     DESTINO.mkdir(parents=True, exist_ok=True)
     arq.write_text(json.dumps(p, ensure_ascii=False, indent=1) + "\n")
     print(f"{arq.name}: {len(p['assuntos'])} assunto(s) publicados, {len(p['descartados'])} descartados, "

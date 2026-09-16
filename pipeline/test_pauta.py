@@ -199,6 +199,42 @@ ok("portugues correto aceito", P.valida_pt({"titulo": "OpenAI lança modelo", "r
 ok("veiculo com nome legivel a partir do dominio", P.veiculo_de("https://thenextweb.com/news/x")[0] == "The Next Web")
 ok("prompt proibe comentar a propria fonte", "Nunca comente a própria fonte" in P.SISTEMA_REDIGIR)
 ok("prompts com acentuacao", "segurança" in P.SISTEMA_REDIGIR and "Você" in P.SISTEMA_AGRUPAR)
+# ---- nada repetido
+import tempfile  # noqa: E402
+with tempfile.TemporaryDirectory() as tmp:
+    pasta = Path(tmp)
+    (pasta / "2026-09-15.json").write_text(json.dumps({"assuntos": [
+        {"en": {"titulo": "OpenAI launches GPT-6 Nova"}, "fontes": [{"link": "https://openai.com/index/gpt-6-nova/?utm=x"}]}]}))
+    (pasta / "2026-09-16.json").write_text(json.dumps({"assuntos": [
+        {"en": {"titulo": "Hoje nao conta"}, "fontes": [{"link": "https://x.com/hoje"}]}]}))
+    hist = P.publicados("2026-09-16", pasta)
+    ok("memoria: le pautas anteriores, nao a do proprio dia", [h["dia"] for h in hist] == ["2026-09-15"], hist)
+    ok("memoria: link normalizado", hist[0]["links"] == ["https://openai.com/index/gpt-6-nova"], hist)
+
+
+class FalsoRepete(Falso):
+    def json(self, sistema, usuario, max_tokens=0):
+        self.chamadas.append((sistema, usuario))
+        if "agrupar os itens" in sistema:
+            return {"assuntos": [
+                {"itens": [i_tm], "categoria": "mercado", "labs": ["openai"], "repete": "p1"},
+                {"itens": [i_gem], "categoria": "lancamento", "labs": ["google"], "repete": "p99"},
+            ]}
+        return {"assuntos": [texto("a2", ("Google lança o Gemini 3.9", "Segundo o Google, é um modelo novo."),
+                                   ("Google launches Gemini 3.9", "According to Google, it is a new model."))]}
+
+
+hist2 = [{"dia": "2026-09-15", "titulo": "AI stocks fall after slowdown call", "links": ["https://openai.com/index/gpt-6-nova"]}]
+fr = FalsoRepete([])
+pr = P.montar("2026-09-16", [dict(x) for x in itens], status, fr, ctx, AGORA, historico=hist2)
+todos = pr["assuntos"] + pr["descartados"]
+ok("repetido: link ja publicado nem chega a IA", "gpt-6-nova" not in fr.chamadas[0][1] and not any("gpt-6-nova" in f["link"] for a in todos for f in a["fontes"]))
+ok("repetido: IA recebe a lista do que ja saiu", "Já publicados" in fr.chamadas[0][1] and '"p1"' in fr.chamadas[0][1])
+rep = [a for a in pr["descartados"] if a["motivo"].startswith("já publicado")]
+ok("repetido: assunto reconhecido vai para descartados com o motivo", len(rep) == 1 and "2026-09-15" in rep[0]["motivo"], pr["descartados"])
+ok("repetido: id inventado pela IA e ignorado", any(a["fontes"][0]["link"] == "https://blog.google/gemini-39" for a in pr["assuntos"]), pr["assuntos"])
+ok("corpo do PR mostra o repetido", "já publicado em 2026-09-15" in P.corpo_pr(pr))
+
 ok("numeros: milhar e decimal", P.numeros("US$ 2.000 e 1,5% e 3.5") == {2000.0, 1.5, 3.5})
 ok("numeros: 4% na fonte aceita 4 no texto", P.numeros_ok("caiu 4%", "down 4%")[0])
 ok("numeros: 5 fora da fonte recusa", not P.numeros_ok("caiu 5%", "down 4%")[0])
