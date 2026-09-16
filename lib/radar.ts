@@ -34,6 +34,20 @@ const ROTULO: Record<EventoRadar['tipo'], { pt: string; en: string }> = {
   alta: { pt: 'Tráfego', en: 'Traffic' },
 };
 
+/**
+ * Preço por 1M de tokens com casas fixas por faixa, para os dois lados de uma
+ * variação lerem igual (as casas saem do menor valor do par): US$ 0,12 → US$ 0,24; US$ 0,084 → US$ 0,111.
+ */
+function preco(I: Idioma, v: number | null, ref?: number | null): string {
+  if (v == null) return '—';
+  const m = ref != null ? Math.min(v, ref) : v;
+  const casas = m >= 0.1 ? 2 : m >= 0.01 ? 3 : 4;
+  return (I.pt ? 'US$ ' : '$') + I.f.dec(v.toFixed(casas));
+}
+
+/** "13 set" / "Sep 13": o ano já está na edição. */
+const diaCurto = (I: Idioma, d: string) => I.f.marcaDia(I.f.dataDe(d.slice(0, 10)));
+
 /** Dias entre duas datas AAAA-MM-DD. */
 const diasEntre = (a: string, b: string) => Math.round((Date.parse(b) - Date.parse(a)) / 86400000);
 
@@ -66,8 +80,8 @@ function cruzamento(ev: EventoRadar, I: Idioma): string | null {
           en: razao > 1 ? `, and this one costs ${vez} times more` : `, and this one costs ${vez} times less` })
       : '';
     partes.push(t({
-      pt: `O modelo mais usado do laboratório é o ${ld.nome}, com ${f.fmtP(ld.share_7d, 2)}${ld.preco_misto != null ? ` a ${f.fmtUSD(ld.preco_misto)} por 1M` : ''}${comp}.`,
-      en: `The lab's most used model is ${ld.nome}, with ${f.fmtP(ld.share_7d, 2)}${ld.preco_misto != null ? ` at ${f.fmtUSD(ld.preco_misto)} per 1M` : ''}${comp}.`,
+      pt: `O modelo mais usado do laboratório é o ${ld.nome}, com ${f.fmtP(ld.share_7d, 2)}${ld.preco_misto != null ? ` a ${preco(I, ld.preco_misto)} por 1M` : ''}${comp}.`,
+      en: `The lab's most used model is ${ld.nome}, with ${f.fmtP(ld.share_7d, 2)}${ld.preco_misto != null ? ` at ${preco(I, ld.preco_misto)} per 1M` : ''}${comp}.`,
     }));
   }
   return partes.length ? partes.join(' ') : null;
@@ -82,8 +96,8 @@ export function frase(ev: EventoRadar, dia: string, I: Idioma): FraseRadar {
     case 'novo': {
       const partes: string[] = [lab];
       if (num(d.preco_entrada) != null && num(d.preco_saida) != null)
-        partes.push(t({ pt: `${f.fmtUSD(num(d.preco_entrada))} de entrada e ${f.fmtUSD(num(d.preco_saida))} de saída por 1M de tokens`,
-          en: `${f.fmtUSD(num(d.preco_entrada))} input and ${f.fmtUSD(num(d.preco_saida))} output per 1M tokens` }));
+        partes.push(t({ pt: `${preco(I, num(d.preco_entrada))} de entrada e ${preco(I, num(d.preco_saida))} de saída por 1M de tokens`,
+          en: `${preco(I, num(d.preco_entrada))} input and ${preco(I, num(d.preco_saida))} output per 1M tokens` }));
       if (num(d.contexto)) partes.push(t({ pt: `contexto de ${f.fmtCtx(num(d.contexto))}`, en: `${f.fmtCtx(num(d.contexto))} context` }));
       if (d.raciocinio_obrigatorio === true) partes.push(t({ pt: 'raciocínio obrigatório', en: 'mandatory reasoning' }));
       else if (d.raciocinio === true) partes.push(t({ pt: 'raciocínio opcional', en: 'optional reasoning' }));
@@ -103,10 +117,12 @@ export function frase(ev: EventoRadar, dia: string, I: Idioma): FraseRadar {
     case 'preco': {
       const v = num(d.variacao_pct) ?? 0, sobe = v > 0;
       const pct = f.dec(Math.abs(v).toFixed(0)) + '%';
+      const par = (a: string, b: string) => [preco(I, num(d[a]), num(d[b])), preco(I, num(d[b]), num(d[a]))];
+      const [de, para] = par('de', 'para'), [ed, ep] = par('entrada_de', 'entrada_para'), [sd, sp] = par('saida_de', 'saida_para');
       titulo = t({ pt: `${n} ficou ${pct} mais ${sobe ? 'caro' : 'barato'}`, en: `${n} got ${pct} ${sobe ? 'more expensive' : 'cheaper'}` });
       texto = t({
-        pt: `Preço misto de ${f.fmtUSD(num(d.de))} para ${f.fmtUSD(num(d.para))} por 1M de tokens (entrada de ${f.fmtUSD(num(d.entrada_de))} para ${f.fmtUSD(num(d.entrada_para))}, saída de ${f.fmtUSD(num(d.saida_de))} para ${f.fmtUSD(num(d.saida_para))}), igual desde ${f.fD(str(d.desde) ?? dia)}.`,
-        en: `Blended price went from ${f.fmtUSD(num(d.de))} to ${f.fmtUSD(num(d.para))} per 1M tokens (input ${f.fmtUSD(num(d.entrada_de))} to ${f.fmtUSD(num(d.entrada_para))}, output ${f.fmtUSD(num(d.saida_de))} to ${f.fmtUSD(num(d.saida_para))}), unchanged since ${f.fD(str(d.desde) ?? dia)}.`,
+        pt: `De ${de} para ${para} por 1M de tokens no preço misto. Entrada ${ed} → ${ep}, saída ${sd} → ${sp}. Valor novo desde ${diaCurto(I, str(d.desde) ?? dia)}.`,
+        en: `From ${de} to ${para} per 1M tokens, blended. Input ${ed} → ${ep}, output ${sd} → ${sp}. New price since ${diaCurto(I, str(d.desde) ?? dia)}.`,
       });
       break;
     }

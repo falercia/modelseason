@@ -17,15 +17,18 @@ export const CSS_RADAR = `
 .rd-meta a{color:inherit}
 .rd-ed{margin-bottom:26px}
 .rd-ed > h2{font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); margin-bottom:10px; font-weight:600}
+/* "rd-destaque", e nunca "top": .top e o cabecalho fixo do site e o cartao herdava o sticky */
 .rd-ev{background:var(--surface); border:1px solid var(--ring); border-left:3px solid var(--cor, var(--ring)); border-radius:11px; padding:14px 17px; min-width:0}
-.rd-ev h3{font-size:16px; line-height:1.3; margin:2px 0 6px; overflow-wrap:anywhere}
-.rd-ev h3 a{color:inherit}
-.rd-ev p{font-size:13.5px; color:var(--ink-2); overflow-wrap:anywhere}
-.rd-ev .cz{margin-top:8px; font-size:12.5px; color:var(--ink-2); background:var(--surface-2); border-radius:7px; padding:7px 10px}
-.rd-ev .cz b{color:var(--ink); font-weight:600}
-.rd-ev.top{padding:20px 22px}
-.rd-ev.top h3{font-size:23px}
-.rd-ev.top p{font-size:15px}
+.rd-ev h3{font-size:15.5px; line-height:1.3; margin:3px 0 6px; overflow-wrap:anywhere; letter-spacing:-.005em}
+.rd-ev h3 a{color:inherit; text-decoration:none}
+.rd-ev h3 a:hover{text-decoration:underline; text-underline-offset:3px}
+.rd-ev p{font-size:13.5px; line-height:1.55; color:var(--ink-2); overflow-wrap:anywhere}
+.rd-ev .cz{margin-top:10px; font-size:12.5px; line-height:1.5; color:var(--ink-3); border-top:1px dashed var(--grid); padding-top:8px}
+.rd-ev .cz b{color:var(--ink-2); font-weight:600}
+.rd-ev.rd-destaque{padding:20px 22px}
+.rd-ev.rd-destaque h3{font-size:22px; line-height:1.25}
+.rd-ev.rd-destaque p{font-size:15px}
+.rd-ev.rd-destaque .cz{font-size:13px; background:var(--surface-2); border:0; border-radius:8px; padding:9px 12px}
 .rd-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:12px}
 .rd-lista{margin-top:14px; border-top:1px solid var(--grid); padding-top:10px}
 .rd-lista h4{font-size:12px; color:var(--ink-3); font-weight:600; margin-bottom:6px}
@@ -44,7 +47,7 @@ export const CSS_RADAR = `
 .rd-fontes b{color:var(--ink-2); font-weight:600}
 .rd-fontes .dt{font-family:var(--font-mono),monospace; font-size:11px}
 .rd-ev.pauta{--cor:var(--ink-3)}
-@media (max-width:700px){ .rd-grid{grid-template-columns:minmax(0,1fr)} .rd h1{font-size:25px} .rd-ev.top h3{font-size:19px}
+@media (max-width:700px){ .rd-grid{grid-template-columns:minmax(0,1fr)} .rd h1{font-size:25px} .rd-ev.rd-destaque h3{font-size:19px}
   .rd-arq li{grid-template-columns:minmax(0,1fr) auto} .rd-arq li .d{grid-column:1/-1} }
 `;
 
@@ -52,7 +55,7 @@ function Evento({ ev, dia, I, paginas, destaque }: { ev: EventoRadar; dia: strin
   const F = frase(ev, dia, I);
   const link = paginas.has(ev.slug) ? I.modelo(ev.slug) : null;
   return (
-    <article className={'rd-ev' + (destaque ? ' top' : '')} style={{ '--cor': `var(${slotLab(ev.vendor)})` } as React.CSSProperties}
+    <article className={'rd-ev' + (destaque ? ' rd-destaque' : '')} style={{ '--cor': `var(${slotLab(ev.vendor)})` } as React.CSSProperties}
       data-evento={ev.tipo} data-slug={ev.slug}>
       <span className="kicker">{F.rotulo} · {I.nomeLab(ev.lab)}</span>
       <h3>{link ? <Link href={link}>{F.titulo}</Link> : F.titulo}</h3>
@@ -67,7 +70,7 @@ function Assunto({ a, I, destaque }: { a: AssuntoPauta; I: Idioma; destaque?: bo
   const pub = diaPublicacao(a.publicado_em);
   const dia = (iso?: string | null) => { const x = diaPublicacao(iso); return x ? I.f.fD(x) : null; };
   return (
-    <article className={'rd-ev pauta' + (destaque ? ' top' : '')} data-assunto={a.id}>
+    <article className={'rd-ev pauta' + (destaque ? ' rd-destaque' : '')} data-assunto={a.id}>
       <span className="kicker">{F.rotulo}{pub ? <> · <time dateTime={a.publicado_em ?? undefined}>{I.t({ pt: 'publicado em ', en: 'published ' })}{I.f.fD(pub)}</time></> : null}</span>
       <h3>{F.titulo}</h3>
       <p>{F.texto}</p>

@@ -285,9 +285,11 @@ const vazou = (txt) => {
   for (const [lang, pre] of [['pt', ''], ['en', '/en']]) {
     const { page, resp, erros } = await abrir(pre + '/radar');
     ok(`${lang}: /radar responde 200`, resp.status() === 200, String(resp.status()));
+    const fixo = await page.evaluate(() => [...document.querySelectorAll('main .rd-ev')].filter(e => getComputedStyle(e).position !== 'static').length);
+    ok(`${lang}: nenhum cartão do radar fica grudado no topo`, fixo === 0, String(fixo));
     ok(`${lang}: /radar com h1 Radar`, (await page.locator('h1').innerText()) === 'Radar');
     if (ed?.eventos.length && !ed.assuntos?.length) {
-      ok(`${lang}: evento principal é o primeiro do radar.json`, (await page.locator('.rd-ev.top').getAttribute('data-slug')) === ed.eventos[0].slug);
+      ok(`${lang}: evento principal é o primeiro do radar.json`, (await page.locator('.rd-ev.rd-destaque').getAttribute('data-slug')) === ed.eventos[0].slug);
       ok(`${lang}: todos os eventos da edição aparecem`, (await page.locator('main [data-evento]').count()) === ed.eventos.length,
         `${await page.locator('main [data-evento]').count()} de ${ed.eventos.length}`);
     }
