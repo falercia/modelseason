@@ -12,6 +12,8 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ### Corrigido
 
+- **Pauta**: o resumo não comenta mais a própria fonte (a segunda pauta disse que "o site não deu mais detalhes", sem ter lido a matéria), fonte só com título vira uma frase só, e veículos que chegam só pelo domínio ganham nome legível (The Next Web, Wired, 404 Media e outros).
+- **Pauta com data da fonte**: cada fonte guarda a data e a hora de publicação informadas pelo veículo, e cada assunto a primeira publicação entre as fontes (`publicado_em`). O site mostra a data em Brasília ao lado de cada fonte e no cabeçalho do assunto; o RSS e o corpo do PR também.
 - **Pauta**: a primeira pauta real saiu com o português inteiro sem acento, porque os prompts estavam sem acento e o modelo espelhou. Prompts reescritos com acentuação, texto em português com palavra sem acento é recusado, o agrupamento separa fatos diferentes do mesmo tema e o resumo usa o artigo certo do veículo.
 - **Pauta**: a etapa de redação ainda fixava 3 mil tokens de saída, e o modelo gastava tudo raciocinando. O limite agora tem piso de 16 mil em qualquer chamada.
 - **Pauta**: resposta da IA sem JSON derrubava o run. O limite de saída subiu para 16 mil tokens (os modelos recentes podem raciocinar antes de responder e gastar o limite nisso), resposta sem JSON ganha até duas novas tentativas e o log registra tempo, motivo de parada e tokens de cada chamada. Servidor que não aceita conexão do runner (a API da Câmara, no segundo run) desiste na segunda tentativa, em vez de consumir três minutos.

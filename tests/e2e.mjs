@@ -332,6 +332,8 @@ const vazou = (txt) => {
       ok(`${lang}: pauta mostra todos os assuntos`, (await page.locator('[data-assunto]').count()) === comPauta.assuntos.length);
       ok(`${lang}: assunto principal vira o h1`, (await page.locator('h1').innerText()) === comPauta.assuntos[0][lang].titulo);
       const ext = await page.locator('.rd-fontes a').evaluateAll(as => as.map(a => ({ h: a.getAttribute('href'), r: a.getAttribute('rel') })));
+      const comData = comPauta.assuntos.flatMap(a => a.fontes).filter(f => f.data).length;
+      ok(`${lang}: fontes da pauta mostram a data de publicação`, (await page.locator('.rd-fontes time').count()) === comData, `${await page.locator('.rd-fontes time').count()} de ${comData}`);
       ok(`${lang}: fontes da pauta com link externo e noopener`, ext.length > 0 && ext.every(x => /^https?:\/\//.test(x.h) && /noopener/.test(x.r ?? '')));
       if (lang === 'en') { const tx = await page.locator('main').innerText(); ok('en: pauta sem português', !vazou(tx), vazou(tx) || ''); }
       ok(`${lang}: pauta sem erro de console`, erros.length === 0, erros.slice(0, 3).join(' | '));

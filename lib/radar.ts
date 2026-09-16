@@ -188,6 +188,14 @@ const CATEGORIA: Record<string, { pt: string; en: string }> = {
   infraestrutura: { pt: 'Infraestrutura', en: 'Infrastructure' },
 };
 
+/** Dia de publicação no fuso de Brasília ('AAAA-MM-DD'), a partir do horário UTC da fonte. */
+export function diaPublicacao(iso: string | null | undefined): string | null {
+  if (!iso) return null;
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return null;
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(d);
+}
+
 /** Texto de um assunto da pauta no idioma, com o cruzamento dos laboratórios citados. */
 export function textoAssunto(a: AssuntoPauta, I: Idioma): FraseRadar {
   const { t, f } = I;

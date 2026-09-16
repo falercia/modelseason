@@ -5,7 +5,7 @@
  */
 import Link from 'next/link';
 import type { Idioma } from '@/lib/idioma';
-import { frase, textoAssunto, tituloEdicao } from '@/lib/radar';
+import { diaPublicacao, frase, textoAssunto, tituloEdicao } from '@/lib/radar';
 import type { AssuntoPauta, EdicaoRadar, EventoRadar } from '@/lib/tipos';
 import { slotLab } from '@/lib/cores';
 
@@ -42,6 +42,7 @@ export const CSS_RADAR = `
 .rd-fontes{list-style:none; margin:10px 0 0; padding:0; font-size:12.5px; color:var(--ink-3)}
 .rd-fontes li{padding:2px 0; overflow-wrap:anywhere}
 .rd-fontes b{color:var(--ink-2); font-weight:600}
+.rd-fontes .dt{font-family:var(--font-mono),monospace; font-size:11px}
 .rd-ev.pauta{--cor:var(--ink-3)}
 @media (max-width:700px){ .rd-grid{grid-template-columns:minmax(0,1fr)} .rd h1{font-size:25px} .rd-ev.top h3{font-size:19px}
   .rd-arq li{grid-template-columns:minmax(0,1fr) auto} .rd-arq li .d{grid-column:1/-1} }
@@ -63,16 +64,18 @@ function Evento({ ev, dia, I, paginas, destaque }: { ev: EventoRadar; dia: strin
 
 function Assunto({ a, I, destaque }: { a: AssuntoPauta; I: Idioma; destaque?: boolean }) {
   const F = textoAssunto(a, I);
+  const pub = diaPublicacao(a.publicado_em);
+  const dia = (iso?: string | null) => { const x = diaPublicacao(iso); return x ? I.f.fD(x) : null; };
   return (
     <article className={'rd-ev pauta' + (destaque ? ' top' : '')} data-assunto={a.id}>
-      <span className="kicker">{F.rotulo}</span>
+      <span className="kicker">{F.rotulo}{pub ? <> · <time dateTime={a.publicado_em ?? undefined}>{I.t({ pt: 'publicado em ', en: 'published ' })}{I.f.fD(pub)}</time></> : null}</span>
       <h3>{F.titulo}</h3>
       <p>{F.texto}</p>
       {F.cruzamento && <p className="cz"><b>{I.t({ pt: 'O que o dado diz.', en: 'What the data says.' })}</b> {F.cruzamento}</p>}
       <ul className="rd-fontes" aria-label={I.t({ pt: 'Fontes', en: 'Sources' })}>
         {a.fontes.map(f => (
           <li key={f.link}>
-            <b>{f.veiculo}</b>: <a href={f.link} rel="noopener noreferrer" target="_blank">{f.titulo}</a>
+            {dia(f.data) && <time className="dt" dateTime={f.data ?? undefined}>{dia(f.data)} · </time>}<b>{f.veiculo}</b>: <a href={f.link} rel="noopener noreferrer" target="_blank">{f.titulo}</a>
             {f.discussao && f.pontos ? <> · <a href={f.discussao} rel="noopener noreferrer" target="_blank">{I.t({ pt: `${f.pontos} pontos no Hacker News`, en: `${f.pontos} points on Hacker News` })}</a></> : null}
           </li>
         ))}

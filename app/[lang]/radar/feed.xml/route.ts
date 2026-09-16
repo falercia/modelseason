@@ -5,7 +5,7 @@
 import { radar } from '@/lib/data';
 import { caminho, ehIdioma, HTML_LANG, IDIOMAS, type Lang } from '@/lib/i18n';
 import { idioma } from '@/lib/idioma';
-import { frase, textoAssunto, tituloEdicao } from '@/lib/radar';
+import { diaPublicacao, frase, textoAssunto, tituloEdicao } from '@/lib/radar';
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
@@ -24,7 +24,7 @@ export async function GET(_: Request, { params }: { params: Promise<{ lang: stri
     const link = BASE + caminho(lang, '/radar/' + ed.dia);
     const pauta = (ed.assuntos ?? []).map(a => {
       const F = textoAssunto(a, I);
-      const fontes = a.fontes.map(f => `<a href="${esc(f.link)}">${esc(f.veiculo)}</a>`).join(', ');
+      const fontes = a.fontes.map(f => `<a href="${esc(f.link)}">${esc(f.veiculo)}</a>${f.data ? ' ' + esc(I.f.fD(diaPublicacao(f.data) ?? f.data.slice(0, 10))) : ''}`).join(', ');
       return `<p><b>${esc(F.titulo)}</b>. ${esc(F.texto)} (${fontes})</p>`;
     }).join('');
     const corpo = pauta + ed.eventos.map(ev => { const F = frase(ev, ed.dia, I); return `<p><b>${esc(F.titulo)}</b>. ${esc(F.texto)}</p>`; }).join('');

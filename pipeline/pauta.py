@@ -87,12 +87,20 @@ def dominio(url):
     return h[4:] if h.startswith("www.") else h
 
 
+NOMES_DOMINIO = {"thenextweb.com": "The Next Web", "venturebeat.com": "VentureBeat", "wired.com": "Wired",
+                 "arstechnica.com": "Ars Technica", "theverge.com": "The Verge", "techcrunch.com": "TechCrunch",
+                 "404media.co": "404 Media", "platformer.news": "Platformer", "github.com": "GitHub",
+                 "x.com": "X", "twitter.com": "X", "arxiv.org": "arXiv", "zdnet.com": "ZDNET",
+                 "businessinsider.com": "Business Insider", "fortune.com": "Fortune", "forbes.com": "Forbes",
+                 "theregister.com": "The Register", "engadget.com": "Engadget", "sciencedirect.com": "ScienceDirect"}
+
+
 def veiculo_de(url, padrao=None):
     d = dominio(url)
     for base, nome in {**REFERENCIA, **PRIMARIAS}.items():
         if d == base or d.endswith("." + base):
             return nome, base in REFERENCIA, base in PRIMARIAS
-    return padrao or d, False, False
+    return padrao or NOMES_DOMINIO.get(d, d), False, False
 
 
 def data_rss(txt):
@@ -456,6 +464,8 @@ Regras de escrita:
   ("segundo a Reuters", "segundo o Financial Times", "segundo o TechCrunch"; "according to Reuters").
 - Todo número do texto precisa aparecer nas fontes, escrito do mesmo jeito ou com a mesma quantidade.
 - Não escreva datas nem dias da semana: a nota já sai datada.
+- Nunca comente a própria fonte ("o site não deu detalhes", "não ficou claro"). Você só vê título e trecho, não a matéria inteira.
+  Quando a fonte trouxer só o título, escreva uma frase só.
 - Nunca use travessão nem meia-risca. Use vírgula.
 - Português natural de jornal brasileiro, sem anglicismo desnecessário; nomes de empresas e produtos como estão nas fontes.
 - Inglês: caixa de frase no título, sem vírgula de Oxford.
@@ -609,9 +619,12 @@ def montar(dia, itens, status, claude, contexto, agora):
             fontes = []
             for i in g["itens"]:
                 it = por_id[i]
-                fontes.append({"veiculo": it["veiculo"], "titulo": it["titulo"], "link": it["link"],
+                fontes.append({"veiculo": it["veiculo"], "titulo": it["titulo"], "link": it["link"], "data": it["data"],
                                **({"discussao": it["discussao"], "pontos": it["pontos"]} if it.get("pontos") else {})})
-            a = {"id": g["id"], "categoria": g["categoria"], "nota": g["nota"], "labs": g["labs"], "fontes": fontes}
+            fontes.sort(key=lambda f: f["data"] or "9999")
+            datas = [f["data"] for f in fontes if f["data"]]
+            a = {"id": g["id"], "categoria": g["categoria"], "nota": g["nota"], "labs": g["labs"],
+                 "publicado_em": datas[0] if datas else None, "fontes": fontes}
             if g["id"] in textos:
                 a.update(textos[g["id"]])
                 a["cruzamento"] = cruzar_labs(g["labs"], contexto)
@@ -637,7 +650,7 @@ def corpo_pr(p):
     for a in p["assuntos"]:
         L += [f"### {a['pt']['titulo']}", f"`{a['categoria']}` · nota {a['nota']}", "", a["pt"]["resumo"], "",
               f"> EN: **{a['en']['titulo']}**. {a['en']['resumo']}", ""]
-        L += [f"- [{f['veiculo']}]({f['link']}): {f['titulo']}" for f in a["fontes"]]
+        L += [f"- {(f.get('data') or '')[:16].replace('T', ' ')} UTC · [{f['veiculo']}]({f['link']}): {f['titulo']}" for f in a["fontes"]]
         L.append("")
     if p["descartados"]:
         L += ["<details><summary>Descartados</summary>", ""]
