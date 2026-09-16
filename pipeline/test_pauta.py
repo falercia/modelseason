@@ -222,6 +222,46 @@ class Sessao:
         return Resp(200, {"content": [{"type": "text", "text": 'Aqui: {"assuntos": []}'}], "usage": {"input_tokens": 3, "output_tokens": 2}})
 
 
+class SessaoRuim(Sessao):
+    def __init__(self, respostas):
+        super().__init__()
+        self.respostas = list(respostas)
+
+    def post(self, url, json=None, **kw):
+        self.enviados.append(json)
+        return Resp(200, self.respostas.pop(0))
+
+
+P.time.sleep = lambda s: None
+so_pensou = {"content": [{"type": "thinking", "thinking": "..."}], "stop_reason": "max_tokens", "usage": {}}
+bom = {"content": [{"type": "text", "text": '{"assuntos": [1]}'}], "stop_reason": "end_turn", "usage": {}}
+sr = SessaoRuim([so_pensou, bom])
+ok("API: resposta sem JSON ganha nova tentativa", P.Claude("k", sessao=sr, modelo="m").json("s", "u") == {"assuntos": [1]})
+ok("API: limite de saida alto", sr.enviados[0]["max_tokens"] >= 16000, sr.enviados[0]["max_tokens"])
+sr2 = SessaoRuim([so_pensou] * 3)
+try:
+    P.Claude("k", sessao=sr2, modelo="m").json("s", "u")
+    ok("API: tres respostas sem JSON viram erro com motivo", False)
+except RuntimeError as e:
+    ok("API: tres respostas sem JSON viram erro com motivo", "max_tokens" in str(e), str(e))
+
+
+class Lenta:
+    def __init__(self):
+        self.n = 0
+
+    def get(self, url, **kw):
+        self.n += 1
+        raise P.requests.ConnectTimeout()
+
+
+le = Lenta()
+try:
+    P.http_get(le)("https://x")
+except RuntimeError:
+    pass
+ok("coleta: servidor que nao aceita conexao desiste na segunda tentativa", le.n == 2, le.n)
+
 se = Sessao()
 cl = P.Claude("chave-falsa", sessao=se)
 ok("API: escolhe o Sonnet mais recente", cl.modelo == "claude-sonnet-9", cl.modelo)
