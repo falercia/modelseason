@@ -1,0 +1,254 @@
+{
+ "versao": 1,
+ "dia": "2026-09-14",
+ "gerado_em": "2026-09-16T12:27:29Z",
+ "fontes": {
+  "catalogo": [
+   "2026-09-12",
+   "2026-09-14"
+  ],
+  "trafego": null
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-09-14",
+ "licenca": "CC BY 4.0",
+ "estado": null,
+ "principal": "preco:z-ai/glm-5.3-flash-20260826",
+ "eventos": [
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.3-flash-20260826",
+   "id": "z-ai/glm-5.3-flash",
+   "nome": "GLM 5.3 Flash",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 0.1187,
+    "para": 0.2375,
+    "variacao_pct": 100.0,
+    "entrada_de": 0.075,
+    "entrada_para": 0.15,
+    "saida_de": 0.25,
+    "saida_para": 0.5,
+    "desde": "2026-09-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 9.17,
+     "rank_7d": 4,
+     "pico_share": 10.734,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": {
+     "share_tokens": 13.56,
+     "share_gasto": 8.55
+    }
+   },
+   "relevancia": 68
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-pro-20260423",
+   "id": "deepseek/deepseek-v4-pro",
+   "nome": "DeepSeek V4 Pro 0423",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.9861,
+    "para": 2.0,
+    "variacao_pct": 102.8,
+    "entrada_de": 0.7889,
+    "entrada_para": 1.6,
+    "saida_de": 1.5778,
+    "saida_para": 3.2,
+    "desde": "2026-09-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.16,
+     "rank_7d": 18,
+     "pico_share": 5.773,
+     "semanas_com_volume": 21
+    },
+    "laboratorio": {
+     "share_tokens": 20.24,
+     "share_gasto": 5.61,
+     "lider": {
+      "slug": "deepseek/deepseek-v4-flash-20260731",
+      "nome": "DeepSeek V4 Flash 0731",
+      "share_7d": 9.24,
+      "preco_misto": 0.075
+     }
+    }
+   },
+   "relevancia": 43
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-4-26b-a4b-it-20260403",
+   "id": "google/gemma-4-26b-a4b-it",
+   "nome": "Gemma 4 26B A4B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.0865,
+    "para": 0.1425,
+    "variacao_pct": 64.7,
+    "entrada_de": 0.042,
+    "entrada_para": 0.09,
+    "saida_de": 0.22,
+    "saida_para": 0.3,
+    "desde": "2026-09-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.18,
+     "rank_7d": 51,
+     "pico_share": 0.737,
+     "semanas_com_volume": 23
+    },
+    "laboratorio": {
+     "share_tokens": 5.53,
+     "share_gasto": 5.56,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.95,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 33
+  },
+  {
+   "tipo": "preco",
+   "slug": "meta-llama/llama-3.1-70b-instruct",
+   "id": "meta-llama/llama-3.1-70b-instruct",
+   "nome": "Llama 3.1 70B Instruct",
+   "lab": "Meta",
+   "vendor": "meta-llama",
+   "dados": {
+    "de": 0.72,
+    "para": 0.4,
+    "variacao_pct": -44.4,
+    "entrada_de": 0.72,
+    "entrada_para": 0.4,
+    "saida_de": 0.72,
+    "saida_para": 0.4,
+    "desde": "2026-09-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 2.407,
+     "semanas_com_volume": 35
+    },
+    "laboratorio": null
+   },
+   "relevancia": 29
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3-30b-a3b-instruct-2507",
+   "id": "qwen/qwen3-30b-a3b-instruct-2507",
+   "nome": "Qwen3 30B A3B Instruct 2507",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.1425,
+    "para": 0.0844,
+    "variacao_pct": -40.8,
+    "entrada_de": 0.09,
+    "entrada_para": 0.0481,
+    "saida_de": 0.3,
+    "saida_para": 0.193,
+    "desde": "2026-09-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.038,
+     "semanas_com_volume": 2
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-max-20260902",
+      "nome": "Qwen3.8 Max (0902)",
+      "share_7d": 0.27,
+      "preco_misto": 3.0
+     }
+    }
+   },
+   "relevancia": 28
+  },
+  {
+   "tipo": "preco",
+   "slug": "meta/muse-glimmer-30b-20260810",
+   "id": "meta/muse-glimmer-30b",
+   "nome": "Muse Glimmer 30B",
+   "lab": "Meta",
+   "vendor": "meta",
+   "dados": {
+    "de": 0.5,
+    "para": 0.6375,
+    "variacao_pct": 27.5,
+    "entrada_de": 0.3,
+    "entrada_para": 0.35,
+    "saida_de": 1.1,
+    "saida_para": 1.5,
+    "desde": "2026-09-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 1.86,
+     "share_gasto": 0.57,
+     "lider": {
+      "slug": "meta/muse-spark-1.3-contributor-20260902",
+      "nome": "Muse Spark 1.3 Contributor",
+      "share_7d": 1.57,
+      "preco_misto": 0.125
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "moonshotai/kimi-k3-20260715",
+   "id": "moonshotai/kimi-k3",
+   "nome": "Kimi K3",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "de": 4.6146,
+    "para": 5.3068,
+    "variacao_pct": 15.0,
+    "entrada_de": 2.3027,
+    "entrada_para": 2.6481,
+    "saida_de": 11.5502,
+    "saida_para": 13.2827,
+    "desde": "2026-09-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.12,
+     "rank_7d": 19,
+     "pico_share": 2.507,
+     "semanas_com_volume": 9
+    },
+    "laboratorio": {
+     "share_tokens": 1.24,
+     "share_gasto": 6.16
+    }
+   },
+   "relevancia": 26
+  }
+ ]
+}

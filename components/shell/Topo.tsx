@@ -90,6 +90,7 @@ export function Topo({ itens }: { itens: ItemBusca[] }) {
         <Link href={url('/')} className="brand">Model Season <span className="mono">{t({ pt: 'temporadas de modelos', en: 'every model has a season' })}</span></Link>
         <Busca itens={itens} />
         <span className="sp" />
+        <Link href={url('/radar')} className="tnav">Radar</Link>
         <BotaoComoLer />
         <SeletorIdioma />
         <Tema />

@@ -70,6 +70,15 @@ jobs:
           if [ -n "$APPS_DAY" ]; then args+=(--apps-day "$APPS_DAY"); fi
           python pipeline/snapshots.py "${args[@]}"
 
+      # Radar: compara a foto do catálogo de hoje com as anteriores e cruza com o
+      # tráfego da véspera. Edição imutável em data/news/; se já existe, nada muda.
+      # Falha aqui não pode impedir o commit do que foi coletado.
+      - name: Radar do dia
+        id: radar
+        if: always()
+        continue-on-error: true
+        run: python pipeline/news.py
+
       # As seções de tarefas, apps, sessões e as páginas de modelo leem os
       # snapshots através de data/web. Sem este passo, a página mostraria a foto
       # de ontem até o diário da madrugada seguinte.
@@ -81,7 +90,7 @@ jobs:
         run: |
           git config user.name "modelseason-bot"
           git config user.email "falercia@gmail.com"
-          for d in data/tasks data/sessions data/benchmarks data/endpoints data/apps data/providers data/zdr data/catalogs data/web; do
+          for d in data/tasks data/sessions data/benchmarks data/endpoints data/apps data/providers data/zdr data/catalogs data/news data/web; do
             if [ -d "$d" ]; then git add "$d"; fi
           done
           if git diff --cached --quiet; then
@@ -104,6 +113,12 @@ jobs:
         if: steps.coleta.outcome == 'failure'
         run: |
           echo "::error::Uma ou mais fontes falharam. O que deu certo já foi commitado. Detalhes no passo Coletar."
+          exit 1
+
+      - name: Falhar se o Radar falhou
+        if: steps.radar.outcome == 'failure'
+        run: |
+          echo "::error::O Radar do dia não foi gerado. A coleta foi commitada. Detalhes no passo Radar do dia."
           exit 1
 
       - name: Abrir issue se falhou

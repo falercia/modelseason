@@ -74,3 +74,17 @@ Todos os arquivos derivam de endpoints públicos do OpenRouter e estão sob [CC 
 As colunas `aa_*` do catálogo são índices produzidos pela **Artificial Analysis** e distribuídos pela API do OpenRouter. Cite a Artificial Analysis ao usar especificamente esses campos.
 
 O campo `as_of` está em `public/data.json`.
+
+## `news/`
+
+Edições do Radar, uma por dia, geradas por `pipeline/news.py` a partir da foto do catálogo em `catalogs/models/` e do tráfego da véspera em `web/`. **Imutáveis:** o arquivo é escrito uma vez e nunca sobrescrito; uma correção vira `AAAA-MM-DD.r2.json`, e quem lê usa a revisão mais alta.
+
+| Campo | Descrição |
+|---|---|
+| `dia` | Dia da foto do catálogo |
+| `fontes.catalogo` | Primeira e última foto usadas na comparação (janela de até 8) |
+| `fontes.trafego` | Último dia de tráfego usado, ou `null` quando o dado da véspera não estava disponível |
+| `estado` | Líder e top 10 de 7 dias no momento da edição, para a edição seguinte detectar mudança |
+| `eventos[]` | `tipo`, `slug` (chave do ranking), `id` (chave do catálogo), `nome`, `lab`, `vendor`, `relevancia`, `dados` (números do fato) e `cruzamento` (share do modelo e do laboratório) |
+
+Nenhum texto é gravado: a frase é montada no site, em cada idioma.

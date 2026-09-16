@@ -266,6 +266,62 @@ const vazou = (txt) => {
   await pg.close();
 }
 
+// ---------------------------------------------------------------- radar
+{
+  const R = JSON.parse(readFileSync(new URL('../data/web/radar.json', import.meta.url), 'utf8'));
+  const ed = R.edicoes[0];
+  for (const [lang, pre] of [['pt', ''], ['en', '/en']]) {
+    const { page, resp, erros } = await abrir(pre + '/radar');
+    ok(`${lang}: /radar responde 200`, resp.status() === 200, String(resp.status()));
+    ok(`${lang}: /radar com h1 Radar`, (await page.locator('h1').innerText()) === 'Radar');
+    if (ed?.eventos.length) {
+      ok(`${lang}: evento principal é o primeiro do radar.json`, (await page.locator('.rd-ev.top').getAttribute('data-slug')) === ed.eventos[0].slug);
+      ok(`${lang}: todos os eventos da edição aparecem`, (await page.locator('main [data-evento]').count()) === ed.eventos.length,
+        `${await page.locator('main [data-evento]').count()} de ${ed.eventos.length}`);
+    }
+    const texto = await page.locator('body').innerText();
+    ok(`${lang}: /radar sem NaN, undefined ou null`, !/\bNaN\b|undefined|\bnull\b|Infinity/.test(texto));
+    if (lang === 'en') ok('en: /radar sem português', !vazou(texto), vazou(texto) || '');
+    ok(`${lang}: /radar sem erro de console`, erros.length === 0, erros.slice(0, 3).join(' | '));
+    const links = [...new Set(await page.locator('main a[href^="/"]').evaluateAll(as => as.map(a => a.getAttribute('href'))))];
+    const quebrados = [];
+    for (const l of links) { const r = await page.request.get(BASE + l); if (r.status() !== 200) quebrados.push(`${l} ${r.status()}`); }
+    ok(`${lang}: os ${links.length} links do radar abrem`, quebrados.length === 0, quebrados.slice(0, 5).join(', '));
+    if (lang === 'en') ok('en: links do radar ficam no /en', links.every(l => l.startsWith('/en')), links.filter(l => !l.startsWith('/en')).slice(0, 3).join(', '));
+    await page.close();
+    for (const e of R.edicoes.slice(0, 3)) {
+      const d = await abrir(`${pre}/radar/${e.dia}`);
+      const tx = await d.page.locator('body').innerText();
+      ok(`${lang}: edição ${e.dia} abre sem erro`, d.resp.status() === 200 && d.erros.length === 0 && (lang === 'pt' || !vazou(tx)), `${d.resp.status()} ${d.erros[0] ?? vazou(tx) ?? ''}`);
+      await d.page.close();
+    }
+    const r404 = await abrir(`${pre}/radar/1999-01-01`);
+    ok(`${lang}: edição inexistente dá 404`, r404.resp.status() === 404, String(r404.resp.status()));
+    await r404.page.close();
+    const pg = await browser.newPage();
+    const feed = await pg.request.get(BASE + pre + '/radar/feed.xml');
+    const xml = await feed.text();
+    ok(`${lang}: feed RSS válido`, feed.status() === 200 && /application\/rss\+xml/.test(feed.headers()['content-type'] ?? '') && xml.startsWith('<?xml')
+      && (xml.match(/<item>/g) || []).length === Math.min(60, R.edicoes.length), `${feed.status()} ${(xml.match(/<item>/g) || []).length}`);
+    if (lang === 'en') ok('en: feed sem português', !vazou(xml.replace(/<[^>]+>/g, ' ')), vazou(xml.replace(/<[^>]+>/g, ' ')) || '');
+    await pg.close();
+    for (const tema of ['light', 'dark']) {
+      const { page: m } = await abrir(pre + '/radar', { w: 400, tema });
+      const larg = await m.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: innerWidth }));
+      ok(`${lang} /radar 400px ${tema}: sem rolagem horizontal`, larg.sw <= larg.iw + 1, `${larg.sw} > ${larg.iw}`);
+      await m.close();
+    }
+  }
+  const { page: h } = await abrir('/');
+  ok('home tem o link do Radar no topo', (await h.locator('header.top a.tnav').getAttribute('href')) === '/radar');
+  if (ed?.eventos.length) ok('home chama a edição do dia', (await h.locator('[data-radar-hoje]').count()) === 1);
+  await h.close();
+  const pg = await browser.newPage();
+  const sm = await (await pg.request.get(BASE + '/sitemap.xml')).text();
+  ok('sitemap lista o Radar e as edições', /\/radar</.test(sm) && (!ed || sm.includes('/radar/' + ed.dia)));
+  await pg.close();
+}
+
 await browser.close();
 console.log(`\n${falhas.length ? 'Falharam ' + falhas.length : 'Todas passaram'}.`);
 process.exit(falhas.length ? 1 : 0);

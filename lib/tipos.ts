@@ -69,3 +69,24 @@ export interface Modelo {
   avaliacoes: { tipo: string; score: number | null; custo_tarefa: number | null }[];
 }
 export interface Modelos { semanas: string[]; modelos: Record<string, Modelo> }
+
+/** Radar: edições diárias geradas por pipeline/news.py e indexadas por build_web.py. */
+export type TipoEvento = 'novo' | 'removido' | 'preco' | 'desativacao' | 'raciocinio' | 'contexto' | 'alias'
+  | 'estreia' | 'lider' | 'top10' | 'alta';
+export interface CruzamentoRadar {
+  modelo: { share_7d: number | null; rank_7d: number | null; pico_share: number | null; semanas_com_volume: number | null } | null;
+  laboratorio: {
+    share_tokens?: number | null; share_gasto?: number | null;
+    lider?: { slug: string; nome: string; share_7d: number; preco_misto: number | null };
+  } | null;
+}
+export interface EventoRadar {
+  tipo: TipoEvento; slug: string; id: string | null; nome: string; lab: string; vendor: string;
+  relevancia: number; dados: Record<string, string | number | boolean | null>; cruzamento: CruzamentoRadar;
+}
+export interface EdicaoRadar {
+  dia: string; revisao: number; principal: string | null;
+  fontes: { catalogo: string[]; trafego: string | null };
+  eventos: EventoRadar[];
+}
+export interface Radar { edicoes: EdicaoRadar[] }

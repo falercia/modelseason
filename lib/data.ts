@@ -8,17 +8,18 @@ import 'server-only';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { DadosV1 } from './engine';
-import type { Agora, Mercado, Modelos } from './tipos';
+import type { Agora, Mercado, Modelos, Radar } from './tipos';
 
-// Caminhos literais: o rastreador de arquivos da Vercel inclui só estes quatro
+// Caminhos literais: o rastreador de arquivos da Vercel inclui só estes
 // JSON nas funções, e não o projeto inteiro.
 const ler = <T,>(arq: string): T => JSON.parse(readFileSync(arq, 'utf8')) as T;
-let cache: { D?: DadosV1; agora?: Agora; mercado?: Mercado; modelos?: Modelos } = {};
+let cache: { D?: DadosV1; agora?: Agora; mercado?: Mercado; modelos?: Modelos; radar?: Radar } = {};
 
 export const dadosV1 = () => (cache.D ??= ler<DadosV1>(path.join(process.cwd(), 'public', 'data.json')));
 export const agora = () => (cache.agora ??= ler<Agora>(path.join(process.cwd(), 'data', 'web', 'agora.json')));
 export const mercado = () => (cache.mercado ??= ler<Mercado>(path.join(process.cwd(), 'data', 'web', 'mercado.json')));
 export const modelos = () => (cache.modelos ??= ler<Modelos>(path.join(process.cwd(), 'data', 'web', 'modelos.json')));
+export const radar = () => (cache.radar ??= ler<Radar>(path.join(process.cwd(), 'data', 'web', 'radar.json')));
 
 /** Lista leve para a busca: slug, nome, laboratório e share da semana. */
 export function indiceBusca() {

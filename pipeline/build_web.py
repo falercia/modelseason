@@ -1,4 +1,4 @@
-"""Gera os JSON que a v2 (Next.js) le no build: data/web/{agora,mercado,modelos}.json.
+"""Gera os JSON que a v2 (Next.js) le no build: data/web/{agora,mercado,modelos,radar}.json.
 
 Por que existe: o data.json da v1 so enxerga semanas FECHADAS, entao a pagina
 mostrava dez dias de atraso. O bloco "Agora" le o dado DIARIO, ate o ultimo dia
@@ -657,6 +657,27 @@ def construir_modelos(df, cat, agora, mercado):
     return {"semanas": [w.strftime("%Y-%m-%d") for w in semanas], "modelos": modelos}
 
 
+# ------------------------------------------------------------------ radar
+
+def construir_radar():
+    """Indice das edicoes do Radar (data/news/), a revisao mais alta de cada dia,
+    da mais nova para a mais antiga. So le arquivo versionado: reprodutivel."""
+    pasta = DATA / "news"
+    por_dia = {}
+    for arq in sorted(pasta.glob("*.json")) if pasta.exists() else []:
+        dia, _, rev = arq.name[:-len(".json")].partition(".r")
+        n = int(rev) if rev else 1
+        if dia not in por_dia or n > por_dia[dia][0]:
+            por_dia[dia] = (n, arq)
+    edicoes = []
+    for dia in sorted(por_dia, reverse=True):
+        n, arq = por_dia[dia]
+        ed = json.loads(arq.read_text())
+        edicoes.append({"dia": dia, "revisao": n, "fontes": ed["fontes"], "principal": ed["principal"],
+                        "eventos": ed["eventos"]})
+    return {"edicoes": edicoes}
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     df, cat = carregar()
@@ -664,11 +685,13 @@ def main():
     mercado = construir_mercado(cat)
     agora["lideres"] = construir_lideres(agora, cat)
     modelos = construir_modelos(df, cat, agora, mercado)
-    for nome, obj in (("agora", agora), ("mercado", mercado), ("modelos", modelos)):
+    radar = construir_radar()
+    for nome, obj in (("agora", agora), ("mercado", mercado), ("modelos", modelos), ("radar", radar)):
         (OUT / f"{nome}.json").write_text(json.dumps(obj, ensure_ascii=False, separators=(",", ":")) + "\n")
     print(f"agora: ultimo dia {agora['ultimo_dia']}, top7 {agora['top7'][0]['nome']} {agora['top7'][0]['share']}%")
     print(f"mercado: {', '.join(mercado)}")
     print(f"modelos: {len(modelos['modelos'])} paginas possiveis")
+    print(f"radar: {len(radar['edicoes'])} edicao(oes)")
     return 0
 
 

@@ -88,6 +88,12 @@ Três limites que valem para qualquer número da página:
 - Só semanas completas entram nos gráficos. Os dias 15/06/2025 e 15/07/2025 nunca foram publicados pela fonte, então as duas semanas que os contêm ficam de fora.
 - Origem e licença dos pesos são atribuídas por laboratório e por padrão de nome. Casos ambíguos existem e estão listados no rodapé da página. Correção aqui é o tipo de contribuição mais útil: abra uma issue com o slug do modelo e a fonte.
 
+## Radar
+
+Em [modelseason.com/radar](https://modelseason.com/radar) sai uma edição por dia com o que mudou: modelo que entrou ou saiu do catálogo, preço que mudou de patamar, desativação anunciada, raciocínio que virou obrigatório, janela de contexto, apelido que passou a apontar para outro modelo, estreia no tráfego, troca de liderança e entrada no top 10. Cada fato vem com o que o histórico de uso diz sobre o modelo e o laboratório. Português e inglês, com feed RSS em `/radar/feed.xml` e `/en/radar/feed.xml`.
+
+A edição é gerada por regra (`pipeline/news.py`), sem texto escrito por IA, e gravada uma única vez em `data/news/AAAA-MM-DD.json`. Preço só vira notícia quando o novo valor se mantém por duas fotos, para não publicar oscilação de roteamento. A ordem segue uma fórmula fixa de relevância, declarada no próprio código.
+
 ## Os dados
 
 `data/rankings_daily.csv` guarda o histórico bruto diário desde 01/01/2025, uma linha por dia e modelo, versionado a cada atualização. Mais de 31 mil linhas, crescendo todo dia. O dicionário de colunas está em [`data/README.md`](data/README.md).

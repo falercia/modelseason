@@ -52,6 +52,9 @@ jobs:
       - name: Checagens do arquivador de fontes sem histórico
         run: python pipeline/test_snapshots.py
 
+      - name: Checagens do Radar
+        run: python pipeline/test_news.py
+
       - name: Dados da página (data/web) batem com o pipeline
         run: |
           python pipeline/build_web.py

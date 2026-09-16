@@ -349,3 +349,10 @@ footer.rodape a{color:var(--ink-3)}
   .manchete h3{font-size:19px}
   .filtros{position:static}
 }
+
+/* link do Radar no topo */
+.tnav{font-size:12.5px; font-weight:600; color:var(--ink-2); text-decoration:none; padding:4px 8px; border-radius:7px; white-space:nowrap}
+.tnav:hover{background:var(--surface-2); color:var(--ink)}
+@media (max-width:760px){ .tnav{padding:4px 2px} }
+.radar-hoje{display:inline-block; margin-top:10px; font-size:13px; color:var(--ink-2)}
+.radar-hoje b{color:var(--ink)}
