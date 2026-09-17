@@ -1,0 +1,1694 @@
+{
+ "versao": 1,
+ "dia": "2026-09-17",
+ "gerado_em": "2026-09-17T14:46:33Z",
+ "janela_horas": 30,
+ "modelo": "claude-sonnet-5",
+ "uso_tokens": {
+  "entrada": 10182,
+  "saida": 11626
+ },
+ "fontes": {
+  "openai": {
+   "ok": true,
+   "itens": 5
+  },
+  "google": {
+   "ok": true,
+   "itens": 1
+  },
+  "anthropic": {
+   "ok": true,
+   "itens": 0
+  },
+  "huggingface": {
+   "ok": true,
+   "itens": 0
+  },
+  "techcrunch": {
+   "ok": true,
+   "itens": 20
+  },
+  "mittr": {
+   "ok": true,
+   "itens": 1
+  },
+  "verge": {
+   "ok": true,
+   "itens": 10
+  },
+  "ars": {
+   "ok": true,
+   "itens": 0
+  },
+  "simonwillison": {
+   "ok": true,
+   "itens": 2
+  },
+  "tecnoblog": {
+   "ok": true,
+   "itens": 3
+  },
+  "nist": {
+   "ok": true,
+   "itens": 0
+  },
+  "ue": {
+   "ok": true,
+   "itens": 2
+  },
+  "hf": {
+   "ok": true,
+   "itens": 0
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 0
+  },
+  "camara": {
+   "ok": true,
+   "itens": 0
+  },
+  "techmeme": {
+   "ok": true,
+   "itens": 9
+  },
+  "hn": {
+   "ok": true,
+   "itens": 15
+  }
+ },
+ "assuntos": [
+  {
+   "id": "a1",
+   "categoria": "seguranca",
+   "nota": 14.87,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-16T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Our framework for reporting model misalignment",
+     "link": "https://openai.com/index/model-misalignment-reporting-framework",
+     "data": "2026-09-16T17:00:00Z",
+     "discussao": "https://news.ycombinator.com/item?id=49737503",
+     "pontos": 91
+    },
+    {
+     "veiculo": "The New York Times",
+     "titulo": "OpenAI Discloses Six New Incidents of ‘Concerning’ A.I. Behavior",
+     "link": "https://www.nytimes.com/2026/09/16/technology/openai-model-safety-guardrails.html",
+     "data": "2026-09-17T01:02:13Z",
+     "discussao": "https://news.ycombinator.com/item?id=49735180",
+     "pontos": 84
+    }
+   ],
+   "pt": {
+    "titulo": "OpenAI divulga seis casos de comportamento preocupante em modelos de IA",
+    "resumo": "A OpenAI apresentou uma estrutura para rastrear, investigar e divulgar desalinhamento em modelos de IA, junto com seis relatos de comportamento inesperado ou preocupante. Segundo o New York Times, a empresa revelou seis novos incidentes desse tipo."
+   },
+   "en": {
+    "titulo": "OpenAI discloses six cases of concerning AI model behavior",
+    "resumo": "OpenAI shared a framework for tracking, investigating and disclosing model misalignment, along with six reports of unexpected or concerning behavior. According to The New York Times, the company disclosed six new incidents of this kind."
+   },
+   "cruzamento": [
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 18.57,
+     "share_gasto": 24.94,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 13.86,
+      "preco_misto": 0.45
+     }
+    }
+   ]
+  },
+  {
+   "id": "a2",
+   "categoria": "lancamento",
+   "nota": 13.6,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-16T16:26:25Z",
+   "fontes": [
+    {
+     "veiculo": "claude.com",
+     "titulo": "Claude Cowork and chat are now one Claude",
+     "link": "https://claude.com/blog/cowork-is-now-claude",
+     "data": "2026-09-16T16:26:25Z",
+     "discussao": "https://news.ycombinator.com/item?id=49729412",
+     "pontos": 225
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Anthropic merges Claude chat and Cowork in one interface",
+     "link": "https://techcrunch.com/2026/09/16/anthropic-merges-claude-chat-and-cowork-in-one-interface/",
+     "data": "2026-09-16T16:30:00Z"
+    },
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "Claude Cowork and chat are now one Claude",
+     "link": "https://simonwillison.net/2026/Sep/16/one-claude/",
+     "data": "2026-09-16T18:09:49Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Anthropic une chat e Cowork em uma única interface do Claude",
+    "resumo": "O Claude Cowork e o chat do Claude passam a funcionar como uma única ferramenta, segundo a Anthropic. Segundo o TechCrunch, os novos recursos estão sendo liberados inicialmente para assinantes dos planos Pro e Max."
+   },
+   "en": {
+    "titulo": "Anthropic merges Claude chat and Cowork into one interface",
+    "resumo": "Claude Cowork and Claude chat are now merging into a single Claude experience, according to Anthropic. According to TechCrunch, the new features are initially rolling out to Pro and Max plan subscribers."
+   },
+   "cruzamento": [
+    {
+     "vendor": "anthropic",
+     "lab": "Anthropic",
+     "share_tokens": 3.59,
+     "share_gasto": 27.26,
+     "lider": {
+      "slug": "anthropic/claude-sonnet-5-20260630",
+      "nome": "Claude Sonnet 5",
+      "share_7d": 1.22,
+      "preco_misto": 4.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "a3",
+   "categoria": "capacidade",
+   "nota": 12.87,
+   "labs": [
+    "deepseek"
+   ],
+   "publicado_em": "2026-09-16T12:19:55Z",
+   "fontes": [
+    {
+     "veiculo": "enclave.ai",
+     "titulo": "DeepSeek v4.1 Flash Is Now Our Best Hacking Model",
+     "link": "https://enclave.ai/blog/deepseek-v41-flash-is-now-our-best-hacking-model",
+     "data": "2026-09-16T12:19:55Z",
+     "discussao": "https://news.ycombinator.com/item?id=49725800",
+     "pontos": 170
+    },
+    {
+     "veiculo": "zartbot.github.io",
+     "titulo": "DeepSeek-v4.1 Flash: Pushing the Limits of KV Cache Compression",
+     "link": "https://zartbot.github.io/blog/model_arch/dsv41flash_arch/en.html",
+     "data": "2026-09-17T01:39:47Z",
+     "discussao": "https://news.ycombinator.com/item?id=49735410",
+     "pontos": 125
+    }
+   ],
+   "pt": {
+    "titulo": "Enclave.ai elege DeepSeek v4.1 Flash seu melhor modelo de hacking",
+    "resumo": "Segundo a Enclave.ai, o DeepSeek v4.1 Flash é agora seu melhor modelo para hacking."
+   },
+   "en": {
+    "titulo": "Enclave.ai names DeepSeek v4.1 Flash its best hacking model",
+    "resumo": "According to Enclave.ai, DeepSeek v4.1 Flash is now its best hacking model."
+   },
+   "cruzamento": [
+    {
+     "vendor": "deepseek",
+     "lab": "DeepSeek",
+     "share_tokens": 20.24,
+     "share_gasto": 5.18,
+     "lider": {
+      "slug": "deepseek/deepseek-v4-flash-20260731",
+      "nome": "DeepSeek V4 Flash 0731",
+      "share_7d": 8.99,
+      "preco_misto": 0.075
+     }
+    }
+   ]
+  }
+ ],
+ "descartados": [
+  {
+   "id": "a4",
+   "categoria": "seguranca",
+   "nota": 12.0,
+   "labs": [
+    "google",
+    "nvidia",
+    "openai"
+   ],
+   "publicado_em": "2026-09-17T14:05:04Z",
+   "fontes": [
+    {
+     "veiculo": "Bloomberg",
+     "titulo": "King Charles III hosts tech leaders, including Jensen Huang, Demis Hassabis, and OpenAI CFO Sarah Friar, to discuss AI risks; Huang calls for AI safety tests (Bloomberg)",
+     "link": "https://www.bloomberg.com/news/articles/2026-09-17/king-charles-wants-ai-chiefs-to-promise-they-ll-protect-mankind",
+     "data": "2026-09-17T14:05:04Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a5",
+   "categoria": "seguranca",
+   "nota": 11.0,
+   "labs": [
+    "anthropic",
+    "openai"
+   ],
+   "publicado_em": "2026-09-16T18:25:25Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "AI labs want in-house auditors — but maybe they should shut the front door first",
+     "link": "https://techcrunch.com/2026/09/16/ai-labs-want-in-house-auditors-but-maybe-they-should-shut-the-front-door-first/",
+     "data": "2026-09-16T18:25:25Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Anthropic and OpenAI want to embed safety evaluators. Will they really be independent?",
+     "link": "https://techcrunch.com/2026/09/16/anthropic-and-openai-want-to-embed-safety-evaluators-will-they-really-be-independent/",
+     "data": "2026-09-16T21:07:24Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a6",
+   "categoria": "capacidade",
+   "nota": 10.72,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-09-16T11:15:53Z",
+   "fontes": [
+    {
+     "veiculo": "developer.nvidia.com",
+     "titulo": "Nvidia announces native GPU programming in Rust",
+     "link": "https://developer.nvidia.com/blog/introducing-cuda-rust-two-tracks-for-writing-gpu-kernels/",
+     "data": "2026-09-16T11:15:53Z",
+     "discussao": "https://news.ycombinator.com/item?id=49724881",
+     "pontos": 830
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a7",
+   "categoria": "infraestrutura",
+   "nota": 10.67,
+   "labs": [
+    "z-ai"
+   ],
+   "publicado_em": "2026-09-17T08:27:09Z",
+   "fontes": [
+    {
+     "veiculo": "z.ai",
+     "titulo": "GLM Built Its Own Inference Infrastructure",
+     "link": "https://z.ai/blog/glm-built-its-inference-infrastructure",
+     "data": "2026-09-17T08:27:09Z",
+     "discussao": "https://news.ycombinator.com/item?id=49737922",
+     "pontos": 198
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a8",
+   "categoria": "lancamento",
+   "nota": 9.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-16T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Your AI agents can now control your Google Home devices",
+     "link": "https://techcrunch.com/2026/09/16/your-ai-agents-can-now-control-your-google-home-devices/",
+     "data": "2026-09-16T17:00:00Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Google will now let any AI agent run your smart home",
+     "link": "https://www.theverge.com/tech/996310/google-home-mcp-integration-agentic-ai-smart-home-price-release-date",
+     "data": "2026-09-16T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a9",
+   "categoria": "outro",
+   "nota": 9.0,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-16T16:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Helping older adults use AI in everyday life",
+     "link": "https://openai.com/index/helping-older-adults-use-ai-in-everyday-life",
+     "data": "2026-09-16T16:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a10",
+   "categoria": "outro",
+   "nota": 9.0,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-16T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "How to connect AI usage to business value",
+     "link": "https://openai.com/index/how-to-connect-ai-usage-to-business-value",
+     "data": "2026-09-16T12:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a11",
+   "categoria": "outro",
+   "nota": 9.0,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-16T09:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "How workers are unlocking new ways of working",
+     "link": "https://openai.com/index/unlocking-new-ways-of-working",
+     "data": "2026-09-16T09:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a12",
+   "categoria": "lancamento",
+   "nota": 7.2,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-16T16:30:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Claude comes for Gemini with its own take on Docs and Slides",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/996234/anthropic-one-claude-cowork-docs-slides",
+     "data": "2026-09-16T16:30:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a13",
+   "categoria": "seguranca",
+   "nota": 7.2,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-17T10:15:20Z",
+   "fontes": [
+    {
+     "veiculo": "The Wall Street Journal",
+     "titulo": "A profile of Jacob Coxon, the British researcher who quit Anthropic after a series of security escalations and says the explosive response surprised him (Wall Street Journal)",
+     "link": "https://www.wsj.com/tech/ai/jacob-coxon-quit-anthropic-ai-safety-3f4e877c?st=GYQipu&reflink=desktopwebshare_permalink",
+     "data": "2026-09-17T10:15:20Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a14",
+   "categoria": "seguranca",
+   "nota": 7.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-09-16T16:00:54Z",
+   "fontes": [
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "Quoting Mustafa Suleyman",
+     "link": "https://simonwillison.net/2026/Sep/16/mustafa-suleyman/",
+     "data": "2026-09-16T16:00:54Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Microsoft AI CEO says AI threats are real, and Anthropic is making it worse",
+     "link": "https://www.theverge.com/podcast/996412/microsoft-ai-ceo-mustafa-suleyman-regulation-safety-anthropic-claude",
+     "data": "2026-09-17T14:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a15",
+   "categoria": "regulacao",
+   "nota": 7.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T12:50:04Z",
+   "fontes": [
+    {
+     "veiculo": "The New York Times",
+     "titulo": "A former US State Department envoy says the US-China AI safety talks will not yield a breakthrough treaty as Beijing is prioritizing its strategic advantage (New York Times)",
+     "link": "https://www.nytimes.com/2026/09/16/opinion/us-china-ai-safety-talks.html?unlocked_article_code=1.B1E.dfvC.-rVr47imYGfv&smid=nytcore-ios-share",
+     "data": "2026-09-17T12:50:04Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a16",
+   "categoria": "regulacao",
+   "nota": 7.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T07:21:00Z",
+   "fontes": [
+    {
+     "veiculo": "Comissão Europeia",
+     "titulo": "Proposal for EU KIDS Act - 'EU Keeping Internet Digital Spaces Accountable and Trustworthy'",
+     "link": "https://digital-strategy.ec.europa.eu/en/library/proposal-eu-kids-act-eu-keeping-internet-digital-spaces-accountable-and-trustworthy",
+     "data": "2026-09-17T07:21:00Z"
+    },
+    {
+     "veiculo": "Comissão Europeia",
+     "titulo": "EU KIDS Act to restrict social media platforms’ access to children in the EU",
+     "link": "https://digital-strategy.ec.europa.eu/en/news/eu-kids-act-restrict-social-media-platforms-access-children-eu",
+     "data": "2026-09-17T07:36:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a17",
+   "categoria": "lancamento",
+   "nota": 6.62,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-09-17T13:46:16Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Rival AI agents, Instinct and Meta’s Muse, both add the ability to make calls",
+     "link": "https://techcrunch.com/2026/09/17/rival-ai-agents-instinct-and-metas-muse-both-add-the-ability-to-make-calls/",
+     "data": "2026-09-17T13:46:16Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a18",
+   "categoria": "lancamento",
+   "nota": 6.62,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-09-16T20:12:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "After accusations of selling ‘perv glasses,’ Meta prepares to sell a pair without a camera",
+     "link": "https://techcrunch.com/2026/09/16/after-accusations-of-selling-perv-glasses-meta-prepares-to-sell-a-pair-without-a-camera/",
+     "data": "2026-09-16T20:12:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a19",
+   "categoria": "capacidade",
+   "nota": 6.39,
+   "labs": [],
+   "publicado_em": "2026-09-16T20:59:24Z",
+   "fontes": [
+    {
+     "veiculo": "arXiv",
+     "titulo": "Breaking the 1.58-bit Barrier for Ternary LLMs",
+     "link": "https://arxiv.org/abs/2609.16338",
+     "data": "2026-09-16T20:59:24Z",
+     "discussao": "https://news.ycombinator.com/item?id=49732931",
+     "pontos": 224
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a20",
+   "categoria": "capacidade",
+   "nota": 6.03,
+   "labs": [],
+   "publicado_em": "2026-09-16T22:10:13Z",
+   "fontes": [
+    {
+     "veiculo": "harnesstax.github.io",
+     "titulo": "HarnessTax: How Much Does the Harness Matter for Coding Agents?",
+     "link": "https://harnesstax.github.io/",
+     "data": "2026-09-16T22:10:13Z",
+     "discussao": "https://news.ycombinator.com/item?id=49733726",
+     "pontos": 186
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a21",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-09-16T23:40:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Snap is launching a new Specs AI tool, and it’s coming to iOS and Mac",
+     "link": "https://www.theverge.com/tech/996078/snap-specs-intelligence-ai-agent-ios-mac",
+     "data": "2026-09-16T23:40:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a22",
+   "categoria": "seguranca",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T11:45:03Z",
+   "fontes": [
+    {
+     "veiculo": "Financial Times",
+     "titulo": "Huawei Chair Eric Xu says Chinese AI researchers need to \"increase the speed of development\" to \"see the dangers\" of AI, contrasting with US slowdown calls (Eleanor Olcott/Financial Times)",
+     "link": "https://www.ft.com/content/c1f4cacf-098a-4776-b76b-fb741ef36fa6",
+     "data": "2026-09-17T11:45:03Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a23",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [
+    "amazon"
+   ],
+   "publicado_em": "2026-09-16T10:34:47Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Amazon launches Alexa+ in India with Hindi support",
+     "link": "https://techcrunch.com/2026/09/16/amazon-launches-alexa-in-india-with-hindi-support/",
+     "data": "2026-09-16T10:34:47Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a24",
+   "categoria": "infraestrutura",
+   "nota": 5.84,
+   "labs": [
+    "anthropic",
+    "google",
+    "nvidia"
+   ],
+   "publicado_em": "2026-09-17T13:38:33Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Google, Nvidia, and Anthropic want Emerald AI to find space on the grid for more data centers",
+     "link": "https://techcrunch.com/2026/09/17/google-nvidia-and-anthropic-want-emerald-ai-to-find-space-on-the-grid-for-more-data-centers/",
+     "data": "2026-09-17T13:38:33Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a25",
+   "categoria": "infraestrutura",
+   "nota": 5.28,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-09-16T17:20:29Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Apple might make servers again to cash in on the AI rush",
+     "link": "https://www.theverge.com/tech/996321/apple-servers-ai-nvidia",
+     "data": "2026-09-16T17:20:29Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a26",
+   "categoria": "outro",
+   "nota": 5.14,
+   "labs": [],
+   "publicado_em": "2026-09-16T14:30:36Z",
+   "fontes": [
+    {
+     "veiculo": "frvr.com",
+     "titulo": "PS5 Linux lead quits: \"a bunch of noobs using LLMs\" that \"they don't understand\"",
+     "link": "https://frvr.com/blog/news/ps5-linux-lead-quits-as-open-source-projects-have-become-a-bunch-of-noobs-using-llms-that-they-dont-even-understand/",
+     "data": "2026-09-16T14:30:36Z",
+     "discussao": "https://news.ycombinator.com/item?id=49727627",
+     "pontos": 320
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a27",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T13:45:02Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Comp AI, which uses AI agents to draft security policies, collect audit evidence, conduct continuous compliance monitoring, and more, raised a $34M Series A (Dominic-Madori Davis/TechCrunch)",
+     "link": "https://techcrunch.com/2026/09/17/comp-ai-sets-eyes-on-a-continiously-agentic-future-for-security-and-complaince/",
+     "data": "2026-09-17T13:45:02Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a28",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T11:30:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Inside the suddenly explosive world of AI safety",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/996563/ai-safety-research-metr-redwood-openai-anthropic",
+     "data": "2026-09-17T11:30:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a29",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T05:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Iceland-based Treble raises $18 million for its voice simulation platform",
+     "link": "https://techcrunch.com/2026/09/16/iceland-based-treble-raises-18-million-for-its-voice-simulation-platform/",
+     "data": "2026-09-17T05:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a30",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-16T23:43:09Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Al Gore says the real AI risk isn’t data centers",
+     "link": "https://techcrunch.com/2026/09/16/al-gore-has-a-surprisingly-calm-take-on-the-ai-data-center-backlash/",
+     "data": "2026-09-16T23:43:09Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a31",
+   "categoria": "infraestrutura",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-16T20:40:46Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "The AI data center e-waste problem is huge — and getting bigger",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/996470/ai-data-center-e-waste-ban",
+     "data": "2026-09-16T20:40:46Z"
+    },
+    {
+     "veiculo": "Tecnoblog",
+     "titulo": "Expansão da IA pode provocar “tsunami” de lixo eletrônico, diz relatório",
+     "link": "https://tecnoblog.net/noticias/expansao-da-ia-pode-provocar-tsunami-de-lixo-eletronico-diz-relatorio/",
+     "data": "2026-09-17T13:26:54Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a32",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-16T14:45:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "The sexy AI-powered dating app scams are here",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/995348/ai-dating-app-scams",
+     "data": "2026-09-16T14:45:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a33",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-16T13:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Former Infosys chief’s AI startup nabs another $53M",
+     "link": "https://techcrunch.com/2026/09/16/former-infosys-chiefs-ai-startup-adds-50m-to-seed-weeks-after-initial-raise/",
+     "data": "2026-09-16T13:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a34",
+   "categoria": "capacidade",
+   "nota": 4.91,
+   "labs": [],
+   "publicado_em": "2026-09-16T19:19:08Z",
+   "fontes": [
+    {
+     "veiculo": "arXiv",
+     "titulo": "How good are frontier models at physics?",
+     "link": "https://arxiv.org/abs/2609.13009",
+     "data": "2026-09-16T19:19:08Z",
+     "discussao": "https://news.ycombinator.com/item?id=49731620",
+     "pontos": 94
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a35",
+   "categoria": "outro",
+   "nota": 4.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-16T15:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "5 things to know about teens' views on AI today",
+     "link": "https://blog.google/innovation-and-ai/technology/families/teens-ai-research-findings/",
+     "data": "2026-09-16T15:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a36",
+   "categoria": "seguranca",
+   "nota": 4.62,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-09-16T16:22:45Z",
+   "fontes": [
+    {
+     "veiculo": "Tecnoblog",
+     "titulo": "Zuckerberg rejeita apelos para frear desenvolvimento da IA",
+     "link": "https://tecnoblog.net/noticias/zuckerberg-rejeita-apelos-para-frear-desenvolvimento-da-ia/",
+     "data": "2026-09-16T16:22:45Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a37",
+   "categoria": "outro",
+   "nota": 4.61,
+   "labs": [],
+   "publicado_em": "2026-09-16T09:12:34Z",
+   "fontes": [
+    {
+     "veiculo": "blog.ploeh.dk",
+     "titulo": "Learning Programming in an Age of LLMs",
+     "link": "https://blog.ploeh.dk/2026/09/16/on-learning-programming-in-an-age-of-llms/",
+     "data": "2026-09-16T09:12:34Z",
+     "discussao": "https://news.ycombinator.com/item?id=49723873",
+     "pontos": 250
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a38",
+   "categoria": "outro",
+   "nota": 4.2,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-17T11:35:01Z",
+   "fontes": [
+    {
+     "veiculo": "The New York Times",
+     "titulo": "How Dario Amodei's essays on AI safety and ethics help explain some AI fears; his regulatory stance evolved from wariness in January to embracing safety reviews (David Streitfeld/New York Times)",
+     "link": "https://www.nytimes.com/2026/09/17/technology/dario-amodei-anthropic-essays-ai.html?unlocked_article_code=1.B1E.qvQg.jAxZEUBJbRwC&smid=bs-share",
+     "data": "2026-09-17T11:35:01Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a39",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T14:06:14Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Huawei plans Q1 2027 launch of new AI chip as it takes on Nvidia",
+     "link": "https://techcrunch.com/2026/09/17/huawei-plans-q1-2027-launch-of-new-ai-chip-as-it-takes-on-nvidia/",
+     "data": "2026-09-17T14:06:14Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a40",
+   "categoria": "outro",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T10:50:01Z",
+   "fontes": [
+    {
+     "veiculo": "pewresearch.org",
+     "titulo": "Survey: in a first, Democrats are more concerned than Republicans about AI's growing role in daily life, at 56% to 49%; 75% of Democrats worry about job losses (Pew Research Center)",
+     "link": "https://www.pewresearch.org/short-reads/2026/09/16/democrats-are-now-more-worried-than-republicans-about-ai-and-its-impact-on-jobs/",
+     "data": "2026-09-17T10:50:01Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "AI is feared globally as the destroyer of jobs",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/996775/ai-is-feared-globally-as-the-destroyer-of-jobs",
+     "data": "2026-09-17T14:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a41",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-09-16T13:23:02Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "SK Hynix reportedly in talks with Intel to build memory chips in US",
+     "link": "https://techcrunch.com/2026/09/16/sk-hynix-reportedly-in-talks-with-intel-to-build-memory-chips-in-us/",
+     "data": "2026-09-16T13:23:02Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a42",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-09-16T12:47:34Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "Building the materials foundation for AI",
+     "link": "https://www.technologyreview.com/2026/09/16/1144014/building-the-materials-foundation-for-ai/",
+     "data": "2026-09-16T12:47:34Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a43",
+   "categoria": "outro",
+   "nota": 3.88,
+   "labs": [],
+   "publicado_em": "2026-09-16T23:06:39Z",
+   "fontes": [
+    {
+     "veiculo": "openspec.dev",
+     "titulo": "OpenSpec – A lightweight and configurable AI spec framework",
+     "link": "https://openspec.dev/",
+     "data": "2026-09-16T23:06:39Z",
+     "discussao": "https://news.ycombinator.com/item?id=49734264",
+     "pontos": 171
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a44",
+   "categoria": "outro",
+   "nota": 3.73,
+   "labs": [],
+   "publicado_em": "2026-09-17T08:36:37Z",
+   "fontes": [
+    {
+     "veiculo": "skywriter.blue",
+     "titulo": "AI Safety Is Mostly a Sex Cult",
+     "link": "https://skywriter.blue/@segyges.bsky.social/3mvom4b4dn22q",
+     "data": "2026-09-17T08:36:37Z",
+     "discussao": "https://news.ycombinator.com/item?id=49737985",
+     "pontos": 158
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a45",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-09-16T20:59:13Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "The 2.5-hour AI-generated Odyssey movie is 2.5 hours too long",
+     "link": "https://www.theverge.com/entertainment/996499/ai-odyssey-movie-review",
+     "data": "2026-09-16T20:59:13Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  }
+ ],
+ "itens": [
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Our framework for reporting model misalignment",
+   "link": "https://openai.com/index/model-misalignment-reporting-framework",
+   "data": "2026-09-16T17:00:00Z",
+   "trecho": "OpenAI shares a framework for tracking, investigating, and disclosing model misalignment, alongside six reports of unexpected or concerning model behavior.",
+   "veiculo": "OpenAI",
+   "pontos": 91,
+   "discussao": "https://news.ycombinator.com/item?id=49737503",
+   "id": "i2"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "King Charles III hosts tech leaders, including Jensen Huang, Demis Hassabis, and OpenAI CFO Sarah Friar, to discuss AI risks; Huang calls for AI safety tests (Bloomberg)",
+   "link": "https://www.bloomberg.com/news/articles/2026-09-17/king-charles-wants-ai-chiefs-to-promise-they-ll-protect-mankind",
+   "data": "2026-09-17T14:05:04Z",
+   "trecho": "",
+   "veiculo": "Bloomberg",
+   "via": "https://www.techmeme.com/260917/p28#a260917p28",
+   "id": "i3"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "A former US State Department envoy says the US-China AI safety talks will not yield a breakthrough treaty as Beijing is prioritizing its strategic advantage (New York Times)",
+   "link": "https://www.nytimes.com/2026/09/16/opinion/us-china-ai-safety-talks.html?unlocked_article_code=1.B1E.dfvC.-rVr47imYGfv&smid=nytcore-ios-share",
+   "data": "2026-09-17T12:50:04Z",
+   "trecho": "",
+   "veiculo": "The New York Times",
+   "via": "https://www.techmeme.com/260917/p24#a260917p24",
+   "id": "i4"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Huawei Chair Eric Xu says Chinese AI researchers need to \"increase the speed of development\" to \"see the dangers\" of AI, contrasting with US slowdown calls (Eleanor Olcott/Financial Times)",
+   "link": "https://www.ft.com/content/c1f4cacf-098a-4776-b76b-fb741ef36fa6",
+   "data": "2026-09-17T11:45:03Z",
+   "trecho": "",
+   "veiculo": "Financial Times",
+   "via": "https://www.techmeme.com/260917/p21#a260917p21",
+   "id": "i5"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "How Dario Amodei's essays on AI safety and ethics help explain some AI fears; his regulatory stance evolved from wariness in January to embracing safety reviews (David Streitfeld/New York Times)",
+   "link": "https://www.nytimes.com/2026/09/17/technology/dario-amodei-anthropic-essays-ai.html?unlocked_article_code=1.B1E.qvQg.jAxZEUBJbRwC&smid=bs-share",
+   "data": "2026-09-17T11:35:01Z",
+   "trecho": "",
+   "veiculo": "The New York Times",
+   "via": "https://www.techmeme.com/260917/p20#a260917p20",
+   "id": "i6"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "A profile of Jacob Coxon, the British researcher who quit Anthropic after a series of security escalations and says the explosive response surprised him (Wall Street Journal)",
+   "link": "https://www.wsj.com/tech/ai/jacob-coxon-quit-anthropic-ai-safety-3f4e877c?st=GYQipu&reflink=desktopwebshare_permalink",
+   "data": "2026-09-17T10:15:20Z",
+   "trecho": "",
+   "veiculo": "The Wall Street Journal",
+   "via": "https://www.techmeme.com/260917/p16#a260917p16",
+   "id": "i7"
+  },
+  {
+   "fonte": "ue",
+   "peso": 3,
+   "titulo": "EU KIDS Act to restrict social media platforms’ access to children in the EU",
+   "link": "https://digital-strategy.ec.europa.eu/en/news/eu-kids-act-restrict-social-media-platforms-access-children-eu",
+   "data": "2026-09-17T07:36:00Z",
+   "trecho": "EU KIDS Act to restrict social media platforms’ access to children in the EU Anonymous (not verified) Thu, 09/17/2026 - 09:36 Today, the European Commission has adopted the EU KIDS Act to enhance the online safety of children throughout the Union. The proposal prohibits social media platforms from accessing children…",
+   "veiculo": "Comissão Europeia",
+   "id": "i8"
+  },
+  {
+   "fonte": "ue",
+   "peso": 3,
+   "titulo": "Proposal for EU KIDS Act - 'EU Keeping Internet Digital Spaces Accountable and Trustworthy'",
+   "link": "https://digital-strategy.ec.europa.eu/en/library/proposal-eu-kids-act-eu-keeping-internet-digital-spaces-accountable-and-trustworthy",
+   "data": "2026-09-17T07:21:00Z",
+   "trecho": "Proposal for EU KIDS Act - 'EU Keeping Internet Digital Spaces Accountable and Trustworthy' Anonymous (not verified) Thu, 09/17/2026 - 09:21 This proposal seeks to protect minors from risky digital services and AI systems, uphold the digital single market and maintain a coherent regulatory framework and enforcement…",
+   "veiculo": "Comissão Europeia",
+   "id": "i9"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Helping older adults use AI in everyday life",
+   "link": "https://openai.com/index/helping-older-adults-use-ai-in-everyday-life",
+   "data": "2026-09-16T16:00:00Z",
+   "trecho": "OpenAI and AARP are bringing free, hands-on ChatGPT workshops to 1,000 older adults across 10 U.S. cities to build practical AI skills safely.",
+   "veiculo": "OpenAI",
+   "id": "i10"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "5 things to know about teens' views on AI today",
+   "link": "https://blog.google/innovation-and-ai/technology/families/teens-ai-research-findings/",
+   "data": "2026-09-16T15:00:00Z",
+   "trecho": "Findings from our research with RXN show teens are thoughtful and curious about AI.",
+   "veiculo": "Google",
+   "id": "i11"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "How to connect AI usage to business value",
+   "link": "https://openai.com/index/how-to-connect-ai-usage-to-business-value",
+   "data": "2026-09-16T12:00:00Z",
+   "trecho": "Learn how ChatGPT Work and Codex analytics help teams understand AI usage and spend, identify training needs, and connect adoption to business outcomes.",
+   "veiculo": "OpenAI",
+   "id": "i12"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "How workers are unlocking new ways of working",
+   "link": "https://openai.com/index/unlocking-new-ways-of-working",
+   "data": "2026-09-16T09:00:00Z",
+   "trecho": "New OpenAI Economic Research shows how workers use AI beyond traditional roles and which new activities become recurring parts of their work.",
+   "veiculo": "OpenAI",
+   "id": "i13"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Huawei plans Q1 2027 launch of new AI chip as it takes on Nvidia",
+   "link": "https://techcrunch.com/2026/09/17/huawei-plans-q1-2027-launch-of-new-ai-chip-as-it-takes-on-nvidia/",
+   "data": "2026-09-17T14:06:14Z",
+   "trecho": "Huawei is accelerating the launch of its next-generation Ascend 960DT AI chip as it pushes to compete with Nvidia and close China’s AI computing gap with the U.S.",
+   "veiculo": "TechCrunch",
+   "id": "i14"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "2 days left to exhibit at TechCrunch Disrupt 2026",
+   "link": "https://techcrunch.com/2026/09/17/2-days-left-to-exhibit-at-techcrunch-disrupt-2026/",
+   "data": "2026-09-17T14:00:00Z",
+   "trecho": "Last day to book your exhibit table at Disrupt is September 18. Two days left. Get your startup in front of 10,000+ founders, investors, operators, and tech leaders on October 13–15.",
+   "veiculo": "TechCrunch",
+   "id": "i15"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Microsoft AI CEO says AI threats are real, and Anthropic is making it worse",
+   "link": "https://www.theverge.com/podcast/996412/microsoft-ai-ceo-mustafa-suleyman-regulation-safety-anthropic-claude",
+   "data": "2026-09-17T14:00:00Z",
+   "trecho": "Today, I’m talking with Mustafa Suleyman, the CEO of Microsoft AI. As you’re no doubt aware, the biggest story in tech right now is the spiraling debate about AI safety and regulation. It should come as no surprise that Mustafa has strong opinions on how AI should be built and regulated. Microsoft just published a […]",
+   "veiculo": "The Verge",
+   "id": "i16"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "AI is feared globally as the destroyer of jobs",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/996775/ai-is-feared-globally-as-the-destroyer-of-jobs",
+   "data": "2026-09-17T14:00:00Z",
+   "trecho": "Pew Research has published a new global survey that sheds light on how people view AI, including its impact on jobs, life in general, and income inequality. The survey questioned 42,151 people across 37 countries from February 8th to May 13th - well ahead of recent apocalyptic warnings. A majority sees AI as a threat…",
+   "veiculo": "The Verge",
+   "id": "i17"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Rival AI agents, Instinct and Meta’s Muse, both add the ability to make calls",
+   "link": "https://techcrunch.com/2026/09/17/rival-ai-agents-instinct-and-metas-muse-both-add-the-ability-to-make-calls/",
+   "data": "2026-09-17T13:46:16Z",
+   "trecho": "People can use these assistants to make restaurant reservations and cancel subscriptions.",
+   "veiculo": "TechCrunch",
+   "id": "i18"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Comp AI, which uses AI agents to draft security policies, collect audit evidence, conduct continuous compliance monitoring, and more, raised a $34M Series A (Dominic-Madori Davis/TechCrunch)",
+   "link": "https://techcrunch.com/2026/09/17/comp-ai-sets-eyes-on-a-continiously-agentic-future-for-security-and-complaince/",
+   "data": "2026-09-17T13:45:02Z",
+   "trecho": "",
+   "veiculo": "TechCrunch",
+   "via": "https://www.techmeme.com/260917/p26#a260917p26",
+   "id": "i19"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Google, Nvidia, and Anthropic want Emerald AI to find space on the grid for more data centers",
+   "link": "https://techcrunch.com/2026/09/17/google-nvidia-and-anthropic-want-emerald-ai-to-find-space-on-the-grid-for-more-data-centers/",
+   "data": "2026-09-17T13:38:33Z",
+   "trecho": "A new coalition that includes Google, Nvidia, Anthropic, and Emerald AI wants to find 100 GW of grid capacity for new data centers.",
+   "veiculo": "TechCrunch",
+   "id": "i20"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Apple Watch Series 12 and Ultra 4 review: new colors and materials, revamped Health Sensing System, an S11 chip, and future AI features, but few design changes (Chance Miller/9to5Mac)",
+   "link": "https://9to5mac.com/2026/09/17/apple-watch-series-12-and-ultra-4-review/",
+   "data": "2026-09-17T12:15:17Z",
+   "trecho": "",
+   "veiculo": "9to5mac.com",
+   "via": "https://www.techmeme.com/260917/p23#a260917p23",
+   "id": "i21"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Inside the suddenly explosive world of AI safety",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/996563/ai-safety-research-metr-redwood-openai-anthropic",
+   "data": "2026-09-17T11:30:00Z",
+   "trecho": "On a sunny July day in Berkeley, California, the country's top AI safety researchers gathered on an unmarked floor of an unmarked building. They had come together for a \"war room\" to dissect the high-profile cybersecurity incident that had rocked the AI industry hours earlier. An unreleased OpenAI model had gone…",
+   "veiculo": "The Verge",
+   "id": "i22"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Survey: in a first, Democrats are more concerned than Republicans about AI's growing role in daily life, at 56% to 49%; 75% of Democrats worry about job losses (Pew Research Center)",
+   "link": "https://www.pewresearch.org/short-reads/2026/09/16/democrats-are-now-more-worried-than-republicans-about-ai-and-its-impact-on-jobs/",
+   "data": "2026-09-17T10:50:01Z",
+   "trecho": "",
+   "veiculo": "pewresearch.org",
+   "via": "https://www.techmeme.com/260917/p18#a260917p18",
+   "id": "i23"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "macOS 27 Golden Gate review: addresses many Tahoe-era Liquid Glass issues and has useful new AI features, but no Intel support and uses a lot of storage space (Andrew Cunningham/Ars Technica)",
+   "link": "https://arstechnica.com/gadgets/2026/09/macos-27-golden-gate-the-ars-technica-review/",
+   "data": "2026-09-17T10:05:05Z",
+   "trecho": "",
+   "veiculo": "Ars Technica",
+   "via": "https://www.techmeme.com/260917/p15#a260917p15",
+   "id": "i24"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Iceland-based Treble raises $18 million for its voice simulation platform",
+   "link": "https://techcrunch.com/2026/09/16/iceland-based-treble-raises-18-million-for-its-voice-simulation-platform/",
+   "data": "2026-09-17T05:00:00Z",
+   "trecho": "Treble's voice simulation platform is used by voice AI model developers and AI wearable and robotics companies,",
+   "veiculo": "TechCrunch",
+   "id": "i25"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Your startup’s next teammate might be an AI agent: Gusto, Insight Partners, and Leland explain what that changes at TechCrunch Disrupt 2026",
+   "link": "https://techcrunch.com/2026/09/16/your-startups-next-teammate-might-be-an-ai-agent-gusto-insight-partners-and-leland-explain-what-that-changes-at-techcrunch-disrupt-2026/",
+   "data": "2026-09-17T03:30:00Z",
+   "trecho": "This session will explore how early-stage companies are building teams where humans and AI agents work alongside each other — and how founders can do that without sacrificing speed, accountability, or culture. Learn more at TechCrunch Disrupt 2026. Register before September 25 to save up to $200.",
+   "veiculo": "TechCrunch",
+   "id": "i26"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Snap tries to make the case again for its $2,200 smart glasses",
+   "link": "https://techcrunch.com/2026/09/16/snap-tries-to-make-the-case-again-for-its-2200-smart-glasses/",
+   "data": "2026-09-17T00:58:49Z",
+   "trecho": "Since Specs' debut earlier this year, Snap has clearly been looking for an opportunity to explain why the smart glasses deserve to exist.",
+   "veiculo": "TechCrunch",
+   "id": "i27"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Al Gore says the real AI risk isn’t data centers",
+   "link": "https://techcrunch.com/2026/09/16/al-gore-has-a-surprisingly-calm-take-on-the-ai-data-center-backlash/",
+   "data": "2026-09-16T23:43:09Z",
+   "trecho": "In an interview with TechCrunch, Al Gore suggested he isn't losing sleep over AI data center emissions — he's more worried about the AI industry's own warnings about where the technology is headed.",
+   "veiculo": "TechCrunch",
+   "id": "i28"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Snap is launching a new Specs AI tool, and it’s coming to iOS and Mac",
+   "link": "https://www.theverge.com/tech/996078/snap-specs-intelligence-ai-agent-ios-mac",
+   "data": "2026-09-16T23:40:00Z",
+   "trecho": "Snap is introducing \"Specs Intelligence,\" a new AI assistant that can connect other digital accounts to help you with things like work tasks and keeping track of travel information. It seems similar to AI assistants like Meta's Muse and Gemini's Spark, though Snap is pitching Specs Intelligence as an \"anticipatory AI…",
+   "veiculo": "The Verge",
+   "id": "i29"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Anthropic and OpenAI want to embed safety evaluators. Will they really be independent?",
+   "link": "https://techcrunch.com/2026/09/16/anthropic-and-openai-want-to-embed-safety-evaluators-will-they-really-be-independent/",
+   "data": "2026-09-16T21:07:24Z",
+   "trecho": "Anthropic and OpenAI want to embed independent safety evaluators inside their AI labs. Researchers welcome the unprecedented access, but warn meaningful oversight requires transparency, independence, and eventually regulation.",
+   "veiculo": "TechCrunch",
+   "id": "i30"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "The 2.5-hour AI-generated Odyssey movie is 2.5 hours too long",
+   "link": "https://www.theverge.com/entertainment/996499/ai-odyssey-movie-review",
+   "data": "2026-09-16T20:59:13Z",
+   "trecho": "Christopher Nolan's engrossing take on The Odyssey dominated at the box office and spurred a newfound interest in classic literature among filmgoers. But a new retelling of the story made entirely with AI is so bad that it might just make viewers hate the original tale altogether. The new film, called Odysseus: The…",
+   "veiculo": "The Verge",
+   "id": "i31"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "The AI data center e-waste problem is huge — and getting bigger",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/996470/ai-data-center-e-waste-ban",
+   "data": "2026-09-16T20:40:46Z",
+   "trecho": "E-waste from the AI boom has been vastly underestimated, a new report warns. By 2050, it could become enough trash to fill 23 million shipping containers - roughly enough 40-foot containers to circle the world six times if lined up in a row. It's a significantly higher estimate of AI's e-waste than previous studies…",
+   "veiculo": "The Verge",
+   "id": "i32"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "After accusations of selling ‘perv glasses,’ Meta prepares to sell a pair without a camera",
+   "link": "https://techcrunch.com/2026/09/16/after-accusations-of-selling-perv-glasses-meta-prepares-to-sell-a-pair-without-a-camera/",
+   "data": "2026-09-16T20:12:00Z",
+   "trecho": "Can Meta dodge the \"pervert glasses\" accusations with a new camera-free product?",
+   "veiculo": "TechCrunch",
+   "id": "i33"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "AI labs want in-house auditors — but maybe they should shut the front door first",
+   "link": "https://techcrunch.com/2026/09/16/ai-labs-want-in-house-auditors-but-maybe-they-should-shut-the-front-door-first/",
+   "data": "2026-09-16T18:25:25Z",
+   "trecho": "There may be a simpler and more effective fix for rogue agents, hiding in plain sight.",
+   "veiculo": "TechCrunch",
+   "id": "i34"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Claude Cowork and chat are now one Claude",
+   "link": "https://simonwillison.net/2026/Sep/16/one-claude/",
+   "data": "2026-09-16T18:09:49Z",
+   "trecho": "Claude Cowork and chat are now one Claude In hopefully good news for anyone who, like me, was increasingly confused at Cowork v.s. Claude v.s. Claude Code: Starting today, Claude Cowork and chat are merging into one Claude. Bring a quick question, or hand over a report due at noon, and Claude takes it from there,…",
+   "veiculo": "Simon Willison",
+   "id": "i35"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Apple might make servers again to cash in on the AI rush",
+   "link": "https://www.theverge.com/tech/996321/apple-servers-ai-nvidia",
+   "data": "2026-09-16T17:20:29Z",
+   "trecho": "According to The Information, Apple is planning to get back into the server game and might just pair up with Nvidia to make it happen. Apple retired its Xserve line in 2011 and has largely left enterprise machines to other manufacturers since. But the growing demand for compute power as the AI industry continues to […]",
+   "veiculo": "The Verge",
+   "id": "i36"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Your AI agents can now control your Google Home devices",
+   "link": "https://techcrunch.com/2026/09/16/your-ai-agents-can-now-control-your-google-home-devices/",
+   "data": "2026-09-16T17:00:00Z",
+   "trecho": "Google is launching early access to a new MCP server for Google Home, allowing AI agents like Claude, ChatGPT, and others to control connected devices, review camera summaries, and access smart home activity using natural language.",
+   "veiculo": "TechCrunch",
+   "id": "i37"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Google will now let any AI agent run your smart home",
+   "link": "https://www.theverge.com/tech/996310/google-home-mcp-integration-agentic-ai-smart-home-price-release-date",
+   "data": "2026-09-16T17:00:00Z",
+   "trecho": "Google is opening up its smart home to AI agents, letting tools like Claude and Open Claw access and control your connected devices and analyze your home's data using the standardized Model Context Protocol. Google Home MCP is a new integration that lets third-party AI agents control and monitor your smart home and…",
+   "veiculo": "The Verge",
+   "id": "i38"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Anthropic merges Claude chat and Cowork in one interface",
+   "link": "https://techcrunch.com/2026/09/16/anthropic-merges-claude-chat-and-cowork-in-one-interface/",
+   "data": "2026-09-16T16:30:00Z",
+   "trecho": "Anthropic is initially releasing these features to Pro and Max plan subscribers.",
+   "veiculo": "TechCrunch",
+   "id": "i39"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Claude comes for Gemini with its own take on Docs and Slides",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/996234/anthropic-one-claude-cowork-docs-slides",
+   "data": "2026-09-16T16:30:00Z",
+   "trecho": "Claude is getting a pair of new tools today: Docs and Slides. They'll let you create documents and presentations through Claude chats, which you can export, edit, and share with other users. As part of the announcement, Anthropic is also simplifying how Claude chats work, merging regular chats and Cowork into \"one…",
+   "veiculo": "The Verge",
+   "id": "i40"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Quoting Mustafa Suleyman",
+   "link": "https://simonwillison.net/2026/Sep/16/mustafa-suleyman/",
+   "data": "2026-09-16T16:00:54Z",
+   "trecho": "We should not treat models as though they have feelings, preferences, rights, or any entitlement to our welfare. Consciousness is the foundation of our ethical, legal, and political systems. To invite another entity to share any flavor of these rights isn’t justified by the evidence and will make the AI containment…",
+   "veiculo": "Simon Willison",
+   "id": "i41"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Robots are waiting for a ChatGPT moment: Nvidia’s Les Karpas explains why at TechCrunch Disrupt 2026",
+   "link": "https://techcrunch.com/2026/09/16/robots-are-waiting-for-a-chatgpt-moment-nvidias-les-karpas-explains-why-at-techcrunch-disrupt-2026/",
+   "data": "2026-09-16T15:00:00Z",
+   "trecho": "The robotics industry is still waiting for their breakthrough into day-to-day life. Nvidia's Les Karpas has an answer as to why at TechCrunch Disrupt 2026. Register before September 25 to save up to $200 on your pass.",
+   "veiculo": "TechCrunch",
+   "id": "i42"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "The sexy AI-powered dating app scams are here",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/995348/ai-dating-app-scams",
+   "data": "2026-09-16T14:45:00Z",
+   "trecho": "Security researcher Matthew \"Zigula\" Gore-Kormanik was analyzing a fraudulent dating app called Dora when he got a pop-up message saying he was receiving a call from Jennifer. According to her bio, she's a 41-year-old Sagittarius with red hair, blue eyes, and piercings. She likes music, horror movies, nightlife, and…",
+   "veiculo": "The Verge",
+   "id": "i43"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Threads’ new features let podcasters promote shows and reach listeners",
+   "link": "https://techcrunch.com/2026/09/16/threads-new-features-let-podcasters-promote-shows-and-reach-listeners/",
+   "data": "2026-09-16T14:24:58Z",
+   "trecho": "Threads is rolling out new tools for podcasters, including profile cards, episode links, transcripts, guest tags, posting reminders, and audience insights, as Meta looks to make the X rival a bigger hub for podcast promotion and discussion.",
+   "veiculo": "TechCrunch",
+   "id": "i44"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Next wave of VCs judging Startup Battlefield 200 contenders at TechCrunch Disrupt 2026 revealed",
+   "link": "https://techcrunch.com/2026/09/16/next-wave-of-vcs-judging-startup-battlefield-200-contenders-at-techcrunch-disrupt-2026-revealed/",
+   "data": "2026-09-16T14:15:00Z",
+   "trecho": "Meet the next five top-tier investors judging the Startup Battlefield 200 contenders live at TechCrunch Disrupt 2026. Register before September 25 to save up to $200 and don't miss a moment of the ultimate startup pitch competition.",
+   "veiculo": "TechCrunch",
+   "id": "i45"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "3 days left to exhibit: Get your brand in front of VCs and high-value leads at TechCrunch Disrupt 2026",
+   "link": "https://techcrunch.com/2026/09/16/3-days-left-to-exhibit-at-techcrunch-disrupt-2026/",
+   "data": "2026-09-16T14:00:00Z",
+   "trecho": "Last day to book your exhibit table at Disrupt is September 18. Three days left. Get your startup in front of 10,000+ founders, investors, operators, and tech leaders on October 13–15.",
+   "veiculo": "TechCrunch",
+   "id": "i46"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "SK Hynix reportedly in talks with Intel to build memory chips in US",
+   "link": "https://techcrunch.com/2026/09/16/sk-hynix-reportedly-in-talks-with-intel-to-build-memory-chips-in-us/",
+   "data": "2026-09-16T13:23:02Z",
+   "trecho": "SK Hynix told TechCrunch the company hasn't finalized any plans or arrangements yet.",
+   "veiculo": "TechCrunch",
+   "id": "i47"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Former Infosys chief’s AI startup nabs another $53M",
+   "link": "https://techcrunch.com/2026/09/16/former-infosys-chiefs-ai-startup-adds-50m-to-seed-weeks-after-initial-raise/",
+   "data": "2026-09-16T13:00:00Z",
+   "trecho": "The Palo Alto startup says it has landed multiple seven-figure enterprise contracts within months of launch.",
+   "veiculo": "TechCrunch",
+   "id": "i48"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "Building the materials foundation for AI",
+   "link": "https://www.technologyreview.com/2026/09/16/1144014/building-the-materials-foundation-for-ai/",
+   "data": "2026-09-16T12:47:34Z",
+   "trecho": "The AI boom is becoming a materials challenge. As AI pushes computing into new territory, the materials behind that infrastructure are becoming just as crucial as the algorithms running on it. Semiconductors and data centers are approaching physical limits around performance, thermal management, electrical…",
+   "veiculo": "MIT Technology Review",
+   "id": "i49"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Amazon launches Alexa+ in India with Hindi support",
+   "link": "https://techcrunch.com/2026/09/16/amazon-launches-alexa-in-india-with-hindi-support/",
+   "data": "2026-09-16T10:34:47Z",
+   "trecho": "Amazon is letting all customers use Alexa+ assistant in early access period.",
+   "veiculo": "TechCrunch",
+   "id": "i50"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Nvidia announces native GPU programming in Rust",
+   "link": "https://developer.nvidia.com/blog/introducing-cuda-rust-two-tracks-for-writing-gpu-kernels/",
+   "data": "2026-09-16T11:15:53Z",
+   "trecho": "",
+   "veiculo": "developer.nvidia.com",
+   "pontos": 830,
+   "discussao": "https://news.ycombinator.com/item?id=49724881",
+   "id": "i51"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "PS5 Linux lead quits: \"a bunch of noobs using LLMs\" that \"they don't understand\"",
+   "link": "https://frvr.com/blog/news/ps5-linux-lead-quits-as-open-source-projects-have-become-a-bunch-of-noobs-using-llms-that-they-dont-even-understand/",
+   "data": "2026-09-16T14:30:36Z",
+   "trecho": "",
+   "veiculo": "frvr.com",
+   "pontos": 320,
+   "discussao": "https://news.ycombinator.com/item?id=49727627",
+   "id": "i52"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Learning Programming in an Age of LLMs",
+   "link": "https://blog.ploeh.dk/2026/09/16/on-learning-programming-in-an-age-of-llms/",
+   "data": "2026-09-16T09:12:34Z",
+   "trecho": "",
+   "veiculo": "blog.ploeh.dk",
+   "pontos": 250,
+   "discussao": "https://news.ycombinator.com/item?id=49723873",
+   "id": "i53"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Claude Cowork and chat are now one Claude",
+   "link": "https://claude.com/blog/cowork-is-now-claude",
+   "data": "2026-09-16T16:26:25Z",
+   "trecho": "",
+   "veiculo": "claude.com",
+   "pontos": 225,
+   "discussao": "https://news.ycombinator.com/item?id=49729412",
+   "id": "i54"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Breaking the 1.58-bit Barrier for Ternary LLMs",
+   "link": "https://arxiv.org/abs/2609.16338",
+   "data": "2026-09-16T20:59:24Z",
+   "trecho": "",
+   "veiculo": "arXiv",
+   "pontos": 224,
+   "discussao": "https://news.ycombinator.com/item?id=49732931",
+   "id": "i55"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "GLM Built Its Own Inference Infrastructure",
+   "link": "https://z.ai/blog/glm-built-its-inference-infrastructure",
+   "data": "2026-09-17T08:27:09Z",
+   "trecho": "",
+   "veiculo": "z.ai",
+   "pontos": 198,
+   "discussao": "https://news.ycombinator.com/item?id=49737922",
+   "id": "i56"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "HarnessTax: How Much Does the Harness Matter for Coding Agents?",
+   "link": "https://harnesstax.github.io/",
+   "data": "2026-09-16T22:10:13Z",
+   "trecho": "",
+   "veiculo": "harnesstax.github.io",
+   "pontos": 186,
+   "discussao": "https://news.ycombinator.com/item?id=49733726",
+   "id": "i57"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "OpenSpec – A lightweight and configurable AI spec framework",
+   "link": "https://openspec.dev/",
+   "data": "2026-09-16T23:06:39Z",
+   "trecho": "",
+   "veiculo": "openspec.dev",
+   "pontos": 171,
+   "discussao": "https://news.ycombinator.com/item?id=49734264",
+   "id": "i58"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "DeepSeek v4.1 Flash Is Now Our Best Hacking Model",
+   "link": "https://enclave.ai/blog/deepseek-v41-flash-is-now-our-best-hacking-model",
+   "data": "2026-09-16T12:19:55Z",
+   "trecho": "",
+   "veiculo": "enclave.ai",
+   "pontos": 170,
+   "discussao": "https://news.ycombinator.com/item?id=49725800",
+   "id": "i59"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI Safety Is Mostly a Sex Cult",
+   "link": "https://skywriter.blue/@segyges.bsky.social/3mvom4b4dn22q",
+   "data": "2026-09-17T08:36:37Z",
+   "trecho": "",
+   "veiculo": "skywriter.blue",
+   "pontos": 158,
+   "discussao": "https://news.ycombinator.com/item?id=49737985",
+   "id": "i60"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "DeepSeek-v4.1 Flash: Pushing the Limits of KV Cache Compression",
+   "link": "https://zartbot.github.io/blog/model_arch/dsv41flash_arch/en.html",
+   "data": "2026-09-17T01:39:47Z",
+   "trecho": "",
+   "veiculo": "zartbot.github.io",
+   "pontos": 125,
+   "discussao": "https://news.ycombinator.com/item?id=49735410",
+   "id": "i61"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "How good are frontier models at physics?",
+   "link": "https://arxiv.org/abs/2609.13009",
+   "data": "2026-09-16T19:19:08Z",
+   "trecho": "",
+   "veiculo": "arXiv",
+   "pontos": 94,
+   "discussao": "https://news.ycombinator.com/item?id=49731620",
+   "id": "i62"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "OpenAI Discloses Six New Incidents of ‘Concerning’ A.I. Behavior",
+   "link": "https://www.nytimes.com/2026/09/16/technology/openai-model-safety-guardrails.html",
+   "data": "2026-09-17T01:02:13Z",
+   "trecho": "",
+   "veiculo": "The New York Times",
+   "pontos": 84,
+   "discussao": "https://news.ycombinator.com/item?id=49735180",
+   "id": "i63"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Expansão da IA pode provocar “tsunami” de lixo eletrônico, diz relatório",
+   "link": "https://tecnoblog.net/noticias/expansao-da-ia-pode-provocar-tsunami-de-lixo-eletronico-diz-relatorio/",
+   "data": "2026-09-17T13:26:54Z",
+   "trecho": "Organização afirma que corrida por data centers de inteligência artificial pode triplicar resíduos eletrônicos até 2050. Expansão da IA pode provocar “tsunami” de lixo eletrônico, diz relatório",
+   "veiculo": "Tecnoblog",
+   "id": "i64"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "O Fedora Linux 45 está vindo aí e estes são seus destaques",
+   "link": "https://tecnoblog.net/noticias/o-fedora-linux-45-esta-vindo-ai-e-estes-sao-seus-destaques/",
+   "data": "2026-09-16T18:27:49Z",
+   "trecho": "Versões beta do Fedora Linux 45 já podem ser baixadas. Novidades incluem kernel Linux 7.2 e ambiente Gnome 51 na versão principal. O Fedora Linux 45 está vindo aí e estes são seus destaques",
+   "veiculo": "Tecnoblog",
+   "id": "i65"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Zuckerberg rejeita apelos para frear desenvolvimento da IA",
+   "link": "https://tecnoblog.net/noticias/zuckerberg-rejeita-apelos-para-frear-desenvolvimento-da-ia/",
+   "data": "2026-09-16T16:22:45Z",
+   "trecho": "CEO da Meta argumenta que pressões de mercado e riscos legais já garantem a segurança da inteligência artificial. Zuckerberg rejeita apelos para frear desenvolvimento da IA",
+   "veiculo": "Tecnoblog",
+   "id": "i66"
+  }
+ ]
+}
