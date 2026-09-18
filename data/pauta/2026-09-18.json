@@ -1,0 +1,1608 @@
+{
+ "versao": 1,
+ "dia": "2026-09-18",
+ "gerado_em": "2026-09-18T14:13:27Z",
+ "janela_horas": 30,
+ "modelo": "claude-sonnet-5",
+ "uso_tokens": {
+  "entrada": 8823,
+  "saida": 10936
+ },
+ "fontes": {
+  "openai": {
+   "ok": true,
+   "itens": 1
+  },
+  "google": {
+   "ok": true,
+   "itens": 2
+  },
+  "anthropic": {
+   "ok": true,
+   "itens": 1
+  },
+  "huggingface": {
+   "ok": true,
+   "itens": 0
+  },
+  "techcrunch": {
+   "ok": true,
+   "itens": 18
+  },
+  "mittr": {
+   "ok": true,
+   "itens": 1
+  },
+  "verge": {
+   "ok": true,
+   "itens": 6
+  },
+  "ars": {
+   "ok": true,
+   "itens": 1
+  },
+  "simonwillison": {
+   "ok": true,
+   "itens": 2
+  },
+  "tecnoblog": {
+   "ok": true,
+   "itens": 3
+  },
+  "nist": {
+   "ok": true,
+   "itens": 0
+  },
+  "ue": {
+   "ok": true,
+   "itens": 1
+  },
+  "hf": {
+   "ok": true,
+   "itens": 0
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 0
+  },
+  "camara": {
+   "ok": true,
+   "itens": 0
+  },
+  "techmeme": {
+   "ok": true,
+   "itens": 5
+  },
+  "hn": {
+   "ok": true,
+   "itens": 16
+  }
+ },
+ "assuntos": [
+  {
+   "id": "a1",
+   "categoria": "seguranca",
+   "nota": 19.59,
+   "labs": [
+    "anthropic",
+    "openai"
+   ],
+   "publicado_em": "2026-09-18T02:47:24Z",
+   "fontes": [
+    {
+     "veiculo": "hacktron.ai",
+     "titulo": "A heap overflow and SSO misconfiguration to compromise OpenAI internal repos",
+     "link": "https://www.hacktron.ai/blog/hacking-openai",
+     "data": "2026-09-18T02:47:24Z",
+     "discussao": "https://news.ycombinator.com/item?id=49749656",
+     "pontos": 390
+    },
+    {
+     "veiculo": "The Wall Street Journal",
+     "titulo": "Security researchers in an OpenAI bug bounty program hacked OpenAI, accessing its \"monorepo\" on GitHub, using a cybersecurity version of Opus 4.8 and Opus 5 (Robert McMillan/Wall Street Journal)",
+     "link": "https://www.wsj.com/tech/ai/hackers-used-anthropics-claude-to-break-into-openai-b40ba883?st=Jfx6Z1",
+     "data": "2026-09-18T04:40:33Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Researchers used Anthropic’s Claude to hack into OpenAI",
+     "link": "https://techcrunch.com/2026/09/18/researchers-used-anthropics-claude-to-hack-into-openai/",
+     "data": "2026-09-18T14:00:14Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Pesquisadores usam IA da Anthropic para invadir sistemas da OpenAI",
+    "resumo": "Segundo o TechCrunch, pesquisadores de segurança usaram o Claude, da Anthropic, para explorar vulnerabilidades nos sistemas da OpenAI, assumindo contas de funcionários e acessando um repositório interno de código antes de reportar as falhas. Segundo o Wall Street Journal, a invasão fez parte de um programa de recompensas por bugs da OpenAI e usou versões do Opus 4.8 e Opus 5 para acessar o \"monorepo\" da empresa no GitHub."
+   },
+   "en": {
+    "titulo": "Researchers use Anthropic's Claude to hack into OpenAI systems",
+    "resumo": "According to TechCrunch, security researchers used Anthropic's Claude to exploit vulnerabilities in OpenAI's systems, taking over employee accounts and gaining access to an internal code repository before reporting the flaws. According to the Wall Street Journal, the hack was part of an OpenAI bug bounty program and used versions of Opus 4.8 and Opus 5 to access the company's \"monorepo\" on GitHub."
+   },
+   "cruzamento": [
+    {
+     "vendor": "anthropic",
+     "lab": "Anthropic",
+     "share_tokens": 3.59,
+     "share_gasto": 28.28,
+     "lider": {
+      "slug": "anthropic/claude-sonnet-5-20260630",
+      "nome": "Claude Sonnet 5",
+      "share_7d": 1.21,
+      "preco_misto": 4.0
+     }
+    },
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 18.57,
+     "share_gasto": 25.96,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 12.58,
+      "preco_misto": 0.45
+     }
+    }
+   ]
+  },
+  {
+   "id": "a2",
+   "categoria": "regulacao",
+   "nota": 17.13,
+   "labs": [
+    "microsoft",
+    "openai"
+   ],
+   "publicado_em": "2026-09-17T19:46:08Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Microsoft exec called AI scraping ‘the largest theft of labor in human history,’ new unredacted filings reveal",
+     "link": "https://techcrunch.com/2026/09/17/microsoft-exec-called-ai-scraping-the-largest-theft-of-labor-in-human-history-new-unredacted-filings-reveal/",
+     "data": "2026-09-17T19:46:08Z",
+     "discussao": "https://news.ycombinator.com/item?id=49752056",
+     "pontos": 491
+    }
+   ],
+   "pt": {
+    "titulo": "Executivo da Microsoft chamou coleta de dados de IA de maior roubo de trabalho da história",
+    "resumo": "Segundo o TechCrunch, processos judiciais anteriormente sob sigilo mostram que um executivo da Microsoft chamou as práticas de dados da OpenAI de \"roubo\", enquanto as duas empresas coletavam conteúdo do New York Times protegido por paywall. Os documentos mostram que as empresas usaram esse conteúdo para construir conjuntos de dados e alertaram internamente que isso prejudicaria editoras."
+   },
+   "en": {
+    "titulo": "Microsoft exec called AI scraping the largest theft of labor in history",
+    "resumo": "According to TechCrunch, newly unsealed court filings show a Microsoft executive privately called OpenAI's data practices \"theft\" while both companies scraped paywalled New York Times content. The filings show the companies built datasets from that content and warned internally it would gut publishers."
+   },
+   "cruzamento": [
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 18.57,
+     "share_gasto": 25.96,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 12.58,
+      "preco_misto": 0.45
+     }
+    }
+   ]
+  },
+  {
+   "id": "a4",
+   "categoria": "infraestrutura",
+   "nota": 12.16,
+   "labs": [
+    "z-ai"
+   ],
+   "publicado_em": "2026-09-17T08:27:09Z",
+   "fontes": [
+    {
+     "veiculo": "z.ai",
+     "titulo": "How GLM built its own inference infrastructure",
+     "link": "https://z.ai/blog/glm-built-its-inference-infrastructure",
+     "data": "2026-09-17T08:27:09Z",
+     "discussao": "https://news.ycombinator.com/item?id=49737922",
+     "pontos": 399
+    }
+   ],
+   "pt": {
+    "titulo": "GLM detalha como construiu sua própria infraestrutura de inferência",
+    "resumo": "Segundo a z.ai, a empresa publicou detalhes sobre como desenvolveu sua própria infraestrutura de inferência para o modelo GLM."
+   },
+   "en": {
+    "titulo": "GLM details how it built its own inference infrastructure",
+    "resumo": "According to z.ai, the company published details about how it developed its own inference infrastructure for the GLM model."
+   },
+   "cruzamento": [
+    {
+     "vendor": "z-ai",
+     "lab": "Z.ai (GLM)",
+     "share_tokens": 13.56,
+     "share_gasto": 7.03,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 9.08,
+      "preco_misto": 0.1425
+     }
+    }
+   ]
+  }
+ ],
+ "descartados": [
+  {
+   "id": "a3",
+   "categoria": "seguranca",
+   "nota": 14.0,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-17T19:26:15Z",
+   "fontes": [
+    {
+     "veiculo": "Tecnoblog",
+     "titulo": "OpenAI vai avisar quando IAs agirem sem autorização",
+     "link": "https://tecnoblog.net/noticias/openai-vai-avisar-quando-ias-agirem-sem-autorizacao/",
+     "data": "2026-09-17T19:26:15Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "OpenAI caught its models leaving notes to successors to hide bad behavior",
+     "link": "https://techcrunch.com/2026/09/17/openai-caught-its-models-leaving-notes-to-successors-to-hide-bad-behavior/",
+     "data": "2026-09-17T20:34:24Z"
+    },
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "Self-generated prompt injections in compaction summaries",
+     "link": "https://simonwillison.net/2026/Sep/17/compaction-summaries/",
+     "data": "2026-09-17T20:57:55Z"
+    }
+   ],
+   "motivo": "já publicado em 2026-09-17: OpenAI discloses six cases of concerning AI model behavior"
+  },
+  {
+   "id": "a5",
+   "categoria": "mercado",
+   "nota": 12.0,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-17T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "How Cooley is accelerating IPO work with ChatGPT",
+     "link": "https://openai.com/index/cooley-gopublic",
+     "data": "2026-09-17T12:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a6",
+   "categoria": "seguranca",
+   "nota": 11.58,
+   "labs": [
+    "z-ai"
+   ],
+   "publicado_em": "2026-09-18T10:35:28Z",
+   "fontes": [
+    {
+     "veiculo": "tokenstead.ai",
+     "titulo": "ZCode, the GLM coding agent, silently uploads your Git history",
+     "link": "https://tokenstead.ai/guides/zcode-silent-git-history-upload",
+     "data": "2026-09-18T10:35:28Z",
+     "discussao": "https://news.ycombinator.com/item?id=49752422",
+     "pontos": 189
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a7",
+   "categoria": "lancamento",
+   "nota": 8.84,
+   "labs": [
+    "qwen"
+   ],
+   "publicado_em": "2026-09-17T23:05:48Z",
+   "fontes": [
+    {
+     "veiculo": "qwen.ai",
+     "titulo": "Qwen 3.8 Omni Flash",
+     "link": "https://qwen.ai/blog?id=qwen3.8-omni-flash",
+     "data": "2026-09-17T23:05:48Z",
+     "discussao": "https://news.ycombinator.com/item?id=49747925",
+     "pontos": 278
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a8",
+   "categoria": "lancamento",
+   "nota": 8.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-17T18:15:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "The new CC, an AI agent built for families",
+     "link": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-expanding-to-groups/",
+     "data": "2026-09-17T18:15:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a9",
+   "categoria": "seguranca",
+   "nota": 8.2,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-17T19:28:24Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "The AI Superintelligence Slowdown",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/996923/ai-safety-slow-openai-anthropic",
+     "data": "2026-09-17T19:28:24Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Is the AI safety debate about safety or control?",
+     "link": "https://techcrunch.com/2026/09/17/is-the-ai-safety-debate-about-safety-or-control/",
+     "data": "2026-09-17T20:19:37Z"
+    }
+   ],
+   "motivo": "já publicado em 2026-09-16: AI executives call for slowing down frontier development"
+  },
+  {
+   "id": "a10",
+   "categoria": "mercado",
+   "nota": 7.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-18T14:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "New experts join Google’s AI & Economy team",
+     "link": "https://blog.google/innovation-and-ai/technology/ai/expanding-ai-economy-research-bench/",
+     "data": "2026-09-18T14:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a11",
+   "categoria": "lancamento",
+   "nota": 7.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-17T20:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "UN turns to Google to make its global data ready for AI agents",
+     "link": "https://techcrunch.com/2026/09/17/un-turns-to-google-to-make-its-global-data-ready-for-ai-agents/",
+     "data": "2026-09-17T20:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a12",
+   "categoria": "lancamento",
+   "nota": 7.2,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-17T18:58:05Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Claude Code relaunches Projects to manage multiple AI agents in the cloud",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/997134/anthropic-claude-code-projects",
+     "data": "2026-09-17T18:58:05Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a13",
+   "categoria": "seguranca",
+   "nota": 7.2,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-17T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Anthropic",
+     "titulo": "life sciences verification program",
+     "link": "https://www.anthropic.com/news/life-sciences-verification-program",
+     "data": "2026-09-17T12:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a14",
+   "categoria": "lancamento",
+   "nota": 6.62,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-09-18T05:10:32Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Meta launches a Mac app for Muse after releasing the AI agent on iOS, Android, and the web earlier this month, allowing it to manage files, pull from apps, more (Jay Peters/The Verge)",
+     "link": "https://www.theverge.com/tech/997332/metas-muse-ai-agent-now-has-a-mac-app",
+     "data": "2026-09-18T05:10:32Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a15",
+   "categoria": "lancamento",
+   "nota": 6.62,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-09-17T13:46:16Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Rival AI agents, Instinct and Meta’s Muse, both add the ability to make calls",
+     "link": "https://techcrunch.com/2026/09/17/rival-ai-agents-instinct-and-metas-muse-both-add-the-ability-to-make-calls/",
+     "data": "2026-09-17T13:46:16Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a16",
+   "categoria": "outro",
+   "nota": 6.45,
+   "labs": [],
+   "publicado_em": "2026-09-17T21:48:38Z",
+   "fontes": [
+    {
+     "veiculo": "sockpuppet.org",
+     "titulo": "How to Write with an LLM",
+     "link": "https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/",
+     "data": "2026-09-17T21:48:38Z",
+     "discussao": "https://news.ycombinator.com/item?id=49747070",
+     "pontos": 231
+    },
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "How To Write With An LLM",
+     "link": "https://simonwillison.net/2026/Sep/17/how-to-write-with-an-llm/",
+     "data": "2026-09-17T23:37:27Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a17",
+   "categoria": "outro",
+   "nota": 6.32,
+   "labs": [],
+   "publicado_em": "2026-09-17T20:36:13Z",
+   "fontes": [
+    {
+     "veiculo": "bend-lang.com",
+     "titulo": "Bend – A language that blocks AI mistakes via proof, on CPU and GPU",
+     "link": "https://bend-lang.com/",
+     "data": "2026-09-17T20:36:13Z",
+     "discussao": "https://news.ycombinator.com/item?id=49746163",
+     "pontos": 533
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a18",
+   "categoria": "capacidade",
+   "nota": 6.2,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-18T10:35:01Z",
+   "fontes": [
+    {
+     "veiculo": "Reuters",
+     "titulo": "Anthropic Life Sciences Head Eric Kauderer-Abrams says the AI company set up a Bay Area wet lab for physical biology work, as it pushes into AI disease research (Reuters)",
+     "link": "https://www.reuters.com/world/anthropic-quietly-sets-up-biology-lab-it-ramps-ai-drug-program-2026-09-18/",
+     "data": "2026-09-18T10:35:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a19",
+   "categoria": "seguranca",
+   "nota": 6.2,
+   "labs": [
+    "anthropic",
+    "microsoft"
+   ],
+   "publicado_em": "2026-09-17T14:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Microsoft AI CEO says AI threats are real, and Anthropic is making it worse",
+     "link": "https://www.theverge.com/podcast/996412/microsoft-ai-ceo-mustafa-suleyman-regulation-safety-anthropic-claude",
+     "data": "2026-09-17T14:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a20",
+   "categoria": "outro",
+   "nota": 6.01,
+   "labs": [],
+   "publicado_em": "2026-09-17T08:36:37Z",
+   "fontes": [
+    {
+     "veiculo": "skywriter.blue",
+     "titulo": "AI safety is mostly a sex cult",
+     "link": "https://skywriter.blue/@segyges.bsky.social/3mvom4b4dn22q",
+     "data": "2026-09-17T08:36:37Z",
+     "discussao": "https://news.ycombinator.com/item?id=49737985",
+     "pontos": 302
+    },
+    {
+     "veiculo": "iankduncan.com",
+     "titulo": "Sex, AI, and the Apocalypse",
+     "link": "https://www.iankduncan.com/personal/2026-09-16-sex-ai-and-the-apocalypse/",
+     "data": "2026-09-17T21:15:52Z",
+     "discussao": "https://news.ycombinator.com/item?id=49746654",
+     "pontos": 213
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a21",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T22:34:09Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "PrismML hopes its tiny LLM will change how we all use AI",
+     "link": "https://techcrunch.com/2026/09/17/prismml-hopes-its-tiny-llm-could-change-how-we-all-use-ai/",
+     "data": "2026-09-17T22:34:09Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a22",
+   "categoria": "mercado",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-09-18T13:55:01Z",
+   "fontes": [
+    {
+     "veiculo": "The Information",
+     "titulo": "Source: Beijing-based Naive AI, which plans to release its first AI model as early as this month, is now valued at $1.4B after raising $400M in three rounds (Juro Osawa/The Information)",
+     "link": "https://www.theinformation.com/articles/tsinghua-professors-stealth-llm-startup-hits-1-4-billion-valuation",
+     "data": "2026-09-18T13:55:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a23",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T17:15:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Pinterest teases a new ‘Restyle’ feature that lets you redesign your room with AI",
+     "link": "https://techcrunch.com/2026/09/17/pinterest-teases-a-new-restyle-feature-that-lets-you-redesign-your-room-with-ai/",
+     "data": "2026-09-17T17:15:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a24",
+   "categoria": "capacidade",
+   "nota": 5.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-17T18:33:13Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "LLMs respond differently to harmful prompts when AI watermarking is used",
+     "link": "https://arstechnica.com/security/2026/09/ai-text-watermarking-can-make-models-more-vulnerable-to-adversarial-prompts/",
+     "data": "2026-09-17T18:33:13Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a25",
+   "categoria": "infraestrutura",
+   "nota": 5.84,
+   "labs": [
+    "anthropic",
+    "google",
+    "nvidia"
+   ],
+   "publicado_em": "2026-09-17T13:38:33Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Google, Nvidia, and Anthropic want Emerald AI to find space on the grid for more data centers",
+     "link": "https://techcrunch.com/2026/09/17/google-nvidia-and-anthropic-want-emerald-ai-to-find-space-on-the-grid-for-more-data-centers/",
+     "data": "2026-09-17T13:38:33Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a26",
+   "categoria": "capacidade",
+   "nota": 5.66,
+   "labs": [],
+   "publicado_em": "2026-09-17T16:55:14Z",
+   "fontes": [
+    {
+     "veiculo": "arXiv",
+     "titulo": "Infinite-Parameter LLMs: Generating and Adapting Weights from Live Data",
+     "link": "https://arxiv.org/abs/2609.18842",
+     "data": "2026-09-17T16:55:14Z",
+     "discussao": "https://news.ycombinator.com/item?id=49743483",
+     "pontos": 151
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a27",
+   "categoria": "capacidade",
+   "nota": 5.26,
+   "labs": [],
+   "publicado_em": "2026-09-17T15:13:30Z",
+   "fontes": [
+    {
+     "veiculo": "The Economist",
+     "titulo": "Artificial intelligence now beats some of the best human forecasters",
+     "link": "https://www.economist.com/science-and-technology/2026/09/16/artificial-intelligence-now-beats-some-of-the-best-human-forecasters",
+     "data": "2026-09-17T15:13:30Z",
+     "discussao": "https://news.ycombinator.com/item?id=49742021",
+     "pontos": 119
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a28",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T20:34:47Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "The fix for rogue AI agents could be more AI",
+     "link": "https://techcrunch.com/2026/09/17/the-fix-for-rogue-ai-agents-could-be-more-ai/",
+     "data": "2026-09-17T20:34:47Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a29",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T17:15:59Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Base Labs launches an open-weight AI safety partnership with Hugging Face and Goodfire",
+     "link": "https://techcrunch.com/2026/09/17/base-labs-launches-an-open-weight-ai-safety-partnership-with-hugging-face-and-goodfire/",
+     "data": "2026-09-17T17:15:59Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a30",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T14:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "AI is feared globally as the destroyer of jobs",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/996775/ai-is-feared-globally-as-the-destroyer-of-jobs",
+     "data": "2026-09-17T14:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a31",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T11:30:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Inside the suddenly explosive world of AI safety",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/996563/ai-safety-research-metr-redwood-openai-anthropic",
+     "data": "2026-09-17T11:30:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a32",
+   "categoria": "outro",
+   "nota": 4.65,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-17T13:17:16Z",
+   "fontes": [
+    {
+     "veiculo": "petervijeh.com",
+     "titulo": "I had Gemini train its own replacement for $9",
+     "link": "https://www.petervijeh.com/projects/reddit-ner",
+     "data": "2026-09-17T13:17:16Z",
+     "discussao": "https://news.ycombinator.com/item?id=49740330",
+     "pontos": 87
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a33",
+   "categoria": "outro",
+   "nota": 4.4,
+   "labs": [],
+   "publicado_em": "2026-09-17T13:57:07Z",
+   "fontes": [
+    {
+     "veiculo": "martinfowler.com",
+     "titulo": "I Don't Like LLMs",
+     "link": "https://martinfowler.com/articles/2026-dont-like-llms.html",
+     "data": "2026-09-17T13:57:07Z",
+     "discussao": "https://news.ycombinator.com/item?id=49740834",
+     "pontos": 225
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a34",
+   "categoria": "outro",
+   "nota": 4.38,
+   "labs": [],
+   "publicado_em": "2026-09-17T13:01:44Z",
+   "fontes": [
+    {
+     "veiculo": "mysetup.ai",
+     "titulo": "Show HN: Share your AI Setup, Learn from others",
+     "link": "https://mysetup.ai/",
+     "data": "2026-09-17T13:01:44Z",
+     "discussao": "https://news.ycombinator.com/item?id=49740105",
+     "pontos": 223
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a35",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-09-18T11:15:03Z",
+   "fontes": [
+    {
+     "veiculo": "koreaherald.com",
+     "titulo": "SK Hynix launches SK Hynix Ventures in Silicon Valley, expanding its corporate investment scope into AI computing, data centers, and optical interconnect tech (Jie Ye-eun/The Korea Herald)",
+     "link": "https://www.koreaherald.com/article/10878747",
+     "data": "2026-09-18T11:15:03Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a36",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T23:25:52Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Crusoe raises $3.9B to build massive data centers and small modular ‘AI factories’",
+     "link": "https://techcrunch.com/2026/09/17/crusoe-raises-3-9b-to-build-massive-data-centers-and-small-modular-ai-factories/",
+     "data": "2026-09-17T23:25:52Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a37",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T22:14:59Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "The FAA’s plan to fix air traffic? $875M worth of AI",
+     "link": "https://techcrunch.com/2026/09/17/the-faas-plan-to-fix-air-traffic-875-million-worth-of-ai/",
+     "data": "2026-09-17T22:14:59Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a38",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T14:06:14Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Huawei plans Q1 2027 launch of new AI chip as it takes on Nvidia",
+     "link": "https://techcrunch.com/2026/09/17/huawei-plans-q1-2027-launch-of-new-ai-chip-as-it-takes-on-nvidia/",
+     "data": "2026-09-17T14:06:14Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a39",
+   "categoria": "outro",
+   "nota": 3.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-17T23:21:17Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Google DeepMind launches institute to widen the AGI debate",
+     "link": "https://techcrunch.com/2026/09/17/google-deepmind-launches-institute-to-widen-the-agi-debate/",
+     "data": "2026-09-17T23:21:17Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a40",
+   "categoria": "outro",
+   "nota": 3.1,
+   "labs": [],
+   "publicado_em": "2026-09-17T15:40:17Z",
+   "fontes": [
+    {
+     "veiculo": "minimallysufficient.com",
+     "titulo": "LLM Classification Is Feature Engineering",
+     "link": "https://minimallysufficient.com/posts/llm-classification-is-feature-extraction/",
+     "data": "2026-09-17T15:40:17Z",
+     "discussao": "https://news.ycombinator.com/item?id=49742437",
+     "pontos": 107
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a41",
+   "categoria": "infraestrutura",
+   "nota": 3.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T13:26:54Z",
+   "fontes": [
+    {
+     "veiculo": "Tecnoblog",
+     "titulo": "Expansão da IA pode provocar “tsunami” de lixo eletrônico, diz relatório",
+     "link": "https://tecnoblog.net/noticias/expansao-da-ia-pode-provocar-tsunami-de-lixo-eletronico-diz-relatorio/",
+     "data": "2026-09-17T13:26:54Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a42",
+   "categoria": "outro",
+   "nota": 2.82,
+   "labs": [
+    "qwen"
+   ],
+   "publicado_em": "2026-09-18T02:04:19Z",
+   "fontes": [
+    {
+     "veiculo": "byteshape.com",
+     "titulo": "Shapelearn Qwen 3.8 27B (13.1 GB VRAM)",
+     "link": "https://byteshape.com/blogs/Qwen3.8-27B/",
+     "data": "2026-09-18T02:04:19Z",
+     "discussao": "https://news.ycombinator.com/item?id=49749393",
+     "pontos": 88
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a43",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T14:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "2 days left to exhibit at TechCrunch Disrupt 2026",
+     "link": "https://techcrunch.com/2026/09/17/2-days-left-to-exhibit-at-techcrunch-disrupt-2026/",
+     "data": "2026-09-17T14:00:00Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "The clock is ticking: Final 24 hours to exhibit at TechCrunch Disrupt 2026",
+     "link": "https://techcrunch.com/2026/09/18/final-24-hours-to-exhibit-at-techcrunch-disrupt-2026/",
+     "data": "2026-09-18T14:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a44",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-09-18T11:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Flash floods can strike without warning — this new technology could change that",
+     "link": "https://www.theverge.com/science/997083/flash-flood-warning-tacls-satellite-machine-learning",
+     "data": "2026-09-18T11:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a45",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-09-17T17:26:25Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Even the king of England has his hesitations about AI",
+     "link": "https://techcrunch.com/2026/09/17/even-the-king-of-england-has-his-hesitations-about-ai/",
+     "data": "2026-09-17T17:26:25Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  }
+ ],
+ "itens": [
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "New experts join Google’s AI & Economy team",
+   "link": "https://blog.google/innovation-and-ai/technology/ai/expanding-ai-economy-research-bench/",
+   "data": "2026-09-18T14:00:00Z",
+   "trecho": "We are expanding our AI & Economy team with world-class academic advisors, fellows, and core internal researchers.",
+   "veiculo": "Google",
+   "id": "i1"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Source: Beijing-based Naive AI, which plans to release its first AI model as early as this month, is now valued at $1.4B after raising $400M in three rounds (Juro Osawa/The Information)",
+   "link": "https://www.theinformation.com/articles/tsinghua-professors-stealth-llm-startup-hits-1-4-billion-valuation",
+   "data": "2026-09-18T13:55:01Z",
+   "trecho": "",
+   "veiculo": "The Information",
+   "via": "https://www.techmeme.com/260918/p15#a260918p15",
+   "id": "i2"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Anthropic Life Sciences Head Eric Kauderer-Abrams says the AI company set up a Bay Area wet lab for physical biology work, as it pushes into AI disease research (Reuters)",
+   "link": "https://www.reuters.com/world/anthropic-quietly-sets-up-biology-lab-it-ramps-ai-drug-program-2026-09-18/",
+   "data": "2026-09-18T10:35:01Z",
+   "trecho": "",
+   "veiculo": "Reuters",
+   "via": "https://www.techmeme.com/260918/p9#a260918p9",
+   "id": "i3"
+  },
+  {
+   "fonte": "ue",
+   "peso": 3,
+   "titulo": "Data Union Conference",
+   "link": "https://digital-strategy.ec.europa.eu/en/events/data-union-conference",
+   "data": "2026-09-18T07:43:00Z",
+   "trecho": "Data Union Conference Anonymous (not verified) Fri, 09/18/2026 - 09:43 12 January 2027 Charlemagne building, Brussels, Belgium Bringing policymakers, businesses, experts and researchers together to turn Europe’s data policies into more data for AI, growth and competitiveness. This high-level conference will be hosted…",
+   "veiculo": "Comissão Europeia",
+   "id": "i4"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Security researchers in an OpenAI bug bounty program hacked OpenAI, accessing its \"monorepo\" on GitHub, using a cybersecurity version of Opus 4.8 and Opus 5 (Robert McMillan/Wall Street Journal)",
+   "link": "https://www.wsj.com/tech/ai/hackers-used-anthropics-claude-to-break-into-openai-b40ba883?st=Jfx6Z1",
+   "data": "2026-09-18T04:40:33Z",
+   "trecho": "",
+   "veiculo": "The Wall Street Journal",
+   "via": "https://www.techmeme.com/260918/p1#a260918p1",
+   "id": "i5"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "The new CC, an AI agent built for families",
+   "link": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-expanding-to-groups/",
+   "data": "2026-09-17T18:15:00Z",
+   "trecho": "Google Labs is expanding CC to groups, starting with families and households, so they can spend less time on logistics.",
+   "veiculo": "Google",
+   "id": "i6"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "How Cooley is accelerating IPO work with ChatGPT",
+   "link": "https://openai.com/index/cooley-gopublic",
+   "data": "2026-09-17T12:00:00Z",
+   "trecho": "Cooley built GO Public with ChatGPT Work to bring intelligence to the IPO process, helping lawyers surface issues earlier and focus judgment where it matters most.",
+   "veiculo": "OpenAI",
+   "id": "i7"
+  },
+  {
+   "fonte": "anthropic",
+   "peso": 3,
+   "titulo": "life sciences verification program",
+   "link": "https://www.anthropic.com/news/life-sciences-verification-program",
+   "data": "2026-09-17T12:00:00Z",
+   "trecho": "Announcements Introducing the Life Sciences Verification Program",
+   "veiculo": "Anthropic",
+   "id": "i8"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Microsoft exec called AI scraping ‘the largest theft of labor in human history,’ new unredacted filings reveal",
+   "link": "https://techcrunch.com/2026/09/17/microsoft-exec-called-ai-scraping-the-largest-theft-of-labor-in-human-history-new-unredacted-filings-reveal/",
+   "data": "2026-09-17T19:46:08Z",
+   "trecho": "Newly unsealed court filings show Microsoft privately called OpenAI's data practices \"theft\" while both companies scraped paywalled Times content, built datasets from it, and warned internally it would gut publishers.",
+   "veiculo": "TechCrunch",
+   "pontos": 491,
+   "discussao": "https://news.ycombinator.com/item?id=49752056",
+   "id": "i9"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Researchers used Anthropic’s Claude to hack into OpenAI",
+   "link": "https://techcrunch.com/2026/09/18/researchers-used-anthropics-claude-to-hack-into-openai/",
+   "data": "2026-09-18T14:00:14Z",
+   "trecho": "Security researchers used Anthropic’s Claude to exploit vulnerabilities in OpenAI’s systems, taking over employee accounts and gaining access to an internal code repository before reporting the flaws.",
+   "veiculo": "TechCrunch",
+   "id": "i10"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "The clock is ticking: Final 24 hours to exhibit at TechCrunch Disrupt 2026",
+   "link": "https://techcrunch.com/2026/09/18/final-24-hours-to-exhibit-at-techcrunch-disrupt-2026/",
+   "data": "2026-09-18T14:00:00Z",
+   "trecho": "Last day to book your exhibit table at Disrupt is today, September 18. Get your startup in front of 10,000+ founders, investors, operators, and tech leaders on October 13–15.",
+   "veiculo": "TechCrunch",
+   "id": "i11"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "Could AI really kill us all? Your questions, answered.",
+   "link": "https://www.technologyreview.com/2026/09/18/1144435/could-ai-really-kill-us-all-your-questions-answered/",
+   "data": "2026-09-18T11:29:22Z",
+   "trecho": "On Wednesday, MIT Technology Review hosted a live Roundtables event for subscribers that asked the question everyone’s asking right now: Could AI really kill us all? But attendees had so many more questions than we had time to answer in the 30 minute session. So we asked our senior AI editor Will Douglas Heaven and…",
+   "veiculo": "MIT Technology Review",
+   "id": "i12"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "SK Hynix launches SK Hynix Ventures in Silicon Valley, expanding its corporate investment scope into AI computing, data centers, and optical interconnect tech (Jie Ye-eun/The Korea Herald)",
+   "link": "https://www.koreaherald.com/article/10878747",
+   "data": "2026-09-18T11:15:03Z",
+   "trecho": "",
+   "veiculo": "koreaherald.com",
+   "via": "https://www.techmeme.com/260918/p13#a260918p13",
+   "id": "i13"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Flash floods can strike without warning — this new technology could change that",
+   "link": "https://www.theverge.com/science/997083/flash-flood-warning-tacls-satellite-machine-learning",
+   "data": "2026-09-18T11:00:00Z",
+   "trecho": "On the morning of June 9th, Laura Lin was working from her home in Lanesville, a rural southern Indiana town about 15 miles from the Kentucky border. She was on a Zoom call, unaware that the heavy rain outside was beginning to flood her yard. \"I look over to where the barn is over there, […]",
+   "veiculo": "The Verge",
+   "id": "i14"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Meta launches a Mac app for Muse after releasing the AI agent on iOS, Android, and the web earlier this month, allowing it to manage files, pull from apps, more (Jay Peters/The Verge)",
+   "link": "https://www.theverge.com/tech/997332/metas-muse-ai-agent-now-has-a-mac-app",
+   "data": "2026-09-18T05:10:32Z",
+   "trecho": "",
+   "veiculo": "The Verge",
+   "via": "https://www.techmeme.com/260918/p2#a260918p2",
+   "id": "i15"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "How To Write With An LLM",
+   "link": "https://simonwillison.net/2026/Sep/17/how-to-write-with-an-llm/",
+   "data": "2026-09-17T23:37:27Z",
+   "trecho": "How To Write With An LLM Thomas Ptacek on using LLMs as copyeditors, not as writing assistants: Rule Number One: You may not use a single word an LLM suggests to you. [...] I think that as a form of intellectual personal protective equipment you should adopt the rule that any specific turn of phrase an LLM suggests…",
+   "veiculo": "Simon Willison",
+   "id": "i16"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Crusoe raises $3.9B to build massive data centers and small modular ‘AI factories’",
+   "link": "https://techcrunch.com/2026/09/17/crusoe-raises-3-9b-to-build-massive-data-centers-and-small-modular-ai-factories/",
+   "data": "2026-09-17T23:25:52Z",
+   "trecho": "The round values the data center giant at $30.9 billion.",
+   "veiculo": "TechCrunch",
+   "id": "i17"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Google DeepMind launches institute to widen the AGI debate",
+   "link": "https://techcrunch.com/2026/09/17/google-deepmind-launches-institute-to-widen-the-agi-debate/",
+   "data": "2026-09-17T23:21:17Z",
+   "trecho": "The new institute aims to surface differing views between Google, Google DeepMind, and the broader global research community around AGI. \"They will not always agree, and they will likely change their minds, as more data and information comes to light at the fast-moving frontier.\"",
+   "veiculo": "TechCrunch",
+   "id": "i18"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "PrismML hopes its tiny LLM will change how we all use AI",
+   "link": "https://techcrunch.com/2026/09/17/prismml-hopes-its-tiny-llm-could-change-how-we-all-use-ai/",
+   "data": "2026-09-17T22:34:09Z",
+   "trecho": "If AI lab PrismML isn't on your radar yet, it should be.",
+   "veiculo": "TechCrunch",
+   "id": "i19"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "The FAA’s plan to fix air traffic? $875M worth of AI",
+   "link": "https://techcrunch.com/2026/09/17/the-faas-plan-to-fix-air-traffic-875-million-worth-of-ai/",
+   "data": "2026-09-17T22:14:59Z",
+   "trecho": "A new AI-based software program is being launched to help air traffic controllers better navigate their jobs as the crossing guards of America's skies.",
+   "veiculo": "TechCrunch",
+   "id": "i20"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Self-generated prompt injections in compaction summaries",
+   "link": "https://simonwillison.net/2026/Sep/17/compaction-summaries/",
+   "data": "2026-09-17T20:57:55Z",
+   "trecho": "Self-generated prompt injections in compaction summaries In Our framework for reporting model misalignment OpenAI provide \"six reports on unexpected or concerning model behavior we’ve observed in the last six months\". This one here is my favorite: they caught some of their models in training deliberately subverting…",
+   "veiculo": "Simon Willison",
+   "id": "i21"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "The fix for rogue AI agents could be more AI",
+   "link": "https://techcrunch.com/2026/09/17/the-fix-for-rogue-ai-agents-could-be-more-ai/",
+   "data": "2026-09-17T20:34:47Z",
+   "trecho": "As companies hand off longer and more complex tasks to AI agents, they are running into an oversight problem: Agents can act faster, longer, and at greater volume than humans can realistically review.",
+   "veiculo": "TechCrunch",
+   "id": "i22"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "OpenAI caught its models leaving notes to successors to hide bad behavior",
+   "link": "https://techcrunch.com/2026/09/17/openai-caught-its-models-leaving-notes-to-successors-to-hide-bad-behavior/",
+   "data": "2026-09-17T20:34:24Z",
+   "trecho": "OpenAI disclosed instances of GPT-5.6 Sol instructing future contexts to conceal mistakes and misaligned behavior, highlighting the growing challenge of detecting misalignment as increasingly capable AI models learn to hide it.",
+   "veiculo": "TechCrunch",
+   "id": "i23"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Is the AI safety debate about safety or control?",
+   "link": "https://techcrunch.com/2026/09/17/is-the-ai-safety-debate-about-safety-or-control/",
+   "data": "2026-09-17T20:19:37Z",
+   "trecho": "Not everyone agrees with Amodei's call for globally coordinated action for AI safety.",
+   "veiculo": "TechCrunch",
+   "id": "i24"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "UN turns to Google to make its global data ready for AI agents",
+   "link": "https://techcrunch.com/2026/09/17/un-turns-to-google-to-make-its-global-data-ready-for-ai-agents/",
+   "data": "2026-09-17T20:00:00Z",
+   "trecho": "The shift comes after a UNICEF test found leading AI models struggled to accurately retrieve global development statistics.",
+   "veiculo": "TechCrunch",
+   "id": "i25"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "The AI Superintelligence Slowdown",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/996923/ai-safety-slow-openai-anthropic",
+   "data": "2026-09-17T19:28:24Z",
+   "trecho": "Remember when tech leaders would tell their employees to “move fast and break things”? It seemed that would be the way of AI too. But after a summer where rogue AI agents became reality, and researchers warned that AI could kill us all, a number of leading US AI companies are publicly suggesting it’s time […]",
+   "veiculo": "The Verge",
+   "id": "i26"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Claude Code relaunches Projects to manage multiple AI agents in the cloud",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/997134/anthropic-claude-code-projects",
+   "data": "2026-09-17T18:58:05Z",
+   "trecho": "The revamped projects feature in Claude Code allows users to run multiple agents under the same roof, with a shared memory, goals, and library of files and artifacts. Similar to Grok Bot and other tools that manage groups of AI agents, each project has \"threads\" running different tasks in parallel, with a…",
+   "veiculo": "The Verge",
+   "id": "i27"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "LLMs respond differently to harmful prompts when AI watermarking is used",
+   "link": "https://arstechnica.com/security/2026/09/ai-text-watermarking-can-make-models-more-vulnerable-to-adversarial-prompts/",
+   "data": "2026-09-17T18:33:13Z",
+   "trecho": "SynthID can cause models to follow harmful instructions they would otherwise refuse.",
+   "veiculo": "Ars Technica",
+   "id": "i28"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Even the king of England has his hesitations about AI",
+   "link": "https://techcrunch.com/2026/09/17/even-the-king-of-england-has-his-hesitations-about-ai/",
+   "data": "2026-09-17T17:26:25Z",
+   "trecho": "King Charles hosted a private summit Thursday with some of the most prominent names in AI and the U.K. government.",
+   "veiculo": "TechCrunch",
+   "id": "i29"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Base Labs launches an open-weight AI safety partnership with Hugging Face and Goodfire",
+   "link": "https://techcrunch.com/2026/09/17/base-labs-launches-an-open-weight-ai-safety-partnership-with-hugging-face-and-goodfire/",
+   "data": "2026-09-17T17:15:59Z",
+   "trecho": "Base Labs, the research group Baseten spun up earlier this year, will develop and publish methods for training and monitoring open models.",
+   "veiculo": "TechCrunch",
+   "id": "i30"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Pinterest teases a new ‘Restyle’ feature that lets you redesign your room with AI",
+   "link": "https://techcrunch.com/2026/09/17/pinterest-teases-a-new-restyle-feature-that-lets-you-redesign-your-room-with-ai/",
+   "data": "2026-09-17T17:15:00Z",
+   "trecho": "Pinterest is testing Restyle, a new AI-powered feature that lets users visualize furniture, decor, lighting, and more in photos of their own rooms — potentially helping turn saved inspiration into purchases.",
+   "veiculo": "TechCrunch",
+   "id": "i31"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Huawei plans Q1 2027 launch of new AI chip as it takes on Nvidia",
+   "link": "https://techcrunch.com/2026/09/17/huawei-plans-q1-2027-launch-of-new-ai-chip-as-it-takes-on-nvidia/",
+   "data": "2026-09-17T14:06:14Z",
+   "trecho": "Huawei is accelerating the launch of its next-generation Ascend 960DT AI chip as it pushes to compete with Nvidia and close China’s AI computing gap with the U.S.",
+   "veiculo": "TechCrunch",
+   "id": "i32"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "2 days left to exhibit at TechCrunch Disrupt 2026",
+   "link": "https://techcrunch.com/2026/09/17/2-days-left-to-exhibit-at-techcrunch-disrupt-2026/",
+   "data": "2026-09-17T14:00:00Z",
+   "trecho": "Last day to book your exhibit table at Disrupt is September 18. Two days left. Get your startup in front of 10,000+ founders, investors, operators, and tech leaders on October 13–15.",
+   "veiculo": "TechCrunch",
+   "id": "i33"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Microsoft AI CEO says AI threats are real, and Anthropic is making it worse",
+   "link": "https://www.theverge.com/podcast/996412/microsoft-ai-ceo-mustafa-suleyman-regulation-safety-anthropic-claude",
+   "data": "2026-09-17T14:00:00Z",
+   "trecho": "Today, I’m talking with Mustafa Suleyman, the CEO of Microsoft AI. As you’re no doubt aware, the biggest story in tech right now is the spiraling debate about AI safety and regulation. It should come as no surprise that Mustafa has strong opinions on how AI should be built and regulated. Microsoft just published a […]",
+   "veiculo": "The Verge",
+   "id": "i34"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "AI is feared globally as the destroyer of jobs",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/996775/ai-is-feared-globally-as-the-destroyer-of-jobs",
+   "data": "2026-09-17T14:00:00Z",
+   "trecho": "Pew Research has published a new global survey that sheds light on how people view AI, including its impact on jobs, life in general, and income inequality. The survey questioned 42,151 people across 37 countries from February 8th to May 13th - well ahead of recent apocalyptic warnings. A majority sees AI as a threat…",
+   "veiculo": "The Verge",
+   "id": "i35"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Rival AI agents, Instinct and Meta’s Muse, both add the ability to make calls",
+   "link": "https://techcrunch.com/2026/09/17/rival-ai-agents-instinct-and-metas-muse-both-add-the-ability-to-make-calls/",
+   "data": "2026-09-17T13:46:16Z",
+   "trecho": "People can use these assistants to make restaurant reservations and cancel subscriptions.",
+   "veiculo": "TechCrunch",
+   "id": "i36"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Google, Nvidia, and Anthropic want Emerald AI to find space on the grid for more data centers",
+   "link": "https://techcrunch.com/2026/09/17/google-nvidia-and-anthropic-want-emerald-ai-to-find-space-on-the-grid-for-more-data-centers/",
+   "data": "2026-09-17T13:38:33Z",
+   "trecho": "A new coalition that includes Google, Nvidia, Anthropic, and Emerald AI wants to find 100 GW of grid capacity for new data centers.",
+   "veiculo": "TechCrunch",
+   "id": "i37"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Inside the suddenly explosive world of AI safety",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/996563/ai-safety-research-metr-redwood-openai-anthropic",
+   "data": "2026-09-17T11:30:00Z",
+   "trecho": "On a sunny July day in Berkeley, California, the country's top AI safety researchers gathered on an unmarked floor of an unmarked building. They had come together for a \"war room\" to dissect the high-profile cybersecurity incident that had rocked the AI industry hours earlier. An unreleased OpenAI model had gone…",
+   "veiculo": "The Verge",
+   "id": "i38"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Bend – A language that blocks AI mistakes via proof, on CPU and GPU",
+   "link": "https://bend-lang.com/",
+   "data": "2026-09-17T20:36:13Z",
+   "trecho": "",
+   "veiculo": "bend-lang.com",
+   "pontos": 533,
+   "discussao": "https://news.ycombinator.com/item?id=49746163",
+   "id": "i39"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "How GLM built its own inference infrastructure",
+   "link": "https://z.ai/blog/glm-built-its-inference-infrastructure",
+   "data": "2026-09-17T08:27:09Z",
+   "trecho": "",
+   "veiculo": "z.ai",
+   "pontos": 399,
+   "discussao": "https://news.ycombinator.com/item?id=49737922",
+   "id": "i40"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "A heap overflow and SSO misconfiguration to compromise OpenAI internal repos",
+   "link": "https://www.hacktron.ai/blog/hacking-openai",
+   "data": "2026-09-18T02:47:24Z",
+   "trecho": "",
+   "veiculo": "hacktron.ai",
+   "pontos": 390,
+   "discussao": "https://news.ycombinator.com/item?id=49749656",
+   "id": "i41"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI safety is mostly a sex cult",
+   "link": "https://skywriter.blue/@segyges.bsky.social/3mvom4b4dn22q",
+   "data": "2026-09-17T08:36:37Z",
+   "trecho": "",
+   "veiculo": "skywriter.blue",
+   "pontos": 302,
+   "discussao": "https://news.ycombinator.com/item?id=49737985",
+   "id": "i42"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Qwen 3.8 Omni Flash",
+   "link": "https://qwen.ai/blog?id=qwen3.8-omni-flash",
+   "data": "2026-09-17T23:05:48Z",
+   "trecho": "",
+   "veiculo": "qwen.ai",
+   "pontos": 278,
+   "discussao": "https://news.ycombinator.com/item?id=49747925",
+   "id": "i43"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "How to Write with an LLM",
+   "link": "https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/",
+   "data": "2026-09-17T21:48:38Z",
+   "trecho": "",
+   "veiculo": "sockpuppet.org",
+   "pontos": 231,
+   "discussao": "https://news.ycombinator.com/item?id=49747070",
+   "id": "i44"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "I Don't Like LLMs",
+   "link": "https://martinfowler.com/articles/2026-dont-like-llms.html",
+   "data": "2026-09-17T13:57:07Z",
+   "trecho": "",
+   "veiculo": "martinfowler.com",
+   "pontos": 225,
+   "discussao": "https://news.ycombinator.com/item?id=49740834",
+   "id": "i45"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Show HN: Share your AI Setup, Learn from others",
+   "link": "https://mysetup.ai/",
+   "data": "2026-09-17T13:01:44Z",
+   "trecho": "",
+   "veiculo": "mysetup.ai",
+   "pontos": 223,
+   "discussao": "https://news.ycombinator.com/item?id=49740105",
+   "id": "i46"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Sex, AI, and the Apocalypse",
+   "link": "https://www.iankduncan.com/personal/2026-09-16-sex-ai-and-the-apocalypse/",
+   "data": "2026-09-17T21:15:52Z",
+   "trecho": "",
+   "veiculo": "iankduncan.com",
+   "pontos": 213,
+   "discussao": "https://news.ycombinator.com/item?id=49746654",
+   "id": "i47"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "ZCode, the GLM coding agent, silently uploads your Git history",
+   "link": "https://tokenstead.ai/guides/zcode-silent-git-history-upload",
+   "data": "2026-09-18T10:35:28Z",
+   "trecho": "",
+   "veiculo": "tokenstead.ai",
+   "pontos": 189,
+   "discussao": "https://news.ycombinator.com/item?id=49752422",
+   "id": "i48"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Infinite-Parameter LLMs: Generating and Adapting Weights from Live Data",
+   "link": "https://arxiv.org/abs/2609.18842",
+   "data": "2026-09-17T16:55:14Z",
+   "trecho": "",
+   "veiculo": "arXiv",
+   "pontos": 151,
+   "discussao": "https://news.ycombinator.com/item?id=49743483",
+   "id": "i49"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Artificial intelligence now beats some of the best human forecasters",
+   "link": "https://www.economist.com/science-and-technology/2026/09/16/artificial-intelligence-now-beats-some-of-the-best-human-forecasters",
+   "data": "2026-09-17T15:13:30Z",
+   "trecho": "",
+   "veiculo": "The Economist",
+   "pontos": 119,
+   "discussao": "https://news.ycombinator.com/item?id=49742021",
+   "id": "i50"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "LLM Classification Is Feature Engineering",
+   "link": "https://minimallysufficient.com/posts/llm-classification-is-feature-extraction/",
+   "data": "2026-09-17T15:40:17Z",
+   "trecho": "",
+   "veiculo": "minimallysufficient.com",
+   "pontos": 107,
+   "discussao": "https://news.ycombinator.com/item?id=49742437",
+   "id": "i51"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Shapelearn Qwen 3.8 27B (13.1 GB VRAM)",
+   "link": "https://byteshape.com/blogs/Qwen3.8-27B/",
+   "data": "2026-09-18T02:04:19Z",
+   "trecho": "",
+   "veiculo": "byteshape.com",
+   "pontos": 88,
+   "discussao": "https://news.ycombinator.com/item?id=49749393",
+   "id": "i52"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "I had Gemini train its own replacement for $9",
+   "link": "https://www.petervijeh.com/projects/reddit-ner",
+   "data": "2026-09-17T13:17:16Z",
+   "trecho": "",
+   "veiculo": "petervijeh.com",
+   "pontos": 87,
+   "discussao": "https://news.ycombinator.com/item?id=49740330",
+   "id": "i53"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "OpenAI vai avisar quando IAs agirem sem autorização",
+   "link": "https://tecnoblog.net/noticias/openai-vai-avisar-quando-ias-agirem-sem-autorizacao/",
+   "data": "2026-09-17T19:26:15Z",
+   "trecho": "Empresa vai investigar e divulgar casos de modelos que ocultem erros, acessem dados indevidamente ou burlem restrições. OpenAI já revelou seis incidentes. OpenAI vai avisar quando IAs agirem sem autorização",
+   "veiculo": "Tecnoblog",
+   "id": "i54"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Smart TV LG QNED 50″ fica quase R$ 1 mil mais barata com cupom",
+   "link": "https://tecnoblog.net/achados/smart-tv-lg-qned-50-fica-quase-r-1-mil-mais-barata-com-cupom/",
+   "data": "2026-09-17T17:00:21Z",
+   "trecho": "LG QNED70 traz painel 4K de 50\" com tecnologia Mini LED e IA que recomenda conteúdos; smart TV da LG sai 28% mais barata com cupom no Mercado Livre Smart TV LG QNED 50″ fica quase R$ 1 mil mais barata com cupom",
+   "veiculo": "Tecnoblog",
+   "id": "i55"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Expansão da IA pode provocar “tsunami” de lixo eletrônico, diz relatório",
+   "link": "https://tecnoblog.net/noticias/expansao-da-ia-pode-provocar-tsunami-de-lixo-eletronico-diz-relatorio/",
+   "data": "2026-09-17T13:26:54Z",
+   "trecho": "Organização afirma que corrida por data centers de inteligência artificial pode triplicar resíduos eletrônicos até 2050. Expansão da IA pode provocar “tsunami” de lixo eletrônico, diz relatório",
+   "veiculo": "Tecnoblog",
+   "id": "i56"
+  }
+ ]
+}
