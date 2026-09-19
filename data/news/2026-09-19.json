@@ -1,0 +1,272 @@
+{
+ "versao": 1,
+ "dia": "2026-09-19",
+ "gerado_em": "2026-09-19T11:57:52Z",
+ "fontes": {
+  "catalogo": [
+   "2026-09-12",
+   "2026-09-19"
+  ],
+  "trafego": "2026-09-18"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-09-19",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-09-18",
+  "lider_7d": "openai/gpt-5.6-luna-20260709",
+  "top10_7d": [
+   "openai/gpt-5.6-luna-20260709",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "tencent/hy4-preview-20260827",
+   "z-ai/glm-5.3-flash-20260826",
+   "deepseek/deepseek-v4-flash-20260731",
+   "xiaomi/mimo-v2.5-20260422",
+   "tencent/hy3-20260706",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "deepseek/deepseek-v4-flash-20260423",
+   "z-ai/glm-5.3-20260816"
+  ]
+ },
+ "principal": "novo:z-ai/glm-5.3-flashx-20260918",
+ "eventos": [
+  {
+   "tipo": "novo",
+   "slug": "z-ai/glm-5.3-flashx-20260918",
+   "id": "z-ai/glm-5.3-flashx",
+   "nome": "GLM 5.3 FlashX",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "criado": "2026-09-18",
+    "contexto": 1048576,
+    "preco_entrada": 0.37,
+    "preco_saida": 1.25,
+    "preco_misto": 0.59,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+video->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 13.56,
+     "share_gasto": 5.73,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 9.11,
+      "preco_misto": 0.1425
+     }
+    }
+   },
+   "relevancia": 45
+  },
+  {
+   "tipo": "preco",
+   "slug": "openai/gpt-oss-120b",
+   "id": "openai/gpt-oss-120b",
+   "nome": "gpt-oss-120b",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "de": 0.0702,
+    "para": 0.2625,
+    "variacao_pct": 273.7,
+    "entrada_de": 0.037,
+    "entrada_para": 0.15,
+    "saida_de": 0.17,
+    "saida_para": 0.6,
+    "desde": "2026-09-18"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.5,
+     "rank_7d": 30,
+     "pico_share": 5.596,
+     "semanas_com_volume": 58
+    },
+    "laboratorio": {
+     "share_tokens": 18.57,
+     "share_gasto": 27.25,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 11.92,
+      "preco_misto": 0.45
+     }
+    }
+   },
+   "relevancia": 42
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "google/gemini-2.5-flash-image",
+   "id": "google/gemini-2.5-flash-image",
+   "nome": "Nano Banana (Gemini 2.5 Flash Image)",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "data": "2027-03-15",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 5.53,
+     "share_gasto": 6.03,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.67,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "novo",
+   "slug": "prism-ml/ternary-bonsai-2-27b-20260918",
+   "id": "prism-ml/ternary-bonsai-2-27b",
+   "nome": "Ternary Bonsai 2 27B",
+   "lab": "Prism Ml",
+   "vendor": "prism-ml",
+   "dados": {
+    "criado": "2026-09-18",
+    "contexto": 262144,
+    "preco_entrada": 0.075,
+    "preco_saida": 0.5,
+    "preco_misto": 0.1812,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "google/gemini-2.5-flash-lite",
+   "id": "google/gemini-2.5-flash-lite",
+   "nome": "Gemini 2.5 Flash Lite",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "data": "2026-10-20",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.55,
+     "rank_7d": 28,
+     "pico_share": 3.948,
+     "semanas_com_volume": 60
+    },
+    "laboratorio": {
+     "share_tokens": 5.53,
+     "share_gasto": 6.03,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.67,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 38
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "google/gemini-2.5-flash",
+   "id": "google/gemini-2.5-flash",
+   "nome": "Gemini 2.5 Flash",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "data": "2026-10-20",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.38,
+     "rank_7d": 36,
+     "pico_share": 10.546,
+     "semanas_com_volume": 64
+    },
+    "laboratorio": {
+     "share_tokens": 5.53,
+     "share_gasto": 6.03,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.67,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 37
+  },
+  {
+   "tipo": "estreia",
+   "slug": "typesafe/jev-1.13-20260917",
+   "id": null,
+   "nome": "jev-1.13",
+   "lab": "Typesafe",
+   "vendor": "typesafe",
+   "dados": {
+    "primeiro_dia": "2026-09-18",
+    "share_7d": 0.07,
+    "lancamento": null,
+    "dias_desde_catalogo": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.07,
+     "rank_7d": 53,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "google/gemini-2.5-pro",
+   "id": "google/gemini-2.5-pro",
+   "nome": "Gemini 2.5 Pro",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "data": "2026-10-20",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 7.132,
+     "semanas_com_volume": 48
+    },
+    "laboratorio": {
+     "share_tokens": 5.53,
+     "share_gasto": 6.03,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.67,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 35
+  }
+ ]
+}
