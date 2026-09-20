@@ -1,0 +1,609 @@
+{
+ "versao": 1,
+ "dia": "2026-09-20",
+ "gerado_em": "2026-09-20T12:24:38Z",
+ "fontes": {
+  "catalogo": [
+   "2026-09-13",
+   "2026-09-20"
+  ],
+  "trafego": "2026-09-19"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-09-20",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-09-19",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20260910",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "openai/gpt-5.6-luna-20260709",
+   "tencent/hy4-preview-20260827",
+   "deepseek/deepseek-v4-flash-20260731",
+   "xiaomi/mimo-v2.5-20260422",
+   "tencent/hy3-20260706",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "deepseek/deepseek-v4-flash-20260423",
+   "z-ai/glm-5.3-20260816"
+  ]
+ },
+ "principal": "lider:deepseek/deepseek-v4.1-flash-20260910",
+ "eventos": [
+  {
+   "tipo": "lider",
+   "slug": "deepseek/deepseek-v4.1-flash-20260910",
+   "id": null,
+   "nome": "DeepSeek V4.1 Flash",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "share": 11.36,
+    "anterior_slug": "openai/gpt-5.6-luna-20260709",
+    "anterior_nome": "GPT-5.6 Luna",
+    "anterior_share": 9.69
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 11.36,
+     "rank_7d": 1,
+     "pico_share": 3.895,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 20.24,
+     "share_gasto": 3.49
+    }
+   },
+   "relevancia": 90
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-flash-20260731",
+   "id": "deepseek/deepseek-v4-flash-0731",
+   "nome": "DeepSeek V4 Flash 0731",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.075,
+    "para": 0.05,
+    "variacao_pct": -33.3,
+    "entrada_de": 0.06,
+    "entrada_para": 0.04,
+    "saida_de": 0.12,
+    "saida_para": 0.08,
+    "desde": "2026-09-19"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 8.46,
+     "rank_7d": 5,
+     "pico_share": 14.84,
+     "semanas_com_volume": 7
+    },
+    "laboratorio": {
+     "share_tokens": 20.24,
+     "share_gasto": 3.49,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 11.36,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 52
+  },
+  {
+   "tipo": "preco",
+   "slug": "openai/gpt-transcribe-20260805",
+   "id": "openai/gpt-transcribe",
+   "nome": "GPT Transcribe",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "de": 3375.0,
+    "para": 56.25,
+    "variacao_pct": -98.3,
+    "entrada_de": 4500.0,
+    "entrada_para": 75.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-09-19"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 18.57,
+     "share_gasto": 27.2,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 9.69,
+      "preco_misto": 0.45
+     }
+    }
+   },
+   "relevancia": 51
+  },
+  {
+   "tipo": "preco",
+   "slug": "openai/whisper-1",
+   "id": "openai/whisper-1",
+   "nome": "Whisper 1",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "de": 4500.0,
+    "para": 75.0,
+    "variacao_pct": -98.3,
+    "entrada_de": 6000.0,
+    "entrada_para": 100.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-09-19"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 18.57,
+     "share_gasto": 27.2,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 9.69,
+      "preco_misto": 0.45
+     }
+    }
+   },
+   "relevancia": 51
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/chirp-3",
+   "id": "google/chirp-3",
+   "nome": "Chirp 3",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 12000.0,
+    "para": 200.0,
+    "variacao_pct": -98.3,
+    "entrada_de": 16000.0,
+    "entrada_para": 266.6667,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-09-19"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 5.53,
+     "share_gasto": 6.02,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.67,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 43
+  },
+  {
+   "tipo": "preco",
+   "slug": "nvidia/parakeet-tdt-0.6b-v3",
+   "id": "nvidia/parakeet-tdt-0.6b-v3",
+   "nome": "Parakeet TDT 0.6B v3",
+   "lab": "NVIDIA",
+   "vendor": "nvidia",
+   "dados": {
+    "de": 1125.0,
+    "para": 18.75,
+    "variacao_pct": -98.3,
+    "entrada_de": 1500.0,
+    "entrada_para": 25.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-09-19"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 3.85,
+     "share_gasto": 0.0,
+     "lider": {
+      "slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+      "nome": "Nemotron 3 Ultra",
+      "share_7d": 3.26,
+      "preco_misto": 1.05
+     }
+    }
+   },
+   "relevancia": 42
+  },
+  {
+   "tipo": "preco",
+   "slug": "meta/muse-voice-transcribe-1.0-20260903",
+   "id": "meta/muse-voice-transcribe-1.0",
+   "nome": "Muse Voice Transcribe 1.0",
+   "lab": "Meta",
+   "vendor": "meta",
+   "dados": {
+    "de": 135000.0,
+    "para": 37.5,
+    "variacao_pct": -100.0,
+    "entrada_de": 180000.0,
+    "entrada_para": 50.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-09-19"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.86,
+     "share_gasto": 0.62,
+     "lider": {
+      "slug": "meta/muse-spark-1.3-contributor-20260902",
+      "nome": "Muse Spark 1.3 Contributor",
+      "share_7d": 1.68,
+      "preco_misto": 0.125
+     }
+    }
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepgram/nova-3-20260714",
+   "id": "deepgram/nova-3",
+   "nome": "Nova-3",
+   "lab": "Deepgram",
+   "vendor": "deepgram",
+   "dados": {
+    "de": 3225.0,
+    "para": 53.75,
+    "variacao_pct": -98.3,
+    "entrada_de": 4300.0,
+    "entrada_para": 71.6667,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-09-19"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "mistralai/voxtral-mini-transcribe-2602",
+   "id": "mistralai/voxtral-mini-transcribe",
+   "nome": "Voxtral Mini Transcribe",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "de": 2250.0,
+    "para": 37.5,
+    "variacao_pct": -98.3,
+    "entrada_de": 3000.0,
+    "entrada_para": 50.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-09-19"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.11,
+      "preco_misto": 0.0217
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "x-ai/grok-stt-20260723",
+   "id": "x-ai/grok-stt-1.0",
+   "nome": "Grok STT 1.0",
+   "lab": "xAI",
+   "vendor": "x-ai",
+   "dados": {
+    "de": 75000.0,
+    "para": 20.8333,
+    "variacao_pct": -100.0,
+    "entrada_de": 100000.0,
+    "entrada_para": 27.7778,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-09-19"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "x-ai/grok-4.6-20260810",
+      "nome": "Grok 4.6",
+      "share_7d": 0.24,
+      "preco_misto": 3.0
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "deepseek/deepseek-v3.2-20251201",
+   "id": "deepseek/deepseek-v3.2",
+   "nome": "DeepSeek V3.2",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "data": "2026-09-28",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.32,
+     "rank_7d": 40,
+     "pico_share": 6.779,
+     "semanas_com_volume": 41
+    },
+    "laboratorio": {
+     "share_tokens": 20.24,
+     "share_gasto": 3.49,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 11.36,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 37
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "baidu/ernie-4.5-vl-424b-a47b",
+   "id": "baidu/ernie-4.5-vl-424b-a47b",
+   "nome": "ERNIE 4.5 VL 424B A47B",
+   "lab": "Baidu",
+   "vendor": "baidu",
+   "dados": {
+    "data": "2026-10-08",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "deepseek/deepseek-r1-distill-llama-70b",
+   "id": "deepseek/deepseek-r1-distill-llama-70b",
+   "nome": "R1 Distill Llama 70B",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "data": "2026-09-28",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 1.118,
+     "semanas_com_volume": 23
+    },
+    "laboratorio": {
+     "share_tokens": 20.24,
+     "share_gasto": 3.49,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 11.36,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "deepseek/deepseek-v3.1-terminus",
+   "id": "deepseek/deepseek-v3.1-terminus",
+   "nome": "DeepSeek V3.1 Terminus",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "data": "2026-09-28",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.764,
+     "semanas_com_volume": 19
+    },
+    "laboratorio": {
+     "share_tokens": 20.24,
+     "share_gasto": 3.49,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 11.36,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "deepseek/deepseek-v3.2-exp",
+   "id": "deepseek/deepseek-v3.2-exp",
+   "nome": "DeepSeek V3.2 Exp",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "data": "2026-09-28",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 1.325,
+     "semanas_com_volume": 21
+    },
+    "laboratorio": {
+     "share_tokens": 20.24,
+     "share_gasto": 3.49,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 11.36,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "minimax/minimax-m2.1",
+   "id": "minimax/minimax-m2.1",
+   "nome": "MiniMax M2.1",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "data": "2026-10-08",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 4.506,
+     "semanas_com_volume": 13
+    },
+    "laboratorio": {
+     "share_tokens": 1.81,
+     "share_gasto": 0.65,
+     "lider": {
+      "slug": "minimax/minimax-m3-20260531",
+      "nome": "MiniMax M3",
+      "share_7d": 1.15,
+      "preco_misto": 0.525
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "id": "nvidia/nemotron-3-ultra-550b-a55b",
+   "nome": "Nemotron 3 Ultra",
+   "lab": "NVIDIA",
+   "vendor": "nvidia",
+   "dados": {
+    "de": 1.25,
+    "para": 1.05,
+    "variacao_pct": -16.0,
+    "entrada_de": 0.625,
+    "entrada_para": 0.6,
+    "saida_de": 3.125,
+    "saida_para": 2.4,
+    "desde": "2026-09-19"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 3.26,
+     "rank_7d": 8,
+     "pico_share": 5.084,
+     "semanas_com_volume": 15
+    },
+    "laboratorio": {
+     "share_tokens": 3.85,
+     "share_gasto": 0.0
+    }
+   },
+   "relevancia": 33
+  },
+  {
+   "tipo": "preco",
+   "slug": "moonshotai/kimi-k3-20260715",
+   "id": "moonshotai/kimi-k3",
+   "nome": "Kimi K3",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "de": 5.3068,
+    "para": 3.4,
+    "variacao_pct": -35.9,
+    "entrada_de": 2.6481,
+    "entrada_para": 1.7,
+    "saida_de": 13.2827,
+    "saida_para": 8.5,
+    "desde": "2026-09-19"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.13,
+     "rank_7d": 19,
+     "pico_share": 2.507,
+     "semanas_com_volume": 9
+    },
+    "laboratorio": {
+     "share_tokens": 1.24,
+     "share_gasto": 4.27
+    }
+   },
+   "relevancia": 31
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3-vl-30b-a3b-instruct",
+   "id": "qwen/qwen3-vl-30b-a3b-instruct",
+   "nome": "Qwen3 VL 30B A3B Instruct",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.2275,
+    "para": 0.325,
+    "variacao_pct": 42.9,
+    "entrada_de": 0.13,
+    "entrada_para": 0.2,
+    "saida_de": 0.52,
+    "saida_para": 0.7,
+    "desde": "2026-09-19"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.37,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 29
+  }
+ ]
+}
