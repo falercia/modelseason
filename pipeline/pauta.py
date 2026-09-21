@@ -13,6 +13,10 @@ Tres etapas, e so a ultima escreve texto:
 O conteudo das fontes e dado, nunca instrucao: os prompts dizem isso e a saida
 do modelo e validada campo a campo.
 
+Destaques: data/pauta/destaques.json lista temas que o editor esta acompanhando
+({termo, ate, bonus}); assunto que cita o termo ganha o bonus na nota e sai marcado.
+E ordem, nao furo: as travas de categoria, repeticao e numero continuam valendo.
+
 Nada repetido: link ja publicado nas ultimas DIAS_MEMORIA pautas sai antes da IA,
 e assunto que a IA reconhece como o mesmo fato de um ja publicado, sem desdobramento
 novo, vai para os descartados com o motivo.
@@ -632,6 +636,36 @@ def norm_link(u):
     return re.sub(r"[?#].*$", "", u or "").rstrip("/").lower()
 
 
+DESTAQUES = DESTINO / "destaques.json"
+BONUS_DESTAQUE = 6
+
+
+def destaques(dia, arquivo=DESTAQUES):
+    """Temas que o editor esta acompanhando: lista de {termo, ate, bonus?} em data/pauta/destaques.json.
+    Termo (sem distinguir maiusculas, palavra inteira) encontrado no titulo ou no trecho de um item soma o
+    bonus na nota do assunto, e o assunto sai marcado como destaque no JSON e no PR. Vale ate a data 'ate',
+    inclusive. E um empurrao na ordem, nao um furo nas travas: categoria, repeticao e numeros seguem valendo."""
+    if not Path(arquivo).exists():
+        return []
+    out = []
+    for d in json.loads(Path(arquivo).read_text()):
+        termo = (d.get("termo") or "").strip()
+        if not termo or (d.get("ate") and d["ate"] < dia):
+            continue
+        out.append({"termo": termo, "bonus": float(d.get("bonus", BONUS_DESTAQUE)),
+                    "re": re.compile(r"(?<!\w)" + re.escape(termo) + r"(?!\w)", re.I)})
+    return out
+
+
+def destaque_de(assunto, itens_por_id, lista):
+    for d in lista:
+        for i in assunto["itens"]:
+            it = itens_por_id[i]
+            if d["re"].search(it["titulo"]) or d["re"].search(it.get("trecho") or ""):
+                return d
+    return None
+
+
 def publicados(dia, pasta=DESTINO, n=DIAS_MEMORIA):
     """Assuntos publicados nas ultimas n pautas (so as que passaram por merge, que sao as que estao na pasta)."""
     out = []
@@ -646,7 +680,7 @@ def publicados(dia, pasta=DESTINO, n=DIAS_MEMORIA):
     return out
 
 
-def montar(dia, itens, status, claude, contexto, agora, historico=None, janela=None):
+def montar(dia, itens, status, claude, contexto, agora, historico=None, janela=None, destaques=None):
     """historico: assuntos ja publicados (publicados()). Evita noticia repetida em duas camadas:
     link ja publicado sai antes da IA; assunto que a IA reconhece como ja publicado, sem fonte nova, vai para descartados."""
     historico = historico or []
@@ -673,6 +707,11 @@ def montar(dia, itens, status, claude, contexto, agora, historico=None, janela=N
             # o laboratorio declarado pela propria fonte vale mesmo que o modelo esqueca
             g["labs"] = sorted(set(g["labs"]) | {por_id[i]["lab"] for i in g["itens"] if por_id[i].get("lab") in LAB})
             g["nota"] = nota(g, por_id, share_labs)
+            d = destaque_de(g, por_id, destaques or [])
+            if d:
+                g["nota"] = round(g["nota"] + d["bonus"], 2)
+                g["destaque"] = d["termo"]
+                log(f"  destaque '{d['termo']}': +{d['bonus']:g} em {por_id[g['itens'][0]]['titulo'][:60]}")
         grupos.sort(key=lambda g: (-g["nota"], g["itens"][0]))
         for n, g in enumerate(grupos, 1):
             g["id"] = f"a{n}"
@@ -689,7 +728,8 @@ def montar(dia, itens, status, claude, contexto, agora, historico=None, janela=N
             fontes.sort(key=lambda f: f["data"] or "9999")
             datas = [f["data"] for f in fontes if f["data"]]
             a = {"id": g["id"], "categoria": g["categoria"], "nota": g["nota"], "labs": g["labs"],
-                 "publicado_em": datas[0] if datas else None, "fontes": fontes}
+                 "publicado_em": datas[0] if datas else None, "fontes": fontes,
+                 **({"destaque": g["destaque"]} if g.get("destaque") else {})}
             if g["id"] in textos:
                 a.update(textos[g["id"]])
                 a["cruzamento"] = cruzar_labs(g["labs"], contexto)
@@ -713,7 +753,8 @@ def corpo_pr(p):
     if not p["assuntos"]:
         L.append("Nenhum assunto passou do corte hoje.")
     for a in p["assuntos"]:
-        L += [f"### {a['pt']['titulo']}", f"`{a['categoria']}` · nota {a['nota']}", "", a["pt"]["resumo"], "",
+        L += [f"### {a['pt']['titulo']}", f"`{a['categoria']}` · nota {a['nota']}"
+              + (f" · destaque `{a['destaque']}`" if a.get("destaque") else ""), "", a["pt"]["resumo"], "",
               f"> EN: **{a['en']['titulo']}**. {a['en']['resumo']}", ""]
         L += [f"- {(f.get('data') or '')[:16].replace('T', ' ')} UTC · [{f['veiculo']}]({f['link']}): {f['titulo']}" for f in a["fontes"]]
         L.append("")
@@ -766,7 +807,10 @@ def main(argv=None):
     ctx = Contexto(ler_json(DATA / "web" / "modelos.json"), None, ler_json(ROOT / "public" / "data.json"))
     hist = publicados(dia)
     log(f"memória: {len(hist)} assunto(s) publicados nas últimas pautas")
-    p = montar(dia, itens, status, Claude(chave), ctx, agora, historico=hist, janela=janela)
+    dest = destaques(dia)
+    if dest:
+        log("destaques ativos: " + ", ".join(d["termo"] for d in dest))
+    p = montar(dia, itens, status, Claude(chave), ctx, agora, historico=hist, janela=janela, destaques=dest)
     DESTINO.mkdir(parents=True, exist_ok=True)
     arq.write_text(json.dumps(p, ensure_ascii=False, indent=1) + "\n")
     print(f"{arq.name}: {len(p['assuntos'])} assunto(s) publicados, {len(p['descartados'])} descartados, "

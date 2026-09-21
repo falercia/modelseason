@@ -260,6 +260,46 @@ ok("repetido: id inventado pela IA e ignorado", any(a["fontes"][0]["link"] == "h
 ok("corpo do PR mostra o repetido", "já publicado em 2026-09-15" in P.corpo_pr(pr))
 
 ok("numeros: milhar e decimal", P.numeros("US$ 2.000 e 1,5% e 3.5") == {2000.0, 1.5, 3.5})
+
+# ---- destaques do editor
+with tempfile.TemporaryDirectory() as tmp:
+    arq = Path(tmp) / "destaques.json"
+    arq.write_text(json.dumps([{"termo": "Gemini", "ate": "2026-09-30"}, {"termo": "vencido", "ate": "2026-09-01", "bonus": 50},
+                               {"termo": "  ", "ate": "2026-12-01"}]))
+    dest = P.destaques("2026-09-16", arq)
+    ok("destaques: so termo ativo e nao vazio, com bonus padrao", [d["termo"] for d in dest] == ["Gemini"] and dest[0]["bonus"] == P.BONUS_DESTAQUE, dest)
+    ok("destaques: termo vale no ultimo dia, inclusive", len(P.destaques("2026-09-30", arq)) == 1 and not P.destaques("2026-10-01", arq))
+    ok("destaques: palavra inteira, sem distinguir maiusculas", dest[0]["re"].search("o GEMINI 3.9") and not dest[0]["re"].search("geminis"))
+    ok("destaques: arquivo ausente e lista vazia", P.destaques("2026-09-16", Path(tmp) / "nao-existe.json") == [])
+
+
+class FalsoDestaque(Falso):
+    def json(self, sistema, usuario, max_tokens=0):
+        self.chamadas.append((sistema, usuario))
+        if "agrupar os itens" in sistema:
+            return {"assuntos": [
+                {"itens": [i_tm], "categoria": "mercado", "labs": ["openai"]},
+                {"itens": [i_gem], "categoria": "lancamento", "labs": []},
+            ]}
+        pedido = json.loads(usuario.split("Assuntos:\n", 1)[1])
+        return {"assuntos": [
+            texto(a["id"], ("Google lança o Gemini 3.9", "Segundo o Google, é um modelo novo."),
+                  ("Google launches Gemini 3.9", "According to Google, it is a new model."))
+            if a["fontes"][0]["veiculo"] != "CNBC" else
+            texto(a["id"], ("Ações de IA caem", "Segundo a CNBC, as ações caíram."), ("AI stocks fall", "According to CNBC, stocks fell."))
+            for a in pedido]}
+
+
+sem = P.montar("2026-09-16", [dict(x) for x in itens], status, FalsoDestaque([]), ctx, AGORA)
+com = P.montar("2026-09-16", [dict(x) for x in itens], status, FalsoDestaque([]), ctx, AGORA,
+               destaques=[{"termo": "gemini", "bonus": 20.0, "re": P.re.compile(r"(?<!\w)gemini(?!\w)", P.re.I)}])
+ok("destaque: sem ele o mercado com CNBC e HN lidera", sem["assuntos"][0]["fontes"][0]["veiculo"] == "CNBC")
+gd = com["assuntos"][0]
+ok("destaque: com ele o assunto citado sobe para primeiro, com o bonus na nota e marcado",
+   gd["fontes"][0]["link"] == "https://blog.google/gemini-39" and gd.get("destaque") == "gemini"
+   and gd["nota"] == round(sem["assuntos"][1]["nota"] + 20, 2), (gd.get("destaque"), gd["nota"], sem["assuntos"][1]["nota"]))
+ok("destaque: os outros assuntos nao ganham o campo", "destaque" not in com["assuntos"][1])
+ok("destaque: corpo do PR mostra", "destaque `gemini`" in P.corpo_pr(com))
 ok("numeros: 4% na fonte aceita 4 no texto", P.numeros_ok("caiu 4%", "down 4%")[0])
 ok("numeros: 5 fora da fonte recusa", not P.numeros_ok("caiu 5%", "down 4%")[0])
 

@@ -6,6 +6,10 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ## [Não lançado]
 
+### Adicionado
+
+- **Destaques do editor na pauta**: `data/pauta/destaques.json` lista temas em acompanhamento (`termo`, `ate`, `bonus`). Assunto que cita o termo soma o bônus na nota e sai com `destaque` no JSON e no corpo do PR. Motivo: a nota premia laboratório com tráfego no roteador, e um entrante sem volume, como o Jev da TypeSafe em 18/09, ficava fora dos três primeiros mesmo sendo a notícia mais relevante da janela.
+
 ### Alterado
 
 - **Pauta na segunda, na quarta e na sexta**, em vez de todo dia. A coleta passa a cobrir o período desde a edição anterior (54 horas na quarta e na sexta, 78 na segunda, `--janela` para forçar outro valor), e a edição nova fecha a anterior que ficou sem merge, no lugar da regra de 48 horas: com duas pautas abertas ao mesmo tempo, a segunda repetia a primeira, porque o filtro de repetição só lê pautas já mescladas.
