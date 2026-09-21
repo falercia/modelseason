@@ -8,7 +8,7 @@ indicadores:
   - "Daily 7- and 30-day windows"
   - "Signals and extrapolation"
 comoLer: >-
-  Compares the latest task snapshot with the one from seven days earlier. Each snapshot covers seven days, so only two snapshots taken seven days apart measure non-overlapping windows. The card points to the task that gained the most token share between them and the model that advanced most within that task. Until the archive has enough snapshots, the card shows how many are still needed.
+  Compares the latest task snapshot with the one from seven days earlier. Each snapshot covers seven days, so only two snapshots taken seven days apart measure non-overlapping windows. The card points to the task that gained the most token share between them the model that advanced most within that task and, for contrast, the task that lost the most. The pipeline computes it between the two archived snapshots, and a task that appears only in the new snapshot counts from zero. Until the archive has enough snapshots, the card shows how many are still needed.
 perguntaQueResponde: >-
   What is traffic being used for more this week than last, and which model is capturing that new demand?
 oQueNaoMostra: >-

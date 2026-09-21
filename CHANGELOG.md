@@ -8,6 +8,8 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ### Adicionado
 
+- **Sinais de finalidade calculados**: `build_web.py` compara a foto de tarefas mais recente com a mais recente a `janela_dias` ou mais de distância (`foto_tarefas_anterior`, `comparar_tarefas`) e publica `mercado.tarefas.comparacao`: tarefa que mais ganhou e mais perdeu share de tokens, em pontos percentuais, e o modelo que mais avançou dentro da que ganhou. O cartão da seção 14 mostra a comparação e só volta ao estado de espera se o arquivo encurtar. O contador de fotos deixou de passar do total necessário ("11 de 8 fotos").
+
 - **Destaques do editor na pauta**: `data/pauta/destaques.json` lista temas em acompanhamento (`termo`, `ate`, `bonus`). Assunto que cita o termo soma o bônus na nota e sai com `destaque` no JSON e no corpo do PR. Motivo: a nota premia laboratório com tráfego no roteador, e um entrante sem volume, como o Jev da TypeSafe em 18/09, ficava fora dos três primeiros mesmo sendo a notícia mais relevante da janela.
 
 ### Alterado

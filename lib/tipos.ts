@@ -36,12 +36,19 @@ export interface Agora {
   lideres: Lider[];
 }
 export interface AppLinha { rank: number; app_id: number; nome: string; T: number; requisicoes: number | null }
+export interface TarefaDelta { tag: string; nome: string; nome_fonte: string; delta: number; agora: number; antes: number }
 export interface Mercado {
   tarefas?: {
     as_of: string; janela_dias: number; fotos_arquivadas: number;
     macro: { key: string; nome: string; token_share: number; usage_share: number }[];
     classificacoes: { tag: string; nome: string; nome_fonte: string; macro: string; token_share: number; usage_share: number;
       modelos: { id: string; slug: string; nome: string; lab: string; token_share: number }[] }[];
+    /** Foto de hoje contra a mais recente com janela_dias ou mais de distância, calculada pelo pipeline. */
+    comparacao?: {
+      base: string; dias: number;
+      ganhou: TarefaDelta & { modelo?: { slug: string; nome: string; lab: string; delta: number; agora: number } };
+      perdeu: TarefaDelta;
+    };
   };
   apps?: {
     dia: string; geral: AppLinha[]; tendencia: AppLinha[]; tokens_top100_T: number;

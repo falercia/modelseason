@@ -8,7 +8,7 @@ indicadores:
   - "Janelas diárias de 7 e 30 dias"
   - "Sinais e extrapolação"
 comoLer: >-
-  Compara a foto de tarefas mais recente com a foto de sete dias antes. Cada foto cobre sete dias, então só duas fotos separadas por sete dias medem janelas que não se sobrepõem. O cartão aponta a tarefa que mais ganhou share de tokens entre elas e o modelo que mais avançou dentro dessa tarefa. Enquanto o arquivo não tem fotos suficientes, o cartão mostra quantas faltam.
+  Compara a foto de tarefas mais recente com a foto de sete dias antes. Cada foto cobre sete dias, então só duas fotos separadas por sete dias medem janelas que não se sobrepõem. O cartão aponta a tarefa que mais ganhou share de tokens entre elas o modelo que mais avançou dentro dessa tarefa e, para contraste, a tarefa que mais perdeu. A conta é feita pelo pipeline entre as duas fotos arquivadas, e tarefa que aparece só na foto nova conta a partir de zero. Enquanto o arquivo não tem fotos suficientes, o cartão mostra quantas faltam.
 perguntaQueResponde: >-
   Para que o tráfego está sendo usado a mais esta semana do que na anterior, e qual modelo está capturando essa demanda nova?
 oQueNaoMostra: >-

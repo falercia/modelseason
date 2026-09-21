@@ -16,6 +16,7 @@ Regras que valem para todo numero daqui:
 
 Uso: python pipeline/build_web.py
 """
+import datetime as dt
 import gzip
 import json
 import math
@@ -457,6 +458,52 @@ def construir_lideres(agora, cat):
 
 # ------------------------------------------------------------------ mercado (fontes sem historico)
 
+def foto_tarefas_anterior(as_of, janela, pasta=None):
+    """A foto de tarefas mais recente com pelo menos `janela` dias de distancia da atual,
+    para comparar dois periodos sem sobreposicao. None se o arquivo ainda nao chegou la."""
+    pasta = pasta or (DATA / "tasks")
+    limite = (dt.date.fromisoformat(as_of) - dt.timedelta(days=janela)).isoformat()
+    cands = sorted(p for p in pasta.glob("????-??-??*.json.gz") if p.name[:10] <= limite)
+    if not cands:
+        return None
+    arq = cands[-1]
+    return json.loads(gzip.decompress(arq.read_bytes()))["requests"][0]["response"]["data"]
+
+
+def comparar_tarefas(atual, anterior, cat):
+    """Tarefa que mais ganhou e que mais perdeu share de tokens entre duas fotos (pontos
+    percentuais), e o modelo que mais avancou dentro da que ganhou. So aritmetica entre
+    as duas fotos: tarefa que existe numa e nao na outra conta a partir de zero."""
+    antes = {c["tag"]: c for c in anterior["classifications"]}
+    deltas = []
+    for c in atual["classifications"]:
+        a = antes.get(c["tag"])
+        deltas.append((c["tag"], 100 * (c["token_share"] - (a["token_share"] if a else 0)), c, a))
+    if not deltas:
+        return None
+    deltas.sort(key=lambda x: -x[1])
+    def tarefa(tag, delta, c, a):
+        return {"tag": tag, "nome": TAREFA_PT.get(tag, c["display_name"]), "nome_fonte": c["display_name"],
+                "delta": r(delta, 2), "agora": r(100 * c["token_share"], 2), "antes": r(100 * a["token_share"], 2) if a else 0.0}
+    g_tag, g_delta, g_c, g_a = deltas[0]
+    p_tag, p_delta, p_c, p_a = deltas[-1]
+    ganhou = tarefa(g_tag, g_delta, g_c, g_a)
+    antes_m = {m["id"].split(":")[0]: m["tag_token_share"] for m in (g_a or {}).get("models") or []}
+    melhor = None
+    for m in g_c.get("models") or []:
+        base = m["id"].split(":")[0]
+        d = 100 * (m["tag_token_share"] - antes_m.get(base, 0))
+        if melhor is None or d > melhor[0]:
+            melhor = (d, base, m["tag_token_share"])
+    if melhor:
+        d, base, share = melhor
+        slug = next((s for s, row in cat.iterrows() if row.get("model_id") == base), base)
+        ganhou["modelo"] = {"slug": slug, "nome": nome_curto(slug, cat), "lab": lab_de(slug),
+                            "delta": r(d, 2), "agora": r(100 * share, 1)}
+    return {"base": anterior["as_of"], "dias": (dt.date.fromisoformat(atual["as_of"]) - dt.date.fromisoformat(anterior["as_of"])).days,
+            "ganhou": ganhou, "perdeu": tarefa(p_tag, p_delta, p_c, p_a)}
+
+
 def construir_mercado(cat):
     out = {}
     t = ler_snapshot("tasks")
@@ -483,6 +530,9 @@ def construir_mercado(cat):
             "classificacoes": cls,
             "fotos_arquivadas": len(list((DATA / "tasks").glob("*.json.gz"))),
         }
+        anterior = foto_tarefas_anterior(d["as_of"], d["window_days"])
+        if anterior:
+            out["tarefas"]["comparacao"] = comparar_tarefas(d, anterior, cat)
     a = ler_snapshot("apps")
     if a:
         reqs = a["requests"]

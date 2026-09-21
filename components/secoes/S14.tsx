@@ -3,8 +3,8 @@
  * Seção 14: sinais da temporada. Achados por regra e extrapolação condicional
  * vêm do motor (R.sinais) como tipo e números; a frase é montada aqui, em cada
  * idioma. Os dois respondem à janela, ao agrupamento e ao filtro. O cartão de
- * finalidade depende do arquivo diário de tarefas e mostra, sem número
- * inventado, quanto falta para a primeira comparação.
+ * finalidade mostra a comparação de duas fotos de tarefas calculada pelo pipeline
+ * (mercado.tarefas.comparacao) e, enquanto ela não existe, quanto falta no arquivo.
  */
 import Link from 'next/link';
 import type { ReactNode } from 'react';
@@ -87,7 +87,7 @@ const ROT_PROJ: Record<IdProjecao, Texto> = {
 };
 
 function Finalidade({ M }: { M: Mercado }) {
-  const { t, f, tarefa } = useIdioma();
+  const { t, f, tarefa, modelo } = useIdioma();
   const T = M.tarefas;
   if (!T) {
     return <Cartao id="sinais-finalidade" novo><p className="vazio">{t({
@@ -103,6 +103,50 @@ function Finalidade({ M }: { M: Mercado }) {
   const quando = new Date(T.as_of + 'T00:00:00');
   quando.setDate(quando.getDate() + faltam);
   const lider = [...T.classificacoes].sort((a, b) => b.token_share - a.token_share)[0];
+  const C = T.comparacao;
+  if (C) {
+    const m = C.ganhou.modelo;
+    const nomeT = (x: { tag: string; nome: string; nome_fonte: string }) => tarefa(x);
+    return (
+      <Cartao id="sinais-finalidade" novo subtitulo={t({
+        pt: <>Foto de {f.fD(T.as_of)} contra a de {f.fD(C.base)}, {C.dias} dias antes, cada uma cobrindo {T.janela_dias} dias. Share de tokens entre as {T.classificacoes.length} tarefas classificadas, em pontos percentuais. Não responde à janela nem ao filtro.</>,
+        en: <>Snapshot of {f.fD(T.as_of)} against the one from {f.fD(C.base)}, {C.dias} days earlier, each covering {T.janela_dias} days. Token share across the {T.classificacoes.length} classified tasks, in percentage points. It does not respond to the window or the filters.</>,
+      })}>
+        <div className={s.sin} style={{ ['--cols' as string]: m ? 3 : 2 }}>
+          <div className={s.s}>
+            <span className={s.rot}>{t({ pt: 'Tarefa que mais cresceu', en: 'Task that grew most' })}</span>
+            <span className={s.val}>{f.fmtPP(C.ganhou.delta)}</span>
+            <p className={s.txt}>{t({
+              pt: <><b>{nomeT(C.ganhou)}</b> foi de {f.fmtP(C.ganhou.antes)} para {f.fmtP(C.ganhou.agora)} dos tokens classificados.</>,
+              en: <><b>{nomeT(C.ganhou)}</b> went from {f.fmtP(C.ganhou.antes)} to {f.fmtP(C.ganhou.agora)} of classified tokens.</>,
+            })}</p>
+          </div>
+          {m && (
+            <div className={s.s}>
+              <span className={s.rot}>{t({ pt: 'Quem mais avançou nela', en: 'Who gained most within it' })}</span>
+              <span className={s.val}>{f.fmtPP(m.delta)}</span>
+              <p className={s.txt}>{t({
+                pt: <><Link href={modelo(m.slug)} title={m.slug}>{m.nome}</Link> chegou a {f.fmtP(m.agora)} dos tokens da tarefa.</>,
+                en: <><Link href={modelo(m.slug)} title={m.slug}>{m.nome}</Link> reached {f.fmtP(m.agora)} of the task&apos;s tokens.</>,
+              })}</p>
+            </div>
+          )}
+          <div className={s.s}>
+            <span className={s.rot}>{t({ pt: 'Tarefa que mais perdeu', en: 'Task that lost most' })}</span>
+            <span className={s.val}>{f.fmtPP(C.perdeu.delta)}</span>
+            <p className={s.txt}>{t({
+              pt: <><b>{nomeT(C.perdeu)}</b> foi de {f.fmtP(C.perdeu.antes)} para {f.fmtP(C.perdeu.agora)}.</>,
+              en: <><b>{nomeT(C.perdeu)}</b> went from {f.fmtP(C.perdeu.antes)} to {f.fmtP(C.perdeu.agora)}.</>,
+            })}</p>
+          </div>
+        </div>
+        <p className="nota">{t({
+          pt: <>Duas fotos de {T.janela_dias} dias sem sobreposição. A fonte só publica a semana corrente; o arquivo diário deste site é o que permite comparar. {lider && <>Hoje a maior tarefa é <b>{tarefa(lider)}</b>, com {f.fmtP(lider.token_share)}.</>}</>,
+          en: <>Two non-overlapping {T.janela_dias}-day snapshots. The source only publishes the current week; this site&apos;s daily archive is what makes the comparison possible. {lider && <>Today the largest task is <b>{tarefa(lider)}</b>, at {f.fmtP(lider.token_share)}.</>}</>,
+        })}</p>
+      </Cartao>
+    );
+  }
   return (
     <Cartao id="sinais-finalidade" novo subtitulo={t({
       pt: <>A tarefa que mais cresceu entre a foto de hoje e a de {T.janela_dias} dias antes, e o modelo que mais avançou nela. Não responde à janela nem ao filtro.</>,
@@ -115,7 +159,7 @@ function Finalidade({ M }: { M: Mercado }) {
           en: `${Math.min(fotos, necessarias)} of ${necessarias} required snapshots archived`,
         })}>
           {Array.from({ length: necessarias }, (_, i) => <i key={i} className={i < fotos ? s.ok : undefined} />)}
-          <span>{t({ pt: `${fotos} de ${necessarias} fotos`, en: `${fotos} of ${necessarias} snapshots` })}</span>
+          <span>{t({ pt: `${Math.min(fotos, necessarias)} de ${necessarias} fotos`, en: `${Math.min(fotos, necessarias)} of ${necessarias} snapshots` })}</span>
         </div>
         {faltam > 0 ? t({
           pt: <p>O arquivo tem <b>{fotos} {fotos === 1 ? 'foto diária' : 'fotos diárias'}</b> de tarefas, a mais recente de {f.fD(T.as_of)}. Cada foto cobre {T.janela_dias} dias, então a primeira comparação sem sobreposição precisa de <b>{necessarias} fotos</b>: faltam <b>{faltam}</b>. Se nenhum dia falhar, ela sai com a foto de {f.fD(quando)}.</p>,

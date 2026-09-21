@@ -39,7 +39,7 @@ A página tem duas partes, separadas por um divisor explícito.
 11. **O que mudou** em quatro semanas.
 12. **Comparador** de dois modelos.
 13. **O mapa da temporada**, com pesos ajustáveis.
-14. **Sinais.** Achados por regra e extrapolação condicional, que não é previsão.
+14. **Sinais.** Achados por regra e extrapolação condicional, que não é previsão. O cartão de finalidade compara a foto de tarefas de hoje com a mais recente a sete dias ou mais de distância (`mercado.tarefas.comparacao`): tarefa que mais ganhou e mais perdeu share, e o modelo que mais avançou na que ganhou.
 15. **Como ler cada indicador.**
 
 Todo cartão tem um "?" com como ler, a pergunta que responde e o que **não** mostra. Todo gráfico temporal abre em tabela.

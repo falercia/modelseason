@@ -222,6 +222,39 @@ with tempfile.TemporaryDirectory() as tmp:
     check("top modelos: 50 ids de API, sem sufixo de variante",
           len(modelos) == 50 and all(":" not in m and "/" in m for m in modelos), modelos[:3])
 
+# ---- comparacao de duas fotos de tarefas (build_web)
+import gzip  # noqa: E402
+import json  # noqa: E402
+import pandas as pd  # noqa: E402
+import build_web as B  # noqa: E402
+
+def foto(as_of, cls):
+    return {"window_days": 7, "as_of": as_of, "classifications": [
+        {"tag": tag, "display_name": tag, "macro_category": "code", "usage_share": 0.1, "token_share": ts,
+         "models": [{"id": m, "tag_usage_share": 0.1, "tag_token_share": ms} for m, ms in modelos]}
+        for tag, ts, modelos in cls]}
+
+cat = pd.DataFrame([{"model_id": "a/um", "name": "A: Um"}], index=["a/um"])
+antes = foto("2026-09-12", [("code:general_impl", 0.30, [("a/um", 0.5), ("b/dois", 0.3)]),
+                            ("code:review_security", 0.05, [("a/um", 0.2)]), ("some", 0.10, [])])
+agora = foto("2026-09-19", [("code:general_impl", 0.25, [("a/um", 0.4), ("b/dois", 0.45)]),
+                            ("code:review_security", 0.09, [("a/um", 0.5), ("c/tres:free", 0.1)]), ("nova", 0.02, [])])
+c = B.comparar_tarefas(agora, antes, cat)
+check("comparacao: tarefa que mais ganhou, em pontos percentuais", c["ganhou"]["tag"] == "code:review_security" and c["ganhou"]["delta"] == 4.0
+      and c["ganhou"]["antes"] == 5.0 and c["ganhou"]["agora"] == 9.0, c["ganhou"])
+check("comparacao: modelo que mais avancou na tarefa, com o share atual", c["ganhou"]["modelo"]["slug"] == "a/um"
+      and c["ganhou"]["modelo"]["delta"] == 30.0 and c["ganhou"]["modelo"]["agora"] == 50.0, c["ganhou"].get("modelo"))
+check("comparacao: tarefa que mais perdeu", c["perdeu"]["tag"] == "code:general_impl" and c["perdeu"]["delta"] == -5.0, c["perdeu"])
+check("comparacao: tarefa nova conta a partir de zero", "antes" in c["ganhou"] and c["ganhou"]["tag"] != "nova")
+check("comparacao: base e distancia em dias", c["base"] == "2026-09-12" and c["dias"] == 7, c)
+with tempfile.TemporaryDirectory() as tmp:
+    pasta = Path(tmp)
+    for d in ("2026-09-10", "2026-09-12", "2026-09-13", "2026-09-19"):
+        env = {"requests": [{"response": {"data": foto(d, [("x", 0.1, [])])}}]}
+        (pasta / f"{d}.json.gz").write_bytes(gzip.compress(json.dumps(env).encode()))
+    check("foto anterior: a mais recente com 7 dias ou mais de distancia", B.foto_tarefas_anterior("2026-09-19", 7, pasta)["as_of"] == "2026-09-12")
+    check("foto anterior: arquivo curto demais devolve None", B.foto_tarefas_anterior("2026-09-13", 7, pasta) is None)
+
 print(f"::{PAUSA}::")
 print(f"\n{'Falharam ' + str(len(falhas)) if falhas else 'Todas passaram'}.")
 sys.exit(1 if falhas else 0)
