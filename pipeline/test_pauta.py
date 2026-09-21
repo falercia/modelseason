@@ -115,6 +115,30 @@ ok("Anthropic lida da listagem, so o recente", len(an) == 1 and an[0]["titulo"] 
 ok("ids unicos", len({it["id"] for it in itens}) == len(itens))
 ok("primarias primeiro", itens[0]["peso"] == 3)
 
+# ---- cadencia seg/qua/sex, assinatura do Techmeme e codificacao
+seg, qua, sex, ter = (dt.datetime(2026, 9, d, 14, tzinfo=dt.timezone.utc) for d in (21, 23, 25, 22))
+ok("janela: segunda cobre o fim de semana (78 h)", P.janela_horas(seg) == 78, P.janela_horas(seg))
+ok("janela: quarta e sexta cobrem dois dias (54 h)", P.janela_horas(qua) == 54 and P.janela_horas(sex) == 54)
+ok("janela: dia fora da cadencia usa o padrao", P.janela_horas(ter) == P.JANELA_PADRAO)
+ok("janela: --janela sobrepoe a regra", P.janela_horas(seg, 30) == 30)
+ok("coleta: janela explicita e respeitada", len(P.coletar(get, AGORA, janela=1)[0]) < len(P.coletar(get, AGORA, janela=48)[0]))
+ok("Techmeme: assinatura '(Autor / Veiculo)' sai do titulo",
+   P.sem_assinatura("Trump names an AI czar (María Paula Mijares Torres/Bloomberg)") == "Trump names an AI czar"
+   and P.sem_assinatura("GPT-6 (preview) ships") == "GPT-6 (preview) ships")
+
+
+class Resp:
+    def __init__(self, content, ct, text):
+        self.content, self.headers, self.text = content, {"content-type": ct}, text
+
+
+ok("http: sem charset no cabecalho decodifica em UTF-8",
+   P.texto_http(Resp("María".encode("utf-8"), "text/xml", "MarÃ­a")) == "María")
+ok("http: com charset no cabecalho respeita o requests",
+   P.texto_http(Resp(b"x", "text/html; charset=iso-8859-1", "certo")) == "certo")
+ok("http: byte invalido em UTF-8 cai no requests",
+   P.texto_http(Resp(b"\xff\xfe", "text/xml", "fallback")) == "fallback")
+
 # ---- IA falsa
 ids = {it["link"]: it["id"] for it in itens}
 i_hf = ids["https://huggingface.co/deepseek-ai/DeepSeek-V4.2"]

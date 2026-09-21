@@ -21,7 +21,7 @@ export const mercado = () => (cache.mercado ??= ler<Mercado>(path.join(process.c
 export const modelos = () => (cache.modelos ??= ler<Modelos>(path.join(process.cwd(), 'data', 'web', 'modelos.json')));
 /**
  * Radar = edições de data/web/radar.json + pautas aprovadas em data/pauta/.
- * A pauta entra por PR e não passa pelo build_web.py: assim o PR diário só traz
+ * A pauta entra por PR e não passa pelo build_web.py: assim o PR da pauta só traz
  * um arquivo novo e nunca conflita com os commits do bot em data/web.
  */
 export const radar = () => (cache.radar ??= comPautas(ler<Radar>(path.join(process.cwd(), 'data', 'web', 'radar.json'))));

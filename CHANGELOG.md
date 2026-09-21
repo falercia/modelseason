@@ -6,6 +6,14 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ## [Não lançado]
 
+### Alterado
+
+- **Pauta na segunda, na quarta e na sexta**, em vez de todo dia. A coleta passa a cobrir o período desde a edição anterior (54 horas na quarta e na sexta, 78 na segunda, `--janela` para forçar outro valor), e a edição nova fecha a anterior que ficou sem merge, no lugar da regra de 48 horas: com duas pautas abertas ao mesmo tempo, a segunda repetia a primeira, porque o filtro de repetição só lê pautas já mescladas.
+
+### Corrigido
+
+- **Pauta**: título vindo do Techmeme trazia a assinatura "(Autor / Veículo)" e, sem `charset` no cabeçalho do feed, chegava em latin-1 ("MarÃ­a"). A assinatura é cortada e a resposta sem charset é lida em UTF-8. O acento quebrado derrubou o e2e da página em inglês na pauta de 20/09, corrigida no arquivo.
+
 ### Adicionado
 
 - **Fontes novas na pauta**: pesos novos de 16 laboratórios no Hugging Face (DeepSeek, Qwen, Z.ai, Moonshot, MiniMax, Tencent, Xiaomi, ByteDance e outros), sem quantizações e rascunhos; notas de lançamento da DeepSeek; NIST e Comissão Europeia; tramitação do PL 2338/2023 na Câmara, sem as apensações de rotina; Simon Willison e Tecnoblog. O laboratório informado pela fonte entra no cruzamento mesmo que o agrupamento o omita. Termos de IA em português reconhecidos no filtro de tema.
