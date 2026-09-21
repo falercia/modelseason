@@ -134,44 +134,28 @@
   },
   {
    "id": "a2",
-   "categoria": "seguranca",
+   "categoria": "lancamento",
    "nota": 14.3,
-   "labs": [
-    "openai"
-   ],
-   "publicado_em": "2026-09-20T15:18:44Z",
+   "labs": [],
+   "publicado_em": "2026-09-18T13:00:00Z",
    "fontes": [
     {
-     "veiculo": "buchodi.com",
-     "titulo": "ChatGPT now knows what you do on other websites via ad collector",
-     "link": "https://www.buchodi.com/chatgpt-now-knows-what-you-do-on-other-websites-via-ad-collector/",
-     "data": "2026-09-20T15:18:44Z",
-     "discussao": "https://news.ycombinator.com/item?id=49776729",
-     "pontos": 748
+     "veiculo": "TechCrunch",
+     "titulo": "A new kind of AI model from a ChatGPT inventor is thrilling developers",
+     "link": "https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/",
+     "data": "2026-09-18T13:00:00Z"
     }
    ],
+   "destaque": "Jev",
    "pt": {
-    "titulo": "ChatGPT passa a saber o que você faz em outros sites via coletor de anúncios",
-    "resumo": "O ChatGPT agora sabe o que o usuário faz em outros sites por meio de um coletor de anúncios, segundo o buchodi.com."
+    "titulo": "TypeSafe AI lança o Jev, modelo que devolve decisões em vez de texto",
+    "resumo": "Segundo o TechCrunch, a TypeSafe AI, fundada por Diogo Almeida, ex-pesquisador da OpenAI que participou da criação do ChatGPT, lançou o Jev, um modelo que não é um LLM: em vez de gerar texto, devolve probabilidades e decisões calibradas para automação de software. A cobrança é por bilhão de tokens de entrada, com saída gratuita, e a empresa diz que ele não alucina."
    },
    "en": {
-    "titulo": "ChatGPT now knows what you do on other websites via ad collector",
-    "resumo": "ChatGPT now knows what users do on other websites through an ad collector, according to buchodi.com."
+    "titulo": "TypeSafe AI launches Jev, a model that returns decisions instead of text",
+    "resumo": "According to TechCrunch, TypeSafe AI, founded by Diogo Almeida, a former OpenAI researcher who helped create ChatGPT, has launched Jev, a model that is not an LLM: instead of generating text, it returns probabilities and calibrated decisions for software automation. Pricing is per billion input tokens with free output, and the company says it does not hallucinate."
    },
-   "cruzamento": [
-    {
-     "vendor": "openai",
-     "lab": "OpenAI",
-     "share_tokens": 12.4,
-     "share_gasto": 37.89,
-     "lider": {
-      "slug": "openai/gpt-5.6-luna-20260709",
-      "nome": "GPT-5.6 Luna",
-      "share_7d": 7.54,
-      "preco_misto": 0.45
-     }
-    }
-   ]
+   "cruzamento": []
   },
   {
    "id": "a3",
@@ -222,6 +206,26 @@
   }
  ],
  "descartados": [
+  {
+   "id": "a2",
+   "categoria": "seguranca",
+   "nota": 14.3,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-20T15:18:44Z",
+   "fontes": [
+    {
+     "veiculo": "buchodi.com",
+     "titulo": "ChatGPT now knows what you do on other websites via ad collector",
+     "link": "https://www.buchodi.com/chatgpt-now-knows-what-you-do-on-other-websites-via-ad-collector/",
+     "data": "2026-09-20T15:18:44Z",
+     "discussao": "https://news.ycombinator.com/item?id=49776729",
+     "pontos": 748
+    }
+   ],
+   "motivo": "fonte única sem reputação (ajuste manual)"
+  },
   {
    "id": "a4",
    "categoria": "regulacao",
