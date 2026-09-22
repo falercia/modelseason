@@ -1,0 +1,501 @@
+{
+ "versao": 1,
+ "dia": "2026-09-22",
+ "gerado_em": "2026-09-22T12:39:19Z",
+ "fontes": {
+  "catalogo": [
+   "2026-09-15",
+   "2026-09-22"
+  ],
+  "trafego": "2026-09-21"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-09-22",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-09-21",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20260910",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "tencent/hy4-preview-20260827",
+   "deepseek/deepseek-v4-flash-20260731",
+   "openai/gpt-5.6-luna-20260709",
+   "xiaomi/mimo-v2.5-20260422",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "tencent/hy3-20260706",
+   "deepseek/deepseek-v4-flash-20260423",
+   "z-ai/glm-5.3-20260816"
+  ]
+ },
+ "principal": "alta:z-ai/glm-5.3-flash-20260826",
+ "eventos": [
+  {
+   "tipo": "alta",
+   "slug": "z-ai/glm-5.3-flash-20260826",
+   "id": null,
+   "nome": "GLM 5.3 Flash",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 9.25,
+    "para": 12.81,
+    "delta_pp": 3.55
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 12.81,
+     "rank_7d": 2,
+     "pico_share": 10.917,
+     "semanas_com_volume": 4
+    },
+    "laboratorio": {
+     "share_tokens": 15.48,
+     "share_gasto": 6.34
+    }
+   },
+   "relevancia": 70
+  },
+  {
+   "tipo": "novo",
+   "slug": "xiaomi/mimo-v2.6-flash-20260921",
+   "id": "xiaomi/mimo-v2.6-flash",
+   "nome": "MiMo-V2.6-Flash",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "criado": "2026-09-21",
+    "contexto": 1048576,
+    "preco_entrada": 0.14,
+    "preco_saida": 0.28,
+    "preco_misto": 0.175,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image+audio+video->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 5.88,
+     "share_gasto": 0.9,
+     "lider": {
+      "slug": "xiaomi/mimo-v2.5-20260422",
+      "nome": "MiMo-V2.5",
+      "share_7d": 5.24,
+      "preco_misto": 0.175
+     }
+    }
+   },
+   "relevancia": 42
+  },
+  {
+   "tipo": "novo",
+   "slug": "xiaomi/mimo-v2.6-pro-20260921",
+   "id": "xiaomi/mimo-v2.6-pro",
+   "nome": "MiMo-V2.6-Pro",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "criado": "2026-09-21",
+    "contexto": 1048576,
+    "preco_entrada": 0.435,
+    "preco_saida": 0.87,
+    "preco_misto": 0.5437,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image+audio+video->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 5.88,
+     "share_gasto": 0.9,
+     "lider": {
+      "slug": "xiaomi/mimo-v2.5-20260422",
+      "nome": "MiMo-V2.5",
+      "share_7d": 5.24,
+      "preco_misto": 0.175
+     }
+    }
+   },
+   "relevancia": 42
+  },
+  {
+   "tipo": "novo",
+   "slug": "xiaomi/mimo-v2.6-pro-ultraspeed-20260921",
+   "id": "xiaomi/mimo-v2.6-pro-ultraspeed",
+   "nome": "MiMo-V2.6-Pro-UltraSpeed",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "criado": "2026-09-21",
+    "contexto": 1048576,
+    "preco_entrada": 4.35,
+    "preco_saida": 8.7,
+    "preco_misto": 5.4375,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image+audio+video->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 5.88,
+     "share_gasto": 0.9,
+     "lider": {
+      "slug": "xiaomi/mimo-v2.5-20260422",
+      "nome": "MiMo-V2.5",
+      "share_7d": 5.24,
+      "preco_misto": 0.175
+     }
+    }
+   },
+   "relevancia": 42
+  },
+  {
+   "tipo": "novo",
+   "slug": "nex-agi/nex-n2.5-pro-20260907",
+   "id": "nex-agi/nex-n2.5-pro",
+   "nome": "Nex-N2.5-Pro",
+   "lab": "Nex AGI",
+   "vendor": "nex-agi",
+   "dados": {
+    "criado": "2026-09-08",
+    "contexto": 262144,
+    "preco_entrada": 0.075,
+    "preco_saida": 0.25,
+    "preco_misto": 0.1187,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.45,
+     "rank_7d": 34,
+     "pico_share": 0.431,
+     "semanas_com_volume": 2
+    },
+    "laboratorio": null
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "novo",
+   "slug": "nex-agi/nex-n2.5-mini-20260908",
+   "id": "nex-agi/nex-n2.5-mini",
+   "nome": "Nex-N2.5-Mini",
+   "lab": "Nex AGI",
+   "vendor": "nex-agi",
+   "dados": {
+    "criado": "2026-09-08",
+    "contexto": 262144,
+    "preco_entrada": 0.025,
+    "preco_saida": 0.1,
+    "preco_misto": 0.0437,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "nex-agi/nex-n2.5-pro-20260907",
+      "nome": "Nex-N2.5-Pro",
+      "share_7d": 0.45,
+      "preco_misto": 0.1187
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "x-ai/grok-4.7-20260916",
+   "id": "x-ai/grok-4.7",
+   "nome": "Grok 4.7",
+   "lab": "xAI",
+   "vendor": "x-ai",
+   "dados": {
+    "criado": "2026-09-21",
+    "contexto": 500000,
+    "preco_entrada": 1.6,
+    "preco_saida": 4.8,
+    "preco_misto": 2.4,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+file->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "x-ai/grok-4.6-20260810",
+      "nome": "Grok 4.6",
+      "share_7d": 0.23,
+      "preco_misto": 3.0
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "bytedance-seed/seed-1.6-20250625",
+   "id": "bytedance-seed/seed-1.6",
+   "nome": "Seed 1.6",
+   "lab": "ByteDance",
+   "vendor": "bytedance-seed",
+   "dados": {
+    "data": "2026-11-11",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "bytedance-seed/seed-1.6-flash-20250625",
+   "id": "bytedance-seed/seed-1.6-flash",
+   "nome": "Seed 1.6 Flash",
+   "lab": "ByteDance",
+   "vendor": "bytedance-seed",
+   "dados": {
+    "data": "2026-11-11",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "bytedance-seed/seed-2.0-code-20260730",
+   "id": "bytedance-seed/seed-2.0-code",
+   "nome": "Seed-2.0-Code",
+   "lab": "ByteDance",
+   "vendor": "bytedance-seed",
+   "dados": {
+    "data": "2026-11-11",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "bytedance/seedance-1-5-pro-20260320",
+   "id": "bytedance/seedance-1-5-pro",
+   "nome": "Seedance 1.5 Pro",
+   "lab": "ByteDance",
+   "vendor": "bytedance",
+   "dados": {
+    "data": "2026-11-11",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "removido",
+   "slug": "anthropic/claude-4-opus-20250522",
+   "id": "anthropic/claude-opus-4",
+   "nome": "Claude Opus 4",
+   "lab": "Anthropic",
+   "vendor": "anthropic",
+   "dados": {
+    "visto_em": "2026-09-21",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 1.191,
+     "semanas_com_volume": 12
+    },
+    "laboratorio": {
+     "share_tokens": 3.27,
+     "share_gasto": 24.57,
+     "lider": {
+      "slug": "anthropic/claude-sonnet-5-20260630",
+      "nome": "Claude Sonnet 5",
+      "share_7d": 1.15,
+      "preco_misto": 4.0
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "kwaipilot/kat-coder-pro-v2-20260327",
+   "id": "kwaipilot/kat-coder-pro-v2",
+   "nome": "KAT-Coder-Pro V2",
+   "lab": "KwaiPilot",
+   "vendor": "kwaipilot",
+   "dados": {
+    "visto_em": "2026-09-21",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3-vl-30b-a3b-instruct",
+   "id": "qwen/qwen3-vl-30b-a3b-instruct",
+   "nome": "Qwen3 VL 30B A3B Instruct",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.325,
+    "para": 0.2275,
+    "variacao_pct": -30.0,
+    "entrada_de": 0.2,
+    "entrada_para": 0.13,
+    "saida_de": 0.7,
+    "saida_para": 0.52,
+    "desde": "2026-09-21"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.05,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.35,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.6-35b-a3b-20260415",
+   "id": "qwen/qwen3.6-35b-a3b",
+   "nome": "Qwen3.6 35B A3B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.3,
+    "para": 0.3625,
+    "variacao_pct": 20.8,
+    "entrada_de": 0.1,
+    "entrada_para": 0.15,
+    "saida_de": 0.9,
+    "saida_para": 1.0,
+    "desde": "2026-09-21"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.126,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.05,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.35,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 24
+  },
+  {
+   "tipo": "alias",
+   "slug": "~x-ai/grok-latest",
+   "id": "~x-ai/grok-latest",
+   "nome": "Grok Latest",
+   "lab": "xAI",
+   "vendor": "x-ai",
+   "dados": {
+    "alvo_slug": "x-ai/grok-4.7",
+    "alvo_nome": "Grok 4.7",
+    "anterior": "x-ai/grok-4.6"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "x-ai/grok-4.6-20260810",
+      "nome": "Grok 4.6",
+      "share_7d": 0.23,
+      "preco_misto": 3.0
+     }
+    }
+   },
+   "relevancia": 15
+  },
+  {
+   "tipo": "contexto",
+   "slug": "anthropic/claude-4-sonnet-20250522",
+   "id": "anthropic/claude-sonnet-4",
+   "nome": "Claude Sonnet 4",
+   "lab": "Anthropic",
+   "vendor": "anthropic",
+   "dados": {
+    "de": 1000000,
+    "para": 200000
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 19.079,
+     "semanas_com_volume": 48
+    },
+    "laboratorio": {
+     "share_tokens": 3.27,
+     "share_gasto": 24.57,
+     "lider": {
+      "slug": "anthropic/claude-sonnet-5-20260630",
+      "nome": "Claude Sonnet 5",
+      "share_7d": 1.15,
+      "preco_misto": 4.0
+     }
+    }
+   },
+   "relevancia": 15
+  }
+ ]
+}
