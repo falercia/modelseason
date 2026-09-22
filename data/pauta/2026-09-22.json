@@ -1,0 +1,153 @@
+{
+ "versao": 1,
+ "dia": "2026-09-22",
+ "gerado_em": "2026-09-22T18:30:00Z",
+ "janela_horas": 0,
+ "modelo": "manual",
+ "uso_tokens": {
+  "entrada": 0,
+  "saida": 0
+ },
+ "fontes": {},
+ "assuntos": [
+  {
+   "id": "a1",
+   "categoria": "preco",
+   "nota": 30.0,
+   "labs": [
+    "anthropic",
+    "openai"
+   ],
+   "publicado_em": "2026-09-22T15:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Anthropic",
+     "titulo": "Introducing Claude Opus 5.5",
+     "link": "https://www.anthropic.com/claude-opus-5-5",
+     "data": "2026-09-22T15:00:00Z"
+    },
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Introducing GPT-6 Sol and Luna",
+     "link": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+     "data": "2026-09-22T17:00:00Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Anthropic e OpenAI cortam preço no mesmo dia: Opus 5.5 a US$ 4 e US$ 20, GPT-6 Sol a US$ 2 e US$ 10",
+    "resumo": "Em 22 de setembro a Anthropic lançou o Claude Opus 5.5 a US$ 4 por milhão de tokens de entrada e US$ 20 de saída, 40% mais barato que o Opus 5 em cargas típicas, segundo a empresa. No mesmo dia a OpenAI lançou o GPT-6 Sol a US$ 2 e US$ 10 e o GPT-6 Luna a US$ 0,10 e US$ 0,50, metade do preço da geração 5.6. Leitura de cache: US$ 0,20 na Anthropic, 90% de desconto na OpenAI. O topo de linha da OpenAI custa metade do da Anthropic, e o Luna custa um quadragésimo do Opus 5.5."
+   },
+   "en": {
+    "titulo": "Anthropic and OpenAI cut prices on the same day: Opus 5.5 at $4 and $20, GPT-6 Sol at $2 and $10",
+    "resumo": "On Sep 22 Anthropic launched Claude Opus 5.5 at $4 per million input tokens and $20 output, 40% cheaper than Opus 5 on typical workloads, according to the company. The same day OpenAI launched GPT-6 Sol at $2 and $10 and GPT-6 Luna at $0.10 and $0.50, half the price of the 5.6 generation. Cache reads: $0.20 at Anthropic, a 90% discount at OpenAI. OpenAI's top model costs half of Anthropic's, and Luna costs one fortieth of Opus 5.5."
+   },
+   "cruzamento": [
+    {
+     "vendor": "anthropic",
+     "lab": "Anthropic",
+     "share_tokens": 3.27,
+     "share_gasto": 24.57,
+     "lider": {
+      "slug": "anthropic/claude-sonnet-5-20260630",
+      "nome": "Claude Sonnet 5",
+      "share_7d": 1.15,
+      "preco_misto": 4.0
+     }
+    },
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 12.4,
+     "share_gasto": 36.17,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 6.44,
+      "preco_misto": 0.45
+     }
+    }
+   ]
+  },
+  {
+   "id": "a2",
+   "categoria": "lancamento",
+   "nota": 24.0,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-22T15:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Anthropic",
+     "titulo": "Introducing Claude Opus 5.5",
+     "link": "https://www.anthropic.com/claude-opus-5-5",
+     "data": "2026-09-22T15:00:00Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Claude Opus 5.5 chega 40% mais barato e 30% mais rápido que o Opus 5",
+    "resumo": "A Anthropic diz que o Opus 5.5 custa 40% menos em cargas típicas, gera saída 30% mais rápido e cobra 60% menos por leitura de cache. Nos testes divulgados: 66,4% no Terminal-Bench 4.0, 81,8% no OSWorld 2.0 e 67,7% no Humanity's Last Exam com ferramentas. A empresa cita uma auditoria de 200 mil linhas em 3 horas, contra mais de 20 no Opus 5. O modo rápido custa US$ 8 e US$ 40 e chega a 2,5 vezes a velocidade. Identificador claude-opus-5-5, na AWS, Google Cloud e Azure."
+   },
+   "en": {
+    "titulo": "Claude Opus 5.5 arrives 40% cheaper and 30% faster than Opus 5",
+    "resumo": "Anthropic says Opus 5.5 costs 40% less on typical workloads, generates output 30% faster and charges 60% less for cache reads. In the published tests: 66.4% on Terminal-Bench 4.0, 81.8% on OSWorld 2.0 and 67.7% on Humanity's Last Exam with tools. The company cites a 200,000-line audit in 3 hours, against more than 20 on Opus 5. Fast mode costs $8 and $40 and reaches 2.5 times the speed. Identifier claude-opus-5-5, on AWS, Google Cloud and Azure."
+   },
+   "cruzamento": [
+    {
+     "vendor": "anthropic",
+     "lab": "Anthropic",
+     "share_tokens": 3.27,
+     "share_gasto": 24.57,
+     "lider": {
+      "slug": "anthropic/claude-sonnet-5-20260630",
+      "nome": "Claude Sonnet 5",
+      "share_7d": 1.15,
+      "preco_misto": 4.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "a3",
+   "categoria": "lancamento",
+   "nota": 24.0,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-22T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Introducing GPT-6 Sol and Luna",
+     "link": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+     "data": "2026-09-22T17:00:00Z"
+    }
+   ],
+   "pt": {
+    "titulo": "OpenAI lança GPT-6 Sol e Luna com metade do preço da geração 5.6",
+    "resumo": "O GPT-6 Sol custa US$ 2 por milhão de tokens de entrada e US$ 10 de saída; o GPT-6 Luna, US$ 0,10 e US$ 0,50, ambos 50% abaixo dos 5.6 equivalentes, com 90% de desconto em cache. A OpenAI diz que o Sol comete metade dos erros factuais e que o Luna em esforço alto iguala o GPT-5.6 Sol por cerca de um centésimo do custo. No DeepSWE v1.1: 68,8% e 66,6%. Identificadores gpt-6-sol e gpt-6-luna, no ChatGPT e no Codex, Luna também para usuários Free."
+   },
+   "en": {
+    "titulo": "OpenAI launches GPT-6 Sol and Luna at half the price of the 5.6 generation",
+    "resumo": "GPT-6 Sol costs $2 per million input tokens and $10 output; GPT-6 Luna, $0.10 and $0.50, both 50% below their 5.6 equivalents, with a 90% discount on cache. OpenAI says Sol makes half as many factual mistakes and that Luna at high effort matches GPT-5.6 Sol at about a hundredth of the cost. On DeepSWE v1.1: 68.8% and 66.6%. Identifiers gpt-6-sol and gpt-6-luna, in ChatGPT and Codex, Luna also for Free users."
+   },
+   "cruzamento": [
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 12.4,
+     "share_gasto": 36.17,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 6.44,
+      "preco_misto": 0.45
+     }
+    }
+   ]
+  }
+ ],
+ "descartados": [],
+ "itens": [],
+ "nota": "Edição extra escrita à mão no dia dos lançamentos, a partir das páginas oficiais; não passou pela coleta nem pela IA."
+}

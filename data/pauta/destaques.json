@@ -1,4 +1,26 @@
 [
- {"termo": "Jev", "ate": "2026-09-27", "motivo": "Modelo não autoregressivo da TypeSafe AI, lançado em 18/09: entrante sem tráfego no roteador, que a fórmula enterra"},
- {"termo": "TypeSafe", "ate": "2026-09-27"}
+ {
+  "termo": "Jev",
+  "ate": "2026-09-27",
+  "motivo": "Modelo não autoregressivo da TypeSafe AI, lançado em 18/09: entrante sem tráfego no roteador, que a fórmula enterra"
+ },
+ {
+  "termo": "TypeSafe",
+  "ate": "2026-09-27"
+ },
+ {
+  "termo": "Opus 5.5",
+  "ate": "2026-09-29",
+  "motivo": "Lançamento de 22/09; acompanhar desdobramentos, preço e entrada no roteador"
+ },
+ {
+  "termo": "GPT-6 Sol",
+  "ate": "2026-09-29",
+  "motivo": "Lançamento de 22/09; acompanhar desdobramentos, preço e entrada no roteador"
+ },
+ {
+  "termo": "GPT-6 Luna",
+  "ate": "2026-09-29",
+  "motivo": "Lançamento de 22/09; acompanhar desdobramentos, preço e entrada no roteador"
+ }
 ]
