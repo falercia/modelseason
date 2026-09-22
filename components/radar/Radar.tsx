@@ -1,7 +1,9 @@
 /**
- * Radar: a edição do dia, renderizada no servidor. O evento principal ganha
- * destaque, os quatro seguintes viram cartões e o resto vai numa lista curta.
- * Cada evento mostra o fato e, ao lado, o que o histórico de tráfego diz.
+ * Radar: a edição do dia, renderizada no servidor. A primeira notícia da
+ * pauta ganha destaque; as outras vêm em cartões mais leves. Cada notícia
+ * traz, numa faixa embaixo, o que o tráfego de 7 dias diz sobre os
+ * laboratórios citados. Nos eventos de dado, o principal ganha destaque, os
+ * quatro seguintes viram cartões e o resto vai numa lista curta.
  */
 import Link from 'next/link';
 import type { Idioma } from '@/lib/idioma';
@@ -29,7 +31,7 @@ export const CSS_RADAR = `
 .rd-ev.rd-destaque h3{font-size:22px; line-height:1.25}
 .rd-ev.rd-destaque p{font-size:15px}
 .rd-ev.rd-destaque .cz{font-size:13px; background:var(--surface-2); border:0; border-radius:8px; padding:9px 12px}
-.rd-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:12px}
+.rd-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px; margin-top:12px}
 .rd-lista{margin-top:14px; border-top:1px solid var(--grid); padding-top:10px}
 .rd-lista h4{font-size:12px; color:var(--ink-3); font-weight:600; margin-bottom:6px}
 .rd-lista li{font-size:13px; padding:4px 0; display:flex; gap:10px; align-items:baseline; min-width:0}
@@ -42,33 +44,42 @@ export const CSS_RADAR = `
 .rd-vazio{color:var(--ink-3); font-size:14px}
 .rd-sec{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); font-weight:600; margin:22px 0 10px}
 .rd-sec:first-child{margin-top:0}
-.rd-fontes{list-style:none; margin:10px 0 0; padding:0; font-size:12.5px; color:var(--ink-3)}
-.rd-fontes li{padding:2px 0; overflow-wrap:anywhere}
-.rd-fontes b{color:var(--ink-2); font-weight:600}
-.rd-fontes .dt{font-family:var(--font-mono),monospace; font-size:11px}
-.rd-ev.pauta{--cor:var(--ink-3)}
 .rd-mais{display:inline-block; margin-top:9px; font-size:12.5px; font-weight:600}
 .rd-intro{font-size:13px; color:var(--ink-2); margin:-4px 0 12px; max-width:70ch}
-.rd-ev.rd-cruz{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:0; padding:0; overflow:hidden}
-.rd-cruz + .rd-cruz{margin-top:12px}
-.rd-cruz .nt{padding:16px 18px}
-.rd-cruz.rd-destaque .nt{padding:20px 22px}
-.rd-cruz .dd{padding:16px 18px; background:var(--surface-2); border-left:1px solid var(--grid)}
-.rd-cruz .lbl{font-size:10px; letter-spacing:.11em; text-transform:uppercase; font-family:var(--font-mono),monospace; color:var(--ink-3); display:block; margin-bottom:6px}
-.rd-cruz .lbl b{color:var(--accent); font-weight:600}
-.rd-cruz h3{font-size:18px}
-.rd-cruz.rd-destaque h3{font-size:22px}
-.rd-cruz h3 a::after{content:" ↗"; font-size:.7em; color:var(--ink-3)}
-.rd-lab{padding:8px 0; border-top:1px solid var(--grid)}
-.rd-lab:first-of-type{border-top:0; padding-top:2px}
-.rd-lab .nm{font-weight:700; font-size:13.5px}
-.rd-lab .nums{display:flex; gap:14px; margin:3px 0 2px}
-.rd-lab .nums span{font-size:11.5px; color:var(--ink-3)}
-.rd-lab .nums b{display:block; font-size:18px; color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.01em}
-.rd-lab .ld{font-size:12.5px; color:var(--ink-2)}
-.rd-cruz .dd .vazio{font-size:12.5px; color:var(--ink-3)}
-@media (max-width:760px){ .rd-ev.rd-cruz{grid-template-columns:minmax(0,1fr)} .rd-cruz .dd{border-left:0; border-top:1px solid var(--grid)} }
-@media (max-width:700px){ .rd-grid{grid-template-columns:minmax(0,1fr)} .rd h1{font-size:25px} .rd-ev.rd-destaque h3{font-size:19px}
+
+/* Notícia × dado: cartão de coluna única, notícia em cima e faixa de dado embaixo */
+.rd-ev.rd-cruz{padding:0; overflow:hidden; border-left:1px solid var(--ring)}
+.rd-cruz + .rd-cruz{margin-top:10px}
+.rd-cruz.rd-destaque{border-top:3px solid var(--accent)}
+.rd-cruz .nt{padding:14px 18px 12px}
+.rd-cruz.rd-destaque .nt{padding:18px 22px 14px}
+.rd-cruz .lbl{font-size:10px; letter-spacing:.11em; text-transform:uppercase; font-family:var(--font-mono),monospace; color:var(--ink-3); display:block; margin-bottom:5px}
+.rd-cruz .lbl b{color:var(--ink-2); font-weight:600}
+.rd-cruz h3{font-size:17px; margin:2px 0 5px}
+.rd-cruz.rd-destaque h3{font-size:25px; line-height:1.2; letter-spacing:-.012em; margin:2px 0 8px}
+.rd-cruz.rd-destaque p{font-size:15px}
+.rd-cruz h3 a::after{content:" ↗"; font-size:.65em; color:var(--ink-3)}
+.rd-fontes{list-style:none; margin:9px 0 0; padding:0; font-size:12px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:2px 0; align-items:baseline}
+.rd-fontes .fl{flex:0 0 auto; margin-right:8px}
+.rd-fontes li{overflow-wrap:anywhere; white-space:nowrap}
+.rd-fontes li + li::before{content:"·"; margin:0 7px; color:var(--ink-3)}
+.rd-fontes li a{color:var(--ink-2); text-decoration:none; border-bottom:1px solid var(--grid)}
+.rd-fontes li a:hover{color:var(--accent); border-color:var(--accent)}
+.rd-fontes .dt{font-family:var(--font-mono),monospace; font-size:10.5px; margin-right:5px}
+.rd-fontes .hn{color:var(--ink-3); border-bottom:0}
+.rd-cruz .dd{display:flex; flex-wrap:wrap; gap:4px 22px; align-items:baseline; padding:9px 18px 10px; background:var(--surface-2); border-top:1px solid var(--grid); font-size:12.5px; color:var(--ink-3); line-height:1.45}
+.rd-cruz.rd-destaque .dd{padding-left:22px; padding-right:22px}
+.rd-cruz .dd .lbl{display:inline; margin:0; flex:0 0 auto}
+.rd-lab{display:flex; flex-wrap:wrap; gap:2px 12px; align-items:baseline; min-width:0}
+.rd-lab .nm{font-weight:700; color:var(--ink); font-size:13px}
+.rd-lab .nums{display:flex; gap:12px}
+.rd-lab .nums span{white-space:nowrap}
+.rd-lab .nums b{color:var(--ink); font-variant-numeric:tabular-nums; font-size:13.5px; margin-right:3px; font-weight:700}
+.rd-lab .ld{color:var(--ink-2)}
+.rd-cruz .dd .vazio{margin:0; font-size:12.5px; color:var(--ink-3)}
+@media (max-width:700px){ .rd h1{font-size:25px} .rd-ev.rd-destaque h3{font-size:19px} .rd-cruz.rd-destaque h3{font-size:21px}
+  .rd-cruz.rd-destaque .nt,.rd-cruz.rd-destaque .dd{padding-left:16px; padding-right:16px} .rd-cruz .nt{padding:12px 16px 10px} .rd-cruz .dd{padding:8px 16px 9px}
+  .rd-fontes li{white-space:normal}
   .rd-arq li{grid-template-columns:minmax(0,1fr) auto} .rd-arq li .d{grid-column:1/-1} }
 `;
 
@@ -98,36 +109,38 @@ function Assunto({ a, I, paginas, destaque }: { a: AssuntoPauta; I: Idioma; pagi
   return (
     <article className={'rd-ev pauta rd-cruz' + (destaque ? ' rd-destaque' : '')} data-assunto={a.id}>
       <div className="nt">
-        <span className="lbl"><b>{t({ pt: 'Notícia', en: 'News' })}</b> · {F.rotulo}{pub ? <> · <time dateTime={a.publicado_em ?? undefined}>{f.fD(pub)}</time></> : null}</span>
+        <span className="lbl"><b>{F.rotulo}</b>{pub ? <> · <time dateTime={a.publicado_em ?? undefined}>{f.fD(pub)}</time></> : null}</span>
         <h3>{principal ? <a href={principal.link} rel="noopener noreferrer" target="_blank" data-fonte-principal>{F.titulo}</a> : F.titulo}</h3>
         <p>{F.texto}</p>
         <ul className="rd-fontes" aria-label={t({ pt: 'Fontes', en: 'Sources' })}>
+          <span className="fl" aria-hidden="true">{t({ pt: 'Fontes', en: 'Sources' })}</span>
           {a.fontes.map(x => (
             <li key={x.link}>
-              {dia(x.data) && <time className="dt" dateTime={x.data ?? undefined}>{dia(x.data)} · </time>}<b>{x.veiculo}</b>: <a href={x.link} rel="noopener noreferrer" target="_blank">{x.titulo}</a>
-              {x.discussao && x.pontos ? <> · <a href={x.discussao} rel="noopener noreferrer" target="_blank">{t({ pt: `${x.pontos} pontos no Hacker News`, en: `${x.pontos} points on Hacker News` })}</a></> : null}
+              {dia(x.data) && <time className="dt" dateTime={x.data ?? undefined}>{dia(x.data)}</time>}
+              <a href={x.link} rel="noopener noreferrer" target="_blank" title={x.titulo}>{x.veiculo}</a>
+              {x.discussao && x.pontos ? <> <a className="hn" href={x.discussao} rel="noopener noreferrer" target="_blank" title={t({ pt: `${x.pontos} pontos no Hacker News`, en: `${x.pontos} points on Hacker News` })}>({x.pontos} HN)</a></> : null}
             </li>
           ))}
         </ul>
       </div>
       <aside className="dd" aria-label={t({ pt: 'O que o dado diz', en: 'What the data says' })}>
-        <span className="lbl"><b>{t({ pt: 'O que o dado diz', en: 'What the data says' })}</b> · {t({ pt: 'tráfego de 7 dias', en: '7-day traffic' })}</span>
+        <span className="lbl"><b>{t({ pt: 'O dado', en: 'The data' })}</b> · 7d</span>
         {labs.length ? labs.map(c => (
           <div className="rd-lab" key={c.vendor} data-lab={c.vendor}>
-            <div className="nm">{I.nomeLab(c.lab)}</div>
+            <span className="nm">{I.nomeLab(c.lab)}</span>
             {c.share_tokens != null && c.share_gasto != null && (
-              <div className="nums">
+              <span className="nums">
                 <span><b>{f.fmtP(c.share_tokens)}</b>{t({ pt: 'dos tokens', en: 'of tokens' })}</span>
-                <span><b>{f.fmtP(c.share_gasto)}</b>{t({ pt: 'do gasto estimado', en: 'of estimated spend' })}</span>
-              </div>
+                <span><b>{f.fmtP(c.share_gasto)}</b>{t({ pt: 'do gasto', en: 'of spend' })}</span>
+              </span>
             )}
             {c.lider && (
-              <div className="ld">
-                {t({ pt: 'Mais usado: ', en: 'Most used: ' })}
+              <span className="ld">
+                {t({ pt: 'mais usado: ', en: 'most used: ' })}
                 {paginas.has(c.lider.slug)
                   ? <Link href={I.modelo(c.lider.slug)}>{c.lider.nome}</Link>
                   : c.lider.nome} ({f.fmtP(c.lider.share_7d, 2)})
-              </div>
+              </span>
             )}
           </div>
         )) : <p className="vazio">{t({ pt: 'Nenhum laboratório com tráfego medido neste assunto.', en: 'No lab with measured traffic in this story.' })}</p>}
@@ -148,8 +161,8 @@ export function Edicao({ ed, I, paginas, titulo }: { ed: EdicaoRadar; I: Idioma;
         <>
           <h2 className="rd-sec">{t({ pt: 'Notícia × dado', en: 'News × data' })}</h2>
           <p className="rd-intro">{t({
-            pt: 'O fato publicado lá fora, lado a lado com o que o tráfego real de tokens diz sobre quem está nele. O título abre a matéria original; o nome do modelo abre a página dele aqui.',
-            en: 'The story published out there, side by side with what real token traffic says about who is in it. The headline opens the original article; the model name opens its page here.',
+            pt: 'O fato publicado lá fora e, embaixo, o que o tráfego real de tokens dos últimos 7 dias diz sobre quem está nele. O título abre a matéria original; o nome do modelo abre a página dele aqui.',
+            en: 'The story published out there and, below it, what real token traffic from the last 7 days says about who is in it. The headline opens the original article; the model name opens its page here.',
           })}</p>
           {assuntos.map((a, i) => <Assunto key={a.id} a={a} I={I} paginas={paginas} destaque={i === 0} />)}
           {p && <h2 className="rd-sec">{t({ pt: 'Mudanças no dado', en: 'Changes in the data' })}</h2>}
@@ -190,8 +203,8 @@ export function Fontes({ ed, I }: { ed: EdicaoRadar; I: Idioma }) {
   return (
     <p className="nota">
       {ed.assuntos?.length ? t({
-        pt: 'Em pauta: resumos escritos por IA só com o que as fontes citadas publicaram, revisados antes de ir ao ar. Os números de “O que o dado diz” saem do nosso dado, nunca do resumo. ',
-        en: 'In the news: summaries written by AI using only what the cited sources published, reviewed before going live. The numbers in “What the data says” come from our data, never from the summary. ',
+        pt: 'Em pauta: resumos escritos por IA só com o que as fontes citadas publicaram, revisados antes de ir ao ar. Os números da faixa “O dado” saem do nosso dado, tráfego dos últimos 7 dias, nunca do resumo. ',
+        en: 'In the news: summaries written by AI using only what the cited sources published, reviewed before going live. The numbers in the “The data” strip come from our data, traffic from the last 7 days, never from the summary. ',
       }) : ''}
       {c0 && c1 ? <>{t({
         pt: `Foto do catálogo de ${f.fD(c1)}, comparada com as anteriores desde ${f.fD(c0)}.`,

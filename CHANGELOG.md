@@ -14,6 +14,8 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ### Alterado
 
+- **Radar, cartão "Notícia × dado" em coluna única**: a notícia fica em cima e o dado vira uma faixa compacta embaixo (laboratório, share de tokens, share de gasto, modelo mais usado), no lugar da coluna lateral que ocupava 43% do cartão para dois números e ficava vazia quando o assunto não tinha laboratório medido. Fontes em uma linha só (data, veículo e pontos no Hacker News, com o título completo no `title` do link). Só a primeira notícia é destaque, com título maior e filete na cor de destaque; um rótulo por cartão. A grade de eventos de dado usa `auto-fit`, então evento sozinho ocupa a largura toda em vez de meio cartão com buraco ao lado.
+
 - **Pauta na segunda, na quarta e na sexta**, em vez de todo dia. A coleta passa a cobrir o período desde a edição anterior (54 horas na quarta e na sexta, 78 na segunda, `--janela` para forçar outro valor), e a edição nova fecha a anterior que ficou sem merge, no lugar da regra de 48 horas: com duas pautas abertas ao mesmo tempo, a segunda repetia a primeira, porque o filtro de repetição só lê pautas já mescladas.
 
 ### Corrigido
