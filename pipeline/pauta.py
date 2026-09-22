@@ -694,9 +694,16 @@ def montar(dia, itens, status, claude, contexto, agora, historico=None, janela=N
     share_labs = {k: float(v.get("share_tokens") or 0) for k, v in contexto.labs.items()}
     assuntos, textos, problemas = [], {}, {}
     if itens:
+        # item que cita um destaque nunca cai no corte do prompt: em 21/09 o unico item do Jev
+        # tinha peso 1 e ficou fora dos 80 antes mesmo de a IA ve-lo
+        dest_ids = {i for i in ids if destaque_de({"itens": [i]}, por_id, destaques or [])}
+        prioridade = [it for it in itens if it["id"] in dest_ids]
+        resto = [it for it in itens if it["id"] not in dest_ids][:max(0, MAX_ITENS_PROMPT - len(prioridade))]
+        if len(itens) > MAX_ITENS_PROMPT:
+            log(f"  corte: {len(itens)} itens, {MAX_ITENS_PROMPT} vao para a IA ({len(prioridade)} por destaque)")
         lista = [{"id": it["id"], "veiculo": it["veiculo"], "titulo": it["titulo"], "trecho": it["trecho"][:200],
                   **({"lab": it["lab"]} if it.get("lab") else {})}
-                 for it in itens[:MAX_ITENS_PROMPT]]
+                 for it in prioridade + resto]
         log(f"  agrupando {len(lista)} itens com {claude.modelo}")
         ref = [{"id": f"p{k + 1}", "dia": h["dia"], "titulo": h["titulo"]} for k, h in enumerate(historico[:40])]
         pedido = ("Já publicados nos últimos dias:\n" + json.dumps(ref, ensure_ascii=False, indent=1) + "\n\n" if ref else "") \

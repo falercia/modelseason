@@ -300,6 +300,14 @@ ok("destaque: com ele o assunto citado sobe para primeiro, com o bonus na nota e
    and gd["nota"] == round(sem["assuntos"][1]["nota"] + 20, 2), (gd.get("destaque"), gd["nota"], sem["assuntos"][1]["nota"]))
 ok("destaque: os outros assuntos nao ganham o campo", "destaque" not in com["assuntos"][1])
 ok("destaque: corpo do PR mostra", "destaque `gemini`" in P.corpo_pr(com))
+# item de destaque nao cai no corte do prompt
+muitos = [dict(x) for x in itens] + [dict(P.item("hn", 1, f"Enchimento {k}", f"https://x.com/{k}", AGORA, "", "x"), id=f"e{k}") for k in range(P.MAX_ITENS_PROMPT)]
+gem_item = next(x for x in muitos if x["link"] == "https://blog.google/gemini-39"); gem_item["peso"] = 0
+muitos.sort(key=lambda x: -x["peso"])
+fc = FalsoDestaque([])
+P.montar("2026-09-16", muitos, status, fc, ctx, AGORA, destaques=[{"termo": "gemini", "bonus": 6.0, "re": P.re.compile(r"(?<!\w)gemini(?!\w)", P.re.I)}])
+pedido = fc.chamadas[0][1]
+ok("corte: item com destaque vai para a IA mesmo sendo o ultimo por peso", gem_item["id"] in pedido and pedido.count('"id"') <= P.MAX_ITENS_PROMPT + 40, pedido.count('"id"'))
 ok("numeros: 4% na fonte aceita 4 no texto", P.numeros_ok("caiu 4%", "down 4%")[0])
 ok("numeros: 5 fora da fonte recusa", not P.numeros_ok("caiu 5%", "down 4%")[0])
 
