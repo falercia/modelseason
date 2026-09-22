@@ -60,9 +60,10 @@ export const CSS_RADAR = `
 .rd-cruz.rd-destaque p{font-size:15px}
 .rd-cruz h3 a::after{content:" ↗"; font-size:.65em; color:var(--ink-3)}
 .rd-fontes{list-style:none; margin:9px 0 0; padding:0; font-size:12px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:2px 0; align-items:baseline}
-.rd-fontes .fl{flex:0 0 auto; margin-right:8px}
 .rd-fontes li{overflow-wrap:anywhere; white-space:nowrap}
+.rd-fontes li.fl{margin-right:8px; font-weight:600}
 .rd-fontes li + li::before{content:"·"; margin:0 7px; color:var(--ink-3)}
+.rd-fontes li.fl + li::before{content:none}
 .rd-fontes li a{color:var(--ink-2); text-decoration:none; border-bottom:1px solid var(--grid)}
 .rd-fontes li a:hover{color:var(--accent); border-color:var(--accent)}
 .rd-fontes .dt{font-family:var(--font-mono),monospace; font-size:10.5px; margin-right:5px}
@@ -76,7 +77,7 @@ export const CSS_RADAR = `
 .rd-lab .nums span{white-space:nowrap}
 .rd-lab .nums b{color:var(--ink); font-variant-numeric:tabular-nums; font-size:13.5px; margin-right:3px; font-weight:700}
 .rd-lab .ld{color:var(--ink-2)}
-.rd-cruz .dd .vazio{margin:0; font-size:12.5px; color:var(--ink-3)}
+.rd-cruz .dd .vazio{margin:0; padding:0; border:0; border-radius:0; font-size:12.5px; color:var(--ink-3)}
 @media (max-width:700px){ .rd h1{font-size:25px} .rd-ev.rd-destaque h3{font-size:19px} .rd-cruz.rd-destaque h3{font-size:21px}
   .rd-cruz.rd-destaque .nt,.rd-cruz.rd-destaque .dd{padding-left:16px; padding-right:16px} .rd-cruz .nt{padding:12px 16px 10px} .rd-cruz .dd{padding:8px 16px 9px}
   .rd-fontes li{white-space:normal}
@@ -102,7 +103,8 @@ function Assunto({ a, I, paginas, destaque }: { a: AssuntoPauta; I: Idioma; pagi
   const { t, f } = I;
   const F = textoAssunto(a, I);
   const pub = diaPublicacao(a.publicado_em);
-  const dia = (iso?: string | null) => { const x = diaPublicacao(iso); return x ? f.fD(x) : null; };
+  // Data curta da fonte ("20 set" / "Sep 20"): o ano já está no rótulo do cartão.
+  const dia = (iso?: string | null) => { const x = diaPublicacao(iso); return x ? f.marcaDia(f.dataDe(x)) : null; };
   // O título abre a matéria: a primeira fonte que não é discussão do Hacker News.
   const principal = a.fontes.find(x => !/news\.ycombinator\.com/.test(x.link)) ?? a.fontes[0];
   const labs = a.cruzamento ?? [];
@@ -113,7 +115,7 @@ function Assunto({ a, I, paginas, destaque }: { a: AssuntoPauta; I: Idioma; pagi
         <h3>{principal ? <a href={principal.link} rel="noopener noreferrer" target="_blank" data-fonte-principal>{F.titulo}</a> : F.titulo}</h3>
         <p>{F.texto}</p>
         <ul className="rd-fontes" aria-label={t({ pt: 'Fontes', en: 'Sources' })}>
-          <span className="fl" aria-hidden="true">{t({ pt: 'Fontes', en: 'Sources' })}</span>
+          <li className="fl" aria-hidden="true">{t({ pt: 'Fontes', en: 'Sources' })}</li>
           {a.fontes.map(x => (
             <li key={x.link}>
               {dia(x.data) && <time className="dt" dateTime={x.data ?? undefined}>{dia(x.data)}</time>}
