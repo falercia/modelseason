@@ -1,0 +1,368 @@
+{
+ "versao": 1,
+ "dia": "2026-09-25",
+ "gerado_em": "2026-09-25T12:48:46Z",
+ "fontes": {
+  "catalogo": [
+   "2026-09-18",
+   "2026-09-25"
+  ],
+  "trafego": "2026-09-24"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-09-25",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-09-24",
+  "lider_7d": "z-ai/glm-5.3-flash-20260826",
+  "top10_7d": [
+   "z-ai/glm-5.3-flash-20260826",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "tencent/hy4-preview-20260827",
+   "deepseek/deepseek-v4-flash-20260731",
+   "openai/gpt-5.6-luna-20260709",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "xiaomi/mimo-v2.5-20260422",
+   "tencent/hy3-20260706",
+   "deepseek/deepseek-v4-flash-20260423",
+   "z-ai/glm-5.3-20260816"
+  ]
+ },
+ "principal": "preco:deepseek/deepseek-v4-flash-20260731",
+ "eventos": [
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-flash-20260731",
+   "id": "deepseek/deepseek-v4-flash-0731",
+   "nome": "DeepSeek V4 Flash 0731",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.19,
+    "para": 0.1025,
+    "variacao_pct": -46.1,
+    "entrada_de": 0.04,
+    "entrada_para": 0.03,
+    "saida_de": 0.64,
+    "saida_para": 0.32,
+    "desde": "2026-09-24"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 6.82,
+     "rank_7d": 4,
+     "pico_share": 14.84,
+     "semanas_com_volume": 8
+    },
+    "laboratorio": {
+     "share_tokens": 27.02,
+     "share_gasto": 5.28,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 13.73,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 50
+  },
+  {
+   "tipo": "novo",
+   "slug": "google/gemini-3.5-transcribe-20260827",
+   "id": "google/gemini-3.5-transcribe",
+   "nome": "Gemini 3.5 Transcribe",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "criado": "2026-09-25",
+    "contexto": 98304,
+    "preco_entrada": 2.0,
+    "preco_saida": 12.0,
+    "preco_misto": 4.5,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "audio->transcription",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 4.89,
+     "share_gasto": 4.64,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.54,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 42
+  },
+  {
+   "tipo": "novo",
+   "slug": "fish-audio/transcribe-1-pro-20260924",
+   "id": "fish-audio/transcribe-1-pro",
+   "nome": "Transcribe 1 Pro",
+   "lab": "Fish Audio",
+   "vendor": "fish-audio",
+   "dados": {
+    "criado": "2026-09-24",
+    "contexto": 0,
+    "preco_entrada": 100.0,
+    "preco_saida": 0.0,
+    "preco_misto": 75.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "audio->transcription",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "mistralai/devstral-2512",
+   "id": "mistralai/devstral-2512",
+   "nome": "Devstral 2 2512",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "criado": "2025-12-09",
+    "contexto": 262144,
+    "preco_entrada": 0.4,
+    "preco_saida": 2.0,
+    "preco_misto": 0.8,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+file->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 2.426,
+     "semanas_com_volume": 8
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.07,
+      "preco_misto": 0.0217
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "mistralai/mistral-large-2512",
+   "id": "mistralai/mistral-large-2512",
+   "nome": "Mistral Large 3 2512",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "criado": "2025-12-01",
+    "contexto": 262144,
+    "preco_entrada": 0.5,
+    "preco_saida": 1.5,
+    "preco_misto": 0.75,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image+file->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.079,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.07,
+      "preco_misto": 0.0217
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3-30b-a3b-instruct-2507",
+   "id": "qwen/qwen3-30b-a3b-instruct-2507",
+   "nome": "Qwen3 30B A3B Instruct 2507",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.0844,
+    "para": 0.15,
+    "variacao_pct": 77.8,
+    "entrada_de": 0.0481,
+    "entrada_para": 0.1,
+    "saida_de": 0.193,
+    "saida_para": 0.3,
+    "desde": "2026-09-24"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.038,
+     "semanas_com_volume": 2
+    },
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.35,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "preco",
+   "slug": "canopylabs/orpheus-3b-0.1-ft",
+   "id": "canopylabs/orpheus-3b-0.1-ft",
+   "nome": "Orpheus 3B",
+   "lab": "Canopylabs",
+   "vendor": "canopylabs",
+   "dados": {
+    "de": 11.25,
+    "para": 5.25,
+    "variacao_pct": -53.3,
+    "entrada_de": 15.0,
+    "entrada_para": 7.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-09-24"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 31
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-pro-20260813",
+   "id": "deepseek/deepseek-v4-pro-0813",
+   "nome": "DeepSeek V4 Pro 0813",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.99,
+    "para": 0.693,
+    "variacao_pct": -30.0,
+    "entrada_de": 0.66,
+    "entrada_para": 0.462,
+    "saida_de": 1.98,
+    "saida_para": 1.386,
+    "desde": "2026-09-24"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.8,
+     "rank_7d": 25,
+     "pico_share": 1.062,
+     "semanas_com_volume": 6
+    },
+    "laboratorio": {
+     "share_tokens": 27.02,
+     "share_gasto": 5.28,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 13.73,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 28
+  },
+  {
+   "tipo": "preco",
+   "slug": "minimax/minimax-m2",
+   "id": "minimax/minimax-m2",
+   "nome": "MiniMax M2",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 0.4462,
+    "para": 0.525,
+    "variacao_pct": 17.6,
+    "entrada_de": 0.255,
+    "entrada_para": 0.3,
+    "saida_de": 1.02,
+    "saida_para": 1.2,
+    "desde": "2026-09-24"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 6.705,
+     "semanas_com_volume": 13
+    },
+    "laboratorio": {
+     "share_tokens": 1.23,
+     "share_gasto": 0.56,
+     "lider": {
+      "slug": "minimax/minimax-m3-20260531",
+      "nome": "MiniMax M3",
+      "share_7d": 1.04,
+      "preco_misto": 0.525
+     }
+    }
+   },
+   "relevancia": 24
+  },
+  {
+   "tipo": "contexto",
+   "slug": "nvidia/nemotron-3.5-lightning-20260807",
+   "id": "nvidia/nemotron-3.5-lightning",
+   "nome": "Nemotron 3.5 Lightning",
+   "lab": "NVIDIA",
+   "vendor": "nvidia",
+   "dados": {
+    "de": 262144,
+    "para": 1000000
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.38,
+     "rank_7d": 36,
+     "pico_share": 1.04,
+     "semanas_com_volume": 6
+    },
+    "laboratorio": {
+     "share_tokens": 4.51,
+     "share_gasto": 0.0,
+     "lider": {
+      "slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+      "nome": "Nemotron 3 Ultra",
+      "share_7d": 3.62,
+      "preco_misto": 1.05
+     }
+    }
+   },
+   "relevancia": 16
+  }
+ ]
+}
