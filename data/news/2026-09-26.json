@@ -1,0 +1,910 @@
+{
+ "versao": 1,
+ "dia": "2026-09-26",
+ "gerado_em": "2026-09-26T12:16:39Z",
+ "fontes": {
+  "catalogo": [
+   "2026-09-19",
+   "2026-09-26"
+  ],
+  "trafego": "2026-09-25"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-09-26",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-09-25",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20260910",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "tencent/hy4-preview-20260827",
+   "openai/gpt-5.6-luna-20260709",
+   "deepseek/deepseek-v4-flash-20260731",
+   "stealth/space-bunny-alpha",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "xiaomi/mimo-v2.5-20260422",
+   "deepseek/deepseek-v4-flash-20260423",
+   "xiaomi/mimo-v2.6-flash-20260921"
+  ]
+ },
+ "principal": "lider:deepseek/deepseek-v4.1-flash-20260910",
+ "eventos": [
+  {
+   "tipo": "lider",
+   "slug": "deepseek/deepseek-v4.1-flash-20260910",
+   "id": null,
+   "nome": "DeepSeek V4.1 Flash",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "share": 13.69,
+    "anterior_slug": "z-ai/glm-5.3-flash-20260826",
+    "anterior_nome": "GLM 5.3 Flash",
+    "anterior_share": 13.67
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 13.69,
+     "rank_7d": 1,
+     "pico_share": 12.234,
+     "semanas_com_volume": 2
+    },
+    "laboratorio": {
+     "share_tokens": 27.02,
+     "share_gasto": 7.57
+    }
+   },
+   "relevancia": 90
+  },
+  {
+   "tipo": "alta",
+   "slug": "deepseek/deepseek-v4.1-flash-20260910",
+   "id": null,
+   "nome": "DeepSeek V4.1 Flash",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 10.14,
+    "para": 13.69,
+    "delta_pp": 3.55
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 13.69,
+     "rank_7d": 1,
+     "pico_share": 12.234,
+     "semanas_com_volume": 2
+    },
+    "laboratorio": {
+     "share_tokens": 27.02,
+     "share_gasto": 7.57
+    }
+   },
+   "relevancia": 70
+  },
+  {
+   "tipo": "top10",
+   "slug": "stealth/space-bunny-alpha",
+   "id": null,
+   "nome": "Space Bunny Alpha",
+   "lab": "Anônimo (stealth)",
+   "vendor": "stealth",
+   "dados": {
+    "posicao": 6,
+    "share": 4.44,
+    "lancamento": "2026-09-23"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 4.44,
+     "rank_7d": 6,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 59
+  },
+  {
+   "tipo": "top10",
+   "slug": "xiaomi/mimo-v2.6-flash-20260921",
+   "id": null,
+   "nome": "MiMo-V2.6-Flash",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "posicao": 10,
+    "share": 2.21,
+    "lancamento": "2026-09-21"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 2.21,
+     "rank_7d": 10,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 5.88,
+     "share_gasto": 0.91,
+     "lider": {
+      "slug": "xiaomi/mimo-v2.5-20260422",
+      "nome": "MiMo-V2.5",
+      "share_7d": 2.97,
+      "preco_misto": 0.175
+     }
+    }
+   },
+   "relevancia": 54
+  },
+  {
+   "tipo": "novo",
+   "slug": "bytedance-seed/seed-audio-1-0-20260630",
+   "id": "bytedance-seed/seed-audio-1-0",
+   "nome": "Seed Audio 1.0",
+   "lab": "ByteDance",
+   "vendor": "bytedance-seed",
+   "dados": {
+    "criado": "2026-09-25",
+    "contexto": 0,
+    "preco_entrada": 0.0,
+    "preco_saida": 2500.0,
+    "preco_misto": 625.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "jaredpalmer/kev-4b-20260924",
+   "id": "jaredpalmer/kev-4b",
+   "nome": "Kev 4B",
+   "lab": "Jaredpalmer",
+   "vendor": "jaredpalmer",
+   "dados": {
+    "criado": "2026-09-25",
+    "contexto": 8192,
+    "preco_entrada": 0.042,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0315,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->decisions",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "perceptron/perceptron-mk1.5-20260925",
+   "id": "perceptron/perceptron-mk1.5",
+   "nome": "Perceptron Mk1.5",
+   "lab": "Perceptron",
+   "vendor": "perceptron",
+   "dados": {
+    "criado": "2026-09-25",
+    "contexto": 36864,
+    "preco_entrada": 0.15,
+    "preco_saida": 1.5,
+    "preco_misto": 0.4875,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image+audio+video->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "respan/span-01-20260925",
+   "id": "respan/span-01",
+   "nome": "Span-01",
+   "lab": "Respan",
+   "vendor": "respan",
+   "dados": {
+    "criado": "2026-09-26",
+    "contexto": 0,
+    "preco_entrada": 0.02,
+    "preco_saida": 0.0,
+    "preco_misto": 0.015,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "respan/span-01-lite-20260925",
+   "id": "respan/span-01-lite",
+   "nome": "Span-01 Lite",
+   "lab": "Respan",
+   "vendor": "respan",
+   "dados": {
+    "criado": "2026-09-26",
+    "contexto": 0,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "typesafe/jev-router",
+   "id": "typesafe/jev-router",
+   "nome": "Jev Router",
+   "lab": "Typesafe",
+   "vendor": "typesafe",
+   "dados": {
+    "criado": "2026-09-25",
+    "contexto": 1000000,
+    "preco_entrada": null,
+    "preco_saida": null,
+    "preco_misto": null,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image+file+audio+video->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "typesafe/jev-1.13-20260917",
+      "nome": "jev-1.13",
+      "share_7d": 1.57,
+      "preco_misto": null
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen-plus-2025-07-28",
+   "id": "qwen/qwen-plus-2025-07-28",
+   "nome": "Qwen Plus 0728",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-30b-a3b-thinking-2507",
+   "id": "qwen/qwen3-30b-a3b-thinking-2507",
+   "nome": "Qwen3 30B A3B Thinking 2507",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-asr-flash-2026-02-10",
+   "id": "qwen/qwen3-asr-flash-2026-02-10",
+   "nome": "Qwen3 ASR Flash",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-max",
+   "id": "qwen/qwen3-max",
+   "nome": "Qwen3 Max",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-max-thinking-20260123",
+   "id": "qwen/qwen3-max-thinking",
+   "nome": "Qwen3 Max Thinking",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-vl-30b-a3b-thinking",
+   "id": "qwen/qwen3-vl-30b-a3b-thinking",
+   "nome": "Qwen3 VL 30B A3B Thinking",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-vl-8b-thinking",
+   "id": "qwen/qwen3-vl-8b-thinking",
+   "nome": "Qwen3 VL 8B Thinking",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3.6-max-preview-20260420",
+   "id": "qwen/qwen3.6-max-preview",
+   "nome": "Qwen3.6 Max Preview",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-235b-a22b-04-28",
+   "id": "qwen/qwen3-235b-a22b",
+   "nome": "Qwen3 235B A22B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.854,
+     "semanas_com_volume": 13
+    },
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-235b-a22b-thinking-2507",
+   "id": "qwen/qwen3-235b-a22b-thinking-2507",
+   "nome": "Qwen3 235B A22B Thinking 2507",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.196,
+     "semanas_com_volume": 9
+    },
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-8b-04-28",
+   "id": "qwen/qwen3-8b",
+   "nome": "Qwen3 8B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.111,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-coder-plus",
+   "id": "qwen/qwen3-coder-plus",
+   "nome": "Qwen3 Coder Plus",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.265,
+     "semanas_com_volume": 4
+    },
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-vl-235b-a22b-thinking",
+   "id": "qwen/qwen3-vl-235b-a22b-thinking",
+   "nome": "Qwen3 VL 235B A22B Thinking",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.066,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-vl-32b-instruct",
+   "id": "qwen/qwen3-vl-32b-instruct",
+   "nome": "Qwen3 VL 32B Instruct",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.059,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-vl-8b-instruct",
+   "id": "qwen/qwen3-vl-8b-instruct",
+   "nome": "Qwen3 VL 8B Instruct",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.364,
+     "semanas_com_volume": 4
+    },
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "removido",
+   "slug": "anthropic/claude-3-haiku",
+   "id": "anthropic/claude-3-haiku",
+   "nome": "Claude 3 Haiku",
+   "lab": "Anthropic",
+   "vendor": "anthropic",
+   "dados": {
+    "visto_em": "2026-09-25",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.418,
+     "semanas_com_volume": 20
+    },
+    "laboratorio": {
+     "share_tokens": 3.27,
+     "share_gasto": 24.92,
+     "lider": {
+      "slug": "anthropic/claude-sonnet-5-20260630",
+      "nome": "Claude Sonnet 5",
+      "share_7d": 1.02,
+      "preco_misto": 4.0
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-4.7-20251222",
+   "id": "z-ai/glm-4.7",
+   "nome": "GLM 4.7",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 0.7375,
+    "para": 1.0,
+    "variacao_pct": 35.6,
+    "entrada_de": 0.4,
+    "entrada_para": 0.6,
+    "saida_de": 1.75,
+    "saida_para": 2.2,
+    "desde": "2026-09-25"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 2.63,
+     "semanas_com_volume": 25
+    },
+    "laboratorio": {
+     "share_tokens": 15.48,
+     "share_gasto": 4.05,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 13.67,
+      "preco_misto": 0.155
+     }
+    }
+   },
+   "relevancia": 27
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3-vl-30b-a3b-instruct",
+   "id": "qwen/qwen3-vl-30b-a3b-instruct",
+   "nome": "Qwen3 VL 30B A3B Instruct",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.2275,
+    "para": 0.2625,
+    "variacao_pct": 15.4,
+    "entrada_de": 0.13,
+    "entrada_para": 0.15,
+    "saida_de": 0.52,
+    "saida_para": 0.6,
+    "desde": "2026-09-25"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 1.18,
+     "share_gasto": 1.07,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.36,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 23
+  },
+  {
+   "tipo": "contexto",
+   "slug": "xiaomi/mimo-v2.6-pro-20260921",
+   "id": "xiaomi/mimo-v2.6-pro",
+   "nome": "MiMo-V2.6-Pro",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "de": 1048576,
+    "para": 1050000
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.54,
+     "rank_7d": 30,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 5.88,
+     "share_gasto": 0.91,
+     "lider": {
+      "slug": "xiaomi/mimo-v2.5-20260422",
+      "nome": "MiMo-V2.5",
+      "share_7d": 2.97,
+      "preco_misto": 0.175
+     }
+    }
+   },
+   "relevancia": 16
+  },
+  {
+   "tipo": "contexto",
+   "slug": "thinkingmachines/inkling-20260715",
+   "id": "thinkingmachines/inkling",
+   "nome": "Inkling",
+   "lab": "Thinking Machines",
+   "vendor": "thinkingmachines",
+   "dados": {
+    "de": 1048576,
+    "para": 524288
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.11,
+     "rank_7d": 54,
+     "pico_share": 0.282,
+     "semanas_com_volume": 4
+    },
+    "laboratorio": null
+   },
+   "relevancia": 15
+  },
+  {
+   "tipo": "contexto",
+   "slug": "thinkingmachines/inkling-small-20260730",
+   "id": "thinkingmachines/inkling-small",
+   "nome": "Inkling Small",
+   "lab": "Thinking Machines",
+   "vendor": "thinkingmachines",
+   "dados": {
+    "de": 1048576,
+    "para": 524288
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "thinkingmachines/inkling-20260715",
+      "nome": "Inkling",
+      "share_7d": 0.11,
+      "preco_misto": 1.7625
+     }
+    }
+   },
+   "relevancia": 15
+  }
+ ]
+}
