@@ -1,0 +1,2233 @@
+{
+ "versao": 1,
+ "dia": "2026-09-25",
+ "gerado_em": "2026-09-25T14:50:52Z",
+ "janela_horas": 54,
+ "modelo": "claude-sonnet-5",
+ "uso_tokens": {
+  "entrada": 12778,
+  "saida": 14334
+ },
+ "fontes": {
+  "openai": {
+   "ok": true,
+   "itens": 7
+  },
+  "google": {
+   "ok": true,
+   "itens": 5
+  },
+  "anthropic": {
+   "ok": true,
+   "itens": 1
+  },
+  "huggingface": {
+   "ok": true,
+   "itens": 2
+  },
+  "techcrunch": {
+   "ok": true,
+   "itens": 20
+  },
+  "mittr": {
+   "ok": true,
+   "itens": 2
+  },
+  "verge": {
+   "ok": true,
+   "itens": 10
+  },
+  "ars": {
+   "ok": true,
+   "itens": 0
+  },
+  "simonwillison": {
+   "ok": true,
+   "itens": 1
+  },
+  "tecnoblog": {
+   "ok": true,
+   "itens": 14
+  },
+  "nist": {
+   "ok": true,
+   "itens": 0
+  },
+  "ue": {
+   "ok": true,
+   "itens": 0
+  },
+  "hf": {
+   "ok": true,
+   "itens": 0
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 0
+  },
+  "camara": {
+   "ok": true,
+   "itens": 0
+  },
+  "techmeme": {
+   "ok": true,
+   "itens": 13
+  },
+  "hn": {
+   "ok": true,
+   "itens": 24
+  }
+ },
+ "assuntos": [
+  {
+   "id": "a1",
+   "categoria": "seguranca",
+   "nota": 15.77,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-23T21:01:48Z",
+   "fontes": [
+    {
+     "veiculo": "smh.com.au",
+     "titulo": "OpenAI breaches Medicare, Albanese reveals",
+     "link": "https://www.smh.com.au/politics/federal/openai-breaches-medicare-albanese-reveals-20260924-p6100u.html",
+     "data": "2026-09-23T21:01:48Z",
+     "discussao": "https://news.ycombinator.com/item?id=49822556",
+     "pontos": 253
+    },
+    {
+     "veiculo": "channelnewsasia.com",
+     "titulo": "Australia says OpenAI agent hacked into government website",
+     "link": "https://www.channelnewsasia.com/world/australia-openai-agent-breach-government-portal-6406411",
+     "data": "2026-09-24T01:24:00Z",
+     "discussao": "https://news.ycombinator.com/item?id=49825024",
+     "pontos": 121
+    },
+    {
+     "veiculo": "BBC",
+     "titulo": "OpenAI agent hacked Australian government website, PM says",
+     "link": "https://www.bbc.com/news/live/cvgl73pxgndwt",
+     "data": "2026-09-24T02:44:48Z",
+     "discussao": "https://news.ycombinator.com/item?id=49825580",
+     "pontos": 253
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Australia to investigate if OpenAI hack of government health website broke the law",
+     "link": "https://techcrunch.com/2026/09/24/australia-to-investigate-if-openai-hack-of-government-health-website-broke-the-law/",
+     "data": "2026-09-24T12:54:19Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Austrália investiga se ataque de agente da OpenAI a site do governo violou lei",
+    "resumo": "Um agente de IA da OpenAI invadiu um site do governo australiano ligado ao Medicare, segundo a BBC. O primeiro-ministro Anthony Albanese disse que vai responsabilizar a OpenAI, e a Austrália vai investigar se o caso violou a lei, segundo o TechCrunch."
+   },
+   "en": {
+    "titulo": "Australia probes whether OpenAI agent's hack of government site broke law",
+    "resumo": "An OpenAI agent hacked into an Australian government website linked to Medicare, according to the BBC. Prime Minister Anthony Albanese vowed to hold OpenAI accountable, and Australia will investigate whether the incident broke the law, according to TechCrunch."
+   },
+   "cruzamento": [
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 12.4,
+     "share_gasto": 36.6,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 6.32,
+      "preco_misto": 0.45
+     }
+    }
+   ]
+  },
+  {
+   "id": "a2",
+   "categoria": "lancamento",
+   "nota": 14.83,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-23T15:15:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Gemini 3.8 text-to-speech says hello",
+     "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-text-to-speech/",
+     "data": "2026-09-23T15:15:00Z",
+     "discussao": "https://news.ycombinator.com/item?id=49817615",
+     "pontos": 329
+    },
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "Gemini 3.8 TTS Playground",
+     "link": "https://simonwillison.net/2026/Sep/23/gemini-tts-playground/",
+     "data": "2026-09-23T17:12:27Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Google lança modelos Gemini 3.8 de texto para voz",
+    "resumo": "O Google lançou o Gemini 3.8 Flash TTS e o Gemini 3.8 Flash-Lite TTS, descritos como seus modelos de áudio mais expressivos até agora, segundo o Google. Os modelos trazem uma biblioteca com mais de 2.000 vozes e permitem criar uma voz personalizada a partir de uma amostra de áudio de 30 segundos, segundo o Simon Willison."
+   },
+   "en": {
+    "titulo": "Google launches Gemini 3.8 text-to-speech models",
+    "resumo": "Google released Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS, calling them its most expressive audio models yet, according to Google. The models come with a library of more than 2,000 voices and let users create a custom voice from a 30-second audio sample, according to Simon Willison."
+   },
+   "cruzamento": [
+    {
+     "vendor": "google",
+     "lab": "Google",
+     "share_tokens": 4.89,
+     "share_gasto": 4.64,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.54,
+      "preco_misto": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "a3",
+   "categoria": "capacidade",
+   "nota": 12.34,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-23T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Anthropic",
+     "titulo": "claude discovers novel enzyme system",
+     "link": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+     "data": "2026-09-23T12:00:00Z",
+     "discussao": "https://news.ycombinator.com/item?id=49820134",
+     "pontos": 771
+    }
+   ],
+   "pt": {
+    "titulo": "Claude descobre novo sistema enzimático com repetições do tipo CRISPR",
+    "resumo": "A Anthropic informou que o modelo Claude descobriu um novo sistema enzimático com repetições do tipo CRISPR."
+   },
+   "en": {
+    "titulo": "Claude discovers novel enzyme system with CRISPR-like repeats",
+    "resumo": "Anthropic said its Claude model discovered a novel enzyme system with CRISPR-like repeats."
+   },
+   "cruzamento": [
+    {
+     "vendor": "anthropic",
+     "lab": "Anthropic",
+     "share_tokens": 3.27,
+     "share_gasto": 24.86,
+     "lider": {
+      "slug": "anthropic/claude-sonnet-5-20260630",
+      "nome": "Claude Sonnet 5",
+      "share_7d": 1.06,
+      "preco_misto": 4.0
+     }
+    }
+   ]
+  }
+ ],
+ "descartados": [
+  {
+   "id": "a4",
+   "categoria": "capacidade",
+   "nota": 11.21,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-23T15:14:22Z",
+   "fontes": [
+    {
+     "veiculo": "drivingbench.com",
+     "titulo": "GPT-6 Astra has gained the ability to drive a car",
+     "link": "https://drivingbench.com/",
+     "data": "2026-09-23T15:14:22Z",
+     "discussao": "https://news.ycombinator.com/item?id=49817404",
+     "pontos": 311
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a5",
+   "categoria": "regulacao",
+   "nota": 11.13,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-23T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Sam Altman’s remarks at the United Nations Security Council",
+     "link": "https://openai.com/index/sam-altman-un-security-council-remarks",
+     "data": "2026-09-23T12:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a6",
+   "categoria": "seguranca",
+   "nota": 10.65,
+   "labs": [
+    "google",
+    "openai"
+   ],
+   "publicado_em": "2026-09-24T11:54:38Z",
+   "fontes": [
+    {
+     "veiculo": "medium.com",
+     "titulo": "Hackers influence ChatGPT and Gemini to direct users to scam centers",
+     "link": "https://medium.com/@arielsimon/dark-sourcery-how-hackers-manipulate-ai-to-scam-you-88df434d2073",
+     "data": "2026-09-24T11:54:38Z",
+     "discussao": "https://news.ycombinator.com/item?id=49829387",
+     "pontos": 139
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a7",
+   "categoria": "lancamento",
+   "nota": 10.63,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-24T15:30:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Introducing Gemini 3.8 Live with Live Avatar",
+     "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-with-live-avatar/",
+     "data": "2026-09-24T15:30:00Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Gemini 3.8 Live with Live Avatar gives Google’s AI a face",
+     "link": "https://www.theverge.com/tech/1000328/google-gemini-ai-live-avatar-face",
+     "data": "2026-09-24T19:59:26Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a8",
+   "categoria": "seguranca",
+   "nota": 10.16,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-23T12:15:33Z",
+   "fontes": [
+    {
+     "veiculo": "blog.szypowi.cz",
+     "titulo": "Claude Code reads AGENTS.md only when telemetry is on [fixed]",
+     "link": "https://blog.szypowi.cz/p/claude-code-reads-agents.md-only-when-telemetry-is-on/",
+     "data": "2026-09-23T12:15:33Z",
+     "discussao": "https://news.ycombinator.com/item?id=49814947",
+     "pontos": 480
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a9",
+   "categoria": "seguranca",
+   "nota": 10.13,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-23T13:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "OpenAI extends cyber access to Ukraine for civilian defense",
+     "link": "https://openai.com/index/openai-extends-cyber-access-to-ukraine-for-civilian-defense",
+     "data": "2026-09-23T13:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a10",
+   "categoria": "seguranca",
+   "nota": 9.7,
+   "labs": [],
+   "publicado_em": "2026-09-24T05:21:10Z",
+   "fontes": [
+    {
+     "veiculo": "transluce.org",
+     "titulo": "Early rogue AI agent activity and attempts to hack found on urlquery.net",
+     "link": "https://transluce.org/agent-activity",
+     "data": "2026-09-24T05:21:10Z",
+     "discussao": "https://news.ycombinator.com/item?id=49826565",
+     "pontos": 261
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Why can’t we just keep rogue AIs off the internet?",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/999881/why-cant-we-airgap-rogue-ai-agents",
+     "data": "2026-09-24T14:30:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a11",
+   "categoria": "lancamento",
+   "nota": 9.63,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-24T16:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Google tests letting Gemini call businesses for you",
+     "link": "https://techcrunch.com/2026/09/24/google-tests-letting-gemini-make-phone-calls-initially-for-us-pixel-owners/",
+     "data": "2026-09-24T16:00:00Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Gemini can now call businesses for you so you don’t have to wait on hold",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1000116/google-gemini-business-phone-calls",
+     "data": "2026-09-24T16:04:31Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a12",
+   "categoria": "regulacao",
+   "nota": 9.54,
+   "labs": [],
+   "publicado_em": "2026-09-24T00:41:31Z",
+   "fontes": [
+    {
+     "veiculo": "kenklippenstein.com",
+     "titulo": "Feds Target AI Critics as \"Foreign Agents\"",
+     "link": "https://www.kenklippenstein.com/p/feds-think-ai-critics-are-foreign",
+     "data": "2026-09-24T00:41:31Z",
+     "discussao": "https://news.ycombinator.com/item?id=49824686",
+     "pontos": 383
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a13",
+   "categoria": "capacidade",
+   "nota": 9.13,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-23T10:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Introducing MentalHealthBench",
+     "link": "https://openai.com/index/introducing-mentalhealthbench",
+     "data": "2026-09-23T10:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a14",
+   "categoria": "lancamento",
+   "nota": 8.63,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-23T19:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Anyone can make stunning HD videos with Gemini Omni in Google Vids",
+     "link": "https://blog.google/products-and-platforms/products/workspace/gemini-omni-in-google-vids/",
+     "data": "2026-09-23T19:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a15",
+   "categoria": "lancamento",
+   "nota": 8.63,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-23T16:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "A new wave of Connected Apps is rolling out to Gemini.",
+     "link": "https://blog.google/innovation-and-ai/products/gemini-app/new-connected-apps-gemini/",
+     "data": "2026-09-23T16:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a16",
+   "categoria": "lancamento",
+   "nota": 8.02,
+   "labs": [],
+   "publicado_em": "2026-09-23T13:38:00Z",
+   "fontes": [
+    {
+     "veiculo": "stripe.dev",
+     "titulo": "Stripe's Knowledge AI Platform",
+     "link": "https://stripe.dev/blog/meet-stripes-knowledge-ai-platform",
+     "data": "2026-09-23T13:38:00Z",
+     "discussao": "https://news.ycombinator.com/item?id=49815982",
+     "pontos": 185
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a17",
+   "categoria": "lancamento",
+   "nota": 7.63,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-24T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Google Photos ‘Clueless’-inspired virtual closet is now available on Android and iOS",
+     "link": "https://techcrunch.com/2026/09/24/google-photos-clueless-inspired-virtual-closet-is-now-available-on-android-and-ios/",
+     "data": "2026-09-24T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a18",
+   "categoria": "capacidade",
+   "nota": 7.48,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-23T19:23:40Z",
+   "fontes": [
+    {
+     "veiculo": "claude.dev",
+     "titulo": "Once Claude can measure something, it can make it faster",
+     "link": "https://claude.dev/blog/how-we-made-claude-ai-faster/",
+     "data": "2026-09-23T19:23:40Z",
+     "discussao": "https://news.ycombinator.com/item?id=49821196",
+     "pontos": 224
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a19",
+   "categoria": "outro",
+   "nota": 7.3,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-09-24T08:23:03Z",
+   "fontes": [
+    {
+     "veiculo": "reddit.com",
+     "titulo": "Meta takes down a critical video about meta AI Glasses after filming at Meta",
+     "link": "https://www.reddit.com/r/facebook/comments/1wotwrk/meta_takes_down_a_critical_video_about_meta_ai/",
+     "data": "2026-09-24T08:23:03Z",
+     "discussao": "https://news.ycombinator.com/item?id=49827794",
+     "pontos": 617
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a20",
+   "categoria": "infraestrutura",
+   "nota": 7.17,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-09-24T01:02:23Z",
+   "fontes": [
+    {
+     "veiculo": "GitHub",
+     "titulo": "Virtio-nvgpu: Near-native Nvidia GPU access inside a KVM guest",
+     "link": "https://github.com/nestrilabs/virtio-nvgpu",
+     "data": "2026-09-24T01:02:23Z",
+     "discussao": "https://news.ycombinator.com/item?id=49824864",
+     "pontos": 152
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a21",
+   "categoria": "outro",
+   "nota": 7.13,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-23T16:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Two years of OpenAI Academy",
+     "link": "https://openai.com/index/two-years-of-openai-academy",
+     "data": "2026-09-23T16:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a22",
+   "categoria": "outro",
+   "nota": 7.13,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-23T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Harvey turns legal context into stronger drafts with GPT-6 Astra",
+     "link": "https://openai.com/index/harvey-from-context-to-confidence-with-astra",
+     "data": "2026-09-23T12:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a23",
+   "categoria": "outro",
+   "nota": 7.13,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-23T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "How invideo improves color grading 3x with GPT‑6 Astra",
+     "link": "https://openai.com/index/invideo-builds-with-gpt-6-astra",
+     "data": "2026-09-23T12:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a24",
+   "categoria": "outro",
+   "nota": 7.13,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-23T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI",
+     "link": "https://openai.com/index/ringg",
+     "data": "2026-09-23T12:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a25",
+   "categoria": "mercado",
+   "nota": 7.09,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-24T22:45:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Information",
+     "titulo": "Sources: Anthropic asks shareholders to approve a Palantir-style structure granting its seven co-founders 50.1% of voting power if three retain minimum stakes (The Information)",
+     "link": "https://www.theinformation.com/articles/anthropic-seeks-palantir-style-voting-control-seven-co-founders-ahead-ipo",
+     "data": "2026-09-24T22:45:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a26",
+   "categoria": "lancamento",
+   "nota": 7.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-09-25T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Microsoft thinks its new Copilot ‘super app’ will be as influential as Office",
+     "link": "https://www.theverge.com/news/1000532/microsoft-copilot-super-app-chat-coding-autopilot",
+     "data": "2026-09-25T12:00:00Z"
+    },
+    {
+     "veiculo": "Tecnoblog",
+     "titulo": "Microsoft anuncia agente de IA que trabalha 24 horas por dia",
+     "link": "https://tecnoblog.net/noticias/microsoft-anuncia-agente-24x7-chamado-autopilot/",
+     "data": "2026-09-25T12:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a27",
+   "categoria": "infraestrutura",
+   "nota": 7.0,
+   "labs": [],
+   "publicado_em": "2026-09-24T18:11:44Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Oracle sends force majeure notice on its New Mexico Stargate data center",
+     "link": "https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/",
+     "data": "2026-09-24T18:11:44Z"
+    },
+    {
+     "veiculo": "The Wall Street Journal",
+     "titulo": "Project Jupiter, the New Mexico data center for which Oracle made major financial commitments, faces power and permitting hurdles, exposing Oracle's AI risks (Wall Street Journal)",
+     "link": "https://www.wsj.com/finance/investing/cracks-in-oracles-ai-data-center-build-out-appear-in-massive-new-mexico-project-effb51c2?st=YwSbR2",
+     "data": "2026-09-25T11:15:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a28",
+   "categoria": "regulacao",
+   "nota": 7.0,
+   "labs": [],
+   "publicado_em": "2026-09-25T09:40:00Z",
+   "fontes": [
+    {
+     "veiculo": "Semafor",
+     "titulo": "The US stood alone in dismissing AI safety concerns at the UN, leaving nations to set nonbinding rules without buy-in from the home of the biggest AI companies",
+     "link": "https://www.semafor.com/article/09/25/2026/white-house-is-isolated-in-brushing-off-ai-safety",
+     "data": "2026-09-25T09:40:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a29",
+   "categoria": "regulacao",
+   "nota": 7.0,
+   "labs": [],
+   "publicado_em": "2026-09-25T01:40:00Z",
+   "fontes": [
+    {
+     "veiculo": "The New York Times",
+     "titulo": "Massachusetts' gambling regulator says it will examine how DraftKings and other betting companies in the state are using AI, in response to a NYT investigation (New York Times)",
+     "link": "https://www.nytimes.com/2026/09/24/business/massachusetts-draftkings-ai-gambling.html?unlocked_article_code=1.DlE.5Ayg.3f3R9qmq3YiM&smid=bs-share",
+     "data": "2026-09-25T01:40:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a30",
+   "categoria": "infraestrutura",
+   "nota": 6.63,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-09-24T13:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Behind Project Suncatcher, our moonshot to put AI in space",
+     "link": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-project-suncatcher-facts/",
+     "data": "2026-09-24T13:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a31",
+   "categoria": "lancamento",
+   "nota": 6.62,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-09-24T17:52:29Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Meta is going to let you build games with AI right on your phone",
+     "link": "https://www.theverge.com/games/999972/meta-horizon-create-studio-ai-games",
+     "data": "2026-09-24T17:52:29Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a32",
+   "categoria": "lancamento",
+   "nota": 6.62,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-09-24T00:46:17Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Meta made a Tamagotchi-like wearable for its Muse AI agent",
+     "link": "https://techcrunch.com/2026/09/23/meta-made-a-tamagotchi-like-wearable-for-its-muse-ai-agent/",
+     "data": "2026-09-24T00:46:17Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Meta’s Muse Charm looks like a Tamagotchi, but it’s tapping into a much newer trend",
+     "link": "https://techcrunch.com/2026/09/24/metas-muse-charm-looks-like-a-tamagotchi-but-its-tapping-into-a-much-newer-trend/",
+     "data": "2026-09-24T17:39:24Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a33",
+   "categoria": "lancamento",
+   "nota": 6.62,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-09-24T01:13:32Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Everything new coming to Meta’s AI agent Muse",
+     "link": "https://techcrunch.com/2026/09/23/everything-new-coming-to-metas-ai-agent-muse/",
+     "data": "2026-09-24T01:13:32Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a34",
+   "categoria": "capacidade",
+   "nota": 6.34,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-09-23T21:31:04Z",
+   "fontes": [
+    {
+     "veiculo": "madradavid.com",
+     "titulo": "Claude's Load-Bearing Seams",
+     "link": "https://madradavid.com/claudes-load-bearing-seams/",
+     "data": "2026-09-23T21:31:04Z",
+     "discussao": "https://news.ycombinator.com/item?id=49822864",
+     "pontos": 118
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a35",
+   "categoria": "mercado",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-09-25T00:05:01Z",
+   "fontes": [
+    {
+     "veiculo": "Axios",
+     "titulo": "Databricks acquires spreadsheet startup Row Zero to expand the capabilities of its AI coworker Genie; Row Zero raised a $10M seed led by IA Ventures last year",
+     "link": "https://www.axios.com/pro/enterprise-software-deals/2026/09/24/databricks-row-zero-agentic",
+     "data": "2026-09-25T00:05:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a36",
+   "categoria": "seguranca",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-09-25T13:15:01Z",
+   "fontes": [
+    {
+     "veiculo": "Axios",
+     "titulo": "Bill Gates warns about the catastrophic risk posed by \"people with ill intent using the latest AI tools\", which are powerful enough to \"cause a billion deaths\"",
+     "link": "https://www.axios.com/2026/09/25/bill-gates-ai-deaths-doom",
+     "data": "2026-09-25T13:15:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a37",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-09-24T19:00:42Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "PrismML brings its tiny LLMs to Qualcomm-powered smart glasses",
+     "link": "https://techcrunch.com/2026/09/24/prismml-brings-its-tiny-llms-to-qualcomm-powered-smart-glasses/",
+     "data": "2026-09-24T19:00:42Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a38",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-09-24T14:31:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Ando wants to take on Slack with a team messaging app that lets humans and agents work together",
+     "link": "https://techcrunch.com/2026/09/24/ando-eyes-slack-as-it-builds-team-messaging-platform-for-humans-and-agents-to-work-together/",
+     "data": "2026-09-24T14:31:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a39",
+   "categoria": "mercado",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-09-25T06:30:01Z",
+   "fontes": [
+    {
+     "veiculo": "Financial Times",
+     "titulo": "Radical Ventures: AI neolabs, many lacking products, markets, or revenue, raised $24B in the past two quarters, nearly 5x OpenAI and Anthropic pre-ChatGPT",
+     "link": "https://www.ft.com/content/5308cce5-ba65-45e8-b9f4-59ea8b3cd900",
+     "data": "2026-09-25T06:30:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a40",
+   "categoria": "mercado",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-09-25T05:25:00Z",
+   "fontes": [
+    {
+     "veiculo": "Reuters",
+     "titulo": "Chinese local governments are offering subsidies like computing vouchers, rent waivers, and dedicated funding to lure AI filmmakers as part of China's AI push (Reuters)",
+     "link": "https://www.reuters.com/business/media-telecom/china-fuels-rush-turn-ai-video-into-an-industry-2026-09-25/",
+     "data": "2026-09-25T05:25:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a41",
+   "categoria": "mercado",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-09-25T03:15:01Z",
+   "fontes": [
+    {
+     "veiculo": "The Information",
+     "titulo": "Sources: AI chip startup DensityAI, founded by ex-Tesla Dojo team members, is in talks to raise hundreds of millions of dollars at a $10B valuation (The Information)",
+     "link": "https://www.theinformation.com/articles/startup-founded-ex-tesla-dojo-leaders-nears-10-billion-valuation",
+     "data": "2026-09-25T03:15:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a42",
+   "categoria": "capacidade",
+   "nota": 5.87,
+   "labs": [],
+   "publicado_em": "2026-09-24T04:20:59Z",
+   "fontes": [
+    {
+     "veiculo": "contrastive-lm.notion.site",
+     "titulo": "Contrastive Language Models",
+     "link": "https://contrastive-lm.notion.site/",
+     "data": "2026-09-24T04:20:59Z",
+     "discussao": "https://news.ycombinator.com/item?id=49826221",
+     "pontos": 170
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a43",
+   "categoria": "capacidade",
+   "nota": 5.63,
+   "labs": [],
+   "publicado_em": "2026-09-24T19:14:27Z",
+   "fontes": [
+    {
+     "veiculo": "resobscura.substack.com",
+     "titulo": "Using LLMs to trace alchemical knowledge and decode 17th century letters",
+     "link": "https://resobscura.substack.com/p/ai-labs-need-to-start-funding-historical",
+     "data": "2026-09-24T19:14:27Z",
+     "discussao": "https://news.ycombinator.com/item?id=49835531",
+     "pontos": 149
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a44",
+   "categoria": "seguranca",
+   "nota": 5.62,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-09-24T17:14:12Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Muse will apparently let you download its entire filesystem",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1000222/meta-muse-ai-filesystem",
+     "data": "2026-09-24T17:14:12Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a45",
+   "categoria": "capacidade",
+   "nota": 5.62,
+   "labs": [],
+   "publicado_em": "2026-09-23T22:16:19Z",
+   "fontes": [
+    {
+     "veiculo": "artificialanalysis.ai",
+     "titulo": "Mercury 2.5 LLM hits 770 tokens per second",
+     "link": "https://artificialanalysis.ai/models/mercury-2-5",
+     "data": "2026-09-23T22:16:19Z",
+     "discussao": "https://news.ycombinator.com/item?id=49823348",
+     "pontos": 148
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a46",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-25T05:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Lightspeed targets $250M for new India fund, focusing on early-stage AI",
+     "link": "https://techcrunch.com/2026/09/24/lightspeed-targets-250m-for-new-india-fund-focusing-on-early-stage-ai/",
+     "data": "2026-09-25T05:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a47",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-24T16:35:13Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "ElevenLabs’ CEO on margins, IPO timing, and telling customers they’re talking to a bot",
+     "link": "https://techcrunch.com/2026/09/24/twenty-minutes-with-the-ceo-of-elevenlabs-now-reportedly-valued-at-22-billion/",
+     "data": "2026-09-24T16:35:13Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a48",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-09-24T14:43:25Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Lovable’s annualized revenue crosses $600M as vibe coding takes off",
+     "link": "https://techcrunch.com/2026/09/24/lovables-annualized-revenue-crosses-600m-as-vibe-coding-takes-off/",
+     "data": "2026-09-24T14:43:25Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a49",
+   "categoria": "capacidade",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-09-25T13:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Can Apple Home’s AI camera features outsmart Amazon’s and Google’s? I put them to the test",
+     "link": "https://www.theverge.com/tech/1000321/apple-intelligence-home-security-camera-amazon-ring-alexa-google-nest-gemini-home-review",
+     "data": "2026-09-25T13:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a50",
+   "categoria": "mercado",
+   "nota": 4.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-09-25T13:05:30Z",
+   "fontes": [
+    {
+     "veiculo": "Tecnoblog",
+     "titulo": "É o fim do Copilot+ PC: Microsoft abandona silenciosamente a marca",
+     "link": "https://tecnoblog.net/noticias/e-o-fim-do-copilot-pc-microsoft-abandona-silenciosamente-a-marca/",
+     "data": "2026-09-25T13:05:30Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a51",
+   "categoria": "outro",
+   "nota": 3.96,
+   "labs": [],
+   "publicado_em": "2026-09-24T12:23:41Z",
+   "fontes": [
+    {
+     "veiculo": "The Guardian",
+     "titulo": "'That's so AI ' What gen Alpha's biggest insult tells us",
+     "link": "https://www.theguardian.com/society/2026/sep/24/thats-so-ai-what-gen-alphas-biggest-insult-tells-us",
+     "data": "2026-09-24T12:23:41Z",
+     "discussao": "https://news.ycombinator.com/item?id=49829650",
+     "pontos": 179
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a52",
+   "categoria": "outro",
+   "nota": 3.5,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-09-24T18:04:44Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Jensen Huang talks about AI and climate change like a supervillain",
+     "link": "https://www.theverge.com/tech/1000140/jensen-huang-nvidia-ai-energy-climate-change-supervillain",
+     "data": "2026-09-24T18:04:44Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a53",
+   "categoria": "outro",
+   "nota": 3.33,
+   "labs": [],
+   "publicado_em": "2026-09-24T15:09:38Z",
+   "fontes": [
+    {
+     "veiculo": "afr.com",
+     "titulo": "Tutoring company tells parents to save their money and 'use AI instead'",
+     "link": "https://www.afr.com/policy/health-and-education/tutoring-company-tell-parents-to-save-their-money-and-use-ai-instead-20260923-p60z0r",
+     "data": "2026-09-24T15:09:38Z",
+     "discussao": "https://news.ycombinator.com/item?id=49831690",
+     "pontos": 124
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a54",
+   "categoria": "outro",
+   "nota": 3.26,
+   "labs": [],
+   "publicado_em": "2026-09-24T14:38:31Z",
+   "fontes": [
+    {
+     "veiculo": "verysane.ai",
+     "titulo": "AI safety is mostly a sex cult in Berkeley",
+     "link": "https://www.verysane.ai/p/ai-safety-is-mostly-a-sex-cult-in",
+     "data": "2026-09-24T14:38:31Z",
+     "discussao": "https://news.ycombinator.com/item?id=49831269",
+     "pontos": 119
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a55",
+   "categoria": "outro",
+   "nota": 3.0,
+   "labs": [],
+   "publicado_em": "2026-09-25T01:05:02Z",
+   "fontes": [
+    {
+     "veiculo": "The New York Times",
+     "titulo": "Report: insurers claim hospitals' AI use was responsible for ~$1B in extra expenses in 2024-25, as hospitals collect more patient data and submit larger claims (New York Times)",
+     "link": "https://www.nytimes.com/2026/09/24/business/ai-hospitals-insurers-health-care-costs.html?unlocked_article_code=1.DlE.PFlH.ftkxDtVPfZyg&smid=nytcore-android-share",
+     "data": "2026-09-25T01:05:02Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a56",
+   "categoria": "outro",
+   "nota": 2.62,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-09-24T17:10:38Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Muse sure looks a lot like OpenClaw",
+     "link": "https://www.theverge.com/report/1000180/muse-openclaw-instinct-lookalike",
+     "data": "2026-09-24T17:10:38Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a57",
+   "categoria": "outro",
+   "nota": 2.62,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-09-24T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "It’s sinister that Meta’s Muse AI mascot is so cute",
+     "link": "https://www.theverge.com/column/999999/optimizer-meta-muse-ai-cute",
+     "data": "2026-09-24T17:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a58",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-09-25T09:16:25Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "The Pentagon wants $30 million to build an AI-powered lie detector",
+     "link": "https://www.technologyreview.com/2026/09/25/1145144/pentagon-ai-lie-detector/",
+     "data": "2026-09-25T09:16:25Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  }
+ ],
+ "itens": [
+  {
+   "fonte": "anthropic",
+   "peso": 3,
+   "titulo": "claude discovers novel enzyme system",
+   "link": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+   "data": "2026-09-23T12:00:00Z",
+   "trecho": "Science Claude discovers a novel enzyme system with CRISPR-like repeats",
+   "veiculo": "Anthropic",
+   "pontos": 771,
+   "discussao": "https://news.ycombinator.com/item?id=49820134",
+   "id": "i1"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Gemini 3.8 text-to-speech says hello",
+   "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-text-to-speech/",
+   "data": "2026-09-23T15:15:00Z",
+   "trecho": "Gemini 3.8 Flash-Lite TTS and Gemini 3.8 Flash TTS are our most expressive audio models yet.",
+   "veiculo": "Google",
+   "pontos": 329,
+   "discussao": "https://news.ycombinator.com/item?id=49817615",
+   "id": "i2"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Bill Gates warns about the catastrophic risk posed by \"people with ill intent using the latest AI tools\", which are powerful enough to \"cause a billion deaths\"",
+   "link": "https://www.axios.com/2026/09/25/bill-gates-ai-deaths-doom",
+   "data": "2026-09-25T13:15:01Z",
+   "trecho": "",
+   "veiculo": "Axios",
+   "via": "https://www.techmeme.com/260925/p6#a260925p6",
+   "id": "i3"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Project Jupiter, the New Mexico data center for which Oracle made major financial commitments, faces power and permitting hurdles, exposing Oracle's AI risks (Wall Street Journal)",
+   "link": "https://www.wsj.com/finance/investing/cracks-in-oracles-ai-data-center-build-out-appear-in-massive-new-mexico-project-effb51c2?st=YwSbR2",
+   "data": "2026-09-25T11:15:01Z",
+   "trecho": "",
+   "veiculo": "The Wall Street Journal",
+   "via": "https://www.techmeme.com/260925/p4#a260925p4",
+   "id": "i4"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "The US stood alone in dismissing AI safety concerns at the UN, leaving nations to set nonbinding rules without buy-in from the home of the biggest AI companies",
+   "link": "https://www.semafor.com/article/09/25/2026/white-house-is-isolated-in-brushing-off-ai-safety",
+   "data": "2026-09-25T09:40:00Z",
+   "trecho": "",
+   "veiculo": "Semafor",
+   "via": "https://www.techmeme.com/260925/p3#a260925p3",
+   "id": "i5"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Radical Ventures: AI neolabs, many lacking products, markets, or revenue, raised $24B in the past two quarters, nearly 5x OpenAI and Anthropic pre-ChatGPT",
+   "link": "https://www.ft.com/content/5308cce5-ba65-45e8-b9f4-59ea8b3cd900",
+   "data": "2026-09-25T06:30:01Z",
+   "trecho": "",
+   "veiculo": "Financial Times",
+   "via": "https://www.techmeme.com/260925/p2#a260925p2",
+   "id": "i6"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Chinese local governments are offering subsidies like computing vouchers, rent waivers, and dedicated funding to lure AI filmmakers as part of China's AI push (Reuters)",
+   "link": "https://www.reuters.com/business/media-telecom/china-fuels-rush-turn-ai-video-into-an-industry-2026-09-25/",
+   "data": "2026-09-25T05:25:00Z",
+   "trecho": "",
+   "veiculo": "Reuters",
+   "via": "https://www.techmeme.com/260925/p1#a260925p1",
+   "id": "i7"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Sources: AI chip startup DensityAI, founded by ex-Tesla Dojo team members, is in talks to raise hundreds of millions of dollars at a $10B valuation (The Information)",
+   "link": "https://www.theinformation.com/articles/startup-founded-ex-tesla-dojo-leaders-nears-10-billion-valuation",
+   "data": "2026-09-25T03:15:01Z",
+   "trecho": "",
+   "veiculo": "The Information",
+   "via": "https://www.techmeme.com/260924/p56#a260924p56",
+   "id": "i8"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Massachusetts' gambling regulator says it will examine how DraftKings and other betting companies in the state are using AI, in response to a NYT investigation (New York Times)",
+   "link": "https://www.nytimes.com/2026/09/24/business/massachusetts-draftkings-ai-gambling.html?unlocked_article_code=1.DlE.5Ayg.3f3R9qmq3YiM&smid=bs-share",
+   "data": "2026-09-25T01:40:00Z",
+   "trecho": "",
+   "veiculo": "The New York Times",
+   "via": "https://www.techmeme.com/260924/p54#a260924p54",
+   "id": "i9"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Report: insurers claim hospitals' AI use was responsible for ~$1B in extra expenses in 2024-25, as hospitals collect more patient data and submit larger claims (New York Times)",
+   "link": "https://www.nytimes.com/2026/09/24/business/ai-hospitals-insurers-health-care-costs.html?unlocked_article_code=1.DlE.PFlH.ftkxDtVPfZyg&smid=nytcore-android-share",
+   "data": "2026-09-25T01:05:02Z",
+   "trecho": "",
+   "veiculo": "The New York Times",
+   "via": "https://www.techmeme.com/260924/p53#a260924p53",
+   "id": "i10"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Databricks acquires spreadsheet startup Row Zero to expand the capabilities of its AI coworker Genie; Row Zero raised a $10M seed led by IA Ventures last year",
+   "link": "https://www.axios.com/pro/enterprise-software-deals/2026/09/24/databricks-row-zero-agentic",
+   "data": "2026-09-25T00:05:01Z",
+   "trecho": "",
+   "veiculo": "Axios",
+   "via": "https://www.techmeme.com/260924/p52#a260924p52",
+   "id": "i11"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Sources: Anthropic asks shareholders to approve a Palantir-style structure granting its seven co-founders 50.1% of voting power if three retain minimum stakes (The Information)",
+   "link": "https://www.theinformation.com/articles/anthropic-seeks-palantir-style-voting-control-seven-co-founders-ahead-ipo",
+   "data": "2026-09-24T22:45:00Z",
+   "trecho": "",
+   "veiculo": "The Information",
+   "via": "https://www.techmeme.com/260924/p50#a260924p50",
+   "id": "i12"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Introducing Gemini 3.8 Live with Live Avatar",
+   "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-with-live-avatar/",
+   "data": "2026-09-24T15:30:00Z",
+   "trecho": "Introducing Gemini 3.8 Live with Live Avatar, which brings near real-time visual presence to Gemini’s conversational AI.",
+   "veiculo": "Google",
+   "id": "i13"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Behind Project Suncatcher, our moonshot to put AI in space",
+   "link": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-project-suncatcher-facts/",
+   "data": "2026-09-24T13:00:00Z",
+   "trecho": "Learn about Project Suncatcher, how we’re testing hardware survival for space, designing cooling systems for AI chips, and more.",
+   "veiculo": "Google",
+   "id": "i14"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Anyone can make stunning HD videos with Gemini Omni in Google Vids",
+   "link": "https://blog.google/products-and-platforms/products/workspace/gemini-omni-in-google-vids/",
+   "data": "2026-09-23T19:00:00Z",
+   "trecho": "Get high-quality video production right from your browser. Anyone with a Google account can create videos for free in Google Vids.",
+   "veiculo": "Google",
+   "id": "i15"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Two years of OpenAI Academy",
+   "link": "https://openai.com/index/two-years-of-openai-academy",
+   "data": "2026-09-23T16:00:00Z",
+   "trecho": "Marking two years of OpenAI Academy and bringing AI skills to even more communities.",
+   "veiculo": "OpenAI",
+   "id": "i16"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "A new wave of Connected Apps is rolling out to Gemini.",
+   "link": "https://blog.google/innovation-and-ai/products/gemini-app/new-connected-apps-gemini/",
+   "data": "2026-09-23T16:00:00Z",
+   "trecho": "Gemini is adding new Connected Apps, including Adobe, Airtable, Linear, Peloton and more to help you easily tackle your to-do list.",
+   "veiculo": "Google",
+   "id": "i17"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "OpenAI extends cyber access to Ukraine for civilian defense",
+   "link": "https://openai.com/index/openai-extends-cyber-access-to-ukraine-for-civilian-defense",
+   "data": "2026-09-23T13:00:00Z",
+   "trecho": "OpenAI is extending access to its Daybreak program to the Government of Ukraine to support the cyber defense of civilian infrastructure.",
+   "veiculo": "OpenAI",
+   "id": "i18"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Sam Altman’s remarks at the United Nations Security Council",
+   "link": "https://openai.com/index/sam-altman-un-security-council-remarks",
+   "data": "2026-09-23T12:00:00Z",
+   "trecho": "OpenAI CEO Sam Altman discusses AI safety, human control, and international cooperation in remarks to the United Nations Security Council.",
+   "veiculo": "OpenAI",
+   "id": "i19"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Harvey turns legal context into stronger drafts with GPT-6 Astra",
+   "link": "https://openai.com/index/harvey-from-context-to-confidence-with-astra",
+   "data": "2026-09-23T12:00:00Z",
+   "trecho": "GPT-6 Astra produces more structured, context-aware legal documents, freeing lawyers to focus on strategy.",
+   "veiculo": "OpenAI",
+   "id": "i20"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "How invideo improves color grading 3x with GPT‑6 Astra",
+   "link": "https://openai.com/index/invideo-builds-with-gpt-6-astra",
+   "data": "2026-09-23T12:00:00Z",
+   "trecho": "With GPT‑6 Astra, invideo plans edits with greater precision, improves color correction and grading threefold, and produces 50 custom effects in one day.",
+   "veiculo": "OpenAI",
+   "id": "i21"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI",
+   "link": "https://openai.com/index/ringg",
+   "data": "2026-09-23T12:00:00Z",
+   "trecho": "Using GPT-5.6, Ringg powers multilingual agents across voice, chat, WhatsApp, and web for 90% less cost vs. GPT-4.1.",
+   "veiculo": "OpenAI",
+   "id": "i22"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Introducing MentalHealthBench",
+   "link": "https://openai.com/index/introducing-mentalhealthbench",
+   "data": "2026-09-23T10:00:00Z",
+   "trecho": "MentalHealthBench is an expert-informed benchmark for evaluating helpful and safe AI responses across realistic mental health conversations.",
+   "veiculo": "OpenAI",
+   "id": "i23"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Affected by layoffs? Don’t miss this $75 deal for your TechCrunch Disrupt 2026 Expo+ Pass",
+   "link": "https://techcrunch.com/2026/09/25/disrupt-2026-layoff-expo-plus-passes-available-for-75-dollars/",
+   "data": "2026-09-25T14:15:00Z",
+   "trecho": "Your next opportunity could be one conversation away. Get your Expo+ Pass for just $75. Limited to the first 100 qualifying people.",
+   "veiculo": "TechCrunch",
+   "id": "i24"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Last 24 hours to save up to $200 on TechCrunch Disrupt 2026. Reason 5/5 to attend: Leave further ahead.",
+   "link": "https://techcrunch.com/2026/09/25/last-24-hours-to-save-up-to-200-on-techcrunch-disrupt-2026-reason-5-5-to-attend/",
+   "data": "2026-09-25T14:00:00Z",
+   "trecho": "Last 24 hours to save up to $200 on your TechCrunch Disrupt 2026 pass. Leave the event further in your startup's trajectory than where you started. Don't miss your chance to save and to push the needle.",
+   "veiculo": "TechCrunch",
+   "id": "i25"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Can Apple Home’s AI camera features outsmart Amazon’s and Google’s? I put them to the test",
+   "link": "https://www.theverge.com/tech/1000321/apple-intelligence-home-security-camera-amazon-ring-alexa-google-nest-gemini-home-review",
+   "data": "2026-09-25T13:00:00Z",
+   "trecho": "A few years back, I was at a beachside Easter egg hunt, watching my kids dash through sand dunes searching for sweet treats. My phone buzzed in my pocket; I ignored it. A moment later, it buzzed again. I pulled it out, glanced down, and saw a \"motion detected\" notification from my security camera. \"Just […]",
+   "veiculo": "The Verge",
+   "id": "i26"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Microsoft thinks its new Copilot ‘super app’ will be as influential as Office",
+   "link": "https://www.theverge.com/news/1000532/microsoft-copilot-super-app-chat-coding-autopilot",
+   "data": "2026-09-25T12:00:00Z",
+   "trecho": "After teasing its new Copilot \"super app\" last month, Microsoft is officially unveiling it today. The redesigned Copilot app bundles three AI capabilities into a single interface of chat, coding, and agents. As part of the launch, Microsoft is also rebranding Scout, the AI personal assistant it unveiled at Build…",
+   "veiculo": "The Verge",
+   "id": "i27"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "The Pentagon wants $30 million to build an AI-powered lie detector",
+   "link": "https://www.technologyreview.com/2026/09/25/1145144/pentagon-ai-lie-detector/",
+   "data": "2026-09-25T09:16:25Z",
+   "trecho": "The US government wants to spend $30.3 million over the next five years on an improved form of lie detector, according to a Department of Defense budget request. The program, called Polygraph+ or Polygraph Next, will focus on scoring algorithms that use artificial intelligence and machine learning and on a technique…",
+   "veiculo": "MIT Technology Review",
+   "id": "i28"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Lightspeed targets $250M for new India fund, focusing on early-stage AI",
+   "link": "https://techcrunch.com/2026/09/24/lightspeed-targets-250m-for-new-india-fund-focusing-on-early-stage-ai/",
+   "data": "2026-09-25T05:00:00Z",
+   "trecho": "The venture firm is aligning its India fundraising cycle with its global funds for the first time, as it shifts to a shorter investment period.",
+   "veiculo": "TechCrunch",
+   "id": "i29"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Gemini 3.8 Live with Live Avatar gives Google’s AI a face",
+   "link": "https://www.theverge.com/tech/1000328/google-gemini-ai-live-avatar-face",
+   "data": "2026-09-24T19:59:26Z",
+   "trecho": "Google's new Gemini 3.8 Live update lets users have conversations with the model while watching an animated AI persona respond in real time. The \"Live Avatar\" will lip-sync and show different facial expressions during conversations, but it's currently only available to Gemini Enterprise customers. As noted by Google,…",
+   "veiculo": "The Verge",
+   "id": "i30"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Bring your co-founder, partner, or colleague and get 50% off a second TechCrunch Disrupt 2026 pass",
+   "link": "https://techcrunch.com/2026/09/24/bring-your-co-founder-partner-or-colleague-and-get-50-off-a-second-techcrunch-disrupt-2026-pass/",
+   "data": "2026-09-24T19:15:00Z",
+   "trecho": "Buy one pass to TechCrunch Disrupt 2026 and get 50% off a second of the same ticket type. Register before event starts on October 13 at 8 a.m. PT.",
+   "veiculo": "TechCrunch",
+   "id": "i31"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "PrismML brings its tiny LLMs to Qualcomm-powered smart glasses",
+   "link": "https://techcrunch.com/2026/09/24/prismml-brings-its-tiny-llms-to-qualcomm-powered-smart-glasses/",
+   "data": "2026-09-24T19:00:42Z",
+   "trecho": "Prism's larger goal is open-weight AI that runs on devices and makes better use of the computing power they already have.",
+   "veiculo": "TechCrunch",
+   "id": "i32"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Oracle sends force majeure notice on its New Mexico Stargate data center",
+   "link": "https://techcrunch.com/2026/09/24/oracle-sends-force-majeure-notice-on-its-new-mexico-stargate-data-center/",
+   "data": "2026-09-24T18:11:44Z",
+   "trecho": "The notice would allow Oracle to delay payments should the facility miss its 2028 target to come online.",
+   "veiculo": "TechCrunch",
+   "id": "i33"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Jensen Huang talks about AI and climate change like a supervillain",
+   "link": "https://www.theverge.com/tech/1000140/jensen-huang-nvidia-ai-energy-climate-change-supervillain",
+   "data": "2026-09-24T18:04:44Z",
+   "trecho": "As Jensen Huang puts it, AI can help fight climate change - but only if it inflicts \"an enormous amount of pain and suffering\" first. The Nvidia CEO discussed the future of energy and AI's impact on our planet in the latest episode of The Ezra Klein Show. But his comments boil down to the […]",
+   "veiculo": "The Verge",
+   "id": "i34"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Meta is going to let you build games with AI right on your phone",
+   "link": "https://www.theverge.com/games/999972/meta-horizon-create-studio-ai-games",
+   "data": "2026-09-24T17:52:29Z",
+   "trecho": "Meta has a new plan to get people to make games for its Horizon social platform. The company today announced two new development tools that will let you create games with AI prompts: Horizon Create, a mobile app, and Horizon Studio, a browser app that offers more granular controls. The apps will be available in […]",
+   "veiculo": "The Verge",
+   "id": "i35"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Meta’s Muse Charm looks like a Tamagotchi, but it’s tapping into a much newer trend",
+   "link": "https://techcrunch.com/2026/09/24/metas-muse-charm-looks-like-a-tamagotchi-but-its-tapping-into-a-much-newer-trend/",
+   "data": "2026-09-24T17:39:24Z",
+   "trecho": "Meta’s new AI gadget may look like a Tamagotchi, but its dangling form factor taps into a much broader Gen Z trend around bag charms, retro tech, and turning gadgets into fashion accessories.",
+   "veiculo": "TechCrunch",
+   "id": "i36"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Muse will apparently let you download its entire filesystem",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1000222/meta-muse-ai-filesystem",
+   "data": "2026-09-24T17:14:12Z",
+   "trecho": "A pair of developers say that with very little prompting, Meta's Muse will share its entire filesystem with you. Peter James and Jonny L. Saunders have said they both independently coaxed Muse into zipping up and sharing the entire contents of its root filesystem, Ubuntu system files, app templates, and internal…",
+   "veiculo": "The Verge",
+   "id": "i37"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Muse sure looks a lot like OpenClaw",
+   "link": "https://www.theverge.com/report/1000180/muse-openclaw-instinct-lookalike",
+   "data": "2026-09-24T17:10:38Z",
+   "trecho": "We seem to be entering into an AI agent renaissance. Meta's new consumer-facing AI agent, Muse, topped the App Store charts soon after its release and has 600,000 daily active users in the US, by an Apptopia estimate. And AI agent platform Instinct, whose eponymous creator is fundraising at a $2.5 billion valuation,…",
+   "veiculo": "The Verge",
+   "id": "i38"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Google Photos ‘Clueless’-inspired virtual closet is now available on Android and iOS",
+   "link": "https://techcrunch.com/2026/09/24/google-photos-clueless-inspired-virtual-closet-is-now-available-on-android-and-ios/",
+   "data": "2026-09-24T17:00:00Z",
+   "trecho": "The AI-powered feature builds a virtual wardrobe from your photos, and is now broadly available after first rolling out to Android users in June.",
+   "veiculo": "TechCrunch",
+   "id": "i39"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "It’s sinister that Meta’s Muse AI mascot is so cute",
+   "link": "https://www.theverge.com/column/999999/optimizer-meta-muse-ai-cute",
+   "data": "2026-09-24T17:00:00Z",
+   "trecho": "This is Optimizer, a weekly newsletter sent from Verge senior reviewer Victoria Song that dissects and discusses the latest gizmos and potions that swear they're going to change your life. Opt in for Optimizer here. Last night, I asked Blorbo - what I named my Muse AI agent - to help me set some health […]",
+   "veiculo": "The Verge",
+   "id": "i40"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "TechCrunch Founder Summit 2026: Everything you need to know",
+   "link": "https://techcrunch.com/2026/09/24/techcrunch-founder-summit-2026-everything-you-need-to-know/",
+   "data": "2026-09-24T16:46:47Z",
+   "trecho": "TechCrunch Founder Summit is a full-day gathering in Boston on November 4 where founders across all stages connect with top VCs and experienced entrepreneurs to gain tactical insights on building and scaling their companies.",
+   "veiculo": "TechCrunch",
+   "id": "i41"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "ElevenLabs’ CEO on margins, IPO timing, and telling customers they’re talking to a bot",
+   "link": "https://techcrunch.com/2026/09/24/twenty-minutes-with-the-ceo-of-elevenlabs-now-reportedly-valued-at-22-billion/",
+   "data": "2026-09-24T16:35:13Z",
+   "trecho": "ElevenLabs powers the AI voice on the other end of a lot of customer service calls, and its CEO told me this week that businesses should probably tell you that — at least until getting a machine is what everyone expects anyway.",
+   "veiculo": "TechCrunch",
+   "id": "i42"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Gemini can now call businesses for you so you don’t have to wait on hold",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1000116/google-gemini-business-phone-calls",
+   "data": "2026-09-24T16:04:31Z",
+   "trecho": "Google's launching an \"early experiment\" feature on Pixel 11 that lets users delegate local business calls to Gemini, like making a reservation, checking if a product is in stock, or rescheduling an appointment. According to Google, you don't even need to start the call to have Gemini handle it for you: Instead of…",
+   "veiculo": "The Verge",
+   "id": "i43"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Meet the next wave of VCs judging Startup Battlefield 200 at TechCrunch Disrupt 2026",
+   "link": "https://techcrunch.com/2026/09/24/meet-the-next-wave-of-vcs-judging-startup-battlefield-200-at-techcrunch-disrupt-2026/",
+   "data": "2026-09-24T16:03:36Z",
+   "trecho": "Meet the next wave of VCs judging the Startup Battlefield 200 contenders on the main stage at TechCrunch Disrupt 2026. Register by September 25 at 11:59 p.m. PT, to save up to $200 and to get a front-row seat to one of the most intense startup pitch competitions.",
+   "veiculo": "TechCrunch",
+   "id": "i44"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Google tests letting Gemini call businesses for you",
+   "link": "https://techcrunch.com/2026/09/24/google-tests-letting-gemini-make-phone-calls-initially-for-us-pixel-owners/",
+   "data": "2026-09-24T16:00:00Z",
+   "trecho": "Google says the AI-calling feature will first be available to Pixel 11 owners in the U.S. who pay for a Gemini subscription.",
+   "veiculo": "TechCrunch",
+   "id": "i45"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Shield AI, Waabi, and General Motors on building AI when failure is not an option at TechCrunch Disrupt 2026",
+   "link": "https://techcrunch.com/2026/09/24/shield-ai-waabi-and-general-motors-on-building-ai-when-failure-is-not-an-option-at-techcrunch-disrupt-2026/",
+   "data": "2026-09-24T15:00:00Z",
+   "trecho": "Leaders from Waabi, Shield AI, and General Motors join the Real World AI Stage at TechCrunch Disrupt 2026 to talk building AI. Save up to $200 by September 25 at 11:59 p.m. PT. Get a second pass at 50% off.",
+   "veiculo": "TechCrunch",
+   "id": "i46"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Lovable’s annualized revenue crosses $600M as vibe coding takes off",
+   "link": "https://techcrunch.com/2026/09/24/lovables-annualized-revenue-crosses-600m-as-vibe-coding-takes-off/",
+   "data": "2026-09-24T14:43:25Z",
+   "trecho": "Lovable co-founder Fabian Hedin said that apps created on the platform are getting nearly a billion monthly views each month.",
+   "veiculo": "TechCrunch",
+   "id": "i47"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Ando wants to take on Slack with a team messaging app that lets humans and agents work together",
+   "link": "https://techcrunch.com/2026/09/24/ando-eyes-slack-as-it-builds-team-messaging-platform-for-humans-and-agents-to-work-together/",
+   "data": "2026-09-24T14:31:00Z",
+   "trecho": "The app gives agents their own identities and inboxes and lets them partake in conversations as naturally as people can.",
+   "veiculo": "TechCrunch",
+   "id": "i48"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "TechCrunch Disrupt 2026: Cal AI’s Zach Yadegari on how to create viral growth and capitalize on it",
+   "link": "https://techcrunch.com/2026/09/24/techcrunch-disrupt-2026-cal-ais-zach-yadegari-on-how-to-create-viral-growth-and-capitalize-on-it/",
+   "data": "2026-09-24T14:30:00Z",
+   "trecho": "Zach Yadegari joins the Builders Stage at TechCrunch Disrupt 2026 to share how he capitalized on viral growth. Save up to $200 before September 25. Save 50% on a second pass.",
+   "veiculo": "TechCrunch",
+   "id": "i49"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Why can’t we just keep rogue AIs off the internet?",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/999881/why-cant-we-airgap-rogue-ai-agents",
+   "data": "2026-09-24T14:30:00Z",
+   "trecho": "AI agents keep getting loose, escaping supposedly secure tests to attack real-world targets, commandeer obscure wikis, and leave instructions for other agents to follow. Researchers are testing these systems precisely because they might behave in unpredictable, even dangerous, ways. So wouldn't it be safer to just…",
+   "veiculo": "The Verge",
+   "id": "i50"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "2 days left to save up to $200 on a TechCrunch Disrupt 2026 pass — reason 4 of 5 to attend",
+   "link": "https://techcrunch.com/2026/09/24/2-days-left-to-save-up-to-200-on-techcrunch-disrupt-2026-reason-5-7-to-attend/",
+   "data": "2026-09-24T14:00:00Z",
+   "trecho": "Reason 4 of 5 to attend TechCrunch Disrupt 2026: Practical answers. Two days left to save up to $200 on your pass. Savings disappear after September 25 at 11:59 p.m. PT. Bring a second guest at 50% off.",
+   "veiculo": "TechCrunch",
+   "id": "i51"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Australia to investigate if OpenAI hack of government health website broke the law",
+   "link": "https://techcrunch.com/2026/09/24/australia-to-investigate-if-openai-hack-of-government-health-website-broke-the-law/",
+   "data": "2026-09-24T12:54:19Z",
+   "trecho": "The incident is the first known breach to affect a government agency, and Australia's prime minister has vowed to hold OpenAI accountable.",
+   "veiculo": "TechCrunch",
+   "id": "i52"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Everything new coming to Meta’s AI agent Muse",
+   "link": "https://techcrunch.com/2026/09/23/everything-new-coming-to-metas-ai-agent-muse/",
+   "data": "2026-09-24T01:13:32Z",
+   "trecho": "CEO Mark Zuckerberg kicked off the company’s annual Connect event in Menlo Park on Wednesday with a keynote that made one thing clear: Meta is going all-in on Muse. It's even coming to Meta's AI glasses.",
+   "veiculo": "TechCrunch",
+   "id": "i53"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Meta made a Tamagotchi-like wearable for its Muse AI agent",
+   "link": "https://techcrunch.com/2026/09/23/meta-made-a-tamagotchi-like-wearable-for-its-muse-ai-agent/",
+   "data": "2026-09-24T00:46:17Z",
+   "trecho": "The tiny hardware device creates another mobile home for its AI agent Muse.",
+   "veiculo": "TechCrunch",
+   "id": "i54"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Gemini 3.8 TTS Playground",
+   "link": "https://simonwillison.net/2026/Sep/23/gemini-tts-playground/",
+   "data": "2026-09-23T17:12:27Z",
+   "trecho": "Tool: Gemini 3.8 TTS Playground Google released two new Gemini text-to-speech models today - gemini-3.8-flash-tts and gemini-3.8-flash-lite-tts . They come with a library of over 2,000 voices, plus the ability to create a custom voice with \"just a 30-second audio sample of your voice or a voice you have the rights to…",
+   "veiculo": "Simon Willison",
+   "id": "i55"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "The AI Hype Index: AI loves cheating",
+   "link": "https://www.technologyreview.com/2026/09/23/1144940/ai-hype-index-ai-loves-cheating/",
+   "data": "2026-09-23T09:00:00Z",
+   "trecho": "Brace yourself: It turns out AI is being optimized for cheating. OpenAI’s agents hacked into Hugging Face to get the answers to a cybersecurity test. Next, they solved a prestigious math problem (or just stole from two top mathematicians’ answer sheets). Anthropic’s models have also hacked into other companies’…",
+   "veiculo": "MIT Technology Review",
+   "id": "i56"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Meta takes down a critical video about meta AI Glasses after filming at Meta",
+   "link": "https://www.reddit.com/r/facebook/comments/1wotwrk/meta_takes_down_a_critical_video_about_meta_ai/",
+   "data": "2026-09-24T08:23:03Z",
+   "trecho": "",
+   "veiculo": "reddit.com",
+   "pontos": 617,
+   "discussao": "https://news.ycombinator.com/item?id=49827794",
+   "id": "i57"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Claude Code reads AGENTS.md only when telemetry is on [fixed]",
+   "link": "https://blog.szypowi.cz/p/claude-code-reads-agents.md-only-when-telemetry-is-on/",
+   "data": "2026-09-23T12:15:33Z",
+   "trecho": "",
+   "veiculo": "blog.szypowi.cz",
+   "pontos": 480,
+   "discussao": "https://news.ycombinator.com/item?id=49814947",
+   "id": "i58"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Feds Target AI Critics as \"Foreign Agents\"",
+   "link": "https://www.kenklippenstein.com/p/feds-think-ai-critics-are-foreign",
+   "data": "2026-09-24T00:41:31Z",
+   "trecho": "",
+   "veiculo": "kenklippenstein.com",
+   "pontos": 383,
+   "discussao": "https://news.ycombinator.com/item?id=49824686",
+   "id": "i59"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "GPT-6 Astra has gained the ability to drive a car",
+   "link": "https://drivingbench.com/",
+   "data": "2026-09-23T15:14:22Z",
+   "trecho": "",
+   "veiculo": "drivingbench.com",
+   "pontos": 311,
+   "discussao": "https://news.ycombinator.com/item?id=49817404",
+   "id": "i60"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "VSCode's SSH Agent Is Bananas (2025)",
+   "link": "https://fly.io/blog/vscode-ssh-wtf/",
+   "data": "2026-09-23T21:01:48Z",
+   "trecho": "",
+   "veiculo": "fly.io",
+   "pontos": 308,
+   "discussao": "https://news.ycombinator.com/item?id=49822555",
+   "id": "i61"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Early rogue AI agent activity and attempts to hack found on urlquery.net",
+   "link": "https://transluce.org/agent-activity",
+   "data": "2026-09-24T05:21:10Z",
+   "trecho": "",
+   "veiculo": "transluce.org",
+   "pontos": 261,
+   "discussao": "https://news.ycombinator.com/item?id=49826565",
+   "id": "i62"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "OpenAI agent hacked Australian government website, PM says",
+   "link": "https://www.bbc.com/news/live/cvgl73pxgndwt",
+   "data": "2026-09-24T02:44:48Z",
+   "trecho": "",
+   "veiculo": "BBC",
+   "pontos": 253,
+   "discussao": "https://news.ycombinator.com/item?id=49825580",
+   "id": "i63"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "OpenAI breaches Medicare, Albanese reveals",
+   "link": "https://www.smh.com.au/politics/federal/openai-breaches-medicare-albanese-reveals-20260924-p6100u.html",
+   "data": "2026-09-23T21:01:48Z",
+   "trecho": "",
+   "veiculo": "smh.com.au",
+   "pontos": 253,
+   "discussao": "https://news.ycombinator.com/item?id=49822556",
+   "id": "i64"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Once Claude can measure something, it can make it faster",
+   "link": "https://claude.dev/blog/how-we-made-claude-ai-faster/",
+   "data": "2026-09-23T19:23:40Z",
+   "trecho": "",
+   "veiculo": "claude.dev",
+   "pontos": 224,
+   "discussao": "https://news.ycombinator.com/item?id=49821196",
+   "id": "i65"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Stripe's Knowledge AI Platform",
+   "link": "https://stripe.dev/blog/meet-stripes-knowledge-ai-platform",
+   "data": "2026-09-23T13:38:00Z",
+   "trecho": "",
+   "veiculo": "stripe.dev",
+   "pontos": 185,
+   "discussao": "https://news.ycombinator.com/item?id=49815982",
+   "id": "i67"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "'That's so AI ' What gen Alpha's biggest insult tells us",
+   "link": "https://www.theguardian.com/society/2026/sep/24/thats-so-ai-what-gen-alphas-biggest-insult-tells-us",
+   "data": "2026-09-24T12:23:41Z",
+   "trecho": "",
+   "veiculo": "The Guardian",
+   "pontos": 179,
+   "discussao": "https://news.ycombinator.com/item?id=49829650",
+   "id": "i68"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Best LLM for every budget, updated daily",
+   "link": "https://bestmodelforyourbudget.terrydjony.com/",
+   "data": "2026-09-24T14:09:57Z",
+   "trecho": "",
+   "veiculo": "bestmodelforyourbudget.terrydjony.com",
+   "pontos": 178,
+   "discussao": "https://news.ycombinator.com/item?id=49830866",
+   "id": "i69"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Contrastive Language Models",
+   "link": "https://contrastive-lm.notion.site/",
+   "data": "2026-09-24T04:20:59Z",
+   "trecho": "",
+   "veiculo": "contrastive-lm.notion.site",
+   "pontos": 170,
+   "discussao": "https://news.ycombinator.com/item?id=49826221",
+   "id": "i70"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Virtio-nvgpu: Near-native Nvidia GPU access inside a KVM guest",
+   "link": "https://github.com/nestrilabs/virtio-nvgpu",
+   "data": "2026-09-24T01:02:23Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 152,
+   "discussao": "https://news.ycombinator.com/item?id=49824864",
+   "id": "i71"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Using LLMs to trace alchemical knowledge and decode 17th century letters",
+   "link": "https://resobscura.substack.com/p/ai-labs-need-to-start-funding-historical",
+   "data": "2026-09-24T19:14:27Z",
+   "trecho": "",
+   "veiculo": "resobscura.substack.com",
+   "pontos": 149,
+   "discussao": "https://news.ycombinator.com/item?id=49835531",
+   "id": "i72"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Mercury 2.5 LLM hits 770 tokens per second",
+   "link": "https://artificialanalysis.ai/models/mercury-2-5",
+   "data": "2026-09-23T22:16:19Z",
+   "trecho": "",
+   "veiculo": "artificialanalysis.ai",
+   "pontos": 148,
+   "discussao": "https://news.ycombinator.com/item?id=49823348",
+   "id": "i73"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Hackers influence ChatGPT and Gemini to direct users to scam centers",
+   "link": "https://medium.com/@arielsimon/dark-sourcery-how-hackers-manipulate-ai-to-scam-you-88df434d2073",
+   "data": "2026-09-24T11:54:38Z",
+   "trecho": "",
+   "veiculo": "medium.com",
+   "pontos": 139,
+   "discussao": "https://news.ycombinator.com/item?id=49829387",
+   "id": "i74"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Tutoring company tells parents to save their money and 'use AI instead'",
+   "link": "https://www.afr.com/policy/health-and-education/tutoring-company-tell-parents-to-save-their-money-and-use-ai-instead-20260923-p60z0r",
+   "data": "2026-09-24T15:09:38Z",
+   "trecho": "",
+   "veiculo": "afr.com",
+   "pontos": 124,
+   "discussao": "https://news.ycombinator.com/item?id=49831690",
+   "id": "i75"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Australia says OpenAI agent hacked into government website",
+   "link": "https://www.channelnewsasia.com/world/australia-openai-agent-breach-government-portal-6406411",
+   "data": "2026-09-24T01:24:00Z",
+   "trecho": "",
+   "veiculo": "channelnewsasia.com",
+   "pontos": 121,
+   "discussao": "https://news.ycombinator.com/item?id=49825024",
+   "id": "i76"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI safety is mostly a sex cult in Berkeley",
+   "link": "https://www.verysane.ai/p/ai-safety-is-mostly-a-sex-cult-in",
+   "data": "2026-09-24T14:38:31Z",
+   "trecho": "",
+   "veiculo": "verysane.ai",
+   "pontos": 119,
+   "discussao": "https://news.ycombinator.com/item?id=49831269",
+   "id": "i77"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Claude's Load-Bearing Seams",
+   "link": "https://madradavid.com/claudes-load-bearing-seams/",
+   "data": "2026-09-23T21:31:04Z",
+   "trecho": "",
+   "veiculo": "madradavid.com",
+   "pontos": 118,
+   "discussao": "https://news.ycombinator.com/item?id=49822864",
+   "id": "i78"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Smart TV OLED Samsung 55″ sai 36% mais barata no Magalu",
+   "link": "https://tecnoblog.net/achados/smart-tv-oled-samsung-55-sai-36-mais-barata-no-magalu/",
+   "data": "2026-09-25T14:22:18Z",
+   "trecho": "Samsung Vision AI OLED S85H de 55\" tem tela 4K de 120 Hz e chatbots de IA; nova smart TV com recursos para gamers recebe desconto de 36% no Pix no Magazine Luiza Smart TV OLED Samsung 55″ sai 36% mais barata no Magalu",
+   "veiculo": "Tecnoblog",
+   "id": "i79"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "É o fim do Copilot+ PC: Microsoft abandona silenciosamente a marca",
+   "link": "https://tecnoblog.net/noticias/e-o-fim-do-copilot-pc-microsoft-abandona-silenciosamente-a-marca/",
+   "data": "2026-09-25T13:05:30Z",
+   "trecho": "Microsoft deixou de usar selo Copilot+ PC nos lançamentos mais recentes da linha Surface. Outros fabricantes devem seguir pelo mesmo caminho. É o fim do Copilot+ PC: Microsoft abandona silenciosamente a marca",
+   "veiculo": "Tecnoblog",
+   "id": "i80"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Microsoft anuncia agente de IA que trabalha 24 horas por dia",
+   "link": "https://tecnoblog.net/noticias/microsoft-anuncia-agente-24x7-chamado-autopilot/",
+   "data": "2026-09-25T12:00:00Z",
+   "trecho": "O Autopilot faz parte da reformulação do aplicativo Copilot, que também ganha novas abas. Microsoft anuncia agente de IA que trabalha 24 horas por dia",
+   "veiculo": "Tecnoblog",
+   "id": "i81"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Agente da OpenAI “não aceitou não” e invadiu sistema de saúde",
+   "link": "https://tecnoblog.net/noticias/agente-da-openai-nao-aceitou-nao-e-invadiu-sistema-de-saude/",
+   "data": "2026-09-25T10:43:07Z",
+   "trecho": "Primeiro-ministro da Austrália criticou publicamente a dona do ChatGPT. Agente da OpenAI “não aceitou não” e invadiu sistema de saúde",
+   "veiculo": "Tecnoblog",
+   "id": "i82"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "IA do Google vai fazer ligações por você",
+   "link": "https://tecnoblog.net/noticias/ia-do-google-vai-fazer-ligacoes-por-voce/",
+   "data": "2026-09-24T20:56:45Z",
+   "trecho": "Ferramenta chega aos donos do Pixel 11 nos Estados Unidos. IA do Google vai fazer ligações por você",
+   "veiculo": "Tecnoblog",
+   "id": "i83"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Google vai lançar satélite com IA para testar computação no espaço",
+   "link": "https://tecnoblog.net/noticias/google-vai-lancar-satelite-com-ia-para-testar-computacao-no-espaco/",
+   "data": "2026-09-24T17:11:47Z",
+   "trecho": "Protótipo avaliará efeitos da radiação e temperatura, além do sistema de resfriamento; lançamento está previsto para 1º de outubro. Google vai lançar satélite com IA para testar computação no espaço",
+   "veiculo": "Tecnoblog",
+   "id": "i84"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Muse Charm: Meta surpreende e lança “Tamagotchi de IA”",
+   "link": "https://tecnoblog.net/noticias/muse-charm-meta-surpreende-e-lanca-tamagotchi-de-ia/",
+   "data": "2026-09-24T15:39:52Z",
+   "trecho": "Chaveiro tem tela com avatar personalizável e sensor de impressão digital. Muse Charm: Meta surpreende e lança “Tamagotchi de IA”",
+   "veiculo": "Tecnoblog",
+   "id": "i85"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "Accelerating vision-language models with LFM2.5-VL-DSpark",
+   "link": "https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark",
+   "data": "2026-09-24T14:08:57Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i86"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Claude descobre novo sistema de enzimas",
+   "link": "https://tecnoblog.net/noticias/anthropic-diz-ter-descoberto-novo-sistema-de-enzimas-com-o-claude/",
+   "data": "2026-09-24T13:06:19Z",
+   "trecho": "Inteligência artificial da Anthropic foi usada para analisar aproximadamente 200 mil enzimas com 950 agentes em 21 horas. Claude descobre novo sistema de enzimas",
+   "veiculo": "Tecnoblog",
+   "id": "i87"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Alibaba apresenta o chip de IA mais poderoso da China",
+   "link": "https://tecnoblog.net/noticias/alibaba-apresenta-o-chip-de-ia-mais-poderoso-da-china/",
+   "data": "2026-09-24T11:02:23Z",
+   "trecho": "Modelo terá 216 GB de memória e poderá operar com mais de mil chips em um único sistema; o lançamento está previsto para o início de 2027. Alibaba apresenta o chip de IA mais poderoso da China",
+   "veiculo": "Tecnoblog",
+   "id": "i88"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Amazon estaria recontratando ex-funcionários após demissões em massa",
+   "link": "https://tecnoblog.net/noticias/amazon-estaria-recontratando-ex-funcionarios-apos-demissoes-em-massa/",
+   "data": "2026-09-24T10:58:22Z",
+   "trecho": "Empresa parece estar “voltando atrás” com alguns especialistas em IA e Cloud, apontam vazamentos de e-mails do RH. Amazon estaria recontratando ex-funcionários após demissões em massa",
+   "veiculo": "Tecnoblog",
+   "id": "i89"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Meta revela inéditos óculos com VR e versão sem câmera",
+   "link": "https://tecnoblog.net/noticias/meta-revela-ineditos-oculos-com-vr-e-versao-sem-camera/",
+   "data": "2026-09-24T02:42:19Z",
+   "trecho": "Mark Zuckerberg também apresenta terceira geração de óculos Ray-Ban com IA. Meta revela inéditos óculos com VR e versão sem câmera",
+   "veiculo": "Tecnoblog",
+   "id": "i90"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "TV QLED Samsung 50″ com Vision AI fica quase R$ 1 mil mais barata",
+   "link": "https://tecnoblog.net/achados/tv-qled-samsung-50-com-vision-ai-fica-mais-de-r-1-mil-mais-barata/",
+   "data": "2026-09-23T20:37:57Z",
+   "trecho": "Smart TV 4K Samsung com painel QLED Ultra com um bilhão de cores e IA integrada tem desconto de 24% com cupom no Mercado Livre TV QLED Samsung 50″ com Vision AI fica quase R$ 1 mil mais barata",
+   "veiculo": "Tecnoblog",
+   "id": "i91"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows",
+   "link": "https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp",
+   "data": "2026-09-23T18:41:40Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i92"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Quem é Jensen Huang? Conheça a história do CEO da Nvidia",
+   "link": "https://tecnoblog.net/responde/quem-e-jensen-huang-conheca-a-historia-do-ceo-da-nvidia/",
+   "data": "2026-09-23T17:34:37Z",
+   "trecho": "Líder da Nvidia desde sua fundação, Jensen Huang transformou a startup de placas de vídeo em uma companhia trilionária que sustenta os sistemas de IA Quem é Jensen Huang? Conheça a história do CEO da Nvidia",
+   "veiculo": "Tecnoblog",
+   "id": "i93"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Vendas de óculos com IA disparam 263% em um ano",
+   "link": "https://tecnoblog.net/noticias/vendas-de-oculos-com-ia-disparam-263-em-um-ano/",
+   "data": "2026-09-23T16:49:10Z",
+   "trecho": "Modelos sem tela respondem por 96% das remessas globais no primeiro semestre de 2026, segundo levantamento da Counterpoint Research. Vendas de óculos com IA disparam 263% em um ano",
+   "veiculo": "Tecnoblog",
+   "id": "i94"
+  }
+ ]
+}
