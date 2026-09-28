@@ -208,12 +208,12 @@
     }
    ],
    "pt": {
-    "titulo": "Claude descobre novo sistema enzimático com repetições do tipo CRISPR",
-    "resumo": "A Anthropic informou que o modelo Claude descobriu um novo sistema enzimático com repetições do tipo CRISPR."
+    "titulo": "Agentes do Claude acham em vírus de bactérias um sistema enzimático parecido com o CRISPR",
+    "resumo": "Cerca de 950 agentes do Claude vasculharam um banco de sequências de DNA por 21 horas e encontraram em bacteriófagos um sistema de transcriptase reversa ligado a repetições do tipo CRISPR, batizado de ART, segundo a Anthropic. Cientistas do novo laboratório de biologia da empresa validaram o achado em bancada, e Feng Zhang, do Broad Institute e um dos pioneiros do CRISPR, revisou os resultados. O estudo saiu como preprint."
    },
    "en": {
-    "titulo": "Claude discovers novel enzyme system with CRISPR-like repeats",
-    "resumo": "Anthropic said its Claude model discovered a novel enzyme system with CRISPR-like repeats."
+    "titulo": "Claude agents find a CRISPR-like enzyme system in bacterial viruses",
+    "resumo": "About 950 Claude agents searched a DNA sequence database for 21 hours and found in bacteriophages a reverse transcriptase system tied to CRISPR-like repeats, named ART, according to Anthropic. Scientists at the company's new life sciences lab validated the finding at the bench, and Feng Zhang of the Broad Institute, one of the pioneers of CRISPR, reviewed the results. The study was released as a preprint."
    },
    "cruzamento": [
     {
