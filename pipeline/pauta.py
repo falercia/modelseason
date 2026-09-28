@@ -411,19 +411,23 @@ class Claude:
         return ids[0]
 
     LIMITE_MINIMO = 16000
+    LIMITE_MAXIMO = 64000
 
     def json(self, sistema, usuario, max_tokens=LIMITE_MINIMO):
         """Uma chamada que precisa devolver JSON. Os modelos recentes podem raciocinar
         antes de responder e gastar o limite de saida nisso; por isso o limite e alto,
-        o motivo da parada vai para o log e resposta sem JSON ganha nova tentativa."""
+        o motivo da parada vai para o log e resposta sem JSON ganha nova tentativa.
+        Parada por max_tokens dobra o limite da tentativa seguinte (ate LIMITE_MAXIMO):
+        repetir o mesmo limite repete a falha, como na pauta de 28/09."""
         ultimo = None
+        limite = max(max_tokens, self.LIMITE_MINIMO)
         for tentativa in range(3):
             # Sem temperature: os modelos recentes recusam o parametro. A consistencia
             # vem das regras do prompt e da validacao da saida, nao da amostragem.
             t0 = time.time()
             try:
-                resp = self.s.post(f"{API}/messages", headers=self._h(), timeout=(15, 300), json={
-                    "model": self.modelo, "max_tokens": max(max_tokens, self.LIMITE_MINIMO),
+                resp = self.s.post(f"{API}/messages", headers=self._h(), timeout=(15, 900), json={
+                    "model": self.modelo, "max_tokens": limite,
                     "system": sistema, "messages": [{"role": "user", "content": usuario}]})
             except requests.RequestException as e:
                 ultimo = type(e).__name__
@@ -445,6 +449,8 @@ class Claude:
             parada = corpo.get("stop_reason")
             log(f"    API: {time.time() - t0:.0f}s, parada={parada}, blocos={blocos}, "
                 f"tokens={u.get('input_tokens')}/{u.get('output_tokens')}")
+            if parada == "max_tokens":
+                limite = min(limite * 2, self.LIMITE_MAXIMO)
             txt = "".join(b.get("text", "") for b in corpo.get("content", []) if b.get("type") == "text")
             i, j = txt.find("{"), txt.rfind("}")
             if i >= 0 and j > i:

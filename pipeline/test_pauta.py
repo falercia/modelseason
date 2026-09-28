@@ -359,6 +359,14 @@ sr3 = SessaoRuim([bom])
 P.Claude("k", sessao=sr3, modelo="m").json("s", "u", max_tokens=3000)
 ok("API: limite menor pedido por quem chama e ignorado", sr3.enviados[0]["max_tokens"] >= 16000, sr3.enviados[0]["max_tokens"])
 ok("redacao nao fixa limite proprio", "max_tokens=" not in __import__("inspect").getsource(P.redigir))
+sr4 = SessaoRuim([so_pensou, so_pensou, bom])
+P.Claude("k", sessao=sr4, modelo="m").json("s", "u")
+ok("API: parada por max_tokens dobra o limite da tentativa seguinte",
+   [e["max_tokens"] for e in sr4.enviados] == [16000, 32000, 64000], [e["max_tokens"] for e in sr4.enviados])
+sr5 = SessaoRuim([{**bom, "content": [{"type": "text", "text": "nada"}], "stop_reason": "end_turn"}, bom])
+P.Claude("k", sessao=sr5, modelo="m").json("s", "u")
+ok("API: falha sem max_tokens mantem o limite", [e["max_tokens"] for e in sr5.enviados] == [16000, 16000],
+   [e["max_tokens"] for e in sr5.enviados])
 sr2 = SessaoRuim([so_pensou] * 3)
 try:
     P.Claude("k", sessao=sr2, modelo="m").json("s", "u")
