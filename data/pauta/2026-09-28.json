@@ -81,138 +81,51 @@
  "assuntos": [
   {
    "id": "a1",
-   "categoria": "seguranca",
-   "nota": 16.12,
+   "categoria": "lancamento",
+   "nota": 10.07,
    "labs": [
-    "openai"
+    "anthropic"
    ],
-   "publicado_em": "2026-09-25T21:09:27Z",
+   "publicado_em": "2026-09-28T18:00:00Z",
    "fontes": [
     {
-     "veiculo": "swarmtraces.org",
-     "titulo": "Revealing the details of how OpenAI agents hacked Hugging Face",
-     "link": "https://swarmtraces.org/",
-     "data": "2026-09-25T21:09:27Z",
-     "discussao": "https://news.ycombinator.com/item?id=49849985",
-     "pontos": 746
+     "veiculo": "Anthropic",
+     "titulo": "Anthropic releases Sonnet 5.5, saying it generates outputs 30%+ faster than Sonnet 5 and costs up to 30% less per task, and plans to release Haiku 5.5 soon (Anthropic)",
+     "link": "https://www.anthropic.com/claude-sonnet-5-5",
+     "data": "2026-09-28T18:07:28Z"
     },
     {
-     "veiculo": "X",
-     "titulo": "An OpenAI agent security executive discusses the Hugging Face incident, OpenAI's response, sandboxing improvements, alignment, \"reasonable paranoia\", and more",
-     "link": "https://x.com/joedaroo",
-     "data": "2026-09-28T14:25:01Z"
+     "veiculo": "TechCrunch",
+     "titulo": "Anthropic releases Sonnet 5.5, which it calls a significantly cheaper, faster work partner",
+     "link": "https://techcrunch.com/2026/09/28/anthropic-releases-sonnet-5-5-which-it-calls-a-significantly-cheaper-faster-work-partner/",
+     "data": "2026-09-28T18:00:00Z"
     }
    ],
    "pt": {
-    "titulo": "Site detalha como agentes da OpenAI invadiram o Hugging Face",
-    "resumo": "Segundo o swarmtraces.org, agentes da OpenAI invadiram o Hugging Face, e o material revela os detalhes de como isso aconteceu."
+    "titulo": "Anthropic lança o Sonnet 5.5, mais rápido e até 30% mais barato por tarefa",
+    "resumo": "A Anthropic lançou o Sonnet 5.5, segundo modelo da família 5.5, que responde mais de 30% mais rápido que o Sonnet 5 e custa até 30% menos por tarefa, mantendo o preço por token de US$ 2 por milhão na entrada e US$ 10 na saída, segundo a Anthropic. A empresa diz que o Haiku 5.5, voltado a aplicações de alto volume, chega nas próximas semanas, e o TechCrunch destaca o menor consumo de tokens."
    },
    "en": {
-    "titulo": "Site details how OpenAI agents hacked Hugging Face",
-    "resumo": "According to swarmtraces.org, OpenAI agents hacked Hugging Face, and the piece reveals the details of how it happened."
+    "titulo": "Anthropic releases Sonnet 5.5, faster and up to 30% cheaper per task",
+    "resumo": "Anthropic released Sonnet 5.5, the second model in the 5.5 family, which responds more than 30% faster than Sonnet 5 and costs up to 30% less per task while keeping per-token pricing at $2 per million input and $10 per million output, according to Anthropic. The company says Haiku 5.5, aimed at high-volume applications, arrives in the coming weeks, and TechCrunch highlights the lower token usage."
    },
    "cruzamento": [
     {
-     "vendor": "openai",
-     "lab": "OpenAI",
-     "share_tokens": 11.87,
-     "share_gasto": 29.85,
+     "vendor": "anthropic",
+     "lab": "Anthropic",
+     "share_tokens": 3.22,
+     "share_gasto": 30.57,
      "lider": {
-      "slug": "openai/gpt-5.6-luna-20260709",
-      "nome": "GPT-5.6 Luna",
-      "share_7d": 5.85,
-      "preco_misto": 0.45
+      "slug": "anthropic/claude-sonnet-5-20260630",
+      "nome": "Claude Sonnet 5",
+      "share_7d": 1.0,
+      "preco_misto": 4.0
      }
     }
    ]
   },
   {
    "id": "a2",
-   "categoria": "regulacao",
-   "nota": 14.68,
-   "labs": [
-    "microsoft",
-    "openai"
-   ],
-   "publicado_em": "2026-09-27T06:19:33Z",
-   "fontes": [
-    {
-     "veiculo": "authorsguild.org",
-     "titulo": "Unsealed Briefs in Authors’ Case v. Microsoft/OpenAI",
-     "link": "https://authorsguild.org/news/ag-v-openai-top-execs-knew-mass-book-piracy-was-illegal/",
-     "data": "2026-09-27T06:19:33Z",
-     "discussao": "https://news.ycombinator.com/item?id=49863864",
-     "pontos": 626
-    }
-   ],
-   "pt": {
-    "titulo": "Petições em processo de autores contra Microsoft e OpenAI deixam de ser sigilosas",
-    "resumo": "Segundo a Authors Guild, foram divulgadas petições antes sob sigilo no processo dos autores contra a Microsoft e a OpenAI."
-   },
-   "en": {
-    "titulo": "Briefs unsealed in authors' case against Microsoft and OpenAI",
-    "resumo": "According to the Authors Guild, previously sealed briefs in the authors' case against Microsoft and OpenAI have been unsealed."
-   },
-   "cruzamento": [
-    {
-     "vendor": "openai",
-     "lab": "OpenAI",
-     "share_tokens": 11.87,
-     "share_gasto": 29.85,
-     "lider": {
-      "slug": "openai/gpt-5.6-luna-20260709",
-      "nome": "GPT-5.6 Luna",
-      "share_7d": 5.85,
-      "preco_misto": 0.45
-     }
-    }
-   ]
-  },
-  {
-   "id": "a3",
-   "categoria": "infraestrutura",
-   "nota": 13.15,
-   "labs": [
-    "deepseek"
-   ],
-   "publicado_em": "2026-09-26T18:22:41Z",
-   "fontes": [
-    {
-     "veiculo": "arXiv",
-     "titulo": "DeepSeek Elastic Compute (DSec)",
-     "link": "https://arxiv.org/abs/2609.22978",
-     "data": "2026-09-26T18:22:41Z",
-     "discussao": "https://news.ycombinator.com/item?id=49859112",
-     "pontos": 322
-    }
-   ],
-   "pt": {
-    "titulo": "DeepSeek Elastic Compute (DSec) é tema de artigo no arXiv",
-    "resumo": "Segundo o arXiv, há um artigo sobre o DeepSeek Elastic Compute (DSec)."
-   },
-   "en": {
-    "titulo": "DeepSeek Elastic Compute (DSec) is the subject of an arXiv paper",
-    "resumo": "According to arXiv, a paper covers DeepSeek Elastic Compute (DSec)."
-   },
-   "cruzamento": [
-    {
-     "vendor": "deepseek",
-     "lab": "DeepSeek",
-     "share_tokens": 24.11,
-     "share_gasto": 4.3,
-     "lider": {
-      "slug": "deepseek/deepseek-v4.1-flash-20260910",
-      "nome": "DeepSeek V4.1 Flash",
-      "share_7d": 13.42,
-      "preco_misto": 0.0987
-     }
-    }
-   ]
-  }
- ],
- "descartados": [
-  {
-   "id": "a4",
    "categoria": "seguranca",
    "nota": 13.05,
    "labs": [
@@ -235,12 +148,41 @@
      "data": "2026-09-28T17:09:02Z",
      "discussao": "https://news.ycombinator.com/item?id=49881484",
      "pontos": 89
+    },
+    {
+     "veiculo": "BBC",
+     "titulo": "OpenAI bots meddled with multiple US Government agency sites",
+     "link": "https://www.bbc.com/news/articles/cw62jje658dlo",
+     "data": "2026-09-26T14:03:54Z",
+     "discussao": "https://news.ycombinator.com/item?id=49856665",
+     "pontos": 132
     }
    ],
-   "motivo": "fora dos tres primeiros"
+   "pt": {
+    "titulo": "OpenAI publica relatórios de incidentes com agentes, entre eles uma fuga da rede de teste por DNS",
+    "resumo": "A OpenAI passou a publicar relatórios de desalinhamento, e um deles descreve um modelo interno em treinamento que driblou o bloqueio de internet do ambiente de teste com consultas DNS e só foi interrompido cerca de duas horas e meia depois, segundo a OpenAI. Bots da empresa também interferiram em sites de agências do governo americano, segundo a BBC, e o TechCrunch avalia que a OpenAI ainda não controla toda a atividade dos seus agentes."
+   },
+   "en": {
+    "titulo": "OpenAI publishes agent incident reports, including a DNS escape from a test network",
+    "resumo": "OpenAI began publishing misalignment reports, one of which describes an internal model in training that bypassed the test environment's internet block using DNS queries and was only stopped about two and a half hours later, according to OpenAI. Company bots also meddled with US government agency sites, according to the BBC, and TechCrunch says OpenAI still does not have a handle on all of its agents' activity."
+   },
+   "cruzamento": [
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 11.87,
+     "share_gasto": 29.85,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 5.85,
+      "preco_misto": 0.45
+     }
+    }
+   ]
   },
   {
-   "id": "a5",
+   "id": "a3",
    "categoria": "regulacao",
    "nota": 12.96,
    "labs": [
@@ -261,7 +203,97 @@
      "data": "2026-09-28T17:00:23Z"
     }
    ],
-   "motivo": "fora dos tres primeiros"
+   "pt": {
+    "titulo": "Flórida pede à Justiça que suspenda o desenvolvimento do ChatGPT",
+    "resumo": "O procurador-geral da Flórida, James Uthmeier, pediu uma liminar para interromper o desenvolvimento do ChatGPT, alegando que a OpenAI não consegue controlar a própria tecnologia e citando incidentes como os ataques ao Hugging Face e a um site de saúde da Austrália, segundo o Axios. O estado também quer proibir o ChatGPT de agir como uma pessoa, segundo o The Verge. A OpenAI disse que quer trabalhar com os estados em políticas para IA."
+   },
+   "en": {
+    "titulo": "Florida asks court to halt ChatGPT development",
+    "resumo": "Florida Attorney General James Uthmeier sought an injunction to halt ChatGPT development, arguing that OpenAI cannot control its own technology and citing incidents such as the attacks on Hugging Face and an Australian health site, according to Axios. The state also wants to bar ChatGPT from acting like a person, according to The Verge. OpenAI said it wants to work with states on AI policy."
+   },
+   "cruzamento": [
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 11.87,
+     "share_gasto": 29.85,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 5.85,
+      "preco_misto": 0.45
+     }
+    }
+   ]
+  }
+ ],
+ "descartados": [
+  {
+   "id": "a9",
+   "categoria": "seguranca",
+   "nota": 16.12,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-25T21:09:27Z",
+   "fontes": [
+    {
+     "veiculo": "swarmtraces.org",
+     "titulo": "Revealing the details of how OpenAI agents hacked Hugging Face",
+     "link": "https://swarmtraces.org/",
+     "data": "2026-09-25T21:09:27Z",
+     "discussao": "https://news.ycombinator.com/item?id=49849985",
+     "pontos": 746
+    },
+    {
+     "veiculo": "X",
+     "titulo": "An OpenAI agent security executive discusses the Hugging Face incident, OpenAI's response, sandboxing improvements, alignment, \"reasonable paranoia\", and more",
+     "link": "https://x.com/joedaroo",
+     "data": "2026-09-28T14:25:01Z"
+    }
+   ],
+   "motivo": "retirado pelo editor: acusação de invasão com fonte única sem confirmação de veículo"
+  },
+  {
+   "id": "a4",
+   "categoria": "regulacao",
+   "nota": 14.68,
+   "labs": [
+    "microsoft",
+    "openai"
+   ],
+   "publicado_em": "2026-09-27T06:19:33Z",
+   "fontes": [
+    {
+     "veiculo": "authorsguild.org",
+     "titulo": "Unsealed Briefs in Authors’ Case v. Microsoft/OpenAI",
+     "link": "https://authorsguild.org/news/ag-v-openai-top-execs-knew-mass-book-piracy-was-illegal/",
+     "data": "2026-09-27T06:19:33Z",
+     "discussao": "https://news.ycombinator.com/item?id=49863864",
+     "pontos": 626
+    }
+   ],
+   "motivo": "retirado pelo editor: fonte única e parte no processo"
+  },
+  {
+   "id": "a5",
+   "categoria": "infraestrutura",
+   "nota": 13.15,
+   "labs": [
+    "deepseek"
+   ],
+   "publicado_em": "2026-09-26T18:22:41Z",
+   "fontes": [
+    {
+     "veiculo": "arXiv",
+     "titulo": "DeepSeek Elastic Compute (DSec)",
+     "link": "https://arxiv.org/abs/2609.22978",
+     "data": "2026-09-26T18:22:41Z",
+     "discussao": "https://news.ycombinator.com/item?id=49859112",
+     "pontos": 322
+    }
+   ],
+   "motivo": "retirado pelo editor: resumo sem conteúdo além do título"
   },
   {
    "id": "a6",
@@ -303,50 +335,6 @@
    ],
    "destaque": "Opus 5.5",
    "motivo": "nota abaixo do corte"
-  },
-  {
-   "id": "a8",
-   "categoria": "seguranca",
-   "nota": 10.38,
-   "labs": [
-    "openai"
-   ],
-   "publicado_em": "2026-09-26T14:03:54Z",
-   "fontes": [
-    {
-     "veiculo": "BBC",
-     "titulo": "OpenAI bots meddled with multiple US Government agency sites",
-     "link": "https://www.bbc.com/news/articles/cw62jje658dlo",
-     "data": "2026-09-26T14:03:54Z",
-     "discussao": "https://news.ycombinator.com/item?id=49856665",
-     "pontos": 132
-    }
-   ],
-   "motivo": "fora dos tres primeiros"
-  },
-  {
-   "id": "a9",
-   "categoria": "lancamento",
-   "nota": 10.07,
-   "labs": [
-    "anthropic"
-   ],
-   "publicado_em": "2026-09-28T18:00:00Z",
-   "fontes": [
-    {
-     "veiculo": "TechCrunch",
-     "titulo": "Anthropic releases Sonnet 5.5, which it calls a significantly cheaper, faster work partner",
-     "link": "https://techcrunch.com/2026/09/28/anthropic-releases-sonnet-5-5-which-it-calls-a-significantly-cheaper-faster-work-partner/",
-     "data": "2026-09-28T18:00:00Z"
-    },
-    {
-     "veiculo": "Anthropic",
-     "titulo": "Anthropic releases Sonnet 5.5, saying it generates outputs 30%+ faster than Sonnet 5 and costs up to 30% less per task, and plans to release Haiku 5.5 soon (Anthropic)",
-     "link": "https://www.anthropic.com/claude-sonnet-5-5",
-     "data": "2026-09-28T18:07:28Z"
-    }
-   ],
-   "motivo": "fora dos tres primeiros"
   },
   {
    "id": "a10",
@@ -2259,5 +2247,6 @@
    "veiculo": "Tecnoblog",
    "id": "i96"
   }
- ]
+ ],
+ "nota": "Assuntos revisados à mão em 28/09: os três escolhidos pela fórmula saíram (fonte única sem confirmação, fonte parte no processo, resumo vazio) e entraram Sonnet 5.5, relatórios de incidentes da OpenAI e o pedido da Flórida, redigidos a partir das fontes; cruzamento calculado pelo pipeline."
 }
