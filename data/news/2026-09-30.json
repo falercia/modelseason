@@ -1,0 +1,564 @@
+{
+ "versao": 1,
+ "dia": "2026-09-30",
+ "gerado_em": "2026-09-30T13:46:24Z",
+ "fontes": {
+  "catalogo": [
+   "2026-09-23",
+   "2026-09-30"
+  ],
+  "trafego": "2026-09-29"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-09-30",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-09-29",
+  "lider_7d": "stealth/space-bunny-alpha",
+  "top10_7d": [
+   "stealth/space-bunny-alpha",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "openai/gpt-5.6-luna-20260709",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "tencent/hy4-preview-20260827",
+   "deepseek/deepseek-v4-flash-20260731",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "openai/gpt-6-luna-20260922",
+   "deepseek/deepseek-v4-flash-20260423"
+  ]
+ },
+ "principal": "lider:stealth/space-bunny-alpha",
+ "eventos": [
+  {
+   "tipo": "lider",
+   "slug": "stealth/space-bunny-alpha",
+   "id": null,
+   "nome": "Space Bunny Alpha",
+   "lab": "Anônimo (stealth)",
+   "vendor": "stealth",
+   "dados": {
+    "share": 15.24,
+    "anterior_slug": "deepseek/deepseek-v4.1-flash-20260910",
+    "anterior_nome": "DeepSeek V4.1 Flash",
+    "anterior_share": 14.36
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 15.24,
+     "rank_7d": 1,
+     "pico_share": 9.502,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 10.2,
+     "share_gasto": 0.0
+    }
+   },
+   "relevancia": 90
+  },
+  {
+   "tipo": "alta",
+   "slug": "xiaomi/mimo-v2.6-flash-20260921",
+   "id": null,
+   "nome": "MiMo-V2.6-Flash",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "de": 0.11,
+    "para": 5.35,
+    "delta_pp": 5.24
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 5.35,
+     "rank_7d": 5,
+     "pico_share": 3.772,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 6.87,
+     "share_gasto": 1.59
+    }
+   },
+   "relevancia": 56
+  },
+  {
+   "tipo": "novo",
+   "slug": "openai/gpt-6.1-sol-20260929",
+   "id": "openai/gpt-6.1-sol",
+   "nome": "GPT-6.1 Sol",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "criado": "2026-09-29",
+    "contexto": 1050000,
+    "preco_entrada": 2.0,
+    "preco_saida": 10.0,
+    "preco_misto": 4.0,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+file->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 11.87,
+     "share_gasto": 29.26,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 5.42,
+      "preco_misto": 0.45
+     }
+    }
+   },
+   "relevancia": 45
+  },
+  {
+   "tipo": "novo",
+   "slug": "openai/gpt-6.1-sol-pro-20260929",
+   "id": "openai/gpt-6.1-sol-pro",
+   "nome": "GPT-6.1 Sol Pro",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "criado": "2026-09-29",
+    "contexto": 1050000,
+    "preco_entrada": 2.0,
+    "preco_saida": 10.0,
+    "preco_misto": 4.0,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+file->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 11.87,
+     "share_gasto": 29.26,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 5.42,
+      "preco_misto": 0.45
+     }
+    }
+   },
+   "relevancia": 45
+  },
+  {
+   "tipo": "preco",
+   "slug": "openai/gpt-5.6-sol-pro-20260709",
+   "id": "openai/gpt-5.6-sol-pro",
+   "nome": "GPT-5.6 Sol Pro",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "de": 4.0,
+    "para": 8.0,
+    "variacao_pct": 100.0,
+    "entrada_de": 2.0,
+    "entrada_para": 4.0,
+    "saida_de": 10.0,
+    "saida_para": 20.0,
+    "desde": "2026-09-29"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.154,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 11.87,
+     "share_gasto": 29.26,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 5.42,
+      "preco_misto": 0.45
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "openai/gpt-oss-120b",
+   "id": "openai/gpt-oss-120b",
+   "nome": "gpt-oss-120b",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "de": 0.2625,
+    "para": 0.0702,
+    "variacao_pct": -73.2,
+    "entrada_de": 0.15,
+    "entrada_para": 0.037,
+    "saida_de": 0.6,
+    "saida_para": 0.17,
+    "desde": "2026-09-29"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.41,
+     "rank_7d": 34,
+     "pico_share": 5.596,
+     "semanas_com_volume": 60
+    },
+    "laboratorio": {
+     "share_tokens": 11.87,
+     "share_gasto": 29.26,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 5.42,
+      "preco_misto": 0.45
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-30b-a3b-04-28",
+   "id": "qwen/qwen3-30b-a3b",
+   "nome": "Qwen3 30B A3B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 3.498,
+     "semanas_com_volume": 12
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.33,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "estreia",
+   "slug": "anthropic/claude-sonnet-5.5-20260928",
+   "id": null,
+   "nome": "Claude Sonnet 5.5",
+   "lab": "Anthropic",
+   "vendor": "anthropic",
+   "dados": {
+    "primeiro_dia": "2026-09-29",
+    "share_7d": 0.06,
+    "lancamento": "2026-09-28",
+    "dias_desde_catalogo": 1
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.06,
+     "rank_7d": 56,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 3.22,
+     "share_gasto": 30.06,
+     "lider": {
+      "slug": "anthropic/claude-opus-5.5-20260921",
+      "nome": "Claude Opus 5.5",
+      "share_7d": 1.1,
+      "preco_misto": 8.0
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "contexto",
+   "slug": "z-ai/glm-5.3-flash-20260826",
+   "id": "z-ai/glm-5.3-flash",
+   "nome": "GLM 5.3 Flash",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 1310720,
+    "para": 1048576
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 7.58,
+     "rank_7d": 3,
+     "pico_share": 11.188,
+     "semanas_com_volume": 5
+    },
+    "laboratorio": {
+     "share_tokens": 15.26,
+     "share_gasto": 9.41
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3-30b-a3b-instruct-2507",
+   "id": "qwen/qwen3-30b-a3b-instruct-2507",
+   "nome": "Qwen3 30B A3B Instruct 2507",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.15,
+    "para": 0.0844,
+    "variacao_pct": -43.7,
+    "entrada_de": 0.1,
+    "entrada_para": 0.0481,
+    "saida_de": 0.3,
+    "saida_para": 0.193,
+    "desde": "2026-09-29"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.038,
+     "semanas_com_volume": 2
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.33,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 29
+  },
+  {
+   "tipo": "contexto",
+   "slug": "xiaomi/mimo-v2.6-flash-20260921",
+   "id": "xiaomi/mimo-v2.6-flash",
+   "nome": "MiMo-V2.6-Flash",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "de": 1048576,
+    "para": 1050000
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 5.35,
+     "rank_7d": 5,
+     "pico_share": 3.772,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 6.87,
+     "share_gasto": 1.59
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "minimax/minimax-m2.7-20260318",
+   "id": "minimax/minimax-m2.7",
+   "nome": "MiniMax M2.7",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 0.525,
+    "para": 0.3675,
+    "variacao_pct": -30.0,
+    "entrada_de": 0.3,
+    "entrada_para": 0.21,
+    "saida_de": 1.2,
+    "saida_para": 0.84,
+    "desde": "2026-09-29"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 5.673,
+     "semanas_com_volume": 26
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "minimax/minimax-m3-20260531",
+      "nome": "MiniMax M3",
+      "share_7d": 0.87,
+      "preco_misto": 0.525
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "nvidia/nemotron-3.5-lightning-20260807",
+   "id": "nvidia/nemotron-3.5-lightning",
+   "nome": "Nemotron 3.5 Lightning",
+   "lab": "NVIDIA",
+   "vendor": "nvidia",
+   "dados": {
+    "de": 0.11,
+    "para": 0.085,
+    "variacao_pct": -22.7,
+    "entrada_de": 0.08,
+    "entrada_para": 0.06,
+    "saida_de": 0.2,
+    "saida_para": 0.16,
+    "desde": "2026-09-29"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.33,
+     "rank_7d": 39,
+     "pico_share": 1.04,
+     "semanas_com_volume": 7
+    },
+    "laboratorio": {
+     "share_tokens": 4.62,
+     "share_gasto": 0.0,
+     "lider": {
+      "slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+      "nome": "Nemotron 3 Ultra",
+      "share_7d": 3.82,
+      "preco_misto": 1.05
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "x-ai/grok-4.7-20260916",
+   "id": "x-ai/grok-4.7",
+   "nome": "Grok 4.7",
+   "lab": "xAI",
+   "vendor": "x-ai",
+   "dados": {
+    "de": 2.4,
+    "para": 3.0,
+    "variacao_pct": 25.0,
+    "entrada_de": 1.6,
+    "entrada_para": 2.0,
+    "saida_de": 4.8,
+    "saida_para": 6.0,
+    "desde": "2026-09-29"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.14,
+     "rank_7d": 49,
+     "pico_share": 0.192,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": null
+   },
+   "relevancia": 25
+  },
+  {
+   "tipo": "contexto",
+   "slug": "deepseek/deepseek-v4-flash-20260731",
+   "id": "deepseek/deepseek-v4-flash-0731",
+   "nome": "DeepSeek V4 Flash 0731",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 1310720,
+    "para": 1048576
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 4.74,
+     "rank_7d": 7,
+     "pico_share": 14.84,
+     "semanas_com_volume": 9
+    },
+    "laboratorio": {
+     "share_tokens": 24.11,
+     "share_gasto": 5.48,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 14.36,
+      "preco_misto": 0.1139
+     }
+    }
+   },
+   "relevancia": 24
+  },
+  {
+   "tipo": "contexto",
+   "slug": "z-ai/glm-5.3-20260816",
+   "id": "z-ai/glm-5.3",
+   "nome": "GLM 5.3",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 1310720,
+    "para": 1048576
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.82,
+     "rank_7d": 12,
+     "pico_share": 2.619,
+     "semanas_com_volume": 6
+    },
+    "laboratorio": {
+     "share_tokens": 15.26,
+     "share_gasto": 9.41,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 7.58,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 19
+  },
+  {
+   "tipo": "alias",
+   "slug": "~openai/gpt-sol-latest",
+   "id": "~openai/gpt-sol-latest",
+   "nome": "GPT Sol Latest",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "alvo_slug": "openai/gpt-6.1-sol",
+    "alvo_nome": "GPT-6.1 Sol",
+    "anterior": "openai/gpt-6-sol"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 11.87,
+     "share_gasto": 29.26,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 5.42,
+      "preco_misto": 0.45
+     }
+    }
+   },
+   "relevancia": 17
+  }
+ ]
+}
