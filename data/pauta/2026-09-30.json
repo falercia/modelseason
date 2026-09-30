@@ -82,6 +82,57 @@
   {
    "id": "a1",
    "categoria": "lancamento",
+   "nota": 14.96,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-09-29T10:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Introducing GPT-6.1 Sol",
+     "link": "https://openai.com/index/introducing-gpt-6-1-sol",
+     "data": "2026-09-29T10:00:00Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "OpenAI launches GPT-6.1 Sol, says it nearly matches GPT-6 Astra and costs less",
+     "link": "https://techcrunch.com/2026/09/29/openai-launches-gpt-6-1-sol-says-it-nearly-matches-gpt-6-astra-and-costs-less/",
+     "data": "2026-09-29T17:15:00Z"
+    },
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price",
+     "link": "https://simonwillison.net/2026/Sep/29/hn-49898129/",
+     "data": "2026-09-29T18:27:48Z"
+    }
+   ],
+   "pt": {
+    "titulo": "OpenAI lança GPT-6.1 Sol, perto do GPT-6 Astra por um quinto do preço",
+    "resumo": "Segundo a OpenAI, o GPT-6.1 Sol entrega inteligência próxima à do Astra para programação, uso de computador e trabalho profissional, a um quinto dos preços padrão de tokens de entrada e saída da API do Astra. Segundo o TechCrunch, há avanços sobre o GPT-6 Sol em código, documentos e fluxos de trabalho."
+   },
+   "en": {
+    "titulo": "OpenAI launches GPT-6.1 Sol, close to GPT-6 Astra at a fifth of the price",
+    "resumo": "According to OpenAI, GPT-6.1 Sol delivers near-Astra intelligence for coding, computer use and professional work at one-fifth of Astra's standard API input and output token prices. According to TechCrunch, it improves on GPT-6 Sol in code, document understanding and multistep business workflows."
+   },
+   "cruzamento": [
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 11.87,
+     "share_gasto": 29.26,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 5.42,
+      "preco_misto": 0.45
+     }
+    }
+   ]
+  },
+  {
+   "id": "a2",
+   "categoria": "lancamento",
    "nota": 20.89,
    "labs": [
     "openai"
@@ -133,58 +184,69 @@
    ]
   },
   {
-   "id": "a2",
-   "categoria": "lancamento",
-   "nota": 14.96,
+   "id": "a3",
+   "categoria": "seguranca",
+   "nota": 14.56,
    "labs": [
-    "openai"
+    "z-ai",
+    "anthropic"
    ],
-   "publicado_em": "2026-09-29T10:00:00Z",
+   "publicado_em": "2026-09-29T17:31:26Z",
    "fontes": [
     {
-     "veiculo": "OpenAI",
-     "titulo": "Introducing GPT-6.1 Sol",
-     "link": "https://openai.com/index/introducing-gpt-6-1-sol",
-     "data": "2026-09-29T10:00:00Z"
-    },
-    {
-     "veiculo": "TechCrunch",
-     "titulo": "OpenAI launches GPT-6.1 Sol, says it nearly matches GPT-6 Astra and costs less",
-     "link": "https://techcrunch.com/2026/09/29/openai-launches-gpt-6-1-sol-says-it-nearly-matches-gpt-6-astra-and-costs-less/",
-     "data": "2026-09-29T17:15:00Z"
+     "veiculo": "Anthropic",
+     "titulo": "GLM-5.3 and the spread of advanced cyber capabilities",
+     "link": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
+     "data": "2026-09-29T17:31:26Z",
+     "discussao": "https://news.ycombinator.com/item?id=49897075",
+     "pontos": 233
     },
     {
      "veiculo": "Simon Willison",
-     "titulo": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price",
-     "link": "https://simonwillison.net/2026/Sep/29/hn-49898129/",
-     "data": "2026-09-29T18:27:48Z"
+     "titulo": "Quoting Anthropic Frontier Red Team",
+     "link": "https://simonwillison.net/2026/Sep/29/anthropic-frontier-red-team/",
+     "data": "2026-09-29T22:20:28Z"
     }
    ],
    "pt": {
-    "titulo": "OpenAI lança GPT-6.1 Sol, com desempenho próximo ao do GPT-6 Astra por menos",
-    "resumo": "Segundo a OpenAI, o GPT-6.1 Sol entrega inteligência próxima à do Astra para programação, uso de computador e trabalho profissional, a um quinto dos preços padrão de tokens de entrada e saída da API do Astra. Segundo o TechCrunch, há avanços sobre o GPT-6 Sol em código, documentos e fluxos de trabalho."
+    "titulo": "Anthropic diz que o GLM-5.3, de pesos abertos, já monta ataques cibernéticos completos",
+    "resumo": "O time de risco da Anthropic avaliou o GLM-5.3, modelo de pesos abertos da Zhipu (Z.ai), e diz que ele criou exploits completos em 50 de 410 tentativas, taxa parecida com a do Claude Mythos Preview, segundo a Anthropic. As salvaguardas do modelo caíram em 64% dos casos com pretextos falsos, e a empresa defende dar a defensores acesso a essas capacidades e testes de segurança feitos por governos, segundo a Anthropic e o Simon Willison."
    },
    "en": {
-    "titulo": "OpenAI launches GPT-6.1 Sol, near GPT-6 Astra performance at a lower price",
-    "resumo": "According to OpenAI, GPT-6.1 Sol delivers near-Astra intelligence for coding, computer use and professional work at one-fifth of Astra's standard API input and output token prices. According to TechCrunch, it improves on GPT-6 Sol in code, document understanding and multistep business workflows."
+    "titulo": "Anthropic says open-weight GLM-5.3 can already build complete cyberattacks",
+    "resumo": "Anthropic's Frontier Red Team evaluated GLM-5.3, an open-weight model from Zhipu (Z.ai), and says it built complete exploits in 50 of 410 attempts, a rate similar to Claude Mythos Preview, according to Anthropic. The model's safeguards were bypassed in 64% of cases with false cover stories, and the company argues for giving defenders access to these capabilities and for government safety testing, according to Anthropic and Simon Willison."
    },
    "cruzamento": [
     {
-     "vendor": "openai",
-     "lab": "OpenAI",
-     "share_tokens": 11.87,
-     "share_gasto": 29.26,
+     "vendor": "z-ai",
+     "lab": "Z.ai (GLM)",
+     "share_tokens": 15.26,
+     "share_gasto": 9.41,
      "lider": {
-      "slug": "openai/gpt-5.6-luna-20260709",
-      "nome": "GPT-5.6 Luna",
-      "share_7d": 5.42,
-      "preco_misto": 0.45
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 7.58,
+      "preco_misto": 0.2375
+     }
+    },
+    {
+     "vendor": "anthropic",
+     "lab": "Anthropic",
+     "share_tokens": 3.22,
+     "share_gasto": 30.06,
+     "lider": {
+      "slug": "anthropic/claude-opus-5.5-20260921",
+      "nome": "Claude Opus 5.5",
+      "share_7d": 1.1,
+      "preco_misto": 8.0
      }
     }
    ]
-  },
+  }
+ ],
+ "descartados": [
   {
-   "id": "a3",
+   "id": "a4",
    "categoria": "lancamento",
    "nota": 14.96,
    "labs": [
@@ -211,57 +273,7 @@
      "data": "2026-09-29T16:00:00Z"
     }
    ],
-   "pt": {
-    "titulo": "OpenAI reúne mais de 20 anúncios no DevDay 2026",
-    "resumo": "Segundo a OpenAI, o DevDay 2026 teve mais de 20 anúncios, entre eles GPT-6 Astra, ChatGPT, Codex, APIs, segurança e novas ferramentas para desenvolvedores. Segundo o The Verge, o evento foi realizado em San Francisco, com keynote do CEO Sam Altman, e apresentou os Dots."
-   },
-   "en": {
-    "titulo": "OpenAI rolls out more than 20 announcements at DevDay 2026",
-    "resumo": "According to OpenAI, DevDay 2026 brought more than 20 announcements, including GPT-6 Astra, ChatGPT, Codex, APIs, security and new tools for builders. According to The Verge, the event took place in San Francisco with a keynote by CEO Sam Altman, and it revealed Dots."
-   },
-   "cruzamento": [
-    {
-     "vendor": "openai",
-     "lab": "OpenAI",
-     "share_tokens": 11.87,
-     "share_gasto": 29.26,
-     "lider": {
-      "slug": "openai/gpt-5.6-luna-20260709",
-      "nome": "GPT-5.6 Luna",
-      "share_7d": 5.42,
-      "preco_misto": 0.45
-     }
-    }
-   ]
-  }
- ],
- "descartados": [
-  {
-   "id": "a4",
-   "categoria": "seguranca",
-   "nota": 14.56,
-   "labs": [
-    "anthropic",
-    "z-ai"
-   ],
-   "publicado_em": "2026-09-29T17:31:26Z",
-   "fontes": [
-    {
-     "veiculo": "Anthropic",
-     "titulo": "GLM-5.3 and the spread of advanced cyber capabilities",
-     "link": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
-     "data": "2026-09-29T17:31:26Z",
-     "discussao": "https://news.ycombinator.com/item?id=49897075",
-     "pontos": 233
-    },
-    {
-     "veiculo": "Simon Willison",
-     "titulo": "Quoting Anthropic Frontier Red Team",
-     "link": "https://simonwillison.net/2026/Sep/29/anthropic-frontier-red-team/",
-     "data": "2026-09-29T22:20:28Z"
-    }
-   ],
-   "motivo": "fora dos tres primeiros"
+   "motivo": "retirado pelo editor: resumo do DevDay repete o GPT-6.1 Sol e o Dots"
   },
   {
    "id": "a5",
@@ -2328,5 +2340,6 @@
    "veiculo": "Hugging Face",
    "id": "i99"
   }
- ]
+ ],
+ "nota": "Ajuste manual em 30/09: GPT-6.1 Sol passou para a manchete, o resumo do DevDay saiu por repetir os dois lançamentos e entrou a avaliação da Anthropic sobre o GLM-5.3; cruzamento calculado pelo pipeline."
 }
