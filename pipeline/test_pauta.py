@@ -112,6 +112,11 @@ ok("mesmo link do HN soma os pontos no item do Techmeme", tm and tm.get("pontos"
 ok("HN sem IA fica fora", not any("sourdough" in it["titulo"] for it in itens))
 an = [it for it in itens if it["fonte"] == "anthropic"]
 ok("Anthropic lida da listagem, so o recente", len(an) == 1 and an[0]["titulo"] == "Previewing the Model Hardware Standard", an)
+LANC_HTML = """<a href="/claude-sonnet-5-5"><h3>Introducing Claude Sonnet 5.5</h3><span>Sep 28, 2026</span></a>
+<a href="/claude-opus-5-5"><img alt=""><span>Sep 22, 2026</span></a><a href="/careers"><span>Sep 28, 2026</span></a>"""
+lanc = P.coletar_anthropic(lambda u: LANC_HTML, __import__("datetime").datetime(2026, 9, 20, tzinfo=__import__("datetime").timezone.utc))
+ok("Anthropic: lancamento na raiz do site entra", [x["link"].rsplit("/", 1)[-1] for x in lanc] == ["claude-sonnet-5-5", "claude-opus-5-5"], lanc)
+ok("Anthropic: titulo de reserva com versao legivel", lanc[1]["titulo"] == "claude opus 5.5", lanc[1]["titulo"])
 ok("ids unicos", len({it["id"] for it in itens}) == len(itens))
 ok("primarias primeiro", itens[0]["peso"] == 3)
 

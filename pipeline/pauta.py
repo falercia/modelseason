@@ -212,10 +212,12 @@ MESES_EN = {m: i for i, m in enumerate(["jan", "feb", "mar", "apr", "may", "jun"
 
 
 def coletar_anthropic(get, desde):
-    """A Anthropic nao tem RSS: le a listagem de /news (titulo e data por link)."""
+    """A Anthropic nao tem RSS: le a listagem de /news (titulo e data por link).
+    Lancamento de modelo mora na raiz (/claude-sonnet-5-5), nao em /news/: sem aceitar
+    esse caminho, Opus 5.5 e Sonnet 5.5 so chegaram via Techmeme (corrigido em 30/09)."""
     pagina = get("https://www.anthropic.com/news")
     out, vistos = [], set()
-    for m in re.finditer(r'<a[^>]+href="(/news/[a-z0-9\-]+)"[^>]*>(.*?)</a>', pagina, re.I | re.S):
+    for m in re.finditer(r'<a[^>]+href="(/(?:news/[a-z0-9\-]+|claude-[a-z0-9\-]+))"[^>]*>(.*?)</a>', pagina, re.I | re.S):
         href, corpo = m.group(1), m.group(2)
         if href in vistos:
             continue
@@ -228,7 +230,7 @@ def coletar_anthropic(get, desde):
         if quando.date() < desde.date():
             continue
         titulo = re.sub(r"\b(Announcements?|Product|Policy|Societal Impacts|Research|Economic Research|Interpretability|Alignment)\b", " ", txt[: dd.start()])
-        titulo = limpar(titulo, 200) or href.rsplit("/", 1)[-1].replace("-", " ")
+        titulo = limpar(titulo, 200) or re.sub(r"(\d)-(\d)", r"\1.\2", href.rsplit("/", 1)[-1]).replace("-", " ")
         vistos.add(href)
         out.append(item("anthropic", 3, titulo, "https://www.anthropic.com" + href, quando, txt[dd.end():], "Anthropic"))
     return out
@@ -314,7 +316,7 @@ FONTES = {
     "techcrunch": fonte_rss("techcrunch", "https://techcrunch.com/category/artificial-intelligence/feed/", 2, "TechCrunch"),
     "mittr": fonte_rss("mittr", "https://www.technologyreview.com/topic/artificial-intelligence/feed", 2, "MIT Technology Review"),
     "verge": fonte_rss("verge", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", 2, "The Verge"),
-    "ars": fonte_rss("ars", "https://feeds.arstechnica.com/arstechnica/technology-lab", 2, "Ars Technica", filtrar=True),
+    "ars": fonte_rss("ars", "https://feeds.arstechnica.com/arstechnica/index", 2, "Ars Technica", filtrar=True),
     "simonwillison": fonte_rss("simonwillison", "https://simonwillison.net/atom/everything/", 2, "Simon Willison", filtrar=True),
     "tecnoblog": fonte_rss("tecnoblog", "https://tecnoblog.net/feed/", 1, "Tecnoblog", filtrar=True),
     "nist": fonte_rss("nist", "https://www.nist.gov/news-events/news/rss.xml", 3, "NIST", filtrar=True),

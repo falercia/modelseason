@@ -20,6 +20,8 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ### Corrigido
 
+- **Fontes da pauta que não traziam o essencial**: a coleta da Anthropic só aceitava links em `/news/`, mas lançamento de modelo mora na raiz do site (`/claude-sonnet-5-5`), então Opus 5.5 e Sonnet 5.5 só chegaram por tabela via Techmeme; agora entram pela fonte oficial, com peso 3. O Ars Technica lia o feed "Biz & IT", que quase não publica sobre IA e voltava vazio; passou a ler o feed principal com o mesmo filtro de assunto.
+
 - **Pauta que para por limite de saída**: quando a resposta da IA para em `max_tokens`, a tentativa seguinte dobra o limite (16 mil, 32 mil, 64 mil), no lugar de repetir o mesmo pedido. Em 28/09 o agrupamento de 96 itens gastou os 16 mil tokens raciocinando nas três tentativas e a pauta não saiu. Tempo limite da chamada foi para 900 s e o do job para 45 minutos, para caber a resposta maior.
 
 - **Pauta**: título vindo do Techmeme trazia a assinatura "(Autor / Veículo)" e, sem `charset` no cabeçalho do feed, chegava em latin-1 ("MarÃ­a"). A assinatura é cortada e a resposta sem charset é lida em UTF-8. O acento quebrado derrubou o e2e da página em inglês na pauta de 20/09, corrigida no arquivo.
