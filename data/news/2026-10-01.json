@@ -1,0 +1,405 @@
+{
+ "versao": 1,
+ "dia": "2026-10-01",
+ "gerado_em": "2026-10-01T14:30:20Z",
+ "fontes": {
+  "catalogo": [
+   "2026-09-24",
+   "2026-10-01"
+  ],
+  "trafego": "2026-09-30"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-01",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-09-30",
+  "lider_7d": "stealth/space-bunny-alpha",
+  "top10_7d": [
+   "stealth/space-bunny-alpha",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "openai/gpt-5.6-luna-20260709",
+   "tencent/hy4-preview-20260827",
+   "deepseek/deepseek-v4-flash-20260731",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "openai/gpt-6-luna-20260922",
+   "deepseek/deepseek-v4-flash-20260423"
+  ]
+ },
+ "principal": "desativacao:stealth/space-bunny-alpha",
+ "eventos": [
+  {
+   "tipo": "desativacao",
+   "slug": "stealth/space-bunny-alpha",
+   "id": "stealth/space-bunny-alpha",
+   "nome": "Space Bunny Alpha",
+   "lab": "Anônimo (stealth)",
+   "vendor": "stealth",
+   "dados": {
+    "data": "2026-10-05",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 18.0,
+     "rank_7d": 1,
+     "pico_share": 9.502,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 10.2,
+     "share_gasto": 0.0
+    }
+   },
+   "relevancia": 75
+  },
+  {
+   "tipo": "alta",
+   "slug": "stealth/space-bunny-alpha",
+   "id": null,
+   "nome": "Space Bunny Alpha",
+   "lab": "Anônimo (stealth)",
+   "vendor": "stealth",
+   "dados": {
+    "de": 0.21,
+    "para": 18.0,
+    "delta_pp": 17.78
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 18.0,
+     "rank_7d": 1,
+     "pico_share": 9.502,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 10.2,
+     "share_gasto": 0.0
+    }
+   },
+   "relevancia": 70
+  },
+  {
+   "tipo": "novo",
+   "slug": "heygen/heygen-video-1-20260930",
+   "id": "heygen/heygen-video-1",
+   "nome": "Video 1",
+   "lab": "Heygen",
+   "vendor": "heygen",
+   "dados": {
+    "criado": "2026-09-30",
+    "contexto": 0,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image+audio+video->video",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "togethercomputer/tev1-4b-experimental-20260923",
+   "id": "togethercomputer/tev1-4b-experimental",
+   "nome": "Tev1 4B Experimental",
+   "lab": "Togethercomputer",
+   "vendor": "togethercomputer",
+   "dados": {
+    "criado": "2026-09-30",
+    "contexto": 32768,
+    "preco_entrada": 0.042,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0315,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->decisions",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "unbiased/pareto-26.10-preview-20260929",
+   "id": "unbiased/pareto-26.10-preview",
+   "nome": "Pareto 26.10 Preview",
+   "lab": "Unbiased",
+   "vendor": "unbiased",
+   "dados": {
+    "criado": "2026-10-01",
+    "contexto": 1048576,
+    "preco_entrada": 0.8,
+    "preco_saida": 3.2,
+    "preco_misto": 1.4,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "voyageai/rerank-3-20260930",
+   "id": "voyageai/rerank-3",
+   "nome": "rerank-3",
+   "lab": "Voyageai",
+   "vendor": "voyageai",
+   "dados": {
+    "criado": "2026-09-30",
+    "contexto": 32000,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->rerank",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "voyageai/rerank-3-lite-20260930",
+   "id": "voyageai/rerank-3-lite",
+   "nome": "rerank-3-lite",
+   "lab": "Voyageai",
+   "vendor": "voyageai",
+   "dados": {
+    "criado": "2026-09-30",
+    "contexto": 32000,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->rerank",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "estreia",
+   "slug": "openai/gpt-6.1-sol-20260929",
+   "id": null,
+   "nome": "GPT-6.1 Sol",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "primeiro_dia": "2026-09-30",
+    "share_7d": 0.07,
+    "lancamento": "2026-09-29",
+    "dias_desde_catalogo": 1
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.07,
+     "rank_7d": 55,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 11.87,
+     "share_gasto": 31.08,
+     "lider": {
+      "slug": "openai/gpt-5.6-luna-20260709",
+      "nome": "GPT-5.6 Luna",
+      "share_7d": 4.91,
+      "preco_misto": 0.45
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-pro-20260813",
+   "id": "deepseek/deepseek-v4-pro-0813",
+   "nome": "DeepSeek V4 Pro 0813",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.693,
+    "para": 0.99,
+    "variacao_pct": 42.9,
+    "entrada_de": 0.462,
+    "entrada_para": 0.66,
+    "saida_de": 1.386,
+    "saida_para": 1.98,
+    "desde": "2026-09-30"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.57,
+     "rank_7d": 28,
+     "pico_share": 1.062,
+     "semanas_com_volume": 7
+    },
+    "laboratorio": {
+     "share_tokens": 24.11,
+     "share_gasto": 5.79,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 14.38,
+      "preco_misto": 0.1475
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.2-20260616",
+   "id": "z-ai/glm-5.2",
+   "nome": "GLM 5.2",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 0.9976,
+    "para": 1.305,
+    "variacao_pct": 30.8,
+    "entrada_de": 0.6496,
+    "entrada_para": 0.41,
+    "saida_de": 2.0416,
+    "saida_para": 3.99,
+    "desde": "2026-09-30"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.83,
+     "rank_7d": 21,
+     "pico_share": 6.065,
+     "semanas_com_volume": 15
+    },
+    "laboratorio": {
+     "share_tokens": 15.26,
+     "share_gasto": 7.33,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 6.73,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 29
+  },
+  {
+   "tipo": "preco",
+   "slug": "meta/muse-glimmer-30b-20260810",
+   "id": "meta/muse-glimmer-30b",
+   "nome": "Muse Glimmer 30B",
+   "lab": "Meta",
+   "vendor": "meta",
+   "dados": {
+    "de": 0.525,
+    "para": 0.6375,
+    "variacao_pct": 21.4,
+    "entrada_de": 0.3,
+    "entrada_para": 0.35,
+    "saida_de": 1.2,
+    "saida_para": 1.5,
+    "desde": "2026-09-30"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 1.61,
+     "share_gasto": 1.05,
+     "lider": {
+      "slug": "meta/muse-spark-1.3-contributor-20260902",
+      "nome": "Muse Spark 1.3 Contributor",
+      "share_7d": 0.94,
+      "preco_misto": 0.125
+     }
+    }
+   },
+   "relevancia": 24
+  },
+  {
+   "tipo": "contexto",
+   "slug": "google/gemini-3.8-flash-lite-tts-20260922",
+   "id": "google/gemini-3.8-flash-lite-tts",
+   "nome": "Gemini 3.8 Flash Lite TTS",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 8192,
+    "para": 32768
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 4.28,
+     "share_gasto": 4.86,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.33,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 17
+  },
+  {
+   "tipo": "contexto",
+   "slug": "google/gemini-3.8-flash-tts-20260922",
+   "id": "google/gemini-3.8-flash-tts",
+   "nome": "Gemini 3.8 Flash TTS",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 8192,
+    "para": 32768
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 4.28,
+     "share_gasto": 4.86,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.33,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 17
+  }
+ ]
+}
