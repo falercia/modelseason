@@ -1,0 +1,370 @@
+{
+ "versao": 1,
+ "dia": "2026-10-02",
+ "gerado_em": "2026-10-02T13:54:22Z",
+ "fontes": {
+  "catalogo": [
+   "2026-09-25",
+   "2026-10-02"
+  ],
+  "trafego": "2026-10-01"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-02",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-01",
+  "lider_7d": "stealth/space-bunny-alpha",
+  "top10_7d": [
+   "stealth/space-bunny-alpha",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "openai/gpt-5.6-luna-20260709",
+   "deepseek/deepseek-v4-flash-20260731",
+   "tencent/hy4-preview-20260827",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "openai/gpt-6-luna-20260922",
+   "deepseek/deepseek-v4-flash-20260423"
+  ]
+ },
+ "principal": "novo:black-forest-labs/flux-3-image-20261001",
+ "eventos": [
+  {
+   "tipo": "novo",
+   "slug": "black-forest-labs/flux-3-image-20261001",
+   "id": "black-forest-labs/flux-3-image",
+   "nome": "FLUX.3 Image",
+   "lab": "Black Forest Labs",
+   "vendor": "black-forest-labs",
+   "dados": {
+    "criado": "2026-10-01",
+    "contexto": 46864,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->image",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "bytedance-seed/seedream-5-0-flash-20261001",
+   "id": "bytedance-seed/seedream-5-0-flash",
+   "nome": "Seedream 5.0 Flash",
+   "lab": "ByteDance",
+   "vendor": "bytedance-seed",
+   "dados": {
+    "criado": "2026-10-01",
+    "contexto": 0,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->image",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "liquid/d1-20260930",
+   "id": "liquid/d1",
+   "nome": "D1",
+   "lab": "Liquid AI",
+   "vendor": "liquid",
+   "dados": {
+    "criado": "2026-10-01",
+    "contexto": 65536,
+    "preco_entrada": 0.04,
+    "preco_saida": 0.0,
+    "preco_misto": 0.03,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "microsoft/mai-voice-2.1-20261001",
+   "id": "microsoft/mai-voice-2.1",
+   "nome": "MAI-Voice-2.1",
+   "lab": "Microsoft",
+   "vendor": "microsoft",
+   "dados": {
+    "criado": "2026-10-01",
+    "contexto": 0,
+    "preco_entrada": 22.0,
+    "preco_saida": 0.0,
+    "preco_misto": 16.5,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "microsoft/mai-voice-2.1-flash-20261001",
+   "id": "microsoft/mai-voice-2.1-flash",
+   "nome": "MAI-Voice-2.1-Flash",
+   "lab": "Microsoft",
+   "vendor": "microsoft",
+   "dados": {
+    "criado": "2026-10-01",
+    "contexto": 0,
+    "preco_entrada": 15.0,
+    "preco_saida": 0.0,
+    "preco_misto": 11.25,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "assemblyai/universal-3-5-pro-20260914",
+   "id": "assemblyai/universal-3-5-pro",
+   "nome": "Universal-3.5 Pro",
+   "lab": "Assemblyai",
+   "vendor": "assemblyai",
+   "dados": {
+    "de": 46.875,
+    "para": 93.75,
+    "variacao_pct": 100.0,
+    "entrada_de": 62.5,
+    "entrada_para": 125.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-01"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "hexgrad/kokoro-82m",
+   "id": "hexgrad/kokoro-82m",
+   "nome": "Kokoro 82M",
+   "lab": "Hexgrad",
+   "vendor": "hexgrad",
+   "dados": {
+    "de": 3.0,
+    "para": 0.465,
+    "variacao_pct": -84.5,
+    "entrada_de": 4.0,
+    "entrada_para": 0.62,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-01"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 37
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "z-ai/glm-4.5",
+   "id": "z-ai/glm-4.5",
+   "nome": "GLM 4.5",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "data": "2026-12-31",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 1.913,
+     "semanas_com_volume": 17
+    },
+    "laboratorio": {
+     "share_tokens": 15.26,
+     "share_gasto": 8.95,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 6.36,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "z-ai/glm-4.7-20251222",
+   "id": "z-ai/glm-4.7",
+   "nome": "GLM 4.7",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "data": "2026-12-31",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 2.63,
+     "semanas_com_volume": 25
+    },
+    "laboratorio": {
+     "share_tokens": 15.26,
+     "share_gasto": 8.95,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 6.36,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-pro-20260423",
+   "id": "deepseek/deepseek-v4-pro",
+   "nome": "DeepSeek V4 Pro 0423",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.435,
+    "para": 0.261,
+    "variacao_pct": -40.0,
+    "entrada_de": 0.348,
+    "entrada_para": 0.2088,
+    "saida_de": 0.696,
+    "saida_para": 0.4176,
+    "desde": "2026-10-01"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.44,
+     "rank_7d": 31,
+     "pico_share": 5.773,
+     "semanas_com_volume": 23
+    },
+    "laboratorio": {
+     "share_tokens": 24.11,
+     "share_gasto": 10.7,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 14.73,
+      "preco_misto": 0.525
+     }
+    }
+   },
+   "relevancia": 29
+  },
+  {
+   "tipo": "preco",
+   "slug": "moonshotai/kimi-k2.6-20260420",
+   "id": "moonshotai/kimi-k2.6",
+   "nome": "Kimi K2.6",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "de": 1.34,
+    "para": 0.7826,
+    "variacao_pct": -41.6,
+    "entrada_de": 0.65,
+    "entrada_para": 0.4341,
+    "saida_de": 3.41,
+    "saida_para": 1.828,
+    "desde": "2026-10-01"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 7.613,
+     "semanas_com_volume": 20
+    },
+    "laboratorio": {
+     "share_tokens": 1.03,
+     "share_gasto": 5.65,
+     "lider": {
+      "slug": "moonshotai/kimi-k3-20260715",
+      "nome": "Kimi K3",
+      "share_7d": 0.99,
+      "preco_misto": 5.4
+     }
+    }
+   },
+   "relevancia": 28
+  },
+  {
+   "tipo": "preco",
+   "slug": "minimax/minimax-m1",
+   "id": "minimax/minimax-m1",
+   "nome": "MiniMax M1",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 0.85,
+    "para": 0.9625,
+    "variacao_pct": 13.2,
+    "entrada_de": 0.4,
+    "entrada_para": 0.55,
+    "saida_de": 2.2,
+    "saida_para": 2.2,
+    "desde": "2026-10-01"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "minimax/minimax-m3-20260531",
+      "nome": "MiniMax M3",
+      "share_7d": 0.78,
+      "preco_misto": 0.525
+     }
+    }
+   },
+   "relevancia": 23
+  }
+ ]
+}
