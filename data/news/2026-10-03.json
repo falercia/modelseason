@@ -1,0 +1,310 @@
+{
+ "versao": 1,
+ "dia": "2026-10-03",
+ "gerado_em": "2026-10-03T12:36:10Z",
+ "fontes": {
+  "catalogo": [
+   "2026-09-26",
+   "2026-10-03"
+  ],
+  "trafego": "2026-10-02"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-03",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-02",
+  "lider_7d": "stealth/space-bunny-alpha",
+  "top10_7d": [
+   "stealth/space-bunny-alpha",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "tencent/hy4-preview-20260827",
+   "deepseek/deepseek-v4-flash-20260731",
+   "openai/gpt-5.6-luna-20260709",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "openai/gpt-6-luna-20260922",
+   "deepseek/deepseek-v4-flash-20260423"
+  ]
+ },
+ "principal": "novo:deepgram/flux-tts-20260812",
+ "eventos": [
+  {
+   "tipo": "novo",
+   "slug": "deepgram/flux-tts-20260812",
+   "id": "deepgram/flux-tts",
+   "nome": "Flux TTS",
+   "lab": "Deepgram",
+   "vendor": "deepgram",
+   "dados": {
+    "criado": "2026-08-12",
+    "contexto": 0,
+    "preco_entrada": 45.0,
+    "preco_saida": 0.0,
+    "preco_misto": 33.75,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "inclusionai/ling-3.1-flash-20261002",
+   "id": "inclusionai/ling-3.1-flash",
+   "nome": "Ling 3.1 Flash",
+   "lab": "InclusionAI",
+   "vendor": "inclusionai",
+   "dados": {
+    "criado": "2026-10-02",
+    "contexto": 262144,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.16,
+     "share_gasto": 0.0,
+     "lider": {
+      "slug": "inclusionai/ling-3.0-flash-fin-20260827",
+      "nome": "Ling 3.0 Flash Fin",
+      "share_7d": 0.28,
+      "preco_misto": 0.0623
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "nvidia/switchyard",
+   "id": "nvidia/switchyard",
+   "nome": "Switchyard",
+   "lab": "NVIDIA",
+   "vendor": "nvidia",
+   "dados": {
+    "criado": "2026-09-21",
+    "contexto": 1000000,
+    "preco_entrada": null,
+    "preco_saida": null,
+    "preco_misto": null,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 4.62,
+     "share_gasto": 0.0,
+     "lider": {
+      "slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+      "nome": "Nemotron 3 Ultra",
+      "share_7d": 3.72,
+      "preco_misto": 0.925
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "poolside/laguna-s-2.1-20260720",
+   "id": "poolside/laguna-s-2.1",
+   "nome": "Laguna S 2.1",
+   "lab": "Poolside",
+   "vendor": "poolside",
+   "dados": {
+    "data": "2026-10-31",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.6,
+     "rank_7d": 26,
+     "pico_share": 2.708,
+     "semanas_com_volume": 10
+    },
+    "laboratorio": null
+   },
+   "relevancia": 38
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "poolside/laguna-xs-2.1-20260625",
+   "id": "poolside/laguna-xs-2.1",
+   "nome": "Laguna XS 2.1",
+   "lab": "Poolside",
+   "vendor": "poolside",
+   "dados": {
+    "data": "2026-10-31",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.317,
+     "semanas_com_volume": 7
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "poolside/laguna-s-2.1-20260720",
+      "nome": "Laguna S 2.1",
+      "share_7d": 0.6,
+      "preco_misto": 0.1125
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-next-80b-a3b-thinking-2509",
+   "id": "qwen/qwen3-next-80b-a3b-thinking",
+   "nome": "Qwen3 Next 80B A3B Thinking",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-10-09",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.105,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.32,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "estreia",
+   "slug": "upstage/solar-mini4-20260922",
+   "id": null,
+   "nome": "Solar Mini 4",
+   "lab": "Upstage",
+   "vendor": "upstage",
+   "dados": {
+    "primeiro_dia": "2026-10-02",
+    "share_7d": 0.03,
+    "lancamento": "2026-09-23",
+    "dias_desde_catalogo": 9
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.03,
+     "rank_7d": 58,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 1.2,
+     "share_gasto": 0.19,
+     "lider": {
+      "slug": "upstage/solar-pro4-20260810",
+      "nome": "Solar Pro 4",
+      "share_7d": 0.58,
+      "preco_misto": 0.1575
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "id": "nvidia/nemotron-3-ultra-550b-a55b",
+   "nome": "Nemotron 3 Ultra",
+   "lab": "NVIDIA",
+   "vendor": "nvidia",
+   "dados": {
+    "de": 1.05,
+    "para": 0.925,
+    "variacao_pct": -11.9,
+    "entrada_de": 0.6,
+    "entrada_para": 0.5,
+    "saida_de": 2.4,
+    "saida_para": 2.2,
+    "desde": "2026-10-02"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 3.72,
+     "rank_7d": 8,
+     "pico_share": 5.084,
+     "semanas_com_volume": 17
+    },
+    "laboratorio": {
+     "share_tokens": 4.62,
+     "share_gasto": 0.0
+    }
+   },
+   "relevancia": 34
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.5-35b-a3b-20260224",
+   "id": "qwen/qwen3.5-35b-a3b",
+   "nome": "Qwen3.5-35B-A3B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.4469,
+    "para": 0.3625,
+    "variacao_pct": -18.9,
+    "entrada_de": 0.1625,
+    "entrada_para": 0.15,
+    "saida_de": 1.3,
+    "saida_para": 1.0,
+    "desde": "2026-10-02"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.388,
+     "semanas_com_volume": 6
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.32,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 24
+  }
+ ]
+}
