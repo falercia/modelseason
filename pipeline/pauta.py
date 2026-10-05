@@ -40,6 +40,7 @@ import os
 import re
 import sys
 import time
+import unicodedata
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlparse
@@ -573,6 +574,15 @@ def valida_texto(t):
     return None
 
 
+def en_ascii(s):
+    """Tira acento de palavra emprestada no ingles ("cliché" vira "cliche").
+
+    A pagina em ingles nao pode ter acento: o e2e trata acento no /en como
+    portugues que vazou. Em 05/10 o resumo trouxe "cliché" e derrubou o teste.
+    """
+    return "".join(c for c in unicodedata.normalize("NFKD", s) if not unicodedata.combining(c))
+
+
 def valida_pt(t):
     m = SEM_ACENTO.search(t["titulo"] + " " + t["resumo"])
     return f"português sem acento ({m.group(0)})" if m else None
@@ -626,6 +636,7 @@ def redigir(claude, escolhidos, itens_por_id):
                 continue
             textos[a["id"]] = {lang: {"titulo": x[lang]["titulo"].strip().rstrip("."), "resumo": x[lang]["resumo"].strip()}
                                for lang in ("pt", "en")}
+            textos[a["id"]]["en"] = {k: en_ascii(v) for k, v in textos[a["id"]]["en"].items()}
         faltando = [a for a in escolhidos if a["id"] not in textos]
         if not faltando:
             break

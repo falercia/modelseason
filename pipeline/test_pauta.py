@@ -225,6 +225,8 @@ ok("corpo do PR com assuntos, descartados e falhas", "### Ações de IA" in md a
 
 ok("portugues sem acento recusado", P.valida_pt({"titulo": "OpenAI lanca modelo", "resumo": "Segundo a Reuters, nao ha data."}) is not None)
 ok("portugues correto aceito", P.valida_pt({"titulo": "OpenAI lança modelo", "resumo": "Segundo a Reuters, não há data."}) is None)
+ok("ingles sem acento: cliché vira cliche", P.en_ascii('he is "something of a cliché"') == 'he is "something of a cliche"')
+ok("ingles sem acento: aspas e travessao curto preservados", P.en_ascii("OpenAI’s ‘culture’") == "OpenAI’s ‘culture’")
 ok("veiculo com nome legivel a partir do dominio", P.veiculo_de("https://thenextweb.com/news/x")[0] == "The Next Web")
 ok("prompt proibe comentar a propria fonte", "Nunca comente a própria fonte" in P.SISTEMA_REDIGIR)
 ok("prompts com acentuacao", "segurança" in P.SISTEMA_REDIGIR and "Você" in P.SISTEMA_AGRUPAR)

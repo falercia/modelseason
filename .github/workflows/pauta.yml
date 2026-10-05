@@ -8,6 +8,12 @@ name: Pauta do Radar
 #
 # Requer, em Settings > Actions > General > Workflow permissions, a opção
 # "Allow GitHub Actions to create and approve pull requests".
+#
+# Token do bot (opcional, secret PAUTA_TOKEN): PR aberto com o GITHUB_TOKEN
+# fica parado em "Approve workflows to run" e os Testes só rodam depois do
+# clique do dono. Com um token fino do dono (só este repositório; Contents,
+# Pull requests e Issues em leitura e escrita), o push e o PR saem em nome dele
+# e os Testes rodam sozinhos. Sem o secret, cai no GITHUB_TOKEN como antes.
 
 on:
   schedule:
@@ -28,9 +34,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
-      GH_TOKEN: ${{ github.token }}
+      GH_TOKEN: ${{ secrets.PAUTA_TOKEN || github.token }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.PAUTA_TOKEN || github.token }}
 
       - uses: actions/setup-python@v6
         with:

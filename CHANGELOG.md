@@ -8,6 +8,8 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ### Adicionado
 
+- **Token do bot na pauta (opcional)**: com o secret `PAUTA_TOKEN`, o `pauta.yml` faz o push e abre o PR com um token fino do dono, e os Testes do PR rodam sozinhos, sem o clique em "Approve workflows to run". Em 02/10 a pauta ficou o fim de semana sem esse clique e foi fechada sem publicar. Sem o secret, o workflow segue com o `GITHUB_TOKEN`.
+
 - **Sinais de finalidade calculados**: `build_web.py` compara a foto de tarefas mais recente com a mais recente a `janela_dias` ou mais de distância (`foto_tarefas_anterior`, `comparar_tarefas`) e publica `mercado.tarefas.comparacao`: tarefa que mais ganhou e mais perdeu share de tokens, em pontos percentuais, e o modelo que mais avançou dentro da que ganhou. O cartão da seção 14 mostra a comparação e só volta ao estado de espera se o arquivo encurtar. O contador de fotos deixou de passar do total necessário ("11 de 8 fotos").
 
 - **Destaques do editor na pauta**: `data/pauta/destaques.json` lista temas em acompanhamento (`termo`, `ate`, `bonus`). Assunto que cita o termo soma o bônus na nota e sai com `destaque` no JSON e no corpo do PR, e item que cita o termo nunca cai no corte de 80 itens enviados à IA (em 21/09 o único item do Jev tinha peso 1 e foi cortado antes do agrupamento). Motivo: a nota premia laboratório com tráfego no roteador, e um entrante sem volume, como o Jev da TypeSafe em 18/09, ficava fora dos três primeiros mesmo sendo a notícia mais relevante da janela.
@@ -19,6 +21,8 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 - **Pauta na segunda, na quarta e na sexta**, em vez de todo dia. A coleta passa a cobrir o período desde a edição anterior (54 horas na quarta e na sexta, 78 na segunda, `--janela` para forçar outro valor), e a edição nova fecha a anterior que ficou sem merge, no lugar da regra de 48 horas: com duas pautas abertas ao mesmo tempo, a segunda repetia a primeira, porque o filtro de repetição só lê pautas já mescladas.
 
 ### Corrigido
+
+- **Acento no inglês da pauta**: a redação da IA pode trazer palavra emprestada com acento no texto em inglês ("cliché" na pauta de 05/10), e o e2e trata acento no `/en` como português que vazou. O texto em inglês passa por `en_ascii` antes de ser gravado; a pauta de 05/10 foi corrigida no arquivo.
 
 - **Fontes da pauta que não traziam o essencial**: a coleta da Anthropic só aceitava links em `/news/`, mas lançamento de modelo mora na raiz do site (`/claude-sonnet-5-5`), então Opus 5.5 e Sonnet 5.5 só chegaram por tabela via Techmeme; agora entram pela fonte oficial, com peso 3. O Ars Technica lia o feed "Biz & IT", que quase não publica sobre IA e voltava vazio; passou a ler o feed principal com o mesmo filtro de assunto.
 
