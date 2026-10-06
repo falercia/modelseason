@@ -1,0 +1,198 @@
+{
+ "versao": 1,
+ "dia": "2026-10-06",
+ "gerado_em": "2026-10-06T14:14:10Z",
+ "fontes": {
+  "catalogo": [
+   "2026-09-29",
+   "2026-10-06"
+  ],
+  "trafego": "2026-10-05"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-06",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-05",
+  "lider_7d": "stealth/space-bunny-alpha",
+  "top10_7d": [
+   "stealth/space-bunny-alpha",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "tencent/hy4-preview-20260827",
+   "openai/gpt-6-luna-20260922",
+   "deepseek/deepseek-v4-flash-20260731",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "openai/gpt-5.6-luna-20260709",
+   "deepseek/deepseek-v4-flash-20260423"
+  ]
+ },
+ "principal": "removido:stealth/space-bunny-alpha",
+ "eventos": [
+  {
+   "tipo": "removido",
+   "slug": "stealth/space-bunny-alpha",
+   "id": "stealth/space-bunny-alpha",
+   "nome": "Space Bunny Alpha",
+   "lab": "Anônimo (stealth)",
+   "vendor": "stealth",
+   "dados": {
+    "visto_em": "2026-10-05",
+    "expira": "2026-10-05"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 22.97,
+     "rank_7d": 1,
+     "pico_share": 23.31,
+     "semanas_com_volume": 2
+    },
+    "laboratorio": {
+     "share_tokens": 24.81,
+     "share_gasto": 0.0
+    }
+   },
+   "relevancia": 70
+  },
+  {
+   "tipo": "novo",
+   "slug": "tencent/hy-image-v3.5-preview-20260922",
+   "id": "tencent/hy-image-v3.5-preview",
+   "nome": "Hy Image 3.5 Preview",
+   "lab": "Tencent",
+   "vendor": "tencent",
+   "dados": {
+    "criado": "2026-10-05",
+    "contexto": 100000,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->image",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 5.51,
+     "share_gasto": 6.27,
+     "lider": {
+      "slug": "tencent/hy4-preview-20260827",
+      "nome": "Hy4 preview",
+      "share_7d": 3.79,
+      "preco_misto": 1.2507
+     }
+    }
+   },
+   "relevancia": 42
+  },
+  {
+   "tipo": "novo",
+   "slug": "mistralai/mistral-large-4-0-20261006",
+   "id": "mistralai/mistral-large-4-0",
+   "nome": "Mistral Large 4",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "criado": "2026-10-06",
+    "contexto": 524288,
+    "preco_entrada": 0.68,
+    "preco_saida": 2.09,
+    "preco_misto": 1.0325,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.03,
+      "preco_misto": 0.0217
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "openai/gpt-5.6-sol-pro-20260709",
+   "id": "openai/gpt-5.6-sol-pro",
+   "nome": "GPT-5.6 Sol Pro",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "de": 8.0,
+    "para": 4.0,
+    "variacao_pct": -50.0,
+    "entrada_de": 4.0,
+    "entrada_para": 2.0,
+    "saida_de": 20.0,
+    "saida_para": 10.0,
+    "desde": "2026-10-05"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.154,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 10.62,
+     "share_gasto": 32.91,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.7,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-4-26b-a4b-it-20260403",
+   "id": "google/gemma-4-26b-a4b-it",
+   "nome": "Gemma 4 26B A4B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.1069,
+    "para": 0.1425,
+    "variacao_pct": 33.3,
+    "entrada_de": 0.0675,
+    "entrada_para": 0.09,
+    "saida_de": 0.225,
+    "saida_para": 0.3,
+    "desde": "2026-10-05"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.03,
+     "rank_7d": 57,
+     "pico_share": 0.737,
+     "semanas_com_volume": 26
+    },
+    "laboratorio": {
+     "share_tokens": 3.57,
+     "share_gasto": 4.16,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.31,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 27
+  }
+ ]
+}
