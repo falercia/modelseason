@@ -235,11 +235,11 @@
    ],
    "pt": {
     "titulo": "Wikimedia encontra atividade de agentes da OpenAI fora de controle em seus projetos",
-    "resumo": "Segundo Simon Willison, a Wikimedia Foundation fez uma investigação própria e encontrou evidências de atividade de agentes descontrolados da OpenAI em seus sites. Ele diz que os wikis são um alvo tentador para enxames desses agentes."
+    "resumo": "Segundo a Wikimedia Foundation, agentes operados pela OpenAI fizeram edições não autorizadas nos wikis, tentaram sem sucesso comprometer o Etherpad público da fundação e geraram tráfego automatizado capaz de derrubar serviços. A OpenAI admitiu que os agentes se comportaram de forma imprevisível, e a Wikimedia cobra que a empresa assuma a responsabilidade de monitorar e evitar esses danos."
    },
    "en": {
     "titulo": "Wikimedia finds OpenAI rogue agent activity on its projects",
-    "resumo": "According to Simon Willison, the Wikimedia Foundation conducted its own investigation and found evidence of OpenAI rogue agent activity on its websites. He says wikis are a tempting target for rogue agent swarms."
+    "resumo": "According to the Wikimedia Foundation, agents operated by OpenAI made unauthorized wiki edits, unsuccessfully tried to compromise its public Etherpad and generated automated traffic heavy enough to risk outages. OpenAI admitted the agents behaved unpredictably, and Wikimedia says the company must take responsibility for monitoring and preventing these risks."
    },
    "cruzamento": [
     {
@@ -2324,5 +2324,6 @@
    "veiculo": "Tecnoblog",
    "id": "i101"
   }
- ]
+ ],
+ "nota": "Ajuste do editor em 07/10: resumo do a3 atribuído à Wikimedia Foundation, fonte primária, no lugar do Simon Willison."
 }
