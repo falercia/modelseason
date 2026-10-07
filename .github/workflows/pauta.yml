@@ -1,8 +1,10 @@
 name: Pauta do Radar
 
 # Segunda, quarta e sexta: coleta as fontes externas desde a edição anterior,
-# agrupa e redige os assuntos com IA e abre um PR com data/pauta/AAAA-MM-DD.json.
-# Nada é publicado sem o merge do dono. Ao abrir a edição nova, a anterior que
+# agrupa e redige os assuntos com IA, passa pelo editor automático e abre um PR
+# com data/pauta/AAAA-MM-DD.json. Pauta aprovada pelo editor sai com a etiqueta
+# editor-ok, e o automerge.yml mescla quando os Testes passam; a etiqueta
+# segurar impede. Pauta não aprovada fica esperando merge manual. Ao abrir a edição nova, a anterior que
 # ficou sem merge é fechada aqui mesmo, e aquele dia sai só com o dado: assim
 # existe uma pauta aberta por vez e nunca duas edições repetindo o mesmo fato.
 #
@@ -84,7 +86,13 @@ jobs:
           git commit -m "data: pauta $DIA"
           git push origin "pauta/$DIA"
           python pipeline/pauta.py --pr-md "data/pauta/$DIA.json" > "$RUNNER_TEMP/corpo.md"
-          gh pr create --base "$GITHUB_REF_NAME" --head "pauta/$DIA" --label pauta \
+          gh label create segurar --color B60205 --description "Impede o merge automático da pauta" --force >/dev/null
+          rotulos=pauta
+          if python -c "import json, sys; sys.exit(0 if json.load(open('data/pauta/$DIA.json')).get('editor', {}).get('aprovada') else 1)"; then
+            gh label create editor-ok --color 1D76DB --description "Aprovada pelo editor automático: mescla sozinha com Testes verdes" --force >/dev/null
+            rotulos=pauta,editor-ok
+          fi
+          gh pr create --base "$GITHUB_REF_NAME" --head "pauta/$DIA" --label "$rotulos" \
             --title "Pauta do Radar $DIA" --body-file "$RUNNER_TEMP/corpo.md"
 
       - name: Abrir issue se falhou

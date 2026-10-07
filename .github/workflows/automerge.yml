@@ -1,0 +1,49 @@
+name: Publicar pauta aprovada
+
+# Mescla o PR da pauta sem ninguém clicar, quando três coisas valem ao mesmo tempo:
+# os Testes do PR passaram, o editor automático aprovou (etiqueta editor-ok, posta
+# pelo pauta.yml) e ninguém pôs a etiqueta segurar. O teste aprovado precisa ser do
+# commit atual do PR: um ajuste empurrado depois roda os Testes de novo e só esse
+# resultado libera o merge.
+#
+# O merge usa o PAUTA_TOKEN, para que o push na main dispare os Testes da main como
+# um merge feito à mão. Sem o secret, cai no GITHUB_TOKEN; a Vercel publica igual.
+
+on:
+  workflow_run:
+    workflows: ["Testes"]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: automerge-pauta
+  cancel-in-progress: false
+
+jobs:
+  mesclar:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request' &&
+      startsWith(github.event.workflow_run.head_branch, 'pauta/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ secrets.PAUTA_TOKEN || github.token }}
+      GH_REPO: ${{ github.repository }}
+      RAMO: ${{ github.event.workflow_run.head_branch }}
+      SHA: ${{ github.event.workflow_run.head_sha }}
+    steps:
+      - name: Mesclar se o editor aprovou
+        run: |
+          pr=$(gh pr list --head "$RAMO" --state open --json number,headRefOid,labels --jq '.[0] // empty')
+          if [ -z "$pr" ]; then echo "Nenhum PR aberto em $RAMO."; exit 0; fi
+          n=$(jq -r .number <<<"$pr")
+          rotulos=",$(jq -r '[.labels[].name] | join(",")' <<<"$pr"),"
+          if [ "$(jq -r .headRefOid <<<"$pr")" != "$SHA" ]; then echo "PR #$n mudou depois deste teste; espera o próximo."; exit 0; fi
+          case "$rotulos" in *,segurar,*) echo "PR #$n com a etiqueta segurar."; exit 0;; esac
+          case "$rotulos" in *,editor-ok,*) ;; *) echo "PR #$n sem aprovação do editor: fica para merge manual."; exit 0;; esac
+          gh pr merge "$n" --merge --delete-branch
+          echo "PR #$n mesclado: a Vercel publica a pauta."
