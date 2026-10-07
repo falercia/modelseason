@@ -94,6 +94,13 @@ jobs:
           fi
           gh pr create --base "$GITHUB_REF_NAME" --head "pauta/$DIA" --label "$rotulos" \
             --title "Pauta do Radar $DIA" --body-file "$RUNNER_TEMP/corpo.md"
+          # aviso por e-mail: comentario do github-actions[bot] mencionando o dono (o GitHub
+          # nao avisa o dono do que ele mesmo faz, e com o PAUTA_TOKEN o PR sai no nome dele)
+          if [ "$rotulos" = pauta ]; then
+            motivo=$(python -c "import json; print(json.load(open('data/pauta/$DIA.json')).get('editor', {}).get('motivo', 'editor desligado'))")
+            GH_TOKEN="${{ github.token }}" gh pr comment "pauta/$DIA" \
+              --body "@${{ github.repository_owner }} A pauta de $DIA não foi aprovada pelo editor automático ($motivo) e espera merge manual."
+          fi
 
       - name: Abrir issue se falhou
         if: failure()
@@ -102,7 +109,7 @@ jobs:
           script: |
             const titulo = 'Falha na pauta do Radar';
             const corpo = [
-              'A pauta do Radar não foi gerada. O Radar com dado de catálogo e tráfego segue normal.',
+              `@${context.repo.owner} A pauta do Radar não foi gerada. O Radar com dado de catálogo e tráfego segue normal.`,
               '',
               `**Run:** ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
               '',
