@@ -1,0 +1,407 @@
+{
+ "versao": 1,
+ "dia": "2026-10-11",
+ "gerado_em": "2026-10-11T14:05:21Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-04",
+   "2026-10-11"
+  ],
+  "trafego": "2026-10-10"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-11",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-10",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20260910",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "stealth/space-bunny-alpha",
+   "tencent/hy4-preview-20260827",
+   "openai/gpt-6-luna-20260922",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "stepfun/step-5-preview-20261008",
+   "deepseek/deepseek-v4-flash-20260731",
+   "anthropic/claude-opus-5.5-20260921"
+  ]
+ },
+ "principal": "top10:stepfun/step-5-preview-20261008",
+ "eventos": [
+  {
+   "tipo": "top10",
+   "slug": "stepfun/step-5-preview-20261008",
+   "id": null,
+   "nome": "Step 5 Preview",
+   "lab": "StepFun",
+   "vendor": "stepfun",
+   "dados": {
+    "posicao": 8,
+    "share": 3.72,
+    "lancamento": "2026-10-08"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 3.72,
+     "rank_7d": 8,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 57
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3-vl-8b-instruct",
+   "id": "qwen/qwen3-vl-8b-instruct",
+   "nome": "Qwen3 VL 8B Instruct",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.2015,
+    "para": 0.375,
+    "variacao_pct": 86.1,
+    "entrada_de": 0.117,
+    "entrada_para": 0.25,
+    "saida_de": 0.455,
+    "saida_para": 0.75,
+    "desde": "2026-10-10"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.364,
+     "semanas_com_volume": 4
+    },
+    "laboratorio": {
+     "share_tokens": 0.88,
+     "share_gasto": 0.38,
+     "lider": {
+      "slug": "qwen/qwen3.8-27b-20260814",
+      "nome": "Qwen3.8 27B",
+      "share_7d": 0.27,
+      "preco_misto": 0.605
+     }
+    }
+   },
+   "relevancia": 37
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.2-20260616",
+   "id": "z-ai/glm-5.2",
+   "nome": "GLM 5.2",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 1.0525,
+    "para": 1.795,
+    "variacao_pct": 70.5,
+    "entrada_de": 0.24,
+    "entrada_para": 0.06,
+    "saida_de": 3.49,
+    "saida_para": 7.0,
+    "desde": "2026-10-10"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.93,
+     "rank_7d": 21,
+     "pico_share": 6.065,
+     "semanas_com_volume": 16
+    },
+    "laboratorio": {
+     "share_tokens": 9.03,
+     "share_gasto": 6.22,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 6.8,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 37
+  },
+  {
+   "tipo": "preco",
+   "slug": "cloudflare/clef-flash",
+   "id": "cloudflare/clef-flash",
+   "nome": "Clef Flash",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 0.0675,
+    "para": 0.0285,
+    "variacao_pct": -57.8,
+    "entrada_de": 0.09,
+    "entrada_para": 0.038,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-10"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 32
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3-235b-a22b-thinking-2507",
+   "id": "qwen/qwen3-235b-a22b-thinking-2507",
+   "nome": "Qwen3 235B A22B Thinking 2507",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.7475,
+    "para": 1.2125,
+    "variacao_pct": 62.2,
+    "entrada_de": 0.23,
+    "entrada_para": 0.45,
+    "saida_de": 2.3,
+    "saida_para": 3.5,
+    "desde": "2026-10-10"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.196,
+     "semanas_com_volume": 9
+    },
+    "laboratorio": {
+     "share_tokens": 0.88,
+     "share_gasto": 0.38,
+     "lider": {
+      "slug": "qwen/qwen3.8-27b-20260814",
+      "nome": "Qwen3.8 27B",
+      "share_7d": 0.27,
+      "preco_misto": 0.605
+     }
+    }
+   },
+   "relevancia": 32
+  },
+  {
+   "tipo": "preco",
+   "slug": "nvidia/nemotron-3.5-lightning-20260807",
+   "id": "nvidia/nemotron-3.5-lightning",
+   "nome": "Nemotron 3.5 Lightning",
+   "lab": "NVIDIA",
+   "vendor": "nvidia",
+   "dados": {
+    "de": 0.0718,
+    "para": 0.1025,
+    "variacao_pct": 42.9,
+    "entrada_de": 0.049,
+    "entrada_para": 0.07,
+    "saida_de": 0.14,
+    "saida_para": 0.2,
+    "desde": "2026-10-10"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.51,
+     "rank_7d": 29,
+     "pico_share": 1.04,
+     "semanas_com_volume": 8
+    },
+    "laboratorio": {
+     "share_tokens": 4.18,
+     "share_gasto": 0.0,
+     "lider": {
+      "slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+      "nome": "Nemotron 3 Ultra",
+      "share_7d": 3.87,
+      "preco_misto": 1.05
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3-vl-30b-a3b-thinking",
+   "id": "qwen/qwen3-vl-30b-a3b-thinking",
+   "nome": "Qwen3 VL 30B A3B Thinking",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.75,
+    "para": 0.4675,
+    "variacao_pct": -37.7,
+    "entrada_de": 0.2,
+    "entrada_para": 0.29,
+    "saida_de": 2.4,
+    "saida_para": 1.0,
+    "desde": "2026-10-10"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 0.88,
+     "share_gasto": 0.38,
+     "lider": {
+      "slug": "qwen/qwen3.8-27b-20260814",
+      "nome": "Qwen3.8 27B",
+      "share_7d": 0.27,
+      "preco_misto": 0.605
+     }
+    }
+   },
+   "relevancia": 28
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v3.2-20251201",
+   "id": "deepseek/deepseek-v3.2",
+   "nome": "DeepSeek V3.2",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.2992,
+    "para": 0.3942,
+    "variacao_pct": 31.7,
+    "entrada_de": 0.259,
+    "entrada_para": 0.259,
+    "saida_de": 0.42,
+    "saida_para": 0.8,
+    "desde": "2026-10-10"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.03,
+     "rank_7d": 58,
+     "pico_share": 6.779,
+     "semanas_com_volume": 44
+    },
+    "laboratorio": {
+     "share_tokens": 23.52,
+     "share_gasto": 12.31,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 22.64,
+      "preco_misto": 0.525
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-4-26b-a4b-it-20260403",
+   "id": "google/gemma-4-26b-a4b-it",
+   "nome": "Gemma 4 26B A4B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.1425,
+    "para": 0.1069,
+    "variacao_pct": -25.0,
+    "entrada_de": 0.09,
+    "entrada_para": 0.0675,
+    "saida_de": 0.3,
+    "saida_para": 0.225,
+    "desde": "2026-10-10"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.16,
+     "rank_7d": 52,
+     "pico_share": 0.737,
+     "semanas_com_volume": 26
+    },
+    "laboratorio": {
+     "share_tokens": 3.57,
+     "share_gasto": 4.22,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.21,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 25
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-4.6",
+   "id": "z-ai/glm-4.6",
+   "nome": "GLM 4.6",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 0.76,
+    "para": 0.875,
+    "variacao_pct": 15.1,
+    "entrada_de": 0.43,
+    "entrada_para": 0.5,
+    "saida_de": 1.75,
+    "saida_para": 2.0,
+    "desde": "2026-10-10"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 2.192,
+     "semanas_com_volume": 20
+    },
+    "laboratorio": {
+     "share_tokens": 9.03,
+     "share_gasto": 6.22,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 6.8,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 23
+  },
+  {
+   "tipo": "preco",
+   "slug": "moonshotai/kimi-k2.5-0127",
+   "id": "moonshotai/kimi-k2.5",
+   "nome": "Kimi K2.5",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "de": 0.9,
+    "para": 1.0,
+    "variacao_pct": 11.1,
+    "entrada_de": 0.45,
+    "entrada_para": 0.5,
+    "saida_de": 2.25,
+    "saida_para": 2.5,
+    "desde": "2026-10-10"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 11.819,
+     "semanas_com_volume": 28
+    },
+    "laboratorio": {
+     "share_tokens": 1.04,
+     "share_gasto": 3.71,
+     "lider": {
+      "slug": "moonshotai/kimi-k3-20260715",
+      "nome": "Kimi K3",
+      "share_7d": 1.21,
+      "preco_misto": 3.1
+     }
+    }
+   },
+   "relevancia": 22
+  }
+ ]
+}
