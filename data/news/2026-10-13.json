@@ -1,0 +1,427 @@
+{
+ "versao": 1,
+ "dia": "2026-10-13",
+ "gerado_em": "2026-10-13T15:05:56Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-06",
+   "2026-10-13"
+  ],
+  "trafego": "2026-10-12"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-13",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-12",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20260910",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "stepfun/step-5-preview-20261008",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "tencent/hy4-preview-20260827",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "openai/gpt-6-luna-20260922",
+   "anthropic/claude-opus-5.5-20260921",
+   "deepseek/deepseek-v4-flash-20260731",
+   "z-ai/glm-5.3-20260816"
+  ]
+ },
+ "principal": "novo:meta/muse-wonder-20261012",
+ "eventos": [
+  {
+   "tipo": "novo",
+   "slug": "meta/muse-wonder-20261012",
+   "id": "meta/muse-wonder",
+   "nome": "Muse Wonder",
+   "lab": "Meta",
+   "vendor": "meta",
+   "dados": {
+    "criado": "2026-10-12",
+    "contexto": 1048576,
+    "preco_entrada": 4.0,
+    "preco_saida": 20.0,
+    "preco_misto": 8.0,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+file+audio+video->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.65,
+     "share_gasto": 0.65,
+     "lider": {
+      "slug": "meta/muse-spark-1.3-contributor-20260902",
+      "nome": "Muse Spark 1.3 Contributor",
+      "share_7d": 1.46,
+      "preco_misto": 0.125
+     }
+    }
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "novo",
+   "slug": "nace-ai/drex-v2.0-20261009",
+   "id": "nace-ai/drex-v2.0",
+   "nome": "Drex v2.0",
+   "lab": "Nace Ai",
+   "vendor": "nace-ai",
+   "dados": {
+    "criado": "2026-10-12",
+    "contexto": 131072,
+    "preco_entrada": 0.06,
+    "preco_saida": 0.0,
+    "preco_misto": 0.045,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "scaledown/classify-1-20260928",
+   "id": "scaledown/classify-1",
+   "nome": "Classify-1",
+   "lab": "Scaledown",
+   "vendor": "scaledown",
+   "dados": {
+    "criado": "2026-10-13",
+    "contexto": 1000000,
+    "preco_entrada": 0.04,
+    "preco_saida": 0.0,
+    "preco_misto": 0.03,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image+file->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "scaledown/extract-20260928",
+   "id": "scaledown/extract",
+   "nome": "Extract",
+   "lab": "Scaledown",
+   "vendor": "scaledown",
+   "dados": {
+    "criado": "2026-10-13",
+    "contexto": 1000000,
+    "preco_entrada": 0.04,
+    "preco_saida": 0.0,
+    "preco_misto": 0.03,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image+file->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "scaledown/summarize-20260928",
+   "id": "scaledown/summarize",
+   "nome": "Summarize",
+   "lab": "Scaledown",
+   "vendor": "scaledown",
+   "dados": {
+    "criado": "2026-10-13",
+    "contexto": 1000000,
+    "preco_entrada": 0.04,
+    "preco_saida": 0.0,
+    "preco_misto": 0.03,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image+file->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "meta-llama/llama-4-scout-17b-16e-instruct",
+   "id": "meta-llama/llama-4-scout",
+   "nome": "Llama 4 Scout",
+   "lab": "Meta",
+   "vendor": "meta-llama",
+   "dados": {
+    "de": 0.15,
+    "para": 0.2825,
+    "variacao_pct": 88.3,
+    "entrada_de": 0.1,
+    "entrada_para": 0.18,
+    "saida_de": 0.3,
+    "saida_para": 0.59,
+    "desde": "2026-10-12"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.433,
+     "semanas_com_volume": 23
+    },
+    "laboratorio": null
+   },
+   "relevancia": 38
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-flash-20260731",
+   "id": "deepseek/deepseek-v4-flash-0731",
+   "nome": "DeepSeek V4 Flash 0731",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.3235,
+    "para": 0.172,
+    "variacao_pct": -46.8,
+    "entrada_de": 0.0046,
+    "entrada_para": 0.016,
+    "saida_de": 1.28,
+    "saida_para": 0.64,
+    "desde": "2026-10-12"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 2.7,
+     "rank_7d": 9,
+     "pico_share": 14.84,
+     "semanas_com_volume": 11
+    },
+    "laboratorio": {
+     "share_tokens": 31.81,
+     "share_gasto": 7.1,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 23.44,
+      "preco_misto": 0.1906
+     }
+    }
+   },
+   "relevancia": 37
+  },
+  {
+   "tipo": "estreia",
+   "slug": "mistralai/mistral-large-4-0-20261006",
+   "id": null,
+   "nome": "Mistral Large 4",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "primeiro_dia": "2026-10-12",
+    "share_7d": 0.03,
+    "lancamento": "2026-10-06",
+    "dias_desde_catalogo": 6
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.03,
+     "rank_7d": 57,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "estreia",
+   "slug": "perplexity/pplx-decider-v1.1-27b-20261006",
+   "id": null,
+   "nome": "pplx-decider-v1.1-27b",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "primeiro_dia": "2026-10-12",
+    "share_7d": 0.04,
+    "lancamento": null,
+    "dias_desde_catalogo": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.04,
+     "rank_7d": 56,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.3-20260816",
+   "id": "z-ai/glm-5.3",
+   "nome": "GLM 5.3",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 1.8025,
+    "para": 1.2592,
+    "variacao_pct": -30.1,
+    "entrada_de": 0.07,
+    "entrada_para": 0.079,
+    "saida_de": 7.0,
+    "saida_para": 4.8,
+    "desde": "2026-10-12"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 2.29,
+     "rank_7d": 10,
+     "pico_share": 2.619,
+     "semanas_com_volume": 8
+    },
+    "laboratorio": {
+     "share_tokens": 10.96,
+     "share_gasto": 6.54,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 7.32,
+      "preco_misto": 0.2446
+     }
+    }
+   },
+   "relevancia": 33
+  },
+  {
+   "tipo": "preco",
+   "slug": "moonshotai/kimi-k3-20260715",
+   "id": "moonshotai/kimi-k3",
+   "nome": "Kimi K3",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "de": 4.1225,
+    "para": 3.0475,
+    "variacao_pct": -26.1,
+    "entrada_de": 0.83,
+    "entrada_para": 0.73,
+    "saida_de": 14.0,
+    "saida_para": 10.0,
+    "desde": "2026-10-12"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.33,
+     "rank_7d": 16,
+     "pico_share": 2.507,
+     "semanas_com_volume": 13
+    },
+    "laboratorio": {
+     "share_tokens": 1.34,
+     "share_gasto": 4.06
+    }
+   },
+   "relevancia": 29
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-4-26b-a4b-it-20260403",
+   "id": "google/gemma-4-26b-a4b-it",
+   "nome": "Gemma 4 26B A4B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.1069,
+    "para": 0.1425,
+    "variacao_pct": 33.3,
+    "entrada_de": 0.0675,
+    "entrada_para": 0.09,
+    "saida_de": 0.225,
+    "saida_para": 0.3,
+    "desde": "2026-10-12"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.19,
+     "rank_7d": 48,
+     "pico_share": 0.737,
+     "semanas_com_volume": 27
+    },
+    "laboratorio": {
+     "share_tokens": 3.47,
+     "share_gasto": 3.38,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.17,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 27
+  },
+  {
+   "tipo": "alias",
+   "slug": "~perplexity/pplx-decider-27b-latest",
+   "id": "~perplexity/pplx-decider-27b-latest",
+   "nome": "Decider 27B Latest",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "alvo_slug": "perplexity/pplx-decider-v1.1-27b",
+    "alvo_nome": "Decider V1.1 27B",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "perplexity/pplx-decider-v1.1-27b-20261006",
+      "nome": "pplx-decider-v1.1-27b",
+      "share_7d": 0.04,
+      "preco_misto": null
+     }
+    }
+   },
+   "relevancia": 15
+  },
+  {
+   "tipo": "contexto",
+   "slug": "cloudflare/clef-flash",
+   "id": "cloudflare/clef-flash",
+   "nome": "Clef Flash",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 65536,
+    "para": 24576
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 15
+  }
+ ]
+}
