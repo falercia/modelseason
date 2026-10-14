@@ -1,0 +1,521 @@
+{
+ "versao": 1,
+ "dia": "2026-10-14",
+ "gerado_em": "2026-10-14T12:54:59Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-07",
+   "2026-10-14"
+  ],
+  "trafego": "2026-10-13"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-14",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-13",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20260910",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "stepfun/step-5-preview-20261008",
+   "z-ai/glm-5.3-flash-20260826",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "tencent/hy4-preview-20260827",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "openai/gpt-6-luna-20260922",
+   "anthropic/claude-opus-5.5-20260921",
+   "deepseek/deepseek-v4-flash-20260731",
+   "z-ai/glm-5.3-20260816"
+  ]
+ },
+ "principal": "novo:google/gemini-4-argon-20261013",
+ "eventos": [
+  {
+   "tipo": "novo",
+   "slug": "google/gemini-4-argon-20261013",
+   "id": "google/gemini-4-argon",
+   "nome": "Gemini 4 Argon",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "criado": "2026-10-13",
+    "contexto": 1048576,
+    "preco_entrada": 2.0,
+    "preco_saida": 10.0,
+    "preco_misto": 4.0,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+file+audio+video->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 3.47,
+     "share_gasto": 3.29,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.13,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "novo",
+   "slug": "fish-audio/drama-3-20261013",
+   "id": "fish-audio/drama-3",
+   "nome": "Drama 3",
+   "lab": "Fish Audio",
+   "vendor": "fish-audio",
+   "dados": {
+    "criado": "2026-10-13",
+    "contexto": 0,
+    "preco_entrada": 2.0,
+    "preco_saida": 0.0,
+    "preco_misto": 1.5,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "heygen/heygen-voice-1-20261009",
+   "id": "heygen/heygen-voice-1",
+   "nome": "HeyGen Voice",
+   "lab": "Heygen",
+   "vendor": "heygen",
+   "dados": {
+    "criado": "2026-10-13",
+    "contexto": 0,
+    "preco_entrada": 15.0,
+    "preco_saida": 0.0,
+    "preco_misto": 11.25,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "heygen/heygen-voice-1-turbo-20261009",
+   "id": "heygen/heygen-voice-1-turbo",
+   "nome": "HeyGen Voice Turbo",
+   "lab": "Heygen",
+   "vendor": "heygen",
+   "dados": {
+    "criado": "2026-10-13",
+    "contexto": 0,
+    "preco_entrada": 7.5,
+    "preco_saida": 0.0,
+    "preco_misto": 5.625,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "liquid/lfm-2.5-24b-a2b-20261012",
+   "id": "liquid/lfm-2.5-24b-a2b",
+   "nome": "LFM2.5-24B-A2B",
+   "lab": "Liquid AI",
+   "vendor": "liquid",
+   "dados": {
+    "criado": "2026-10-13",
+    "contexto": 128000,
+    "preco_entrada": 0.05,
+    "preco_saida": 0.7,
+    "preco_misto": 0.2125,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "unbiased/pareto-26.9-20260917",
+   "id": "unbiased/pareto-26.9",
+   "nome": "Pareto 26.9",
+   "lab": "Unbiased",
+   "vendor": "unbiased",
+   "dados": {
+    "criado": "2026-10-13",
+    "contexto": 262144,
+    "preco_entrada": 2.5,
+    "preco_saida": 7.5,
+    "preco_misto": 3.75,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "meta-llama/llama-3.3-70b-instruct",
+   "id": "meta-llama/llama-3.3-70b-instruct",
+   "nome": "Llama 3.3 70B Instruct",
+   "lab": "Meta",
+   "vendor": "meta-llama",
+   "dados": {
+    "de": 0.29,
+    "para": 0.64,
+    "variacao_pct": 120.7,
+    "entrada_de": 0.22,
+    "entrada_para": 0.59,
+    "saida_de": 0.5,
+    "saida_para": 0.79,
+    "desde": "2026-10-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 6.638,
+     "semanas_com_volume": 62
+    },
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "cloudflare/clef",
+   "id": "cloudflare/clef",
+   "nome": "Clef",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 0.18,
+    "para": 0.0315,
+    "variacao_pct": -82.5,
+    "entrada_de": 0.24,
+    "entrada_para": 0.042,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-13"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "unbiased/pareto-26.10-preview-20260929",
+   "id": "unbiased/pareto-26.10-preview",
+   "nome": "Pareto 26.10 Preview",
+   "lab": "Unbiased",
+   "vendor": "unbiased",
+   "dados": {
+    "data": "2026-10-15",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "estreia",
+   "slug": "meta/muse-wonder-20261012",
+   "id": null,
+   "nome": "Muse Wonder",
+   "lab": "Meta",
+   "vendor": "meta",
+   "dados": {
+    "primeiro_dia": "2026-10-13",
+    "share_7d": 0.03,
+    "lancamento": "2026-10-12",
+    "dias_desde_catalogo": 1
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.03,
+     "rank_7d": 56,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 1.65,
+     "share_gasto": 0.64,
+     "lider": {
+      "slug": "meta/muse-spark-1.3-contributor-20260902",
+      "nome": "Muse Spark 1.3 Contributor",
+      "share_7d": 1.58,
+      "preco_misto": 0.125
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "removido",
+   "slug": "inclusionai/ling-3.0-flash-fin-20260827",
+   "id": "inclusionai/ling-3.0-flash-fin",
+   "nome": "Ling 3.0 Flash Fin",
+   "lab": "InclusionAI",
+   "vendor": "inclusionai",
+   "dados": {
+    "visto_em": "2026-10-13",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.869,
+     "semanas_com_volume": 6
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "inclusionai/ling-3.1-flash-20261002",
+      "nome": "Ling 3.1 Flash",
+      "share_7d": 0.38,
+      "preco_misto": 0.1125
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "inclusionai/ling-3.0-flash-sante-20260904",
+   "id": "inclusionai/ling-3.0-flash-sante",
+   "nome": "Ling 3.0 Flash Sante",
+   "lab": "InclusionAI",
+   "vendor": "inclusionai",
+   "dados": {
+    "visto_em": "2026-10-13",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.08,
+     "rank_7d": 52,
+     "pico_share": 0.277,
+     "semanas_com_volume": 6
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "inclusionai/ling-3.1-flash-20261002",
+      "nome": "Ling 3.1 Flash",
+      "share_7d": 0.38,
+      "preco_misto": 0.1125
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "inclusionai/ming-image-0.1-design-20260922",
+   "id": "inclusionai/ming-image-0.1-design",
+   "nome": "Ming Image 0.1 Design",
+   "lab": "InclusionAI",
+   "vendor": "inclusionai",
+   "dados": {
+    "visto_em": "2026-10-13",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "inclusionai/ling-3.1-flash-20261002",
+      "nome": "Ling 3.1 Flash",
+      "share_7d": 0.38,
+      "preco_misto": 0.1125
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "inclusionai/ming-image-0.1-design-layer-20260922",
+   "id": "inclusionai/ming-image-0.1-design-layer",
+   "nome": "Ming Image 0.1 Design Layer",
+   "lab": "InclusionAI",
+   "vendor": "inclusionai",
+   "dados": {
+    "visto_em": "2026-10-13",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "inclusionai/ling-3.1-flash-20261002",
+      "nome": "Ling 3.1 Flash",
+      "share_7d": 0.38,
+      "preco_misto": 0.1125
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "unbiased/pareto-20260917",
+   "id": "unbiased/pareto",
+   "nome": "Pareto",
+   "lab": "Unbiased",
+   "vendor": "unbiased",
+   "dados": {
+    "visto_em": "2026-10-13",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "cloudflare/clef-flash",
+   "id": "cloudflare/clef-flash",
+   "nome": "Clef Flash",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 0.0285,
+    "para": 0.0158,
+    "variacao_pct": -44.7,
+    "entrada_de": 0.038,
+    "entrada_para": 0.021,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-13"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 29
+  },
+  {
+   "tipo": "preco",
+   "slug": "minimax/minimax-m2.7-20260318",
+   "id": "minimax/minimax-m2.7",
+   "nome": "MiniMax M2.7",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 0.3675,
+    "para": 0.525,
+    "variacao_pct": 42.9,
+    "entrada_de": 0.21,
+    "entrada_para": 0.3,
+    "saida_de": 0.84,
+    "saida_para": 1.2,
+    "desde": "2026-10-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 5.673,
+     "semanas_com_volume": 26
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "minimax/minimax-m3-20260531",
+      "nome": "MiniMax M3",
+      "share_7d": 0.77,
+      "preco_misto": 0.525
+     }
+    }
+   },
+   "relevancia": 29
+  },
+  {
+   "tipo": "alias",
+   "slug": "~unbiased/pareto-latest",
+   "id": "~unbiased/pareto-latest",
+   "nome": "Pareto Latest",
+   "lab": "Unbiased",
+   "vendor": "unbiased",
+   "dados": {
+    "alvo_slug": "unbiased/pareto-26.9",
+    "alvo_nome": "Pareto 26.9",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 15
+  },
+  {
+   "tipo": "contexto",
+   "slug": "inclusionai/ling-3.0-flash-vl-20260910",
+   "id": "inclusionai/ling-3.0-flash-vl",
+   "nome": "Ling 3.0 Flash VL",
+   "lab": "InclusionAI",
+   "vendor": "inclusionai",
+   "dados": {
+    "de": 262144,
+    "para": 131072
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.482,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "inclusionai/ling-3.1-flash-20261002",
+      "nome": "Ling 3.1 Flash",
+      "share_7d": 0.38,
+      "preco_misto": 0.1125
+     }
+    }
+   },
+   "relevancia": 15
+  }
+ ]
+}
