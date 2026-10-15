@@ -1,0 +1,467 @@
+{
+ "versao": 1,
+ "dia": "2026-10-15",
+ "gerado_em": "2026-10-15T12:41:46Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-08",
+   "2026-10-15"
+  ],
+  "trafego": "2026-10-14"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-15",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-14",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20260910",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "stepfun/step-5-preview-20261008",
+   "z-ai/glm-5.3-flash-20260826",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "tencent/hy4-preview-20260827",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "openai/gpt-6-luna-20260922",
+   "anthropic/claude-opus-5.5-20260921",
+   "deepseek/deepseek-v4-flash-20260731",
+   "z-ai/glm-5.3-20260816"
+  ]
+ },
+ "principal": "novo:typesafe/jev-1.14-20261014",
+ "eventos": [
+  {
+   "tipo": "novo",
+   "slug": "typesafe/jev-1.14-20261014",
+   "id": "typesafe/jev-1.14",
+   "nome": "Jev 1.14",
+   "lab": "Typesafe",
+   "vendor": "typesafe",
+   "dados": {
+    "criado": "2026-10-14",
+    "contexto": 262144,
+    "preco_entrada": 0.042,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0315,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 2.09,
+     "share_gasto": 0.0,
+     "lider": {
+      "slug": "typesafe/jev-1.13-20260917",
+      "nome": "jev-1.13",
+      "share_7d": 1.86,
+      "preco_misto": null
+     }
+    }
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "novo",
+   "slug": "assemblyai/universal-3-6-pro-20261014",
+   "id": "assemblyai/universal-3-6-pro",
+   "nome": "Universal-3.6 Pro",
+   "lab": "Assemblyai",
+   "vendor": "assemblyai",
+   "dados": {
+    "criado": "2026-10-14",
+    "contexto": 0,
+    "preco_entrada": 83.3333,
+    "preco_saida": 0.0,
+    "preco_misto": 62.5,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "audio->transcription",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "inclusionai/ling-3.0-flash-vl-20260910",
+   "id": "inclusionai/ling-3.0-flash-vl",
+   "nome": "Ling 3.0 Flash VL",
+   "lab": "InclusionAI",
+   "vendor": "inclusionai",
+   "dados": {
+    "de": 0.0311,
+    "para": 0.09,
+    "variacao_pct": 188.9,
+    "entrada_de": 0.021,
+    "entrada_para": 0.06,
+    "saida_de": 0.0616,
+    "saida_para": 0.18,
+    "desde": "2026-10-14"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.482,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "inclusionai/ling-3.1-flash-20261002",
+      "nome": "Ling 3.1 Flash",
+      "share_7d": 0.33,
+      "preco_misto": 0.1125
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-flash-20260423",
+   "id": "deepseek/deepseek-v4-flash",
+   "nome": "DeepSeek V4 Flash 0423",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.3425,
+    "para": 0.1137,
+    "variacao_pct": -66.8,
+    "entrada_de": 0.03,
+    "entrada_para": 0.091,
+    "saida_de": 1.28,
+    "saida_para": 0.182,
+    "desde": "2026-10-14"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.77,
+     "rank_7d": 13,
+     "pico_share": 12.714,
+     "semanas_com_volume": 25
+    },
+    "laboratorio": {
+     "share_tokens": 31.81,
+     "share_gasto": 6.75,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 21.0,
+      "preco_misto": 0.1978
+     }
+    }
+   },
+   "relevancia": 39
+  },
+  {
+   "tipo": "estreia",
+   "slug": "google/gemini-4-argon-20261013",
+   "id": null,
+   "nome": "Gemini 4 Argon",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "primeiro_dia": "2026-10-14",
+    "share_7d": 0.08,
+    "lancamento": "2026-10-13",
+    "dias_desde_catalogo": 1
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.08,
+     "rank_7d": 53,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 3.47,
+     "share_gasto": 3.24,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.11,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "contexto",
+   "slug": "stepfun/step-5-preview-20261008",
+   "id": "stepfun/step-5-preview",
+   "nome": "Step 5 Preview",
+   "lab": "StepFun",
+   "vendor": "stepfun",
+   "dados": {
+    "de": 1000000,
+    "para": 1048576
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 10.54,
+     "rank_7d": 2,
+     "pico_share": 5.142,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 5.51,
+     "share_gasto": 7.4
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "anthropic/claude-4-sonnet-20250522",
+   "id": "anthropic/claude-sonnet-4",
+   "nome": "Claude Sonnet 4",
+   "lab": "Anthropic",
+   "vendor": "anthropic",
+   "dados": {
+    "data": "2026-10-15",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 19.079,
+     "semanas_com_volume": 48
+    },
+    "laboratorio": {
+     "share_tokens": 6.44,
+     "share_gasto": 38.01,
+     "lider": {
+      "slug": "anthropic/claude-opus-5.5-20260921",
+      "nome": "Claude Opus 5.5",
+      "share_7d": 3.17,
+      "preco_misto": 8.0
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "liquid/d1-20260930",
+   "id": "liquid/d1",
+   "nome": "d1",
+   "lab": "Liquid AI",
+   "vendor": "liquid",
+   "dados": {
+    "de": 0.03,
+    "para": 0.015,
+    "variacao_pct": -50.0,
+    "entrada_de": 0.04,
+    "entrada_para": 0.02,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-14"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.5-35b-a3b-20260224",
+   "id": "qwen/qwen3.5-35b-a3b",
+   "nome": "Qwen3.5-35B-A3B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.2475,
+    "para": 0.3625,
+    "variacao_pct": 46.5,
+    "entrada_de": 0.08,
+    "entrada_para": 0.15,
+    "saida_de": 0.75,
+    "saida_para": 1.0,
+    "desde": "2026-10-14"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.388,
+     "semanas_com_volume": 6
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.26,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 29
+  },
+  {
+   "tipo": "preco",
+   "slug": "minimax/minimax-m2",
+   "id": "minimax/minimax-m2",
+   "nome": "MiniMax M2",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 0.525,
+    "para": 0.4462,
+    "variacao_pct": -15.0,
+    "entrada_de": 0.3,
+    "entrada_para": 0.255,
+    "saida_de": 1.2,
+    "saida_para": 1.02,
+    "desde": "2026-10-14"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 6.705,
+     "semanas_com_volume": 13
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "minimax/minimax-m3-20260531",
+      "nome": "MiniMax M3",
+      "share_7d": 0.77,
+      "preco_misto": 0.525
+     }
+    }
+   },
+   "relevancia": 23
+  },
+  {
+   "tipo": "contexto",
+   "slug": "typesafe/jev-1.13-20260917",
+   "id": "typesafe/jev-1.13",
+   "nome": "Jev 1.13",
+   "lab": "Typesafe",
+   "vendor": "typesafe",
+   "dados": {
+    "de": 64000,
+    "para": 262144
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.86,
+     "rank_7d": 11,
+     "pico_share": 1.955,
+     "semanas_com_volume": 4
+    },
+    "laboratorio": {
+     "share_tokens": 2.09,
+     "share_gasto": 0.0
+    }
+   },
+   "relevancia": 19
+  },
+  {
+   "tipo": "alias",
+   "slug": "~google/gemini-pro-latest",
+   "id": "~google/gemini-pro-latest",
+   "nome": "Gemini Pro Latest",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "alvo_slug": "google/gemini-4-argon",
+    "alvo_nome": "Gemini 4 Argon",
+    "anterior": "google/gemini-3.1-pro-preview"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 3.47,
+     "share_gasto": 3.24,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.11,
+      "preco_misto": 1.5
+     }
+    }
+   },
+   "relevancia": 16
+  },
+  {
+   "tipo": "alias",
+   "slug": "~perplexity/pplx-decider-latest",
+   "id": "~perplexity/pplx-decider-latest",
+   "nome": "Decider Latest",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "alvo_slug": "perplexity/pplx-decider-v1.1-27b",
+    "alvo_nome": "Decider V1.1 27B",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "perplexity/pplx-decider-v1.1-27b-20261006",
+      "nome": "pplx-decider-v1.1-27b",
+      "share_7d": 0.04,
+      "preco_misto": null
+     }
+    }
+   },
+   "relevancia": 15
+  },
+  {
+   "tipo": "alias",
+   "slug": "~typesafe/jev-latest",
+   "id": "~typesafe/jev-latest",
+   "nome": "Jev Latest",
+   "lab": "Typesafe",
+   "vendor": "typesafe",
+   "dados": {
+    "alvo_slug": "typesafe/jev-1.14",
+    "alvo_nome": "Jev 1.14",
+    "anterior": "typesafe/jev-1.13"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 2.09,
+     "share_gasto": 0.0,
+     "lider": {
+      "slug": "typesafe/jev-1.13-20260917",
+      "nome": "jev-1.13",
+      "share_7d": 1.86,
+      "preco_misto": null
+     }
+    }
+   },
+   "relevancia": 15
+  },
+  {
+   "tipo": "contexto",
+   "slug": "cloudflare/clef-flash",
+   "id": "cloudflare/clef-flash",
+   "nome": "Clef Flash",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 24576,
+    "para": 65536
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 15
+  }
+ ]
+}
