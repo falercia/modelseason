@@ -1,0 +1,499 @@
+{
+ "versao": 1,
+ "dia": "2026-10-17",
+ "gerado_em": "2026-10-17T11:39:31Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-10",
+   "2026-10-17"
+  ],
+  "trafego": "2026-10-16"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-17",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-16",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20260910",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "stepfun/step-5-preview-20261008",
+   "z-ai/glm-5.3-flash-20260826",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "tencent/hy4-preview-20260827",
+   "openai/gpt-6-luna-20260922",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "anthropic/claude-opus-5.5-20260921",
+   "z-ai/glm-5.3-20260816",
+   "deepseek/deepseek-v4-flash-20260731"
+  ]
+ },
+ "principal": "novo:deepseek/deepseek-v4.1-flash-20261017",
+ "eventos": [
+  {
+   "tipo": "novo",
+   "slug": "deepseek/deepseek-v4.1-flash-20261017",
+   "id": "deepseek/deepseek-v4.1-flash-1017",
+   "nome": "DeepSeek V4.1 Flash 1017",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "criado": "2026-10-17",
+    "contexto": 1048576,
+    "preco_entrada": 0.15,
+    "preco_saida": 0.6,
+    "preco_misto": 0.2625,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 31.81,
+     "share_gasto": 5.36,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 21.16,
+      "preco_misto": 0.1594
+     }
+    }
+   },
+   "relevancia": 53
+  },
+  {
+   "tipo": "novo",
+   "slug": "elorian/glimpse-20261016",
+   "id": "elorian/glimpse",
+   "nome": "Glimpse",
+   "lab": "Elorian",
+   "vendor": "elorian",
+   "dados": {
+    "criado": "2026-10-17",
+    "contexto": 262144,
+    "preco_entrada": 0.6,
+    "preco_saida": 3.0,
+    "preco_misto": 1.2,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image+video->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "perplexity/pplx-decider-flash-v1.2-20261016",
+   "id": "perplexity/pplx-decider-flash-v1.2",
+   "nome": "Decider Flash V1.2",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "criado": "2026-10-16",
+    "contexto": 262144,
+    "preco_entrada": 0.01,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0075,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "perplexity/pplx-decider-v1.1-27b-20261006",
+      "nome": "pplx-decider-v1.1-27b",
+      "share_7d": 0.04,
+      "preco_misto": null
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "perplexity/pplx-decider-v1.2-20261016",
+   "id": "perplexity/pplx-decider-v1.2",
+   "nome": "Decider V1.2",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "criado": "2026-10-16",
+    "contexto": 262144,
+    "preco_entrada": 0.02,
+    "preco_saida": 0.0,
+    "preco_misto": 0.015,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "perplexity/pplx-decider-v1.1-27b-20261006",
+      "nome": "pplx-decider-v1.1-27b",
+      "share_7d": 0.04,
+      "preco_misto": null
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "qwen/qwen-image-2.1-pro-20261016",
+   "id": "qwen/qwen-image-2.1-pro",
+   "nome": "Qwen Image 2.1 Pro",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "criado": "2026-10-16",
+    "contexto": 65536,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->image",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.6-35b-a3b-20260415",
+      "nome": "Qwen3.6 35B A3B",
+      "share_7d": 0.43,
+      "preco_misto": 0.3625
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "qwen/qwen-image-2.1-turbo-20261016",
+   "id": "qwen/qwen-image-2.1-turbo",
+   "nome": "Qwen Image 2.1 Turbo",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "criado": "2026-10-16",
+    "contexto": 65536,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->image",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.6-35b-a3b-20260415",
+      "nome": "Qwen3.6 35B A3B",
+      "share_7d": 0.43,
+      "preco_misto": 0.3625
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "reflection/beam-1.0-501b-a23b-20261016",
+   "id": "reflection/beam-1.0-501b-a23b",
+   "nome": "Beam 1.0 501B A23B",
+   "lab": "Reflection",
+   "vendor": "reflection",
+   "dados": {
+    "criado": "2026-10-16",
+    "contexto": 1048576,
+    "preco_entrada": 1.0,
+    "preco_saida": 3.0,
+    "preco_misto": 1.5,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "estreia",
+   "slug": "nvidia/nemotron-3.5-super-vl-20261015",
+   "id": null,
+   "nome": "Nemotron 3.5 Super VL",
+   "lab": "NVIDIA",
+   "vendor": "nvidia",
+   "dados": {
+    "primeiro_dia": "2026-10-16",
+    "share_7d": 0.17,
+    "lancamento": "2026-10-15",
+    "dias_desde_catalogo": 1
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.17,
+     "rank_7d": 49,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 5.24,
+     "share_gasto": 0.0,
+     "lider": {
+      "slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+      "nome": "Nemotron 3 Ultra",
+      "share_7d": 3.65,
+      "preco_misto": 1.05
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "perplexity/pplx-decider-v1.1-27b-20261006",
+   "id": "perplexity/pplx-decider-v1.1-27b",
+   "nome": "Decider V1.1 27B",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "data": "2026-10-17",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.04,
+     "rank_7d": 57,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "meta-llama/llama-3.3-70b-instruct",
+   "id": "meta-llama/llama-3.3-70b-instruct",
+   "nome": "Llama 3.3 70B Instruct",
+   "lab": "Meta",
+   "vendor": "meta-llama",
+   "dados": {
+    "de": 0.64,
+    "para": 0.155,
+    "variacao_pct": -75.8,
+    "entrada_de": 0.59,
+    "entrada_para": 0.1,
+    "saida_de": 0.79,
+    "saida_para": 0.32,
+    "desde": "2026-10-16"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 6.638,
+     "semanas_com_volume": 62
+    },
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "meta-llama/llama-4-scout-17b-16e-instruct",
+   "id": "meta-llama/llama-4-scout",
+   "nome": "Llama 4 Scout",
+   "lab": "Meta",
+   "vendor": "meta-llama",
+   "dados": {
+    "de": 0.2825,
+    "para": 0.15,
+    "variacao_pct": -46.9,
+    "entrada_de": 0.18,
+    "entrada_para": 0.1,
+    "saida_de": 0.59,
+    "saida_para": 0.3,
+    "desde": "2026-10-16"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.433,
+     "semanas_com_volume": 23
+    },
+    "laboratorio": null
+   },
+   "relevancia": 29
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.6-27b-20260422",
+   "id": "qwen/qwen3.6-27b",
+   "nome": "Qwen3.6 27B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 1.04,
+    "para": 0.6875,
+    "variacao_pct": -33.9,
+    "entrada_de": 0.32,
+    "entrada_para": 0.25,
+    "saida_de": 3.2,
+    "saida_para": 2.0,
+    "desde": "2026-10-16"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.6-35b-a3b-20260415",
+      "nome": "Qwen3.6 35B A3B",
+      "share_7d": 0.43,
+      "preco_misto": 0.3625
+     }
+    }
+   },
+   "relevancia": 27
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemini-3.8-flash-20260902",
+   "id": "google/gemini-3.8-flash",
+   "nome": "Gemini 3.8 Flash",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 1.5,
+    "para": 1.65,
+    "variacao_pct": 10.0,
+    "entrada_de": 0.75,
+    "entrada_para": 0.825,
+    "saida_de": 3.75,
+    "saida_para": 4.125,
+    "desde": "2026-10-16"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.09,
+     "rank_7d": 19,
+     "pico_share": 2.016,
+     "semanas_com_volume": 6
+    },
+    "laboratorio": {
+     "share_tokens": 3.47,
+     "share_gasto": 3.56
+    }
+   },
+   "relevancia": 25
+  },
+  {
+   "tipo": "alias",
+   "slug": "~deepseek/deepseek-flash-latest",
+   "id": "~deepseek/deepseek-flash-latest",
+   "nome": "DeepSeek Flash Latest",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "alvo_slug": "deepseek/deepseek-v4.1-flash-1017",
+    "alvo_nome": "DeepSeek V4.1 Flash 1017",
+    "anterior": "deepseek/deepseek-v4.1-flash"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 31.81,
+     "share_gasto": 5.36,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 21.16,
+      "preco_misto": 0.1594
+     }
+    }
+   },
+   "relevancia": 21
+  },
+  {
+   "tipo": "alias",
+   "slug": "~perplexity/pplx-decider-flash-latest",
+   "id": "~perplexity/pplx-decider-flash-latest",
+   "nome": "Decider Flash Latest",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "alvo_slug": "perplexity/pplx-decider-flash-v1.2",
+    "alvo_nome": "Decider Flash V1.2",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "perplexity/pplx-decider-v1.1-27b-20261006",
+      "nome": "pplx-decider-v1.1-27b",
+      "share_7d": 0.04,
+      "preco_misto": null
+     }
+    }
+   },
+   "relevancia": 15
+  },
+  {
+   "tipo": "alias",
+   "slug": "~perplexity/pplx-decider-latest",
+   "id": "~perplexity/pplx-decider-latest",
+   "nome": "Decider Latest",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "alvo_slug": "perplexity/pplx-decider-v1.2",
+    "alvo_nome": "Decider V1.2",
+    "anterior": "perplexity/pplx-decider-v1.1-27b"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "perplexity/pplx-decider-v1.1-27b-20261006",
+      "nome": "pplx-decider-v1.1-27b",
+      "share_7d": 0.04,
+      "preco_misto": null
+     }
+    }
+   },
+   "relevancia": 15
+  }
+ ]
+}
