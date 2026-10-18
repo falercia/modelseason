@@ -1,0 +1,335 @@
+{
+ "versao": 1,
+ "dia": "2026-10-18",
+ "gerado_em": "2026-10-18T12:05:46Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-11",
+   "2026-10-18"
+  ],
+  "trafego": "2026-10-17"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-18",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-17",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20260910",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "stepfun/step-5-preview-20261008",
+   "z-ai/glm-5.3-flash-20260826",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "tencent/hy4-preview-20260827",
+   "openai/gpt-6-luna-20260922",
+   "anthropic/claude-opus-5.5-20260921",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "z-ai/glm-5.3-20260816",
+   "deepseek/deepseek-v4-flash-20260731"
+  ]
+ },
+ "principal": "novo:unbiased/pareto-26.10-20261015",
+ "eventos": [
+  {
+   "tipo": "novo",
+   "slug": "unbiased/pareto-26.10-20261015",
+   "id": "unbiased/pareto-26.10",
+   "nome": "Pareto 26.10",
+   "lab": "Unbiased",
+   "vendor": "unbiased",
+   "dados": {
+    "criado": "2026-10-15",
+    "contexto": 1048576,
+    "preco_entrada": 0.8,
+    "preco_saida": 3.2,
+    "preco_misto": 1.4,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "estreia",
+   "slug": "deepseek/deepseek-v4.1-flash-20261017",
+   "id": null,
+   "nome": "DeepSeek V4.1 Flash 1017",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "primeiro_dia": "2026-10-17",
+    "share_7d": 0.41,
+    "lancamento": "2026-10-17",
+    "dias_desde_catalogo": 0
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.41,
+     "rank_7d": 34,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 31.81,
+     "share_gasto": 3.27,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 21.32,
+      "preco_misto": 0.066
+     }
+    }
+   },
+   "relevancia": 38
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-pro-20260423",
+   "id": "deepseek/deepseek-v4-pro",
+   "nome": "DeepSeek V4 Pro 0423",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 1.1941,
+    "para": 0.261,
+    "variacao_pct": -78.1,
+    "entrada_de": 0.9553,
+    "entrada_para": 0.2088,
+    "saida_de": 1.9105,
+    "saida_para": 0.4176,
+    "desde": "2026-10-17"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.39,
+     "rank_7d": 35,
+     "pico_share": 5.773,
+     "semanas_com_volume": 25
+    },
+    "laboratorio": {
+     "share_tokens": 31.81,
+     "share_gasto": 3.27,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 21.32,
+      "preco_misto": 0.066
+     }
+    }
+   },
+   "relevancia": 37
+  },
+  {
+   "tipo": "estreia",
+   "slug": "xiaomi/mimo-v2.6-pro-ultraspeed-20260921",
+   "id": null,
+   "nome": "MiMo-V2.6-Pro-UltraSpeed",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "primeiro_dia": "2026-10-17",
+    "share_7d": 0.03,
+    "lancamento": "2026-09-21",
+    "dias_desde_catalogo": 26
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.03,
+     "rank_7d": 65,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 8.34,
+     "share_gasto": 1.79,
+     "lider": {
+      "slug": "xiaomi/mimo-v2.6-flash-20260921",
+      "nome": "MiMo-V2.6-Flash",
+      "share_7d": 6.14,
+      "preco_misto": 0.175
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.2-20260616",
+   "id": "z-ai/glm-5.2",
+   "nome": "GLM 5.2",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 1.795,
+    "para": 1.07,
+    "variacao_pct": -40.4,
+    "entrada_de": 0.06,
+    "entrada_para": 0.62,
+    "saida_de": 7.0,
+    "saida_para": 2.42,
+    "desde": "2026-10-17"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.62,
+     "rank_7d": 24,
+     "pico_share": 6.065,
+     "semanas_com_volume": 17
+    },
+    "laboratorio": {
+     "share_tokens": 10.96,
+     "share_gasto": 3.38,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 7.48,
+      "preco_misto": 0.086
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "perplexity/pplx-decider-v1.1-27b-20261006",
+   "id": "perplexity/pplx-decider-v1.1-27b",
+   "nome": "Decider V1.1 27B",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "visto_em": "2026-10-17",
+    "expira": "2026-10-17"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.04,
+     "rank_7d": 59,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "heygen/heygen-voice-1-turbo-20261009",
+   "id": "heygen/heygen-voice-1-turbo",
+   "nome": "HeyGen Voice Turbo",
+   "lab": "Heygen",
+   "vendor": "heygen",
+   "dados": {
+    "de": 5.625,
+    "para": 3.0,
+    "variacao_pct": -46.7,
+    "entrada_de": 7.5,
+    "entrada_para": 4.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-17"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 29
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-4-26b-a4b-it-20260403",
+   "id": "google/gemma-4-26b-a4b-it",
+   "nome": "Gemma 4 26B A4B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.1425,
+    "para": 0.1069,
+    "variacao_pct": -25.0,
+    "entrada_de": 0.09,
+    "entrada_para": 0.0675,
+    "saida_de": 0.3,
+    "saida_para": 0.225,
+    "desde": "2026-10-17"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.16,
+     "rank_7d": 50,
+     "pico_share": 0.737,
+     "semanas_com_volume": 27
+    },
+    "laboratorio": {
+     "share_tokens": 3.47,
+     "share_gasto": 3.7,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.08,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 25
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v3.2-20251201",
+   "id": "deepseek/deepseek-v3.2",
+   "nome": "DeepSeek V3.2",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.3942,
+    "para": 0.315,
+    "variacao_pct": -20.1,
+    "entrada_de": 0.259,
+    "entrada_para": 0.28,
+    "saida_de": 0.8,
+    "saida_para": 0.42,
+    "desde": "2026-10-17"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.03,
+     "rank_7d": 64,
+     "pico_share": 6.779,
+     "semanas_com_volume": 45
+    },
+    "laboratorio": {
+     "share_tokens": 31.81,
+     "share_gasto": 3.27,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 21.32,
+      "preco_misto": 0.066
+     }
+    }
+   },
+   "relevancia": 24
+  },
+  {
+   "tipo": "alias",
+   "slug": "~unbiased/pareto-latest",
+   "id": "~unbiased/pareto-latest",
+   "nome": "Pareto Latest",
+   "lab": "Unbiased",
+   "vendor": "unbiased",
+   "dados": {
+    "alvo_slug": "unbiased/pareto-26.10",
+    "alvo_nome": "Pareto 26.10",
+    "anterior": "unbiased/pareto-26.9"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 15
+  }
+ ]
+}
