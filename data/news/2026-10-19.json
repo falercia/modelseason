@@ -1,0 +1,207 @@
+{
+ "versao": 1,
+ "dia": "2026-10-19",
+ "gerado_em": "2026-10-19T14:43:16Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-12",
+   "2026-10-19"
+  ],
+  "trafego": "2026-10-18"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-19",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-18",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20260910",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "stepfun/step-5-preview-20261008",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "tencent/hy4-preview-20260827",
+   "openai/gpt-6-luna-20260922",
+   "anthropic/claude-opus-5.5-20260921",
+   "z-ai/glm-5.3-20260816",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "deepseek/deepseek-v4-flash-20260731"
+  ]
+ },
+ "principal": "preco:cloudflare/clef-flash",
+ "eventos": [
+  {
+   "tipo": "preco",
+   "slug": "cloudflare/clef-flash",
+   "id": "cloudflare/clef-flash",
+   "nome": "Clef Flash",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 0.0158,
+    "para": 0.0285,
+    "variacao_pct": 81.0,
+    "entrada_de": 0.021,
+    "entrada_para": 0.038,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-18"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "removido",
+   "slug": "deepseek/deepseek-r1",
+   "id": "deepseek/deepseek-r1",
+   "nome": "R1",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "visto_em": "2026-10-18",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 6.49,
+     "semanas_com_volume": 33
+    },
+    "laboratorio": {
+     "share_tokens": 30.09,
+     "share_gasto": 3.27,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 20.01,
+      "preco_misto": 0.0458
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "microsoft/wizardlm-2-8x22b",
+   "id": "microsoft/wizardlm-2-8x22b",
+   "nome": "WizardLM-2 8x22B",
+   "lab": "Microsoft",
+   "vendor": "microsoft",
+   "dados": {
+    "visto_em": "2026-10-18",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.999,
+     "semanas_com_volume": 28
+    },
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "sao10k/l3.3-euryale-70b-v2.3",
+   "id": "sao10k/l3.3-euryale-70b",
+   "nome": "Llama 3.3 Euryale 70B",
+   "lab": "Sao10K",
+   "vendor": "sao10k",
+   "dados": {
+    "visto_em": "2026-10-18",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.144,
+     "semanas_com_volume": 5
+    },
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-3-27b-it",
+   "id": "google/gemma-3-27b-it",
+   "nome": "Gemma 3 27B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.1725,
+    "para": 0.1475,
+    "variacao_pct": -14.5,
+    "entrada_de": 0.08,
+    "entrada_para": 0.08,
+    "saida_de": 0.45,
+    "saida_para": 0.35,
+    "desde": "2026-10-18"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.721,
+     "semanas_com_volume": 50
+    },
+    "laboratorio": {
+     "share_tokens": 3.78,
+     "share_gasto": 5.39,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.07,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 23
+  },
+  {
+   "tipo": "contexto",
+   "slug": "meta-llama/llama-4-maverick-17b-128e-instruct",
+   "id": "meta-llama/llama-4-maverick",
+   "nome": "Llama 4 Maverick",
+   "lab": "Meta",
+   "vendor": "meta-llama",
+   "dados": {
+    "de": 1048576,
+    "para": 524288
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 2.13,
+     "semanas_com_volume": 45
+    },
+    "laboratorio": null
+   },
+   "relevancia": 15
+  },
+  {
+   "tipo": "contexto",
+   "slug": "morph/morph-v3-fast",
+   "id": "morph/morph-v3-fast",
+   "nome": "Morph V3 Fast",
+   "lab": "Morph",
+   "vendor": "morph",
+   "dados": {
+    "de": 81920,
+    "para": 262144
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 15
+  }
+ ]
+}
