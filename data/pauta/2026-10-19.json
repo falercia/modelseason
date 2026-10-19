@@ -1,0 +1,2291 @@
+{
+ "versao": 1,
+ "dia": "2026-10-19",
+ "gerado_em": "2026-10-19T16:41:55Z",
+ "janela_horas": 78,
+ "modelo": "claude-sonnet-5-5",
+ "uso_tokens": {
+  "entrada": 17751,
+  "saida": 7779
+ },
+ "fontes": {
+  "openai": {
+   "ok": true,
+   "itens": 1
+  },
+  "google": {
+   "ok": true,
+   "itens": 2
+  },
+  "anthropic": {
+   "ok": true,
+   "itens": 1
+  },
+  "huggingface": {
+   "ok": true,
+   "itens": 0
+  },
+  "techcrunch": {
+   "ok": true,
+   "itens": 15
+  },
+  "mittr": {
+   "ok": true,
+   "itens": 2
+  },
+  "verge": {
+   "ok": true,
+   "itens": 8
+  },
+  "ars": {
+   "ok": true,
+   "itens": 6
+  },
+  "simonwillison": {
+   "ok": true,
+   "itens": 4
+  },
+  "tecnoblog": {
+   "ok": true,
+   "itens": 8
+  },
+  "nist": {
+   "ok": true,
+   "itens": 0
+  },
+  "ue": {
+   "ok": true,
+   "itens": 1
+  },
+  "hf": {
+   "ok": true,
+   "itens": 4
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 1
+  },
+  "camara": {
+   "ok": true,
+   "itens": 0
+  },
+  "techmeme": {
+   "ok": true,
+   "itens": 9
+  },
+  "hn": {
+   "ok": true,
+   "itens": 31
+  }
+ },
+ "assuntos": [
+  {
+   "id": "a1",
+   "categoria": "lancamento",
+   "nota": 21.78,
+   "labs": [
+    "deepseek"
+   ],
+   "publicado_em": "2026-10-17T02:40:38Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "DeepSeek published DeepSeek-V4.1-Flash-1017 weights on Hugging Face",
+     "link": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+     "data": "2026-10-17T02:40:38Z",
+     "discussao": "https://news.ycombinator.com/item?id=50129045",
+     "pontos": 949
+    },
+    {
+     "veiculo": "openrouter.ai",
+     "titulo": "DeepSeek: DeepSeek v4.1 Flash 1017",
+     "link": "https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017",
+     "data": "2026-10-17T08:37:46Z",
+     "discussao": "https://news.ycombinator.com/item?id=50129121",
+     "pontos": 519
+    },
+    {
+     "veiculo": "artificialanalysis.ai",
+     "titulo": "DeepSeek V4.1 Flash 1017 (Max)",
+     "link": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017",
+     "data": "2026-10-19T04:41:46Z",
+     "discussao": "https://news.ycombinator.com/item?id=50148452",
+     "pontos": 178
+    }
+   ],
+   "pt": {
+    "titulo": "DeepSeek publica pesos do DeepSeek-V4.1-Flash-1017 no Hugging Face",
+    "resumo": "A DeepSeek lançou o DeepSeek-V4.1-Flash-1017, modelo de imagem e texto para texto, segundo o Hugging Face. O modelo também aparece listado no OpenRouter e no Artificial Analysis."
+   },
+   "en": {
+    "titulo": "DeepSeek publishes DeepSeek-V4.1-Flash-1017 weights on Hugging Face",
+    "resumo": "DeepSeek released DeepSeek-V4.1-Flash-1017, an image-text-to-text model, according to Hugging Face. The model is also listed on OpenRouter and Artificial Analysis."
+   },
+   "cruzamento": [
+    {
+     "vendor": "deepseek",
+     "lab": "DeepSeek",
+     "share_tokens": 30.09,
+     "share_gasto": 3.27,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 20.01,
+      "preco_misto": 0.0458
+     }
+    }
+   ]
+  },
+  {
+   "id": "a2",
+   "categoria": "preco",
+   "nota": 16.56,
+   "labs": [
+    "deepseek"
+   ],
+   "publicado_em": "2026-10-18T06:50:36Z",
+   "fontes": [
+    {
+     "veiculo": "api-docs.deepseek.com",
+     "titulo": "DeepSeek search and fetch – $0.75 per 1000 successful requests",
+     "link": "https://api-docs.deepseek.com/guides/search/",
+     "data": "2026-10-18T06:50:36Z",
+     "discussao": "https://news.ycombinator.com/item?id=50138531",
+     "pontos": 588
+    }
+   ],
+   "pt": {
+    "titulo": "DeepSeek cobra US$ 0,75 por 1000 requisições de busca e leitura bem-sucedidas",
+    "resumo": "Segundo a documentação da API da DeepSeek, as ferramentas de busca e leitura de páginas custam US$ 0,75 por 1000 requisições bem-sucedidas. A API de busca encontra páginas para uma consulta, e a de leitura retorna o conteúdo de uma página em Markdown."
+   },
+   "en": {
+    "titulo": "DeepSeek prices search and fetch at $0.75 per 1000 successful requests",
+    "resumo": "According to the DeepSeek API docs, the search and fetch tools cost $0.75 per 1000 successful requests. The Search API finds web pages for a query, and the Fetch API returns the content of a single page as Markdown."
+   },
+   "cruzamento": [
+    {
+     "vendor": "deepseek",
+     "lab": "DeepSeek",
+     "share_tokens": 30.09,
+     "share_gasto": 3.27,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 20.01,
+      "preco_misto": 0.0458
+     }
+    }
+   ]
+  },
+  {
+   "id": "a4",
+   "categoria": "capacidade",
+   "nota": 12.7,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-16T18:55:59Z",
+   "fontes": [
+    {
+     "veiculo": "Anthropic",
+     "titulo": "Claude reveals ECDSA curve origins",
+     "link": "https://www.anthropic.com/research/ecdsa-curve-origins",
+     "data": "2026-10-16T18:55:59Z",
+     "discussao": "https://news.ycombinator.com/item?id=50122800",
+     "pontos": 1057
+    }
+   ],
+   "pt": {
+    "titulo": "Claude descobre a origem das sementes de curvas NIST usadas no ECDSA",
+    "resumo": "Segundo a Anthropic, o Claude descobriu em menos de meia hora a origem das sementes das curvas NIST P-192, P-224, P-256, P-384 e P-521. Elas não vieram de um algoritmo de hash, e sim do gerador lrand48, inicializado com um carimbo de tempo Unix. A empresa afirma que não há quebra criptográfica nem fraqueza nas curvas."
+   },
+   "en": {
+    "titulo": "Claude uncovers the origin of NIST curve seeds used in ECDSA",
+    "resumo": "According to Anthropic, Claude discovered in under half an hour where the seeds of the NIST P-192, P-224, P-256, P-384 and P-521 curves came from. They were not hash outputs but came from the lrand48 generator seeded with a Unix timestamp. The company says this is not a cryptographic break or a weakness in the curves."
+   },
+   "cruzamento": [
+    {
+     "vendor": "anthropic",
+     "lab": "Anthropic",
+     "share_tokens": 7.91,
+     "share_gasto": 47.94,
+     "lider": {
+      "slug": "anthropic/claude-opus-5.5-20260921",
+      "nome": "Claude Opus 5.5",
+      "share_7d": 3.77,
+      "preco_misto": 8.0
+     }
+    }
+   ]
+  }
+ ],
+ "descartados": [
+  {
+   "id": "a3",
+   "categoria": "regulacao",
+   "nota": 13.0,
+   "labs": [
+    "deepseek"
+   ],
+   "publicado_em": "2026-10-19T14:55:01Z",
+   "fontes": [
+    {
+     "veiculo": "The Wall Street Journal",
+     "titulo": "The US DHS orders all federal civilian agencies to remove any DeepSeek tech from their IT systems and prohibits future procurement of its products and services",
+     "link": "https://www.wsj.com/tech/ai/dhs-orders-deepseek-technology-removed-from-federal-civilian-it-systems-060b6d3d?st=m6DV2n&reflink=desktopwebshare_permalink",
+     "data": "2026-10-19T14:55:01Z"
+    }
+   ],
+   "motivo": "editor: já há 2 assuntos do mesmo laboratório"
+  },
+  {
+   "id": "a5",
+   "categoria": "seguranca",
+   "nota": 10.99,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-16T20:59:01Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "OpenAI models hacked a crypto wallet and breached more websites",
+     "link": "https://arstechnica.com/security/2026/10/openai-models-hacked-a-crypto-wallet-and-breached-more-websites/",
+     "data": "2026-10-16T20:59:01Z"
+    },
+    {
+     "veiculo": "Fortune",
+     "titulo": "OpenAI discloses four more rogue incidents",
+     "link": "https://fortune.com/2026/10/16/openai-discloses-four-more-rogue-incidents-involving-financial-medical-and-government-data/",
+     "data": "2026-10-17T16:31:12Z",
+     "discussao": "https://news.ycombinator.com/item?id=50132502",
+     "pontos": 130
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a6",
+   "categoria": "lancamento",
+   "nota": 10.65,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-10-16T18:25:29Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "NVIDIA published NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16 weights on Hugging Face",
+     "link": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+     "data": "2026-10-16T18:25:29Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Nvidia launches new open models to run agents in the enterprise and on PCs",
+     "link": "https://techcrunch.com/2026/10/19/nvidia-launches-new-open-models-to-run-agents-in-the-enterprise-and-on-pcs/",
+     "data": "2026-10-19T15:37:09Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a7",
+   "categoria": "mercado",
+   "nota": 10.64,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-18T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Anthropic",
+     "titulo": "public benefit fund",
+     "link": "https://www.anthropic.com/news/public-benefit-fund",
+     "data": "2026-10-18T12:00:00Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Anthropic says it’s committing 5% of its shares to a ‘public benefit fund’",
+     "link": "https://techcrunch.com/2026/10/18/anthropic-says-its-committing-5-of-its-shares-to-a-public-benefit-fund/",
+     "data": "2026-10-18T20:37:40Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a8",
+   "categoria": "mercado",
+   "nota": 10.63,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-16T18:11:42Z",
+   "fontes": [
+    {
+     "veiculo": "Financial Times",
+     "titulo": "Anthropic assigned highest junk credit rating in June",
+     "link": "https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d",
+     "data": "2026-10-16T18:11:42Z",
+     "discussao": "https://news.ycombinator.com/item?id=50122112",
+     "pontos": 299
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a9",
+   "categoria": "regulacao",
+   "nota": 10.49,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-18T14:30:27Z",
+   "fontes": [
+    {
+     "veiculo": "tomshardware.com",
+     "titulo": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages",
+     "link": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-proposed-ai-safety-bill-only-kicks-in-if-50-deaths-or-usd1-billion-in-damages-are-on-the-line-proposal-would-effectively-make-the-commerce-department-the-only-agency-capable-of-stopping-an-ai-model",
+     "data": "2026-10-18T14:30:27Z",
+     "discussao": "https://news.ycombinator.com/item?id=50141429",
+     "pontos": 169
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a10",
+   "categoria": "lancamento",
+   "nota": 9.64,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-19T14:15:01Z",
+   "fontes": [
+    {
+     "veiculo": "The Information",
+     "titulo": "Source: Anthropic is preparing a model with superior intuition and reasoning that can discern unstated intentions and is better at thinking outside of the box",
+     "link": "https://www.theinformation.com/articles/anthropic-readies-model-reads-users-intentions-better",
+     "data": "2026-10-19T14:15:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a11",
+   "categoria": "lancamento",
+   "nota": 9.33,
+   "labs": [
+    "qwen",
+    "tencent"
+   ],
+   "publicado_em": "2026-10-16T14:52:38Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Tencent published Qwen3-8B-DSpine-b16 weights on Hugging Face",
+     "link": "https://huggingface.co/tencent/Qwen3-8B-DSpine-b16",
+     "data": "2026-10-16T14:52:38Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a12",
+   "categoria": "lancamento",
+   "nota": 9.33,
+   "labs": [
+    "mistralai"
+   ],
+   "publicado_em": "2026-10-19T09:59:32Z",
+   "fontes": [
+    {
+     "veiculo": "Mistral AI",
+     "titulo": "Timestral: Mistral release time-series foundation models",
+     "link": "https://mistral.ai/news/timestral/",
+     "data": "2026-10-19T09:59:32Z",
+     "discussao": "https://news.ycombinator.com/item?id=50150434",
+     "pontos": 348
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a13",
+   "categoria": "capacidade",
+   "nota": 8.71,
+   "labs": [],
+   "publicado_em": "2026-10-16T17:08:38Z",
+   "fontes": [
+    {
+     "veiculo": "mercor.com",
+     "titulo": "90% of US working hours are spent on tasks not covered well by AI benchmarks",
+     "link": "https://www.mercor.com/research/labor-index/benchmark-map/",
+     "data": "2026-10-16T17:08:38Z",
+     "discussao": "https://news.ycombinator.com/item?id=50121179",
+     "pontos": 624
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a14",
+   "categoria": "outro",
+   "nota": 8.71,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-16T19:04:47Z",
+   "fontes": [
+    {
+     "veiculo": "claude.dev",
+     "titulo": "How the Claude Code team does code review",
+     "link": "https://claude.dev/blog/solving-code-review-at-anthropic/",
+     "data": "2026-10-16T19:04:47Z",
+     "discussao": "https://news.ycombinator.com/item?id=50122951",
+     "pontos": 480
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a15",
+   "categoria": "seguranca",
+   "nota": 8.59,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-19T14:25:00Z",
+   "fontes": [
+    {
+     "veiculo": "CNBC",
+     "titulo": "Filing: US prosecutors say OpenAI suspect Abdulrahman Alfozan maintained frequent WhatsApp contact in 2025 and 2026 with an unnamed Saudi Royal Family member",
+     "link": "https://www.cnbc.com/2026/10/19/openai-bugging-suspect-alfozan-saudi-royal-family.html",
+     "data": "2026-10-19T14:25:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a16",
+   "categoria": "capacidade",
+   "nota": 8.52,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-16T18:00:18Z",
+   "fontes": [
+    {
+     "veiculo": "Anthropic",
+     "titulo": "Designing more efficient quantum circuits with Claude",
+     "link": "https://www.anthropic.com/research/designing-efficient-quantum-circuits",
+     "data": "2026-10-16T18:00:18Z",
+     "discussao": "https://news.ycombinator.com/item?id=50121939",
+     "pontos": 172
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a17",
+   "categoria": "lancamento",
+   "nota": 8.26,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-10-16T16:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "We’re sharing 3 tips to study smarter with Gemini Notebook.",
+     "link": "https://blog.google/innovation-and-ai/products/gemini-notebook/three-tips-study-gemini-notebook/",
+     "data": "2026-10-16T16:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a18",
+   "categoria": "outro",
+   "nota": 8.19,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-17T20:21:19Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Anthropic says its workforce has become less junior and is spending more time in meetings",
+     "link": "https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/",
+     "data": "2026-10-17T20:21:19Z"
+    },
+    {
+     "veiculo": "Anthropic",
+     "titulo": "How employment is changing at Anthropic",
+     "link": "https://www.anthropic.com/research/employment-at-anthropic",
+     "data": "2026-10-18T10:49:26Z",
+     "discussao": "https://news.ycombinator.com/item?id=50139873",
+     "pontos": 142
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a19",
+   "categoria": "capacidade",
+   "nota": 8.09,
+   "labs": [],
+   "publicado_em": "2026-10-18T20:48:14Z",
+   "fontes": [
+    {
+     "veiculo": "arXiv",
+     "titulo": "Hybrid Reasoning Agents: LLM agents that think in latent space, act through text",
+     "link": "https://arxiv.org/abs/2610.18861",
+     "data": "2026-10-18T20:48:14Z",
+     "discussao": "https://news.ycombinator.com/item?id=50145337",
+     "pontos": 483
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a20",
+   "categoria": "seguranca",
+   "nota": 8.0,
+   "labs": [],
+   "publicado_em": "2026-10-19T12:30:10Z",
+   "fontes": [
+    {
+     "veiculo": "Reuters",
+     "titulo": "Researcher: a Chinese-speaking hacker used AI agents to target 1,200+ websites and breach 100+ entities, like Deere and SharkNinja, spending ~$5,000 in tokens",
+     "link": "https://www.reuters.com/legal/government/how-one-hacker-used-ai-agents-few-thousand-dollars-break-into-scores-sites-2026-10-19/",
+     "data": "2026-10-19T12:30:10Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "A hacker broke into John Deere and SharkNinja with an army of AI agents",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1013643/ai-agents-hack-john-deere-shark-ninja-cummins",
+     "data": "2026-10-19T13:58:41Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a21",
+   "categoria": "capacidade",
+   "nota": 7.87,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-10-16T14:18:44Z",
+   "fontes": [
+    {
+     "veiculo": "starskirmish.com",
+     "titulo": "Show HN: Gemini 4 Argon plays StarCraft",
+     "link": "https://starskirmish.com/bench/v0-2/",
+     "data": "2026-10-16T14:18:44Z",
+     "discussao": "https://news.ycombinator.com/item?id=50118688",
+     "pontos": 249
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a22",
+   "categoria": "seguranca",
+   "nota": 7.64,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-18T16:25:19Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Anthropic gives outside AI watchdog “employee-like” access",
+     "link": "https://arstechnica.com/ai/2026/10/anthropic-gives-outside-ai-watchdog-employee-like-access/",
+     "data": "2026-10-18T16:25:19Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a23",
+   "categoria": "mercado",
+   "nota": 7.64,
+   "labs": [
+    "anthropic",
+    "openai"
+   ],
+   "publicado_em": "2026-10-17T18:48:08Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Replit makes OpenAI its default over Anthropic, CEO says",
+     "link": "https://techcrunch.com/2026/10/17/replit-is-no-longer-working-with-anthropic-ceo-says/",
+     "data": "2026-10-17T18:48:08Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a24",
+   "categoria": "lancamento",
+   "nota": 7.5,
+   "labs": [
+    "qwen"
+   ],
+   "publicado_em": "2026-10-19T13:00:47Z",
+   "fontes": [
+    {
+     "veiculo": "100toolkit.com",
+     "titulo": "Show HN: Qwen3-4B with the AI writing tics trained out",
+     "link": "https://100toolkit.com/blog/deslop-model/",
+     "data": "2026-10-19T13:00:47Z",
+     "discussao": "https://news.ycombinator.com/item?id=50151928",
+     "pontos": 105
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a25",
+   "categoria": "lancamento",
+   "nota": 7.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-10-16T13:54:04Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Microsoft published scFM-dataselection weights on Hugging Face",
+     "link": "https://huggingface.co/microsoft/scFM-dataselection",
+     "data": "2026-10-16T13:54:04Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a26",
+   "categoria": "mercado",
+   "nota": 7.0,
+   "labs": [],
+   "publicado_em": "2026-10-18T16:30:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Disney agrees to hire the majority of Character.AI’s workforce",
+     "link": "https://techcrunch.com/2026/10/18/disney-agrees-to-hire-the-majority-of-character-ais-workforce/",
+     "data": "2026-10-18T16:30:00Z"
+    },
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Disney found a way to buy Character.AI without buying its lawsuits",
+     "link": "https://arstechnica.com/tech-policy/2026/10/disney-found-a-way-to-buy-character-ai-without-buying-its-lawsuits/",
+     "data": "2026-10-19T14:45:43Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a27",
+   "categoria": "lancamento",
+   "nota": 7.0,
+   "labs": [],
+   "publicado_em": "2026-10-19T12:20:02Z",
+   "fontes": [
+    {
+     "veiculo": "The Wall Street Journal",
+     "titulo": "Tel Aviv-based doubleAI releases a code execution model for improving GPU and CPU performance; doubleAI raised $220M, using ~50% to buy 1,000 Nvidia B300 chips",
+     "link": "https://www.wsj.com/cio-journal/nvidia-backed-startup-doubleai-launches-model-to-pare-cost-of-compute-b780f215?st=Xj19EK&reflink=desktopwebshare_permalink",
+     "data": "2026-10-19T12:20:02Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a28",
+   "categoria": "regulacao",
+   "nota": 7.0,
+   "labs": [],
+   "publicado_em": "2026-10-19T07:37:54Z",
+   "fontes": [
+    {
+     "veiculo": "Comissão Europeia",
+     "titulo": "First harmonised standard supporting the AI Act published in the Official Journal",
+     "link": "https://digital-strategy.ec.europa.eu/en/library/first-harmonised-standard-supporting-ai-act-published-official-journal",
+     "data": "2026-10-19T07:37:54Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a29",
+   "categoria": "outro",
+   "nota": 6.75,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-10-16T14:02:40Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Meta’s new terms may allow it to train AI on news sites for free",
+     "link": "https://www.theverge.com/tech/1012846/meta-business-terms-scrape-news-publishers",
+     "data": "2026-10-16T14:02:40Z"
+    },
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Meta may use sweeping new commercial TOS to avoid millions in AI licensing fees",
+     "link": "https://arstechnica.com/tech-policy/2026/10/meta-may-use-sweeping-new-commercial-tos-to-avoid-millions-in-ai-licensing-fees/",
+     "data": "2026-10-16T15:41:00Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Meta removes language that may have allowed it to scrape news sites",
+     "link": "https://www.theverge.com/tech/1013409/meta-removes-language-that-may-have-allowed-it-to-scrape-news-sites",
+     "data": "2026-10-17T15:04:36Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Meta removes language that raised scraping and AI training concerns",
+     "link": "https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns/",
+     "data": "2026-10-17T21:31:32Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a30",
+   "categoria": "infraestrutura",
+   "nota": 6.65,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-10-19T15:40:02Z",
+   "fontes": [
+    {
+     "veiculo": "Reuters",
+     "titulo": "AI infrastructure startup Modal says it plans to start using Nvidia's Vera CPUs for the first time for hosting agents, alongside its current Intel and AMD chips",
+     "link": "https://www.reuters.com/business/nvidia-wins-fast-growing-ai-startup-modal-new-central-processors-2026-10-19/",
+     "data": "2026-10-19T15:40:02Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a31",
+   "categoria": "capacidade",
+   "nota": 6.64,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-19T09:08:05Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "AI researchers stranded Claude on a virtual desert island. It started to “play.”",
+     "link": "https://www.technologyreview.com/2026/10/19/1147095/ai-stranded-claude-virtual-desert-island-play/",
+     "data": "2026-10-19T09:08:05Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a32",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [
+    "minimax"
+   ],
+   "publicado_em": "2026-10-19T15:30:01Z",
+   "fontes": [
+    {
+     "veiculo": "minimax.io",
+     "titulo": "MiniMax launches M3.1 Flash, saying it delivers \"a generational leap\" in agentic tasks, coding, computer use, and cybersecurity, with weights due October 23 (MiniMax)",
+     "link": "https://www.minimax.io/blog/minimax-m31f",
+     "data": "2026-10-19T15:30:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a33",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-10-19T13:25:02Z",
+   "fontes": [
+    {
+     "veiculo": "geekwire.com",
+     "titulo": "Microsoft debuts new security tools in Microsoft 365 E7 and its Project Perception system that treat AI agents as potential insider threats via risk assessments",
+     "link": "https://www.geekwire.com/2026/microsoft-unveils-tools-to-monitor-and-corral-rogue-ai-agents/",
+     "data": "2026-10-19T13:25:02Z"
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a34",
+   "categoria": "regulacao",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-10-19T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Democrats think cracking down on AI could give them an edge",
+     "link": "https://www.theverge.com/policy/1013113/democrats-ai-midterms",
+     "data": "2026-10-19T12:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a35",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-10-16T16:01:37Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Elorian’s first AI model wants to reason with images, not just about them",
+     "link": "https://techcrunch.com/2026/10/16/elorians-first-ai-model-wants-to-reason-with-images-not-just-about-them/",
+     "data": "2026-10-16T16:01:37Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a36",
+   "categoria": "outro",
+   "nota": 5.91,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-19T05:55:31Z",
+   "fontes": [
+    {
+     "veiculo": "crystl.dev",
+     "titulo": "Tmux and Claude Code: Sessions, Send-Keys, and the Ceiling",
+     "link": "https://crystl.dev/guides/tmux-for-ai-agents/",
+     "data": "2026-10-19T05:55:31Z",
+     "discussao": "https://news.ycombinator.com/item?id=50148855",
+     "pontos": 120
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a37",
+   "categoria": "infraestrutura",
+   "nota": 5.65,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-10-16T15:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "A week with RTX Spark: everything we’ve learned using Nvidia’s new laptops",
+     "link": "https://www.theverge.com/tech/1012748/nvidia-rtx-spark-windows-arm-laptops-asus-hp-lenovo-impressions",
+     "data": "2026-10-16T15:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a38",
+   "categoria": "outro",
+   "nota": 5.59,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-16T19:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "How Itaú is building generative AI for its entire customer base",
+     "link": "https://openai.com/index/itau-generative-ai",
+     "data": "2026-10-16T19:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a39",
+   "categoria": "outro",
+   "nota": 5.48,
+   "labs": [],
+   "publicado_em": "2026-10-16T18:32:35Z",
+   "fontes": [
+    {
+     "veiculo": "GitHub",
+     "titulo": "Llama.cpp on a jailbroken PS5: run any GGUF model natively on the console",
+     "link": "https://github.com/cobanov/PS5LM",
+     "data": "2026-10-16T18:32:35Z",
+     "discussao": "https://news.ycombinator.com/item?id=50122431",
+     "pontos": 373
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a40",
+   "categoria": "outro",
+   "nota": 5.19,
+   "labs": [],
+   "publicado_em": "2026-10-17T04:36:53Z",
+   "fontes": [
+    {
+     "veiculo": "llmspeed.dev",
+     "titulo": "Show HN: Llmspeed – feel how fast a local LLM runs before you buy the hardware",
+     "link": "https://llmspeed.dev/",
+     "data": "2026-10-17T04:36:53Z",
+     "discussao": "https://news.ycombinator.com/item?id=50127979",
+     "pontos": 327
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a41",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-10-16T17:52:24Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "India becomes the latest country to report rogue AI agent activity",
+     "link": "https://techcrunch.com/2026/10/16/india-becomes-the-latest-country-to-report-rogue-ai-agent-activity/",
+     "data": "2026-10-16T17:52:24Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a42",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-10-16T15:33:49Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Jev is Vercel’s fastest-adopted AI model ever",
+     "link": "https://techcrunch.com/2026/10/16/jev-is-vercels-fastest-adopted-ai-model-ever/",
+     "data": "2026-10-16T15:33:49Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a43",
+   "categoria": "capacidade",
+   "nota": 4.96,
+   "labs": [],
+   "publicado_em": "2026-10-18T12:22:58Z",
+   "fontes": [
+    {
+     "veiculo": "vals.ai",
+     "titulo": "How Far Will AI Assistants Go for a Refund They Can't Get?",
+     "link": "https://www.vals.ai/blogs/impossible-refund",
+     "data": "2026-10-18T12:22:58Z",
+     "discussao": "https://news.ycombinator.com/item?id=50140462",
+     "pontos": 97
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a44",
+   "categoria": "outro",
+   "nota": 4.78,
+   "labs": [],
+   "publicado_em": "2026-10-18T21:09:12Z",
+   "fontes": [
+    {
+     "veiculo": "jrdsgl.com",
+     "titulo": "If you don't run your own LLM proxy, how do you know whats going on?",
+     "link": "https://jrdsgl.com/if-you-dont-run-your-own-llm-proxy-how-the-fuck-do-you-even-know-whats-going-on/",
+     "data": "2026-10-18T21:09:12Z",
+     "discussao": "https://news.ycombinator.com/item?id=50145507",
+     "pontos": 271
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a45",
+   "categoria": "outro",
+   "nota": 4.68,
+   "labs": [],
+   "publicado_em": "2026-10-17T13:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Websites are closing their doors to AI agents",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web",
+     "data": "2026-10-17T13:00:00Z",
+     "discussao": "https://news.ycombinator.com/item?id=50141657",
+     "pontos": 153
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a46",
+   "categoria": "outro",
+   "nota": 4.66,
+   "labs": [],
+   "publicado_em": "2026-10-17T22:26:47Z",
+   "fontes": [
+    {
+     "veiculo": "blog.picheta.me",
+     "titulo": "I built a programming language that LLMs can't use",
+     "link": "https://blog.picheta.me/post/killswitch-lang/",
+     "data": "2026-10-17T22:26:47Z",
+     "discussao": "https://news.ycombinator.com/item?id=50135762",
+     "pontos": 256
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a47",
+   "categoria": "outro",
+   "nota": 4.61,
+   "labs": [],
+   "publicado_em": "2026-10-18T04:33:49Z",
+   "fontes": [
+    {
+     "veiculo": "sphinx-six-theta.vercel.app",
+     "titulo": "Show HN: Sphinx – A hook that quizzes you on your AI's code before shipping",
+     "link": "https://sphinx-six-theta.vercel.app/",
+     "data": "2026-10-18T04:33:49Z",
+     "discussao": "https://news.ycombinator.com/item?id=50137950",
+     "pontos": 249
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a48",
+   "categoria": "outro",
+   "nota": 4.36,
+   "labs": [],
+   "publicado_em": "2026-10-16T15:55:40Z",
+   "fontes": [
+    {
+     "veiculo": "The Register",
+     "titulo": "Postgres 19 delayed after AI reviewers find more bugs than humans can fix",
+     "link": "https://www.theregister.com/databases/2026/10/16/postgres-19-delayed-after-ai-reviewers-find-more-bugs-than-humans-can-fix/5303471",
+     "data": "2026-10-16T15:55:40Z",
+     "discussao": "https://news.ycombinator.com/item?id=50119991",
+     "pontos": 220
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a49",
+   "categoria": "outro",
+   "nota": 4.26,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-10-19T16:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "4 tips for styling outfits with Gemini",
+     "link": "https://blog.google/products-and-platforms/products/gemini/stylist-outfit-tips-gemini/",
+     "data": "2026-10-19T16:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a50",
+   "categoria": "capacidade",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-10-16T18:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "Roundtables: A Conversation With the Creator of AI-Designed Viruses",
+     "link": "https://www.technologyreview.com/2026/10/16/1146224/roundtables-a-conversation-with-the-creator-of-ai-designed-viruses/",
+     "data": "2026-10-16T18:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a51",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-10-16T12:00:05Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "The Surface Laptop Ultra delivers on most of Microsoft's promises",
+     "link": "https://arstechnica.com/reviews/2026/10/the-surface-laptop-ultra-delivers-on-most-of-microsofts-promises/",
+     "data": "2026-10-16T12:00:05Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a52",
+   "categoria": "outro",
+   "nota": 3.9,
+   "labs": [
+    "amazon"
+   ],
+   "publicado_em": "2026-10-17T16:04:23Z",
+   "fontes": [
+    {
+     "veiculo": "opendemocracy.net",
+     "titulo": "Amazon uses AI to monitor union risk in UK warehouses",
+     "link": "https://www.opendemocracy.net/amazon-ai-surveillance-monitor-union-activity-uk-warehouses-birmingham-coventry-atlas-sutton-coldfield/",
+     "data": "2026-10-17T16:04:23Z",
+     "discussao": "https://news.ycombinator.com/item?id=50132278",
+     "pontos": 173
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a53",
+   "categoria": "outro",
+   "nota": 3.35,
+   "labs": [],
+   "publicado_em": "2026-10-19T12:07:41Z",
+   "fontes": [
+    {
+     "veiculo": "GitHub",
+     "titulo": "Harness Engineering 101: The LLM is the brain, the harness is the body",
+     "link": "https://github.com/IsuruMaduranga/harness-engineering-101",
+     "data": "2026-10-19T12:07:41Z",
+     "discussao": "https://news.ycombinator.com/item?id=50151390",
+     "pontos": 126
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a54",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-10-19T16:13:22Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "People are using AI to make their smart TVs dumb again",
+     "link": "https://techcrunch.com/2026/10/19/people-are-using-ai-to-make-their-smart-tvs-dumb-again/",
+     "data": "2026-10-19T16:13:22Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a55",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-10-19T14:30:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "JB Pritzker thinks AI could help us live to 100 — or threaten us like nukes",
+     "link": "https://www.theverge.com/podcast/1012839/pritzker-ai-privacy-data-centers-flock-congress-laws",
+     "data": "2026-10-19T14:30:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a56",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-10-16T20:20:07Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "“thegentlemanpervert” producing AI CSAM is a NJ prosecutor, say cops",
+     "link": "https://arstechnica.com/tech-policy/2026/10/thegentlemanpervert-producing-ai-csam-is-a-nj-prosecutor-say-cops/",
+     "data": "2026-10-16T20:20:07Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a57",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-10-16T16:30:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "An Nvidia insider-turned-VC on why robotics hasn’t hit its ChatGPT moment, yet",
+     "link": "https://techcrunch.com/video/a-nvidia-insider-turned-vc-on-why-robotics-hasnt-hit-its-chatgpt-moment-yet/",
+     "data": "2026-10-16T16:30:00Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Physical AI is more than robots, says the Nvidia veteran now investing in it",
+     "link": "https://techcrunch.com/podcast/physical-ai-is-more-than-robots-says-the-nvidia-veteran-now-investing-in-it/",
+     "data": "2026-10-16T16:30:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a58",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-10-16T14:26:51Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Mark Wahlberg on using AI in film ‘the right way’ and being open to an AI clone carrying on his legacy",
+     "link": "https://techcrunch.com/2026/10/16/mark-wahlberg-on-using-ai-in-film-the-right-way-and-being-open-to-an-ai-clone-carrying-on-his-legacy/",
+     "data": "2026-10-16T14:26:51Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a59",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-10-16T12:55:09Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Replit’s CEO says the future of work is the ‘self-driving company’",
+     "link": "https://techcrunch.com/2026/10/16/replits-ceo-says-the-future-of-work-is-the-self-driving-company/",
+     "data": "2026-10-16T12:55:09Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  }
+ ],
+ "itens": [
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "DeepSeek published DeepSeek-V4.1-Flash-1017 weights on Hugging Face",
+   "link": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+   "data": "2026-10-17T02:40:38Z",
+   "trecho": "DeepSeek released DeepSeek-V4.1-Flash-1017 (image-text-to-text).",
+   "veiculo": "Hugging Face",
+   "lab": "deepseek",
+   "pontos": 949,
+   "discussao": "https://news.ycombinator.com/item?id=50129045",
+   "id": "i1"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "4 tips for styling outfits with Gemini",
+   "link": "https://blog.google/products-and-platforms/products/gemini/stylist-outfit-tips-gemini/",
+   "data": "2026-10-19T16:00:00Z",
+   "trecho": "Here’s how athlete stylist Sydney Bordonaro uses Gemini to build looks for clients — and how you can build your own, too.",
+   "veiculo": "Google",
+   "id": "i2"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "AI infrastructure startup Modal says it plans to start using Nvidia's Vera CPUs for the first time for hosting agents, alongside its current Intel and AMD chips",
+   "link": "https://www.reuters.com/business/nvidia-wins-fast-growing-ai-startup-modal-new-central-processors-2026-10-19/",
+   "data": "2026-10-19T15:40:02Z",
+   "trecho": "",
+   "veiculo": "Reuters",
+   "via": "https://www.techmeme.com/261019/p31#a261019p31",
+   "id": "i3"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "The US DHS orders all federal civilian agencies to remove any DeepSeek tech from their IT systems and prohibits future procurement of its products and services",
+   "link": "https://www.wsj.com/tech/ai/dhs-orders-deepseek-technology-removed-from-federal-civilian-it-systems-060b6d3d?st=m6DV2n&reflink=desktopwebshare_permalink",
+   "data": "2026-10-19T14:55:01Z",
+   "trecho": "",
+   "veiculo": "The Wall Street Journal",
+   "via": "https://www.techmeme.com/261019/p28#a261019p28",
+   "id": "i4"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Filing: US prosecutors say OpenAI suspect Abdulrahman Alfozan maintained frequent WhatsApp contact in 2025 and 2026 with an unnamed Saudi Royal Family member",
+   "link": "https://www.cnbc.com/2026/10/19/openai-bugging-suspect-alfozan-saudi-royal-family.html",
+   "data": "2026-10-19T14:25:00Z",
+   "trecho": "",
+   "veiculo": "CNBC",
+   "via": "https://www.techmeme.com/261019/p26#a261019p26",
+   "id": "i5"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Source: Anthropic is preparing a model with superior intuition and reasoning that can discern unstated intentions and is better at thinking outside of the box",
+   "link": "https://www.theinformation.com/articles/anthropic-readies-model-reads-users-intentions-better",
+   "data": "2026-10-19T14:15:01Z",
+   "trecho": "",
+   "veiculo": "The Information",
+   "via": "https://www.techmeme.com/261019/p25#a261019p25",
+   "id": "i6"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Researcher: a Chinese-speaking hacker used AI agents to target 1,200+ websites and breach 100+ entities, like Deere and SharkNinja, spending ~$5,000 in tokens",
+   "link": "https://www.reuters.com/legal/government/how-one-hacker-used-ai-agents-few-thousand-dollars-break-into-scores-sites-2026-10-19/",
+   "data": "2026-10-19T12:30:10Z",
+   "trecho": "",
+   "veiculo": "Reuters",
+   "via": "https://www.techmeme.com/261019/p22#a261019p22",
+   "id": "i7"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Tel Aviv-based doubleAI releases a code execution model for improving GPU and CPU performance; doubleAI raised $220M, using ~50% to buy 1,000 Nvidia B300 chips",
+   "link": "https://www.wsj.com/cio-journal/nvidia-backed-startup-doubleai-launches-model-to-pare-cost-of-compute-b780f215?st=Xj19EK&reflink=desktopwebshare_permalink",
+   "data": "2026-10-19T12:20:02Z",
+   "trecho": "",
+   "veiculo": "The Wall Street Journal",
+   "via": "https://www.techmeme.com/261019/p21#a261019p21",
+   "id": "i8"
+  },
+  {
+   "fonte": "ue",
+   "peso": 3,
+   "titulo": "First harmonised standard supporting the AI Act published in the Official Journal",
+   "link": "https://digital-strategy.ec.europa.eu/en/library/first-harmonised-standard-supporting-ai-act-published-official-journal",
+   "data": "2026-10-19T07:37:54Z",
+   "trecho": "First harmonised standard supporting the AI Act published in the Official Journal Anonymous (not verified) Mon, 10/19/2026 - 09:37 The European Commission has published the reference to the first harmonised standard supporting the implementation of the AI Act in the Official Journal of the European Union. The…",
+   "veiculo": "Comissão Europeia",
+   "id": "i9"
+  },
+  {
+   "fonte": "anthropic",
+   "peso": 3,
+   "titulo": "public benefit fund",
+   "link": "https://www.anthropic.com/news/public-benefit-fund",
+   "data": "2026-10-18T12:00:00Z",
+   "trecho": "Announcements Investing in the public benefit",
+   "veiculo": "Anthropic",
+   "id": "i10"
+  },
+  {
+   "fonte": "deepseek",
+   "peso": 3,
+   "titulo": "English",
+   "link": "https://api-docs.deepseek.com/news/news261017",
+   "data": "2026-10-17T12:00:00Z",
+   "trecho": "",
+   "veiculo": "DeepSeek",
+   "lab": "deepseek",
+   "id": "i11"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "How Itaú is building generative AI for its entire customer base",
+   "link": "https://openai.com/index/itau-generative-ai",
+   "data": "2026-10-16T19:00:00Z",
+   "trecho": "With ia.i, a conversational interface, and the IARA governance platform, Itaú is applying its AI First strategy to customers and employees — in one of Brazil’s most regulated sectors.",
+   "veiculo": "OpenAI",
+   "id": "i12"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "NVIDIA published NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16 weights on Hugging Face",
+   "link": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+   "data": "2026-10-16T18:25:29Z",
+   "trecho": "NVIDIA released NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16 (text-generation).",
+   "veiculo": "Hugging Face",
+   "lab": "nvidia",
+   "id": "i13"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "We’re sharing 3 tips to study smarter with Gemini Notebook.",
+   "link": "https://blog.google/innovation-and-ai/products/gemini-notebook/three-tips-study-gemini-notebook/",
+   "data": "2026-10-16T16:00:00Z",
+   "trecho": "Master your exams with Google Gemini Notebook’s new 60-second video overviews and interactive quiz formats. Try these study tools at notebook.google.",
+   "veiculo": "Google",
+   "id": "i14"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "Tencent published Qwen3-8B-DSpine-b16 weights on Hugging Face",
+   "link": "https://huggingface.co/tencent/Qwen3-8B-DSpine-b16",
+   "data": "2026-10-16T14:52:38Z",
+   "trecho": "Tencent released Qwen3-8B-DSpine-b16 (model).",
+   "veiculo": "Hugging Face",
+   "lab": "tencent",
+   "id": "i15"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "Microsoft published scFM-dataselection weights on Hugging Face",
+   "link": "https://huggingface.co/microsoft/scFM-dataselection",
+   "data": "2026-10-16T13:54:04Z",
+   "trecho": "Microsoft released scFM-dataselection (model).",
+   "veiculo": "Hugging Face",
+   "lab": "microsoft",
+   "id": "i16"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Websites are closing their doors to AI agents",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web",
+   "data": "2026-10-17T13:00:00Z",
+   "trecho": "Autonomous agents are the hottest thing in AI. OpenAI, Meta, Google, Instinct, and others promise their agents can scour the internet on your behalf, doing anything from booking a dinner reservation and cleaning out your inbox to buying new shoes. But what happens when the rest of the internet won't play nice? In…",
+   "veiculo": "The Verge",
+   "pontos": 153,
+   "discussao": "https://news.ycombinator.com/item?id=50141657",
+   "id": "i17"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "People are using AI to make their smart TVs dumb again",
+   "link": "https://techcrunch.com/2026/10/19/people-are-using-ai-to-make-their-smart-tvs-dumb-again/",
+   "data": "2026-10-19T16:13:22Z",
+   "trecho": "Fed up with ads, tracking and sluggish interfaces, some smart TV owners are turning to AI agents to strip away bloatware and take back control of their TVs.",
+   "veiculo": "TechCrunch",
+   "id": "i18"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Nvidia launches new open models to run agents in the enterprise and on PCs",
+   "link": "https://techcrunch.com/2026/10/19/nvidia-launches-new-open-models-to-run-agents-in-the-enterprise-and-on-pcs/",
+   "data": "2026-10-19T15:37:09Z",
+   "trecho": "Nvidia is leaning hard into the trend of enterprise companies wanting to run their own open models in their own data centers and also trying to make on-device, private AI agents a thing.",
+   "veiculo": "TechCrunch",
+   "id": "i19"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "MiniMax launches M3.1 Flash, saying it delivers \"a generational leap\" in agentic tasks, coding, computer use, and cybersecurity, with weights due October 23 (MiniMax)",
+   "link": "https://www.minimax.io/blog/minimax-m31f",
+   "data": "2026-10-19T15:30:01Z",
+   "trecho": "",
+   "veiculo": "minimax.io",
+   "via": "https://www.techmeme.com/261019/p30#a261019p30",
+   "id": "i20"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Disney found a way to buy Character.AI without buying its lawsuits",
+   "link": "https://arstechnica.com/tech-policy/2026/10/disney-found-a-way-to-buy-character-ai-without-buying-its-lawsuits/",
+   "data": "2026-10-19T14:45:43Z",
+   "trecho": "Character.AI faces claims its bots encouraged minors to self-harm and kill their parents.",
+   "veiculo": "Ars Technica",
+   "id": "i21"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "JB Pritzker thinks AI could help us live to 100 — or threaten us like nukes",
+   "link": "https://www.theverge.com/podcast/1012839/pritzker-ai-privacy-data-centers-flock-congress-laws",
+   "data": "2026-10-19T14:30:00Z",
+   "trecho": "Today, I’m talking with Illinois Gov. JB Pritzker, who has a lot of thoughts about AI, tech, and privacy. If you’ve been listening to the show, you know that one of my running theories is that those issues are driving a big and maybe kind of unexpected political realignment — and with the midterms coming […]",
+   "veiculo": "The Verge",
+   "id": "i22"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "A hacker broke into John Deere and SharkNinja with an army of AI agents",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1013643/ai-agents-hack-john-deere-shark-ninja-cummins",
+   "data": "2026-10-19T13:58:41Z",
+   "trecho": "A hacker broke into more than 100 websites using an army of AI agents that mostly operated on their own, according to findings from the AI security firm Norforge. Though Norforge doesn't name the targets, Reuters reports that the victims included companies like John Deere, SharkNinja, and Cummins. Concerns over…",
+   "veiculo": "The Verge",
+   "id": "i23"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Microsoft debuts new security tools in Microsoft 365 E7 and its Project Perception system that treat AI agents as potential insider threats via risk assessments",
+   "link": "https://www.geekwire.com/2026/microsoft-unveils-tools-to-monitor-and-corral-rogue-ai-agents/",
+   "data": "2026-10-19T13:25:02Z",
+   "trecho": "",
+   "veiculo": "geekwire.com",
+   "via": "https://www.techmeme.com/261019/p24#a261019p24",
+   "id": "i24"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Democrats think cracking down on AI could give them an edge",
+   "link": "https://www.theverge.com/policy/1013113/democrats-ai-midterms",
+   "data": "2026-10-19T12:00:00Z",
+   "trecho": "Democrats could win back control of Congress this November, and if they do, they'll need to decide how to approach one of the country's newest and thorniest political issues: AI. Polls predict Democrats will flip at least one chamber of Congress in the midterm elections, which would put committee leadership back in…",
+   "veiculo": "The Verge",
+   "id": "i25"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "AI researchers stranded Claude on a virtual desert island. It started to “play.”",
+   "link": "https://www.technologyreview.com/2026/10/19/1147095/ai-stranded-claude-virtual-desert-island-play/",
+   "data": "2026-10-19T09:08:05Z",
+   "trecho": "What do AI agents do if you don’t tell them to do anything? The answer looks a lot like play. Researchers repeatedly stranded them alone on a virtual desert island for 30 hours in an experiment reminiscent of the movies Cast Away or Home Alone. The agents—copies of Claude Opus 4.7 nicknamed Eko—were able to…",
+   "veiculo": "MIT Technology Review",
+   "id": "i26"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "llm-tools-datasette 0.1.1",
+   "link": "https://simonwillison.net/2026/Oct/18/llm-tools-datasette/",
+   "data": "2026-10-18T23:43:09Z",
+   "trecho": "Release: llm-tools-datasette 0.1.1 When I switched LLM over to httpx2 in LLM 0.33 I forget that this would break any plugins which used httpx without directly depending on it. llm-tools-datasette was one of those plugins, now fixed. Tags: datasette , llm",
+   "veiculo": "Simon Willison",
+   "id": "i27"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "llm-echo 0.5",
+   "link": "https://simonwillison.net/2026/Oct/18/llm-echo/",
+   "data": "2026-10-18T23:16:16Z",
+   "trecho": "Release: llm-echo 0.5 I'm working towards a new LLM release, and testing PRs caused me to revisit the llm-echo debug plugin. This plugin provides a \"model\" which doesn't involve an LLM at all - it just repeats back the prompts that have been fed to it. The new release now updates the simulated token usage counts to…",
+   "veiculo": "Simon Willison",
+   "id": "i28"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Anthropic says it’s committing 5% of its shares to a ‘public benefit fund’",
+   "link": "https://techcrunch.com/2026/10/18/anthropic-says-its-committing-5-of-its-shares-to-a-public-benefit-fund/",
+   "data": "2026-10-18T20:37:40Z",
+   "trecho": "Anthropic said that it will commit 5% of its shares to the fund.",
+   "veiculo": "TechCrunch",
+   "id": "i29"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "A woman was arrested in Philly for blocking a delivery robot",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1013541/a-woman-was-arrested-in-philly-for-blocking-a-delivery-robot",
+   "data": "2026-10-18T18:28:10Z",
+   "trecho": "Carolyn Marvin was arrested and charged with disorderly conduct after blocking the path of an Uber delivery robot and refusing to get out of the way. Marvin told Philadelphia's ABC13 \"I know they're taking the jobs of human delivery workers and so, I have been protesting them whenever I saw them by standing in front…",
+   "veiculo": "The Verge",
+   "id": "i30"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Disney agrees to hire the majority of Character.AI’s workforce",
+   "link": "https://techcrunch.com/2026/10/18/disney-agrees-to-hire-the-majority-of-character-ais-workforce/",
+   "data": "2026-10-18T16:30:00Z",
+   "trecho": "The filing also says that the “vast majority” of Character.AI employees who were offered jobs at Disney accepted them. However, this is a stalking horse bid, so another company could come forward with a higher offer.",
+   "veiculo": "TechCrunch",
+   "id": "i31"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Anthropic gives outside AI watchdog “employee-like” access",
+   "link": "https://arstechnica.com/ai/2026/10/anthropic-gives-outside-ai-watchdog-employee-like-access/",
+   "data": "2026-10-18T16:25:19Z",
+   "trecho": "The outside watchdog can publish its findings without Anthropic's approval.",
+   "veiculo": "Ars Technica",
+   "id": "i32"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Meta removes language that raised scraping and AI training concerns",
+   "link": "https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns/",
+   "data": "2026-10-17T21:31:32Z",
+   "trecho": "A Meta spokesperson insisted that the updated terms did not reflect a change in the way Meta crawls the web.",
+   "veiculo": "TechCrunch",
+   "id": "i33"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Anthropic says its workforce has become less junior and is spending more time in meetings",
+   "link": "https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/",
+   "data": "2026-10-17T20:21:19Z",
+   "trecho": "The composition of Anthropic’s workforce and the type of work getting done have changed significantly in the past year.",
+   "veiculo": "TechCrunch",
+   "id": "i34"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Replit makes OpenAI its default over Anthropic, CEO says",
+   "link": "https://techcrunch.com/2026/10/17/replit-is-no-longer-working-with-anthropic-ceo-says/",
+   "data": "2026-10-17T18:48:08Z",
+   "trecho": "Over the weekend, Masad clarified that OpenAI would replace Anthropic as its default model provider. Claude will still be available to customers on the platform.",
+   "veiculo": "TechCrunch",
+   "id": "i35"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Meta removes language that may have allowed it to scrape news sites",
+   "link": "https://www.theverge.com/tech/1013409/meta-removes-language-that-may-have-allowed-it-to-scrape-news-sites",
+   "data": "2026-10-17T15:04:36Z",
+   "trecho": "After backlash, Meta is updating its terms again to remove language that suggested it could scrape content from sites, including news sites, to train its AI. Specifically, the following language no longer appears on the commercial terms page: … Meta may use any content from such domains, web pages, or URLs to…",
+   "veiculo": "The Verge",
+   "id": "i36"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "web-edit 0.1a2",
+   "link": "https://simonwillison.net/2026/Oct/17/web-edit/",
+   "data": "2026-10-17T13:16:49Z",
+   "trecho": "Release: web-edit 0.1a2 web-edit ( previously ) is my tiny web app for browsing and editing files in a folder. I mainly built it for editing files on different machines via Tailscale. I added a \"copy to clipboard\" option for both text and image data. I needed this because I was running pelican prompts on a laptop…",
+   "veiculo": "Simon Willison",
+   "id": "i37"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Quoting Addy Osmani, Morgan Westlee Lunt, and Qing Wang",
+   "link": "https://simonwillison.net/2026/Oct/16/code-review/",
+   "data": "2026-10-16T22:06:37Z",
+   "trecho": "We think \"did a human read the code?\" is an imprecise proxy for \"what could go wrong with this change, and which check—automated or human—is the right one to catch it?\" Asking that question also changed when review happens. Before, review was a gate at the end of the road: write the code, open a PR, wait for your…",
+   "veiculo": "Simon Willison",
+   "id": "i38"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "OpenAI models hacked a crypto wallet and breached more websites",
+   "link": "https://arstechnica.com/security/2026/10/openai-models-hacked-a-crypto-wallet-and-breached-more-websites/",
+   "data": "2026-10-16T20:59:01Z",
+   "trecho": "The actions could have resulted in criminal charges had humans been behind the keyboard.",
+   "veiculo": "Ars Technica",
+   "id": "i39"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "“thegentlemanpervert” producing AI CSAM is a NJ prosecutor, say cops",
+   "link": "https://arstechnica.com/tech-policy/2026/10/thegentlemanpervert-producing-ai-csam-is-a-nj-prosecutor-say-cops/",
+   "data": "2026-10-16T20:20:07Z",
+   "trecho": "Discord user flagged AI CSAM, triggering arrest of New Jersey deputy AG.",
+   "veiculo": "Ars Technica",
+   "id": "i40"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "Roundtables: A Conversation With the Creator of AI-Designed Viruses",
+   "link": "https://www.technologyreview.com/2026/10/16/1146224/roundtables-a-conversation-with-the-creator-of-ai-designed-viruses/",
+   "data": "2026-10-16T18:00:00Z",
+   "trecho": "Listen to the session or watch below Can AI design new life forms? In 2025, Stanford University PhD student Samuel King came up with a preliminary answer when he used a generative AI model to propose genetic blueprints for microscopic viruses. It isn’t yet an example of AI-generated life, but that could be next. Watch…",
+   "veiculo": "MIT Technology Review",
+   "id": "i41"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "India becomes the latest country to report rogue AI agent activity",
+   "link": "https://techcrunch.com/2026/10/16/india-becomes-the-latest-country-to-report-rogue-ai-agent-activity/",
+   "data": "2026-10-16T17:52:24Z",
+   "trecho": "The agents got in through credentials and connection settings left exposed in app configurations, public code repositories, and overly permissive cloud roles.",
+   "veiculo": "TechCrunch",
+   "id": "i42"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "An Nvidia insider-turned-VC on why robotics hasn’t hit its ChatGPT moment, yet",
+   "link": "https://techcrunch.com/video/a-nvidia-insider-turned-vc-on-why-robotics-hasnt-hit-its-chatgpt-moment-yet/",
+   "data": "2026-10-16T16:30:00Z",
+   "trecho": "Amulya Vishwanath, who spent seven years leading product marketing for NVIDIA’s robotics platforms, says robotics is currently in its “Lego era,” with the basic building blocks like actuators, robotic hands, software, and safety standards still being rebuilt. This view runs counter to those who believe that robotics,…",
+   "veiculo": "TechCrunch",
+   "id": "i43"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Physical AI is more than robots, says the Nvidia veteran now investing in it",
+   "link": "https://techcrunch.com/podcast/physical-ai-is-more-than-robots-says-the-nvidia-veteran-now-investing-in-it/",
+   "data": "2026-10-16T16:30:00Z",
+   "trecho": "Amulya Vishwanath, who spent seven years leading product marketing for NVIDIA’s robotics platforms, says robotics is currently in its “Lego era,” with the basic building blocks like actuators, robotic hands, software, and safety standards still being rebuilt. This view runs counter to those who believe that robotics,…",
+   "veiculo": "TechCrunch",
+   "id": "i44"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Elorian’s first AI model wants to reason with images, not just about them",
+   "link": "https://techcrunch.com/2026/10/16/elorians-first-ai-model-wants-to-reason-with-images-not-just-about-them/",
+   "data": "2026-10-16T16:01:37Z",
+   "trecho": "According to Elorian's evaluations, Glimpse outperforms even GPT-6 Astra on scientific chart reasoning and short-form video captioning, with competitive results on other visual reasoning tasks.",
+   "veiculo": "TechCrunch",
+   "id": "i45"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Meta may use sweeping new commercial TOS to avoid millions in AI licensing fees",
+   "link": "https://arstechnica.com/tech-policy/2026/10/meta-may-use-sweeping-new-commercial-tos-to-avoid-millions-in-ai-licensing-fees/",
+   "data": "2026-10-16T15:41:00Z",
+   "trecho": "Meta “streamlined” its commercial TOS. Legal experts warn it’s an AI power grab.",
+   "veiculo": "Ars Technica",
+   "id": "i46"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Jev is Vercel’s fastest-adopted AI model ever",
+   "link": "https://techcrunch.com/2026/10/16/jev-is-vercels-fastest-adopted-ai-model-ever/",
+   "data": "2026-10-16T15:33:49Z",
+   "trecho": "The data comes from Vercel's AI gateway, a unified API service similar to OpenRouter.",
+   "veiculo": "TechCrunch",
+   "id": "i47"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "A week with RTX Spark: everything we’ve learned using Nvidia’s new laptops",
+   "link": "https://www.theverge.com/tech/1012748/nvidia-rtx-spark-windows-arm-laptops-asus-hp-lenovo-impressions",
+   "data": "2026-10-16T15:00:00Z",
+   "trecho": "Nvidia's RTX Spark N1X processor is finally here, and we've been collectively testing a small fortune's worth of powerful laptops sporting this new \"superchip.\" RTX Spark is designed to be a high-performing Arm-based SoC for laptops and small desktop computers, rivaling the best from Apple, Intel, AMD, and Qualcomm.…",
+   "veiculo": "The Verge",
+   "id": "i48"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Mark Wahlberg on using AI in film ‘the right way’ and being open to an AI clone carrying on his legacy",
+   "link": "https://techcrunch.com/2026/10/16/mark-wahlberg-on-using-ai-in-film-the-right-way-and-being-open-to-an-ai-clone-carrying-on-his-legacy/",
+   "data": "2026-10-16T14:26:51Z",
+   "trecho": "Actor and angel investor Mark Wahlberg says he's OK with using AI in filmmaking, provided it's used \"to enhance what you're doing.\"",
+   "veiculo": "TechCrunch",
+   "id": "i49"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Meta’s new terms may allow it to train AI on news sites for free",
+   "link": "https://www.theverge.com/tech/1012846/meta-business-terms-scrape-news-publishers",
+   "data": "2026-10-16T14:02:40Z",
+   "trecho": "Meta's new terms appear to give it permission to crawl and scrape websites \"associated\" with the businesses that use its platforms - including online publishers, according to a report from Nieman Lab. The new terms, which go into effect on October 30th, say Meta can use this outside content to \"develop, improve,…",
+   "veiculo": "The Verge",
+   "id": "i50"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Veritas expands its anti-counterfeit chip to jewelry, trophies, and fragrance bottles",
+   "link": "https://techcrunch.com/2026/10/16/veritas-is-building-a-chip-to-verify-luxury-goods/",
+   "data": "2026-10-16T14:00:00Z",
+   "trecho": "Counterfeiters are getting better at replicating brands' marks and passing off dupes, known as \"superfakes,\" as genuine items. A startup called Veritas wants to tackle the problem with its own chip that verifies goods.",
+   "veiculo": "TechCrunch",
+   "id": "i51"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Replit’s CEO says the future of work is the ‘self-driving company’",
+   "link": "https://techcrunch.com/2026/10/16/replits-ceo-says-the-future-of-work-is-the-self-driving-company/",
+   "data": "2026-10-16T12:55:09Z",
+   "trecho": "Replit CEO Amjad Masad envisions a future of “self-driving companies,” where AI agents handle day-to-day tasks and people focus on higher-level decisions.",
+   "veiculo": "TechCrunch",
+   "id": "i52"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "The Surface Laptop Ultra delivers on most of Microsoft's promises",
+   "link": "https://arstechnica.com/reviews/2026/10/the-surface-laptop-ultra-delivers-on-most-of-microsofts-promises/",
+   "data": "2026-10-16T12:00:05Z",
+   "trecho": "Microsoft promises one machine for dev, AI, and gaming, and mostly gets there.",
+   "veiculo": "Ars Technica",
+   "id": "i53"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Claude reveals ECDSA curve origins",
+   "link": "https://www.anthropic.com/research/ecdsa-curve-origins",
+   "data": "2026-10-16T18:55:59Z",
+   "trecho": "",
+   "veiculo": "Anthropic",
+   "pontos": 1057,
+   "discussao": "https://news.ycombinator.com/item?id=50122800",
+   "id": "i54"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "90% of US working hours are spent on tasks not covered well by AI benchmarks",
+   "link": "https://www.mercor.com/research/labor-index/benchmark-map/",
+   "data": "2026-10-16T17:08:38Z",
+   "trecho": "",
+   "veiculo": "mercor.com",
+   "pontos": 624,
+   "discussao": "https://news.ycombinator.com/item?id=50121179",
+   "id": "i55"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "DeepSeek search and fetch – $0.75 per 1000 successful requests",
+   "link": "https://api-docs.deepseek.com/guides/search/",
+   "data": "2026-10-18T06:50:36Z",
+   "trecho": "",
+   "veiculo": "api-docs.deepseek.com",
+   "pontos": 588,
+   "discussao": "https://news.ycombinator.com/item?id=50138531",
+   "id": "i56"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Ousted Savannah police officer gave ICE agent husband access to Flock system",
+   "link": "https://www.wjcl.com/article/savannah-police-officer-ice-agent-flock-access/74135816",
+   "data": "2026-10-19T10:45:14Z",
+   "trecho": "",
+   "veiculo": "wjcl.com",
+   "pontos": 577,
+   "discussao": "https://news.ycombinator.com/item?id=50150750",
+   "id": "i57"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "DeepSeek: DeepSeek v4.1 Flash 1017",
+   "link": "https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017",
+   "data": "2026-10-17T08:37:46Z",
+   "trecho": "",
+   "veiculo": "openrouter.ai",
+   "pontos": 519,
+   "discussao": "https://news.ycombinator.com/item?id=50129121",
+   "id": "i58"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Hybrid Reasoning Agents: LLM agents that think in latent space, act through text",
+   "link": "https://arxiv.org/abs/2610.18861",
+   "data": "2026-10-18T20:48:14Z",
+   "trecho": "",
+   "veiculo": "arXiv",
+   "pontos": 483,
+   "discussao": "https://news.ycombinator.com/item?id=50145337",
+   "id": "i59"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "How the Claude Code team does code review",
+   "link": "https://claude.dev/blog/solving-code-review-at-anthropic/",
+   "data": "2026-10-16T19:04:47Z",
+   "trecho": "",
+   "veiculo": "claude.dev",
+   "pontos": 480,
+   "discussao": "https://news.ycombinator.com/item?id=50122951",
+   "id": "i60"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Llama.cpp on a jailbroken PS5: run any GGUF model natively on the console",
+   "link": "https://github.com/cobanov/PS5LM",
+   "data": "2026-10-16T18:32:35Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 373,
+   "discussao": "https://news.ycombinator.com/item?id=50122431",
+   "id": "i61"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Timestral: Mistral release time-series foundation models",
+   "link": "https://mistral.ai/news/timestral/",
+   "data": "2026-10-19T09:59:32Z",
+   "trecho": "",
+   "veiculo": "Mistral AI",
+   "pontos": 348,
+   "discussao": "https://news.ycombinator.com/item?id=50150434",
+   "id": "i62"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Show HN: Llmspeed – feel how fast a local LLM runs before you buy the hardware",
+   "link": "https://llmspeed.dev/",
+   "data": "2026-10-17T04:36:53Z",
+   "trecho": "",
+   "veiculo": "llmspeed.dev",
+   "pontos": 327,
+   "discussao": "https://news.ycombinator.com/item?id=50127979",
+   "id": "i63"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Anthropic assigned highest junk credit rating in June",
+   "link": "https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d",
+   "data": "2026-10-16T18:11:42Z",
+   "trecho": "",
+   "veiculo": "Financial Times",
+   "pontos": 299,
+   "discussao": "https://news.ycombinator.com/item?id=50122112",
+   "id": "i64"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "If you don't run your own LLM proxy, how do you know whats going on?",
+   "link": "https://jrdsgl.com/if-you-dont-run-your-own-llm-proxy-how-the-fuck-do-you-even-know-whats-going-on/",
+   "data": "2026-10-18T21:09:12Z",
+   "trecho": "",
+   "veiculo": "jrdsgl.com",
+   "pontos": 271,
+   "discussao": "https://news.ycombinator.com/item?id=50145507",
+   "id": "i65"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "I built a programming language that LLMs can't use",
+   "link": "https://blog.picheta.me/post/killswitch-lang/",
+   "data": "2026-10-17T22:26:47Z",
+   "trecho": "",
+   "veiculo": "blog.picheta.me",
+   "pontos": 256,
+   "discussao": "https://news.ycombinator.com/item?id=50135762",
+   "id": "i66"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Show HN: Sphinx – A hook that quizzes you on your AI's code before shipping",
+   "link": "https://sphinx-six-theta.vercel.app/",
+   "data": "2026-10-18T04:33:49Z",
+   "trecho": "",
+   "veiculo": "sphinx-six-theta.vercel.app",
+   "pontos": 249,
+   "discussao": "https://news.ycombinator.com/item?id=50137950",
+   "id": "i67"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Show HN: Gemini 4 Argon plays StarCraft",
+   "link": "https://starskirmish.com/bench/v0-2/",
+   "data": "2026-10-16T14:18:44Z",
+   "trecho": "",
+   "veiculo": "starskirmish.com",
+   "pontos": 249,
+   "discussao": "https://news.ycombinator.com/item?id=50118688",
+   "id": "i68"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Postgres 19 delayed after AI reviewers find more bugs than humans can fix",
+   "link": "https://www.theregister.com/databases/2026/10/16/postgres-19-delayed-after-ai-reviewers-find-more-bugs-than-humans-can-fix/5303471",
+   "data": "2026-10-16T15:55:40Z",
+   "trecho": "",
+   "veiculo": "The Register",
+   "pontos": 220,
+   "discussao": "https://news.ycombinator.com/item?id=50119991",
+   "id": "i69"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "DeepSeek V4.1 Flash 1017 (Max)",
+   "link": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017",
+   "data": "2026-10-19T04:41:46Z",
+   "trecho": "",
+   "veiculo": "artificialanalysis.ai",
+   "pontos": 178,
+   "discussao": "https://news.ycombinator.com/item?id=50148452",
+   "id": "i70"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Amazon uses AI to monitor union risk in UK warehouses",
+   "link": "https://www.opendemocracy.net/amazon-ai-surveillance-monitor-union-activity-uk-warehouses-birmingham-coventry-atlas-sutton-coldfield/",
+   "data": "2026-10-17T16:04:23Z",
+   "trecho": "",
+   "veiculo": "opendemocracy.net",
+   "pontos": 173,
+   "discussao": "https://news.ycombinator.com/item?id=50132278",
+   "id": "i71"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Designing more efficient quantum circuits with Claude",
+   "link": "https://www.anthropic.com/research/designing-efficient-quantum-circuits",
+   "data": "2026-10-16T18:00:18Z",
+   "trecho": "",
+   "veiculo": "Anthropic",
+   "pontos": 172,
+   "discussao": "https://news.ycombinator.com/item?id=50121939",
+   "id": "i72"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages",
+   "link": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-proposed-ai-safety-bill-only-kicks-in-if-50-deaths-or-usd1-billion-in-damages-are-on-the-line-proposal-would-effectively-make-the-commerce-department-the-only-agency-capable-of-stopping-an-ai-model",
+   "data": "2026-10-18T14:30:27Z",
+   "trecho": "",
+   "veiculo": "tomshardware.com",
+   "pontos": 169,
+   "discussao": "https://news.ycombinator.com/item?id=50141429",
+   "id": "i73"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "How employment is changing at Anthropic",
+   "link": "https://www.anthropic.com/research/employment-at-anthropic",
+   "data": "2026-10-18T10:49:26Z",
+   "trecho": "",
+   "veiculo": "Anthropic",
+   "pontos": 142,
+   "discussao": "https://news.ycombinator.com/item?id=50139873",
+   "id": "i74"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "OpenAI discloses four more rogue incidents",
+   "link": "https://fortune.com/2026/10/16/openai-discloses-four-more-rogue-incidents-involving-financial-medical-and-government-data/",
+   "data": "2026-10-17T16:31:12Z",
+   "trecho": "",
+   "veiculo": "Fortune",
+   "pontos": 130,
+   "discussao": "https://news.ycombinator.com/item?id=50132502",
+   "id": "i75"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Harness Engineering 101: The LLM is the brain, the harness is the body",
+   "link": "https://github.com/IsuruMaduranga/harness-engineering-101",
+   "data": "2026-10-19T12:07:41Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 126,
+   "discussao": "https://news.ycombinator.com/item?id=50151390",
+   "id": "i76"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Artificial intelligence is capitalism's final destination",
+   "link": "https://www.equator.org/articles/arundhati-roy-artificial-intelligence",
+   "data": "2026-10-16T12:08:40Z",
+   "trecho": "",
+   "veiculo": "equator.org",
+   "pontos": 126,
+   "discussao": "https://news.ycombinator.com/item?id=50117382",
+   "id": "i77"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Tmux and Claude Code: Sessions, Send-Keys, and the Ceiling",
+   "link": "https://crystl.dev/guides/tmux-for-ai-agents/",
+   "data": "2026-10-19T05:55:31Z",
+   "trecho": "",
+   "veiculo": "crystl.dev",
+   "pontos": 120,
+   "discussao": "https://news.ycombinator.com/item?id=50148855",
+   "id": "i78"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Show HN: Qwen3-4B with the AI writing tics trained out",
+   "link": "https://100toolkit.com/blog/deslop-model/",
+   "data": "2026-10-19T13:00:47Z",
+   "trecho": "",
+   "veiculo": "100toolkit.com",
+   "pontos": 105,
+   "discussao": "https://news.ycombinator.com/item?id=50151928",
+   "id": "i79"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "How Far Will AI Assistants Go for a Refund They Can't Get?",
+   "link": "https://www.vals.ai/blogs/impossible-refund",
+   "data": "2026-10-18T12:22:58Z",
+   "trecho": "",
+   "veiculo": "vals.ai",
+   "pontos": 97,
+   "discussao": "https://news.ycombinator.com/item?id=50140462",
+   "id": "i80"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Why Math Dumped OpenAI",
+   "link": "https://raymyers.org/post/math-dumped-openai/",
+   "data": "2026-10-17T06:19:44Z",
+   "trecho": "",
+   "veiculo": "raymyers.org",
+   "pontos": 91,
+   "discussao": "https://news.ycombinator.com/item?id=50128468",
+   "id": "i81"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Anthropic Console overcharged my card 100x due to internationalization input bug",
+   "link": "https://news.ycombinator.com/item?id=50121562",
+   "data": "2026-10-16T17:31:42Z",
+   "trecho": "",
+   "veiculo": "news.ycombinator.com",
+   "pontos": 89,
+   "discussao": "https://news.ycombinator.com/item?id=50121562",
+   "id": "i82"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Usuários usam IA para remover anúncios e mudar interfaces de TVs",
+   "link": "https://tecnoblog.net/noticias/usuarios-usam-ia-para-remover-anuncios-e-mudar-interfaces-de-tvs/",
+   "data": "2026-10-19T15:41:42Z",
+   "trecho": "Projetos usam ferramentas como Claude Code para criar launchers personalizados. Usuários usam IA para remover anúncios e mudar interfaces de TVs",
+   "veiculo": "Tecnoblog",
+   "id": "i83"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Anthropic quer barrar IAs apenas diante de riscos extremos",
+   "link": "https://tecnoblog.net/noticias/anthropic-quer-barrar-ias-apenas-diante-de-riscos-extremos/",
+   "data": "2026-10-19T15:31:29Z",
+   "trecho": "Projeto prevê bloqueio de modelos que ameacem causar mais de 50 mortes ou ferimentos graves, ou prejuízos acima de US$ 1 bilhão. Anthropic quer barrar IAs apenas diante de riscos extremos",
+   "veiculo": "Tecnoblog",
+   "id": "i84"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Salários em tecnologia se aproximam dos R$ 40 mil; veja principais cargos",
+   "link": "https://tecnoblog.net/noticias/salarios-em-tecnologia-se-aproximam-dos-r-40-mil-veja-principais-cargos/",
+   "data": "2026-10-19T10:07:23Z",
+   "trecho": "Guia Salarial 2027 da Michael Page mostra que IA é diferencial no mercado de tecnologia, mas não significa maior salário. Salários em tecnologia se aproximam dos R$ 40 mil; veja principais cargos",
+   "veiculo": "Tecnoblog",
+   "id": "i85"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Meta admite que seus óculos gravaram conversas mesmo sem comando",
+   "link": "https://tecnoblog.net/noticias/meta-admite-que-seus-oculos-gravaram-conversas-sem-comando/",
+   "data": "2026-10-16T20:22:42Z",
+   "trecho": "Óculos Ray-Ban Meta registraram áudios e transcrições no aplicativo Meta AI. Meta admite que seus óculos gravaram conversas mesmo sem comando",
+   "veiculo": "Tecnoblog",
+   "id": "i86"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Meta pode coletar notícias para treinar IA sem pagar por licenças",
+   "link": "https://tecnoblog.net/noticias/meta-pode-coletar-noticias-para-treinar-ia-sem-pagar-por-licencas/",
+   "data": "2026-10-16T19:24:57Z",
+   "trecho": "Novos termos comerciais autorizam a coleta automatizada de páginas vinculadas a contas empresariais. Atualização entra em vigor em 30 de outubro. Meta pode coletar notícias para treinar IA sem pagar por licenças",
+   "veiculo": "Tecnoblog",
+   "id": "i87"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "O que é uma memória HBM? Conheça as vantagens e desvantagens da High Bandwidth Memory",
+   "link": "https://tecnoblog.net/responde/o-que-e-uma-memoria-hbm-conheca-as-vantagens-e-desvantagens-da-high-bandwidth-memory/",
+   "data": "2026-10-16T17:33:58Z",
+   "trecho": "A memória HBM supera o gargalo de transferência de dados, garantindo alta largura de banda e eficiência energética em aceleradores de IA e supercomputadores O que é uma memória HBM? Conheça as vantagens e desvantagens da High Bandwidth Memory",
+   "veiculo": "Tecnoblog",
+   "id": "i88"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Agente de IA apagou programa de TV? Emissora esclarece",
+   "link": "https://tecnoblog.net/noticias/agente-de-ia-apagou-programa-de-tv-emissora-esclarece/",
+   "data": "2026-10-16T16:25:18Z",
+   "trecho": "Emissora TV4 nega envolvimento de agente de IA; edição será refeita e estreia passou para 2027. Agente de IA apagou programa de TV? Emissora esclarece",
+   "veiculo": "Tecnoblog",
+   "id": "i89"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Lançamento: Galaxy S26 FE com 7 anos de Android já cai 40% em oferta",
+   "link": "https://tecnoblog.net/achados/lancamento-galaxy-s26-fe-com-7-anos-de-android-ja-cai-40-em-oferta/",
+   "data": "2026-10-16T13:08:45Z",
+   "trecho": "Galaxy S26 FE (128 GB) traz chip de 3 nanômetros e novas funções de IA; premium acessível da Samsung recebe desconto de 40% no Pix com cupom em oferta do Magazine Luiza Lançamento: Galaxy S26 FE com 7 anos de Android já cai 40% em oferta",
+   "veiculo": "Tecnoblog",
+   "id": "i90"
+  }
+ ],
+ "editor": {
+  "aprovada": true,
+  "acoes": [
+   "Barrado antes da redação, fonte única sem reputação: Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages",
+   "Barrado antes da redação, fonte única sem reputação: 90% of US working hours are spent on tasks not covered well by AI benchmarks",
+   "Barrado antes da redação, fonte única sem reputação: Hybrid Reasoning Agents: LLM agents that think in latent space, act through text",
+   "Barrado antes da redação, fonte única sem reputação: Show HN: Gemini 4 Argon plays StarCraft",
+   "Barrado antes da redação, fonte única sem reputação: Show HN: Qwen3-4B with the AI writing tics trained out",
+   "Barrado antes da redação, fonte única sem reputação: Microsoft debuts new security tools in Microsoft 365 E7 and its Project Percepti",
+   "Corrigido (O preço está na fonte primária, mas o resumo só repete o título; a página traz o que fazem as APIs de busca e leitura.): DeepSeek cobra US$ 0,75 por 1000 requisições de busca e leitura bem-sucedidas",
+   "Corrigido (O resumo era vago e comentava o próprio título; a página da Anthropic traz o detalhe concreto da descoberta.): Claude descobre a origem das sementes de curvas NIST usadas no ECDSA",
+   "Fora por diversidade: The US DHS orders all federal civilian agencies to remove any DeepSeek tech from"
+  ],
+  "revisao": {
+   "a1": {
+    "veredito": "ok",
+    "motivo": "A fonte primária (Hugging Face) confirma o lançamento do modelo e os pesos publicados; as listagens em OpenRouter e Artificial Analysis aparecem nas fontes."
+   },
+   "a2": {
+    "veredito": "corrigir",
+    "motivo": "O preço está na fonte primária, mas o resumo só repete o título; a página traz o que fazem as APIs de busca e leitura."
+   },
+   "a4": {
+    "veredito": "corrigir",
+    "motivo": "O resumo era vago e comentava o próprio título; a página da Anthropic traz o detalhe concreto da descoberta."
+   }
+  }
+ }
+}
