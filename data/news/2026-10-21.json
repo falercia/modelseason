@@ -1,0 +1,746 @@
+{
+ "versao": 1,
+ "dia": "2026-10-21",
+ "gerado_em": "2026-10-21T12:58:19Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-14",
+   "2026-10-21"
+  ],
+  "trafego": "2026-10-20"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-21",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-20",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20260910",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "tencent/hy4-preview-20260827",
+   "anthropic/claude-opus-5.5-20260921",
+   "openai/gpt-6-luna-20260922",
+   "stepfun/step-5-preview-20261008",
+   "z-ai/glm-5.3-20260816",
+   "minimax/minimax-m3.1-flash-20261019"
+  ]
+ },
+ "principal": "top10:minimax/minimax-m3.1-flash-20261019",
+ "eventos": [
+  {
+   "tipo": "top10",
+   "slug": "minimax/minimax-m3.1-flash-20261019",
+   "id": null,
+   "nome": "MiniMax M3.1 Flash (free)",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "posicao": 10,
+    "share": 3.03,
+    "lancamento": "2026-10-19"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 3.03,
+     "rank_7d": 10,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 56
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-flash-20260731",
+   "id": "deepseek/deepseek-v4-flash-0731",
+   "nome": "DeepSeek V4 Flash 0731",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.172,
+    "para": 0.66,
+    "variacao_pct": 283.7,
+    "entrada_de": 0.016,
+    "entrada_para": 0.44,
+    "saida_de": 0.64,
+    "saida_para": 1.32,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 2.88,
+     "rank_7d": 11,
+     "pico_share": 14.84,
+     "semanas_com_volume": 12
+    },
+    "laboratorio": {
+     "share_tokens": 30.09,
+     "share_gasto": 6.7,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 16.69,
+      "preco_misto": 0.1305
+     }
+    }
+   },
+   "relevancia": 49
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-pro-20260423",
+   "id": "deepseek/deepseek-v4-pro",
+   "nome": "DeepSeek V4 Pro 0423",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.261,
+    "para": 0.5598,
+    "variacao_pct": 114.5,
+    "entrada_de": 0.2088,
+    "entrada_para": 0.4479,
+    "saida_de": 0.4176,
+    "saida_para": 0.8958,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.39,
+     "rank_7d": 38,
+     "pico_share": 5.773,
+     "semanas_com_volume": 26
+    },
+    "laboratorio": {
+     "share_tokens": 30.09,
+     "share_gasto": 6.7,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 16.69,
+      "preco_misto": 0.1305
+     }
+    }
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "novo",
+   "slug": "mistralai/voxtral-mini-transcribe-3-0-20261020",
+   "id": "mistralai/voxtral-mini-transcribe-3-0",
+   "nome": "Voxtral Mini Transcribe 3",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "criado": "2026-10-20",
+    "contexto": 65536,
+    "preco_entrada": 58.3333,
+    "preco_saida": 0.0,
+    "preco_misto": 43.75,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "audio->transcription",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.03,
+      "preco_misto": 0.0293
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "mistralai/voxtral-mini-tts-3-0-20261020",
+   "id": "mistralai/voxtral-mini-tts-3-0",
+   "nome": "Voxtral TTS 3",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "criado": "2026-10-20",
+    "contexto": 4096,
+    "preco_entrada": 13.0,
+    "preco_saida": 0.0,
+    "preco_misto": 9.75,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.03,
+      "preco_misto": 0.0293
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "mistralai/voxtral-small-transcribe-3-0-20261020",
+   "id": "mistralai/voxtral-small-transcribe-3-0",
+   "nome": "Voxtral Small Transcribe 3",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "criado": "2026-10-20",
+    "contexto": 65536,
+    "preco_entrada": 66.6667,
+    "preco_saida": 0.0,
+    "preco_misto": 50.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "audio->transcription",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.03,
+      "preco_misto": 0.0293
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "cloudflare/clef",
+   "id": "cloudflare/clef",
+   "nome": "Clef",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 0.0315,
+    "para": 0.18,
+    "variacao_pct": 471.4,
+    "entrada_de": 0.042,
+    "entrada_para": 0.24,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "elevenlabs/eleven-flash-v2-20260930",
+   "id": "elevenlabs/eleven-flash-v2",
+   "nome": "Eleven Flash v2",
+   "lab": "Elevenlabs",
+   "vendor": "elevenlabs",
+   "dados": {
+    "de": 15.0,
+    "para": 30.0,
+    "variacao_pct": 100.0,
+    "entrada_de": 20.0,
+    "entrada_para": 40.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "elevenlabs/eleven-flash-v2.5-20260930",
+   "id": "elevenlabs/eleven-flash-v2.5",
+   "nome": "Eleven Flash v2.5",
+   "lab": "Elevenlabs",
+   "vendor": "elevenlabs",
+   "dados": {
+    "de": 15.0,
+    "para": 30.0,
+    "variacao_pct": 100.0,
+    "entrada_de": 20.0,
+    "entrada_para": 40.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "elevenlabs/eleven-multilingual-v2-20260930",
+   "id": "elevenlabs/eleven-multilingual-v2",
+   "nome": "Eleven Multilingual v2",
+   "lab": "Elevenlabs",
+   "vendor": "elevenlabs",
+   "dados": {
+    "de": 30.0,
+    "para": 60.0,
+    "variacao_pct": 100.0,
+    "entrada_de": 40.0,
+    "entrada_para": 80.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "elevenlabs/eleven-turbo-v2-20260930",
+   "id": "elevenlabs/eleven-turbo-v2",
+   "nome": "Eleven Turbo v2",
+   "lab": "Elevenlabs",
+   "vendor": "elevenlabs",
+   "dados": {
+    "de": 15.0,
+    "para": 30.0,
+    "variacao_pct": 100.0,
+    "entrada_de": 20.0,
+    "entrada_para": 40.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "elevenlabs/eleven-turbo-v2.5-20260930",
+   "id": "elevenlabs/eleven-turbo-v2.5",
+   "nome": "Eleven Turbo v2.5",
+   "lab": "Elevenlabs",
+   "vendor": "elevenlabs",
+   "dados": {
+    "de": 15.0,
+    "para": 30.0,
+    "variacao_pct": 100.0,
+    "entrada_de": 20.0,
+    "entrada_para": 40.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "elevenlabs/eleven-v3-20260930",
+   "id": "elevenlabs/eleven-v3",
+   "nome": "Eleven v3",
+   "lab": "Elevenlabs",
+   "vendor": "elevenlabs",
+   "dados": {
+    "de": 30.0,
+    "para": 60.0,
+    "variacao_pct": 100.0,
+    "entrada_de": 40.0,
+    "entrada_para": 80.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "elevenlabs/eleven-v3-conversational-20260930",
+   "id": "elevenlabs/eleven-v3-conversational",
+   "nome": "Eleven v3 Conversational",
+   "lab": "Elevenlabs",
+   "vendor": "elevenlabs",
+   "dados": {
+    "de": 15.0,
+    "para": 30.0,
+    "variacao_pct": 100.0,
+    "entrada_de": 20.0,
+    "entrada_para": 40.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "elevenlabs/eleven-v4-20260930",
+   "id": "elevenlabs/eleven-v4",
+   "nome": "Eleven v4",
+   "lab": "Elevenlabs",
+   "vendor": "elevenlabs",
+   "dados": {
+    "de": 30.0,
+    "para": 60.0,
+    "variacao_pct": 100.0,
+    "entrada_de": 40.0,
+    "entrada_para": 80.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "elevenlabs/eleven-v4-turbo-20260930",
+   "id": "elevenlabs/eleven-v4-turbo",
+   "nome": "Eleven v4 Turbo",
+   "lab": "Elevenlabs",
+   "vendor": "elevenlabs",
+   "dados": {
+    "de": 15.0,
+    "para": 30.0,
+    "variacao_pct": 100.0,
+    "entrada_de": 20.0,
+    "entrada_para": 40.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "elevenlabs/scribe-v2-20260929",
+   "id": "elevenlabs/scribe-v2",
+   "nome": "Scribe v2",
+   "lab": "Elevenlabs",
+   "vendor": "elevenlabs",
+   "dados": {
+    "de": 22.9167,
+    "para": 45.8333,
+    "variacao_pct": 100.0,
+    "entrada_de": 30.5556,
+    "entrada_para": 61.1111,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "elevenlabs/scribe-v2-medical-20260929",
+   "id": "elevenlabs/scribe-v2-medical",
+   "nome": "Scribe v2 Medical",
+   "lab": "Elevenlabs",
+   "vendor": "elevenlabs",
+   "dados": {
+    "de": 22.9167,
+    "para": 45.8333,
+    "variacao_pct": 100.0,
+    "entrada_de": 30.5556,
+    "entrada_para": 61.1111,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "reflection/beam-1.0-501b-a23b-20261016",
+   "id": "reflection/beam-1.0-501b-a23b",
+   "nome": "Beam 1.0 501B A23B",
+   "lab": "Reflection",
+   "vendor": "reflection",
+   "dados": {
+    "de": 1.5,
+    "para": 0.475,
+    "variacao_pct": -68.3,
+    "entrada_de": 1.0,
+    "entrada_para": 0.3,
+    "saida_de": 3.0,
+    "saida_para": 1.0,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 34
+  },
+  {
+   "tipo": "preco",
+   "slug": "upstage/solar-pro4-20260810",
+   "id": "upstage/solar-pro4",
+   "nome": "Solar Pro 4",
+   "lab": "Upstage",
+   "vendor": "upstage",
+   "dados": {
+    "de": 0.1575,
+    "para": 0.2625,
+    "variacao_pct": 66.7,
+    "entrada_de": 0.09,
+    "entrada_para": 0.15,
+    "saida_de": 0.36,
+    "saida_para": 0.6,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.38,
+     "rank_7d": 40,
+     "pico_share": 1.351,
+     "semanas_com_volume": 10
+    },
+    "laboratorio": {
+     "share_tokens": 1.13,
+     "share_gasto": 0.18,
+     "lider": {
+      "slug": "upstage/solar-mini4-20260922",
+      "nome": "Solar Mini 4",
+      "share_7d": 0.63,
+      "preco_misto": 0.0875
+     }
+    }
+   },
+   "relevancia": 34
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.8-27b-20260814",
+   "id": "qwen/qwen3.8-27b",
+   "nome": "Qwen3.8 27B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.73,
+    "para": 0.3675,
+    "variacao_pct": -49.7,
+    "entrada_de": 0.24,
+    "entrada_para": 0.04,
+    "saida_de": 2.2,
+    "saida_para": 1.35,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.26,
+     "rank_7d": 48,
+     "pico_share": 0.322,
+     "semanas_com_volume": 9
+    },
+    "laboratorio": {
+     "share_tokens": 1.29,
+     "share_gasto": 0.47,
+     "lider": {
+      "slug": "qwen/qwen3.6-35b-a3b-20260415",
+      "nome": "Qwen3.6 35B A3B",
+      "share_7d": 0.5,
+      "preco_misto": 0.3125
+     }
+    }
+   },
+   "relevancia": 31
+  },
+  {
+   "tipo": "preco",
+   "slug": "nvidia/nemotron-3.5-super-vl-20261015",
+   "id": "nvidia/nemotron-3.5-super-vl",
+   "nome": "Nemotron 3.5 Super VL",
+   "lab": "NVIDIA",
+   "vendor": "nvidia",
+   "dados": {
+    "de": 0.175,
+    "para": 0.2375,
+    "variacao_pct": 35.7,
+    "entrada_de": 0.1,
+    "entrada_para": 0.15,
+    "saida_de": 0.4,
+    "saida_para": 0.5,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.68,
+     "rank_7d": 25,
+     "pico_share": 0.457,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 4.96,
+     "share_gasto": 0.0,
+     "lider": {
+      "slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+      "nome": "Nemotron 3 Ultra",
+      "share_7d": 2.75,
+      "preco_misto": 1.05
+     }
+    }
+   },
+   "relevancia": 29
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-3-4b-it",
+   "id": "google/gemma-3-4b-it",
+   "nome": "Gemma 3 4B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.0625,
+    "para": 0.0425,
+    "variacao_pct": -32.0,
+    "entrada_de": 0.05,
+    "entrada_para": 0.04,
+    "saida_de": 0.1,
+    "saida_para": 0.05,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.367,
+     "semanas_com_volume": 11
+    },
+    "laboratorio": {
+     "share_tokens": 3.78,
+     "share_gasto": 5.1,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 1.01,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.5-397b-a17b-20260216",
+   "id": "qwen/qwen3.5-397b-a17b",
+   "nome": "Qwen3.5 397B A17B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 1.275,
+    "para": 0.8775,
+    "variacao_pct": -31.2,
+    "entrada_de": 0.5,
+    "entrada_para": 0.39,
+    "saida_de": 3.6,
+    "saida_para": 2.34,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.671,
+     "semanas_com_volume": 15
+    },
+    "laboratorio": {
+     "share_tokens": 1.29,
+     "share_gasto": 0.47,
+     "lider": {
+      "slug": "qwen/qwen3.6-35b-a3b-20260415",
+      "nome": "Qwen3.6 35B A3B",
+      "share_7d": 0.5,
+      "preco_misto": 0.3125
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.6-35b-a3b-20260415",
+   "id": "qwen/qwen3.6-35b-a3b",
+   "nome": "Qwen3.6 35B A3B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.3625,
+    "para": 0.3125,
+    "variacao_pct": -13.8,
+    "entrada_de": 0.15,
+    "entrada_para": 0.1,
+    "saida_de": 1.0,
+    "saida_para": 0.95,
+    "desde": "2026-10-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.5,
+     "rank_7d": 33,
+     "pico_share": 0.501,
+     "semanas_com_volume": 5
+    },
+    "laboratorio": {
+     "share_tokens": 1.29,
+     "share_gasto": 0.47
+    }
+   },
+   "relevancia": 24
+  }
+ ]
+}
