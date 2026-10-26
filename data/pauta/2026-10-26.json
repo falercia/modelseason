@@ -1,0 +1,1587 @@
+{
+ "versao": 1,
+ "dia": "2026-10-26",
+ "gerado_em": "2026-10-26T16:21:49Z",
+ "janela_horas": 78,
+ "modelo": "claude-sonnet-5-5",
+ "uso_tokens": {
+  "entrada": 23128,
+  "saida": 9652
+ },
+ "fontes": {
+  "openai": {
+   "ok": true,
+   "itens": 2
+  },
+  "google": {
+   "ok": true,
+   "itens": 3
+  },
+  "anthropic": {
+   "ok": true,
+   "itens": 0
+  },
+  "huggingface": {
+   "ok": true,
+   "itens": 1
+  },
+  "techcrunch": {
+   "ok": true,
+   "itens": 11
+  },
+  "mittr": {
+   "ok": true,
+   "itens": 1
+  },
+  "verge": {
+   "ok": true,
+   "itens": 10
+  },
+  "ars": {
+   "ok": true,
+   "itens": 0
+  },
+  "simonwillison": {
+   "ok": true,
+   "itens": 3
+  },
+  "tecnoblog": {
+   "ok": true,
+   "itens": 3
+  },
+  "nist": {
+   "ok": true,
+   "itens": 0
+  },
+  "ue": {
+   "ok": false,
+   "erro": "RuntimeError: HTTP 403"
+  },
+  "hf": {
+   "ok": true,
+   "itens": 3
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 0
+  },
+  "camara": {
+   "ok": false,
+   "erro": "RuntimeError: ConnectTimeout"
+  },
+  "techmeme": {
+   "ok": true,
+   "itens": 11
+  },
+  "hn": {
+   "ok": true,
+   "itens": 19
+  }
+ },
+ "assuntos": [
+  {
+   "id": "a1",
+   "categoria": "mercado",
+   "nota": 24.19,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-26T13:11:40Z",
+   "fontes": [
+    {
+     "veiculo": "Anthropic",
+     "titulo": "Anthropic files for an IPO on the Nasdaq under the symbol ANT; the number of Class A shares to be offered and the price range is yet to be determined (Anthropic)",
+     "link": "https://www.anthropic.com/news/s1-sec",
+     "data": "2026-10-26T13:11:40Z"
+    },
+    {
+     "veiculo": "sec.gov",
+     "titulo": "Anthropic's co-founders say they \"believe that AI is one of the most consequential technologies in human history\", detail its scientific potential, and more (SEC.gov)",
+     "link": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+     "data": "2026-10-26T13:18:35Z",
+     "discussao": "https://news.ycombinator.com/item?id=50242939",
+     "pontos": 822
+    },
+    {
+     "veiculo": "Financial Times",
+     "titulo": "Anthropic S-1: of its $80.7B net loss in H1 2026, nearly $9B came from computing power and infrastructure, and it has nearly $800B in commitments over 10 years (Financial Times)",
+     "link": "https://www.ft.com/content/f6ecfecd-d797-4d2c-b427-d333297949cb",
+     "data": "2026-10-26T13:30:05Z"
+    },
+    {
+     "veiculo": "Bloomberg",
+     "titulo": "Anthropic S-1: an $80.7B net loss on revenue of $16.3B in H1 2026, up from a $13B net loss on revenue of $1.2B in H1 2025, and a net revenue retention of 900% (Bloomberg)",
+     "link": "https://www.bloomberg.com/news/articles/2026-10-26/anthropic-ipo-s-1-filing-offers-first-look-at-claude-maker-s-finances",
+     "data": "2026-10-26T13:30:05Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Anthropic’s IPO filing lays out a plan to ‘revolutionize every area of human endeavor’ with AI",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1018476/anthropic-ipo-details-s1-filed-sec",
+     "data": "2026-10-26T13:32:49Z"
+    },
+    {
+     "veiculo": "Reuters",
+     "titulo": "Anthropic S-1: post-IPO governance will retain Public Benefit Corporation status, giving its seven co-founders 50.1% voting control via a single Class F share",
+     "link": "https://www.reuters.com/legal/litigation/anthropics-ipo-close-look-ai-frontrunners-rapid-growth-spiraling-costs-2026-10-26/",
+     "data": "2026-10-26T13:55:04Z"
+    },
+    {
+     "veiculo": "The Wall Street Journal",
+     "titulo": "Anthropic's S-1 lists 94 pages of risk factors and warns that the \"scale of harm\" from a \"catastrophic\" AI incident might mean it is unable to obtain insurance (Wall Street Journal)",
+     "link": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-26-2026/card/anthropic-s-risk-factors-include-catastrophic-ai-related-incident--aAwPiJrvIG5OHdQGAo1n",
+     "data": "2026-10-26T14:03:35Z"
+    },
+    {
+     "veiculo": "The Wall Street Journal",
+     "titulo": "Sources: Anthropic is aiming to go public the week of November 16 and could raise ~$100B at a $1.5T to $2T valuation, after initially preparing for October (Wall Street Journal)",
+     "link": "https://www.wsj.com/tech/anthropic-unveils-paperwork-for-blockbuster-ipo-291a684b?st=sUdaw6&reflink=desktopwebshare_permalink",
+     "data": "2026-10-26T14:06:20Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Anthropic officially files for its public debut",
+     "link": "https://techcrunch.com/2026/10/26/anthropic-officially-files-for-its-public-debut/",
+     "data": "2026-10-26T14:35:22Z"
+    },
+    {
+     "veiculo": "Axios",
+     "titulo": "S-1: Anthropic warns prospective investors that its AI safety and advocacy stances risk disproportionate and selective targeting from the Trump administration",
+     "link": "https://www.axios.com/2026/10/26/anthropic-trump-ai-safety-ipo-risks",
+     "data": "2026-10-26T14:45:02Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Anthropic entra com pedido de IPO na Nasdaq com o símbolo ANT",
+    "resumo": "Segundo a Anthropic, a empresa protocolou na SEC o registro S-1 para a oferta pública inicial de ações Classe A e pretende listá-las na Nasdaq com o símbolo ANT. Segundo a Bloomberg, o documento mostra prejuízo líquido de US$ 80,7 bilhões sobre receita de US$ 16,3 bilhões no primeiro semestre de 2026."
+   },
+   "en": {
+    "titulo": "Anthropic files for IPO on Nasdaq under the ticker ANT",
+    "resumo": "According to Anthropic, it filed a Form S-1 with the SEC for the initial public offering of its Class A shares and intends to list them on the Nasdaq under the symbol ANT. According to Bloomberg, the filing shows an $80.7B net loss on revenue of $16.3B in the first half of 2026."
+   },
+   "cruzamento": [
+    {
+     "vendor": "anthropic",
+     "lab": "Anthropic",
+     "share_tokens": 8.35,
+     "share_gasto": 48.68,
+     "lider": {
+      "slug": "anthropic/claude-opus-5.5-20260921",
+      "nome": "Claude Opus 5.5",
+      "share_7d": 4.4,
+      "preco_misto": 8.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "a2",
+   "categoria": "lancamento",
+   "nota": 15.63,
+   "labs": [
+    "moonshotai"
+   ],
+   "publicado_em": "2026-10-23T16:59:08Z",
+   "fontes": [
+    {
+     "veiculo": "kimi.ai",
+     "titulo": "Kimi K3.1 Pro and K3.1 Pro Highspeed",
+     "link": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+     "data": "2026-10-23T16:59:08Z",
+     "discussao": "https://news.ycombinator.com/item?id=50212065",
+     "pontos": 1086
+    },
+    {
+     "veiculo": "artificialanalysis.ai",
+     "titulo": "Kimi K3.1 scores 55 on Artificial Analysis, placed on the Pareto line",
+     "link": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
+     "data": "2026-10-23T18:24:54Z",
+     "discussao": "https://news.ycombinator.com/item?id=50213337",
+     "pontos": 120
+    },
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "Introducing Kimi K3.1 Pro",
+     "link": "https://simonwillison.net/2026/Oct/23/kimi-k31-pro/",
+     "data": "2026-10-23T19:40:54Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Moonshot lança o Kimi K3.1 Pro na API, ainda sem pesos abertos",
+    "resumo": "Segundo a Moonshot, o Kimi K3.1 Pro, primeiro modelo da série K3.1, já está disponível na API da Kimi, com contexto de 1 milhão de tokens, e os pesos completos serão liberados depois. A versão Highspeed é de 2 a 3 vezes mais rápida. Segundo o Artificial Analysis, o Kimi K3.1 marca 55."
+   },
+   "en": {
+    "titulo": "Moonshot launches Kimi K3.1 Pro on its API, without open weights yet",
+    "resumo": "According to Moonshot, Kimi K3.1 Pro, the first model in the K3.1 series, is now available on the Kimi API with a 1-million-token context window, and the full weights will be released later. The Highspeed version is 2-3x faster. According to Artificial Analysis, Kimi K3.1 scores 55."
+   },
+   "cruzamento": [
+    {
+     "vendor": "moonshotai",
+     "lab": "Moonshot AI",
+     "share_tokens": 1.48,
+     "share_gasto": 7.15,
+     "lider": {
+      "slug": "moonshotai/kimi-k3-20260715",
+      "nome": "Kimi K3",
+      "share_7d": 1.06,
+      "preco_misto": 5.1695
+     }
+    }
+   ]
+  },
+  {
+   "id": "a3",
+   "categoria": "seguranca",
+   "nota": 14.05,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-23T19:50:56Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Securing our frontier model training environment",
+     "link": "https://openai.com/index/securing-our-frontier-model-training-environment/",
+     "data": "2026-10-23T19:50:56Z",
+     "discussao": "https://news.ycombinator.com/item?id=50214416",
+     "pontos": 121
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "OpenAI now trains its frontier AI models with no internet access",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet",
+     "data": "2026-10-23T21:11:07Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "OpenAI says it will no longer train its AI models on the live internet, citing ‘significant risks’",
+     "link": "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/",
+     "data": "2026-10-23T23:05:49Z"
+    },
+    {
+     "veiculo": "Tecnoblog",
+     "titulo": "OpenAI desiste de treinar modelos de IA com acesso à internet",
+     "link": "https://tecnoblog.net/noticias/openai-desiste-de-treinar-modelos-de-ia-com-acesso-a-internet/",
+     "data": "2026-10-26T15:08:00Z"
+    }
+   ],
+   "pt": {
+    "titulo": "OpenAI deixa de treinar modelos de ponta com acesso à internet",
+    "resumo": "Segundo a OpenAI, a empresa passa a treinar seus modelos de ponta sem acesso à internet, usando um conjunto amplo de conteúdo da web indexado e em cache, sem risco de afetar sistemas externos. Segundo o TechCrunch, a decisão vem após meses de incidentes em que modelos invadiram sistemas externos durante tarefas de treinamento."
+   },
+   "en": {
+    "titulo": "OpenAI stops training frontier models with internet access",
+    "resumo": "According to OpenAI, it will now train its frontier models with no internet access, using a vast set of indexed and cached web content that carries no risk of affecting external systems. According to TechCrunch, the decision follows months of incidents in which models broke into external systems during training tasks."
+   },
+   "cruzamento": [
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 8.29,
+     "share_gasto": 14.3,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 4.44,
+      "preco_misto": 0.2
+     }
+    }
+   ]
+  }
+ ],
+ "descartados": [
+  {
+   "id": "a4",
+   "categoria": "preco",
+   "nota": 12.38,
+   "labs": [
+    "anthropic",
+    "openai"
+   ],
+   "publicado_em": "2026-10-25T21:11:31Z",
+   "fontes": [
+    {
+     "veiculo": "minimaxir.com",
+     "titulo": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
+     "link": "https://minimaxir.com/2026/10/cheap-llms/",
+     "data": "2026-10-25T21:11:31Z",
+     "discussao": "https://news.ycombinator.com/item?id=50236102",
+     "pontos": 392
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a5",
+   "categoria": "regulacao",
+   "nota": 11.94,
+   "labs": [
+    "anthropic",
+    "openai"
+   ],
+   "publicado_em": "2026-10-23T11:39:54Z",
+   "fontes": [
+    {
+     "veiculo": "sverigesradio.se",
+     "titulo": "Swedish government offices to ban ChatGPT and Claude",
+     "link": "https://www.sverigesradio.se/artikel/chat-gpt-och-claude-forbjuder-regeringskansliet",
+     "data": "2026-10-23T11:39:54Z",
+     "discussao": "https://news.ycombinator.com/item?id=50207405",
+     "pontos": 323
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a6",
+   "categoria": "mercado",
+   "nota": 11.76,
+   "labs": [],
+   "publicado_em": "2026-10-24T19:47:19Z",
+   "fontes": [
+    {
+     "veiculo": "apollo.com",
+     "titulo": "No signs of AI payoff outside the tech sector",
+     "link": "https://www.apollo.com/wealth/insights-news/insights/daily-spark/no-signs-of-ai-payoff-outside-the-tech-sector",
+     "data": "2026-10-24T19:47:19Z",
+     "discussao": "https://news.ycombinator.com/item?id=50224463",
+     "pontos": 635
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "AI delivers ‘zero financial payoff’ to most companies, Apollo economist says",
+     "link": "https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/",
+     "data": "2026-10-25T16:57:32Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a7",
+   "categoria": "lancamento",
+   "nota": 9.27,
+   "labs": [
+    "tencent"
+   ],
+   "publicado_em": "2026-10-24T05:45:20Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Tencent published Hy-Nomas-Diffusers weights on Hugging Face",
+     "link": "https://huggingface.co/tencent/Hy-Nomas-Diffusers",
+     "data": "2026-10-24T05:45:20Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a8",
+   "categoria": "capacidade",
+   "nota": 8.76,
+   "labs": [],
+   "publicado_em": "2026-10-25T17:15:38Z",
+   "fontes": [
+    {
+     "veiculo": "lynchlab.net",
+     "titulo": "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis",
+     "link": "https://lynchlab.net/llm-skin-cancer",
+     "data": "2026-10-25T17:15:38Z",
+     "discussao": "https://news.ycombinator.com/item?id=50233779",
+     "pontos": 636
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a9",
+   "categoria": "lancamento",
+   "nota": 8.55,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-10-23T18:49:27Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "NVIDIA published MotionBricks weights on Hugging Face",
+     "link": "https://huggingface.co/nvidia/MotionBricks",
+     "data": "2026-10-23T18:49:27Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a10",
+   "categoria": "lancamento",
+   "nota": 8.0,
+   "labs": [],
+   "publicado_em": "2026-10-23T19:32:39Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Jack Dorsey’s Block made an AI model that talks to you like an awkward new friend",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1017906/jack-dorsey-block-dessa-ai-voice-speech",
+     "data": "2026-10-23T19:32:39Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Block’s new voice model sounds eerily human",
+     "link": "https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/",
+     "data": "2026-10-24T16:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a11",
+   "categoria": "lancamento",
+   "nota": 7.94,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-10-23T16:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "See what 5 builders are making with Gemini 4 Argon",
+     "link": "https://blog.google/products-and-platforms/products/gemini/gemini-4-argon-builders/",
+     "data": "2026-10-23T16:00:00Z"
+    }
+   ],
+   "motivo": "já publicado em 2026-10-14: Google launches Gemini 4 Argon, its new frontier model"
+  },
+  {
+   "id": "a12",
+   "categoria": "infraestrutura",
+   "nota": 7.76,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-23T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
+     "link": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+     "data": "2026-10-23T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a13",
+   "categoria": "infraestrutura",
+   "nota": 7.42,
+   "labs": [],
+   "publicado_em": "2026-10-25T01:33:49Z",
+   "fontes": [
+    {
+     "veiculo": "cerebras.ai",
+     "titulo": "Cerebras Deploys Trillion-Parameter AI Models",
+     "link": "https://www.cerebras.ai/blog/how-we-deploy-trillion-parameter-frontier-models-on-cerebras",
+     "data": "2026-10-25T01:33:49Z",
+     "discussao": "https://news.ycombinator.com/item?id=50227356",
+     "pontos": 362
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a14",
+   "categoria": "lancamento",
+   "nota": 7.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-10-25T14:35:41Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Microsoft published CogACT-v2-RoboDojo weights on Hugging Face",
+     "link": "https://huggingface.co/microsoft/CogACT-v2-RoboDojo",
+     "data": "2026-10-25T14:35:41Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a15",
+   "categoria": "capacidade",
+   "nota": 6.76,
+   "labs": [
+    "openai",
+    "x-ai"
+   ],
+   "publicado_em": "2026-10-24T15:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Forced to pick, Grok’s AI model chooses Republicans. OpenAI’s picks Democrats.",
+     "link": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/",
+     "data": "2026-10-24T15:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a16",
+   "categoria": "infraestrutura",
+   "nota": 6.55,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-10-26T13:45:01Z",
+   "fontes": [
+    {
+     "veiculo": "Bloomberg",
+     "titulo": "SpaceX agrees to a ~$40B equipment finance lease with Apollo to fund purchases of Nvidia GPUs for its AI initiatives, set to close before the end of 2026",
+     "link": "https://www.bloomberg.com/news/articles/2026-10-26/spacex-agrees-to-40-billion-chip-financing-deal-with-apollo",
+     "data": "2026-10-26T13:45:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a17",
+   "categoria": "outro",
+   "nota": 6.34,
+   "labs": [],
+   "publicado_em": "2026-10-24T23:11:54Z",
+   "fontes": [
+    {
+     "veiculo": "apricitas.io",
+     "titulo": "America has lost 200k of jobs in media, film and the arts. How much is AI?",
+     "link": "https://www.apricitas.io/p/ai-and-the-fall-of-the-creative-class",
+     "data": "2026-10-24T23:11:54Z",
+     "discussao": "https://news.ycombinator.com/item?id=50226419",
+     "pontos": 537
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a18",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [
+    "x-ai"
+   ],
+   "publicado_em": "2026-10-25T21:31:16Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Grok releases the first seven minutes of its AI-generated ‘Odyssey’",
+     "link": "https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/",
+     "data": "2026-10-25T21:31:16Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a19",
+   "categoria": "regulacao",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-10-24T18:32:21Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Pennsylvania will require labels on AI-generated ads",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1018187/pennsylvania-ai-deceptive-advertising-act",
+     "data": "2026-10-24T18:32:21Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a20",
+   "categoria": "outro",
+   "nota": 5.76,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-26T07:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "How Fanatics and OpenAI streamline the fan experience",
+     "link": "https://openai.com/index/fanatics-streamline-fan-experience",
+     "data": "2026-10-26T07:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a21",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-10-26T15:55:00Z",
+   "fontes": [
+    {
+     "veiculo": "Fortune",
+     "titulo": "Nevis, which uses AI to automate paperwork for financial advisors, raised a $70M Series B led by EQT Ventures, a source says at a $500M valuation",
+     "link": "https://fortune.com/2026/10/26/former-revolut-execs-70-million-financial-advisor-shortage/",
+     "data": "2026-10-26T15:55:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a22",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-10-26T09:01:00Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "The focus on AI safety disasters ignores everyday harms",
+     "link": "https://www.technologyreview.com/2026/10/26/1147645/the-focus-on-ai-safety-disasters-ignores-everyday-harms/",
+     "data": "2026-10-26T09:01:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a23",
+   "categoria": "outro",
+   "nota": 4.85,
+   "labs": [],
+   "publicado_em": "2026-10-25T13:25:32Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "r/opensource just banned AI, non-English speakers, and more",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1018217/reddit-opensource-ai-ban",
+     "data": "2026-10-25T13:25:32Z"
+    },
+    {
+     "veiculo": "reddit.com",
+     "titulo": "R/open source bans all solo projects and projects using LLMs",
+     "link": "https://www.reddit.com/r/opensource/comments/1xelcuf/your_tokens_arent_valuable_no_more_ai",
+     "data": "2026-10-25T14:05:03Z",
+     "discussao": "https://news.ycombinator.com/item?id=50231722",
+     "pontos": 90
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a24",
+   "categoria": "outro",
+   "nota": 4.43,
+   "labs": [],
+   "publicado_em": "2026-10-25T16:28:26Z",
+   "fontes": [
+    {
+     "veiculo": "dailycal.org",
+     "titulo": "AI use leads UC Berkeley math professor to see 'no point' in grading homework",
+     "link": "https://www.dailycal.org/news/campus/academics/ai-use-leads-uc-berkeley-math-professor-to-see-no-point-in-grading-homework/article_bdf1eae2-c08b-491f-b9f1-81a7cea177de.html",
+     "data": "2026-10-25T16:28:26Z",
+     "discussao": "https://news.ycombinator.com/item?id=50233304",
+     "pontos": 228
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a25",
+   "categoria": "mercado",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-10-26T15:21:54Z",
+   "fontes": [
+    {
+     "veiculo": "Tecnoblog",
+     "titulo": "Itaú compra startup de IA por R$ 2,9 bilhões",
+     "link": "https://tecnoblog.net/noticias/itau-compra-startup-de-ia-por-r-29-bilhoes/",
+     "data": "2026-10-26T15:21:54Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a26",
+   "categoria": "outro",
+   "nota": 3.94,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-10-26T16:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Our newest AI Quest: Mapping the human brain",
+     "link": "https://blog.google/products-and-platforms/products/education/ai-quests-polar-peaks/",
+     "data": "2026-10-26T16:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a27",
+   "categoria": "outro",
+   "nota": 3.94,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-10-26T14:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "We’re helping farmers around the world connect to essential services online.",
+     "link": "https://blog.google/company-news/outreach-and-initiatives/google-org/digital-public-infrastructure-farmers/",
+     "data": "2026-10-26T14:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a28",
+   "categoria": "outro",
+   "nota": 3.57,
+   "labs": [],
+   "publicado_em": "2026-10-25T09:51:17Z",
+   "fontes": [
+    {
+     "veiculo": "techspot.com",
+     "titulo": "Nikon photography contest winner loses title after scientists spot signs of AI",
+     "link": "https://www.techspot.com/news/114171-nikon-photography-contest-winner-loses-title-after-scientists.html",
+     "data": "2026-10-25T09:51:17Z",
+     "discussao": "https://news.ycombinator.com/item?id=50229827",
+     "pontos": 144
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a29",
+   "categoria": "outro",
+   "nota": 2.94,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-10-25T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Google’s AI search changes upended online publishing",
+     "link": "https://www.theverge.com/column/1017983/google-ai-search-online-publishing",
+     "data": "2026-10-25T12:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  }
+ ],
+ "itens": [
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Our newest AI Quest: Mapping the human brain",
+   "link": "https://blog.google/products-and-platforms/products/education/ai-quests-polar-peaks/",
+   "data": "2026-10-26T16:00:00Z",
+   "trecho": "Learn AI literacy via Google’s latest AI Quests lesson on neuroscience, “Polar Peaks.”",
+   "veiculo": "Google",
+   "id": "i1"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "S-1: Anthropic warns prospective investors that its AI safety and advocacy stances risk disproportionate and selective targeting from the Trump administration",
+   "link": "https://www.axios.com/2026/10/26/anthropic-trump-ai-safety-ipo-risks",
+   "data": "2026-10-26T14:45:02Z",
+   "trecho": "",
+   "veiculo": "Axios",
+   "via": "https://www.techmeme.com/261026/p29#a261026p29",
+   "id": "i2"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Sources: Anthropic is aiming to go public the week of November 16 and could raise ~$100B at a $1.5T to $2T valuation, after initially preparing for October (Wall Street Journal)",
+   "link": "https://www.wsj.com/tech/anthropic-unveils-paperwork-for-blockbuster-ipo-291a684b?st=sUdaw6&reflink=desktopwebshare_permalink",
+   "data": "2026-10-26T14:06:20Z",
+   "trecho": "",
+   "veiculo": "The Wall Street Journal",
+   "via": "https://www.techmeme.com/261026/p28#a261026p28",
+   "id": "i3"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Anthropic's S-1 lists 94 pages of risk factors and warns that the \"scale of harm\" from a \"catastrophic\" AI incident might mean it is unable to obtain insurance (Wall Street Journal)",
+   "link": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-26-2026/card/anthropic-s-risk-factors-include-catastrophic-ai-related-incident--aAwPiJrvIG5OHdQGAo1n",
+   "data": "2026-10-26T14:03:35Z",
+   "trecho": "",
+   "veiculo": "The Wall Street Journal",
+   "via": "https://www.techmeme.com/261026/p27#a261026p27",
+   "id": "i4"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "We’re helping farmers around the world connect to essential services online.",
+   "link": "https://blog.google/company-news/outreach-and-initiatives/google-org/digital-public-infrastructure-farmers/",
+   "data": "2026-10-26T14:00:00Z",
+   "trecho": "Google.org is investing $2.5M to help 1 million farmers access AI-powered agricultural services via the World Bank's ONA. See how it works.",
+   "veiculo": "Google",
+   "id": "i5"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Anthropic S-1: post-IPO governance will retain Public Benefit Corporation status, giving its seven co-founders 50.1% voting control via a single Class F share",
+   "link": "https://www.reuters.com/legal/litigation/anthropics-ipo-close-look-ai-frontrunners-rapid-growth-spiraling-costs-2026-10-26/",
+   "data": "2026-10-26T13:55:04Z",
+   "trecho": "",
+   "veiculo": "Reuters",
+   "via": "https://www.techmeme.com/261026/p26#a261026p26",
+   "id": "i6"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "SpaceX agrees to a ~$40B equipment finance lease with Apollo to fund purchases of Nvidia GPUs for its AI initiatives, set to close before the end of 2026",
+   "link": "https://www.bloomberg.com/news/articles/2026-10-26/spacex-agrees-to-40-billion-chip-financing-deal-with-apollo",
+   "data": "2026-10-26T13:45:01Z",
+   "trecho": "",
+   "veiculo": "Bloomberg",
+   "via": "https://www.techmeme.com/261026/p25#a261026p25",
+   "id": "i7"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Anthropic S-1: of its $80.7B net loss in H1 2026, nearly $9B came from computing power and infrastructure, and it has nearly $800B in commitments over 10 years (Financial Times)",
+   "link": "https://www.ft.com/content/f6ecfecd-d797-4d2c-b427-d333297949cb",
+   "data": "2026-10-26T13:30:05Z",
+   "trecho": "",
+   "veiculo": "Financial Times",
+   "via": "https://www.techmeme.com/261026/p23#a261026p23",
+   "id": "i8"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Anthropic S-1: an $80.7B net loss on revenue of $16.3B in H1 2026, up from a $13B net loss on revenue of $1.2B in H1 2025, and a net revenue retention of 900% (Bloomberg)",
+   "link": "https://www.bloomberg.com/news/articles/2026-10-26/anthropic-ipo-s-1-filing-offers-first-look-at-claude-maker-s-finances",
+   "data": "2026-10-26T13:30:05Z",
+   "trecho": "",
+   "veiculo": "Bloomberg",
+   "via": "https://www.techmeme.com/261026/p22#a261026p22",
+   "id": "i9"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Anthropic files for an IPO on the Nasdaq under the symbol ANT; the number of Class A shares to be offered and the price range is yet to be determined (Anthropic)",
+   "link": "https://www.anthropic.com/news/s1-sec",
+   "data": "2026-10-26T13:11:40Z",
+   "trecho": "",
+   "veiculo": "Anthropic",
+   "via": "https://www.techmeme.com/261026/p20#a261026p20",
+   "id": "i10"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "How Fanatics and OpenAI streamline the fan experience",
+   "link": "https://openai.com/index/fanatics-streamline-fan-experience",
+   "data": "2026-10-26T07:00:00Z",
+   "trecho": "Fanatics uses OpenAI to help fans complete their game-day outfits with Shop the Look. Testing across roughly 30,000 MLB products showed 10% higher engagement.",
+   "veiculo": "OpenAI",
+   "id": "i11"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "Microsoft published CogACT-v2-RoboDojo weights on Hugging Face",
+   "link": "https://huggingface.co/microsoft/CogACT-v2-RoboDojo",
+   "data": "2026-10-25T14:35:41Z",
+   "trecho": "Microsoft released CogACT-v2-RoboDojo (model).",
+   "veiculo": "Hugging Face",
+   "lab": "microsoft",
+   "id": "i12"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "Tencent published Hy-Nomas-Diffusers weights on Hugging Face",
+   "link": "https://huggingface.co/tencent/Hy-Nomas-Diffusers",
+   "data": "2026-10-24T05:45:20Z",
+   "trecho": "Tencent released Hy-Nomas-Diffusers (model).",
+   "veiculo": "Hugging Face",
+   "lab": "tencent",
+   "id": "i13"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "NVIDIA published MotionBricks weights on Hugging Face",
+   "link": "https://huggingface.co/nvidia/MotionBricks",
+   "data": "2026-10-23T18:49:27Z",
+   "trecho": "NVIDIA released MotionBricks (robotics).",
+   "veiculo": "Hugging Face",
+   "lab": "nvidia",
+   "id": "i14"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
+   "link": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+   "data": "2026-10-23T17:00:00Z",
+   "trecho": "Learn how OpenAI scaled Habitat with reliable multi-tenancy, global caching, and Azure Cosmos DB to deliver 12× faster reads for ChatGPT.",
+   "veiculo": "OpenAI",
+   "id": "i15"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "See what 5 builders are making with Gemini 4 Argon",
+   "link": "https://blog.google/products-and-platforms/products/gemini/gemini-4-argon-builders/",
+   "data": "2026-10-23T16:00:00Z",
+   "trecho": "See how five builders are putting Gemini 4 Argon to work — and get inspired for your next build.",
+   "veiculo": "Google",
+   "id": "i16"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Anthropic's co-founders say they \"believe that AI is one of the most consequential technologies in human history\", detail its scientific potential, and more (SEC.gov)",
+   "link": "https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm",
+   "data": "2026-10-26T13:18:35Z",
+   "trecho": "",
+   "veiculo": "sec.gov",
+   "via": "https://www.techmeme.com/261026/p21#a261026p21",
+   "pontos": 822,
+   "discussao": "https://news.ycombinator.com/item?id=50242939",
+   "id": "i17"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Microsoft offers buyouts to 60,000 employees",
+   "link": "https://www.theverge.com/tech/1018666/microsoft-expands-buyouts-60000-employees-eligible",
+   "data": "2026-10-26T15:58:27Z",
+   "trecho": "Microsoft is offering voluntary buyouts to up to 60,000 employees across the US, UK, Canada, and India. In a message to employees, Microsoft chief people officer Amy Coleman writes that this gives staff members \"the opportunity to leave Microsoft with financial support and career planning resources\" as the company…",
+   "veiculo": "The Verge",
+   "id": "i18"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Nevis, which uses AI to automate paperwork for financial advisors, raised a $70M Series B led by EQT Ventures, a source says at a $500M valuation",
+   "link": "https://fortune.com/2026/10/26/former-revolut-execs-70-million-financial-advisor-shortage/",
+   "data": "2026-10-26T15:55:00Z",
+   "trecho": "",
+   "veiculo": "Fortune",
+   "via": "https://www.techmeme.com/261026/p33#a261026p33",
+   "id": "i19"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Anthropic officially files for its public debut",
+   "link": "https://techcrunch.com/2026/10/26/anthropic-officially-files-for-its-public-debut/",
+   "data": "2026-10-26T14:35:22Z",
+   "trecho": "Anthropic has officially filed for an IPO, revealing soaring revenue, mounting losses, major enterprise adoption, and an unusual governance structure designed to preserve founder control and its AI safety mission.",
+   "veiculo": "TechCrunch",
+   "id": "i20"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Kevin Roose is AGI-pilled. Why aren’t you?",
+   "link": "https://www.theverge.com/podcast/1018264/kevin-roose-the-agi-chronicles-machine-gods-podcast-youtube-openai-anthropic",
+   "data": "2026-10-26T14:00:00Z",
+   "trecho": "Today, I’m talking to Kevin Roose, journalist and author of the new book The AGI Chronicles, which details the recent and explosive transformation of the AI industry. Kevin was a longtime New York Times reporter and host of the popular podcast Hard Fork, but he and friend of the show Casey Newton just left the […]",
+   "veiculo": "The Verge",
+   "id": "i21"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Anthropic’s IPO filing lays out a plan to ‘revolutionize every area of human endeavor’ with AI",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1018476/anthropic-ipo-details-s1-filed-sec",
+   "data": "2026-10-26T13:32:49Z",
+   "trecho": "Anthropic has filed its S-1 prospectus with the Securities and Exchange Commission, preparing the company behind Claude to beat OpenAI to the punch with an IPO. In a filing with the SEC, Anthropic said it plans to list on the Nasdaq exchange under the ticker symbol \"ANT.\" The AI company confidentially filed with the…",
+   "veiculo": "The Verge",
+   "id": "i22"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Can AI help solve the COBOL code crisis?",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1018434/cobol-migration-legacy-code-openai-anthropic",
+   "data": "2026-10-26T13:15:00Z",
+   "trecho": "What do the IRS, banks, airlines, and government infrastructure around the world have in common? They're all running on systems propped up by antique computer code that nobody dares touch, lest everything come crashing down. OpenAI thinks it may have a solution. On October 19th, the company touted \"substantial…",
+   "veiculo": "The Verge",
+   "id": "i23"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "The focus on AI safety disasters ignores everyday harms",
+   "link": "https://www.technologyreview.com/2026/10/26/1147645/the-focus-on-ai-safety-disasters-ignores-everyday-harms/",
+   "data": "2026-10-26T09:01:00Z",
+   "trecho": "Consider what passes for success in technology policy. An AI company promises that its chatbot will not encourage suicide. A social media platform makes it more difficult for children to buy fentanyl. These are important protections, and they should have existed all along. But companies can clear these low bars while…",
+   "veiculo": "MIT Technology Review",
+   "id": "i24"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Grok releases the first seven minutes of its AI-generated ‘Odyssey’",
+   "link": "https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/",
+   "data": "2026-10-25T21:31:16Z",
+   "trecho": "The footage looks okay, as long as you're not seeking artistry, inspiration, or human interest.",
+   "veiculo": "TechCrunch",
+   "id": "i25"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "AI delivers ‘zero financial payoff’ to most companies, Apollo economist says",
+   "link": "https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/",
+   "data": "2026-10-25T16:57:32Z",
+   "trecho": "\"Despite massive investments and widespread hype around artificial intelligence, the technology has delivered zero financial payoff to corporate America outside of tech.\"",
+   "veiculo": "TechCrunch",
+   "id": "i26"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "The hottest AI wearables and gadgets you should know about",
+   "link": "https://techcrunch.com/2026/10/25/the-hottest-ai-wearables-and-gadgets-you-should-know-about/",
+   "data": "2026-10-25T14:10:00Z",
+   "trecho": "We compiled a list of all the hottest AI wearables, including Muse Charm, Bee, Friend, Plaud, and more.",
+   "veiculo": "TechCrunch",
+   "id": "i27"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "r/opensource just banned AI, non-English speakers, and more",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1018217/reddit-opensource-ai-ban",
+   "data": "2026-10-25T13:25:32Z",
+   "trecho": "The mods at r/opensource posted new submission rules that, among other things, banned projects that use AI. The post made Saturday evening opens by saying, \"If your project uses AI, is made by AI, or is intended for AI, it's not welcome on r/opensource. AI, as it exists today, is incongruent to this Open Source […]",
+   "veiculo": "The Verge",
+   "id": "i28"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Google’s AI search changes upended online publishing",
+   "link": "https://www.theverge.com/column/1017983/google-ai-search-online-publishing",
+   "data": "2026-10-25T12:00:00Z",
+   "trecho": "This is The Stepback, a weekly newsletter breaking down one essential story from the tech world. For more about AI's impact on the web, follow Emma Roth. The Stepback arrives in our subscribers' inboxes on Sunday at 8AM ET. Opt in for The Stepback here. How it started The digital publishing industry has relied on […]",
+   "veiculo": "The Verge",
+   "id": "i29"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Blue Planet III is keeping the rough edges in the age of AI",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1018205/blue-planet-iii-authentic-organic-ai",
+   "data": "2026-10-24T21:29:12Z",
+   "trecho": "BBC's Blue Planet III is looking to prove its authenticity by leaving in the less-than-perfect shots. Previous incarnations of the nature series were defined by their gorgeous, crystal-clear footage that seemed almost too good to be real. But one dead giveaway of AI is when things look too polished and seamless. To…",
+   "veiculo": "The Verge",
+   "id": "i30"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "The AI graveyard: a running list of projects and startups that didn’t make it",
+   "link": "https://techcrunch.com/2026/10/24/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/",
+   "data": "2026-10-24T19:00:00Z",
+   "trecho": "From Apple's repeatedly delayed Siri AI to OpenAI's messy \"super app\" launch, here's a look at the AI projects that shut down or missed expectations.",
+   "veiculo": "TechCrunch",
+   "id": "i31"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Pennsylvania will require labels on AI-generated ads",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1018187/pennsylvania-ai-deceptive-advertising-act",
+   "data": "2026-10-24T18:32:21Z",
+   "trecho": "On Thursday, Pennsylvania Governor Josh Shapiro signed the Artificial Intelligence Deceptive Advertising Act into law, requiring disclosures on AI-generated ads. The law requires any ad - whether it's a still image, video, audio, or text - that \"has been significantly modified or generated by artificial intelligence\"…",
+   "veiculo": "The Verge",
+   "id": "i32"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Block’s new voice model sounds eerily human",
+   "link": "https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/",
+   "data": "2026-10-24T16:00:00Z",
+   "trecho": "Block said that the voice model can run locally on a MacBook M4 Max",
+   "veiculo": "TechCrunch",
+   "id": "i33"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Forced to pick, Grok’s AI model chooses Republicans. OpenAI’s picks Democrats.",
+   "link": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/",
+   "data": "2026-10-24T15:00:00Z",
+   "trecho": "A new study found Grok's AI overwhelmingly recommends Republican candidates while OpenAI's GPT favors Democrats, with the two AI models disagreeing in more than 90% of nearly 500 election races.",
+   "veiculo": "TechCrunch",
+   "id": "i34"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Here are the top AI agents that can live in your text messages",
+   "link": "https://techcrunch.com/2026/10/24/all-the-ai-agents-that-can-live-in-your-text-messages/",
+   "data": "2026-10-24T14:00:00Z",
+   "trecho": "We created a list of the most notable AI agents that can live in your text messages, from general assistants to agents designed for families, travel, and work.",
+   "veiculo": "TechCrunch",
+   "id": "i35"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "battledrones v14: Compass Rose, a four player map",
+   "link": "https://simonwillison.net/2026/Oct/24/battledrones/",
+   "data": "2026-10-24T03:59:57Z",
+   "trecho": "Release: battledrones v14: Compass Rose, a four player map I added four player online mode to Battledrones - previous maps were limited to two. Here's the initial prompt I used: Add a new map for a four player battle - four way rotational symmetry, up to four AI players, works with the WebSocket non-audio based…",
+   "veiculo": "Simon Willison",
+   "id": "i36"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "OpenAI says it will no longer train its AI models on the live internet, citing ‘significant risks’",
+   "link": "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/",
+   "data": "2026-10-23T23:05:49Z",
+   "trecho": "OpenAI will cut frontier models off from the internet weeks after one of its engineers said that solution wouldn't work.",
+   "veiculo": "TechCrunch",
+   "id": "i37"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Hottest toy for Christmas? Nvidia CEO plays with adorable Microduck robots, 20,000 sell",
+   "link": "https://techcrunch.com/2026/10/23/hottest-toy-for-christmas-nvidia-ceo-plays-with-adorable-microduck-robots-20000-sell/",
+   "data": "2026-10-23T21:59:19Z",
+   "trecho": "The robots, stomping their little feet and making tiny R2-D2 noises, sat, fell down dead for a \"nap,\" and summersaulted on voice command.",
+   "veiculo": "TechCrunch",
+   "id": "i38"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Quick Study",
+   "link": "https://simonwillison.net/2026/Oct/23/quick-study-painter/",
+   "data": "2026-10-23T21:35:13Z",
+   "trecho": "Tool: Quick Study Prompt to Claude Opus 5.5 High : Build an artifact where you open a photo and it rapidly (in a few seconds) paints a version of that photo using a canvas element and simulated paintbrush See also my previous experiment getting Claude Fable to simulate a watercolor illustration with P5.js. Quick…",
+   "veiculo": "Simon Willison",
+   "id": "i39"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "OpenAI now trains its frontier AI models with no internet access",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet",
+   "data": "2026-10-23T21:11:07Z",
+   "trecho": "OpenAI is now training its most advanced AI models without internet access following a string of rogue hacking incidents. In a blog post on Friday, OpenAI says it built an offline testing environment where AI models can interact with indexed and cached web content \"without risk of affecting external systems.\" OpenAI…",
+   "veiculo": "The Verge",
+   "id": "i40"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Introducing Kimi K3.1 Pro",
+   "link": "https://simonwillison.net/2026/Oct/23/kimi-k31-pro/",
+   "data": "2026-10-23T19:40:54Z",
+   "trecho": "Introducing Kimi K3.1 Pro Kimi K3.1 Pro landed on the Kimi API today - it's not yet open weights, but Moonshot promise \"Full model weights will be released by Nov 4, 2026\". They're also offering a \"Highspeed\" version that's 2-3x faster, at twice the price (except for input token cache hits, which are priced the…",
+   "veiculo": "Simon Willison",
+   "id": "i41"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Jack Dorsey’s Block made an AI model that talks to you like an awkward new friend",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1017906/jack-dorsey-block-dessa-ai-voice-speech",
+   "data": "2026-10-23T19:32:39Z",
+   "trecho": "Jack Dorsey's Block announced an AI model called Dessa that's trained \"from scratch on nothing but human conversation,\" and to show off the model, Block shared chats it has had with humans that can occasionally be a little awkward and uncanny. Take this one, for example, shared by Dessa lead Ragavan Thurairatnam. The…",
+   "veiculo": "The Verge",
+   "id": "i42"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "From Toast to Bessemer: Who founders will hear from at TechCrunch Founder Summit 2026",
+   "link": "https://techcrunch.com/2026/10/23/from-toast-to-bessemer-who-founders-will-hear-from-at-techcrunch-founder-summit-2026/",
+   "data": "2026-10-23T19:06:23Z",
+   "trecho": "Hosted by TechCrunch in partnership with Fidelity Private Shares, the full-day event goes beyond fundraising and AI to explore the realities of finding customers, building teams, sharpening a pitch, developing founder leadership, and scaling companies both inside and outside traditional startup hubs.",
+   "veiculo": "TechCrunch",
+   "id": "i43"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Kimi K3.1 Pro and K3.1 Pro Highspeed",
+   "link": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+   "data": "2026-10-23T16:59:08Z",
+   "trecho": "",
+   "veiculo": "kimi.ai",
+   "pontos": 1086,
+   "discussao": "https://news.ycombinator.com/item?id=50212065",
+   "id": "i44"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis",
+   "link": "https://lynchlab.net/llm-skin-cancer",
+   "data": "2026-10-25T17:15:38Z",
+   "trecho": "",
+   "veiculo": "lynchlab.net",
+   "pontos": 636,
+   "discussao": "https://news.ycombinator.com/item?id=50233779",
+   "id": "i45"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "No signs of AI payoff outside the tech sector",
+   "link": "https://www.apollo.com/wealth/insights-news/insights/daily-spark/no-signs-of-ai-payoff-outside-the-tech-sector",
+   "data": "2026-10-24T19:47:19Z",
+   "trecho": "",
+   "veiculo": "apollo.com",
+   "pontos": 635,
+   "discussao": "https://news.ycombinator.com/item?id=50224463",
+   "id": "i46"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "America has lost 200k of jobs in media, film and the arts. How much is AI?",
+   "link": "https://www.apricitas.io/p/ai-and-the-fall-of-the-creative-class",
+   "data": "2026-10-24T23:11:54Z",
+   "trecho": "",
+   "veiculo": "apricitas.io",
+   "pontos": 537,
+   "discussao": "https://news.ycombinator.com/item?id=50226419",
+   "id": "i47"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
+   "link": "https://minimaxir.com/2026/10/cheap-llms/",
+   "data": "2026-10-25T21:11:31Z",
+   "trecho": "",
+   "veiculo": "minimaxir.com",
+   "pontos": 392,
+   "discussao": "https://news.ycombinator.com/item?id=50236102",
+   "id": "i48"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Cerebras Deploys Trillion-Parameter AI Models",
+   "link": "https://www.cerebras.ai/blog/how-we-deploy-trillion-parameter-frontier-models-on-cerebras",
+   "data": "2026-10-25T01:33:49Z",
+   "trecho": "",
+   "veiculo": "cerebras.ai",
+   "pontos": 362,
+   "discussao": "https://news.ycombinator.com/item?id=50227356",
+   "id": "i49"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "GPU-unlock: FP/BF16 instruction issue rate on Nvidia 3000's cards",
+   "link": "https://github.com/Zagitta/gpu-unlock",
+   "data": "2026-10-24T09:58:27Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 344,
+   "discussao": "https://news.ycombinator.com/item?id=50219700",
+   "id": "i50"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Swedish government offices to ban ChatGPT and Claude",
+   "link": "https://www.sverigesradio.se/artikel/chat-gpt-och-claude-forbjuder-regeringskansliet",
+   "data": "2026-10-23T11:39:54Z",
+   "trecho": "",
+   "veiculo": "sverigesradio.se",
+   "pontos": 323,
+   "discussao": "https://news.ycombinator.com/item?id=50207405",
+   "id": "i51"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Why is AI generated language so hard to understand?",
+   "link": "https://arxiv.org/abs/2610.29162",
+   "data": "2026-10-24T18:04:57Z",
+   "trecho": "",
+   "veiculo": "arXiv",
+   "pontos": 249,
+   "discussao": "https://news.ycombinator.com/item?id=50223647",
+   "id": "i52"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI use leads UC Berkeley math professor to see 'no point' in grading homework",
+   "link": "https://www.dailycal.org/news/campus/academics/ai-use-leads-uc-berkeley-math-professor-to-see-no-point-in-grading-homework/article_bdf1eae2-c08b-491f-b9f1-81a7cea177de.html",
+   "data": "2026-10-25T16:28:26Z",
+   "trecho": "",
+   "veiculo": "dailycal.org",
+   "pontos": 228,
+   "discussao": "https://news.ycombinator.com/item?id=50233304",
+   "id": "i53"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Nikon photography contest winner loses title after scientists spot signs of AI",
+   "link": "https://www.techspot.com/news/114171-nikon-photography-contest-winner-loses-title-after-scientists.html",
+   "data": "2026-10-25T09:51:17Z",
+   "trecho": "",
+   "veiculo": "techspot.com",
+   "pontos": 144,
+   "discussao": "https://news.ycombinator.com/item?id=50229827",
+   "id": "i54"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Show HN: Corgi, a helpful {agent, terminal} multiplexer",
+   "link": "https://corgi.computer/",
+   "data": "2026-10-23T19:46:38Z",
+   "trecho": "",
+   "veiculo": "corgi.computer",
+   "pontos": 139,
+   "discussao": "https://news.ycombinator.com/item?id=50214373",
+   "id": "i55"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Securing our frontier model training environment",
+   "link": "https://openai.com/index/securing-our-frontier-model-training-environment/",
+   "data": "2026-10-23T19:50:56Z",
+   "trecho": "",
+   "veiculo": "OpenAI",
+   "pontos": 121,
+   "discussao": "https://news.ycombinator.com/item?id=50214416",
+   "id": "i56"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Kimi K3.1 scores 55 on Artificial Analysis, placed on the Pareto line",
+   "link": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
+   "data": "2026-10-23T18:24:54Z",
+   "trecho": "",
+   "veiculo": "artificialanalysis.ai",
+   "pontos": 120,
+   "discussao": "https://news.ycombinator.com/item?id=50213337",
+   "id": "i57"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Imagine an AI future where being banned means you are now economically useless",
+   "link": "https://twitter.com/boneGPT/status/2114035719853265264",
+   "data": "2026-10-25T12:47:20Z",
+   "trecho": "",
+   "veiculo": "X",
+   "pontos": 98,
+   "discussao": "https://news.ycombinator.com/item?id=50230995",
+   "id": "i58"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI-Assisted Paper on Z-Library Cites a TorrentFreak Article That Doesn't Exist",
+   "link": "https://torrentfreak.com/ai-assisted-paper-on-z-library-cites-a-torrentfreak-article-that-doesnt-exist/",
+   "data": "2026-10-24T11:18:54Z",
+   "trecho": "",
+   "veiculo": "torrentfreak.com",
+   "pontos": 97,
+   "discussao": "https://news.ycombinator.com/item?id=50220204",
+   "id": "i59"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "R/open source bans all solo projects and projects using LLMs",
+   "link": "https://www.reddit.com/r/opensource/comments/1xelcuf/your_tokens_arent_valuable_no_more_ai",
+   "data": "2026-10-25T14:05:03Z",
+   "trecho": "",
+   "veiculo": "reddit.com",
+   "pontos": 90,
+   "discussao": "https://news.ycombinator.com/item?id=50231722",
+   "id": "i60"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Brown student maps the hidden global labor powering AI",
+   "link": "https://www.brown.edu/news/2026-10-26/ai-data-workers",
+   "data": "2026-10-26T12:58:27Z",
+   "trecho": "",
+   "veiculo": "brown.edu",
+   "pontos": 89,
+   "discussao": "https://news.ycombinator.com/item?id=50242843",
+   "id": "i61"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Itaú compra startup de IA por R$ 2,9 bilhões",
+   "link": "https://tecnoblog.net/noticias/itau-compra-startup-de-ia-por-r-29-bilhoes/",
+   "data": "2026-10-26T15:21:54Z",
+   "trecho": "Banco já tinha participação na NeoSpace; negócio ainda depende de aprovação do Cade e do Banco Central. Itaú compra startup de IA por R$ 2,9 bilhões",
+   "veiculo": "Tecnoblog",
+   "id": "i62"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "OpenAI desiste de treinar modelos de IA com acesso à internet",
+   "link": "https://tecnoblog.net/noticias/openai-desiste-de-treinar-modelos-de-ia-com-acesso-a-internet/",
+   "data": "2026-10-26T15:08:00Z",
+   "trecho": "Restrição ocorre após modelos encontrarem formas de ultrapassar barreiras durante testes de segurança. OpenAI desiste de treinar modelos de IA com acesso à internet",
+   "veiculo": "Tecnoblog",
+   "id": "i63"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "LitPivot: Developing research ideas through dynamic contextualization within the literature landscape",
+   "link": "https://huggingface.co/blog/allenai/litpivot",
+   "data": "2026-10-23T16:15:50Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i64"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Galaxy S26 FE filma em 8K e está em promoção no Magalu",
+   "link": "https://tecnoblog.net/achados/galaxy-s26-fe-filma-em-8k-e-esta-em-promocao-no-magalu/",
+   "data": "2026-10-23T13:11:49Z",
+   "trecho": "Galaxy S26 FE com tela de 120 Hz, Galaxy AI e Android 17 fica mais barato apenas um mês após a chegada no Brasil Galaxy S26 FE filma em 8K e está em promoção no Magalu",
+   "veiculo": "Tecnoblog",
+   "id": "i65"
+  }
+ ],
+ "editor": {
+  "aprovada": true,
+  "acoes": [
+   "Barrado antes da redação, fonte única sem reputação: OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?",
+   "Barrado antes da redação, fonte única sem reputação: Swedish government offices to ban ChatGPT and Claude",
+   "Barrado antes da redação, fonte única sem reputação: A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis",
+   "Barrado antes da redação, fonte única sem reputação: Cerebras Deploys Trillion-Parameter AI Models",
+   "Corrigido (Há fonte primária (a Anthropic anunciou o pedido), então o resumo deve atribuir a ela e não ao The Verge; os números do prejuízo e da receita seguem atribuídos à Bloomberg.): Anthropic entra com pedido de IPO na Nasdaq com o símbolo ANT",
+   "Corrigido (O anúncio vem da própria Moonshot (página do kimi.ai), então o resumo deve atribuir a ela e não a Simon Willison; foi acrescentado o detalhe concreto do contexto de 1 milhão de tokens.): Moonshot lança o Kimi K3.1 Pro na API, ainda sem pesos abertos",
+   "Corrigido (Há fonte primária (o blog da OpenAI), então a atribuição deve ser a ela e não a veículos que repercutiram; o resumo também ganha o detalhe concreto da decisão.): OpenAI deixa de treinar modelos de ponta com acesso à internet"
+  ],
+  "revisao": {
+   "a1": {
+    "veredito": "corrigir",
+    "motivo": "Há fonte primária (a Anthropic anunciou o pedido), então o resumo deve atribuir a ela e não ao The Verge; os números do prejuízo e da receita seguem atribuídos à Bloomberg."
+   },
+   "a2": {
+    "veredito": "corrigir",
+    "motivo": "O anúncio vem da própria Moonshot (página do kimi.ai), então o resumo deve atribuir a ela e não a Simon Willison; foi acrescentado o detalhe concreto do contexto de 1 milhão de tokens."
+   },
+   "a3": {
+    "veredito": "corrigir",
+    "motivo": "Há fonte primária (o blog da OpenAI), então a atribuição deve ser a ela e não a veículos que repercutiram; o resumo também ganha o detalhe concreto da decisão."
+   }
+  }
+ },
+ "movimentos": [
+  {
+   "id": "bffc97d4aaa8",
+   "lab": "google",
+   "fonte": "Gemini API changelog",
+   "link": "https://ai.google.dev/gemini-api/docs/logs-datasets#configure-logging",
+   "data": "2026-10-26",
+   "tipo": "api",
+   "pt": {
+    "titulo": "Generate Content API passa a armazenar requisições por padrão",
+    "simples": "Novos projetos pagos que usam a Generate Content API agora guardam as requisições por padrão. Projetos existentes mantêm a configuração atual.",
+    "tecnico": "Vale para generateContent, streamGenerateContent e batchGenerateContent no plano pago: store=true por padrão, como na Interactions API. Para desativar, use store=false na requisição ou desligue o logging no painel Logs and Datasets."
+   },
+   "en": {
+    "titulo": "Generate Content API now stores requests by default",
+    "simples": "New paid projects using the Generate Content API now store requests by default. Existing projects keep their current setting.",
+    "tecnico": "Applies to generateContent, streamGenerateContent and batchGenerateContent on the paid tier: store=true by default, matching the Interactions API. To opt out, set store=false per request or turn off logging in the Logs and Datasets dashboard."
+   }
+  },
+  {
+   "id": "9ba07e78f731",
+   "lab": "tencent",
+   "fonte": "Hugging Face",
+   "link": "https://huggingface.co/tencent",
+   "data": "2026-10-22",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Tencent publica pesos abertos Hy-SimulMT e WeVisOne-VL no Hugging Face",
+    "simples": "A Tencent publicou no Hugging Face modelos de pesos abertos para tradução e para entrada de imagem e texto.",
+    "tecnico": "Hy-SimulMT-30B-A3B e Hy-SimulMT-30B-A3B-Interleave (tradução); WeVisOne-VL-2B e WeVisOne-VL-4B (image-text-to-text)."
+   },
+   "en": {
+    "titulo": "Tencent releases Hy-SimulMT and WeVisOne-VL open weights on Hugging Face",
+    "simples": "Tencent published open-weights models on Hugging Face for translation and for image and text input.",
+    "tecnico": "Hy-SimulMT-30B-A3B and Hy-SimulMT-30B-A3B-Interleave (translation); WeVisOne-VL-2B and WeVisOne-VL-4B (image-text-to-text)."
+   }
+  }
+ ],
+ "movimentos_ignorados": [],
+ "fontes_movimentos": {
+  "anthropic": {
+   "ok": true,
+   "itens": 19
+  },
+  "openai": {
+   "ok": true,
+   "itens": 6
+  },
+  "google_api": {
+   "ok": true,
+   "itens": 2
+  },
+  "google_app": {
+   "ok": true,
+   "itens": 3
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 1
+  },
+  "z-ai": {
+   "ok": true,
+   "itens": 0
+  },
+  "minimax": {
+   "ok": true,
+   "itens": 1
+  },
+  "moonshotai": {
+   "ok": true,
+   "itens": 0
+  },
+  "qwen": {
+   "ok": true,
+   "itens": 0
+  },
+  "hf": {
+   "ok": true,
+   "itens": 7
+  }
+ }
+}
