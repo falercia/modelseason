@@ -1,0 +1,109 @@
+{
+ "versao": 1,
+ "dia": "2026-10-26",
+ "gerado_em": "2026-10-26T14:18:35Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-19",
+   "2026-10-26"
+  ],
+  "trafego": "2026-10-25"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-26",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-25",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20261017",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "minimax/minimax-m3.1-flash-20261019",
+   "z-ai/glm-5.3-flash-20260826",
+   "tencent/hy4-preview-20260827",
+   "openai/gpt-6-luna-20260922",
+   "anthropic/claude-opus-5.5-20260921",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "z-ai/glm-5.3-20260816"
+  ]
+ },
+ "principal": "preco:z-ai/glm-5.3-flash-20260826",
+ "eventos": [
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.3-flash-20260826",
+   "id": "z-ai/glm-5.3-flash",
+   "nome": "GLM 5.3 Flash",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 0.0535,
+    "para": 0.2375,
+    "variacao_pct": 343.7,
+    "entrada_de": 0.0052,
+    "entrada_para": 0.15,
+    "saida_de": 0.1985,
+    "saida_para": 0.5,
+    "desde": "2026-10-25"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 7.04,
+     "rank_7d": 4,
+     "pico_share": 11.188,
+     "semanas_com_volume": 9
+    },
+    "laboratorio": {
+     "share_tokens": 10.92,
+     "share_gasto": 3.86
+    }
+   },
+   "relevancia": 61
+  },
+  {
+   "tipo": "preco",
+   "slug": "cloudflare/clef",
+   "id": "cloudflare/clef",
+   "nome": "Clef",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 0.18,
+    "para": 0.0315,
+    "variacao_pct": -82.5,
+    "entrada_de": 0.24,
+    "entrada_para": 0.042,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-25"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "removido",
+   "slug": "arcee-ai/trinity-large-thinking",
+   "id": "arcee-ai/trinity-large-thinking",
+   "nome": "Trinity Large Thinking",
+   "lab": "Arcee AI",
+   "vendor": "arcee-ai",
+   "dados": {
+    "visto_em": "2026-10-25",
+    "expira": "2026-10-26"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.417,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": null
+   },
+   "relevancia": 30
+  }
+ ]
+}
