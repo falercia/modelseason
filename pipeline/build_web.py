@@ -730,6 +730,79 @@ def construir_radar():
     return {"edicoes": edicoes}
 
 
+# ------------------------------------------------------------------ laboratorios
+
+SEMANAS_LABS = 13
+
+
+def construir_labs(df, cat):
+    """Placar dos laboratorios acompanhados (movimentos.LABS): share de tokens e de gasto estimado
+    por semana completa (segunda a domingo), nas ultimas SEMANAS_LABS. A conta e a mesma do
+    volume_vs_dinheiro do data.json, que o Radar usa na faixa "O dado": trafego com modelo
+    identificado, sem a linha 'other', e gasto pelo preco misto do catalogo (enrich.juntar).
+    Os movimentos nao entram aqui: a pagina le das pautas, como o Radar, e o PR da pauta nunca
+    mexe em data/web."""
+    import enrich
+    import movimentos as mv
+    d = df[df.model_permaslug != "other"][["date", "model_permaslug", "total_tokens", "base"]].copy()
+    d["vendor"] = d.model_permaslug.str.split("/").str[0]
+    d["week"] = d.date.dt.to_period("W-SUN").dt.start_time
+    dias = d.groupby("week").date.nunique()
+    semanas = sorted(dias[dias == 7].index)[-SEMANAS_LABS:]
+    if not semanas:
+        return {"semanas": [], "semana": None, "labs": [], "grupos": {}}
+    E = enrich.juntar(d[d.week.isin(semanas)])
+    tok = E.pivot_table(index="week", columns="vendor", values="total_tokens", aggfunc="sum", fill_value=0).reindex(semanas).fillna(0)
+    usd = E.pivot_table(index="week", columns="vendor", values="gasto_est", aggfunc="sum", fill_value=0).reindex(semanas).fillna(0)
+    sh_tok = tok.div(tok.sum(axis=1).replace(0, float("nan")), axis=0).mul(100).fillna(0)
+    sh_usd = usd.div(usd.sum(axis=1).replace(0, float("nan")), axis=0).mul(100).fillna(0)
+    ult = semanas[-1]
+    ref = semanas[-5] if len(semanas) >= 5 else semanas[0]   # quatro semanas antes
+    rank = sh_tok.loc[ult].rank(ascending=False, method="min")
+    ultima = E[E.week == ult]
+    tot_ult = float(ultima.total_tokens.sum()) or 1.0
+    por_modelo = ultima.groupby(["vendor", "base"]).total_tokens.sum()
+
+    def serie(tab, v):
+        return [r(x) for x in (tab[v] if v in tab.columns else [0.0] * len(semanas))]
+
+    labs = []
+    for v, info in mv.LABS.items():
+        st, su = serie(sh_tok, v), serie(sh_usd, v)
+        lider = None
+        if v in por_modelo.index.get_level_values(0):
+            slug, t = por_modelo.loc[v].sort_values(ascending=False).index[0], por_modelo.loc[v].max()
+            lider = {"slug": slug, "nome": meta_modelo(slug, cat)["nome"], "share": r(100 * t / tot_ult)}
+        labs.append({
+            "vendor": v, "nome": info["nome"], "grupo": info["grupo"],
+            "share_tokens": st[-1], "share_tokens_4s": st[-5] if len(st) >= 5 else st[0],
+            "share_gasto": su[-1], "share_gasto_4s": su[-5] if len(su) >= 5 else su[0],
+            "rank_tokens": int(rank[v]) if v in rank.index and st[-1] > 0 else None,
+            "serie_tokens": st, "serie_gasto": su, "lider": lider,
+            "paginas": [{"nome": n, "link": u} for n, u in mv.PAGINAS.get(v, [])],
+        })
+    ordem_grupo = {"eua": 0, "china": 1}
+    labs.sort(key=lambda x: (ordem_grupo[x["grupo"]], -(x["share_tokens"] or 0), x["vendor"]))
+
+    def grupo(vendors):
+        vs = [v for v in vendors if v in sh_tok.columns]
+        a = sh_tok[vs].sum(axis=1) if vs else pd.Series(0.0, index=semanas)
+        b = sh_usd[vs].sum(axis=1) if vs else pd.Series(0.0, index=semanas)
+        return {"serie_tokens": [r(x) for x in a], "serie_gasto": [r(x) for x in b],
+                "share_tokens": r(a.loc[ult]), "share_tokens_4s": r(a.loc[ref]),
+                "share_gasto": r(b.loc[ult]), "share_gasto_4s": r(b.loc[ref])}
+    eua = [v for v, i in mv.LABS.items() if i["grupo"] == "eua"]
+    china_todos = sorted(v for v in sh_tok.columns if tx.origin(v) == "China")
+    china_sete = [v for v, i in mv.LABS.items() if i["grupo"] == "china"]
+    return {
+        "semanas": [w.strftime("%Y-%m-%d") for w in semanas], "semana": ult.strftime("%Y-%m-%d"),
+        "labs": labs,
+        "grupos": {"eua": {**grupo(eua), "labs": eua},
+                   "china": {**grupo(china_todos), "labs": china_todos},
+                   "china_acompanhados": {**grupo(china_sete), "labs": china_sete}},
+    }
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     df, cat = carregar()
@@ -738,12 +811,14 @@ def main():
     agora["lideres"] = construir_lideres(agora, cat)
     modelos = construir_modelos(df, cat, agora, mercado)
     radar = construir_radar()
-    for nome, obj in (("agora", agora), ("mercado", mercado), ("modelos", modelos), ("radar", radar)):
+    labs = construir_labs(df, cat)
+    for nome, obj in (("agora", agora), ("mercado", mercado), ("modelos", modelos), ("radar", radar), ("labs", labs)):
         (OUT / f"{nome}.json").write_text(json.dumps(obj, ensure_ascii=False, separators=(",", ":")) + "\n")
     print(f"agora: ultimo dia {agora['ultimo_dia']}, top7 {agora['top7'][0]['nome']} {agora['top7'][0]['share']}%")
     print(f"mercado: {', '.join(mercado)}")
     print(f"modelos: {len(modelos['modelos'])} paginas possiveis")
     print(f"radar: {len(radar['edicoes'])} edicao(oes)")
+    print(f"labs: semana de {labs['semana']}, {len(labs['labs'])} laboratorios")
     return 0
 
 

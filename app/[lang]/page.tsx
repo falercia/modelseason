@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { carregarConteudo } from '@/lib/content';
 import Link from 'next/link';
-import { agora, dadosV1, indiceBusca, mercado, radar } from '@/lib/data';
+import { agora, dadosV1, indiceBusca, labs, mercado, movimentos, radar } from '@/lib/data';
 import { ehIdioma, type Lang } from '@/lib/i18n';
 import { idioma } from '@/lib/idioma';
 import { alternancias } from '@/lib/meta';
@@ -11,6 +11,7 @@ import { Indice, Topo } from '@/components/shell/Topo';
 import { Rodape } from '@/components/shell/Rodape';
 import { Agora } from '@/components/agora/Agora';
 import { Historico } from '@/components/secoes/Historico';
+import { CSS_LABS, Placar } from '@/components/labs/Labs';
 
 export const dynamic = 'force-static';
 
@@ -25,7 +26,7 @@ function indice(lang: Lang) {
   const { t } = idioma(lang);
   const h = (href: string, n: string, pt: string, en: string) => ({ href, n, t: t({ pt, en }) });
   return [
-    { lbl: t({ pt: 'Agora', en: 'Now' }), itens: [h('#agora', '—', 'Retrato do dia', "Today's snapshot"), h('#lideres', '—', 'Líderes por critério', 'Leaders by criterion')] },
+    { lbl: t({ pt: 'Agora', en: 'Now' }), itens: [h('#agora', '—', 'Retrato do dia', "Today's snapshot"), h('#lideres', '—', 'Líderes por critério', 'Leaders by criterion'), h('#placar', '—', 'Placar dos laboratórios', 'Lab scoreboard')] },
     { lbl: t({ pt: 'Histórico', en: 'History' }), itens: [
       h('#s01', '01', 'Para que usam', 'What it is used for'),
       h('#s02', '02', 'Tamanho e concentração', 'Size and concentration'),
@@ -80,6 +81,8 @@ export default async function Home({ params }: Props) {
             </div>
           </header>
           <Agora A={A} lang={lang} />
+          <style href="lb-css" precedence="medium">{CSS_LABS}</style>
+          <Placar L={labs()} ms={movimentos()} I={I} />
           <Historico D={D} M={M} />
         </main>
       </div>

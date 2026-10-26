@@ -27,7 +27,8 @@ export async function GET(_: Request, { params }: { params: Promise<{ lang: stri
       const fontes = a.fontes.map(f => `<a href="${esc(f.link)}">${esc(f.veiculo)}</a>${f.data ? ' ' + esc(I.f.fD(diaPublicacao(f.data) ?? f.data.slice(0, 10))) : ''}`).join(', ');
       return `<p><b>${esc(F.titulo)}</b>. ${esc(F.texto)} (${fontes})</p>`;
     }).join('');
-    const corpo = pauta + ed.eventos.map(ev => { const F = frase(ev, ed.dia, I); return `<p><b>${esc(F.titulo)}</b>. ${esc(F.texto)}</p>`; }).join('');
+    const movs = (ed.movimentos ?? []).map(m => `<p><b>${esc(m[lang].titulo)}</b>. ${esc(m[lang].simples)} (<a href="${esc(m.link)}">${esc(m.fonte)}</a>)</p>`).join('');
+    const corpo = pauta + movs + ed.eventos.map(ev => { const F = frase(ev, ed.dia, I); return `<p><b>${esc(F.titulo)}</b>. ${esc(F.texto)}</p>`; }).join('');
     return `<item><title>${esc(tituloEdicao(ed, I))}</title><link>${link}</link><guid isPermaLink="true">${link}</guid>`
       + `<pubDate>${new Date(ed.dia + 'T12:00:00Z').toUTCString()}</pubDate><description>${esc(corpo)}</description></item>`;
   }).join('');

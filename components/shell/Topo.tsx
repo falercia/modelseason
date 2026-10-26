@@ -91,6 +91,7 @@ export function Topo({ itens }: { itens: ItemBusca[] }) {
         <Busca itens={itens} />
         <span className="sp" />
         <Link href={url('/radar')} className="tnav">Radar</Link>
+        <Link href={url('/labs')} className="tnav">Labs</Link>
         <BotaoComoLer />
         <SeletorIdioma />
         <Tema />

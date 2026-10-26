@@ -240,9 +240,13 @@ export function textoAssunto(a: AssuntoPauta, I: Idioma): FraseRadar {
 export function tituloEdicao(ed: EdicaoRadar, I: Idioma): string {
   const a = ed.assuntos?.[0];
   if (a) return a[I.lang].titulo;
+  // sem notícia, o movimento de mais peso: modelo novo antes de recurso de API
+  const pesos: Record<string, number> = { modelo: 5, preco: 4, desativacao: 4, api: 3, app: 2, outro: 0 };
+  const m = [...(ed.movimentos ?? [])].sort((x, y) => (pesos[y.tipo] ?? 0) - (pesos[x.tipo] ?? 0))[0];
+  if (m) return m[I.lang].titulo;
   const ev = ed.eventos[0];
   return ev ? frase(ev, ed.dia, I).titulo : I.t({ pt: 'Nenhuma mudança relevante', en: 'No relevant changes' });
 }
 
 /** Quantidade de itens da edição: assuntos da pauta e eventos do dado. */
-export const totalItens = (ed: EdicaoRadar) => (ed.assuntos?.length ?? 0) + ed.eventos.length;
+export const totalItens = (ed: EdicaoRadar) => (ed.assuntos?.length ?? 0) + (ed.movimentos?.length ?? 0) + ed.eventos.length;

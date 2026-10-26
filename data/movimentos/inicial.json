@@ -1,0 +1,1755 @@
+{
+ "versao": 1,
+ "dia": "2026-10-24",
+ "nota": "Registro inicial dos movimentos dos laboratórios, montado em 24/10/2026 a partir das páginas oficiais de cada um (coleta desde 31/07/2026). Os textos foram escritos com as mesmas regras e travas da pauta. Os itens fora da seleção ficam em movimentos_ignorados para que a primeira pauta com movimentos não os republique.",
+ "movimentos": [
+  {
+   "id": "5fcd23e19e9f",
+   "lab": "anthropic",
+   "fonte": "Claude Platform release notes",
+   "link": "https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/anthropic-managed",
+   "data": "2026-10-22",
+   "tipo": "api",
+   "pt": {
+    "titulo": "API do Claude operada pela Anthropic chega ao Google Cloud",
+    "simples": "Empresas no Google Cloud podem usar a API do Claude operada pela própria Anthropic, com acesso e cobrança pelo Google.",
+    "tecnico": "Claude Models on Google Cloud (Anthropic managed): o acesso é controlado pelo Google Cloud IAM e a cobrança passa pelo Google Cloud Marketplace."
+   },
+   "en": {
+    "titulo": "Anthropic-operated Claude API arrives on Google Cloud",
+    "simples": "Companies on Google Cloud can use the Claude API run by Anthropic itself, with access and billing handled by Google.",
+    "tecnico": "Claude Models on Google Cloud (Anthropic managed): access is controlled by Google Cloud IAM and billing goes through Google Cloud Marketplace."
+   }
+  },
+  {
+   "id": "3a273ecb68bd",
+   "lab": "anthropic",
+   "fonte": "Claude Platform release notes",
+   "link": "https://platform.claude.com/docs/en/build-with-claude/fast-mode",
+   "data": "2026-10-15",
+   "tipo": "api",
+   "pt": {
+    "titulo": "Modo rápido do Claude Opus 5.5 sai da prévia de pesquisa",
+    "simples": "O modo rápido do Claude Opus 5.5 ficou aberto a todos, sem pedido de acesso, e ganhou limite de uso padrão.",
+    "tecnico": "As chamadas ao Claude Opus 5.5 dispensam o cabeçalho beta fast-mode-2026-02-01, e quem ainda o envia continua funcionando. No Claude Opus 5 e no Claude Opus 4.8 o modo rápido segue em prévia."
+   },
+   "en": {
+    "titulo": "Claude Opus 5.5 fast mode leaves research preview",
+    "simples": "Fast mode for Claude Opus 5.5 is now open to everyone with no access request, and it gets a default rate limit.",
+    "tecnico": "Requests to Claude Opus 5.5 no longer need the fast-mode-2026-02-01 beta header, and requests that still send it keep working. Fast mode for Claude Opus 5 and Claude Opus 4.8 stays in research preview."
+   }
+  },
+  {
+   "id": "8e66f8a7190b",
+   "lab": "anthropic",
+   "fonte": "Claude Platform release notes",
+   "link": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+   "data": "2026-10-07",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Claude Haiku 5.5 chega com janela de 1M tokens",
+    "simples": "A Anthropic lançou o Claude Haiku 5.5, que descreve como seu modelo mais capaz para alto volume e baixa latência.",
+    "tecnico": "claude-haiku-5-5, contexto de 1M tokens, saída de até 128k tokens e raciocínio adaptativo regulado pelo parâmetro effort. Disponível na Claude API, no Amazon Bedrock, no Google Cloud e no Microsoft Foundry."
+   },
+   "en": {
+    "titulo": "Claude Haiku 5.5 arrives with a 1M token context window",
+    "simples": "Anthropic launched Claude Haiku 5.5, which it calls its most capable model for high-volume, latency-sensitive work.",
+    "tecnico": "claude-haiku-5-5 has a 1M token context window, up to 128k output tokens and adaptive thinking set by the effort parameter. Available on the Claude API, Amazon Bedrock, Google Cloud and Microsoft Foundry."
+   }
+  },
+  {
+   "id": "92132fde3ea6",
+   "lab": "anthropic",
+   "fonte": "Claude Platform release notes",
+   "link": "https://platform.claude.com/docs/en/about-claude/pricing#prompt-caching",
+   "data": "2026-10-07",
+   "tipo": "preco",
+   "pt": {
+    "titulo": "Claude Sonnet 5.5 corta o preço da leitura de cache para US$ 0,10",
+    "simples": "Reaproveitar contexto em cache no Claude Sonnet 5.5 ficou mais barato, e os outros preços não mudaram.",
+    "tecnico": "A leitura de cache de prompt sai de US$ 0,20 para US$ 0,10 por milhão de tokens, 0,05x o preço base de entrada no lugar de 0,1x. Escrita em cache e demais preços seguem iguais."
+   },
+   "en": {
+    "titulo": "Claude Sonnet 5.5 cuts prompt cache reads to $0.10",
+    "simples": "Reusing cached context on Claude Sonnet 5.5 got cheaper, and every other price stayed the same.",
+    "tecnico": "Prompt cache reads drop from $0.20 to $0.10 per million tokens, 0.05x the base input price instead of 0.1x. Cache writes and other prices are unchanged."
+   }
+  },
+  {
+   "id": "c2cb73de2e08",
+   "lab": "anthropic",
+   "fonte": "Claude Platform release notes",
+   "link": "https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide#migrating-from-sonnet-45",
+   "data": "2026-09-30",
+   "tipo": "desativacao",
+   "pt": {
+    "titulo": "Claude Sonnet 4.5 sai da API em 30 de novembro de 2026",
+    "simples": "A Anthropic anunciou que o Claude Sonnet 4.5 será aposentado e recomenda migrar para o Claude Sonnet 5.5.",
+    "tecnico": "claude-sonnet-4-5-20250929 tem aposentadoria marcada na Claude API para 30 de novembro de 2026. A migração recomendada é para o Claude Sonnet 5.5."
+   },
+   "en": {
+    "titulo": "Claude Sonnet 4.5 leaves the API on November 30, 2026",
+    "simples": "Anthropic announced that Claude Sonnet 4.5 will be retired and recommends moving to Claude Sonnet 5.5.",
+    "tecnico": "claude-sonnet-4-5-20250929 is scheduled for retirement on the Claude API on November 30, 2026. The recommended migration is Claude Sonnet 5.5."
+   }
+  },
+  {
+   "id": "9628769c334a",
+   "lab": "anthropic",
+   "fonte": "Claude Platform release notes",
+   "link": "https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock",
+   "data": "2026-09-28",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Claude Sonnet 5.5 chega à API e às nuvens parceiras",
+    "simples": "A Anthropic lançou o Claude Sonnet 5.5, disponível na API dela e nas plataformas da Amazon, do Google e da Microsoft.",
+    "tecnico": "claude-sonnet-5-5 está na Claude API, no Amazon Bedrock, na Claude Platform on AWS, no Google Cloud e no Microsoft Foundry. Contexto, limites de saída e preço ficam na página do modelo."
+   },
+   "en": {
+    "titulo": "Claude Sonnet 5.5 launches on the API and partner clouds",
+    "simples": "Anthropic launched Claude Sonnet 5.5, available on its API and on the Amazon, Google and Microsoft platforms.",
+    "tecnico": "claude-sonnet-5-5 is on the Claude API, Amazon Bedrock, Claude Platform on AWS, Google Cloud and Microsoft Foundry. Context window, output limits and prices are on the model page."
+   }
+  },
+  {
+   "id": "e5dce4b37b84",
+   "lab": "anthropic",
+   "fonte": "Claude Platform release notes",
+   "link": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+   "data": "2026-09-22",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Claude Opus 5.5 chega à API com janela de 1M tokens",
+    "simples": "A Anthropic lançou o Claude Opus 5.5, modelo para trabalho longo de programação e conhecimento, com preço menor que o do Claude Opus 5.",
+    "tecnico": "claude-opus-5-5, contexto de 1M tokens, saída de até 128k tokens e raciocínio adaptativo sempre ligado. US$ 4 e US$ 20 por milhão de tokens de entrada e saída, contra US$ 5 e US$ 25 do Claude Opus 5."
+   },
+   "en": {
+    "titulo": "Claude Opus 5.5 arrives on the API with a 1M token context window",
+    "simples": "Anthropic launched Claude Opus 5.5, a model for long-running coding and knowledge work, priced below Claude Opus 5.",
+    "tecnico": "claude-opus-5-5 has a 1M token context window, up to 128k output tokens and always-on adaptive thinking, at $4 / $20 per MTok versus $5 / $25 for Claude Opus 5."
+   }
+  },
+  {
+   "id": "4e81467257d8",
+   "lab": "openai",
+   "fonte": "OpenAI API changelog",
+   "link": "https://developers.openai.com/api/docs/guides/decisions",
+   "data": "2026-10-22",
+   "tipo": "api",
+   "pt": {
+    "titulo": "API Decisions sai do beta com o GPT-6 Luna",
+    "simples": "A API Decisions da OpenAI ficou disponível para todos, com cache de entrada compartilhada e mais perguntas por pedido.",
+    "tecnico": "Disponível com gpt-6-luna. Cada pedido aceita até 400 perguntas, contra 200 no beta público, e recebe dados estruturados direto com input_json."
+   },
+   "en": {
+    "titulo": "Decisions API leaves beta with GPT-6 Luna",
+    "simples": "OpenAI's Decisions API is now generally available, with shared input caching and more questions per request.",
+    "tecnico": "Available with gpt-6-luna. Each request takes up to 400 questions, up from 200 in public beta, and accepts structured data directly through input_json."
+   }
+  },
+  {
+   "id": "ecdaaf38eaf5",
+   "lab": "openai",
+   "fonte": "OpenAI API changelog",
+   "link": "https://developers.openai.com/api/docs/guides/prompt-caching",
+   "data": "2026-10-20",
+   "tipo": "preco",
+   "pt": {
+    "titulo": "API da OpenAI passa a oferecer cache de prompt de 12 horas",
+    "simples": "Instruções e contexto repetidos ficam em cache por mais tempo, e pedidos com horas de intervalo ainda pagam o preço menor de entrada em cache.",
+    "tecnico": "Cache de prompt de 12 horas na API Responses. A escrita em cache custa 2,5x o preço do token de entrada."
+   },
+   "en": {
+    "titulo": "OpenAI API adds 12-hour prompt caching",
+    "simples": "Repeated instructions and context stay cached longer, so requests hours apart still get the lower cached-input price.",
+    "tecnico": "12-hour prompt caching in the Responses API. Cache writes cost 2.5x the input token price."
+   }
+  },
+  {
+   "id": "7163d57238b5",
+   "lab": "openai",
+   "fonte": "OpenAI API changelog",
+   "link": "https://developers.openai.com/api/docs/guides/ultrafast-mode",
+   "data": "2026-10-08",
+   "tipo": "api",
+   "pt": {
+    "titulo": "GPT-6.1 Sol ganha modo Ultrafast na API Responses",
+    "simples": "Quem usa o GPT-6.1 Sol pode pedir que os tokens sejam gerados mais rápido, com preço próprio.",
+    "tecnico": "Usar gpt-6.1-sol com service_tier: \"ultrafast\" reduz o tempo entre tokens gerados. Aberto a todos os usuários da API, com processamento global e residência de dados nos EUA e na UE."
+   },
+   "en": {
+    "titulo": "GPT-6.1 Sol gets Ultrafast mode in the Responses API",
+    "simples": "GPT-6.1 Sol users can ask for faster token generation, with its own pricing.",
+    "tecnico": "Use gpt-6.1-sol with service_tier: \"ultrafast\" to cut the time between output tokens. Open to all API users, with global processing and US and EU data residency."
+   }
+  },
+  {
+   "id": "8981d09fda10",
+   "lab": "openai",
+   "fonte": "OpenAI API changelog",
+   "link": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+   "data": "2026-09-29",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "GPT-6.1 Sol chega à API mais barato que o GPT-6 Astra",
+    "simples": "A OpenAI lançou o GPT-6.1 Sol para programação complexa e trabalho profissional, com custo menor que o do GPT-6 Astra.",
+    "tecnico": "gpt-6.1-sol: US$ 2 de entrada, US$ 0,10 em cache, US$ 2,50 de escrita em cache e US$ 10 de saída por milhão de tokens, em prompts de até 272K tokens. Multiagente em beta na API Responses."
+   },
+   "en": {
+    "titulo": "GPT-6.1 Sol arrives on the API at a lower cost than GPT-6 Astra",
+    "simples": "OpenAI released GPT-6.1 Sol for complex coding and professional work, costing less than GPT-6 Astra.",
+    "tecnico": "gpt-6.1-sol: $2 input, $0.10 cached input, $2.50 cache write and $10 output per 1M tokens for prompts up to 272K tokens. Multi-agent is in beta in the Responses API."
+   }
+  },
+  {
+   "id": "bdcc002b1491",
+   "lab": "openai",
+   "fonte": "OpenAI API changelog",
+   "link": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+   "data": "2026-09-22",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "GPT-6 Sol e GPT-6 Luna chegam à API",
+    "simples": "A OpenAI lançou dois modelos de raciocínio que leem texto e imagem, o Sol e o Luna, que é o mais barato dos dois.",
+    "tecnico": "gpt-6-sol: US$ 2 de entrada, US$ 0,20 em cache e US$ 10 de saída por milhão de tokens. gpt-6-luna: US$ 0,10, US$ 0,01 e US$ 0,50. Preços para prompts de até 272K tokens."
+   },
+   "en": {
+    "titulo": "GPT-6 Sol and GPT-6 Luna arrive on the API",
+    "simples": "OpenAI released two reasoning models that read text and images, Sol and the cheaper Luna.",
+    "tecnico": "gpt-6-sol: $2 input, $0.20 cached input and $10 output per 1M tokens. gpt-6-luna: $0.10, $0.01 and $0.50. Prices for prompts up to 272K tokens."
+   }
+  },
+  {
+   "id": "824c09e6c4c5",
+   "lab": "openai",
+   "fonte": "OpenAI API changelog",
+   "link": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+   "data": "2026-09-03",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "GPT-6 Astra chega à API como o modelo mais capaz da OpenAI",
+    "simples": "A OpenAI lançou o GPT-6 Astra para o trabalho mais difícil de ponta a ponta, de raciocínio e código a pesquisa e documentos.",
+    "tecnico": "gpt-6-astra nas APIs Responses e Chat Completions, com uso de computador para fluxos de navegador e desktop."
+   },
+   "en": {
+    "titulo": "GPT-6 Astra arrives on the API as OpenAI's most capable model",
+    "simples": "OpenAI released GPT-6 Astra for the hardest end-to-end work, from reasoning and coding to research and documents.",
+    "tecnico": "gpt-6-astra is on the Responses and Chat Completions APIs, with computer use for browser and desktop workflows."
+   }
+  },
+  {
+   "id": "ccab324333b6",
+   "lab": "google",
+   "fonte": "Gemini API changelog",
+   "link": "https://ai.google.dev/gemini-api/docs/models/gemini-4-argon",
+   "data": "2026-10-13",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Gemini 4 Argon fica disponível para todos na API",
+    "simples": "O Google liberou o Gemini 4 Argon, que chama de seu modelo mais capaz, para programação complexa, agentes, matemática e ciência.",
+    "tecnico": "gemini-4-argon em disponibilidade geral na Gemini API. Mudanças de API, preço e guia de migração estão na página What's new in Gemini 4 Argon."
+   },
+   "en": {
+    "titulo": "Gemini 4 Argon is generally available on the API",
+    "simples": "Google released Gemini 4 Argon, which it calls its most capable model, for complex coding, agentic, math and science tasks.",
+    "tecnico": "gemini-4-argon is generally available on the Gemini API. API changes, pricing and migration guidance are on the What's new in Gemini 4 Argon page."
+   }
+  },
+  {
+   "id": "278dd7c73764",
+   "lab": "google",
+   "fonte": "Gemini app release notes",
+   "link": "https://gemini.google/release-notes/",
+   "data": "2026-10-13",
+   "tipo": "app",
+   "pt": {
+    "titulo": "Gemini 4 Argon chega ao app Gemini para assinantes Pro e Ultra",
+    "simples": "O modelo mais novo do Google começou a ser liberado no mundo todo no app Gemini para quem assina o Google AI Pro ou o Ultra.",
+    "tecnico": ""
+   },
+   "en": {
+    "titulo": "Gemini 4 Argon reaches the Gemini app for Pro and Ultra subscribers",
+    "simples": "Google's newest frontier model is rolling out globally in the Gemini app for Google AI Pro and Ultra subscribers.",
+    "tecnico": ""
+   }
+  },
+  {
+   "id": "265097996e46",
+   "lab": "google",
+   "fonte": "Gemini API changelog",
+   "link": "https://ai.google.dev/gemini-api/docs/whats-new-gemini-3.7",
+   "data": "2026-10-08",
+   "tipo": "desativacao",
+   "pt": {
+    "titulo": "Gemini 3.7 Flash é descontinuado e redirecionado ao 3.8 Flash",
+    "simples": "Quem ainda chama o Gemini 3.7 Flash passa a ser atendido pelo 3.8 Flash automaticamente, e o Google pede a troca do nome do modelo.",
+    "tecnico": "gemini-3.7-flash saiu da lista do Google AI Studio, e as chamadas na API vão automaticamente para gemini-3.8-flash."
+   },
+   "en": {
+    "titulo": "Gemini 3.7 Flash is deprecated and routed to 3.8 Flash",
+    "simples": "Calls to Gemini 3.7 Flash are now served by 3.8 Flash automatically, and Google asks developers to update the model name.",
+    "tecnico": "gemini-3.7-flash is no longer selectable in Google AI Studio, and API requests are automatically routed to gemini-3.8-flash."
+   }
+  },
+  {
+   "id": "403daeb51206",
+   "lab": "google",
+   "fonte": "Gemini API changelog",
+   "link": "https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1",
+   "data": "2026-10-06",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Gemini Nano Banana 2.1 chega para gerar e editar imagens",
+    "simples": "O Google lançou a versão nova do seu modelo rápido de imagem, com melhora em qualidade visual, texto na imagem e consistência de personagens.",
+    "tecnico": "gemini-nano-banana-2.1 atualiza o Nano Banana 2 (gemini-3.1-flash-image), com proporções largas e panorâmicas (1:4, 4:1, 1:8, 8:1) em 1K, 2K e 4K."
+   },
+   "en": {
+    "titulo": "Gemini Nano Banana 2.1 arrives for image generation and editing",
+    "simples": "Google released a new version of its fast image model, with better visual quality, text rendering and character consistency.",
+    "tecnico": "gemini-nano-banana-2.1 updates Nano Banana 2 (gemini-3.1-flash-image), adding wide and panoramic aspect ratios (1:4, 4:1, 1:8, 8:1) at 1K, 2K and 4K."
+   }
+  },
+  {
+   "id": "ee51a62bfdd6",
+   "lab": "google",
+   "fonte": "Gemini API changelog",
+   "link": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
+   "data": "2026-09-02",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Gemini 3.8 Flash fica disponível para todos na API",
+    "simples": "O Google liberou o Gemini 3.8 Flash, que chama de seu Flash mais inteligente, voltado a engenharia de software longa e agentes.",
+    "tecnico": "gemini-3.8-flash em disponibilidade geral na Gemini API, para engenharia de software de longo prazo, agentes autônomos e fluxos empresariais complexos."
+   },
+   "en": {
+    "titulo": "Gemini 3.8 Flash is generally available on the API",
+    "simples": "Google released Gemini 3.8 Flash, which it calls its most intelligent Flash model, aimed at long software engineering tasks and agents.",
+    "tecnico": "gemini-3.8-flash is generally available on the Gemini API, for long-horizon software engineering, autonomous agents and complex enterprise workflows."
+   }
+  },
+  {
+   "id": "98495bbff501",
+   "lab": "deepseek",
+   "fonte": "DeepSeek API news",
+   "link": "https://api-docs.deepseek.com/news/news261017",
+   "data": "2026-10-17",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "DeepSeek-V4.1-Flash-1017 chega ao site, ao app e à API",
+    "simples": "A DeepSeek lançou uma versão nova do V4.1 Flash que, segundo ela, tem desempenho melhor, termina tarefas mais rápido e escreve respostas mais curtas.",
+    "tecnico": "Disponível no site, no app e na API, com otimização para DeepSeek Harness, Tencent CodeBuddy e WorkBuddy. A DeepSeek recomenda o DeepSeek Harness v0.2.1-rc.1 ou mais novo."
+   },
+   "en": {
+    "titulo": "DeepSeek-V4.1-Flash-1017 arrives on web, app and API",
+    "simples": "DeepSeek released a new V4.1 Flash version that it says scores higher, finishes tasks faster and writes shorter answers.",
+    "tecnico": "Live on the website, app and API, optimized for DeepSeek Harness, Tencent CodeBuddy and WorkBuddy. DeepSeek recommends DeepSeek Harness v0.2.1-rc.1 or later."
+   }
+  },
+  {
+   "id": "52e0111a96a4",
+   "lab": "deepseek",
+   "fonte": "DeepSeek API news",
+   "link": "https://api-docs.deepseek.com/news/news260910",
+   "data": "2026-09-10",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "DeepSeek lança o DeepSeek-V4.1-Flash",
+    "simples": "A DeepSeek registrou nas notas da API o lançamento do V4.1 Flash.",
+    "tecnico": ""
+   },
+   "en": {
+    "titulo": "DeepSeek releases DeepSeek-V4.1-Flash",
+    "simples": "DeepSeek logged the V4.1 Flash release in its API notes.",
+    "tecnico": ""
+   }
+  },
+  {
+   "id": "7954b370be33",
+   "lab": "deepseek",
+   "fonte": "DeepSeek API news",
+   "link": "https://api-docs.deepseek.com/news/news260813",
+   "data": "2026-08-13",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "DeepSeek-V4-Pro entra em disponibilidade geral",
+    "simples": "A DeepSeek anunciou nas notas da API a disponibilidade geral do V4-Pro.",
+    "tecnico": ""
+   },
+   "en": {
+    "titulo": "DeepSeek-V4-Pro becomes generally available",
+    "simples": "DeepSeek announced general availability of V4-Pro in its API notes.",
+    "tecnico": ""
+   }
+  },
+  {
+   "id": "db5fd34239f6",
+   "lab": "z-ai",
+   "fonte": "Z.ai release notes",
+   "link": "https://docs.z.ai/guides/vlm/glm-5.3-flash",
+   "data": "2026-08-26",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "GLM-5.3-Flash chega com visão nativa",
+    "simples": "A Z.ai lançou uma versão Flash do GLM-5.3 que enxerga telas e resultados, e trabalha também com documentos de escritório e pesquisa financeira.",
+    "tecnico": "Arquitetura híbrida com atenção linear e esparsa, 320B parâmetros no total e 18B ativos, o que reduz computação e cache KV, segundo a Z.ai."
+   },
+   "en": {
+    "titulo": "GLM-5.3-Flash arrives with native vision",
+    "simples": "Z.ai released a Flash version of GLM-5.3 that sees interfaces and rendered results, and also handles office documents and financial research.",
+    "tecnico": "Hybrid architecture with linear and sparse attention, 320B total parameters and 18B active, which Z.ai says cuts compute and KV-cache needs."
+   }
+  },
+  {
+   "id": "d6b8088e2a81",
+   "lab": "z-ai",
+   "fonte": "Z.ai release notes",
+   "link": "https://docs.z.ai/guides/llm/glm-5.3",
+   "data": "2026-08-18",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "GLM-5.3 chega com foco em código e segurança",
+    "simples": "A Z.ai lançou o GLM-5.3 e diz que ele programa bem melhor que o GLM-5.2 e encontra falhas de segurança em código.",
+    "tecnico": "Segundo a Z.ai, ganho de 50% sobre o GLM-5.2 no Z.ai Code Bench e estado da arte entre modelos abertos em testes públicos como o Terminal Bench 3.0. Em alvos reais, achou 2.436 vulnerabilidades, 1.097 de gravidade média ou alta."
+   },
+   "en": {
+    "titulo": "GLM-5.3 arrives with a focus on coding and security",
+    "simples": "Z.ai released GLM-5.3 and says it codes much better than GLM-5.2 and finds security flaws in code.",
+    "tecnico": "Z.ai reports a 50% gain over GLM-5.2 on Z.ai Code Bench and state of the art among open models on public benchmarks such as Terminal Bench 3.0. On real targets it found 2,436 vulnerabilities, 1,097 of medium or high severity."
+   }
+  },
+  {
+   "id": "663bc4ec1cb8",
+   "lab": "tencent",
+   "fonte": "Hugging Face",
+   "link": "https://huggingface.co/tencent/Hy-Memory-30B-A3B",
+   "data": "2026-10-15",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Tencent publica os pesos do Hy-Memory-30B-A3B",
+    "simples": "A Tencent liberou no Hugging Face um modelo de texto com pesos abertos, o Hy-Memory-30B-A3B.",
+    "tecnico": "Modelo de geração de texto publicado na organização tencent do Hugging Face."
+   },
+   "en": {
+    "titulo": "Tencent publishes Hy-Memory-30B-A3B weights",
+    "simples": "Tencent released an open-weights text model, Hy-Memory-30B-A3B, on Hugging Face.",
+    "tecnico": "Text generation model published under the tencent organization on Hugging Face."
+   }
+  },
+  {
+   "id": "d652b7daa13c",
+   "lab": "tencent",
+   "fonte": "Hugging Face",
+   "link": "https://huggingface.co/tencent",
+   "data": "2026-08-27",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Tencent publica o Hy4-preview e a família ContextPilot",
+    "simples": "A Tencent liberou no Hugging Face uma prévia do Hy4 e três modelos ContextPilot, todos de texto e com pesos abertos.",
+    "tecnico": "ContextPilot-14B, ContextPilot-8B, ContextPilot-E4B e Hy4-preview, modelos de geração de texto."
+   },
+   "en": {
+    "titulo": "Tencent publishes Hy4-preview and the ContextPilot family",
+    "simples": "Tencent released a Hy4 preview and three ContextPilot models on Hugging Face, all open-weights text models.",
+    "tecnico": "ContextPilot-14B, ContextPilot-8B, ContextPilot-E4B and Hy4-preview, all text generation models."
+   }
+  },
+  {
+   "id": "8fe683a90ffa",
+   "lab": "xiaomi",
+   "fonte": "Hugging Face",
+   "link": "https://huggingface.co/XiaomiMiMo",
+   "data": "2026-09-27",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Xiaomi publica as versões MOPD do MiMo-V2.6 Flash e Pro",
+    "simples": "A Xiaomi liberou no Hugging Face variantes novas de texto dos modelos MiMo-V2.6, com pesos abertos.",
+    "tecnico": "MiMo-V2.6-Flash-MOPD e MiMo-V2.6-Pro-MOPD, modelos de geração de texto."
+   },
+   "en": {
+    "titulo": "Xiaomi publishes MOPD versions of MiMo-V2.6 Flash and Pro",
+    "simples": "Xiaomi released new open-weights text variants of its MiMo-V2.6 models on Hugging Face.",
+    "tecnico": "MiMo-V2.6-Flash-MOPD and MiMo-V2.6-Pro-MOPD, text generation models."
+   }
+  },
+  {
+   "id": "e7cfbafcdab1",
+   "lab": "xiaomi",
+   "fonte": "Hugging Face",
+   "link": "https://huggingface.co/XiaomiMiMo",
+   "data": "2026-09-21",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Xiaomi publica versões RL do MiMo-V2.6 e um destilado de 9B",
+    "simples": "A Xiaomi liberou no Hugging Face três modelos da família MiMo-V2.6, dois de texto e um que lê imagem.",
+    "tecnico": "MiMo-V2.6-Flash-RL e MiMo-V2.6-Pro-RL (geração de texto) e MiMo-V2.6-Distill-Qwen-9B (imagem e texto para texto)."
+   },
+   "en": {
+    "titulo": "Xiaomi publishes RL versions of MiMo-V2.6 and a 9B distilled model",
+    "simples": "Xiaomi released three MiMo-V2.6 models on Hugging Face, two for text and one that reads images.",
+    "tecnico": "MiMo-V2.6-Flash-RL and MiMo-V2.6-Pro-RL (text generation) and MiMo-V2.6-Distill-Qwen-9B (image-text-to-text)."
+   }
+  },
+  {
+   "id": "2bf3869eddc5",
+   "lab": "minimax",
+   "fonte": "MiniMax release notes",
+   "link": "https://www.minimax.io/blog/minimax-m31f",
+   "data": "2026-10-19",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "MiniMax M3.1 Flash chega com pesos abertos",
+    "simples": "A MiniMax lançou o M3.1 Flash, que descreve como um modelo de pesos abertos muito eficiente para o trabalho do dia a dia.",
+    "tecnico": ""
+   },
+   "en": {
+    "titulo": "MiniMax M3.1 Flash arrives with open weights",
+    "simples": "MiniMax launched M3.1 Flash, which it describes as an ultra-efficient open-weight model for everyday work.",
+    "tecnico": ""
+   }
+  },
+  {
+   "id": "7bf6501fcae1",
+   "lab": "minimax",
+   "fonte": "MiniMax release notes",
+   "link": "https://www.minimax.io/blog/minimax-h3",
+   "data": "2026-07-31",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "MiniMax H3 chega para gerar vídeo",
+    "simples": "A MiniMax lançou o H3, modelo aberto de vídeo que entende texto, imagem, vídeo e áudio para gerar resultados mais coerentes.",
+    "tecnico": ""
+   },
+   "en": {
+    "titulo": "MiniMax H3 arrives for video generation",
+    "simples": "MiniMax launched H3, an open multimodal video model that understands text, image, video and audio to produce more coherent output.",
+    "tecnico": ""
+   }
+  },
+  {
+   "id": "cf117f8374f6",
+   "lab": "moonshotai",
+   "fonte": "Kimi platform changelog",
+   "link": "https://platform.kimi.ai/docs/api/tools-search",
+   "data": "2026-09",
+   "tipo": "api",
+   "pt": {
+    "titulo": "Kimi ganha API de busca na web para agentes",
+    "simples": "A plataforma da Moonshot passou a oferecer busca na web pela API, com resultados estruturados para agentes que controlam a própria busca.",
+    "tecnico": "Endpoints /v1/tools/search e /v1/tools/search_pro, com limites de QPS por organização e por projeto."
+   },
+   "en": {
+    "titulo": "Kimi platform adds a web search API for agents",
+    "simples": "Moonshot's platform now offers web search through its API, with structured results for agents that run their own search logic.",
+    "tecnico": "Endpoints /v1/tools/search and /v1/tools/search_pro, with organization and project QPS limits."
+   }
+  },
+  {
+   "id": "4a11b01163de",
+   "lab": "moonshotai",
+   "fonte": "Kimi platform changelog",
+   "link": "https://platform.kimi.ai/docs/guide/kimi-k3-quickstart",
+   "data": "2026-08",
+   "tipo": "desativacao",
+   "pt": {
+    "titulo": "Kimi K2.5 e a série moonshot-v1 saem do ar",
+    "simples": "A Moonshot aposentou modelos antigos em todas as plataformas e pede a migração para o Kimi K3.",
+    "tecnico": "kimi-k2.5 e toda a série moonshot-v1, inclusive -vision-preview e moonshot-v1-auto, agora devolvem erro 404 \"model not found\"."
+   },
+   "en": {
+    "titulo": "Kimi K2.5 and the moonshot-v1 series are retired",
+    "simples": "Moonshot retired older models across all platforms and asks users to move to Kimi K3.",
+    "tecnico": "kimi-k2.5 and all moonshot-v1 models, including -vision-preview and moonshot-v1-auto, now return a 404 \"model not found\" error."
+   }
+  },
+  {
+   "id": "db42c84e1297",
+   "lab": "moonshotai",
+   "fonte": "Kimi platform changelog",
+   "link": "https://platform.kimi.ai/docs/guide/kimi-k3-quickstart",
+   "data": "2026-07",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Kimi K3 chega à API da Moonshot com contexto de 1M tokens",
+    "simples": "A Moonshot colocou na API o Kimi K3, seu modelo principal para programação longa e trabalho de conhecimento de ponta a ponta.",
+    "tecnico": "Contexto de 1M tokens. Novos usuários deixam de ter acesso ao kimi-k2.5 e à série moonshot-v1."
+   },
+   "en": {
+    "titulo": "Kimi K3 arrives on Moonshot's API with a 1M token context",
+    "simples": "Moonshot put Kimi K3, its flagship for long-horizon coding and end-to-end knowledge work, on its API.",
+    "tecnico": "1M token context. New users no longer get kimi-k2.5 or the moonshot-v1 series."
+   }
+  },
+  {
+   "id": "7db694bfadb8",
+   "lab": "qwen",
+   "fonte": "Alibaba Model Studio",
+   "link": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+   "data": "2026-10-09",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Qwen-Image-2.1-Turbo chega ao Model Studio",
+    "simples": "A Alibaba colocou no Model Studio a versão Turbo do seu modelo aberto de imagem, que descreve como a de melhor custo-benefício da série.",
+    "tecnico": "qwen-image-2.1-turbo gera e edita imagens, com transparência nativa e edição com várias referências."
+   },
+   "en": {
+    "titulo": "Qwen-Image-2.1-Turbo arrives on Model Studio",
+    "simples": "Alibaba added the Turbo version of its open image model to Model Studio, which it calls the most balanced and cost-effective in the series.",
+    "tecnico": "qwen-image-2.1-turbo generates and edits images, with native transparency and multi-reference editing."
+   }
+  },
+  {
+   "id": "3da050539658",
+   "lab": "qwen",
+   "fonte": "Alibaba Model Studio",
+   "link": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+   "data": "2026-10-08",
+   "tipo": "api",
+   "pt": {
+    "titulo": "qwen3.8-max e qwen3.7-flash chegam à região dos EUA",
+    "simples": "A Alibaba passou a oferecer o qwen3.8-max e o qwen3.7-flash na região da Virgínia, nos EUA.",
+    "tecnico": "Escopo de implantação nos EUA, com geração de texto, raciocínio, visão, chamada de função, saída estruturada e cache de contexto. O qwen3.8-max tem janela nativa de 1M tokens."
+   },
+   "en": {
+    "titulo": "qwen3.8-max and qwen3.7-flash arrive in the US region",
+    "simples": "Alibaba now serves qwen3.8-max and qwen3.7-flash from the US (Virginia) region.",
+    "tecnico": "US deployment scope with text generation, deep thinking, visual understanding, function calling, structured output and context caching. qwen3.8-max has a native 1M token context window."
+   }
+  },
+  {
+   "id": "f74c683a77af",
+   "lab": "qwen",
+   "fonte": "Alibaba Model Studio",
+   "link": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+   "data": "2026-09-02",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Qwen3.8-Max-0902 atualiza o modelo principal da Alibaba",
+    "simples": "A Alibaba lançou uma versão nova do qwen3.8-max que, segundo ela, programa melhor em projetos grandes e coordena melhor várias ferramentas.",
+    "tecnico": "Snapshot qwen3.8-max-0902, também chamado qwen3.8-max-2026-09-02, com geração de texto, raciocínio e visão."
+   },
+   "en": {
+    "titulo": "Qwen3.8-Max-0902 updates Alibaba's flagship",
+    "simples": "Alibaba released a new qwen3.8-max snapshot that it says codes better on large projects and handles multi-tool work better.",
+    "tecnico": "Snapshot qwen3.8-max-0902, alias qwen3.8-max-2026-09-02, with text generation, reasoning and visual understanding."
+   }
+  },
+  {
+   "id": "7d059e5b6614",
+   "lab": "qwen",
+   "fonte": "Alibaba Model Studio",
+   "link": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+   "data": "2026-08-12",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Qwen3.8-2.4T-A95B é a versão aberta da série principal da Qwen",
+    "simples": "A Alibaba publicou a versão de código aberto da sua série principal, um modelo enorme que ativa só uma parte dos parâmetros a cada passo.",
+    "tecnico": "MoE esparso com 2,4 trilhões de parâmetros no total e cerca de 95 bilhões ativos por passo, atenção híbrida e contexto de 1 milhão de tokens."
+   },
+   "en": {
+    "titulo": "Qwen3.8-2.4T-A95B is the open version of Qwen's flagship series",
+    "simples": "Alibaba published the open-source version of its flagship series, a very large model that activates only part of its parameters at each step.",
+    "tecnico": "Sparse MoE with 2.4 trillion total parameters and about 95 billion active per step, hybrid attention and a 1 million token context."
+   }
+  }
+ ],
+ "movimentos_ignorados": [
+  {
+   "id": "94811b7d5df8",
+   "lab": "tencent",
+   "data": "2026-10-24",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "c779f0f0eea3",
+   "lab": "tencent",
+   "data": "2026-10-22",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "6517229b975a",
+   "lab": "anthropic",
+   "data": "2026-10-22",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "1b1b68fabc93",
+   "lab": "tencent",
+   "data": "2026-10-21",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "52a25692bc76",
+   "lab": "openai",
+   "data": "2026-10-21",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "defc2043f0f1",
+   "lab": "anthropic",
+   "data": "2026-10-21",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "d6da1c3461f5",
+   "lab": "anthropic",
+   "data": "2026-10-21",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "322967fee432",
+   "lab": "anthropic",
+   "data": "2026-10-21",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "0c2e04bd5d37",
+   "lab": "anthropic",
+   "data": "2026-10-21",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "b7f6a4a875a2",
+   "lab": "anthropic",
+   "data": "2026-10-20",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "b49c2dad01ff",
+   "lab": "anthropic",
+   "data": "2026-10-20",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "b4035d898647",
+   "lab": "anthropic",
+   "data": "2026-10-20",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "b07f80f0b15c",
+   "lab": "anthropic",
+   "data": "2026-10-20",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "b077dd39e768",
+   "lab": "anthropic",
+   "data": "2026-10-20",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "25f692183be0",
+   "lab": "anthropic",
+   "data": "2026-10-20",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "2323b5c65fe7",
+   "lab": "anthropic",
+   "data": "2026-10-20",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "50dd55c04d33",
+   "lab": "minimax",
+   "data": "2026-10-17",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "0bbc1a4daaef",
+   "lab": "deepseek",
+   "data": "2026-10-17",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "625be97def9a",
+   "lab": "tencent",
+   "data": "2026-10-16",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "b1e66609aa43",
+   "lab": "openai",
+   "data": "2026-10-16",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "83761d66eaba",
+   "lab": "openai",
+   "data": "2026-10-16",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "14c77ce56802",
+   "lab": "openai",
+   "data": "2026-10-15",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "a641a5a5c04a",
+   "lab": "anthropic",
+   "data": "2026-10-15",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "5f0d07644db4",
+   "lab": "anthropic",
+   "data": "2026-10-15",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "1e55a5daf8a3",
+   "lab": "anthropic",
+   "data": "2026-10-15",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "e3dd95dd333c",
+   "lab": "anthropic",
+   "data": "2026-10-14",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "2805c49bf2b1",
+   "lab": "anthropic",
+   "data": "2026-10-14",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "d251a79a802b",
+   "lab": "google",
+   "data": "2026-10-13",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "1a8d126b282c",
+   "lab": "google",
+   "data": "2026-10-13",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "ccedd802f913",
+   "lab": "tencent",
+   "data": "2026-10-09",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "db70643c3905",
+   "lab": "qwen",
+   "data": "2026-10-09",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "3edf49268e1c",
+   "lab": "openai",
+   "data": "2026-10-09",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "bffb0b281377",
+   "lab": "anthropic",
+   "data": "2026-10-09",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "a9b256dbb689",
+   "lab": "google",
+   "data": "2026-10-08",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "007eaca515d3",
+   "lab": "google",
+   "data": "2026-10-08",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "e480d63fc22f",
+   "lab": "anthropic",
+   "data": "2026-10-08",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "42eb1af4343c",
+   "lab": "anthropic",
+   "data": "2026-10-08",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "8e12e3c83d77",
+   "lab": "openai",
+   "data": "2026-10-07",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "f20e74221984",
+   "lab": "anthropic",
+   "data": "2026-10-07",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "ef334f818c1d",
+   "lab": "anthropic",
+   "data": "2026-10-07",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "ec74b48c37d7",
+   "lab": "anthropic",
+   "data": "2026-10-07",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "cdd32415a381",
+   "lab": "anthropic",
+   "data": "2026-10-07",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "454fcb5296f1",
+   "lab": "anthropic",
+   "data": "2026-10-07",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "096e7ff19ed1",
+   "lab": "anthropic",
+   "data": "2026-10-07",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "ddf56a208c7c",
+   "lab": "openai",
+   "data": "2026-10-06",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "966f80013a1f",
+   "lab": "openai",
+   "data": "2026-10-06",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "32f12bf24b7c",
+   "lab": "google",
+   "data": "2026-10-06",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "4f76b9bee482",
+   "lab": "anthropic",
+   "data": "2026-10-06",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "12081d395c7d",
+   "lab": "openai",
+   "data": "2026-10-05",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "d459691f9553",
+   "lab": "anthropic",
+   "data": "2026-10-05",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "b079de4d10d7",
+   "lab": "qwen",
+   "data": "2026-10-03",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "92fb72499f16",
+   "lab": "qwen",
+   "data": "2026-10-02",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "6e3687a41455",
+   "lab": "anthropic",
+   "data": "2026-10-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "17c784e74a2d",
+   "lab": "anthropic",
+   "data": "2026-10-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "f3a359f409fd",
+   "lab": "google",
+   "data": "2026-09-30",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "01a293b34281",
+   "lab": "anthropic",
+   "data": "2026-09-30",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "67ed80f48c23",
+   "lab": "openai",
+   "data": "2026-09-29",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "3b2c51d0f823",
+   "lab": "openai",
+   "data": "2026-09-29",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "f464311d47b8",
+   "lab": "anthropic",
+   "data": "2026-09-28",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "9ce4209d08b3",
+   "lab": "anthropic",
+   "data": "2026-09-28",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "72014bba2f7d",
+   "lab": "openai",
+   "data": "2026-09-25",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "ed31c359a679",
+   "lab": "anthropic",
+   "data": "2026-09-24",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "b7630ffad3c7",
+   "lab": "anthropic",
+   "data": "2026-09-24",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "4e34393bf4d4",
+   "lab": "anthropic",
+   "data": "2026-09-24",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "c3bf1d97837a",
+   "lab": "anthropic",
+   "data": "2026-09-23",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "aa24a0b9ac93",
+   "lab": "google",
+   "data": "2026-09-22",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "ce2a23ba0ce1",
+   "lab": "anthropic",
+   "data": "2026-09-22",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "96f0070c60b8",
+   "lab": "anthropic",
+   "data": "2026-09-22",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "755cfb6ef7b7",
+   "lab": "anthropic",
+   "data": "2026-09-22",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "923df585a240",
+   "lab": "qwen",
+   "data": "2026-09-21",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "e31ad954ae8e",
+   "lab": "qwen",
+   "data": "2026-09-20",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "ac019293cb0b",
+   "lab": "qwen",
+   "data": "2026-09-20",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "0169a9546a3e",
+   "lab": "google",
+   "data": "2026-09-18",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "a7e4ff0aed5d",
+   "lab": "anthropic",
+   "data": "2026-09-18",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "698748276633",
+   "lab": "anthropic",
+   "data": "2026-09-18",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "a51ba0196b9d",
+   "lab": "qwen",
+   "data": "2026-09-17",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "370f85a6fc43",
+   "lab": "google",
+   "data": "2026-09-17",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "0964ec8be0b6",
+   "lab": "tencent",
+   "data": "2026-09-16",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "6e61eff04c7b",
+   "lab": "openai",
+   "data": "2026-09-15",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "5e3a26700c67",
+   "lab": "google",
+   "data": "2026-09-15",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "11771d3c5c8e",
+   "lab": "tencent",
+   "data": "2026-09-14",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "d00ef3965831",
+   "lab": "qwen",
+   "data": "2026-09-14",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "df4e55ffd3c3",
+   "lab": "google",
+   "data": "2026-09-14",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "93a6a5865b49",
+   "lab": "anthropic",
+   "data": "2026-09-14",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "3adad2eb07c4",
+   "lab": "anthropic",
+   "data": "2026-09-14",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "e54f18f1e0c0",
+   "lab": "openai",
+   "data": "2026-09-10",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "9bcf66b1f934",
+   "lab": "openai",
+   "data": "2026-09-10",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "690750576537",
+   "lab": "openai",
+   "data": "2026-09-10",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "27b36b45a0ad",
+   "lab": "google",
+   "data": "2026-09-10",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "371a03e1aa19",
+   "lab": "deepseek",
+   "data": "2026-09-10",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "ce81acc92d2e",
+   "lab": "anthropic",
+   "data": "2026-09-10",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "c1b6a36aa9d5",
+   "lab": "anthropic",
+   "data": "2026-09-10",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "0424da879556",
+   "lab": "anthropic",
+   "data": "2026-09-09",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "9176b343e61e",
+   "lab": "openai",
+   "data": "2026-09-08",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "795c2b893e76",
+   "lab": "openai",
+   "data": "2026-09-08",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "044366a1a144",
+   "lab": "openai",
+   "data": "2026-09-08",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "79f960fc419d",
+   "lab": "tencent",
+   "data": "2026-09-04",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "b1976cbf22f5",
+   "lab": "openai",
+   "data": "2026-09-03",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "8fa49def54b6",
+   "lab": "google",
+   "data": "2026-09-03",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "d8db89213c0b",
+   "lab": "anthropic",
+   "data": "2026-09-03",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "bb27515ab7db",
+   "lab": "anthropic",
+   "data": "2026-09-03",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "cbe73c5158d9",
+   "lab": "openai",
+   "data": "2026-09-02",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "442a44534ebb",
+   "lab": "openai",
+   "data": "2026-09-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "e811617d5ea7",
+   "lab": "google",
+   "data": "2026-09-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "64da9073af9a",
+   "lab": "google",
+   "data": "2026-09-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "f662d2287a5c",
+   "lab": "anthropic",
+   "data": "2026-09-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "f55c847dfd4e",
+   "lab": "anthropic",
+   "data": "2026-09-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "e733970d3e41",
+   "lab": "anthropic",
+   "data": "2026-09-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "e00ce9f32cc3",
+   "lab": "anthropic",
+   "data": "2026-09-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "c522be44750d",
+   "lab": "anthropic",
+   "data": "2026-09-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "be06d686a5c8",
+   "lab": "anthropic",
+   "data": "2026-09-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "953e4c214044",
+   "lab": "anthropic",
+   "data": "2026-09-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "596ca349c599",
+   "lab": "anthropic",
+   "data": "2026-09-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "29930d99f3f3",
+   "lab": "anthropic",
+   "data": "2026-09-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "270637ef2be8",
+   "lab": "anthropic",
+   "data": "2026-09-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "2e7c163aefd0",
+   "lab": "moonshotai",
+   "data": "2026-09",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "55df509c10fe",
+   "lab": "deepseek",
+   "data": "2026-08-31",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "151e934c9c86",
+   "lab": "qwen",
+   "data": "2026-08-30",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "56b563025972",
+   "lab": "openai",
+   "data": "2026-08-29",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "95ba315e8680",
+   "lab": "qwen",
+   "data": "2026-08-28",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "9f720d182156",
+   "lab": "qwen",
+   "data": "2026-08-27",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "bc3aed4469d8",
+   "lab": "google",
+   "data": "2026-08-27",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "fb7ed6f96cf8",
+   "lab": "anthropic",
+   "data": "2026-08-27",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "a11c05cb2a5a",
+   "lab": "anthropic",
+   "data": "2026-08-27",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "7b97b7cde510",
+   "lab": "qwen",
+   "data": "2026-08-26",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "d8358e8df7d2",
+   "lab": "openai",
+   "data": "2026-08-26",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "da716d0530f1",
+   "lab": "google",
+   "data": "2026-08-26",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "f962bee32e11",
+   "lab": "anthropic",
+   "data": "2026-08-26",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "9fb296f1e857",
+   "lab": "anthropic",
+   "data": "2026-08-26",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "6e0dc9311988",
+   "lab": "anthropic",
+   "data": "2026-08-26",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "0546d3cb4cf5",
+   "lab": "z-ai",
+   "data": "2026-08-25",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "780b32b963f4",
+   "lab": "tencent",
+   "data": "2026-08-25",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "fd12b84ff943",
+   "lab": "qwen",
+   "data": "2026-08-24",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "049878f98ec6",
+   "lab": "google",
+   "data": "2026-08-24",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "7caaf16f17ba",
+   "lab": "openai",
+   "data": "2026-08-21",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "65e5f1853f2f",
+   "lab": "openai",
+   "data": "2026-08-21",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "07a90125c04c",
+   "lab": "deepseek",
+   "data": "2026-08-21",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "cf524c0f7eaf",
+   "lab": "openai",
+   "data": "2026-08-20",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "0cc1677a58cd",
+   "lab": "openai",
+   "data": "2026-08-20",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "ffd58bb1b380",
+   "lab": "anthropic",
+   "data": "2026-08-20",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "0c9cb9efb8a3",
+   "lab": "anthropic",
+   "data": "2026-08-20",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "8b525e759df9",
+   "lab": "google",
+   "data": "2026-08-19",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "250fb7dcb1fd",
+   "lab": "google",
+   "data": "2026-08-19",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "eaba7f398d09",
+   "lab": "anthropic",
+   "data": "2026-08-19",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "e4b68f839d44",
+   "lab": "anthropic",
+   "data": "2026-08-19",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "c4cdeba41b8b",
+   "lab": "anthropic",
+   "data": "2026-08-19",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "b83019f07494",
+   "lab": "anthropic",
+   "data": "2026-08-19",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "a241c2f6b9d7",
+   "lab": "anthropic",
+   "data": "2026-08-19",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "7cd641634643",
+   "lab": "anthropic",
+   "data": "2026-08-19",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "6e8f98b8b810",
+   "lab": "anthropic",
+   "data": "2026-08-19",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "6d76313d645b",
+   "lab": "anthropic",
+   "data": "2026-08-19",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "441fbfa23d22",
+   "lab": "anthropic",
+   "data": "2026-08-19",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "2b0f51b6d4f7",
+   "lab": "anthropic",
+   "data": "2026-08-18",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "67dd63c7d363",
+   "lab": "qwen",
+   "data": "2026-08-17",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "bf14fbf4cf94",
+   "lab": "openai",
+   "data": "2026-08-13",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "4d654d994dd6",
+   "lab": "google",
+   "data": "2026-08-13",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "0d585122612a",
+   "lab": "deepseek",
+   "data": "2026-08-13",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "98d0fb1f3bf8",
+   "lab": "anthropic",
+   "data": "2026-08-11",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "5860031f9029",
+   "lab": "anthropic",
+   "data": "2026-08-11",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "1ce84b8f809f",
+   "lab": "qwen",
+   "data": "2026-08-10",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "bff0b161a103",
+   "lab": "anthropic",
+   "data": "2026-08-10",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "8bab8d11987b",
+   "lab": "qwen",
+   "data": "2026-08-08",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "db28d6f43548",
+   "lab": "openai",
+   "data": "2026-08-07",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "d68f9efcf967",
+   "lab": "minimax",
+   "data": "2026-08-07",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "f4efe94cfbed",
+   "lab": "anthropic",
+   "data": "2026-08-07",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "970efc6829be",
+   "lab": "anthropic",
+   "data": "2026-08-07",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "828bdcaca97e",
+   "lab": "anthropic",
+   "data": "2026-08-07",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "20cd28d4d136",
+   "lab": "anthropic",
+   "data": "2026-08-07",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "be8d0797a5c5",
+   "lab": "qwen",
+   "data": "2026-08-06",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "cad3f7faf15a",
+   "lab": "openai",
+   "data": "2026-08-06",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "61b3abda78ed",
+   "lab": "qwen",
+   "data": "2026-08-05",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "eafc8bbd6155",
+   "lab": "openai",
+   "data": "2026-08-05",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "5bc758be35c9",
+   "lab": "anthropic",
+   "data": "2026-08-05",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "03254fc2eb4f",
+   "lab": "anthropic",
+   "data": "2026-08-05",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "a193ca5ec71d",
+   "lab": "qwen",
+   "data": "2026-08-04",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "124b43ccc4eb",
+   "lab": "openai",
+   "data": "2026-08-04",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "7e9acae641dd",
+   "lab": "anthropic",
+   "data": "2026-08-03",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "df4e3b7193b6",
+   "lab": "qwen",
+   "data": "2026-08-02",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "a8803a9d38f8",
+   "lab": "anthropic",
+   "data": "2026-08-01",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "145d6e8b716b",
+   "lab": "moonshotai",
+   "data": "2026-08",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "9047b4dc7ecb",
+   "lab": "qwen",
+   "data": "2026-07-31",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "5136438da412",
+   "lab": "google",
+   "data": "2026-07-31",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  },
+  {
+   "id": "e46afe75b84a",
+   "lab": "deepseek",
+   "data": "2026-07-31",
+   "motivo": "registro inicial: anterior à primeira edição com movimentos"
+  }
+ ]
+}

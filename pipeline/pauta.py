@@ -49,6 +49,8 @@ import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_web import LAB, r  # noqa: E402
+import movimentos  # noqa: E402
+from movimentos import noticias_deepseek  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -269,23 +271,14 @@ def coletar_hf(get, desde):
 
 
 def coletar_deepseek(get, desde):
-    """Notas de lancamento da DeepSeek: a data esta no endereco (/news/newsAAMMDD)."""
-    home = get("https://api-docs.deepseek.com/")
-    ultima = re.search(r'href="(/news/news\d{6})"', home)
-    if not ultima:
-        raise RuntimeError("link de noticias nao encontrado")
-    pagina = get("https://api-docs.deepseek.com" + ultima.group(1))
-    out, vistos = [], set()
-    for m in re.finditer(r'<a[^>]+href="(/news/news(\d{2})(\d{2})(\d{2}))"[^>]*>(.*?)</a>', pagina, re.I | re.S):
-        href = m.group(1)
-        titulo = limpar(m.group(5), 160)
-        if href in vistos or not titulo or titulo.lower() == "news":
-            continue
-        vistos.add(href)
-        quando = dt.datetime(2000 + int(m.group(2)), int(m.group(3)), int(m.group(4)), 12, tzinfo=dt.timezone.utc)
+    """Notas de lancamento da DeepSeek (leitura em movimentos.noticias_deepseek). Ate 24/10 a nota mais
+    recente chegava com o titulo "English", o texto do seletor de idioma que aponta para o mesmo endereco."""
+    out = []
+    for link, data, titulo, corpo in noticias_deepseek(get):
+        quando = dt.datetime.fromisoformat(data).replace(hour=12, tzinfo=dt.timezone.utc)
         if quando.date() < desde.date():
             continue
-        out.append(item("deepseek", 3, titulo, "https://api-docs.deepseek.com" + href, quando, "", "DeepSeek", lab="deepseek"))
+        out.append(item("deepseek", 3, titulo, link, quando, corpo, "DeepSeek", lab="deepseek"))
     return out
 
 
@@ -1024,6 +1017,25 @@ def montar(dia, itens, status, claude, contexto, agora, historico=None, janela=N
     }
 
 
+def com_movimentos(p, dia, claude, get, pasta=DESTINO, inicial=movimentos.INICIAL, fontes=movimentos.FONTES):
+    """Bloco de movimentos dos laboratorios na pauta. Falha aqui nunca derruba a pauta: a edicao sai
+    sem o bloco, com o motivo no JSON e no PR, e a proxima pauta alcanca o que ficou para tras.
+    Edicao sem noticia aprovada, mas com movimento que passou nas travas, tambem publica sozinha."""
+    try:
+        links = [f["link"] for a in p.get("assuntos", []) for f in a["fontes"]]
+        M = movimentos.montar(dia, claude, get, movimentos.registrados(pasta, dia, inicial), AVISO_DADO,
+                              numeros_ok, valida_pt, en_ascii, excluir_links=links, log=log, fontes=fontes)
+    except Exception as e:
+        log(f"  movimentos: falha ({type(e).__name__}: {str(e)[:120]})")
+        return {"movimentos": [], "movimentos_ignorados": [], "movimentos_erro": f"{type(e).__name__}: {str(e)[:120]}"}
+    ed = p.get("editor")
+    if ed is not None and not ed["aprovada"] and ed.get("motivo") in ("nenhum assunto aprovado", "sem itens") and M["movimentos"]:
+        ed["aprovada"] = True
+        ed["motivo"] = "sem notícia aprovada; edição só com movimentos dos laboratórios"
+        ed["acoes"].append(f"Aprovada só com {len(M['movimentos'])} movimento(s) dos laboratórios")
+    return M
+
+
 def corpo_pr(p):
     L = [f"Pauta do Radar de {p['dia']}. O merge publica; fechar descarta.", ""]
     ed = p.get("editor")
@@ -1043,11 +1055,20 @@ def corpo_pr(p):
               f"> EN: **{a['en']['titulo']}**. {a['en']['resumo']}", ""]
         L += [f"- {(f.get('data') or '')[:16].replace('T', ' ')} UTC · [{f['veiculo']}]({f['link']}): {f['titulo']}" for f in a["fontes"]]
         L.append("")
+    if p.get("movimentos"):
+        L += ["### Movimentos dos laboratórios", ""]
+        L += [f"- {m['data']} · **{movimentos.LABS[m['lab']]['nome']}** `{m['tipo']}` [{m['pt']['titulo']}]({m['link']}): {m['pt']['simples']}"
+              for m in p["movimentos"]]
+        L.append("")
+    elif "movimentos" in p:
+        L += ["Nenhum movimento novo dos laboratórios nesta edição.", ""]
+    if p.get("movimentos_erro"):
+        L += [f"Movimentos fora desta edição: {p['movimentos_erro']}", ""]
     if p["descartados"]:
         L += ["<details><summary>Descartados</summary>", ""]
         L += [f"- {a['nota']} `{a['categoria']}` {a['fontes'][0]['titulo']} ({a['motivo']})" for a in p["descartados"][:25]]
         L += ["", "</details>", ""]
-    falhas = [f"{k} ({v['erro']})" for k, v in p["fontes"].items() if not v["ok"]]
+    falhas = [f"{k} ({v['erro']})" for k, v in {**p["fontes"], **p.get("fontes_movimentos", {})}.items() if not v["ok"]]
     L.append("Fontes com falha: " + (", ".join(falhas) if falhas else "nenhuma") + ".")
     if p.get("uso_tokens"):
         L.append(f"Modelo `{p['modelo']}`, {p['uso_tokens']['entrada']} tokens de entrada e {p['uso_tokens']['saida']} de saída.")
@@ -1057,6 +1078,7 @@ def corpo_pr(p):
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--so-coleta", action="store_true")
+    ap.add_argument("--so-movimentos", action="store_true", help="so a coleta dos changelogs dos laboratorios, sem IA")
     ap.add_argument("--pr-md")
     ap.add_argument("--dia")
     ap.add_argument("--janela", type=int, help="horas de coleta; sem isso vale a regra por dia da semana")
@@ -1067,6 +1089,14 @@ def main(argv=None):
     agora = dt.datetime.now(dt.timezone.utc)
     dia = a.dia or agora.strftime("%Y-%m-%d")
     t0 = time.time()
+    if a.so_movimentos:
+        brutos, st = movimentos.coletar(http_get(requests.Session()), dia)
+        ja = movimentos.registrados(DESTINO, dia)
+        for k, v in st.items():
+            log(f"  {k}: {v}")
+        for it in brutos:
+            print(f"  {'   ' if it['id'] in ja else 'NOVO'} {it['data']} {it['lab']:<10} {it['texto'][:110]}")
+        return 0
     janela = janela_horas(agora, a.janela)
     log(f"janela: {janela} h")
     sessao = requests.Session()
@@ -1097,8 +1127,10 @@ def main(argv=None):
     if dest:
         log("destaques ativos: " + ", ".join(d["termo"] for d in dest))
     editor = os.environ.get("PAUTA_EDITOR", "1") != "0"
-    p = montar(dia, itens, status, Claude(chave), ctx, agora, historico=hist, janela=janela, destaques=dest,
+    claude = Claude(chave)
+    p = montar(dia, itens, status, claude, ctx, agora, historico=hist, janela=janela, destaques=dest,
                editor=editor, get=pagina_get(sessao))
+    p.update(com_movimentos(p, dia, claude, http_get(sessao)))
     DESTINO.mkdir(parents=True, exist_ok=True)
     arq.write_text(json.dumps(p, ensure_ascii=False, indent=1) + "\n")
     print(f"{arq.name}: {len(p['assuntos'])} assunto(s) publicados, {len(p['descartados'])} descartados, "

@@ -22,5 +22,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .flatMap(m => entrada('/m/' + m.slug, 0.6));
   const edicoes = radar().edicoes;
   const radarPaginas = edicoes.flatMap(ed => entrada('/radar/' + ed.dia, 0.5).map(e => ({ ...e, lastModified: ed.dia, changeFrequency: 'never' as const })));
-  return [...entrada('/', 1), ...entrada('/radar', 0.8), ...radarPaginas, ...paginas];
+  return [...entrada('/', 1), ...entrada('/radar', 0.8), ...entrada('/labs', 0.8), ...radarPaginas, ...paginas];
 }

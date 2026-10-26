@@ -107,5 +107,35 @@ export interface EdicaoRadar {
   fontes: { catalogo: string[]; trafego: string | null };
   eventos: EventoRadar[];
   assuntos?: AssuntoPauta[];
+  /** Movimentos dos laboratórios que entraram nesta edição (pipeline/movimentos.py). */
+  movimentos?: MovimentoLab[];
+}
+
+/** Movimento oficial de um laboratório, tirado das notas de versão dele (pipeline/movimentos.py). */
+export type TipoMovimento = 'modelo' | 'preco' | 'desativacao' | 'api' | 'app' | 'outro';
+export interface TextoMovimento { titulo: string; simples: string; tecnico: string }
+export interface MovimentoLab {
+  id: string; lab: string; fonte: string; link: string;
+  /** Dia da nota ("AAAA-MM-DD") ou só o mês ("AAAA-MM"), quando a fonte não dá o dia. */
+  data: string;
+  tipo: TipoMovimento; pt: TextoMovimento; en: TextoMovimento;
+  /** Dia da pauta que trouxe o movimento; o registro inicial é 2026-10-24. */
+  edicao?: string;
+}
+/** Placar de um laboratório acompanhado (build_web.construir_labs): semanas completas, segunda a domingo. */
+export interface LabPlacar {
+  vendor: string; nome: string; grupo: 'eua' | 'china';
+  share_tokens: number; share_tokens_4s: number; share_gasto: number; share_gasto_4s: number;
+  rank_tokens: number | null; serie_tokens: number[]; serie_gasto: number[];
+  lider: { slug: string; nome: string; share: number } | null;
+  paginas: { nome: string; link: string }[];
+}
+export interface GrupoPlacar {
+  serie_tokens: number[]; serie_gasto: number[];
+  share_tokens: number; share_tokens_4s: number; share_gasto: number; share_gasto_4s: number; labs: string[];
+}
+export interface Labs {
+  semanas: string[]; semana: string | null; labs: LabPlacar[];
+  grupos: { eua: GrupoPlacar; china: GrupoPlacar; china_acompanhados: GrupoPlacar };
 }
 export interface Radar { edicoes: EdicaoRadar[] }

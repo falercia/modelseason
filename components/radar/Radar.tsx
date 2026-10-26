@@ -10,6 +10,7 @@ import type { Idioma } from '@/lib/idioma';
 import { diaPublicacao, frase, textoAssunto, tituloEdicao } from '@/lib/radar';
 import type { AssuntoPauta, EdicaoRadar, EventoRadar } from '@/lib/tipos';
 import { slotLab } from '@/lib/cores';
+import { CSS_LABS, ListaMovimentos } from '@/components/labs/Labs';
 
 export const CSS_RADAR = `
 .rd{max-width:880px; margin:0 auto; padding:22px 20px 0}
@@ -46,6 +47,7 @@ export const CSS_RADAR = `
 .rd-sec:first-child{margin-top:0}
 .rd-mais{display:inline-block; margin-top:9px; font-size:12.5px; font-weight:600}
 .rd-intro{font-size:13px; color:var(--ink-2); margin:-4px 0 12px; max-width:70ch}
+.rd-movs{margin-top:22px}
 
 /* Notícia × dado: cartão de coluna única, notícia em cima e faixa de dado embaixo */
 .rd-ev.rd-cruz{padding:0; overflow:hidden; border-left:1px solid var(--ring)}
@@ -83,6 +85,12 @@ export const CSS_RADAR = `
   .rd-fontes li{white-space:normal}
   .rd-arq li{grid-template-columns:minmax(0,1fr) auto} .rd-arq li .d{grid-column:1/-1} }
 `;
+
+/** Nome de exibição dos laboratórios acompanhados (o mesmo de pipeline/movimentos.py, LABS). */
+const NOMES_LAB: Record<string, string> = {
+  anthropic: 'Anthropic', openai: 'OpenAI', google: 'Google', deepseek: 'DeepSeek', 'z-ai': 'Z.ai (GLM)',
+  tencent: 'Tencent', xiaomi: 'Xiaomi', minimax: 'MiniMax', moonshotai: 'Moonshot AI', qwen: 'Qwen',
+};
 
 function Evento({ ev, dia, I, paginas, destaque }: { ev: EventoRadar; dia: string; I: Idioma; paginas: Set<string>; destaque?: boolean }) {
   const F = frase(ev, dia, I);
@@ -154,6 +162,7 @@ function Assunto({ a, I, paginas, destaque }: { a: AssuntoPauta; I: Idioma; pagi
 export function Edicao({ ed, I, paginas, titulo }: { ed: EdicaoRadar; I: Idioma; paginas: Set<string>; titulo?: string }) {
   const { t } = I;
   const assuntos = ed.assuntos ?? [];
+  const movs = ed.movimentos ?? [];
   const [p, ...resto] = ed.eventos;
   const cartoes = resto.slice(0, 4), lista = resto.slice(4);
   return (
@@ -167,10 +176,21 @@ export function Edicao({ ed, I, paginas, titulo }: { ed: EdicaoRadar; I: Idioma;
             en: 'The story published out there and, below it, what real token traffic from the last 7 days says about who is in it. The headline opens the original article; the model name opens its page here.',
           })}</p>
           {assuntos.map((a, i) => <Assunto key={a.id} a={a} I={I} paginas={paginas} destaque={i === 0} />)}
-          {p && <h2 className="rd-sec">{t({ pt: 'Mudanças no dado', en: 'Changes in the data' })}</h2>}
         </>
       )}
-      {!p ? (!assuntos.length && <p className="rd-vazio">{t({ pt: 'Nada relevante mudou no catálogo nem no tráfego neste dia.', en: 'Nothing relevant changed in the catalog or in traffic on this day.' })}</p>) : (
+      {movs.length > 0 && (
+        <div className="rd-movs" data-movimentos>
+          <style href="lb-css" precedence="medium">{CSS_LABS}</style>
+          <h2 className="rd-sec">{t({ pt: 'Movimentos dos laboratórios', en: 'Lab moves' })}</h2>
+          <p className="rd-intro">{t({
+            pt: <>O que os três pagos dos EUA e os sete chineses acompanhados registraram nas próprias notas de versão desde a edição anterior. O título abre a nota oficial. <Link href={I.url('/labs')}>Ver o placar dos laboratórios →</Link></>,
+            en: <>What the three paid US labs and the seven tracked Chinese labs logged in their own release notes since the previous edition. The headline opens the official note. <Link href={I.url('/labs')}>See the lab scoreboard →</Link></>,
+          })}</p>
+          <div className="lb-tempo"><ListaMovimentos ms={movs} I={I} comLab nomes={NOMES_LAB} /></div>
+        </div>
+      )}
+      {p && (assuntos.length > 0 || movs.length > 0) && <h2 className="rd-sec">{t({ pt: 'Mudanças no dado', en: 'Changes in the data' })}</h2>}
+      {!p ? (!assuntos.length && !movs.length && <p className="rd-vazio">{t({ pt: 'Nada relevante mudou no catálogo nem no tráfego neste dia.', en: 'Nothing relevant changed in the catalog or in traffic on this day.' })}</p>) : (
         <>
           <Evento ev={p} dia={ed.dia} I={I} paginas={paginas} destaque={!assuntos.length} />
           {cartoes.length > 0 && (

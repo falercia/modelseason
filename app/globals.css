@@ -354,5 +354,7 @@ footer.rodape a{color:var(--ink-3)}
 .tnav{font-size:12.5px; font-weight:600; color:var(--ink-2); text-decoration:none; padding:4px 8px; border-radius:7px; white-space:nowrap}
 .tnav:hover{background:var(--surface-2); color:var(--ink)}
 @media (max-width:760px){ .tnav{padding:4px 2px} }
+/* Radar e Labs no topo: abaixo de 420 px a busca encolhe até o ícone em vez de passar por cima dos links */
+@media (max-width:420px){ .top-in{gap:6px} .busca input{min-width:0; padding-right:4px} .tnav{font-size:12px} .brand{font-size:14px} }
 .radar-hoje{display:inline-block; margin-top:10px; font-size:13px; color:var(--ink-2)}
 .radar-hoje b{color:var(--ink)}

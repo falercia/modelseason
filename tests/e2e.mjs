@@ -274,10 +274,11 @@ const vazou = (txt) => {
   if (existsSync(pastaPauta)) {
     for (const arq of readdirSync(pastaPauta).filter(a => /^\d{4}-\d{2}-\d{2}\.json$/.test(a))) {
       const pa = JSON.parse(readFileSync(new URL(arq, pastaPauta), 'utf8'));
-      if (!pa.assuntos?.length) continue;
+      if (!pa.assuntos?.length && !pa.movimentos?.length) continue;
       let e = R.edicoes.find(x => x.dia === pa.dia);
       if (!e) { e = { dia: pa.dia, revisao: 1, principal: null, fontes: { catalogo: [], trafego: null }, eventos: [] }; R.edicoes.push(e); }
-      e.assuntos = pa.assuntos;
+      if (pa.assuntos?.length) e.assuntos = pa.assuntos;
+      if (pa.movimentos?.length) e.movimentos = pa.movimentos;
     }
     R.edicoes.sort((a, b) => b.dia.localeCompare(a.dia));
   }
@@ -347,13 +348,70 @@ const vazou = (txt) => {
       await page.close();
     }
   }
+  const comMov = R.edicoes.find(e => e.movimentos?.length);
+  if (comMov) {
+    for (const [lang, pre] of [['pt', ''], ['en', '/en']]) {
+      const { page, erros } = await abrir(`${pre}/radar/${comMov.dia}`);
+      ok(`${lang}: edição mostra todos os movimentos dos laboratórios`, (await page.locator('[data-movimentos] [data-movimento]').count()) === comMov.movimentos.length,
+        `${await page.locator('[data-movimentos] [data-movimento]').count()} de ${comMov.movimentos.length}`);
+      const ext = await page.locator('[data-movimentos] h4 a').evaluateAll(as => as.map(a => ({ h: a.getAttribute('href'), r: a.getAttribute('rel') })));
+      ok(`${lang}: movimento abre a nota oficial com noopener`, ext.length > 0 && ext.every(x => /^https?:\/\//.test(x.h) && /noopener/.test(x.r ?? '')));
+      if (lang === 'en') { const tx = await page.locator('main').innerText(); ok('en: movimentos sem português', !vazou(tx), vazou(tx) || ''); }
+      ok(`${lang}: edição com movimentos sem erro de console`, erros.length === 0, erros.slice(0, 3).join(' | '));
+      await page.close();
+    }
+  }
   const { page: h } = await abrir('/');
-  ok('home tem o link do Radar no topo', (await h.locator('header.top a.tnav').getAttribute('href')) === '/radar');
+  ok('home tem o link do Radar no topo', (await h.locator('header.top a.tnav[href="/radar"]').count()) === 1);
+  ok('home tem o link dos Labs no topo', (await h.locator('header.top a.tnav[href="/labs"]').count()) === 1);
   if (ed && (ed.eventos.length || ed.assuntos?.length)) ok('home chama a edição do dia', (await h.locator('[data-radar-hoje]').count()) === 1);
   await h.close();
   const pg = await browser.newPage();
   const sm = await (await pg.request.get(BASE + '/sitemap.xml')).text();
   ok('sitemap lista o Radar e as edições', /\/radar</.test(sm) && (!ed || sm.includes('/radar/' + ed.dia)));
+  await pg.close();
+}
+
+// ---------------------------------------------------------------- laboratórios
+{
+  const L = JSON.parse(readFileSync(new URL('../data/web/labs.json', import.meta.url), 'utf8'));
+  const ini = new URL('../data/movimentos/inicial.json', import.meta.url);
+  const pastaPauta = new URL('../data/pauta/', import.meta.url);
+  const ids = new Set(existsSync(ini) ? JSON.parse(readFileSync(ini, 'utf8')).movimentos.map(m => m.id) : []);
+  if (existsSync(pastaPauta)) for (const arq of readdirSync(pastaPauta).filter(a => /^\d{4}-\d{2}-\d{2}\.json$/.test(a)))
+    for (const m of JSON.parse(readFileSync(new URL(arq, pastaPauta), 'utf8')).movimentos ?? []) ids.add(m.id);
+  for (const [lang, pre] of [['pt', ''], ['en', '/en']]) {
+    const { page, resp, erros } = await abrir(pre + '/labs');
+    ok(`${lang}: /labs responde 200`, resp.status() === 200, String(resp.status()));
+    ok(`${lang}: /labs com um cartão por laboratório acompanhado`, (await page.locator('article.lb-c[data-lab]').count()) === L.labs.length,
+      `${await page.locator('article.lb-c[data-lab]').count()} de ${L.labs.length}`);
+    const naLinha = await page.locator('#linha-do-tempo + .lb-intro + .lb-tempo [data-movimento]').count();
+    ok(`${lang}: linha do tempo com os movimentos publicados`, naLinha === Math.min(80, ids.size), `${naLinha} de ${ids.size}`);
+    const t = await page.locator('main').innerText();
+    ok(`${lang}: /labs mostra o share de tokens do primeiro laboratório`, t.includes(L.labs[0].share_tokens.toFixed(1).replace('.', lang === 'pt' ? ',' : '.') + '%'));
+    ok(`${lang}: /labs sem NaN, undefined ou null`, !/\bNaN\b|undefined|\bnull\b|Infinity/.test(t));
+    if (lang === 'en') ok('en: /labs sem português', !vazou(t), vazou(t) || '');
+    const ext = await page.locator('.lb-mov h4 a').evaluateAll(as => as.map(a => ({ h: a.getAttribute('href'), r: a.getAttribute('rel') })));
+    ok(`${lang}: movimentos abrem a nota oficial com noopener`, ext.length > 0 && ext.every(x => /^https?:\/\//.test(x.h) && /noopener/.test(x.r ?? '')));
+    ok(`${lang}: /labs sem erro de console`, erros.length === 0, erros.slice(0, 3).join(' | '));
+    await page.close();
+    for (const tema of ['light', 'dark']) {
+      const { page: m } = await abrir(pre + '/labs', { w: 400, tema });
+      const larg = await m.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: innerWidth }));
+      ok(`${lang} /labs 400px ${tema}: sem rolagem horizontal`, larg.sw <= larg.iw, `${larg.sw} > ${larg.iw}`);
+      await m.close();
+    }
+    const { page: home } = await abrir(pre + '/');
+    ok(`${lang}: home tem o placar dos laboratórios`, (await home.locator('[data-placar] a.placar-t').count()) === L.labs.length);
+    await home.close();
+  }
+  const pg = await browser.newPage();
+  const r = await pg.request.get(BASE + '/labs/movimentos.json');
+  const j = r.status() === 200 ? await r.json() : null;
+  ok('/labs/movimentos.json responde JSON com os laboratórios e os movimentos', !!j && j.labs.length === L.labs.length && j.movimentos.length === Math.min(200, ids.size),
+    `${r.status()} ${j?.labs.length} ${j?.movimentos.length}`);
+  const sm = await (await pg.request.get(BASE + '/sitemap.xml')).text();
+  ok('sitemap lista /labs', /\/labs</.test(sm));
   await pg.close();
 }
 
