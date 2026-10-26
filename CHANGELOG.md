@@ -26,6 +26,10 @@ O projeto foi construído em uma única sessão, então todas as versões abaixo
 
 ### Corrigido
 
+- **Pauta de 16/10 barrada por empate**: dois modelos caíram exatamente −0,56 pp na semana e a lista `cairam` do `agora.json` saía numa ordem diferente a cada processo, porque `build_web.py` percorria um `set` (a ordem muda com o `PYTHONHASHSEED`). O teste "data/web bate com o pipeline" falhou no PR e o dia saiu só com o dado. O universo agora é ordenado e o desempate é pelo slug; o `data/web` sai igual com qualquer semente.
+
+- **Pauta de 23/10 barrada pelo feed em inglês**: o link do Tecnoblog traz palavras em português no endereço, e o e2e lia o endereço como texto vazado. A checagem do feed `/en` ignora URLs.
+
 - **Acento no inglês da pauta**: a redação da IA pode trazer palavra emprestada com acento no texto em inglês ("cliché" na pauta de 05/10), e o e2e trata acento no `/en` como português que vazou. O texto em inglês passa por `en_ascii` antes de ser gravado; a pauta de 05/10 foi corrigida no arquivo.
 
 - **Fontes da pauta que não traziam o essencial**: a coleta da Anthropic só aceitava links em `/news/`, mas lançamento de modelo mora na raiz do site (`/claude-sonnet-5-5`), então Opus 5.5 e Sonnet 5.5 só chegaram por tabela via Techmeme; agora entram pela fonte oficial, com peso 3. O Ars Technica lia o feed "Biz & IT", que quase não publica sobre IA e voltava vazio; passou a ler o feed principal com o mesmo filtro de assunto.

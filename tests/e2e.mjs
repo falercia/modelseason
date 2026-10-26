@@ -317,7 +317,9 @@ const vazou = (txt) => {
     const xml = await feed.text();
     ok(`${lang}: feed RSS válido`, feed.status() === 200 && /application\/rss\+xml/.test(feed.headers()['content-type'] ?? '') && xml.startsWith('<?xml')
       && (xml.match(/<item>/g) || []).length === Math.min(60, R.edicoes.length), `${feed.status()} ${(xml.match(/<item>/g) || []).length}`);
-    if (lang === 'en') ok('en: feed sem português', !vazou(xml.replace(/<[^>]+>/g, ' ')), vazou(xml.replace(/<[^>]+>/g, ' ')) || '');
+    // Endereço não é texto: o link de um veículo brasileiro traz palavras em português no caminho (pauta de 23/10).
+    const textoFeed = xml.replace(/<[^>]+>/g, ' ').replace(/https?:\/\/[^\s"<>]+/g, ' ');
+    if (lang === 'en') ok('en: feed sem português', !vazou(textoFeed), vazou(textoFeed) || '');
     await pg.close();
     for (const tema of ['light', 'dark']) {
       const { page: m } = await abrir(pre + '/radar', { w: 400, tema });

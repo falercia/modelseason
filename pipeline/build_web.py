@@ -201,7 +201,9 @@ def construir_agora(df, cat):
     top30 = [linha(k, s30, t30, rk_p30, sp30, tp30, j30[0]) for k in s30.index[:10]]
 
     # movimentos: variacao em pp entre as duas janelas de 7 dias, sobre o universo das duas
-    univ = set(s7.index) | set(sp7.index)
+    # sorted: a ordem de um set muda a cada processo (PYTHONHASHSEED) e, com empate
+    # no delta, o data/web deixava de ser reprodutivel (pauta de 16/10 barrada nos Testes)
+    univ = sorted(set(s7.index) | set(sp7.index))
     mov = []
     for k in univ:
         a = 100 * sp7.get(k, 0) / tp7 if tp7 else 0
@@ -212,8 +214,8 @@ def construir_agora(df, cat):
         mov.append({"slug": k, "nome": m["nome"], "lab": m["lab"], "origem": m["origem"],
                     "de": r(a), "para": r(b), "delta_pp": r(b - a),
                     "estreou": bool(primeira.get(k) is not None and primeira[k] >= j7[0])})
-    subiram = sorted([x for x in mov if x["delta_pp"] > 0], key=lambda x: -x["delta_pp"])[:5]
-    cairam = sorted([x for x in mov if x["delta_pp"] < 0], key=lambda x: x["delta_pp"])[:5]
+    subiram = sorted([x for x in mov if x["delta_pp"] > 0], key=lambda x: (-x["delta_pp"], x["slug"]))[:5]
+    cairam = sorted([x for x in mov if x["delta_pp"] < 0], key=lambda x: (x["delta_pp"], x["slug"]))[:5]
 
     # estreias: primeira aparicao na serie inteira dentro da janela de 7 dias
     novos = [k for k in s7.index if primeira.get(k) is not None and primeira[k] >= j7[0]]
