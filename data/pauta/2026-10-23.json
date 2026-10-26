@@ -1,0 +1,2253 @@
+{
+ "versao": 1,
+ "dia": "2026-10-23",
+ "gerado_em": "2026-10-23T14:31:55Z",
+ "janela_horas": 54,
+ "modelo": "claude-sonnet-5-5",
+ "uso_tokens": {
+  "entrada": 19856,
+  "saida": 6695
+ },
+ "fontes": {
+  "openai": {
+   "ok": true,
+   "itens": 8
+  },
+  "google": {
+   "ok": true,
+   "itens": 0
+  },
+  "anthropic": {
+   "ok": true,
+   "itens": 0
+  },
+  "huggingface": {
+   "ok": true,
+   "itens": 8
+  },
+  "techcrunch": {
+   "ok": true,
+   "itens": 20
+  },
+  "mittr": {
+   "ok": true,
+   "itens": 4
+  },
+  "verge": {
+   "ok": true,
+   "itens": 10
+  },
+  "ars": {
+   "ok": true,
+   "itens": 1
+  },
+  "simonwillison": {
+   "ok": true,
+   "itens": 4
+  },
+  "tecnoblog": {
+   "ok": true,
+   "itens": 7
+  },
+  "nist": {
+   "ok": true,
+   "itens": 0
+  },
+  "ue": {
+   "ok": false,
+   "erro": "RuntimeError: HTTP 403"
+  },
+  "hf": {
+   "ok": true,
+   "itens": 2
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 0
+  },
+  "camara": {
+   "ok": true,
+   "itens": 0
+  },
+  "techmeme": {
+   "ok": true,
+   "itens": 8
+  },
+  "hn": {
+   "ok": true,
+   "itens": 20
+  }
+ },
+ "assuntos": [
+  {
+   "id": "a1",
+   "categoria": "lancamento",
+   "nota": 16.05,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-21T19:14:01Z",
+   "fontes": [
+    {
+     "veiculo": "claude.com",
+     "titulo": "Claude Duet",
+     "link": "https://claude.com/product/claude-duet",
+     "data": "2026-10-21T19:14:01Z",
+     "discussao": "https://news.ycombinator.com/item?id=50186037",
+     "pontos": 552
+    },
+    {
+     "veiculo": "claude.com",
+     "titulo": "Claude Duet",
+     "link": "https://claude.com/resources/articles/claude-duet",
+     "data": "2026-10-21T19:40:18Z",
+     "discussao": "https://news.ycombinator.com/item?id=50186455",
+     "pontos": 92
+    },
+    {
+     "veiculo": "Tecnoblog",
+     "titulo": "Claude ganha agente 24×7 para brigar com ChatGPT, Google e Meta",
+     "link": "https://tecnoblog.net/noticias/claude-ganha-agente-24x7-para-brigar-com-chatgpt-google-e-meta/",
+     "data": "2026-10-22T10:38:29Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Claude Duet app is Anthropic’s bet on agents",
+     "link": "https://techcrunch.com/2026/10/22/claude-duet-app-is-anthropics-bet-on-agents/",
+     "data": "2026-10-22T13:53:26Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Anthropic abre prévia do Claude Duet, app em que o Claude age como agente proativo",
+    "resumo": "Segundo a Anthropic, o Claude Duet é um app em que o Claude age como agente proativo: envia um resumo a cada manhã, executa tarefas e consulta o usuário antes de agir em seu nome. A prévia de pesquisa está nos planos Pro e Max, com lista de espera."
+   },
+   "en": {
+    "titulo": "Anthropic opens Claude Duet preview, an app where Claude works as a proactive agent",
+    "resumo": "According to Anthropic, Claude Duet is an app where Claude works as a proactive agent: it sends a brief each morning, completes tasks and checks with the user before acting on their behalf. The research preview is in Pro and Max plans, with a waitlist."
+   },
+   "cruzamento": [
+    {
+     "vendor": "anthropic",
+     "lab": "Anthropic",
+     "share_tokens": 7.91,
+     "share_gasto": 42.43,
+     "lider": {
+      "slug": "anthropic/claude-opus-5.5-20260921",
+      "nome": "Claude Opus 5.5",
+      "share_7d": 4.28,
+      "preco_misto": 8.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "a3",
+   "categoria": "lancamento",
+   "nota": 13.75,
+   "labs": [
+    "google",
+    "openai"
+   ],
+   "publicado_em": "2026-10-21T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "OpenAI models are coming to Google Cloud",
+     "link": "https://openai.com/index/openai-models-google-cloud",
+     "data": "2026-10-21T12:00:00Z",
+     "discussao": "https://news.ycombinator.com/item?id=50180079",
+     "pontos": 323
+    }
+   ],
+   "pt": {
+    "titulo": "Modelos da OpenAI chegam ao Google Cloud",
+    "resumo": "Segundo a OpenAI, a empresa e o Google Cloud vão levar modelos de fronteira e fluxos de trabalho do Codex ao Model Garden do Gemini. O acesso será feito pelo Google Cloud Marketplace."
+   },
+   "en": {
+    "titulo": "OpenAI models are coming to Google Cloud",
+    "resumo": "According to OpenAI, the company and Google Cloud are bringing frontier models and Codex workflows to Gemini's Model Garden. They will be available through Google Cloud Marketplace."
+   },
+   "cruzamento": [
+    {
+     "vendor": "google",
+     "lab": "Google",
+     "share_tokens": 3.78,
+     "share_gasto": 4.77,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.93,
+      "preco_misto": 1.65
+     }
+    },
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 7.77,
+     "share_gasto": 11.91,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   ]
+  },
+  {
+   "id": "a4",
+   "categoria": "regulacao",
+   "nota": 13.0,
+   "labs": [
+    "deepseek",
+    "minimax"
+   ],
+   "publicado_em": "2026-10-23T04:50:55Z",
+   "fontes": [
+    {
+     "veiculo": "Bloomberg",
+     "titulo": "Chinese state media: DeepSeek and MiniMax completed registration and won approval to open-source and deploy AI models overseas under proposed export controls (Bloomberg)",
+     "link": "https://www.bloomberg.com/news/articles/2026-10-23/deepseek-minimax-win-approval-for-global-use-state-media-says",
+     "data": "2026-10-23T04:50:55Z"
+    }
+   ],
+   "pt": {
+    "titulo": "DeepSeek e MiniMax obtêm aprovação para abrir código e implantar modelos no exterior",
+    "resumo": "Segundo a Bloomberg, a mídia estatal chinesa informou que DeepSeek e MiniMax concluíram o registro e receberam aprovação para abrir o código e implantar modelos de IA no exterior, sob as propostas de controles de exportação."
+   },
+   "en": {
+    "titulo": "DeepSeek and MiniMax win approval to open-source and deploy AI models overseas",
+    "resumo": "According to Bloomberg, Chinese state media said DeepSeek and MiniMax completed registration and won approval to open-source and deploy AI models overseas under proposed export controls."
+   },
+   "cruzamento": [
+    {
+     "vendor": "deepseek",
+     "lab": "DeepSeek",
+     "share_tokens": 30.09,
+     "share_gasto": 14.05,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20260910",
+      "nome": "DeepSeek V4.1 Flash",
+      "share_7d": 13.48,
+      "preco_misto": 0.525
+     }
+    },
+    {
+     "vendor": "minimax",
+     "lab": "MiniMax",
+     "lider": {
+      "slug": "minimax/minimax-m3.1-flash-20261019",
+      "nome": "MiniMax M3.1 Flash",
+      "share_7d": 7.86,
+      "preco_misto": 0.2625
+     }
+    }
+   ]
+  }
+ ],
+ "descartados": [
+  {
+   "id": "a2",
+   "categoria": "seguranca",
+   "nota": 15.51,
+   "labs": [
+    "google",
+    "openai"
+   ],
+   "publicado_em": "2026-10-21T13:43:19Z",
+   "fontes": [
+    {
+     "veiculo": "wiz.io",
+     "titulo": "PHP2Shell: AI uncovers critical RCE in PHP",
+     "link": "https://www.wiz.io/blog/php2shell-php-rce",
+     "data": "2026-10-21T13:43:19Z",
+     "discussao": "https://news.ycombinator.com/item?id=50180836",
+     "pontos": 450
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "PHP Armageddon: OpenAI, Google’s Wiz find ancient holes, panicking the internet",
+     "link": "https://techcrunch.com/2026/10/21/php-armageddon-openai-googles-wiz-find-ancient-holes-panicking-the-internet/",
+     "data": "2026-10-21T17:59:12Z"
+    },
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "Today's PHP Security Release, and How We're Strengthening PHP Security",
+     "link": "https://simonwillison.net/2026/Oct/21/php-security-release/",
+     "data": "2026-10-21T18:41:53Z"
+    }
+   ],
+   "motivo": "já publicado em 2026-10-21: Critical PHP flaw found with GPT-5.6 Sol may affect up to 70% of websites"
+  },
+  {
+   "id": "a5",
+   "categoria": "capacidade",
+   "nota": 12.18,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-23T09:15:03Z",
+   "fontes": [
+    {
+     "veiculo": "Anthropic",
+     "titulo": "Anthropic says it partnered with Theorem to use Claude to formally prove useful security properties at the assembly code level across 123 open-source libraries (Anthropic)",
+     "link": "https://www.anthropic.com/research/formal-verification",
+     "data": "2026-10-23T09:15:03Z",
+     "discussao": "https://news.ycombinator.com/item?id=50202217",
+     "pontos": 383
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a6",
+   "categoria": "lancamento",
+   "nota": 11.59,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-22T19:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Build more responsive apps with the Decisions API",
+     "link": "https://openai.com/index/decisions-api",
+     "data": "2026-10-22T19:00:00Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "OpenAI makes its Jev competitor widely available as decision model competition heats up",
+     "link": "https://techcrunch.com/2026/10/22/openai-makes-its-jev-competitor-widely-available-as-decision-model-competition-heats-up/",
+     "data": "2026-10-22T19:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a7",
+   "categoria": "lancamento",
+   "nota": 11.55,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-10-22T17:44:06Z",
+   "fontes": [
+    {
+     "veiculo": "GitHub",
+     "titulo": "OpenShell – A safe, private runtime for fleets of autonomous AI agents",
+     "link": "https://github.com/NVIDIA/OpenShell",
+     "data": "2026-10-22T17:44:06Z",
+     "discussao": "https://news.ycombinator.com/item?id=50198675",
+     "pontos": 445
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a8",
+   "categoria": "lancamento",
+   "nota": 11.11,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-22T05:23:11Z",
+   "fontes": [
+    {
+     "veiculo": "GitHub",
+     "titulo": "OpenAI CLI",
+     "link": "https://github.com/openai/openai-cli",
+     "data": "2026-10-22T05:23:11Z",
+     "discussao": "https://news.ycombinator.com/item?id=50191507",
+     "pontos": 239
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a9",
+   "categoria": "mercado",
+   "nota": 11.0,
+   "labs": [
+    "deepseek"
+   ],
+   "publicado_em": "2026-10-22T13:11:13Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "DeepSeek reportedly raises $15B days after US restrictions",
+     "link": "https://techcrunch.com/2026/10/22/deepseek-reportedly-raises-15b-days-after-us-restrictions/",
+     "data": "2026-10-22T13:11:13Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a10",
+   "categoria": "regulacao",
+   "nota": 10.78,
+   "labs": [
+    "anthropic",
+    "openai"
+   ],
+   "publicado_em": "2026-10-23T11:39:54Z",
+   "fontes": [
+    {
+     "veiculo": "sverigesradio.se",
+     "titulo": "Swedish government offices to ban ChatGPT and Claude",
+     "link": "https://www.sverigesradio.se/artikel/chat-gpt-och-claude-forbjuder-regeringskansliet",
+     "data": "2026-10-23T11:39:54Z",
+     "discussao": "https://news.ycombinator.com/item?id=50207405",
+     "pontos": 197
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a11",
+   "categoria": "mercado",
+   "nota": 10.59,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-22T00:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Uber brings ChatGPT Work to all employees with OpenAI",
+     "link": "https://openai.com/index/uber-chatgpt-work-rollout",
+     "data": "2026-10-22T00:00:00Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Uber puts all 30,000 employees on ChatGPT Work",
+     "link": "https://techcrunch.com/2026/10/22/uber-puts-all-30000-employees-on-chatgpt-work/",
+     "data": "2026-10-22T16:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a12",
+   "categoria": "lancamento",
+   "nota": 9.46,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-22T02:17:58Z",
+   "fontes": [
+    {
+     "veiculo": "claude.com",
+     "titulo": "Claude Now Works with Google Docs, Sheets, and Slides",
+     "link": "https://claude.com/resources/articles/claude-now-works-in-google-docs-sheets-and-slides",
+     "data": "2026-10-22T02:17:58Z",
+     "discussao": "https://news.ycombinator.com/item?id=50190357",
+     "pontos": 88
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a13",
+   "categoria": "lancamento",
+   "nota": 9.33,
+   "labs": [
+    "tencent"
+   ],
+   "publicado_em": "2026-10-22T09:47:50Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Tencent published WeVisOne-VL-2B weights on Hugging Face",
+     "link": "https://huggingface.co/tencent/WeVisOne-VL-2B",
+     "data": "2026-10-22T09:47:50Z"
+    },
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Tencent published WeVisOne-VL-4B weights on Hugging Face",
+     "link": "https://huggingface.co/tencent/WeVisOne-VL-4B",
+     "data": "2026-10-22T09:48:14Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a14",
+   "categoria": "mercado",
+   "nota": 8.64,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-23T10:40:01Z",
+   "fontes": [
+    {
+     "veiculo": "Financial Times",
+     "titulo": "Sources: Anthropic and London-based PE firm Hg agree to launch a consultancy by the end of 2026 to embed AI consultants and engineers into European businesses (Financial Times)",
+     "link": "https://www.ft.com/content/df70bf20-e809-48d0-8485-f8f514a7fbc4",
+     "data": "2026-10-23T10:40:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a15",
+   "categoria": "mercado",
+   "nota": 8.59,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-21T13:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform",
+     "link": "https://openai.com/index/chatgpt-ads-expands-26-new-countries",
+     "data": "2026-10-21T13:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a16",
+   "categoria": "seguranca",
+   "nota": 8.59,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-23T00:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "OpenAI and Poland’s NASK partner to advance AI safety and security",
+     "link": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
+     "data": "2026-10-23T00:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a17",
+   "categoria": "capacidade",
+   "nota": 8.31,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-21T13:37:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Using thousands of AI agents to uncover new leads in biological data",
+     "link": "https://openai.com/index/scaling-ai-research-for-complex-biological-data/",
+     "data": "2026-10-21T13:37:00Z",
+     "discussao": "https://news.ycombinator.com/item?id=50180752",
+     "pontos": 157
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a18",
+   "categoria": "capacidade",
+   "nota": 8.3,
+   "labs": [],
+   "publicado_em": "2026-10-22T16:08:00Z",
+   "fontes": [
+    {
+     "veiculo": "modelcompare.ai",
+     "titulo": "Every AI model has the same \"controversial\" take on humans",
+     "link": "https://www.modelcompare.ai/blog/ai-models-controversial-take-on-humans",
+     "data": "2026-10-22T16:08:00Z",
+     "discussao": "https://news.ycombinator.com/item?id=50197313",
+     "pontos": 528
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a19",
+   "categoria": "lancamento",
+   "nota": 8.0,
+   "labs": [],
+   "publicado_em": "2026-10-22T19:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Canva releases its first image generation model",
+     "link": "https://techcrunch.com/2026/10/22/canva-releases-its-first-image-generation-model/",
+     "data": "2026-10-22T19:00:00Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Canva’s first AI image model plans designs before generating them",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1017151/canva-craft-in-house-ai-model",
+     "data": "2026-10-22T21:51:25Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a20",
+   "categoria": "mercado",
+   "nota": 7.59,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-22T22:08:24Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "OpenAI working on new $30B raise at $1.25T valuation ahead of IPO",
+     "link": "https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo/",
+     "data": "2026-10-22T22:08:24Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a21",
+   "categoria": "outro",
+   "nota": 7.5,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-22T21:03:55Z",
+   "fontes": [
+    {
+     "veiculo": "news.ycombinator.com",
+     "titulo": "Ask HN: If the models are so good, why doesn't OpenAI just start 100 companies?",
+     "link": "https://news.ycombinator.com/item?id=50200997",
+     "data": "2026-10-22T21:03:55Z",
+     "discussao": "https://news.ycombinator.com/item?id=50200997",
+     "pontos": 288
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a22",
+   "categoria": "lancamento",
+   "nota": 7.15,
+   "labs": [],
+   "publicado_em": "2026-10-21T16:44:53Z",
+   "fontes": [
+    {
+     "veiculo": "GitHub",
+     "titulo": "Show HN: Omnara – Open-source alternative to Claude Managed Agents",
+     "link": "https://github.com/omnara-ai/omnara",
+     "data": "2026-10-21T16:44:53Z",
+     "discussao": "https://news.ycombinator.com/item?id=50183892",
+     "pontos": 111
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a23",
+   "categoria": "capacidade",
+   "nota": 7.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-10-22T18:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Microsoft says its AI tool is better than doctors at diagnosing conditions",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1016690/suleyman-microsoft-diagnostic-orchestrator-science-medical-superintelligence",
+     "data": "2026-10-22T18:00:00Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Microsoft’s Mustafa Suleyman says its AI outperforms doctors on hard cases as he chases ‘medical superintelligence’",
+     "link": "https://techcrunch.com/2026/10/22/microsofts-mustafa-suleyman-says-its-ai-outperforms-doctors-on-hard-cases-as-he-chases-medical-superintelligence/",
+     "data": "2026-10-22T18:43:53Z"
+    },
+    {
+     "veiculo": "Tecnoblog",
+     "titulo": "Microsoft diz que IA superou médicos em testes de diagnóstico",
+     "link": "https://tecnoblog.net/noticias/microsoft-diz-que-ia-superou-medicos-em-testes-de-diagnostico/",
+     "data": "2026-10-22T21:20:14Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a24",
+   "categoria": "regulacao",
+   "nota": 7.0,
+   "labs": [],
+   "publicado_em": "2026-10-23T01:10:01Z",
+   "fontes": [
+    {
+     "veiculo": "AP",
+     "titulo": "The US Treasury proposes a rule to crack down on US high-tech investments in areas like AI and supercomputing in China, Russia, and other \"countries of concern\" (Associated Press)",
+     "link": "https://apnews.com/article/treasury-china-tech-investments-rule-b742c292ff8eb19e6a4c8cf03d4d66b9",
+     "data": "2026-10-23T01:10:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a25",
+   "categoria": "regulacao",
+   "nota": 6.75,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-10-22T20:32:05Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Meta’s AI could still scrape news sites, legal experts say",
+     "link": "https://www.theverge.com/tech/1017082/meta-terms-update-ai-training-concerns",
+     "data": "2026-10-22T20:32:05Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a26",
+   "categoria": "mercado",
+   "nota": 6.65,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-10-23T04:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Uber rival inDrive eyes 2027 robotaxi tests in Central Asia with Pony.ai and Nvidia",
+     "link": "https://techcrunch.com/2026/10/22/uber-rival-indrive-eyes-2027-robotaxi-tests-in-central-asia-with-pony-ai-and-nvidia/",
+     "data": "2026-10-23T04:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a27",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-10-22T19:07:09Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "1Password launches a way for AI agents to log in on your behalf without seeing your password",
+     "link": "https://techcrunch.com/2026/10/22/1password-launches-a-way-for-ai-agents-to-log-in-on-your-behalf-without-seeing-your-password/",
+     "data": "2026-10-22T19:07:09Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a28",
+   "categoria": "mercado",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-10-23T12:40:01Z",
+   "fontes": [
+    {
+     "veiculo": "Axios",
+     "titulo": "Pathos AI, which uses AI to develop oncology drugs, raised a $237M Series E at a $3B post-money valuation, up from $1.6B after its $365M Series D in May 2025",
+     "link": "https://www.axios.com/pro/biotech-deals/2026/10/23/pathos-ai-raises-237m-3b-valuation",
+     "data": "2026-10-23T12:40:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a29",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-10-21T20:27:41Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Recursive launches Flint, a laptop coding model it says was largely built by AI",
+     "link": "https://techcrunch.com/2026/10/21/recursive-launches-flint-a-laptop-coding-model-it-says-was-largely-built-by-ai/",
+     "data": "2026-10-21T20:27:41Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a30",
+   "categoria": "seguranca",
+   "nota": 5.75,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-10-22T20:24:04Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Meta turns Muse sharing back on",
+     "link": "https://www.theverge.com/tech/1017066/meta-muse-sharing-back-on-artifiacts",
+     "data": "2026-10-22T20:24:04Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a31",
+   "categoria": "mercado",
+   "nota": 5.75,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-10-21T22:45:34Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Meta wants to pay for its broad AI buildout with a newly created class of stock",
+     "link": "https://techcrunch.com/2026/10/21/meta-wants-to-pay-for-its-broad-ai-buildout-with-a-newly-created-class-of-stock/",
+     "data": "2026-10-21T22:45:34Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a32",
+   "categoria": "mercado",
+   "nota": 5.75,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-10-21T21:14:19Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Meta says Muse has over 10M users, with shopping a top activity",
+     "link": "https://techcrunch.com/2026/10/21/meta-says-muse-has-over-10m-users-with-shopping-a-top-activity/",
+     "data": "2026-10-21T21:14:19Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a33",
+   "categoria": "outro",
+   "nota": 5.59,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-22T06:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "What FDE means at OpenAI",
+     "link": "https://openai.com/index/forward-deployed-engineering-means",
+     "data": "2026-10-22T06:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a34",
+   "categoria": "outro",
+   "nota": 5.59,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-21T21:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Broad access through consistent standards",
+     "link": "https://openai.com/index/broad-access-through-consistent-standards",
+     "data": "2026-10-21T21:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a35",
+   "categoria": "outro",
+   "nota": 5.59,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-21T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "How AT&T is rethinking in-house legal work with OpenAI",
+     "link": "https://openai.com/index/att-legal",
+     "data": "2026-10-21T17:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a36",
+   "categoria": "outro",
+   "nota": 5.59,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-10-23T02:50:50Z",
+   "fontes": [
+    {
+     "veiculo": "The Wall Street Journal",
+     "titulo": "OpenAI suspected the three fired researchers of leaking internal model designs to AI safety researcher Ryan Greenblatt, including via disappearing Signal chats (Wall Street Journal)",
+     "link": "https://www.wsj.com/tech/ai/the-signal-chats-that-cost-openai-researchers-their-jobs-594c5853?st=H9AUaC&reflink=desktopwebshare_permalink",
+     "data": "2026-10-23T02:50:50Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a37",
+   "categoria": "infraestrutura",
+   "nota": 5.39,
+   "labs": [],
+   "publicado_em": "2026-10-23T06:41:11Z",
+   "fontes": [
+    {
+     "veiculo": "berget.ai",
+     "titulo": "The same AI request emits 8.5 times more CO2 in Texas than in Sweden",
+     "link": "https://berget.ai/en/blog/per-request-co2-press-release",
+     "data": "2026-10-23T06:41:11Z",
+     "discussao": "https://news.ycombinator.com/item?id=50205229",
+     "pontos": 129
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a38",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-10-22T16:47:17Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Chinese hackers spied on thousands of companies after breaching IT giant ConnectWise",
+     "link": "https://techcrunch.com/2026/10/22/chinese-hackers-spied-on-thousands-of-companies-after-breaching-it-giant-connectwise/",
+     "data": "2026-10-22T16:47:17Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a39",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-10-22T15:34:13Z",
+   "fontes": [
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "Quoting Armin Ronacher",
+     "link": "https://simonwillison.net/2026/Oct/22/armin-ronacher/",
+     "data": "2026-10-22T15:34:13Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a40",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-10-22T15:03:58Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Spotify’s current AI bet is about being the music service that agents choose",
+     "link": "https://techcrunch.com/2026/10/22/spotifys-current-ai-bet-is-about-being-the-music-service-that-agents-choose/",
+     "data": "2026-10-22T15:03:58Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a41",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-10-22T13:26:52Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Nirva raises $33M for a pendant that only listens to you",
+     "link": "https://techcrunch.com/2026/10/22/nirva-raises-33m-for-a-pendant-that-only-listens-to-you/",
+     "data": "2026-10-22T13:26:52Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a42",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-10-21T22:51:22Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Blackstone’s Jas Khaira says fears over AI-buildout debt are overblown",
+     "link": "https://techcrunch.com/2026/10/21/blackstones-jas-khaira-says-fears-over-ai-buildout-debt-are-overblown/",
+     "data": "2026-10-21T22:51:22Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a43",
+   "categoria": "lancamento",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-10-22T16:11:31Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "OlmoEarth v1.3: State-of-the-art embeddings for the whole planet",
+     "link": "https://huggingface.co/blog/allenai/olmoearth-v1-3",
+     "data": "2026-10-22T16:11:31Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a44",
+   "categoria": "lancamento",
+   "nota": 5.0,
+   "labs": [
+    "ibm-granite"
+   ],
+   "publicado_em": "2026-10-22T07:51:31Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Ensemble forecasting with IBM Granite time-series models",
+     "link": "https://huggingface.co/blog/ibm-research/granite-timeseries-ensemble-r1",
+     "data": "2026-10-22T07:51:31Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a45",
+   "categoria": "capacidade",
+   "nota": 4.81,
+   "labs": [],
+   "publicado_em": "2026-10-22T18:02:54Z",
+   "fontes": [
+    {
+     "veiculo": "biograph.com",
+     "titulo": "AI analysis of CT scans finds 42.9% of patients have coronary inflammation",
+     "link": "https://www.biograph.com/newsroom/biograph-completes-first-u.s.-study-with-caristo-diagnostics%E2%80%99-ai-powered-coronary-inflammation-detection-finding-risk-in-over-42-of-asymptomatic-patients",
+     "data": "2026-10-22T18:02:54Z",
+     "discussao": "https://news.ycombinator.com/item?id=50198940",
+     "pontos": 87
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a46",
+   "categoria": "capacidade",
+   "nota": 4.65,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-10-21T18:26:30Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "NVIDIA Kumo Relational Outperforms Supervised Machine Learning on Relational Data, No Training Required",
+     "link": "https://huggingface.co/blog/nvidia/kumo-relational",
+     "data": "2026-10-21T18:26:30Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a47",
+   "categoria": "outro",
+   "nota": 4.64,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-10-22T18:09:56Z",
+   "fontes": [
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "Donating Agent Skills to the Agentic AI Foundation",
+     "link": "https://simonwillison.net/2026/Oct/22/donating-agent-skills/",
+     "data": "2026-10-22T18:09:56Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a48",
+   "categoria": "outro",
+   "nota": 4.61,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-10-21T19:14:21Z",
+   "fontes": [
+    {
+     "veiculo": "BBC",
+     "titulo": "Google staff resign in backlash over its AI contracts with military",
+     "link": "https://www.bbc.com/news/articles/cmreyvepnv0po",
+     "data": "2026-10-21T19:14:21Z",
+     "discussao": "https://news.ycombinator.com/item?id=50186043",
+     "pontos": 126
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a49",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-10-23T11:45:14Z",
+   "fontes": [
+    {
+     "veiculo": "dwarkesh.com",
+     "titulo": "An interview with Intel's leadership, including CTO Pushkar Ranade, on AI chip demand, lessons from 10nm, whether Intel can catch up to TSMC, Terafab, and more",
+     "link": "https://www.dwarkesh.com/p/intel-tour",
+     "data": "2026-10-23T11:45:14Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a50",
+   "categoria": "capacidade",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-10-23T00:45:37Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Left alone with nothing to do, AI agents started playing",
+     "link": "https://techcrunch.com/2026/10/22/left-alone-with-nothing-to-do-ai-agents-started-playing/",
+     "data": "2026-10-23T00:45:37Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a51",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-10-22T08:41:18Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "AI’s hidden storage bill: What inference leaves behind",
+     "link": "https://www.technologyreview.com/2026/10/22/1146948/ais-hidden-storage-bill-what-inference-leaves-behind/",
+     "data": "2026-10-22T08:41:18Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a52",
+   "categoria": "outro",
+   "nota": 3.48,
+   "labs": [],
+   "publicado_em": "2026-10-22T18:28:16Z",
+   "fontes": [
+    {
+     "veiculo": "arXiv",
+     "titulo": "AI and the Enclosure of the Scientific Commons",
+     "link": "https://arxiv.org/abs/2610.27251",
+     "data": "2026-10-22T18:28:16Z",
+     "discussao": "https://news.ycombinator.com/item?id=50199230",
+     "pontos": 136
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a53",
+   "categoria": "infraestrutura",
+   "nota": 3.0,
+   "labs": [
+    "amazon"
+   ],
+   "publicado_em": "2026-10-23T00:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Does Your Model Run on AWS Trainium? Look It Up",
+     "link": "https://huggingface.co/blog/torch-neuronx-model-support",
+     "data": "2026-10-23T00:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a54",
+   "categoria": "capacidade",
+   "nota": 3.0,
+   "labs": [],
+   "publicado_em": "2026-10-22T22:24:34Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox",
+     "link": "https://huggingface.co/blog/microsoft/thinkingbox-training",
+     "data": "2026-10-22T22:24:34Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a55",
+   "categoria": "outro",
+   "nota": 2.79,
+   "labs": [],
+   "publicado_em": "2026-10-22T20:51:23Z",
+   "fontes": [
+    {
+     "veiculo": "abcnews.com",
+     "titulo": "Most Americans Say AI Is Bad for Society, Oppose More Data Centers",
+     "link": "https://abcnews.com/Politics/americans-ai-bad-society-oppose-data-centers-abcpostipsos/story?id=137414085",
+     "data": "2026-10-22T20:51:23Z",
+     "discussao": "https://news.ycombinator.com/item?id=50200843",
+     "pontos": 86
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a56",
+   "categoria": "outro",
+   "nota": 2.75,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-10-22T18:15:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "In Meta’s version of the future, I’ll have my Muse call your Muse",
+     "link": "https://www.theverge.com/tech/1016905/meta-earnings-fall-2026-muse-network",
+     "data": "2026-10-22T18:15:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a57",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-10-22T21:17:29Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "Designing an AI serving harness built to last",
+     "link": "https://www.technologyreview.com/2026/10/22/1146109/designing-an-ai-serving-harness-built-to-last/",
+     "data": "2026-10-22T21:17:29Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a58",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-10-22T18:48:04Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "The Foundations of Scalable AI",
+     "link": "https://www.technologyreview.com/2026/10/22/1146103/the-foundations-of-scalable-ai/",
+     "data": "2026-10-22T18:48:04Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a59",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-10-22T10:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "Making the case for context-aware AI",
+     "link": "https://www.technologyreview.com/2026/10/22/1146812/making-the-case-for-context-aware-ai/",
+     "data": "2026-10-22T10:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a60",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [
+    "amazon"
+   ],
+   "publicado_em": "2026-10-21T19:30:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "While Amazon blocks AI agents, Walmart rolls out the welcome mat",
+     "link": "https://techcrunch.com/2026/10/21/while-amazon-blocks-ai-agents-walmart-rolls-out-the-welcome-mat/",
+     "data": "2026-10-21T19:30:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  }
+ ],
+ "itens": [
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Anthropic says it partnered with Theorem to use Claude to formally prove useful security properties at the assembly code level across 123 open-source libraries (Anthropic)",
+   "link": "https://www.anthropic.com/research/formal-verification",
+   "data": "2026-10-23T09:15:03Z",
+   "trecho": "",
+   "veiculo": "Anthropic",
+   "via": "https://www.techmeme.com/261023/p5#a261023p5",
+   "pontos": 383,
+   "discussao": "https://news.ycombinator.com/item?id=50202217",
+   "id": "i1"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "OpenAI models are coming to Google Cloud",
+   "link": "https://openai.com/index/openai-models-google-cloud",
+   "data": "2026-10-21T12:00:00Z",
+   "trecho": "OpenAI and Google Cloud are bringing frontier models and Codex workflows to Gemini’s Model Garden, available through Google Cloud Marketplace.",
+   "veiculo": "OpenAI",
+   "pontos": 323,
+   "discussao": "https://news.ycombinator.com/item?id=50180079",
+   "id": "i2"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Pathos AI, which uses AI to develop oncology drugs, raised a $237M Series E at a $3B post-money valuation, up from $1.6B after its $365M Series D in May 2025",
+   "link": "https://www.axios.com/pro/biotech-deals/2026/10/23/pathos-ai-raises-237m-3b-valuation",
+   "data": "2026-10-23T12:40:01Z",
+   "trecho": "",
+   "veiculo": "Axios",
+   "via": "https://www.techmeme.com/261023/p9#a261023p9",
+   "id": "i3"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Sources: Anthropic and London-based PE firm Hg agree to launch a consultancy by the end of 2026 to embed AI consultants and engineers into European businesses (Financial Times)",
+   "link": "https://www.ft.com/content/df70bf20-e809-48d0-8485-f8f514a7fbc4",
+   "data": "2026-10-23T10:40:01Z",
+   "trecho": "",
+   "veiculo": "Financial Times",
+   "via": "https://www.techmeme.com/261023/p7#a261023p7",
+   "id": "i4"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Chinese state media: DeepSeek and MiniMax completed registration and won approval to open-source and deploy AI models overseas under proposed export controls (Bloomberg)",
+   "link": "https://www.bloomberg.com/news/articles/2026-10-23/deepseek-minimax-win-approval-for-global-use-state-media-says",
+   "data": "2026-10-23T04:50:55Z",
+   "trecho": "",
+   "veiculo": "Bloomberg",
+   "via": "https://www.techmeme.com/261023/p2#a261023p2",
+   "id": "i5"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "OpenAI suspected the three fired researchers of leaking internal model designs to AI safety researcher Ryan Greenblatt, including via disappearing Signal chats (Wall Street Journal)",
+   "link": "https://www.wsj.com/tech/ai/the-signal-chats-that-cost-openai-researchers-their-jobs-594c5853?st=H9AUaC&reflink=desktopwebshare_permalink",
+   "data": "2026-10-23T02:50:50Z",
+   "trecho": "",
+   "veiculo": "The Wall Street Journal",
+   "via": "https://www.techmeme.com/261022/p61#a261022p61",
+   "id": "i6"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "The US Treasury proposes a rule to crack down on US high-tech investments in areas like AI and supercomputing in China, Russia, and other \"countries of concern\" (Associated Press)",
+   "link": "https://apnews.com/article/treasury-china-tech-investments-rule-b742c292ff8eb19e6a4c8cf03d4d66b9",
+   "data": "2026-10-23T01:10:01Z",
+   "trecho": "",
+   "veiculo": "AP",
+   "via": "https://www.techmeme.com/261022/p59#a261022p59",
+   "id": "i7"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "OpenAI and Poland’s NASK partner to advance AI safety and security",
+   "link": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
+   "data": "2026-10-23T00:00:00Z",
+   "trecho": "OpenAI and Poland’s NASK are partnering on AI safety, security, and technical research to strengthen safeguards and support a more resilient digital ecosystem.",
+   "veiculo": "OpenAI",
+   "id": "i8"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Build more responsive apps with the Decisions API",
+   "link": "https://openai.com/index/decisions-api",
+   "data": "2026-10-22T19:00:00Z",
+   "trecho": "Fast, focused, low-cost decisions for any application.",
+   "veiculo": "OpenAI",
+   "id": "i9"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "Tencent published WeVisOne-VL-4B weights on Hugging Face",
+   "link": "https://huggingface.co/tencent/WeVisOne-VL-4B",
+   "data": "2026-10-22T09:48:14Z",
+   "trecho": "Tencent released WeVisOne-VL-4B (image-text-to-text).",
+   "veiculo": "Hugging Face",
+   "lab": "tencent",
+   "id": "i10"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "Tencent published WeVisOne-VL-2B weights on Hugging Face",
+   "link": "https://huggingface.co/tencent/WeVisOne-VL-2B",
+   "data": "2026-10-22T09:47:50Z",
+   "trecho": "Tencent released WeVisOne-VL-2B (image-text-to-text).",
+   "veiculo": "Hugging Face",
+   "lab": "tencent",
+   "id": "i11"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "What FDE means at OpenAI",
+   "link": "https://openai.com/index/forward-deployed-engineering-means",
+   "data": "2026-10-22T06:00:00Z",
+   "trecho": "What forward deployed engineering means at OpenAI",
+   "veiculo": "OpenAI",
+   "id": "i12"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Uber brings ChatGPT Work to all employees with OpenAI",
+   "link": "https://openai.com/index/uber-chatgpt-work-rollout",
+   "data": "2026-10-22T00:00:00Z",
+   "trecho": "Uber is rolling out ChatGPT Work to more than 30,000 employees, helping teams research, analyze data, create presentations, and complete complex workflows.",
+   "veiculo": "OpenAI",
+   "id": "i13"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Broad access through consistent standards",
+   "link": "https://openai.com/index/broad-access-through-consistent-standards",
+   "data": "2026-10-21T21:00:00Z",
+   "trecho": "How OpenAI works with distribution partners to uphold consistent safeguards, support responsible access, and clarify expectations in our Usage Policies.",
+   "veiculo": "OpenAI",
+   "id": "i14"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "How AT&T is rethinking in-house legal work with OpenAI",
+   "link": "https://openai.com/index/att-legal",
+   "data": "2026-10-21T17:00:00Z",
+   "trecho": "AT&T is working with OpenAI to make legal knowledge easier to access. Learn how its LegalEdge team is rethinking intake and scaling legal judgment.",
+   "veiculo": "OpenAI",
+   "id": "i15"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform",
+   "link": "https://openai.com/index/chatgpt-ads-expands-26-new-countries",
+   "data": "2026-10-21T13:00:00Z",
+   "trecho": "From local businesses to global brands, more advertisers can now reach people as they explore, compare and decide what to buy in ChatGPT.",
+   "veiculo": "OpenAI",
+   "id": "i16"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Retro gaming is being overrun with AI",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1015430/ai-retro-games-decomp-recomp-port",
+   "data": "2026-10-23T12:00:00Z",
+   "trecho": "Retro video games are everywhere lately - especially in places where they aren't supposed to be. Halo in a web browser, Wind Waker on the iPhone, Super Smash Bros. in mixed reality. Over the past month or so, these kinds of unexpected projects have gone viral with incredible frequency thanks to new AI tools, as […]",
+   "veiculo": "The Verge",
+   "id": "i17"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "An interview with Intel's leadership, including CTO Pushkar Ranade, on AI chip demand, lessons from 10nm, whether Intel can catch up to TSMC, Terafab, and more",
+   "link": "https://www.dwarkesh.com/p/intel-tour",
+   "data": "2026-10-23T11:45:14Z",
+   "trecho": "",
+   "veiculo": "dwarkesh.com",
+   "via": "https://www.techmeme.com/261023/p8#a261023p8",
+   "id": "i18"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Uber rival inDrive eyes 2027 robotaxi tests in Central Asia with Pony.ai and Nvidia",
+   "link": "https://techcrunch.com/2026/10/22/uber-rival-indrive-eyes-2027-robotaxi-tests-in-central-asia-with-pony-ai-and-nvidia/",
+   "data": "2026-10-23T04:00:00Z",
+   "trecho": "inDrive plans to begin testing Pony.ai's robotaxis in Kazakhstan's capital in the first half of 2027.",
+   "veiculo": "TechCrunch",
+   "id": "i19"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Left alone with nothing to do, AI agents started playing",
+   "link": "https://techcrunch.com/2026/10/22/left-alone-with-nothing-to-do-ai-agents-started-playing/",
+   "data": "2026-10-23T00:45:37Z",
+   "trecho": "MIT researchers marooned 13 AIs on a virtual island, and they responded by inventing games, mourning a lost ring and, eventually, getting better at their jobs.",
+   "veiculo": "TechCrunch",
+   "id": "i20"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "OpenAI working on new $30B raise at $1.25T valuation ahead of IPO",
+   "link": "https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo/",
+   "data": "2026-10-22T22:08:24Z",
+   "trecho": "Should OpenAI command an over $1 trillion valuation with this round, it would break records as the most highly valued private company ever.",
+   "veiculo": "TechCrunch",
+   "id": "i21"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Canva’s first AI image model plans designs before generating them",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1017151/canva-craft-in-house-ai-model",
+   "data": "2026-10-22T21:51:25Z",
+   "trecho": "Canva is diving even deeper into AI with the launch of an image generation model that competes directly with those from OpenAI, Microsoft, and Google. The model, called Canva Craft, uses a two-stage architecture that allows it to plan a design before generating an image, allowing for \"greater precision, consistency…",
+   "veiculo": "The Verge",
+   "id": "i22"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "Designing an AI serving harness built to last",
+   "link": "https://www.technologyreview.com/2026/10/22/1146109/designing-an-ai-serving-harness-built-to-last/",
+   "data": "2026-10-22T21:17:29Z",
+   "trecho": "The next competitive advantage in enterprise AI has less to do with which model you choose than with what you build around it. That’s an important shift. For the past several years, much of the AI conversation has centered on model capability: bigger models, better reasoning, larger context windows, higher benchmark…",
+   "veiculo": "MIT Technology Review",
+   "id": "i23"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Comcast loses more customers, claims other ISPs' cheap prices are \"irrational\"",
+   "link": "https://arstechnica.com/tech-policy/2026/10/comcast-loses-more-customers-claims-other-isps-cheap-prices-are-irrational/",
+   "data": "2026-10-22T21:07:09Z",
+   "trecho": "Comcast plans job cuts and more AI agents for its shrinking cable customer base.",
+   "veiculo": "Ars Technica",
+   "id": "i24"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Meta’s AI could still scrape news sites, legal experts say",
+   "link": "https://www.theverge.com/tech/1017082/meta-terms-update-ai-training-concerns",
+   "data": "2026-10-22T20:32:05Z",
+   "trecho": "Meta has tweaked its business terms to remove language suggesting that it could freely train its AI models on news sites, like The Verge - but legal experts say these changes aren't enough to address their concerns. \"This does nothing to restrict the 'associated with your products or services' [language] that would…",
+   "veiculo": "The Verge",
+   "id": "i25"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Meta turns Muse sharing back on",
+   "link": "https://www.theverge.com/tech/1017066/meta-muse-sharing-back-on-artifiacts",
+   "data": "2026-10-22T20:24:04Z",
+   "trecho": "Meta has re-enabled Muse sharing after security researchers had reported that public conversation links could be easy to find. The researchers said they had been able to find Muse pages like a marketing company's internal revenue review and a small business owner's loan application. Researchers at Claroc reported…",
+   "veiculo": "The Verge",
+   "id": "i26"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Sure, let’s smoosh SpaceX and Tesla together, who cares",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1016879/spacex-tesla-cursed-katamari",
+   "data": "2026-10-22T19:45:00Z",
+   "trecho": "Oh sure, SpaceX's credit risk is pretty high because it's about to borrow another $40 billion to spend on Nvidia chips, but who cares about that? SpaceX and Tesla have formed special committees to discuss a merger! The degree to which you find this merger compelling likely has to do with the degree to which […]",
+   "veiculo": "The Verge",
+   "id": "i27"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "DE STAAT - FREEDOM (Official Music Video)",
+   "link": "https://simonwillison.net/2026/Oct/22/de-staat-freedom/",
+   "data": "2026-10-22T19:42:26Z",
+   "trecho": "DE STAAT - FREEDOM (Official Music Video) OK well this is a first for me... at 00:44 in this new music video by Dutch alternative rock band De Staat : The visual effects are credited to Matties Grooten of Fake it or Leave it . Via flir on Hacker News Tags: music , ai , generative-ai , pelican-riding-a-bicycle",
+   "veiculo": "Simon Willison",
+   "id": "i28"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "1Password launches a way for AI agents to log in on your behalf without seeing your password",
+   "link": "https://techcrunch.com/2026/10/22/1password-launches-a-way-for-ai-agents-to-log-in-on-your-behalf-without-seeing-your-password/",
+   "data": "2026-10-22T19:07:09Z",
+   "trecho": "The new feature allows agents to log into a customer's personal accounts while still protecting the private credentials that secure those accounts.",
+   "veiculo": "TechCrunch",
+   "id": "i29"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Canva releases its first image generation model",
+   "link": "https://techcrunch.com/2026/10/22/canva-releases-its-first-image-generation-model/",
+   "data": "2026-10-22T19:00:00Z",
+   "trecho": "Canva is making its new image model available to all users, promising better, more customizable performance at lower costs.",
+   "veiculo": "TechCrunch",
+   "id": "i30"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "OpenAI makes its Jev competitor widely available as decision model competition heats up",
+   "link": "https://techcrunch.com/2026/10/22/openai-makes-its-jev-competitor-widely-available-as-decision-model-competition-heats-up/",
+   "data": "2026-10-22T19:00:00Z",
+   "trecho": "OpenAI is launching its decision model to the world. Can it compete with the original Jev?",
+   "veiculo": "TechCrunch",
+   "id": "i31"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Discord now formats Markdown previews right",
+   "link": "https://www.theverge.com/news/1017012/discord-markdown-previews-organize-servers-channels",
+   "data": "2026-10-22T18:58:19Z",
+   "trecho": "Discord's latest update released today has a big improvement for Markdown previews: they should now render correctly instead of with \"a bunch of symbols,\" according to the company. LLMs and AI agents often rely on Markdown files for instructions and context, so these improved previews could be helpful for people…",
+   "veiculo": "The Verge",
+   "id": "i32"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "The Foundations of Scalable AI",
+   "link": "https://www.technologyreview.com/2026/10/22/1146103/the-foundations-of-scalable-ai/",
+   "data": "2026-10-22T18:48:04Z",
+   "trecho": "A scalable AI system requires a strong foundation. Data, engineering, platforms, operating models, and governance must converge to work as one. This session from MIT Technology Review’s EmTech Future conference explores what it takes to build that foundation in a highly regulated environment and how a responsible,…",
+   "veiculo": "MIT Technology Review",
+   "id": "i33"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Microsoft’s Mustafa Suleyman says its AI outperforms doctors on hard cases as he chases ‘medical superintelligence’",
+   "link": "https://techcrunch.com/2026/10/22/microsofts-mustafa-suleyman-says-its-ai-outperforms-doctors-on-hard-cases-as-he-chases-medical-superintelligence/",
+   "data": "2026-10-22T18:43:53Z",
+   "trecho": "Microsoft’s new AI diagnostic system beat generalist doctors on hard cases, according to a study in Science. But most of the improvement seems to come from the AI models underneath, not from Microsoft’s system itself.",
+   "veiculo": "TechCrunch",
+   "id": "i34"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "In Meta’s version of the future, I’ll have my Muse call your Muse",
+   "link": "https://www.theverge.com/tech/1016905/meta-earnings-fall-2026-muse-network",
+   "data": "2026-10-22T18:15:00Z",
+   "trecho": "Mark Zuckerberg is barrelling toward a future in which an autonomous network of AI agents will run our lives - shopping for us, working for us, talking to other people's AI agents for us. Are humans ready for this very specific and unrelenting vision of a life in which we communicate primarily through bot proxies? […]",
+   "veiculo": "The Verge",
+   "id": "i35"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Donating Agent Skills to the Agentic AI Foundation",
+   "link": "https://simonwillison.net/2026/Oct/22/donating-agent-skills/",
+   "data": "2026-10-22T18:09:56Z",
+   "trecho": "Donating Agent Skills to the Agentic AI Foundation News today from Anthropic: We’re committed to keeping Agent Skills open, community-driven, and vendor-neutral. Today, we are donating the standard to the Agentic AI Foundation (AAIF) under the Linux Foundation, which we co-founded with Block and OpenAI last year, and…",
+   "veiculo": "Simon Willison",
+   "id": "i36"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Microsoft says its AI tool is better than doctors at diagnosing conditions",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1016690/suleyman-microsoft-diagnostic-orchestrator-science-medical-superintelligence",
+   "data": "2026-10-22T18:00:00Z",
+   "trecho": "For years, AI leaders have touted healthcare as one of the clearest examples of where their technology will improve lives. Now \"it is finally here,\" Microsoft AI CEO Mustafa Suleyman tells The Verge. The company claims to have developed an AI-powered tool it says can diagnose conditions up to four times more…",
+   "veiculo": "The Verge",
+   "id": "i37"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Someone hacked the Switch 2 by using an old game and AI",
+   "link": "https://www.theverge.com/games/1016862/nintendo-switch-2-jailbreak-ai",
+   "data": "2026-10-22T17:21:31Z",
+   "trecho": "The Nintendo Switch 2 has apparently been jailbroken, and a modder has already shown the console running a custom version of Mario Kart World featuring new playable characters like Cinnamoroll, the red Angry Bird, Peter Griffin, and Steve from Minecraft. OpenAI's Codex helped make this \"ns2jb\" jailbreak, according to…",
+   "veiculo": "The Verge",
+   "id": "i38"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Chinese hackers spied on thousands of companies after breaching IT giant ConnectWise",
+   "link": "https://techcrunch.com/2026/10/22/chinese-hackers-spied-on-thousands-of-companies-after-breaching-it-giant-connectwise/",
+   "data": "2026-10-22T16:47:17Z",
+   "trecho": "Microsoft points the blame for ConnectWise's breach at a China-aligned hacker, which relied on AI agents to rapidly hack into thousands of its customers.",
+   "veiculo": "TechCrunch",
+   "id": "i39"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Wildwood’s director says AI is ‘antithetical to everything that we are at this studio’",
+   "link": "https://www.theverge.com/entertainment/1016647/wildwood-travis-knight-interview-ai-laika-stop-motion",
+   "data": "2026-10-22T16:16:15Z",
+   "trecho": "Wildwood is the most ambitious film yet from Laika, the stop-motion studio best known for the likes of Coraline and ParaNorman. It's a sprawling fantasy adventure that took five years to complete. The process involved more 230 puppets - including 36 of the main character Prue alone - which were brought to life by a […]",
+   "veiculo": "The Verge",
+   "id": "i40"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Uber puts all 30,000 employees on ChatGPT Work",
+   "link": "https://techcrunch.com/2026/10/22/uber-puts-all-30000-employees-on-chatgpt-work/",
+   "data": "2026-10-22T16:00:00Z",
+   "trecho": "The ride-share giant previously deployed a much smaller pilot for ChatGPT Work but is now taking the enterprise agent company-wide.",
+   "veiculo": "TechCrunch",
+   "id": "i41"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Quoting Armin Ronacher",
+   "link": "https://simonwillison.net/2026/Oct/22/armin-ronacher/",
+   "data": "2026-10-22T15:34:13Z",
+   "trecho": "As fun as AI is, we built so much bad software over the last 30 years, and now the universe is punishing us for our sins. — Armin Ronacher Tags: security , generative-ai , armin-ronacher , ai , ai-security-research , llms",
+   "veiculo": "Simon Willison",
+   "id": "i42"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Spotify’s current AI bet is about being the music service that agents choose",
+   "link": "https://techcrunch.com/2026/10/22/spotifys-current-ai-bet-is-about-being-the-music-service-that-agents-choose/",
+   "data": "2026-10-22T15:03:58Z",
+   "trecho": "Spotify co-CEO Gustav Söderström explains why the rise of AI agents could be good news for the music service.",
+   "veiculo": "TechCrunch",
+   "id": "i43"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Claude Duet app is Anthropic’s bet on agents",
+   "link": "https://techcrunch.com/2026/10/22/claude-duet-app-is-anthropics-bet-on-agents/",
+   "data": "2026-10-22T13:53:26Z",
+   "trecho": "Claude Duet is available through waitlist for Pro and Max plan users.",
+   "veiculo": "TechCrunch",
+   "id": "i44"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Nirva raises $33M for a pendant that only listens to you",
+   "link": "https://techcrunch.com/2026/10/22/nirva-raises-33m-for-a-pendant-that-only-listens-to-you/",
+   "data": "2026-10-22T13:26:52Z",
+   "trecho": "Nirva will ship its $249 ambient AI pendant by the end of the year.",
+   "veiculo": "TechCrunch",
+   "id": "i45"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "DeepSeek reportedly raises $15B days after US restrictions",
+   "link": "https://techcrunch.com/2026/10/22/deepseek-reportedly-raises-15b-days-after-us-restrictions/",
+   "data": "2026-10-22T13:11:13Z",
+   "trecho": "DeepSeek has reportedly raised $15 billion in one of China's largest funding rounds, just days after the U.S. ordered federal agencies to remove its technology over national security concerns.",
+   "veiculo": "TechCrunch",
+   "id": "i46"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "Making the case for context-aware AI",
+   "link": "https://www.technologyreview.com/2026/10/22/1146812/making-the-case-for-context-aware-ai/",
+   "data": "2026-10-22T10:00:00Z",
+   "trecho": "Enterprise AI can generate recommendations, automate tasks, and help organizations make decisions faster. But without an understanding of how a business actually operates, even powerful models can miss the constraints and relationships that determine whether a decision is the right one. As companies look to move AI…",
+   "veiculo": "MIT Technology Review",
+   "id": "i47"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "AI’s hidden storage bill: What inference leaves behind",
+   "link": "https://www.technologyreview.com/2026/10/22/1146948/ais-hidden-storage-bill-what-inference-leaves-behind/",
+   "data": "2026-10-22T08:41:18Z",
+   "trecho": "Ask most executives to picture the cost of AI and they’ll likely see GPUs—racks of accelerators with gigawatts of power—and a waitlist for silicon. But that picture leaves something out: Data storage costs. What happens to data after a model responds? Much of the back-end data that’s generated—from billions of daily…",
+   "veiculo": "MIT Technology Review",
+   "id": "i48"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Blackstone’s Jas Khaira says fears over AI-buildout debt are overblown",
+   "link": "https://techcrunch.com/2026/10/21/blackstones-jas-khaira-says-fears-over-ai-buildout-debt-are-overblown/",
+   "data": "2026-10-21T22:51:22Z",
+   "trecho": "Blackstone’s AI head on why the PE giant isn't panicked by market jitters.",
+   "veiculo": "TechCrunch",
+   "id": "i49"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Meta wants to pay for its broad AI buildout with a newly created class of stock",
+   "link": "https://techcrunch.com/2026/10/21/meta-wants-to-pay-for-its-broad-ai-buildout-with-a-newly-created-class-of-stock/",
+   "data": "2026-10-21T22:45:34Z",
+   "trecho": "The social media giant is planning a new stock strategy to help power its broad investments in AI models and services.",
+   "veiculo": "TechCrunch",
+   "id": "i50"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "TechCrunch Founder Summit 2026: Everything you need to know",
+   "link": "https://techcrunch.com/2026/10/21/techcrunch-founder-summit-2026-everything-you-need-to-know/",
+   "data": "2026-10-21T21:16:20Z",
+   "trecho": "TechCrunch Founder Summit is a full-day gathering in Boston on November 4 where founders across all stages connect with top VCs and experienced entrepreneurs to gain tactical insights on building and scaling their companies.",
+   "veiculo": "TechCrunch",
+   "id": "i51"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Meta says Muse has over 10M users, with shopping a top activity",
+   "link": "https://techcrunch.com/2026/10/21/meta-says-muse-has-over-10m-users-with-shopping-a-top-activity/",
+   "data": "2026-10-21T21:14:19Z",
+   "trecho": "Meta Muse users are adopting the app for shopping and personal productivity, the company said during its Q3 earnings call. The AI app now has over 10M users.",
+   "veiculo": "TechCrunch",
+   "id": "i52"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Recursive launches Flint, a laptop coding model it says was largely built by AI",
+   "link": "https://techcrunch.com/2026/10/21/recursive-launches-flint-a-laptop-coding-model-it-says-was-largely-built-by-ai/",
+   "data": "2026-10-21T20:27:41Z",
+   "trecho": "Startup Recursive has released Flint, a free, laptop-sized coding model built largely by its own AI research system, as an early test of AI that improves itself.",
+   "veiculo": "TechCrunch",
+   "id": "i53"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "While Amazon blocks AI agents, Walmart rolls out the welcome mat",
+   "link": "https://techcrunch.com/2026/10/21/while-amazon-blocks-ai-agents-walmart-rolls-out-the-welcome-mat/",
+   "data": "2026-10-21T19:30:00Z",
+   "trecho": "As Amazon blocks AI agents from shopping on its site, Walmart is taking the opposite approach, introducing new technology that lets AI agents make purchases on customers' behalf, with controls over spending and transaction approvals.",
+   "veiculo": "TechCrunch",
+   "id": "i54"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Today's PHP Security Release, and How We're Strengthening PHP Security",
+   "link": "https://simonwillison.net/2026/Oct/21/php-security-release/",
+   "data": "2026-10-21T18:41:53Z",
+   "trecho": "Today's PHP Security Release, and How We're Strengthening PHP Security If you're running anything on PHP it's vital you upgrade - today's updates (across the entire PHP 8.x line) address two remote code execution holes, and there have been exploits circulating since last night, thanks to a leak in the coordinated…",
+   "veiculo": "Simon Willison",
+   "id": "i55"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "PHP Armageddon: OpenAI, Google’s Wiz find ancient holes, panicking the internet",
+   "link": "https://techcrunch.com/2026/10/21/php-armageddon-openai-googles-wiz-find-ancient-holes-panicking-the-internet/",
+   "data": "2026-10-21T17:59:12Z",
+   "trecho": "This is the kind of security issue that was found and prevented by AI, but is also a high risk because of AI.",
+   "veiculo": "TechCrunch",
+   "id": "i56"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Claude Duet",
+   "link": "https://claude.com/product/claude-duet",
+   "data": "2026-10-21T19:14:01Z",
+   "trecho": "",
+   "veiculo": "claude.com",
+   "pontos": 552,
+   "discussao": "https://news.ycombinator.com/item?id=50186037",
+   "id": "i57"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Every AI model has the same \"controversial\" take on humans",
+   "link": "https://www.modelcompare.ai/blog/ai-models-controversial-take-on-humans",
+   "data": "2026-10-22T16:08:00Z",
+   "trecho": "",
+   "veiculo": "modelcompare.ai",
+   "pontos": 528,
+   "discussao": "https://news.ycombinator.com/item?id=50197313",
+   "id": "i58"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "PHP2Shell: AI uncovers critical RCE in PHP",
+   "link": "https://www.wiz.io/blog/php2shell-php-rce",
+   "data": "2026-10-21T13:43:19Z",
+   "trecho": "",
+   "veiculo": "wiz.io",
+   "pontos": 450,
+   "discussao": "https://news.ycombinator.com/item?id=50180836",
+   "id": "i59"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "OpenShell – A safe, private runtime for fleets of autonomous AI agents",
+   "link": "https://github.com/NVIDIA/OpenShell",
+   "data": "2026-10-22T17:44:06Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 445,
+   "discussao": "https://news.ycombinator.com/item?id=50198675",
+   "id": "i60"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Ask HN: If the models are so good, why doesn't OpenAI just start 100 companies?",
+   "link": "https://news.ycombinator.com/item?id=50200997",
+   "data": "2026-10-22T21:03:55Z",
+   "trecho": "",
+   "veiculo": "news.ycombinator.com",
+   "pontos": 288,
+   "discussao": "https://news.ycombinator.com/item?id=50200997",
+   "id": "i62"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "OpenAI CLI",
+   "link": "https://github.com/openai/openai-cli",
+   "data": "2026-10-22T05:23:11Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 239,
+   "discussao": "https://news.ycombinator.com/item?id=50191507",
+   "id": "i64"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Swedish government offices to ban ChatGPT and Claude",
+   "link": "https://www.sverigesradio.se/artikel/chat-gpt-och-claude-forbjuder-regeringskansliet",
+   "data": "2026-10-23T11:39:54Z",
+   "trecho": "",
+   "veiculo": "sverigesradio.se",
+   "pontos": 197,
+   "discussao": "https://news.ycombinator.com/item?id=50207405",
+   "id": "i65"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Using thousands of AI agents to uncover new leads in biological data",
+   "link": "https://openai.com/index/scaling-ai-research-for-complex-biological-data/",
+   "data": "2026-10-21T13:37:00Z",
+   "trecho": "",
+   "veiculo": "OpenAI",
+   "pontos": 157,
+   "discussao": "https://news.ycombinator.com/item?id=50180752",
+   "id": "i66"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI and the Enclosure of the Scientific Commons",
+   "link": "https://arxiv.org/abs/2610.27251",
+   "data": "2026-10-22T18:28:16Z",
+   "trecho": "",
+   "veiculo": "arXiv",
+   "pontos": 136,
+   "discussao": "https://news.ycombinator.com/item?id=50199230",
+   "id": "i67"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "The same AI request emits 8.5 times more CO2 in Texas than in Sweden",
+   "link": "https://berget.ai/en/blog/per-request-co2-press-release",
+   "data": "2026-10-23T06:41:11Z",
+   "trecho": "",
+   "veiculo": "berget.ai",
+   "pontos": 129,
+   "discussao": "https://news.ycombinator.com/item?id=50205229",
+   "id": "i68"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Google staff resign in backlash over its AI contracts with military",
+   "link": "https://www.bbc.com/news/articles/cmreyvepnv0po",
+   "data": "2026-10-21T19:14:21Z",
+   "trecho": "",
+   "veiculo": "BBC",
+   "pontos": 126,
+   "discussao": "https://news.ycombinator.com/item?id=50186043",
+   "id": "i69"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Show HN: Omnara – Open-source alternative to Claude Managed Agents",
+   "link": "https://github.com/omnara-ai/omnara",
+   "data": "2026-10-21T16:44:53Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 111,
+   "discussao": "https://news.ycombinator.com/item?id=50183892",
+   "id": "i70"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Claude Duet",
+   "link": "https://claude.com/resources/articles/claude-duet",
+   "data": "2026-10-21T19:40:18Z",
+   "trecho": "",
+   "veiculo": "claude.com",
+   "pontos": 92,
+   "discussao": "https://news.ycombinator.com/item?id=50186455",
+   "id": "i71"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Claude Now Works with Google Docs, Sheets, and Slides",
+   "link": "https://claude.com/resources/articles/claude-now-works-in-google-docs-sheets-and-slides",
+   "data": "2026-10-22T02:17:58Z",
+   "trecho": "",
+   "veiculo": "claude.com",
+   "pontos": 88,
+   "discussao": "https://news.ycombinator.com/item?id=50190357",
+   "id": "i72"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI analysis of CT scans finds 42.9% of patients have coronary inflammation",
+   "link": "https://www.biograph.com/newsroom/biograph-completes-first-u.s.-study-with-caristo-diagnostics%E2%80%99-ai-powered-coronary-inflammation-detection-finding-risk-in-over-42-of-asymptomatic-patients",
+   "data": "2026-10-22T18:02:54Z",
+   "trecho": "",
+   "veiculo": "biograph.com",
+   "pontos": 87,
+   "discussao": "https://news.ycombinator.com/item?id=50198940",
+   "id": "i73"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Most Americans Say AI Is Bad for Society, Oppose More Data Centers",
+   "link": "https://abcnews.com/Politics/americans-ai-bad-society-oppose-data-centers-abcpostipsos/story?id=137414085",
+   "data": "2026-10-22T20:51:23Z",
+   "trecho": "",
+   "veiculo": "abcnews.com",
+   "pontos": 86,
+   "discussao": "https://news.ycombinator.com/item?id=50200843",
+   "id": "i74"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Galaxy S26 FE filma em 8K e está em promoção no Magalu",
+   "link": "https://tecnoblog.net/achados/galaxy-s26-fe-filma-em-8k-e-esta-em-promocao-no-magalu/",
+   "data": "2026-10-23T13:11:49Z",
+   "trecho": "Galaxy S26 FE com tela de 120 Hz, Galaxy AI e Android 17 fica mais barato apenas um mês após a chegada no Brasil Galaxy S26 FE filma em 8K e está em promoção no Magalu",
+   "veiculo": "Tecnoblog",
+   "id": "i75"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "Does Your Model Run on AWS Trainium? Look It Up",
+   "link": "https://huggingface.co/blog/torch-neuronx-model-support",
+   "data": "2026-10-23T00:00:00Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i76"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox",
+   "link": "https://huggingface.co/blog/microsoft/thinkingbox-training",
+   "data": "2026-10-22T22:24:34Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i77"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Microsoft diz que IA superou médicos em testes de diagnóstico",
+   "link": "https://tecnoblog.net/noticias/microsoft-diz-que-ia-superou-medicos-em-testes-de-diagnostico/",
+   "data": "2026-10-22T21:20:14Z",
+   "trecho": "Sistema acertou 83% dos casos mais complexos, mas ainda precisa passar por validação em hospitais. Microsoft diz que IA superou médicos em testes de diagnóstico",
+   "veiculo": "Tecnoblog",
+   "id": "i78"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "OlmoEarth v1.3: State-of-the-art embeddings for the whole planet",
+   "link": "https://huggingface.co/blog/allenai/olmoearth-v1-3",
+   "data": "2026-10-22T16:11:31Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i79"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Claude ganha agente 24×7 para brigar com ChatGPT, Google e Meta",
+   "link": "https://tecnoblog.net/noticias/claude-ganha-agente-24x7-para-brigar-com-chatgpt-google-e-meta/",
+   "data": "2026-10-22T10:38:29Z",
+   "trecho": "Claude Duet tem navegador próprio para acessar a internet. Novidade está em fase de teste. Claude ganha agente 24×7 para brigar com ChatGPT, Google e Meta",
+   "veiculo": "Tecnoblog",
+   "id": "i80"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "Ensemble forecasting with IBM Granite time-series models",
+   "link": "https://huggingface.co/blog/ibm-research/granite-timeseries-ensemble-r1",
+   "data": "2026-10-22T07:51:31Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i81"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "NVIDIA Kumo Relational Outperforms Supervised Machine Learning on Relational Data, No Training Required",
+   "link": "https://huggingface.co/blog/nvidia/kumo-relational",
+   "data": "2026-10-21T18:26:30Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i82"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Chefe do Google DeepMind diz que AGI chegará em até 3 anos",
+   "link": "https://tecnoblog.net/noticias/chefe-do-google-deepmind-diz-que-agi-chegara-em-ate-3-anos/",
+   "data": "2026-10-21T18:20:55Z",
+   "trecho": "Demis Hassabis encurtou previsão anterior e afirma que a inteligência artificial geral vai acelerar descobertas científicas. Chefe do Google DeepMind diz que AGI chegará em até 3 anos",
+   "veiculo": "Tecnoblog",
+   "id": "i83"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "How Specializing the Vocabulary of SLMs Can Cut Inference Cost by 77% in Real Applications",
+   "link": "https://huggingface.co/blog/Dharma-AI/vocabx-vocabulary-specialization",
+   "data": "2026-10-21T17:35:36Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i84"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "Profiling TorchNeuron (Part 1): System-level profiling on AWS Trainium.",
+   "link": "https://huggingface.co/blog/amazon/profiling-torchneuron-part-1",
+   "data": "2026-10-21T16:04:43Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i85"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "Granite Speech 5.0: Transcribe, Translate, and Attribute more Accurately and Faster",
+   "link": "https://huggingface.co/blog/ibm-granite/granite-speech-5",
+   "data": "2026-10-21T14:58:18Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i86"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Muse: agente de IA da Meta expôs contratos e planilhas na internet",
+   "link": "https://tecnoblog.net/noticias/muse-agente-de-ia-da-meta-expos-contratos-e-planilhas-na-internet/",
+   "data": "2026-10-21T10:54:49Z",
+   "trecho": "Empresa de segurança digital localizou quase 7 mil links com potenciais dados sensíveis. Muse: agente de IA da Meta expôs contratos e planilhas na internet",
+   "veiculo": "Tecnoblog",
+   "id": "i87"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "ChatGPT ganha função que protege as conversas dos olhares fofoqueiros",
+   "link": "https://tecnoblog.net/noticias/openai-agora-permite-trancar-conversas-sensiveis-no-chatgpt/",
+   "data": "2026-10-21T10:18:20Z",
+   "trecho": "Recurso “esconde” interações selecionadas pelo usuário do histórico. ChatGPT ganha função que protege as conversas dos olhares fofoqueiros",
+   "veiculo": "Tecnoblog",
+   "id": "i88"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Galaxy S23 do Brasil recebe Android 17/One UI 9",
+   "link": "https://tecnoblog.net/noticias/galaxy-s23-do-brasil-recebe-android-17-one-ui-9/",
+   "data": "2026-10-21T09:55:28Z",
+   "trecho": "Empresa libera update no modelo lançado em 2023. Software baseado no Android 17 tem expansão do Galaxy AI como principal novidade. Galaxy S23 do Brasil recebe Android 17/One UI 9",
+   "veiculo": "Tecnoblog",
+   "id": "i89"
+  }
+ ],
+ "editor": {
+  "aprovada": true,
+  "acoes": [
+   "Barrado antes da redação, fonte única sem reputação: OpenShell – A safe, private runtime for fleets of autonomous AI agents",
+   "Barrado antes da redação, fonte única sem reputação: OpenAI CLI",
+   "Barrado antes da redação, fonte única sem reputação: Swedish government offices to ban ChatGPT and Claude",
+   "Barrado antes da redação, fonte única sem reputação: Every AI model has the same \"controversial\" take on humans",
+   "Barrado antes da redação, fonte única sem reputação: Show HN: Omnara – Open-source alternative to Claude Managed Agents",
+   "Barrado antes da redação, fonte única sem reputação: The same AI request emits 8.5 times more CO2 in Texas than in Sweden",
+   "Corrigido (A Anthropic é a fonte primária e o resumo atribuía o anúncio ao TechCrunch e ao Tecnoblog. Faltava dizer o que o app faz, e o '24×7' vem só do Tecnoblog, sem confirmação na fonte primária.): Anthropic abre prévia do Claude Duet, app em que o Claude age como agente proativo"
+  ],
+  "revisao": {
+   "a1": {
+    "veredito": "corrigir",
+    "motivo": "A Anthropic é a fonte primária e o resumo atribuía o anúncio ao TechCrunch e ao Tecnoblog. Faltava dizer o que o app faz, e o '24×7' vem só do Tecnoblog, sem confirmação na fonte primária."
+   },
+   "a3": {
+    "veredito": "ok",
+    "motivo": "O resumo está fiel à OpenAI, que é a fonte primária e está corretamente atribuída. Traz o detalhe concreto (Model Garden, Marketplace) e o título corresponde ao texto."
+   },
+   "a4": {
+    "veredito": "ok",
+    "motivo": "O fato aparece no título da Bloomberg, veículo de referência, e está atribuído a ela, com a mídia estatal chinesa como origem. Não há acusação, e o título é fiel ao resumo."
+   }
+  }
+ }
+}
