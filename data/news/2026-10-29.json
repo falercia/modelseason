@@ -1,0 +1,577 @@
+{
+ "versao": 1,
+ "dia": "2026-10-29",
+ "gerado_em": "2026-10-29T14:22:52Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-22",
+   "2026-10-29"
+  ],
+  "trafego": "2026-10-28"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-29",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-28",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20261017",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "openai/gpt-6-luna-20260922",
+   "tencent/hy4-preview-20260827",
+   "anthropic/claude-opus-5.5-20260921",
+   "minimax/minimax-m3.1-flash-20261019",
+   "stepfun/step-5-preview-20261008",
+   "z-ai/glm-5.3-20260816",
+   "nvidia/nemotron-3-ultra-550b-a55b-20260604"
+  ]
+ },
+ "principal": "top10:stepfun/step-5-preview-20261008",
+ "eventos": [
+  {
+   "tipo": "top10",
+   "slug": "stepfun/step-5-preview-20261008",
+   "id": null,
+   "nome": "Step 5 Preview",
+   "lab": "StepFun",
+   "vendor": "stepfun",
+   "dados": {
+    "posicao": 8,
+    "share": 2.88,
+    "lancamento": "2026-10-08"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 2.88,
+     "rank_7d": 8,
+     "pico_share": 6.984,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": {
+     "share_tokens": 2.08,
+     "share_gasto": 3.05
+    }
+   },
+   "relevancia": 56
+  },
+  {
+   "tipo": "novo",
+   "slug": "nvidia/nemotron-3.5-transcribe-20261028",
+   "id": "nvidia/nemotron-3.5-transcribe",
+   "nome": "Nemotron 3.5 Transcribe",
+   "lab": "NVIDIA",
+   "vendor": "nvidia",
+   "dados": {
+    "criado": "2026-10-29",
+    "contexto": 0,
+    "preco_entrada": 33.3,
+    "preco_saida": 0.0,
+    "preco_misto": 24.975,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "audio->transcription",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 4.66,
+     "share_gasto": 0.0,
+     "lider": {
+      "slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+      "nome": "Nemotron 3 Ultra",
+      "share_7d": 2.37,
+      "preco_misto": 1.05
+     }
+    }
+   },
+   "relevancia": 42
+  },
+  {
+   "tipo": "novo",
+   "slug": "assemblyai/assemblyai-tts-1-20261028",
+   "id": "assemblyai/assemblyai-tts-1",
+   "nome": "TTS 1",
+   "lab": "Assemblyai",
+   "vendor": "assemblyai",
+   "dados": {
+    "criado": "2026-10-28",
+    "contexto": 0,
+    "preco_entrada": 15.0,
+    "preco_saida": 0.0,
+    "preco_misto": 11.25,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "baseten/elephant-1-20261021",
+   "id": "baseten/elephant-1",
+   "nome": "Elephant 1",
+   "lab": "Baseten",
+   "vendor": "baseten",
+   "dados": {
+    "criado": "2026-10-21",
+    "contexto": 16384,
+    "preco_entrada": 0.035,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0262,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->decisions",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "baseten/mammoth-1-20261021",
+   "id": "baseten/mammoth-1",
+   "nome": "Mammoth 1",
+   "lab": "Baseten",
+   "vendor": "baseten",
+   "dados": {
+    "criado": "2026-10-21",
+    "contexto": 16384,
+    "preco_entrada": 0.1,
+    "preco_saida": 0.0,
+    "preco_misto": 0.075,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->decisions",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "particle-ai/particle-1-20261027",
+   "id": "particle-ai/particle-1",
+   "nome": "Particle-1",
+   "lab": "Particle Ai",
+   "vendor": "particle-ai",
+   "dados": {
+    "criado": "2026-10-28",
+    "contexto": 1048576,
+    "preco_entrada": 0.25,
+    "preco_saida": 1.0,
+    "preco_misto": 0.4375,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "cloudflare/clef-flash",
+   "id": "cloudflare/clef-flash",
+   "nome": "Clef Flash",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 0.0143,
+    "para": 0.0285,
+    "variacao_pct": 100.0,
+    "entrada_de": 0.019,
+    "entrada_para": 0.038,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-28"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "removido",
+   "slug": "openai/gpt-4-turbo",
+   "id": "openai/gpt-4-turbo",
+   "nome": "GPT-4 Turbo",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "visto_em": "2026-10-28",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 8.29,
+     "share_gasto": 15.03,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 5.12,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 38
+  },
+  {
+   "tipo": "removido",
+   "slug": "openai/o1-pro",
+   "id": "openai/o1-pro",
+   "nome": "o1-pro",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "visto_em": "2026-10-28",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 8.29,
+     "share_gasto": 15.03,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 5.12,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 38
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "microsoft/mai-voice-2",
+   "id": "microsoft/mai-voice-2",
+   "nome": "MAI-Voice-2",
+   "lab": "Microsoft",
+   "vendor": "microsoft",
+   "dados": {
+    "data": "2026-12-31",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "microsoft/mai-voice-2-flash-20260723",
+   "id": "microsoft/mai-voice-2-flash",
+   "nome": "MAI-Voice-2-Flash",
+   "lab": "Microsoft",
+   "vendor": "microsoft",
+   "dados": {
+    "data": "2026-12-31",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.8-27b-20260814",
+   "id": "qwen/qwen3.8-27b",
+   "nome": "Qwen3.8 27B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.775,
+    "para": 0.3418,
+    "variacao_pct": -55.9,
+    "entrada_de": 0.2,
+    "entrada_para": 0.039,
+    "saida_de": 2.5,
+    "saida_para": 1.25,
+    "desde": "2026-10-28"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.3,
+     "rank_7d": 39,
+     "pico_share": 0.322,
+     "semanas_com_volume": 10
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.4,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 32
+  },
+  {
+   "tipo": "removido",
+   "slug": "openai/o1-2024-12-17",
+   "id": "openai/o1",
+   "nome": "o1",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "visto_em": "2026-10-28",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.019,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 8.29,
+     "share_gasto": 15.03,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 5.12,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "openai/o3-mini-2025-01-31",
+   "id": "openai/o3-mini",
+   "nome": "o3 Mini",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "visto_em": "2026-10-28",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.344,
+     "semanas_com_volume": 12
+    },
+    "laboratorio": {
+     "share_tokens": 8.29,
+     "share_gasto": 15.03,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 5.12,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "openai/o3-mini-high-2025-01-31",
+   "id": "openai/o3-mini-high",
+   "nome": "o3 Mini High",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "visto_em": "2026-10-28",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.438,
+     "semanas_com_volume": 10
+    },
+    "laboratorio": {
+     "share_tokens": 8.29,
+     "share_gasto": 15.03,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 5.12,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "openai/o4-mini-2025-04-16",
+   "id": "openai/o4-mini",
+   "nome": "o4 Mini",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "visto_em": "2026-10-28",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.608,
+     "semanas_com_volume": 16
+    },
+    "laboratorio": {
+     "share_tokens": 8.29,
+     "share_gasto": 15.03,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 5.12,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "openai/o4-mini-high-2025-04-16",
+   "id": "openai/o4-mini-high",
+   "nome": "o4 Mini High",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "visto_em": "2026-10-28",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.32,
+     "semanas_com_volume": 6
+    },
+    "laboratorio": {
+     "share_tokens": 8.29,
+     "share_gasto": 15.03,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 5.12,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "qwen/qwen3-next-80b-a3b-thinking-2509",
+   "id": "qwen/qwen3-next-80b-a3b-thinking",
+   "nome": "Qwen3 Next 80B A3B Thinking",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "visto_em": "2026-10-28",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.105,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.4,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "contexto",
+   "slug": "stepfun/step-5-preview-20261008",
+   "id": "stepfun/step-5-preview",
+   "nome": "Step 5 Preview",
+   "lab": "StepFun",
+   "vendor": "stepfun",
+   "dados": {
+    "de": 1048576,
+    "para": 1000000
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 2.88,
+     "rank_7d": 8,
+     "pico_share": 6.984,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": {
+     "share_tokens": 2.08,
+     "share_gasto": 3.05
+    }
+   },
+   "relevancia": 21
+  },
+  {
+   "tipo": "contexto",
+   "slug": "nvidia/nemotron-3-super-120b-a12b-20230311",
+   "id": "nvidia/nemotron-3-super-120b-a12b",
+   "nome": "Nemotron 3 Super",
+   "lab": "NVIDIA",
+   "vendor": "nvidia",
+   "dados": {
+    "de": 262144,
+    "para": 1048576
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 3.138,
+     "semanas_com_volume": 33
+    },
+    "laboratorio": {
+     "share_tokens": 4.66,
+     "share_gasto": 0.0,
+     "lider": {
+      "slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+      "nome": "Nemotron 3 Ultra",
+      "share_7d": 2.37,
+      "preco_misto": 1.05
+     }
+    }
+   },
+   "relevancia": 15
+  }
+ ]
+}
