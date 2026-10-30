@@ -1,0 +1,328 @@
+{
+ "versao": 1,
+ "dia": "2026-10-30",
+ "gerado_em": "2026-10-30T14:11:20Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-23",
+   "2026-10-30"
+  ],
+  "trafego": "2026-10-29"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-30",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-29",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20261017",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "openai/gpt-6-luna-20260922",
+   "tencent/hy4-preview-20260827",
+   "anthropic/claude-opus-5.5-20260921",
+   "stepfun/step-5-preview-20261008",
+   "z-ai/glm-5.3-20260816",
+   "minimax/minimax-m3.1-flash-20261019",
+   "deepseek/deepseek-v4-flash-20260731"
+  ]
+ },
+ "principal": "top10:deepseek/deepseek-v4-flash-20260731",
+ "eventos": [
+  {
+   "tipo": "top10",
+   "slug": "deepseek/deepseek-v4-flash-20260731",
+   "id": null,
+   "nome": "DeepSeek V4 Flash 0731",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "posicao": 10,
+    "share": 2.1,
+    "lancamento": "2026-07-31"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 2.1,
+     "rank_7d": 10,
+     "pico_share": 14.84,
+     "semanas_com_volume": 13
+    },
+    "laboratorio": {
+     "share_tokens": 34.0,
+     "share_gasto": 7.99,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20261017",
+      "nome": "DeepSeek V4.1 Flash 1017",
+      "share_7d": 22.35,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 54
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4.1-flash-20260910",
+   "id": "deepseek/deepseek-v4.1-flash",
+   "nome": "DeepSeek V4.1 Flash",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.21,
+    "para": 0.1588,
+    "variacao_pct": -24.4,
+    "entrada_de": 0.14,
+    "entrada_para": 0.045,
+    "saida_de": 0.42,
+    "saida_para": 0.5,
+    "desde": "2026-10-29"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 8.37,
+     "rank_7d": 2,
+     "pico_share": 23.843,
+     "semanas_com_volume": 7
+    },
+    "laboratorio": {
+     "share_tokens": 34.0,
+     "share_gasto": 7.99,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20261017",
+      "nome": "DeepSeek V4.1 Flash 1017",
+      "share_7d": 22.35,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 50
+  },
+  {
+   "tipo": "novo",
+   "slug": "baseten/joey-1-20261029",
+   "id": "baseten/joey-1",
+   "nome": "Joey 1",
+   "lab": "Baseten",
+   "vendor": "baseten",
+   "dados": {
+    "criado": "2026-10-29",
+    "contexto": 16384,
+    "preco_entrada": 0.01,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0075,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->decisions",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "cloudflare/clairic-20261029",
+   "id": "cloudflare/clairic",
+   "nome": "Clairic",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "criado": "2026-10-30",
+    "contexto": 65536,
+    "preco_entrada": 0.1,
+    "preco_saida": 0.0,
+    "preco_misto": 0.075,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->decisions",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "sourceful/riverflow-v2.6-pro-20261029",
+   "id": "sourceful/riverflow-v2.6-pro",
+   "nome": "Riverflow V2.6 Pro",
+   "lab": "Sourceful",
+   "vendor": "sourceful",
+   "dados": {
+    "criado": "2026-10-29",
+    "contexto": 32768,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image->image",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "tbc/mischief-1-20261023",
+   "id": "tbc/mischief-1",
+   "nome": "Mischief 1",
+   "lab": "Tbc",
+   "vendor": "tbc",
+   "dados": {
+    "criado": "2026-10-30",
+    "contexto": 0,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->video",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "cloudflare/clef",
+   "id": "cloudflare/clef",
+   "nome": "Clef",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 0.0315,
+    "para": 0.18,
+    "variacao_pct": 471.4,
+    "entrada_de": 0.042,
+    "entrada_para": 0.24,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-10-29"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "estreia",
+   "slug": "perplexity/pplx-decider-v1.2-20261016",
+   "id": null,
+   "nome": "pplx-decider-v1.2",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "primeiro_dia": "2026-10-29",
+    "share_7d": 0.03,
+    "lancamento": null,
+    "dias_desde_catalogo": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.03,
+     "rank_7d": 57,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "removido",
+   "slug": "upstage/solar-pro-3",
+   "id": "upstage/solar-pro-3",
+   "nome": "Solar Pro 3",
+   "lab": "Upstage",
+   "vendor": "upstage",
+   "dados": {
+    "visto_em": "2026-10-29",
+    "expira": "2026-10-30"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 0.97,
+     "share_gasto": 0.13,
+     "lider": {
+      "slug": "upstage/solar-mini4-20260922",
+      "nome": "Solar Mini 4",
+      "share_7d": 0.71,
+      "preco_misto": 0.0875
+     }
+    }
+   },
+   "relevancia": 31
+  },
+  {
+   "tipo": "preco",
+   "slug": "ibm-granite/granite-4.2-8b-20260831",
+   "id": "ibm-granite/granite-4.2-8b",
+   "nome": "Granite 4.2 8B",
+   "lab": "IBM Granite",
+   "vendor": "ibm-granite",
+   "dados": {
+    "de": 0.1075,
+    "para": 0.0825,
+    "variacao_pct": -23.3,
+    "entrada_de": 0.06,
+    "entrada_para": 0.06,
+    "saida_de": 0.25,
+    "saida_para": 0.15,
+    "desde": "2026-10-29"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 25
+  },
+  {
+   "tipo": "contexto",
+   "slug": "stepfun/step-5-preview-20261008",
+   "id": "stepfun/step-5-preview",
+   "nome": "Step 5 Preview",
+   "lab": "StepFun",
+   "vendor": "stepfun",
+   "dados": {
+    "de": 1000000,
+    "para": 1048576
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 3.12,
+     "rank_7d": 7,
+     "pico_share": 6.984,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": {
+     "share_tokens": 2.08,
+     "share_gasto": 2.92
+    }
+   },
+   "relevancia": 21
+  }
+ ]
+}
