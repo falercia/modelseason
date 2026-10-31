@@ -1,0 +1,251 @@
+{
+ "versao": 1,
+ "dia": "2026-10-31",
+ "gerado_em": "2026-10-31T13:41:26Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-24",
+   "2026-10-31"
+  ],
+  "trafego": "2026-10-30"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-10-31",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-10-30",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20261017",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "z-ai/glm-5.3-flash-20260826",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "openai/gpt-6-luna-20260922",
+   "tencent/hy4-preview-20260827",
+   "anthropic/claude-opus-5.5-20260921",
+   "stepfun/step-5-preview-20261008",
+   "minimax/minimax-m3.1-flash-20261019",
+   "z-ai/glm-5.3-20260816",
+   "deepseek/deepseek-v4-flash-20260731"
+  ]
+ },
+ "principal": "desativacao:liquid/d1-20260930",
+ "eventos": [
+  {
+   "tipo": "desativacao",
+   "slug": "liquid/d1-20260930",
+   "id": "liquid/d1",
+   "nome": "d1",
+   "lab": "Liquid AI",
+   "vendor": "liquid",
+   "dados": {
+    "data": "2026-11-20",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "x-ai/grok-imagine-image-quality-20260512",
+   "id": "x-ai/grok-imagine-image-quality",
+   "nome": "Grok Imagine Image Quality",
+   "lab": "xAI",
+   "vendor": "x-ai",
+   "dados": {
+    "data": "2026-11-02",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "x-ai/grok-4.7-20260916",
+      "nome": "Grok 4.7",
+      "share_7d": 0.06,
+      "preco_misto": 3.0
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "removido",
+   "slug": "poolside/laguna-s-2.1-20260720",
+   "id": "poolside/laguna-s-2.1",
+   "nome": "Laguna S 2.1",
+   "lab": "Poolside",
+   "vendor": "poolside",
+   "dados": {
+    "visto_em": "2026-10-30",
+    "expira": "2026-10-31"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.46,
+     "rank_7d": 31,
+     "pico_share": 2.708,
+     "semanas_com_volume": 14
+    },
+    "laboratorio": null
+   },
+   "relevancia": 32
+  },
+  {
+   "tipo": "preco",
+   "slug": "mistralai/mistral-large-4-0-20261006",
+   "id": "mistralai/mistral-large-4-0",
+   "nome": "Mistral Large 4",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "de": 2.065,
+    "para": 1.05,
+    "variacao_pct": -49.2,
+    "entrada_de": 1.36,
+    "entrada_para": 0.7,
+    "saida_de": 4.18,
+    "saida_para": 2.1,
+    "desde": "2026-10-30"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.041,
+     "semanas_com_volume": 2
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.02,
+      "preco_misto": 0.0293
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "moonshotai/kimi-k3-20260715",
+   "id": "moonshotai/kimi-k3",
+   "nome": "Kimi K3",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "de": 2.8792,
+    "para": 3.894,
+    "variacao_pct": 35.2,
+    "entrada_de": 0.239,
+    "entrada_para": 0.192,
+    "saida_de": 10.8,
+    "saida_para": 15.0,
+    "desde": "2026-10-30"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.88,
+     "rank_7d": 24,
+     "pico_share": 2.507,
+     "semanas_com_volume": 15
+    },
+    "laboratorio": {
+     "share_tokens": 1.48,
+     "share_gasto": 5.94,
+     "lider": {
+      "slug": "moonshotai/kimi-k3.1-pro-20261023",
+      "nome": "Kimi K3.1 Pro",
+      "share_7d": 1.05,
+      "preco_misto": 4.0
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "cloudflare/clairic-20261029",
+   "id": "cloudflare/clairic",
+   "nome": "Clairic",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "visto_em": "2026-10-30",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "poolside/laguna-xs-2.1-20260625",
+   "id": "poolside/laguna-xs-2.1",
+   "nome": "Laguna XS 2.1",
+   "lab": "Poolside",
+   "vendor": "poolside",
+   "dados": {
+    "visto_em": "2026-10-30",
+    "expira": "2026-10-31"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.317,
+     "semanas_com_volume": 7
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "poolside/laguna-s-2.1-20260720",
+      "nome": "Laguna S 2.1",
+      "share_7d": 0.46,
+      "preco_misto": 0.1125
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "moonshotai/kimi-k2.7-code-20260612",
+   "id": "moonshotai/kimi-k2.7-code",
+   "nome": "Kimi K2.7 Code",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "de": 1.195,
+    "para": 1.325,
+    "variacao_pct": 10.9,
+    "entrada_de": 0.56,
+    "entrada_para": 0.6,
+    "saida_de": 3.1,
+    "saida_para": 3.5,
+    "desde": "2026-10-30"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.524,
+     "semanas_com_volume": 8
+    },
+    "laboratorio": {
+     "share_tokens": 1.48,
+     "share_gasto": 5.94,
+     "lider": {
+      "slug": "moonshotai/kimi-k3.1-pro-20261023",
+      "nome": "Kimi K3.1 Pro",
+      "share_7d": 1.05,
+      "preco_misto": 4.0
+     }
+    }
+   },
+   "relevancia": 22
+  }
+ ]
+}
