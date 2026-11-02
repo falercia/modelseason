@@ -92,6 +92,7 @@ def recente(data, desde):
 def limpar_md(txt, n=TEXTO_MAX):
     t = html.unescape(txt or "")
     t = re.sub(r"!\[[^\]]*\]\([^)]*\)", " ", t)                  # imagem
+    t = re.sub(r"\[[a-z]{2,10}\](?!\()\s*", " ", t)              # marcador de componente ("[card]", MiniMax em 11/2026)
     t = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", t)                # link: fica o texto
     t = re.sub(r"<[^>]+>", " ", t)
     t = re.sub(r"(?m)^\s{0,3}(?:[*-]|>|#{1,6})\s?", " ", t)       # marcador de lista, citacao, cabecalho
@@ -132,9 +133,14 @@ def mov_id(lab, fonte, data, texto):
     return hashlib.sha1(f"{lab}|{fonte}|{data}|{chave}".encode()).hexdigest()[:12]
 
 
-def bruto(lab, fonte, link, data, texto):
+def bruto(lab, fonte, link, data, texto, chaves=None, **extra):
+    """chaves: identidade que nao depende do texto. A DeepSeek reescreveu o comeco da nota de 17/10
+    depois de 24/10, e um modelo novo no Hugging Face mudava o texto do lote do dia: nos dois casos o
+    id por texto mudou e a pauta de 30/10 trouxe de volta um movimento ja publicado. Item com chaves
+    so volta se alguma chave for nova."""
     texto = limpar_md(texto)
-    return {"id": mov_id(lab, fonte, data, texto), "lab": lab, "fonte": fonte, "link": link, "data": data, "texto": texto}
+    return {"id": mov_id(lab, fonte, data, texto), "lab": lab, "fonte": fonte, "link": link, "data": data, "texto": texto,
+            **({"chaves": sorted(chaves)} if chaves else {}), **extra}
 
 
 # ------------------------------------------------------------------ markdown (Mintlify e afins)
@@ -304,8 +310,19 @@ def noticias_deepseek(get):
 
 
 def coletar_deepseek(get, desde):
-    return [bruto("deepseek", "DeepSeek API news", link, data, f"{t}. {corpo}" if corpo else t)
+    """Cada nota tem endereco proprio (/news/newsAAMMDD): a chave e o endereco, nao o texto."""
+    return [bruto("deepseek", "DeepSeek API news", link, data, f"{t}. {corpo}" if corpo else t, chaves=[f"link:{link}"])
             for link, data, t, corpo in noticias_deepseek(get) if recente(data, desde)]
+
+
+def lote_hf(lab, data, ms):
+    """Um item para os repositorios de um laboratorio num dia: [(nome, tipo, id_completo)].
+    Chave por repositorio: um repositorio novo no mesmo dia nao republica os anteriores."""
+    ms = sorted(ms)
+    txt = f"{LABS[lab]['nome']} published open weights on Hugging Face: " + ", ".join(f"{n} ({t})" for n, t, _ in ms[:12])
+    link = f"https://huggingface.co/{ms[0][2]}" if len(ms) == 1 else f"https://huggingface.co/{ms[0][2].split('/')[0]}"
+    return bruto(lab, "Hugging Face", link, data, txt, chaves=[f"hf:{r}" for _, _, r in ms],
+                 modelos=[{"nome": n, "tipo": t, "repo": r} for n, t, r in ms])
 
 
 def coletar_hf(get, desde):
@@ -319,13 +336,7 @@ def coletar_hf(get, desde):
                     or DERIVADO.search(nome) or m.get("private"):
                 continue
             por.setdefault((lab, data), []).append((nome, m.get("pipeline_tag") or "model", m["id"]))
-    out = []
-    for (lab, data), ms in sorted(por.items()):
-        ms.sort()
-        txt = f"{LABS[lab]['nome']} published open weights on Hugging Face: " + ", ".join(f"{n} ({t})" for n, t, _ in ms[:12])
-        link = f"https://huggingface.co/{ms[0][2]}" if len(ms) == 1 else f"https://huggingface.co/{ms[0][2].split('/')[0]}"
-        out.append(bruto(lab, "Hugging Face", link, data, txt))
-    return out
+    return [lote_hf(lab, data, ms) for (lab, data), ms in sorted(por.items())]
 
 
 FONTES = {
@@ -381,16 +392,43 @@ def coletar(get, dia, fontes=FONTES, lookback=LOOKBACK_DIAS):
 
 # ------------------------------------------------------------------ registro
 
+def norm_link(u):
+    return re.sub(r"[?#].*$", "", u or "").rstrip("/").lower()
+
+
+def genericos():
+    """Links que servem a varios itens (a pagina de notas inteira, a organizacao no Hugging Face):
+    neles laboratorio, dia e link nao identificam um movimento."""
+    out = {norm_link(u) for v in PAGINAS.values() for _, u in v}
+    out |= {norm_link(f"https://huggingface.co/{org}") for org in ORGS_HF}
+    return out
+
+
+def chave_pub(m):
+    """Segunda identidade de um movimento publicado: laboratorio, dia e link especifico. Pega a fonte
+    que reescreve o texto de uma nota antiga (MiniMax trocou o formato em 11/2026 e o id por texto mudou)."""
+    link = norm_link(m.get("link"))
+    return None if not link or link in genericos() else f"pub:{m['lab']}|{m['data']}|{link}"
+
+
 def registrados(pasta, dia, inicial=INICIAL):
-    """Ids ja publicados ou ignorados: pautas mescladas antes de dia e o registro inicial."""
-    ids = set()
+    """Ids e chaves ja publicados ou ignorados: pautas mescladas antes de dia e o registro inicial,
+    que tambem guarda em chaves_registradas o que foi visto antes de existir a chave estavel."""
+    ja = set()
     arqs = [p for p in sorted(Path(pasta).glob("????-??-??.json")) if p.name[:10] < dia]
     if Path(inicial).exists():
         arqs.append(Path(inicial))
     for arq in arqs:
         p = json.loads(arq.read_text())
-        ids |= {m["id"] for m in p.get("movimentos", []) + p.get("movimentos_ignorados", [])}
-    return ids
+        for m in p.get("movimentos", []) + p.get("movimentos_ignorados", []):
+            ja.add(m["id"])
+            ja.update(m.get("chaves", []))
+        for m in p.get("movimentos", []):
+            c = chave_pub(m)
+            if c:
+                ja.add(c)
+        ja.update(p.get("chaves_registradas", []))
+    return ja
 
 
 def todos(pasta, inicial=INICIAL):
@@ -501,13 +539,19 @@ def redigir(claude, itens, aviso, numeros_ok, valida_pt, en_ascii, log=print):
 
 
 def selecionar(itens, ja, excluir_links=()):
-    """Itens novos para a IA: fora o que ja foi registrado e o que a pauta do dia ja conta como noticia."""
-    norm = lambda u: re.sub(r"[?#].*$", "", u or "").rstrip("/").lower()  # noqa: E731
-    fora = {norm(u) for u in excluir_links}
+    """Itens novos para a IA: fora o que ja foi registrado (por id ou por chave) e o que a pauta do
+    dia ja conta como noticia. Lote do Hugging Face com parte ja registrada volta so com o que e novo."""
+    fora = {norm_link(u) for u in excluir_links}
     por_lab, out = {}, []
     for it in itens:
-        if it["id"] in ja or it["lab"] not in LABS or (it["link"] and norm(it["link"]) in fora):
+        if it["id"] in ja or it["lab"] not in LABS or (it["link"] and norm_link(it["link"]) in fora) or chave_pub(it) in ja:
             continue
+        chaves = it.get("chaves") or []
+        if chaves and all(c in ja for c in chaves):
+            continue
+        if it.get("modelos") and any(c in ja for c in chaves):
+            novos = [(m["nome"], m["tipo"], m["repo"]) for m in it["modelos"] if f"hf:{m['repo']}" not in ja]
+            it = lote_hf(it["lab"], it["data"], novos)
         n = por_lab.get(it["lab"], 0)
         if n >= MAX_POR_LAB_IA:
             continue
@@ -522,7 +566,8 @@ def montar(dia, claude, get, ja, aviso, numeros_ok, valida_pt, en_ascii, excluir
     novos = selecionar(itens, ja, excluir_links)
     log(f"  movimentos: {len(itens)} itens nas fontes, {len(novos)} novos")
     feitos, ignorados = redigir(claude, novos, aviso, numeros_ok, valida_pt, en_ascii, log=log) if novos else ({}, {})
-    pub = [{**{k: it[k] for k in ("id", "lab", "fonte", "link", "data")}, **feitos[it["id"]]} for it in novos if it["id"] in feitos]
+    base = lambda it: {**{k: it[k] for k in ("id", "lab", "fonte", "link", "data")}, **({"chaves": it["chaves"]} if it.get("chaves") else {})}  # noqa: E731
+    pub = [{**base(it), **feitos[it["id"]]} for it in novos if it["id"] in feitos]
     final, por_lab, sobra = [], {}, []
     for m in sorted(pub, key=lambda m: (TIPOS[m["tipo"]], m["data"]), reverse=True):
         if por_lab.get(m["lab"], 0) >= MAX_POR_LAB:
@@ -530,8 +575,8 @@ def montar(dia, claude, get, ja, aviso, numeros_ok, valida_pt, en_ascii, excluir
             continue
         por_lab[m["lab"]] = por_lab.get(m["lab"], 0) + 1
         final.append(m)
-    ign = [{"id": it["id"], "lab": it["lab"], "data": it["data"], "motivo": ignorados[it["id"]]} for it in novos if it["id"] in ignorados]
-    ign += [{"id": m["id"], "lab": m["lab"], "data": m["data"], "motivo": f"limite de {MAX_POR_LAB} por laboratório na edição"} for m in sobra]
+    ign = [{**{k: v for k, v in base(it).items() if k not in ("fonte", "link")}, "motivo": ignorados[it["id"]]} for it in novos if it["id"] in ignorados]
+    ign += [{**{k: v for k, v in m.items() if k in ("id", "lab", "data", "chaves")}, "motivo": f"limite de {MAX_POR_LAB} por laboratório na edição"} for m in sobra]
     # exibicao: laboratorio na ordem de LABS, dentro dele o tipo de mais peso e o mais novo primeiro
     ordem = list(LABS)
     final.sort(key=lambda m: m["data"], reverse=True)

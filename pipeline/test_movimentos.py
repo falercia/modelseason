@@ -299,6 +299,31 @@ ok("montar: nada novo, nenhuma chamada de IA", not c3.pedidos and R3["movimentos
 sel = M.selecionar(brutos, set(), excluir_links=["https://developers.openai.com/x1?utm=a"])
 ok("selecionar: o que a pauta do dia ja conta como noticia fica de fora", all(x["link"] != "https://developers.openai.com/x1" for x in sel) and len(sel) == 4)
 
+# ------------------------------------------------------------------ identidade estavel (01/11/2026)
+ok("limpar_md tira marcador de componente e mantem o texto do link",
+   M.limpar_md("> [card] [MiniMax M3.1 Flash](https://www.minimax.io/blog/m31f)") == "MiniMax M3.1 Flash")
+MINIMAX_NOVO = MINIMAX_MD.replace("> **[MiniMax M3.1 Flash](https://www.minimax.io/blog/minimax-m31f)**",
+                                  "> [card] [MiniMax M3.1 Flash](https://www.minimax.io/blog/minimax-m31f)")
+mm2 = M.FONTES["minimax"](lambda u: MINIMAX_NOVO if "minimax" in u else get(u), DESDE)
+ok("MiniMax no formato novo (cartao sem negrito): mesmo texto e mesmo link", len(mm2) == 1 and mm2[0]["texto"] == mm[0]["texto"]
+   and mm2[0]["link"] == mm[0]["link"], mm2)
+dsb = M.coletar_deepseek(get, "2026-10-01")
+ok("DeepSeek: chave e o endereco da nota", dsb and dsb[0]["chaves"] == ["link:https://api-docs.deepseek.com/news/news261017"], dsb and dsb[0].get("chaves"))
+ok("Hugging Face: uma chave por repositorio", h and h[0]["chaves"] == ["hf:Qwen/Qwen3.9-32B", "hf:Qwen/Qwen3.9-8B"], h and h[0].get("chaves"))
+parte = M.selecionar(h, {"hf:Qwen/Qwen3.9-8B"})
+ok("Hugging Face: lote com parte registrada volta so com o repositorio novo, com id novo",
+   len(parte) == 1 and "Qwen3.9-32B" in parte[0]["texto"] and "Qwen3.9-8B" not in parte[0]["texto"] and parte[0]["id"] != h[0]["id"], parte)
+ok("Hugging Face: lote todo registrado nao volta", M.selecionar(h, {"hf:Qwen/Qwen3.9-8B", "hf:Qwen/Qwen3.9-32B"}) == [])
+ok("DeepSeek: nota com texto reescrito nao volta se o endereco ja foi registrado",
+   M.selecionar([M.bruto("deepseek", "DeepSeek API news", "https://api-docs.deepseek.com/news/news261017", "2026-10-17", "Texto reescrito pela fonte depois.",
+                         chaves=["link:https://api-docs.deepseek.com/news/news261017"])], {"link:https://api-docs.deepseek.com/news/news261017"}) == [])
+pub = {"id": "velho", "lab": "minimax", "data": "2026-10-19", "link": "https://www.minimax.io/blog/minimax-m31f?utm=x"}
+reescrito = M.bruto("minimax", "MiniMax release notes", "https://www.minimax.io/blog/minimax-m31f", "2026-10-19", "MiniMax M3.1 Flash, texto em outro formato.")
+ok("publicado: mesmo laboratorio, dia e link especifico nao volta, mesmo com texto novo", M.selecionar([reescrito], {M.chave_pub(pub)}) == [])
+app = M.bruto("google", "Gemini app release notes", "https://gemini.google/release-notes/", "2026-10-13", "Outro recurso do mesmo dia na mesma pagina.")
+ok("publicado: link generico (pagina de notas inteira) nao identifica movimento",
+   M.chave_pub(app) is None and len(M.selecionar([app], {"pub:google|2026-10-13|https://gemini.google/release-notes"})) == 1)
+
 # ------------------------------------------------------------------ registro e pauta
 with tempfile.TemporaryDirectory() as tmp:
     pasta, ini = Path(tmp) / "pauta", Path(tmp) / "inicial.json"
@@ -307,6 +332,11 @@ with tempfile.TemporaryDirectory() as tmp:
     (pasta / "2026-10-26.json").write_text(json.dumps({"dia": "2026-10-26", "movimentos": [{"id": "fut"}]}))
     ini.write_text(json.dumps({"dia": "2026-10-24", "movimentos": [{"id": "i1"}], "movimentos_ignorados": [{"id": "i2"}]}))
     ok("registrados: pautas anteriores e registro inicial, publicados e ignorados", M.registrados(pasta, "2026-10-26", ini) == {"a1", "a2", "i1", "i2"})
+    ini.write_text(json.dumps({"dia": "2026-10-24", "movimentos": [{"id": "i1", "lab": "minimax", "data": "2026-10-19", "link": "https://www.minimax.io/blog/x"}],
+                               "movimentos_ignorados": [{"id": "i2", "chaves": ["hf:a/b"]}], "chaves_registradas": ["link:https://api-docs.deepseek.com/news/n1"]}))
+    reg = M.registrados(pasta, "2026-10-26", ini)
+    ok("registrados: chaves dos itens, chaves migradas e chave do publicado",
+       {"hf:a/b", "link:https://api-docs.deepseek.com/news/n1", "pub:minimax|2026-10-19|https://www.minimax.io/blog/x"} <= reg, reg)
 
     p = {"assuntos": [], "editor": {"aprovada": False, "motivo": "nenhum assunto aprovado", "acoes": [], "revisao": {}}}
     c4 = FalsoClaude([{"movimentos": [{"id": "m1", "relevante": True, **texto(1)}]}])
@@ -346,8 +376,13 @@ ok("inicial: ingles sem acento e nenhum travessao", all(not any(ord(ch) > 127 fo
    and not any("—" in json.dumps(m, ensure_ascii=False) or "–" in json.dumps(m, ensure_ascii=False) for m in ms))
 ok("inicial: link oficial em todo movimento", all(m["link"].startswith("https://") for m in ms))
 
-# ------------------------------------------------------------------ placar (data/web/labs.json)
-labs = json.loads((M.ROOT / "data" / "web" / "labs.json").read_text())
+# ------------------------------------------------------------------ placar (build_web.construir_labs)
+# Calculado na hora a partir dos CSVs, e nao lido do data/web/labs.json commitado: o arquivo
+# gravado pode estar um catalogo atras do data.json que o CI reconstroi (falhou assim em 26/10).
+# Se o arquivo commitado esta em dia e outra checagem, a "data/web bate com o pipeline".
+import build_web as BW  # noqa: E402
+df, cat = BW.carregar()
+labs = BW.construir_labs(df, cat)
 dados = json.loads((M.ROOT / "public" / "data.json").read_text())
 vv = {x["lab"]: x for x in dados["volume_vs_dinheiro"]}
 ok("placar: os dez laboratorios, tres dos EUA e sete chineses", len(labs["labs"]) == 10
@@ -356,7 +391,8 @@ if labs["semana"] == dados["last_week"]:
     ok("placar: mesma conta da faixa 'O dado' do Radar (volume_vs_dinheiro)",
        all(abs(x["share_tokens"] - vv[x["vendor"]]["share_tokens"]) < 0.011 and abs(x["share_gasto"] - vv[x["vendor"]]["share_gasto"]) < 0.011
            for x in labs["labs"] if x["vendor"] in vv),
-       [(x["vendor"], x["share_tokens"], vv.get(x["vendor"], {}).get("share_tokens")) for x in labs["labs"]])
+       [(x["vendor"], x["share_tokens"], vv.get(x["vendor"], {}).get("share_tokens"), x["share_gasto"], vv.get(x["vendor"], {}).get("share_gasto"))
+        for x in labs["labs"]])
 ok("placar: series de 13 semanas", all(len(x["serie_tokens"]) == len(labs["semanas"]) == 13 for x in labs["labs"]))
 
 print(f"\n{'FALHARAM ' + str(len(falhas)) if falhas else 'TODAS AS CHECAGENS PASSARAM'}")

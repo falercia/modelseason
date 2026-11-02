@@ -5,9 +5,15 @@ on:
     branches: [main, dev]
   pull_request:
   workflow_dispatch:
+  # Uma rodada por dia no main: os commits do bot (dado) não disparam os Testes, então um main
+  # quebrado pelo dado só aparecia no PR da pauta, e barrava a pauta (26, 28 e 30/10). Com esta
+  # rodada, a quebra vira issue antes. Hora: depois do commit diário do dado, que chega ~12-14 UTC.
+  schedule:
+    - cron: "40 9 * * *"
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
   testes:
@@ -98,3 +104,18 @@ jobs:
           npx next start -p 3099 &
           for i in $(seq 1 60); do curl -sf http://localhost:3099/ >/dev/null && break; sleep 1; done
           node tests/e2e.mjs http://localhost:3099
+
+      - name: Abrir issue se o main quebrou na rodada diária
+        if: failure() && github.event_name == 'schedule'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const titulo = 'Testes do main falharam na rodada diária';
+            const abertas = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: 'pipeline' });
+            if (abertas.data.some(i => i.title === titulo)) return;
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo, title: titulo, labels: ['pipeline'],
+              body: [`@${context.repo.owner} Os Testes falharam no main, sem nenhum commit de código: a causa costuma ser o dado do dia.`,
+                     'Enquanto isso não for corrigido, a próxima pauta também vai falhar nos Testes e não será publicada.', '', `**Run:** ${run}`].join('\n'),
+            });
