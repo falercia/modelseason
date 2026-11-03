@@ -1,0 +1,96 @@
+{
+ "versao": 1,
+ "dia": "2026-11-03",
+ "gerado_em": "2026-11-03T15:10:33Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-27",
+   "2026-11-03"
+  ],
+  "trafego": "2026-11-02"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-03",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-11-02",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20261017",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "z-ai/glm-5.3-flash-20260826",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "tencent/hy4-preview-20260827",
+   "openai/gpt-6-luna-20260922",
+   "anthropic/claude-opus-5.5-20260921",
+   "minimax/minimax-m3.1-flash-20261019",
+   "stepfun/step-5-preview-20261008",
+   "openai/gpt-5.6-luna-20260709",
+   "openai/gpt-6.1-sol-20260929"
+  ]
+ },
+ "principal": "top10:openai/gpt-6.1-sol-20260929",
+ "eventos": [
+  {
+   "tipo": "top10",
+   "slug": "openai/gpt-6.1-sol-20260929",
+   "id": null,
+   "nome": "GPT-6.1 Sol",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "posicao": 10,
+    "share": 1.99,
+    "lancamento": "2026-09-29"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.99,
+     "rank_7d": 10,
+     "pico_share": 1.937,
+     "semanas_com_volume": 5
+    },
+    "laboratorio": {
+     "share_tokens": 10.89,
+     "share_gasto": 16.75,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 4.66,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 54
+  },
+  {
+   "tipo": "preco",
+   "slug": "minimax/minimax-m3.1-flash-20261019",
+   "id": "minimax/minimax-m3.1-flash",
+   "nome": "MiniMax M3.1 Flash",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 0.2625,
+    "para": 0.1312,
+    "variacao_pct": -50.0,
+    "entrada_de": 0.15,
+    "entrada_para": 0.075,
+    "saida_de": 0.6,
+    "saida_para": 0.3,
+    "desde": "2026-11-02"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 3.27,
+     "rank_7d": 7,
+     "pico_share": 7.666,
+     "semanas_com_volume": 2
+    },
+    "laboratorio": {
+     "share_tokens": 3.74,
+     "share_gasto": 1.13
+    }
+   },
+   "relevancia": 40
+  }
+ ]
+}
