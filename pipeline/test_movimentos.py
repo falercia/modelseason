@@ -395,5 +395,34 @@ if labs["semana"] == dados["last_week"]:
         for x in labs["labs"]])
 ok("placar: series de 13 semanas", all(len(x["serie_tokens"]) == len(labs["semanas"]) == 13 for x in labs["labs"]))
 
+# ------------------------------------------------------------------ estreias (build_web.estreias_ranking)
+import pandas as pd  # noqa: E402
+ests = [e for x in labs["labs"] for e in x["estreias"]]
+ok("estreias: dia do ranking e o ultimo dia do CSV", labs["dia_ranking"] == df.date.max().strftime("%Y-%m-%d"))
+ok("estreias: dentro da janela, posicoes de 1 a 50, melhor <= estreia e <= atual",
+   all(e["estreia"] > (df.date.max() - pd.Timedelta(days=BW.JANELA_ESTREIAS)).strftime("%Y-%m-%d")
+       and 1 <= e["melhor_pos"] <= e["pos_estreia"] <= 50 and (e["pos_hoje"] is None or e["melhor_pos"] <= e["pos_hoje"] <= 50)
+       for e in ests), ests[:3])
+ok("estreias: sem ruido (fora do ranking so quem chegou ao top 20) e no maximo cinco por laboratorio",
+   all(e["pos_hoje"] is not None or e["melhor_pos"] <= BW.ESTREIA_RELEVANTE for e in ests)
+   and all(len(x["estreias"]) <= BW.ESTREIAS_POR_LAB for x in labs["labs"]))
+ok("estreias: cada modelo e do proprio laboratorio e aparece uma vez",
+   all(e["slug"].split("/")[0] == x["vendor"] for x in labs["labs"] for e in x["estreias"]) and len({e["slug"] for e in ests}) == len(ests))
+# sintetico: 50 modelos antigos todo dia; o novo estreia em 40o, chega a 8o no terceiro dia e some
+# no ultimo; o fraco aparece um dia em 45o e some (ruido, fica de fora)
+dias = [pd.Timestamp("2026-08-01")] + list(pd.date_range("2026-10-01", periods=5))
+lin = [{"date": dd, "model_permaslug": f"velho/m{k}", "total_tokens": 1000 - k} for dd in dias for k in range(50)]
+for i, pos in {1: 40, 2: 20, 3: 8, 4: 15}.items():
+    lin.append({"date": dias[i], "model_permaslug": "novo/x-1", "total_tokens": 1000 - (pos - 1) + 0.5})
+lin.append({"date": dias[2], "model_permaslug": "novo/fraco", "total_tokens": 1000 - 44 + 0.5})
+sd = pd.DataFrame(lin)
+sd["base"] = sd.model_permaslug.str.split(":").str[0]
+dia_s, se = BW.estreias_ranking(sd, cat)
+x1 = (se.get("novo") or [{}])[0]
+ok("estreias sintetico: estreia, melhor, dias ate o top 10, saida do ranking e ruido de fora",
+   dia_s == "2026-10-05" and "velho" not in se and len(se.get("novo", [])) == 1
+   and x1.get("slug") == "novo/x-1" and x1.get("estreia") == "2026-10-01" and x1.get("pos_estreia") == 40
+   and x1.get("melhor_pos") == 8 and x1.get("melhor_dia") == "2026-10-03" and x1.get("dias_top10") == 2 and x1.get("pos_hoje") is None, se)
+
 print(f"\n{'FALHARAM ' + str(len(falhas)) if falhas else 'TODAS AS CHECAGENS PASSARAM'}")
 sys.exit(1 if falhas else 0)

@@ -122,6 +122,24 @@ export interface MovimentoLab {
   /** Dia da pauta que trouxe o movimento; o registro inicial é 2026-10-24. */
   edicao?: string;
 }
+/**
+ * Notícia de lançamento ou de preço do Radar que cita um laboratório acompanhado,
+ * levada ao cartão dele em /labs (lib/data.ts, itensLabs). Uma por laboratório citado.
+ */
+export interface NoticiaLab {
+  id: string; lab: string; tipo: 'noticia'; categoria: string;
+  /** Dia da publicação na fonte; sem ela, o dia da edição. */
+  data: string; edicao: string; veiculo: string; link: string;
+  pt: { titulo: string; resumo: string }; en: { titulo: string; resumo: string };
+}
+/** O que o cartão do laboratório lista: movimento oficial ou notícia do Radar. */
+export type ItemLab = MovimentoLab | NoticiaLab;
+/** Efeito do lançamento, só pelo tráfego (build_web.estreias_ranking): posições no ranking diário, top 50. */
+export interface EstreiaLab {
+  slug: string; nome: string; estreia: string; pos_estreia: number;
+  pos_hoje: number | null; share_hoje: number | null;
+  melhor_pos: number; melhor_dia: string; dias_top10: number | null;
+}
 /** Placar de um laboratório acompanhado (build_web.construir_labs): semanas completas, segunda a domingo. */
 export interface LabPlacar {
   vendor: string; nome: string; grupo: 'eua' | 'china';
@@ -129,6 +147,7 @@ export interface LabPlacar {
   rank_tokens: number | null; serie_tokens: number[]; serie_gasto: number[];
   lider: { slug: string; nome: string; share: number } | null;
   paginas: { nome: string; link: string }[];
+  estreias?: EstreiaLab[];
 }
 export interface GrupoPlacar {
   serie_tokens: number[]; serie_gasto: number[];
@@ -136,6 +155,8 @@ export interface GrupoPlacar {
 }
 export interface Labs {
   semanas: string[]; semana: string | null; labs: LabPlacar[];
+  /** Último dia do ranking diário, referência das estreias; e a janela delas, em dias. */
+  dia_ranking?: string | null; janela_estreias?: number;
   grupos: { eua: GrupoPlacar; china: GrupoPlacar; china_acompanhados: GrupoPlacar };
 }
 export interface Radar { edicoes: EdicaoRadar[] }

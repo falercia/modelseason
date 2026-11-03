@@ -8,12 +8,13 @@ import 'server-only';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { DadosV1 } from './engine';
-import type { Agora, AssuntoPauta, EdicaoRadar, Labs, Mercado, Modelos, MovimentoLab, Radar, TipoMovimento } from './tipos';
+import type { Agora, AssuntoPauta, EdicaoRadar, ItemLab, Labs, Mercado, Modelos, MovimentoLab, Radar } from './tipos';
+import { noticiasLabs, ordenarItens, PESO_TIPO } from './itens-labs';
 
 // Caminhos literais: o rastreador de arquivos da Vercel inclui só estes
 // JSON nas funções, e não o projeto inteiro.
 const ler = <T,>(arq: string): T => JSON.parse(readFileSync(arq, 'utf8')) as T;
-let cache: { D?: DadosV1; agora?: Agora; mercado?: Mercado; modelos?: Modelos; radar?: Radar; labs?: Labs; movimentos?: MovimentoLab[] } = {};
+let cache: { D?: DadosV1; agora?: Agora; mercado?: Mercado; modelos?: Modelos; radar?: Radar; labs?: Labs; movimentos?: MovimentoLab[]; itens?: ItemLab[] } = {};
 
 export const dadosV1 = () => (cache.D ??= ler<DadosV1>(path.join(process.cwd(), 'public', 'data.json')));
 export const agora = () => (cache.agora ??= ler<Agora>(path.join(process.cwd(), 'data', 'web', 'agora.json')));
@@ -48,8 +49,7 @@ function comPautas(R: Radar): Radar {
   return { edicoes: [...porDia.values()].sort((a, b) => b.dia.localeCompare(a.dia)) };
 }
 
-/** Peso do tipo na ordem do mesmo dia: o mesmo de pipeline/movimentos.py (TIPOS). */
-export const PESO_TIPO: Record<TipoMovimento, number> = { modelo: 5, preco: 4, desativacao: 4, api: 3, app: 2, outro: 0 };
+export { PESO_TIPO };
 
 /** Placar dos laboratórios acompanhados (data/web/labs.json, build_web.py). */
 export const labs = () => (cache.labs ??= ler<Labs>(path.join(process.cwd(), 'data', 'web', 'labs.json')));
@@ -71,6 +71,21 @@ export const movimentos = () => (cache.movimentos ??= (() => {
   }
   return out.sort((a, b) => b.data.localeCompare(a.data) || PESO_TIPO[b.tipo] - PESO_TIPO[a.tipo] || a.id.localeCompare(b.id));
 })());
+
+/**
+ * Movimentos e notícias de lançamento ou preço dos laboratórios acompanhados, do mais
+ * novo para o mais velho (lib/itens-labs.ts). Alimenta os cartões de /labs e a faixa da home.
+ */
+export const itensLabs = (): ItemLab[] => (cache.itens ??= (() => {
+  const vendors = new Set(labs().labs.map(l => l.vendor));
+  return ordenarItens<ItemLab>([...movimentos(), ...noticiasLabs(pautas(), movimentos(), vendors)]);
+})());
+
+/** Dia de referência do "há N dias": o mais recente entre o dado de tráfego e a última pauta. */
+export const diaReferencia = () => {
+  const dias = [agora().ultimo_dia, ...pautas().map(p => p.dia)].filter(Boolean).sort();
+  return dias.at(-1) ?? agora().ultimo_dia;
+};
 
 /** Lista leve para a busca: slug, nome, laboratório e share da semana. */
 export function indiceBusca() {

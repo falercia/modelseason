@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { carregarConteudo } from '@/lib/content';
 import Link from 'next/link';
-import { agora, dadosV1, indiceBusca, labs, mercado, movimentos, radar } from '@/lib/data';
+import { agora, dadosV1, indiceBusca, itensLabs, labs, mercado, radar } from '@/lib/data';
 import { ehIdioma, type Lang } from '@/lib/i18n';
 import { idioma } from '@/lib/idioma';
 import { alternancias } from '@/lib/meta';
@@ -82,7 +82,7 @@ export default async function Home({ params }: Props) {
           </header>
           <Agora A={A} lang={lang} />
           <style href="lb-css" precedence="medium">{CSS_LABS}</style>
-          <Placar L={labs()} ms={movimentos()} I={I} />
+          <Placar L={labs()} ms={itensLabs()} I={I} />
           <Historico D={D} M={M} />
         </main>
       </div>

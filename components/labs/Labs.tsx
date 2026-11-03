@@ -1,15 +1,26 @@
 /**
- * Laboratórios: o placar dos dez acompanhados e o que cada um registrou nas
- * próprias notas de versão. Renderizado no servidor, todo número sai de
+ * Laboratórios: o placar dos dez acompanhados, o que cada um registrou nas
+ * próprias notas de versão e as notícias de lançamento do Radar, mais o efeito
+ * dos lançamentos no ranking. Renderizado no servidor, todo número sai de
  * data/web/labs.json e todo movimento das pautas (lib/data.ts), nunca do HTML.
  *
- * Cor não carrega significado aqui: a linha cheia é tokens e a tracejada é
- * gasto, e o tipo do movimento é texto. Assim a página não depende da paleta
- * validada para daltonismo, que só cobre quatro laboratórios.
+ * Cor não carrega significado aqui: a linha cheia é tokens, a tracejada é gasto,
+ * o traço vertical é lançamento e o tipo do item é texto. Assim a página não
+ * depende da paleta validada para daltonismo, que só cobre quatro laboratórios.
+ * O filtro da linha do tempo é só CSS (:has), sem JavaScript; navegador sem
+ * :has mostra tudo.
  */
 import Link from 'next/link';
 import type { Idioma } from '@/lib/idioma';
-import type { GrupoPlacar, LabPlacar, Labs, MovimentoLab, TipoMovimento } from '@/lib/tipos';
+import { diasDesde, semanaDoDia } from '@/lib/itens-labs';
+import type { EstreiaLab, GrupoPlacar, ItemLab, LabPlacar, Labs, MovimentoLab, NoticiaLab, TipoMovimento } from '@/lib/tipos';
+
+/** Itens visíveis no cartão antes do "mais N"; o resto fica num details, até o total do cartão. */
+const NO_CARTAO = 3, MAX_CARTAO = 10;
+/** Linha do tempo: os primeiros visíveis na vista "Todos"; filtrar por tipo mostra todos daquele tipo. */
+const NA_LINHA = 20, MAX_LINHA = 80;
+const TIPOS_FILTRO: TipoMovimento[] = ['modelo', 'preco', 'desativacao', 'api', 'app', 'outro'];
+const CSS_FILTRO = TIPOS_FILTRO.map(t => `.lb-tempo:has(.lb-filtro input[value=${t}]:checked) .lb-mov:not([data-tipo=${t}])`).join(',') + '{display:none}';
 
 export const CSS_LABS = `
 .lb{max-width:1080px; margin:0 auto; padding:22px 20px 0}
@@ -62,6 +73,35 @@ export const CSS_LABS = `
 .lb-fontes a{color:var(--ink-2)}
 .lb-mais{font-size:12.5px; font-weight:600}
 .lb-tempo{background:var(--surface); border:1px solid var(--ring); border-radius:11px; padding:4px 16px}
+.lb-c .ult{font-size:11px; color:var(--ink-3); font-family:var(--font-mono),monospace}
+.lb-mov.lb-not p{display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
+.lb-mov .fonte a{color:var(--ink-2)}
+.lb-todos > summary{cursor:pointer; font-size:12px; color:var(--ink-2); padding:8px 0 2px; list-style-position:inside}
+.lb-todos[open] > summary{border-bottom:1px solid var(--grid); padding-bottom:6px}
+.lb-c .lb-todos .lb-movs{border-top:0}
+.lb-spark .leg i.lanc{width:0; height:9px; border-top:0; border-left:1.5px solid var(--ink-3); vertical-align:-1px; margin-right:6px}
+.lb-est{border-top:1px solid var(--grid); padding-top:8px}
+.lb-est h4{font-size:10px; letter-spacing:.11em; text-transform:uppercase; font-family:var(--font-mono),monospace; color:var(--ink-3); margin:0 0 4px; font-weight:500}
+.lb-est table{width:100%; border-collapse:collapse; font-size:12px; table-layout:fixed}
+.lb-est th{font-weight:500; color:var(--ink-3); font-size:10.5px; text-align:right; padding:2px 0 3px 6px; font-family:var(--font-mono),monospace; white-space:nowrap}
+.lb-est th:first-child,.lb-est td:first-child{text-align:left; padding-left:0}
+.lb-est th:first-child{width:auto}
+.lb-est th.c{width:74px} .lb-est th.n{width:50px}
+.lb-est td{padding:4px 0 4px 6px; border-top:1px solid var(--grid); text-align:right; vertical-align:top; font-variant-numeric:tabular-nums; font-family:var(--font-mono),monospace; color:var(--ink-2); white-space:nowrap}
+.lb-est td:first-child{font-family:var(--font-sans),system-ui,sans-serif; color:var(--ink); white-space:normal; overflow-wrap:anywhere; font-weight:600}
+.lb-est td:first-child small{display:block; font-weight:400; color:var(--ink-3); font-size:11px}
+.lb-est .nota-e{font-size:11px; color:var(--ink-3); margin:4px 0 0}
+.lb-filtro{display:flex; flex-wrap:wrap; gap:6px; padding:10px 0 9px; border-bottom:1px solid var(--grid)}
+.lb-filtro label{position:relative; font-size:11.5px; padding:3px 10px; border:1px solid var(--ring); border-radius:999px; cursor:pointer; color:var(--ink-2); font-family:var(--font-mono),monospace}
+.lb-filtro label small{color:var(--ink-3); margin-left:4px}
+.lb-filtro input{position:absolute; opacity:0; width:1px; height:1px; margin:0; pointer-events:none}
+.lb-filtro label:has(input:checked){background:var(--surface-2); color:var(--ink); border-color:var(--ink-3)}
+.lb-filtro label:has(input:focus-visible){outline:2px solid var(--ink-2); outline-offset:2px}
+${CSS_FILTRO}
+.lb-tempo:has(.lb-filtro input[value=todos]:checked):not(:has(.lb-ver input:checked)) .lb-movs > .lb-mov:nth-child(n+${NA_LINHA + 1}){display:none}
+.lb-ver{display:none; font-size:12px; color:var(--ink-2); padding:9px 0 8px; cursor:pointer; border-top:1px solid var(--grid)}
+.lb-ver input{margin:0 6px 0 0; vertical-align:-1px}
+.lb-tempo:has(.lb-filtro input[value=todos]:checked) .lb-ver{display:block}
 
 /* faixa da home */
 .placar{margin:30px 0 6px; scroll-margin-top:calc(var(--top-h, 56px) + 12px)}
@@ -85,12 +125,14 @@ export const CSS_LABS = `
 
 // ------------------------------------------------------------------ rótulos
 
-const TIPO: Record<TipoMovimento, { pt: string; en: string }> = {
+const TIPO: Record<TipoMovimento | 'noticia', { pt: string; en: string }> = {
   modelo: { pt: 'Modelo', en: 'Model' }, preco: { pt: 'Preço', en: 'Pricing' },
   desativacao: { pt: 'Desativação', en: 'Deprecation' }, api: { pt: 'API', en: 'API' },
-  app: { pt: 'App', en: 'App' }, outro: { pt: 'Outro', en: 'Other' },
+  app: { pt: 'App', en: 'App' }, outro: { pt: 'Outro', en: 'Other' }, noticia: { pt: 'Notícia', en: 'News' },
 };
-export const rotuloTipo = (t: TipoMovimento, I: Idioma) => I.t(TIPO[t] ?? TIPO.outro);
+export const rotuloTipo = (t: TipoMovimento | 'noticia', I: Idioma) => I.t(TIPO[t] ?? TIPO.outro);
+/** Conta como lançamento no gráfico: movimento de modelo novo ou notícia de lançamento. */
+const ehLancamento = (x: ItemLab) => x.tipo === 'modelo' || (x.tipo === 'noticia' && x.categoria === 'lancamento');
 
 /** "22 out 26" / "Oct 22, 2026"; nota com só o mês: "set 26" / "Sep 2026". */
 export const dataMov = (d: string, I: Idioma) => (d.length === 7 ? I.f.fMes(d + '-01') : I.f.fD(d));
@@ -104,24 +146,48 @@ function delta(atual: number, antes: number, I: Idioma) {
 
 // ------------------------------------------------------------------ peças
 
-/** Duas linhas de share semanal: tokens (cheia) e gasto (tracejada), na mesma escala. */
-function Spark({ tokens, gasto, I, nome }: { tokens: number[]; gasto: number[]; I: Idioma; nome: string }) {
+type Marca = { i: number; rotulos: string[] };
+/** Semanas com lançamento do laboratório, para o traço vertical no gráfico. */
+function marcasDe(ms: ItemLab[], semanas: string[], I: Idioma): Marca[] {
+  const por = new Map<number, string[]>();
+  for (const m of ms) {
+    if (!ehLancamento(m)) continue;
+    const i = semanaDoDia(semanas, m.data);
+    if (i == null) continue;
+    const r = por.get(i) ?? [];
+    if (!r.includes(m[I.lang].titulo)) r.push(m[I.lang].titulo);
+    por.set(i, r);
+  }
+  return [...por].sort((a, b) => a[0] - b[0]).map(([i, rotulos]) => ({ i, rotulos }));
+}
+
+/** Duas linhas de share semanal: tokens (cheia) e gasto (tracejada), na mesma escala; traço embaixo = semana com lançamento. */
+function Spark({ tokens, gasto, I, nome, marcas = [] }: { tokens: number[]; gasto: number[]; I: Idioma; nome: string; marcas?: Marca[] }) {
   const w = 300, h = 44, n = tokens.length;
   const max = Math.max(1, ...tokens, ...gasto);
   const x = (i: number) => (n <= 1 ? w / 2 : 2 + (i * (w - 4)) / (n - 1));
   const y = (v: number) => h - 3 - (v / max) * (h - 8);
   const linha = (s: number[]) => s.map((v, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join('');
   const { t, f } = I;
+  const lanc = marcas.length
+    ? t({ pt: ` Lançamentos em ${marcas.length} das semanas.`, en: ` Launches in ${marcas.length} of the weeks.` })
+    : '';
   return (
     <div className="lb-spark">
       <svg viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" role="img" aria-label={t({
-        pt: `${nome}: share de tokens de ${f.fmtP(tokens[0])} para ${f.fmtP(tokens[n - 1])} e share do gasto de ${f.fmtP(gasto[0])} para ${f.fmtP(gasto[n - 1])} em ${n} semanas`,
-        en: `${nome}: token share from ${f.fmtP(tokens[0])} to ${f.fmtP(tokens[n - 1])} and spend share from ${f.fmtP(gasto[0])} to ${f.fmtP(gasto[n - 1])} over ${n} weeks`,
-      })}>
+        pt: `${nome}: share de tokens de ${f.fmtP(tokens[0])} para ${f.fmtP(tokens[n - 1])} e share do gasto de ${f.fmtP(gasto[0])} para ${f.fmtP(gasto[n - 1])} em ${n} semanas.`,
+        en: `${nome}: token share from ${f.fmtP(tokens[0])} to ${f.fmtP(tokens[n - 1])} and spend share from ${f.fmtP(gasto[0])} to ${f.fmtP(gasto[n - 1])} over ${n} weeks.`,
+      }) + lanc}>
+        {marcas.map(m => (
+          <line key={m.i} data-marca={m.i} x1={x(m.i)} x2={x(m.i)} y1={h} y2={h - 9} stroke="var(--ink-3)" strokeWidth={1.5} vectorEffect="non-scaling-stroke">
+            <title>{m.rotulos.join(' · ')}</title>
+          </line>
+        ))}
         <path d={linha(gasto)} fill="none" stroke="var(--ink-3)" strokeWidth={1.4} strokeDasharray="4 3" vectorEffect="non-scaling-stroke" />
         <path d={linha(tokens)} fill="none" stroke="var(--ink-2)" strokeWidth={1.8} vectorEffect="non-scaling-stroke" />
       </svg>
       <div className="leg"><span><i />{t({ pt: 'tokens', en: 'tokens' })}</span><span><i className="g" />{t({ pt: 'gasto estimado', en: 'estimated spend' })}</span>
+        {marcas.length > 0 && <span><i className="lanc" />{t({ pt: 'lançamento', en: 'launch' })}</span>}
         <span>{t({ pt: `${n} semanas; seta contra 4 semanas antes`, en: `${n} weeks; arrow vs. 4 weeks earlier` })}</span></div>
     </div>
   );
@@ -170,18 +236,97 @@ export function ListaMovimentos({ ms, I, comLab, nomes }: { ms: MovimentoLab[]; 
   return <ul className="lb-movs">{ms.map(m => <ItemMovimento key={m.id} m={m} I={I} comLab={comLab} nomes={nomes} />)}</ul>;
 }
 
-function CartaoLab({ L, ms, I, paginas, semana }: { L: LabPlacar; ms: MovimentoLab[]; I: Idioma; paginas: Set<string>; semana: string }) {
+/** Notícia de lançamento ou preço do Radar: título abre a fonte, rodapé leva à edição. */
+function ItemNoticia({ n, I }: { n: NoticiaLab; I: Idioma }) {
+  const tx = n[I.lang];
+  return (
+    <li className="lb-mov lb-not" data-noticia={n.id} data-tipo="noticia" data-lab={n.lab}>
+      <div className="cab">
+        <time dateTime={n.data}>{dataMov(n.data, I)}</time>
+        <span className="tp">{rotuloTipo('noticia', I)}</span>
+      </div>
+      <h4><a href={n.link} rel="noopener noreferrer" target="_blank" title={n.veiculo}>{tx.titulo}</a></h4>
+      <p>{tx.resumo}</p>
+      <div className="fonte">{n.veiculo} · <Link href={I.url('/radar') + '/' + n.edicao}>{I.t({ pt: 'Radar de ', en: 'Radar, ' })}{I.f.fD(n.edicao)}</Link></div>
+    </li>
+  );
+}
+
+function ListaItens({ xs, I }: { xs: ItemLab[]; I: Idioma }) {
+  return (
+    <ul className="lb-movs">{xs.map(x => (x.tipo === 'noticia'
+      ? <ItemNoticia key={x.id} n={x} I={I} />
+      : <ItemMovimento key={x.id} m={x} I={I} />))}</ul>
+  );
+}
+
+/** Efeito do lançamento: estreias no ranking diário, com posição de estreia, atual e melhor. */
+function Estreias({ es, I, paginas, dia, janela }: { es: EstreiaLab[]; I: Idioma; paginas: Set<string>; dia: string; janela: number }) {
+  const { t, f, modelo } = I;
+  const semanas = Math.round(janela / 7);
+  return (
+    <section className="lb-est" data-estreias aria-label={t({ pt: 'Estreias no ranking', en: 'Ranking debuts' })}>
+      <h4>{t({ pt: `Estreias no ranking, ${semanas} semanas`, en: `Ranking debuts, last ${semanas} weeks` })}</h4>
+      {es.length ? (
+        <>
+          <table>
+            <thead><tr>
+              <th scope="col">{t({ pt: 'Modelo', en: 'Model' })}</th>
+              <th scope="col" className="c">{t({ pt: 'Estreia', en: 'Debut' })}</th>
+              <th scope="col" className="n">{f.marcaDia(f.dataDe(dia))}</th>
+              <th scope="col" className="n">{t({ pt: 'Melhor', en: 'Best' })}</th>
+            </tr></thead>
+            <tbody>{es.map(e => (
+              <tr key={e.slug} data-estreia={e.slug}>
+                <td>
+                  {paginas.has(e.slug) ? <Link href={modelo(e.slug)}>{e.nome}</Link> : e.nome}
+                  {e.dias_top10 != null && <small>{e.dias_top10 === 0
+                    ? t({ pt: 'top 10 na estreia', en: 'top 10 at debut' })
+                    : t({ pt: `top 10 em ${e.dias_top10} ${e.dias_top10 === 1 ? 'dia' : 'dias'}`, en: `top 10 in ${e.dias_top10} ${e.dias_top10 === 1 ? 'day' : 'days'}` })}</small>}
+                </td>
+                <td>{f.marcaDia(f.dataDe(e.estreia))}, {f.ord(e.pos_estreia)}</td>
+                <td>{e.pos_hoje != null ? f.ord(e.pos_hoje) : t({ pt: 'saiu', en: 'dropped' })}</td>
+                <td>{f.ord(e.melhor_pos)}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+          <p className="nota-e">{t({
+            pt: `Posição no ranking diário de tokens, top 50; "saiu" é fora do top 50 em ${f.fD(dia)}.`,
+            en: `Position in the daily token ranking, top 50; "dropped" means outside the top 50 on ${f.fD(dia)}.`,
+          })}</p>
+        </>
+      ) : <p className="lb-vazio">{t({ pt: `Nenhum modelo novo no top 50 em ${semanas} semanas.`, en: `No new model in the top 50 in ${semanas} weeks.` })}</p>}
+    </section>
+  );
+}
+
+/** "última novidade em 30 out 26, há 4 dias" / "latest update Oct 30, 2026, 4 days ago". */
+function Ultima({ x, I, refDia }: { x?: ItemLab; I: Idioma; refDia: string }) {
+  if (!x) return null;
+  const { t } = I;
+  const n = diasDesde(x.data, refDia);
+  const quando = n == null ? '' : n === 0
+    ? ''
+    : t({ pt: `, há ${n} ${n === 1 ? 'dia' : 'dias'}`, en: `, ${n} ${n === 1 ? 'day' : 'days'} ago` });
+  return <span className="ult" data-ultima={n ?? ''}>{t({ pt: 'última novidade em ', en: 'latest update ' })}{dataMov(x.data, I)}{quando}</span>;
+}
+
+type Ctx = { paginas: Set<string>; semana: string; semanas: string[]; refDia: string; dia: string | null; janela: number };
+function CartaoLab({ L, xs, I, c }: { L: LabPlacar; xs: ItemLab[]; I: Idioma; c: Ctx }) {
   const { t, f, url, modelo, nomeLab } = I;
+  const { paginas, semana } = c;
   const nome = nomeLab(L.nome);
   const grandes = ['anthropic', 'openai', 'google'].includes(L.vendor);
+  const vis = xs.slice(0, NO_CARTAO), resto = xs.slice(NO_CARTAO, MAX_CARTAO);
   return (
     <article className="lb-c" id={`lab-${L.vendor}`} data-lab={L.vendor}>
       <header>
         <h3>{nome}</h3>
         {L.rank_tokens != null && <span className="rk">{t({ pt: `${L.rank_tokens}º em tokens`, en: `#${L.rank_tokens} by tokens` })} · {t({ pt: 'semana de', en: 'week of' })} {f.fD(semana)}</span>}
+        <Ultima x={xs[0]} I={I} refDia={c.refDia} />
       </header>
       <Numeros x={L} I={I} />
-      <Spark tokens={L.serie_tokens} gasto={L.serie_gasto} I={I} nome={nome} />
+      <Spark tokens={L.serie_tokens} gasto={L.serie_gasto} I={I} nome={nome} marcas={marcasDe(xs, c.semanas, I)} />
       {L.lider && (
         <div className="lb-lider">
           {t({ pt: 'Mais usado: ', en: 'Most used: ' })}
@@ -189,9 +334,18 @@ function CartaoLab({ L, ms, I, paginas, semana }: { L: LabPlacar; ms: MovimentoL
           {' '}({f.fmtP(L.lider.share, 2)} {t({ pt: 'dos tokens', en: 'of tokens' })})
         </div>
       )}
-      {ms.length
-        ? <ListaMovimentos ms={ms} I={I} />
-        : <p className="lb-vazio">{t({ pt: 'Nenhum movimento registrado nas fontes acompanhadas.', en: 'No moves recorded in the tracked sources.' })}</p>}
+      {c.dia && <Estreias es={L.estreias ?? []} I={I} paginas={paginas} dia={c.dia} janela={c.janela} />}
+      {xs.length ? (
+        <div>
+          <ListaItens xs={vis} I={I} />
+          {resto.length > 0 && (
+            <details className="lb-todos">
+              <summary>{t({ pt: `Mais ${resto.length}`, en: `${resto.length} more` })}</summary>
+              <ListaItens xs={resto} I={I} />
+            </details>
+          )}
+        </div>
+      ) : <p className="lb-vazio">{t({ pt: 'Nenhum movimento registrado nas fontes acompanhadas.', en: 'No moves recorded in the tracked sources.' })}</p>}
       <p className="lb-fontes">
         <span>{t({ pt: 'Fontes acompanhadas:', en: 'Tracked sources:' })}</span>
         {L.paginas.map(p => <a key={p.link} href={p.link} rel="noopener noreferrer" target="_blank">{p.nome}</a>)}
@@ -225,18 +379,34 @@ function Grupo({ titulo, quem, G, I }: { titulo: string; quem: string; G: GrupoP
   );
 }
 
-const porLab = (ms: MovimentoLab[]) => {
-  const out: Record<string, MovimentoLab[]> = {};
+const porLab = <T extends ItemLab>(ms: T[]) => {
+  const out: Record<string, T[]> = {};
   for (const m of ms) (out[m.lab] ??= []).push(m);
   return out;
 };
 
-export function PaginaLabs({ L, ms, I, paginas }: { L: Labs; ms: MovimentoLab[]; I: Idioma; paginas: Set<string> }) {
+/** Filtro da linha do tempo por tipo: rádios com CSS (:has), sem JavaScript. */
+function Filtro({ ms, I }: { ms: MovimentoLab[]; I: Idioma }) {
+  const n = (t: TipoMovimento) => ms.filter(m => m.tipo === t).length;
+  const tipos = TIPOS_FILTRO.filter(t => n(t) > 0);
+  return (
+    <div className="lb-filtro" role="radiogroup" aria-label={I.t({ pt: 'Filtrar por tipo', en: 'Filter by type' })}>
+      <label><input type="radio" name="lb-filtro" value="todos" defaultChecked />{I.t({ pt: 'Todos', en: 'All' })}<small>{ms.length}</small></label>
+      {tipos.map(t => <label key={t}><input type="radio" name="lb-filtro" value={t} />{rotuloTipo(t, I)}<small>{n(t)}</small></label>)}
+    </div>
+  );
+}
+
+export function PaginaLabs({ L, ms, itens, I, paginas, refDia }: {
+  L: Labs; ms: MovimentoLab[]; itens: ItemLab[]; I: Idioma; paginas: Set<string>; refDia: string;
+}) {
   const { t, f, nomeLab } = I;
-  const P = porLab(ms);
+  const P = porLab(itens);
   const nomes = Object.fromEntries(L.labs.map(x => [x.vendor, x.nome]));
   const eua = L.labs.filter(x => x.grupo === 'eua'), china = L.labs.filter(x => x.grupo === 'china');
-  const semana = L.semana ?? '';
+  const c: Ctx = { paginas, semana: L.semana ?? '', semanas: L.semanas, refDia, dia: L.dia_ranking ?? null, janela: L.janela_estreias ?? 42 };
+  const linha = ms.slice(0, MAX_LINHA);
+  const cartao = (x: LabPlacar) => <CartaoLab key={x.vendor} L={x} xs={P[x.vendor] ?? []} I={I} c={c} />;
   return (
     <>
       <Leitura L={L} I={I} />
@@ -251,24 +421,30 @@ export function PaginaLabs({ L, ms, I, paginas }: { L: Labs; ms: MovimentoLab[];
       </div>
 
       <h2 className="lb-sec" id="eua">{t({ pt: 'Os três pagos dos EUA', en: 'The three paid US labs' })}</h2>
-      <div className="lb-cartoes">{eua.map(x => <CartaoLab key={x.vendor} L={x} ms={(P[x.vendor] ?? []).slice(0, 5)} I={I} paginas={paginas} semana={semana} />)}</div>
+      <div className="lb-cartoes">{eua.map(cartao)}</div>
 
       <h2 className="lb-sec" id="china">{t({ pt: 'Os sete chineses', en: 'The seven Chinese labs' })}</h2>
       <p className="lb-intro">{t({
         pt: 'Os cinco chineses de maior tráfego em 90 dias, mais Moonshot (Kimi) e Qwen (Alibaba). A lista é revista a cada trimestre pelo dado, não por preferência.',
         en: 'The five Chinese labs with the most traffic over 90 days, plus Moonshot (Kimi) and Qwen (Alibaba). The list is reviewed every quarter from the data, not from preference.',
       })}</p>
-      <div className="lb-cartoes">{china.map(x => <CartaoLab key={x.vendor} L={x} ms={(P[x.vendor] ?? []).slice(0, 5)} I={I} paginas={paginas} semana={semana} />)}</div>
+      <div className="lb-cartoes">{china.map(cartao)}</div>
 
       <h2 className="lb-sec" id="linha-do-tempo">{t({ pt: 'Linha do tempo', en: 'Timeline' })}</h2>
-      <p className="lb-intro">{t({ pt: 'Todos os movimentos registrados, do mais novo para o mais antigo.', en: 'Every recorded move, newest first.' })}</p>
-      <div className="lb-tempo"><ListaMovimentos ms={ms.slice(0, 80)} I={I} comLab nomes={nomes} /></div>
+      <p className="lb-intro">{t({ pt: 'Todos os movimentos das notas de versão, do mais novo para o mais antigo.', en: 'Every move from the release notes, newest first.' })}</p>
+      <div className="lb-tempo">
+        <Filtro ms={linha} I={I} />
+        <ListaMovimentos ms={linha} I={I} comLab nomes={nomes} />
+        {linha.length > NA_LINHA && (
+          <label className="lb-ver"><input type="checkbox" />{t({ pt: `Mostrar os ${linha.length - NA_LINHA} anteriores`, en: `Show the ${linha.length - NA_LINHA} earlier ones` })}</label>
+        )}
+      </div>
     </>
   );
 }
 
 /** Faixa da home: um cartão por laboratório, com o último movimento, levando à página. */
-export function Placar({ L, ms, I }: { L: Labs; ms: MovimentoLab[]; I: Idioma }) {
+export function Placar({ L, ms, I }: { L: Labs; ms: ItemLab[]; I: Idioma }) {
   const { t, f, url, nomeLab } = I;
   if (!L.semana || !L.labs.length) return null;
   const P = porLab(ms);
@@ -296,8 +472,8 @@ export function Placar({ L, ms, I }: { L: Labs; ms: MovimentoLab[]; I: Idioma })
       <div className="placar-gr">{t({ pt: 'Chineses', en: 'Chinese' })}</div>
       <div className="placar-grid">{L.labs.filter(x => x.grupo === 'china').map(tile)}</div>
       <p className="nota">{t({
-        pt: `Share de tokens e de gasto estimado na semana de ${f.fD(L.semana)}, com a seta da variação em pontos percentuais contra quatro semanas antes. O último movimento vem das notas de versão do próprio laboratório.`,
-        en: `Token and estimated spend share in the week of ${f.fD(L.semana)}, with the arrow showing the change in percentage points against four weeks earlier. The latest move comes from the lab's own release notes.`,
+        pt: `Share de tokens e de gasto estimado na semana de ${f.fD(L.semana)}, com a seta da variação em pontos percentuais contra quatro semanas antes. A última novidade vem das notas de versão do laboratório ou de notícia de lançamento do Radar.`,
+        en: `Token and estimated spend share in the week of ${f.fD(L.semana)}, with the arrow showing the change in percentage points against four weeks earlier. The latest update comes from the lab's own release notes or from a launch story in the Radar.`,
       })}</p>
     </section>
   );

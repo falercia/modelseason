@@ -393,6 +393,21 @@ const vazou = (txt) => {
     if (lang === 'en') ok('en: /labs sem português', !vazou(t), vazou(t) || '');
     const ext = await page.locator('.lb-mov h4 a').evaluateAll(as => as.map(a => ({ h: a.getAttribute('href'), r: a.getAttribute('rel') })));
     ok(`${lang}: movimentos abrem a nota oficial com noopener`, ext.length > 0 && ext.every(x => /^https?:\/\//.test(x.h) && /noopener/.test(x.r ?? '')));
+    // estreias, notícias nos cartões, cartão enxuto e filtro da linha do tempo
+    ok(`${lang}: bloco de estreias em cada cartão`, (await page.locator('article.lb-c [data-estreias]').count()) === (L.dia_ranking ? L.labs.length : 0));
+    const nEst = L.labs.reduce((s, l) => s + (l.estreias?.length ?? 0), 0);
+    ok(`${lang}: todas as estreias do labs.json na tabela`, (await page.locator('article.lb-c [data-estreia]').count()) === nEst,
+      `${await page.locator('article.lb-c [data-estreia]').count()} de ${nEst}`);
+    const vis = await page.locator('article.lb-c').evaluateAll(cs => cs.map(c => c.querySelectorAll(':scope > div > .lb-movs > .lb-mov').length));
+    ok(`${lang}: no máximo 3 itens à vista por cartão`, vis.every(n => n <= 3), vis.join(','));
+    const nots = await page.locator('article.lb-c [data-noticia] h4 a').evaluateAll(as => as.map(a => ({ h: a.getAttribute('href'), r: a.getAttribute('rel') })));
+    ok(`${lang}: notícia do Radar no cartão abre a fonte com noopener`, nots.every(x => /^https?:\/\//.test(x.h) && /noopener/.test(x.r ?? '')));
+    await page.locator('.lb-filtro label:has(input[value=modelo])').click();
+    const tiposVis = await page.locator('.lb-tempo .lb-mov:visible').evaluateAll(ls => ls.map(l => l.getAttribute('data-tipo')));
+    ok(`${lang}: filtro da linha do tempo mostra só o tipo escolhido`, tiposVis.length > 0 && tiposVis.every(x => x === 'modelo'), tiposVis.slice(0, 5).join(','));
+    await page.locator('.lb-filtro label:has(input[value=todos])').click();
+    const tempoVis = await page.locator('.lb-tempo .lb-mov:visible').count();
+    ok(`${lang}: linha do tempo abre com no máximo 20 à vista`, tempoVis === Math.min(20, naLinha), String(tempoVis));
     ok(`${lang}: /labs sem erro de console`, erros.length === 0, erros.slice(0, 3).join(' | '));
     await page.close();
     for (const tema of ['light', 'dark']) {

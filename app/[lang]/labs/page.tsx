@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { carregarConteudo } from '@/lib/content';
-import { agora, dadosV1, indiceBusca, labs, modelos, movimentos } from '@/lib/data';
+import { agora, dadosV1, diaReferencia, indiceBusca, itensLabs, labs, modelos, movimentos } from '@/lib/data';
 import { ehIdioma, OG_LOCALE, type Lang } from '@/lib/i18n';
 import { idioma } from '@/lib/idioma';
 import { alternancias, OG_IMAGEM } from '@/lib/meta';
@@ -33,9 +33,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Page({ params }: Props) {
   const lang = await langDe(params);
   const I = idioma(lang);
-  const { t, url } = I;
+  const { t, f, url } = I;
   const L = labs(), A = agora(), D = dadosV1();
   const paginas = new Set(Object.keys(modelos().modelos));
+  const ref = diaReferencia();
   return (
     <InfoProvider conteudo={carregarConteudo(lang)}>
       <style href="lb-css" precedence="medium">{CSS_LABS}</style>
@@ -54,10 +55,10 @@ export default async function Page({ params }: Props) {
           <a href={url('/labs') + '/movimentos.json'}>JSON</a>
           <Link href={url('/radar')}>Radar</Link>
         </div>
-        <PaginaLabs L={L} ms={movimentos()} I={I} paginas={paginas} />
+        <PaginaLabs L={L} ms={movimentos()} itens={itensLabs()} I={I} paginas={paginas} refDia={ref} />
         <p className="nota">{t({
-          pt: 'Share de tokens e de gasto estimado entre os modelos identificados, por semana completa, de segunda a domingo, a mesma conta da faixa “O dado” do Radar. Gasto é tokens vezes o preço misto do catálogo (75% entrada, 25% saída), endpoint gratuito conta zero. Os movimentos são resumos escritos por IA só com o que a nota oficial diz, com todo número conferido contra ela; a pauta coleta segunda, quarta e sexta. As release notes do ChatGPT recusam leitura automática, então a OpenAI aparece pelo changelog da API.',
-          en: 'Token and estimated spend share among identified models, per full week, Monday to Sunday, the same math as the “The data” strip in the Radar. Spend is tokens times the catalog blended price (75% input, 25% output), and free endpoints count as zero. Moves are AI-written summaries using only what the official note says, with every number checked against it; collection runs Monday, Wednesday and Friday. ChatGPT release notes refuse automated reading, so OpenAI is covered through its API changelog.',
+          pt: 'Share de tokens e de gasto estimado entre os modelos identificados, por semana completa, de segunda a domingo, a mesma conta da faixa “O dado” do Radar. Gasto é tokens vezes o preço misto do catálogo (75% entrada, 25% saída), endpoint gratuito conta zero. Os movimentos são resumos escritos por IA só com o que a nota oficial diz, com todo número conferido contra ela; a pauta coleta segunda, quarta e sexta. As release notes do ChatGPT recusam leitura automática, então a OpenAI aparece pelo changelog da API. Nos cartões, a notícia de lançamento ou de preço do Radar completa o que a nota de versão não traz, e a que repete um movimento fica de fora. Estreias são os modelos que entraram no ranking diário de tokens (top 50) nas últimas semanas, com a posição de estreia, a do último dia do dado e a melhor; o traço no gráfico marca a semana de cada lançamento. A contagem de dias vai até a última coleta, em ' + f.fD(ref) + '.',
+          en: 'Token and estimated spend share among identified models, per full week, Monday to Sunday, the same math as the “The data” strip in the Radar. Spend is tokens times the catalog blended price (75% input, 25% output), and free endpoints count as zero. Moves are AI-written summaries using only what the official note says, with every number checked against it; collection runs Monday, Wednesday and Friday. ChatGPT release notes refuse automated reading, so OpenAI is covered through its API changelog. In the cards, launch and pricing stories from the Radar fill in what the release notes miss, and a story that repeats a move is left out. Debuts are the models that entered the daily token ranking (top 50) in recent weeks, with their debut position, their position on the latest data day and their best; the tick on the chart marks the week of each launch. Day counts run to the latest collection, on ' + f.fD(ref) + '.',
         })}</p>
       </main>
       <Rodape asOf={D.as_of} ultimoDia={A.ultimo_dia} />

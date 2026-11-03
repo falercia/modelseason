@@ -733,6 +733,43 @@ def construir_radar():
 # ------------------------------------------------------------------ laboratorios
 
 SEMANAS_LABS = 13
+JANELA_ESTREIAS = 42      # dias: o que estreou no ranking nas ultimas seis semanas
+ESTREIA_RELEVANTE = 20    # fora do ranking no ultimo dia, so entra quem chegou a esta posicao
+ESTREIAS_POR_LAB = 5
+
+
+def estreias_ranking(df, cat):
+    """Efeito do lancamento, tirado so do trafego: modelos (base, variantes :free somadas) cuja
+    primeira aparicao no ranking diario (top 50, sem 'other') caiu nos ultimos JANELA_ESTREIAS
+    dias. Para cada um: dia e posicao da estreia, posicao e share no ultimo dia, melhor posicao
+    e quantos dias levou ate o top 10. Ruido fica de fora: quem saiu do ranking sem passar da
+    posicao ESTREIA_RELEVANTE. Retorna (ultimo dia, {vendor: [estreias]})."""
+    d = df[df.model_permaslug != "other"].groupby(["date", "base"], as_index=False).total_tokens.sum()
+    if d.empty:
+        return None, {}
+    d["pos"] = d.groupby("date").total_tokens.rank(ascending=False, method="min").astype(int)
+    ult = d.date.max()
+    tot_ult = float(d[d.date == ult].total_tokens.sum()) or 1.0
+    prim = d.groupby("base").date.min()
+    out = {}
+    for base in sorted(prim[prim > ult - pd.Timedelta(days=JANELA_ESTREIAS)].index):
+        s = d[d.base == base].sort_values("date")
+        hoje = s[s.date == ult]
+        melhor = s.sort_values(["pos", "date"]).iloc[0]
+        if hoje.empty and melhor.pos > ESTREIA_RELEVANTE:
+            continue
+        d0, top10 = s.date.iloc[0], s[s.pos <= 10]
+        out.setdefault(base.split("/")[0], []).append({
+            "slug": base, "nome": meta_modelo(base, cat).get("nome") or base.split("/")[-1],
+            "estreia": d0.strftime("%Y-%m-%d"), "pos_estreia": int(s.pos.iloc[0]),
+            "pos_hoje": int(hoje.pos.iloc[0]) if len(hoje) else None,
+            "share_hoje": r(100 * float(hoje.total_tokens.iloc[0]) / tot_ult) if len(hoje) else None,
+            "melhor_pos": int(melhor.pos), "melhor_dia": melhor.date.strftime("%Y-%m-%d"),
+            "dias_top10": int((top10.date.iloc[0] - d0).days) if len(top10) else None,
+        })
+    for v in out:
+        out[v] = sorted(out[v], key=lambda x: (x["estreia"], x["slug"]), reverse=True)[:ESTREIAS_POR_LAB]
+    return ult.strftime("%Y-%m-%d"), out
 
 
 def construir_labs(df, cat):
@@ -766,6 +803,7 @@ def construir_labs(df, cat):
     def serie(tab, v):
         return [r(x) for x in (tab[v] if v in tab.columns else [0.0] * len(semanas))]
 
+    dia_ranking, estreias = estreias_ranking(df, cat)
     labs = []
     for v, info in mv.LABS.items():
         st, su = serie(sh_tok, v), serie(sh_usd, v)
@@ -780,6 +818,7 @@ def construir_labs(df, cat):
             "rank_tokens": int(rank[v]) if v in rank.index and st[-1] > 0 else None,
             "serie_tokens": st, "serie_gasto": su, "lider": lider,
             "paginas": [{"nome": n, "link": u} for n, u in mv.PAGINAS.get(v, [])],
+            "estreias": estreias.get(v, []),
         })
     ordem_grupo = {"eua": 0, "china": 1}
     labs.sort(key=lambda x: (ordem_grupo[x["grupo"]], -(x["share_tokens"] or 0), x["vendor"]))
@@ -796,6 +835,7 @@ def construir_labs(df, cat):
     china_sete = [v for v, i in mv.LABS.items() if i["grupo"] == "china"]
     return {
         "semanas": [w.strftime("%Y-%m-%d") for w in semanas], "semana": ult.strftime("%Y-%m-%d"),
+        "dia_ranking": dia_ranking, "janela_estreias": JANELA_ESTREIAS,
         "labs": labs,
         "grupos": {"eua": {**grupo(eua), "labs": eua},
                    "china": {**grupo(china_todos), "labs": china_todos},
