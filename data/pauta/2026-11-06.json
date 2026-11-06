@@ -1,0 +1,2570 @@
+{
+ "versao": 1,
+ "dia": "2026-11-06",
+ "gerado_em": "2026-11-06T17:00:20Z",
+ "janela_horas": 54,
+ "modelo": "claude-sonnet-5-5",
+ "uso_tokens": {
+  "entrada": 21000,
+  "saida": 9721
+ },
+ "fontes": {
+  "openai": {
+   "ok": true,
+   "itens": 8
+  },
+  "google": {
+   "ok": true,
+   "itens": 5
+  },
+  "anthropic": {
+   "ok": true,
+   "itens": 0
+  },
+  "huggingface": {
+   "ok": true,
+   "itens": 5
+  },
+  "techcrunch": {
+   "ok": true,
+   "itens": 20
+  },
+  "mittr": {
+   "ok": true,
+   "itens": 3
+  },
+  "verge": {
+   "ok": true,
+   "itens": 10
+  },
+  "ars": {
+   "ok": true,
+   "itens": 5
+  },
+  "simonwillison": {
+   "ok": true,
+   "itens": 1
+  },
+  "tecnoblog": {
+   "ok": true,
+   "itens": 10
+  },
+  "nist": {
+   "ok": true,
+   "itens": 0
+  },
+  "ue": {
+   "ok": true,
+   "itens": 0
+  },
+  "hf": {
+   "ok": true,
+   "itens": 4
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 0
+  },
+  "camara": {
+   "ok": true,
+   "itens": 0
+  },
+  "techmeme": {
+   "ok": true,
+   "itens": 6
+  },
+  "hn": {
+   "ok": true,
+   "itens": 21
+  }
+ },
+ "assuntos": [
+  {
+   "id": "a2",
+   "categoria": "mercado",
+   "nota": 13.35,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-04T14:30:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "OpenAI to acquire Pierre Computer Company, Inc.",
+     "link": "https://openai.com/index/openai-to-acquire-pierre",
+     "data": "2026-11-04T14:30:00Z",
+     "discussao": "https://news.ycombinator.com/item?id=50366863",
+     "pontos": 263
+    }
+   ],
+   "pt": {
+    "titulo": "OpenAI vai adquirir a Pierre Computer Company",
+    "resumo": "A OpenAI vai adquirir a Pierre Computer Company, segundo a própria OpenAI. A aquisição amplia as ferramentas do Codex para criar, entender e revisar código."
+   },
+   "en": {
+    "titulo": "OpenAI to acquire Pierre Computer Company",
+    "resumo": "OpenAI will acquire Pierre Computer Company, according to OpenAI. The acquisition expands the tools in Codex for building, understanding and reviewing code."
+   },
+   "cruzamento": [
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 10.89,
+     "share_gasto": 16.67,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   ]
+  },
+  {
+   "id": "a3",
+   "categoria": "lancamento",
+   "nota": 12.63,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-05T09:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents",
+     "link": "https://openai.com/index/introducing-gpt-6-cyber",
+     "data": "2026-11-05T09:00:00Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "OpenAI released a new cybersecurity model. Is that enough?",
+     "link": "https://techcrunch.com/2026/11/05/openai-released-a-new-cybersecurity-model-is-that-enough/",
+     "data": "2026-11-05T19:06:12Z"
+    }
+   ],
+   "pt": {
+    "titulo": "OpenAI apresenta o GPT-6 Cyber, modelo para encontrar vulnerabilidades e criar correções",
+    "resumo": "Segundo a OpenAI, o GPT-6 Cyber é um modelo de cibersegurança para encontrar vulnerabilidades exploráveis e desenvolver correções, treinado para atuar dentro do escopo autorizado. Segundo o TechCrunch, o lançamento ocorre num momento em que os laboratórios de IA enfrentam escrutínio sobre seu trabalho de proteção da infraestrutura digital."
+   },
+   "en": {
+    "titulo": "OpenAI introduces GPT-6 Cyber, a model for finding vulnerabilities and developing fixes",
+    "resumo": "According to OpenAI, GPT-6 Cyber is a cybersecurity model for finding exploitable vulnerabilities and developing fixes, trained to stay within authorized scope. According to TechCrunch, it arrives as AI labs face scrutiny of their work to protect digital infrastructure."
+   },
+   "cruzamento": [
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 10.89,
+     "share_gasto": 16.67,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   ]
+  },
+  {
+   "id": "a6",
+   "categoria": "lancamento",
+   "nota": 10.97,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-05T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips",
+     "link": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
+     "data": "2026-11-05T17:00:00Z",
+     "discussao": "https://news.ycombinator.com/item?id=50392118",
+     "pontos": 189
+    },
+    {
+     "veiculo": "Google",
+     "titulo": "Generate longer AI videos with Omni 1.2 Flash in Google Vids at no cost.",
+     "link": "https://blog.google/products-and-platforms/products/workspace/omni-1-2-flash-google-vids/",
+     "data": "2026-11-05T20:00:00Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Google lança o Gemini Omni 1.2 Flash com vídeos de 15 segundos e preço 30% menor",
+    "resumo": "Segundo o Google, o Gemini Omni 1.2 Flash gera e edita vídeos de até 15 segundos, com mais consistência e preço 30% menor, a US$ 0,07 por segundo em 720p. No Google Vids, quem tem conta Google pode gerar até três vídeos de 15 segundos por mês sem custo."
+   },
+   "en": {
+    "titulo": "Google launches Gemini Omni 1.2 Flash with 15-second videos and 30% lower pricing",
+    "resumo": "According to Google, Gemini Omni 1.2 Flash generates and edits videos up to 15 seconds long, with stronger consistency and 30% lower pricing, at $0.07 per second for 720p. In Google Vids, anyone with a Google account can generate up to three 15-second videos per month at no cost."
+   },
+   "cruzamento": [
+    {
+     "vendor": "google",
+     "lab": "Google",
+     "share_tokens": 2.73,
+     "share_gasto": 5.1,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.75,
+      "preco_misto": 1.65
+     }
+    }
+   ]
+  }
+ ],
+ "descartados": [
+  {
+   "id": "a1",
+   "categoria": "seguranca",
+   "nota": 14.28,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-05T22:17:15Z",
+   "fontes": [
+    {
+     "veiculo": "GitHub",
+     "titulo": "Claude Code sends your email address to websites",
+     "link": "https://github.com/anthropics/claude-code/issues/107757",
+     "data": "2026-11-05T22:17:15Z",
+     "discussao": "https://news.ycombinator.com/item?id=50385272",
+     "pontos": 1466
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a4",
+   "categoria": "seguranca",
+   "nota": 11.89,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-05T07:44:30Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "GPT-6 Astra covertly underperforms on safety research",
+     "link": "https://alignment.openai.com/misalignment-reports/covert-underperformance-on-safety-research-tasks/",
+     "data": "2026-11-05T07:44:30Z",
+     "discussao": "https://news.ycombinator.com/item?id=50376313",
+     "pontos": 337
+    }
+   ],
+   "motivo": "editor: já há 2 assuntos do mesmo laboratório"
+  },
+  {
+   "id": "a5",
+   "categoria": "lancamento",
+   "nota": 11.48,
+   "labs": [
+    "moonshotai"
+   ],
+   "publicado_em": "2026-11-04T15:30:30Z",
+   "fontes": [
+    {
+     "veiculo": "huggingface.co",
+     "titulo": "Kimi K3.1 Pro model weights are out",
+     "link": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+     "data": "2026-11-04T15:30:30Z",
+     "discussao": "https://news.ycombinator.com/item?id=50366999",
+     "pontos": 632
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a7",
+   "categoria": "infraestrutura",
+   "nota": 10.63,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-05T02:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Setting a new standard for responsible AI infrastructure",
+     "link": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+     "data": "2026-11-05T02:00:00Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "OpenAI is stepping back from NDAs for data center projects",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1028454/openai-data-center-nda",
+     "data": "2026-11-06T00:37:56Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a8",
+   "categoria": "lancamento",
+   "nota": 10.34,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-05T18:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Claude can now analyze your spending with its new Personal Finance tool",
+     "link": "https://techcrunch.com/2026/11/05/claude-can-now-analyze-your-spending-with-its-new-personal-finance-tool/",
+     "data": "2026-11-05T18:00:00Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Claude AI can plug directly into your bank account",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1027652/anthropic-claude-plaid-personal-finance",
+     "data": "2026-11-05T18:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a9",
+   "categoria": "lancamento",
+   "nota": 10.33,
+   "labs": [],
+   "publicado_em": "2026-11-04T17:31:53Z",
+   "fontes": [
+    {
+     "veiculo": "news.ycombinator.com",
+     "titulo": "Launch HN: Kino AI (YC S23) – AI media manager and video editor",
+     "link": "https://news.ycombinator.com/item?id=50368804",
+     "data": "2026-11-04T17:31:53Z",
+     "discussao": "https://news.ycombinator.com/item?id=50368804",
+     "pontos": 535
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a10",
+   "categoria": "regulacao",
+   "nota": 9.63,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-05T21:39:40Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Lawsuit: Man introduced his wife to ChatGPT. She used it to plan his murder.",
+     "link": "https://arstechnica.com/tech-policy/2026/11/lawsuit-man-introduced-his-wife-to-chatgpt-she-used-it-to-plan-his-murder/",
+     "data": "2026-11-05T21:39:40Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a11",
+   "categoria": "seguranca",
+   "nota": 9.48,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-11-05T23:09:57Z",
+   "fontes": [
+    {
+     "veiculo": "finance.yahoo.com",
+     "titulo": "Cuban: Facebook knowingly runs AI deepfake scam ads; docs say $16B fraud revenue",
+     "link": "https://finance.yahoo.com/technology/ai/articles/mark-cuban-says-facebook-knowingly-213000020.html",
+     "data": "2026-11-05T23:09:57Z",
+     "discussao": "https://news.ycombinator.com/item?id=50385870",
+     "pontos": 466
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a12",
+   "categoria": "capacidade",
+   "nota": 8.85,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-04T17:17:46Z",
+   "fontes": [
+    {
+     "veiculo": "Anthropic",
+     "titulo": "Progress on provable inference for large language models",
+     "link": "https://www.anthropic.com/research/provable-inference",
+     "data": "2026-11-04T17:17:46Z",
+     "discussao": "https://news.ycombinator.com/item?id=50368626",
+     "pontos": 238
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a13",
+   "categoria": "mercado",
+   "nota": 8.63,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-05T18:02:27Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "OpenAI president Greg Brockman says company could be IPO ready in 2027",
+     "link": "https://techcrunch.com/2026/11/05/openai-president-greg-brockman-says-company-could-be-ipo-ready-in-2027/",
+     "data": "2026-11-05T18:02:27Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a14",
+   "categoria": "outro",
+   "nota": 8.58,
+   "labs": [],
+   "publicado_em": "2026-11-04T11:52:17Z",
+   "fontes": [
+    {
+     "veiculo": "spectrum.ieee.org",
+     "titulo": "AI is forcing us to pay off 40 years of technical debt",
+     "link": "https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability",
+     "data": "2026-11-04T11:52:17Z",
+     "discussao": "https://news.ycombinator.com/item?id=50364336",
+     "pontos": 1285
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a15",
+   "categoria": "lancamento",
+   "nota": 8.16,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-05T07:22:55Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "NVIDIA published MetricTrail weights on Hugging Face",
+     "link": "https://huggingface.co/nvidia/MetricTrail",
+     "data": "2026-11-05T07:22:55Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a16",
+   "categoria": "regulacao",
+   "nota": 8.16,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-06T15:51:06Z",
+   "fontes": [
+    {
+     "veiculo": "Bloomberg",
+     "titulo": "Democrats, with Elizabeth Warren a top contender to chair Senate Banking, are poised to step up oversight of Nvidia over chip exports and circular financing",
+     "link": "https://www.bloomberg.com/news/articles/2026-11-06/nvidia-s-ai-chip-exports-emerge-as-target-in-democratic-congress",
+     "data": "2026-11-06T15:51:06Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a17",
+   "categoria": "mercado",
+   "nota": 8.16,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-06T00:31:11Z",
+   "fontes": [
+    {
+     "veiculo": "The Wall Street Journal",
+     "titulo": "Major Investors Are Skeptical Anthropic IPO Can Achieve $1.5T Valuation",
+     "link": "https://www.wsj.com/finance/major-investors-are-skeptical-anthropic-ipo-can-achieve-1-5-trillion-valuation-ca965d8b’",
+     "data": "2026-11-06T00:31:11Z",
+     "discussao": "https://news.ycombinator.com/item?id=50386597",
+     "pontos": 88
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a18",
+   "categoria": "lancamento",
+   "nota": 8.0,
+   "labs": [
+    "amazon"
+   ],
+   "publicado_em": "2026-11-06T14:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Amazon will let you text Alexa your shopping list",
+     "link": "https://www.theverge.com/tech/1028587/amazon-alexa-shopping-ai-text-orders",
+     "data": "2026-11-06T14:00:00Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "After blocking Muse, Amazon now lets users text Alexa to help them shop",
+     "link": "https://techcrunch.com/2026/11/06/after-blocking-muse-amazon-now-lets-users-text-alexa-to-help-them-shop/",
+     "data": "2026-11-06T14:10:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a19",
+   "categoria": "lancamento",
+   "nota": 8.0,
+   "labs": [],
+   "publicado_em": "2026-11-05T22:40:55Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Airbnb says it’s launching an AI travel agent in the first half of 2027",
+     "link": "https://techcrunch.com/2026/11/05/airbnb-says-its-launching-an-ai-travel-agent-in-the-first-half-of-2027/",
+     "data": "2026-11-05T22:40:55Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Airbnb is working on an AI travel agent",
+     "link": "https://www.theverge.com/tech/1028412/airbnb-ai-travel-agent-q3-2026-earnings",
+     "data": "2026-11-06T00:06:12Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a20",
+   "categoria": "lancamento",
+   "nota": 7.91,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-05T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Transform a quick drawing into a live app with Gemini.",
+     "link": "https://blog.google/innovation-and-ai/products/gemini-app/turn-drawings-into-apps-gemini/",
+     "data": "2026-11-05T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a21",
+   "categoria": "mercado",
+   "nota": 7.34,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-06T15:54:47Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Ramp data shows AI spending stalling just as Anthropic nears its IPO",
+     "link": "https://techcrunch.com/2026/11/06/ramp-data-shows-ai-spending-stalling-just-as-anthropic-nears-its-ipo/",
+     "data": "2026-11-06T15:54:47Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a22",
+   "categoria": "lancamento",
+   "nota": 7.21,
+   "labs": [],
+   "publicado_em": "2026-11-05T17:17:42Z",
+   "fontes": [
+    {
+     "veiculo": "GitHub",
+     "titulo": "Launch HN: Rivet (YC W23) – Scale and Orchestrate Agents on S3",
+     "link": "https://github.com/rivet-dev/rivet",
+     "data": "2026-11-05T17:17:42Z",
+     "discussao": "https://news.ycombinator.com/item?id=50381687",
+     "pontos": 115
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a23",
+   "categoria": "regulacao",
+   "nota": 7.16,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-06T14:13:32Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Nvidia CEO Jensen Huang summoned by Congress over Chinese espionage concerns",
+     "link": "https://arstechnica.com/tech-policy/2026/11/nvidia-ceo-jensen-huang-summoned-by-congress-over-chinese-espionage-concerns/",
+     "data": "2026-11-06T14:13:32Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a24",
+   "categoria": "lancamento",
+   "nota": 7.16,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-05T14:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Box taps Nvidia’s Nemotron for new agent-first content retrieval system",
+     "link": "https://techcrunch.com/2026/11/05/box-taps-nvidias-nemotron-for-new-agent-first-content-retrieval-system/",
+     "data": "2026-11-05T14:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a25",
+   "categoria": "lancamento",
+   "nota": 7.0,
+   "labs": [
+    "bytedance-seed"
+   ],
+   "publicado_em": "2026-11-05T13:38:56Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "ByteDance published Qwen3-30B-A3B-MoE-SAE weights on Hugging Face",
+     "link": "https://huggingface.co/ByteDance-Seed/Qwen3-30B-A3B-MoE-SAE",
+     "data": "2026-11-05T13:38:56Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a26",
+   "categoria": "lancamento",
+   "nota": 7.0,
+   "labs": [
+    "bytedance-seed"
+   ],
+   "publicado_em": "2026-11-05T06:56:16Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "ByteDance published Cross-Layer-TopK-CLT weights on Hugging Face",
+     "link": "https://huggingface.co/ByteDance-Seed/Cross-Layer-TopK-CLT",
+     "data": "2026-11-05T06:56:16Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a27",
+   "categoria": "lancamento",
+   "nota": 7.0,
+   "labs": [
+    "bytedance-seed"
+   ],
+   "publicado_em": "2026-11-06T06:59:36Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "ByteDance published Cola2 weights on Hugging Face",
+     "link": "https://huggingface.co/ByteDance-Seed/Cola2",
+     "data": "2026-11-06T06:59:36Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a28",
+   "categoria": "seguranca",
+   "nota": 6.91,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-04T14:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "We're sharing our framework for building safer and more helpful AI for health.",
+     "link": "https://blog.google/innovation-and-ai/technology/health/evaluating-health-ai-at-scale/",
+     "data": "2026-11-04T14:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a29",
+   "categoria": "lancamento",
+   "nota": 6.84,
+   "labs": [],
+   "publicado_em": "2026-11-05T15:54:41Z",
+   "fontes": [
+    {
+     "veiculo": "GitHub",
+     "titulo": "Show HN: Stroq – a local audit of what your coding agent did and why",
+     "link": "https://github.com/AGGIB/Stroq",
+     "data": "2026-11-05T15:54:41Z",
+     "discussao": "https://news.ycombinator.com/item?id=50380704",
+     "pontos": 89
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a30",
+   "categoria": "mercado",
+   "nota": 6.78,
+   "labs": [],
+   "publicado_em": "2026-11-05T18:00:01Z",
+   "fontes": [
+    {
+     "veiculo": "The Wall Street Journal",
+     "titulo": "Nasdaq Sinks 5% as Investors Retreat from AI Trade After Election",
+     "link": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-05-2026",
+     "data": "2026-11-05T18:00:01Z",
+     "discussao": "https://news.ycombinator.com/item?id=50382179",
+     "pontos": 162
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a31",
+   "categoria": "outro",
+   "nota": 6.63,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-05T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Australian universities are creating AI-native graduates",
+     "link": "https://openai.com/index/australian-universities-ai-native-graduates",
+     "data": "2026-11-05T17:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a32",
+   "categoria": "outro",
+   "nota": 6.63,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-05T08:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Merge builds product and business tools with OpenAI technology",
+     "link": "https://openai.com/index/merge-builds-with-openai",
+     "data": "2026-11-05T08:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a33",
+   "categoria": "outro",
+   "nota": 6.63,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-05T00:45:15Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Flipsnack grows product signups with conversion optimization",
+     "link": "https://openai.com/ads/customers/flipsnack",
+     "data": "2026-11-05T00:45:15Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a34",
+   "categoria": "outro",
+   "nota": 6.63,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-05T00:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Franklin Templeton uses OpenAI to support investment research",
+     "link": "https://openai.com/index/franklin-templeton",
+     "data": "2026-11-05T00:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a35",
+   "categoria": "outro",
+   "nota": 6.63,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-05T20:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Cult.fit builds operational muscle with Codex",
+     "link": "https://openai.com/index/cultfit-builds-with-codex",
+     "data": "2026-11-05T20:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a36",
+   "categoria": "lancamento",
+   "nota": 6.48,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-11-05T19:48:28Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Meta says US users can now video chat with their Muse AI avatar",
+     "link": "https://techcrunch.com/2026/11/05/meta-says-us-users-can-now-video-chat-with-their-muse-ai-avatar/",
+     "data": "2026-11-05T19:48:28Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a37",
+   "categoria": "lancamento",
+   "nota": 6.48,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-11-05T19:03:04Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Muse has a voice mode now",
+     "link": "https://www.theverge.com/tech/1028015/meta-muse-ai-voice-mode-expressive-avatar",
+     "data": "2026-11-05T19:03:04Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a38",
+   "categoria": "infraestrutura",
+   "nota": 6.36,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-06T03:16:26Z",
+   "fontes": [
+    {
+     "veiculo": "GitHub",
+     "titulo": "Nvidia Kubernetes Engine (NVKE)",
+     "link": "https://github.com/dsx-ai-factory/nvke",
+     "data": "2026-11-06T03:16:26Z",
+     "discussao": "https://news.ycombinator.com/item?id=50387738",
+     "pontos": 114
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a39",
+   "categoria": "infraestrutura",
+   "nota": 6.16,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-06T15:05:48Z",
+   "fontes": [
+    {
+     "veiculo": "The Information",
+     "titulo": "Sources: TSMC is considering expanding into manufacturing 3D DRAM at the request of Nvidia, its biggest customer, amid memory chip shortages due to the AI boom",
+     "link": "https://www.theinformation.com/articles/tsmc-weighs-making-advanced-memory-chips-capture-ai-spending",
+     "data": "2026-11-06T15:05:48Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a40",
+   "categoria": "infraestrutura",
+   "nota": 6.16,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-06T11:30:01Z",
+   "fontes": [
+    {
+     "veiculo": "Bloomberg",
+     "titulo": "Sources: Nvidia is requiring Southeast Asian customers seeking Nvidia Cloud Partner status to enroll in a program that tracks the locations of their AI chips",
+     "link": "https://www.bloomberg.com/news/articles/2026-11-06/nvidia-boosts-chip-tracking-in-southeast-asia-to-fight-smuggling",
+     "data": "2026-11-06T11:30:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a41",
+   "categoria": "regulacao",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-06T16:38:02Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Big Tech lost big in the 2026 election",
+     "link": "https://www.theverge.com/podcast/1028731/2026-midterms-tech-ai-vergecast",
+     "data": "2026-11-06T16:38:02Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a42",
+   "categoria": "regulacao",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-06T13:20:44Z",
+   "fontes": [
+    {
+     "veiculo": "cybersecuritydive.com",
+     "titulo": "Experts say the new Democratic congressional majority will likely seek to rebuild CISA, prioritize AI security, revive local cyber grants, probe DOGE, and more",
+     "link": "https://www.cybersecuritydive.com/news/congress-cybersecurity-democrats-agenda-cisa-ai/873883/",
+     "data": "2026-11-06T13:20:44Z"
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a43",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-06T13:02:16Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Underdog shows off a 32MB speech model in new demo",
+     "link": "https://techcrunch.com/2026/11/06/underdog-shows-off-a-32mb-speech-model-in-new-demo/",
+     "data": "2026-11-06T13:02:16Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a44",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [
+    "perplexity"
+   ],
+   "publicado_em": "2026-11-05T22:26:50Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Perplexity launches its own take on AI agents for work",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1028302/perplexity-teammates-ai-agents-work",
+     "data": "2026-11-05T22:26:50Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a45",
+   "categoria": "mercado",
+   "nota": 6.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-11-06T14:25:00Z",
+   "fontes": [
+    {
+     "veiculo": "The New York Times",
+     "titulo": "Employees at Microsoft, long known for its stability, are grappling with its decision to offer buyouts to 60,000 people as its spending priorities shift to AI",
+     "link": "https://www.nytimes.com/2026/11/06/technology/microsoft-buyouts.html",
+     "data": "2026-11-06T14:25:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a46",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-05T14:42:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Aina’s smart ring has a screen, a joystick, and a mic so you can talk to AI agents",
+     "link": "https://techcrunch.com/2026/11/05/ainas-smart-ring-has-a-screen-a-joystick-and-a-mic-so-you-can-talk-to-ai-agents/",
+     "data": "2026-11-05T14:42:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a47",
+   "categoria": "regulacao",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-05T01:02:14Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "After the midterms, a bigger clash over data centers could be coming",
+     "link": "https://techcrunch.com/2026/11/04/after-the-midterms-a-bigger-clash-over-data-centers-could-be-coming/",
+     "data": "2026-11-05T01:02:14Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a48",
+   "categoria": "regulacao",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-04T22:45:09Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "AI PACs spent millions trying to shape Congress — here’s how they fared",
+     "link": "https://techcrunch.com/2026/11/04/ai-pacs-spent-millions-trying-to-shape-congress-heres-how-they-fared/",
+     "data": "2026-11-04T22:45:09Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a49",
+   "categoria": "mercado",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-06T06:50:13Z",
+   "fontes": [
+    {
+     "veiculo": "Reuters",
+     "titulo": "NYC-based Kalepa, whose AI service supports insurance underwriting, pricing, and portfolio management, raised a $75M Series B led by Updata at a $470M valuation",
+     "link": "https://www.reuters.com/legal/transactional/ai-powered-insurance-startup-kalepa-valued-470-million-new-funding-round-2026-11-05/",
+     "data": "2026-11-06T06:50:13Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a50",
+   "categoria": "infraestrutura",
+   "nota": 5.87,
+   "labs": [],
+   "publicado_em": "2026-11-04T19:55:14Z",
+   "fontes": [
+    {
+     "veiculo": "qualcomm.com",
+     "titulo": "Qualcomm Cloud AI 100 Ultra – 150W AI Accelerator Card with 128GB at 548GB/s",
+     "link": "https://www.qualcomm.com/data-center/products/cloud-ai-100-ultra",
+     "data": "2026-11-04T19:55:14Z",
+     "discussao": "https://news.ycombinator.com/item?id=50370654",
+     "pontos": 170
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a51",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-06T13:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Physicl raises $10M to make the digital world real enough for robots",
+     "link": "https://techcrunch.com/2026/11/06/physicl-raises-10m-to-make-the-digital-world-real-enough-for-robots/",
+     "data": "2026-11-06T13:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a52",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-06T06:28:32Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Palo Alto Networks in talks to buy AI agent security startup Clutch for $500M",
+     "link": "https://techcrunch.com/2026/11/05/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/",
+     "data": "2026-11-06T06:28:32Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a53",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-05T15:19:05Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Dropbox acquires Tigris Data for $350M to bolster its AI infrastructure",
+     "link": "https://techcrunch.com/2026/11/05/dropbox-acquires-tigris-data-for-350m-to-bolster-its-ai-iinfrastructure/",
+     "data": "2026-11-05T15:19:05Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a54",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-05T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Agility is the first pure humanoid robot company on the stock market. Are you buying?",
+     "link": "https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/",
+     "data": "2026-11-05T12:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a55",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-05T01:26:22Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Apple is reportedly cutting budgets for its internal AI usage",
+     "link": "https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/",
+     "data": "2026-11-05T01:26:22Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a56",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-04T13:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "Securing the agentic enterprise with data lineage",
+     "link": "https://www.technologyreview.com/2026/11/04/1147596/securing-the-agentic-enterprise-with-data-lineage/",
+     "data": "2026-11-04T13:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a57",
+   "categoria": "infraestrutura",
+   "nota": 4.48,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-11-05T19:12:39Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Meta warns that election backlash against data centers could make AI expansion harder",
+     "link": "https://techcrunch.com/2026/11/05/metas-warns-that-election-backlash-against-data-centers-could-make-ai-expansion-harder/",
+     "data": "2026-11-05T19:12:39Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a58",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-11-06T11:55:19Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Protesters break into Microsoft data center site in Amsterdam",
+     "link": "https://www.theverge.com/news/1028549/protesters-microsoft-data-center-site-amsterdam",
+     "data": "2026-11-06T11:55:19Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a59",
+   "categoria": "capacidade",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-11-05T16:16:45Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Axiom Math wants to keep AI slop out of mathematics",
+     "link": "https://techcrunch.com/2026/11/05/axiom-math-wants-to-keep-ai-slop-out-of-mathematics/",
+     "data": "2026-11-05T16:16:45Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a60",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-11-04T18:50:55Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "Texas was the new epicenter of the AI data center buildout. That might be kaput.",
+     "link": "https://www.technologyreview.com/2026/11/04/1148043/texas-was-the-new-epicenter-of-the-ai-data-center-buildout-that-might-be-kaput/",
+     "data": "2026-11-04T18:50:55Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a61",
+   "categoria": "outro",
+   "nota": 3.73,
+   "labs": [],
+   "publicado_em": "2026-11-06T05:19:04Z",
+   "fontes": [
+    {
+     "veiculo": "lesswrong.com",
+     "titulo": "I struggle to believe that AI R&D is ingenious",
+     "link": "https://www.lesswrong.com/posts/DALNiKBjMGMF8grme/arjun-panickssery-s-shortform?commentId=fJtaHHHfx45tD7BSL",
+     "data": "2026-11-06T05:19:04Z",
+     "discussao": "https://news.ycombinator.com/item?id=50388513",
+     "pontos": 158
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a62",
+   "categoria": "outro",
+   "nota": 3.67,
+   "labs": [],
+   "publicado_em": "2026-11-04T21:05:19Z",
+   "fontes": [
+    {
+     "veiculo": "davidralphlewis.co.uk",
+     "titulo": "Everything is an AI scam now",
+     "link": "https://www.davidralphlewis.co.uk/posts/everything-is-an-ai-scam-now/",
+     "data": "2026-11-04T21:05:19Z",
+     "discussao": "https://news.ycombinator.com/item?id=50371508",
+     "pontos": 152
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a63",
+   "categoria": "outro",
+   "nota": 3.1,
+   "labs": [],
+   "publicado_em": "2026-11-04T15:28:31Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "YC's Garry Tan uses AI agents so much, he spends up to $200K a year on tokens",
+     "link": "https://techcrunch.com/2026/11/02/y-combinators-garry-tan-uses-ai-agents-so-much-he-spends-up-to-200k-a-year-on-tokens/",
+     "data": "2026-11-04T15:28:31Z",
+     "discussao": "https://news.ycombinator.com/item?id=50366971",
+     "pontos": 107
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a64",
+   "categoria": "outro",
+   "nota": 3.0,
+   "labs": [],
+   "publicado_em": "2026-11-05T15:51:57Z",
+   "fontes": [
+    {
+     "veiculo": "kadhar.dev",
+     "titulo": "Building a Multi-Agent System from Scratch: Architecture Patterns",
+     "link": "https://kadhar.dev/blog/multi-agent-systems-from-scratch",
+     "data": "2026-11-05T15:51:57Z",
+     "discussao": "https://news.ycombinator.com/item?id=50380658",
+     "pontos": 100
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a65",
+   "categoria": "outro",
+   "nota": 2.91,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-05T21:40:36Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Google: Schools can keep search while skipping Gemini, but AI search is non-negotiable",
+     "link": "https://arstechnica.com/ai/2026/11/google-schools-can-keep-search-while-skipping-gemini-but-ai-search-is-non-negotiable/",
+     "data": "2026-11-05T21:40:36Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a66",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-11-06T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "AI is the new dating dealbreaker",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1028609/ai-dating-feelings-doomers-singularity",
+     "data": "2026-11-06T17:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a67",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-11-06T16:34:39Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "How Akai and Moog are embracing vibe-coded mods",
+     "link": "https://www.theverge.com/tech/1028720/vibe-coding-open-source-inmusic-akai",
+     "data": "2026-11-06T16:34:39Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a68",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-11-06T10:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "I watched a humanoid robot clean my apartment. It felt like a taste of the future.",
+     "link": "https://www.technologyreview.com/2026/11/06/1148090/i-watched-a-humanoid-robot-clean-my-apartment-it-felt-like-a-taste-of-the-future/",
+     "data": "2026-11-06T10:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a69",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-11-05T13:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "A YC startup is putting $1M behind 5 unsolved materials science problems for AI",
+     "link": "https://techcrunch.com/2026/11/05/a-yc-startup-is-putting-1m-behind-five-unsolved-materials-science-problems-for-ai/",
+     "data": "2026-11-05T13:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a70",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-11-04T15:26:02Z",
+   "fontes": [
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "datasette-llm 0.1a10",
+     "link": "https://simonwillison.net/2026/Nov/4/datasette-llm/",
+     "data": "2026-11-04T15:26:02Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  }
+ ],
+ "itens": [
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "OpenAI to acquire Pierre Computer Company, Inc.",
+   "link": "https://openai.com/index/openai-to-acquire-pierre",
+   "data": "2026-11-04T14:30:00Z",
+   "trecho": "OpenAI will acquire Pierre Computer Company, expanding Codex’s tools for building, understanding, and reviewing code.",
+   "veiculo": "OpenAI",
+   "pontos": 263,
+   "discussao": "https://news.ycombinator.com/item?id=50366863",
+   "id": "i1"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips",
+   "link": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
+   "data": "2026-11-05T17:00:00Z",
+   "trecho": "Gemini Omni 1.2 Flash brings native 15-second video generation and editing, stronger consistency, and 30% lower pricing.",
+   "veiculo": "Google",
+   "pontos": 189,
+   "discussao": "https://news.ycombinator.com/item?id=50392118",
+   "id": "i2"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Democrats, with Elizabeth Warren a top contender to chair Senate Banking, are poised to step up oversight of Nvidia over chip exports and circular financing",
+   "link": "https://www.bloomberg.com/news/articles/2026-11-06/nvidia-s-ai-chip-exports-emerge-as-target-in-democratic-congress",
+   "data": "2026-11-06T15:51:06Z",
+   "trecho": "",
+   "veiculo": "Bloomberg",
+   "via": "https://www.techmeme.com/261106/p15#a261106p15",
+   "id": "i3"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Sources: TSMC is considering expanding into manufacturing 3D DRAM at the request of Nvidia, its biggest customer, amid memory chip shortages due to the AI boom",
+   "link": "https://www.theinformation.com/articles/tsmc-weighs-making-advanced-memory-chips-capture-ai-spending",
+   "data": "2026-11-06T15:05:48Z",
+   "trecho": "",
+   "veiculo": "The Information",
+   "via": "https://www.techmeme.com/261106/p13#a261106p13",
+   "id": "i4"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Employees at Microsoft, long known for its stability, are grappling with its decision to offer buyouts to 60,000 people as its spending priorities shift to AI",
+   "link": "https://www.nytimes.com/2026/11/06/technology/microsoft-buyouts.html",
+   "data": "2026-11-06T14:25:00Z",
+   "trecho": "",
+   "veiculo": "The New York Times",
+   "via": "https://www.techmeme.com/261106/p12#a261106p12",
+   "id": "i5"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Sources: Nvidia is requiring Southeast Asian customers seeking Nvidia Cloud Partner status to enroll in a program that tracks the locations of their AI chips",
+   "link": "https://www.bloomberg.com/news/articles/2026-11-06/nvidia-boosts-chip-tracking-in-southeast-asia-to-fight-smuggling",
+   "data": "2026-11-06T11:30:01Z",
+   "trecho": "",
+   "veiculo": "Bloomberg",
+   "via": "https://www.techmeme.com/261106/p8#a261106p8",
+   "id": "i6"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "ByteDance published Cola2 weights on Hugging Face",
+   "link": "https://huggingface.co/ByteDance-Seed/Cola2",
+   "data": "2026-11-06T06:59:36Z",
+   "trecho": "ByteDance released Cola2 (text-generation).",
+   "veiculo": "Hugging Face",
+   "lab": "bytedance-seed",
+   "id": "i7"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "NYC-based Kalepa, whose AI service supports insurance underwriting, pricing, and portfolio management, raised a $75M Series B led by Updata at a $470M valuation",
+   "link": "https://www.reuters.com/legal/transactional/ai-powered-insurance-startup-kalepa-valued-470-million-new-funding-round-2026-11-05/",
+   "data": "2026-11-06T06:50:13Z",
+   "trecho": "",
+   "veiculo": "Reuters",
+   "via": "https://www.techmeme.com/261106/p4#a261106p4",
+   "id": "i8"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Cult.fit builds operational muscle with Codex",
+   "link": "https://openai.com/index/cultfit-builds-with-codex",
+   "data": "2026-11-05T20:00:00Z",
+   "trecho": "Cult.fit is using Codex to help teams across functions build tools, move faster, and change how work gets done.",
+   "veiculo": "OpenAI",
+   "id": "i9"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Generate longer AI videos with Omni 1.2 Flash in Google Vids at no cost.",
+   "link": "https://blog.google/products-and-platforms/products/workspace/omni-1-2-flash-google-vids/",
+   "data": "2026-11-05T20:00:00Z",
+   "trecho": "Create longer AI videos in Google Vids with the new Omni 1.2 Flash model. Generate 15-second clips and consistent scenes for free. Try it now.",
+   "veiculo": "Google",
+   "id": "i10"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Australian universities are creating AI-native graduates",
+   "link": "https://openai.com/index/australian-universities-ai-native-graduates",
+   "data": "2026-11-05T17:00:00Z",
+   "trecho": "Australian universities are expanding access to ChatGPT and bringing AI into teaching and learning to prepare students for an AI-enabled workforce.",
+   "veiculo": "OpenAI",
+   "id": "i11"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Transform a quick drawing into a live app with Gemini.",
+   "link": "https://blog.google/innovation-and-ai/products/gemini-app/turn-drawings-into-apps-gemini/",
+   "data": "2026-11-05T17:00:00Z",
+   "trecho": "Turn your sketches into functional apps using Gemini. Upload your drawings to the Canvas tool to generate and refine code instantly. Try it now.",
+   "veiculo": "Google",
+   "id": "i12"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Check out our free livestream during National Veterans Small Business Week.",
+   "link": "https://blog.google/company-news/outreach-and-initiatives/grow-with-google/national-veterans-small-business-week-2026/",
+   "data": "2026-11-05T14:00:00Z",
+   "trecho": "Join our November 2026 YouTube livestream for National Veterans Small Business Week. Master AI skills with Gemini and get 1:1 coaching. Register today.",
+   "veiculo": "Google",
+   "id": "i13"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "ByteDance published Qwen3-30B-A3B-MoE-SAE weights on Hugging Face",
+   "link": "https://huggingface.co/ByteDance-Seed/Qwen3-30B-A3B-MoE-SAE",
+   "data": "2026-11-05T13:38:56Z",
+   "trecho": "ByteDance released Qwen3-30B-A3B-MoE-SAE (model).",
+   "veiculo": "Hugging Face",
+   "lab": "bytedance-seed",
+   "id": "i14"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents",
+   "link": "https://openai.com/index/introducing-gpt-6-cyber",
+   "data": "2026-11-05T09:00:00Z",
+   "trecho": "Introducing GPT‑6 Cyber, OpenAI’s cybersecurity model for finding exploitable vulnerabilities and developing fixes, trained to stay within authorized scope.",
+   "veiculo": "OpenAI",
+   "id": "i15"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Merge builds product and business tools with OpenAI technology",
+   "link": "https://openai.com/index/merge-builds-with-openai",
+   "data": "2026-11-05T08:00:00Z",
+   "trecho": "Merge uses GPT-6 Astra, ChatGPT, and Codex to review product code and support marketing. Its teams also use AI to plan executive dinners and prepare sales updates.",
+   "veiculo": "OpenAI",
+   "id": "i16"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "NVIDIA published MetricTrail weights on Hugging Face",
+   "link": "https://huggingface.co/nvidia/MetricTrail",
+   "data": "2026-11-05T07:22:55Z",
+   "trecho": "NVIDIA released MetricTrail (model).",
+   "veiculo": "Hugging Face",
+   "lab": "nvidia",
+   "id": "i17"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "ByteDance published Cross-Layer-TopK-CLT weights on Hugging Face",
+   "link": "https://huggingface.co/ByteDance-Seed/Cross-Layer-TopK-CLT",
+   "data": "2026-11-05T06:56:16Z",
+   "trecho": "ByteDance released Cross-Layer-TopK-CLT (model).",
+   "veiculo": "Hugging Face",
+   "lab": "bytedance-seed",
+   "id": "i18"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Setting a new standard for responsible AI infrastructure",
+   "link": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+   "data": "2026-11-05T02:00:00Z",
+   "trecho": "OpenAI introduces its National Community Compact and Compute Campus Policy Blueprint to protect local resources, create jobs, and guide responsible AI infrastructure development.",
+   "veiculo": "OpenAI",
+   "id": "i19"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Flipsnack grows product signups with conversion optimization",
+   "link": "https://openai.com/ads/customers/flipsnack",
+   "data": "2026-11-05T00:45:15Z",
+   "trecho": "Flipsnack focused its ChatGPT Ads campaigns on getting people to try its product, growing registrations while lowering the cost per signup.",
+   "veiculo": "OpenAI",
+   "id": "i20"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Franklin Templeton uses OpenAI to support investment research",
+   "link": "https://openai.com/index/franklin-templeton",
+   "data": "2026-11-05T00:00:00Z",
+   "trecho": "Starting with equity research, Franklin Templeton is developing AI workflows to help portfolio managers compare research views and examine investment risks.",
+   "veiculo": "OpenAI",
+   "id": "i21"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "We're sharing our framework for building safer and more helpful AI for health.",
+   "link": "https://blog.google/innovation-and-ai/technology/health/evaluating-health-ai-at-scale/",
+   "data": "2026-11-04T14:00:00Z",
+   "trecho": "Many of us have turned to AI with a health question or received care from a doctor who’s using it. The adoption of technology for health is accelerating and impacts bill…",
+   "veiculo": "Google",
+   "id": "i22"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "AI is the new dating dealbreaker",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1028609/ai-dating-feelings-doomers-singularity",
+   "data": "2026-11-06T17:00:00Z",
+   "trecho": "When Irene moved to San Francisco last year, she started using dating apps as a way to meet new people, get to know her new city, and connect with others who care about the things she does. After the 25-year-old analyst downloaded Hinge and started swiping, she noticed a trend. \"Hinge has a prompt where […]",
+   "veiculo": "The Verge",
+   "id": "i23"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Big Tech lost big in the 2026 election",
+   "link": "https://www.theverge.com/podcast/1028731/2026-midterms-tech-ai-vergecast",
+   "data": "2026-11-06T16:38:02Z",
+   "trecho": "On Tuesday, millions of American voters went to the polls and voted overwhelmingly for Democrats and against AI. The fight against Big Tech is about to come roaring back, and the fight over data centers is looking even harder for the folks trying to build them. On this episode of The Vergecast, Nilay and David […]",
+   "veiculo": "The Verge",
+   "id": "i24"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "How Akai and Moog are embracing vibe-coded mods",
+   "link": "https://www.theverge.com/tech/1028720/vibe-coding-open-source-inmusic-akai",
+   "data": "2026-11-06T16:34:39Z",
+   "trecho": "inMusic, the parent company of Akai, Moog, Native Instruments, and more, has decided to embrace the modding community. In an interview with The Verge, inMusic CEO Jack O'Donnell said, \"We're going to provide a toolbox to the community, we're going to provide the inner workings of, say, an MPC or Sample so that people…",
+   "veiculo": "The Verge",
+   "id": "i25"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Ramp data shows AI spending stalling just as Anthropic nears its IPO",
+   "link": "https://techcrunch.com/2026/11/06/ramp-data-shows-ai-spending-stalling-just-as-anthropic-nears-its-ipo/",
+   "data": "2026-11-06T15:54:47Z",
+   "trecho": "AI usage keeps climbing, but spending has stalled. Price cuts and smarter cost controls among the biggest spenders could challenge investor assumptions about AI hypergrowth.",
+   "veiculo": "TechCrunch",
+   "id": "i26"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Nvidia CEO Jensen Huang summoned by Congress over Chinese espionage concerns",
+   "link": "https://arstechnica.com/tech-policy/2026/11/nvidia-ceo-jensen-huang-summoned-by-congress-over-chinese-espionage-concerns/",
+   "data": "2026-11-06T14:13:32Z",
+   "trecho": "Lawmakers want answers about Jensen Huang’s ties to an alleged Chinese intelligence asset.",
+   "veiculo": "Ars Technica",
+   "id": "i27"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "After blocking Muse, Amazon now lets users text Alexa to help them shop",
+   "link": "https://techcrunch.com/2026/11/06/after-blocking-muse-amazon-now-lets-users-text-alexa-to-help-them-shop/",
+   "data": "2026-11-06T14:10:00Z",
+   "trecho": "Amazon said that the feature will roll out to millions of users in coming weeks.",
+   "veiculo": "TechCrunch",
+   "id": "i28"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Amazon will let you text Alexa your shopping list",
+   "link": "https://www.theverge.com/tech/1028587/amazon-alexa-shopping-ai-text-orders",
+   "data": "2026-11-06T14:00:00Z",
+   "trecho": "Amazon is adding a new feature to Alexa for Shopping that allows customers to purchase items by texting the AI shopping assistant. Users can describe the products they're looking to buy and/or provide a photograph of the item, and Alexa for Shopping will search for matching results in Amazon listings, text back with…",
+   "veiculo": "The Verge",
+   "id": "i29"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Experts say the new Democratic congressional majority will likely seek to rebuild CISA, prioritize AI security, revive local cyber grants, probe DOGE, and more",
+   "link": "https://www.cybersecuritydive.com/news/congress-cybersecurity-democrats-agenda-cisa-ai/873883/",
+   "data": "2026-11-06T13:20:44Z",
+   "trecho": "",
+   "veiculo": "cybersecuritydive.com",
+   "via": "https://www.techmeme.com/261106/p11#a261106p11",
+   "id": "i30"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Underdog shows off a 32MB speech model in new demo",
+   "link": "https://techcrunch.com/2026/11/06/underdog-shows-off-a-32mb-speech-model-in-new-demo/",
+   "data": "2026-11-06T13:02:16Z",
+   "trecho": "Despite its small size, Underdog's new model can generate both speech and music.",
+   "veiculo": "TechCrunch",
+   "id": "i31"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Physicl raises $10M to make the digital world real enough for robots",
+   "link": "https://techcrunch.com/2026/11/06/physicl-raises-10m-to-make-the-digital-world-real-enough-for-robots/",
+   "data": "2026-11-06T13:00:00Z",
+   "trecho": "Physicl is trying to solve the sim-to-real gap with a pipeline originally built to market goods online.",
+   "veiculo": "TechCrunch",
+   "id": "i32"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Protesters break into Microsoft data center site in Amsterdam",
+   "link": "https://www.theverge.com/news/1028549/protesters-microsoft-data-center-site-amsterdam",
+   "data": "2026-11-06T11:55:19Z",
+   "trecho": "Protesters have broken into a construction site of a new Microsoft data center in Amsterdam this morning. Members of the Geef Tegengas group helped organize the protest against the construction of three 85-meter data center towers in the outskirts of Amsterdam. Reuters reports that around 100 people made it into the…",
+   "veiculo": "The Verge",
+   "id": "i33"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "I watched a humanoid robot clean my apartment. It felt like a taste of the future.",
+   "link": "https://www.technologyreview.com/2026/11/06/1148090/i-watched-a-humanoid-robot-clean-my-apartment-it-felt-like-a-taste-of-the-future/",
+   "data": "2026-11-06T10:00:00Z",
+   "trecho": "I’m not the sort of person who typically pays for a house cleaner. I’m too frugal, and I kind of enjoy putting on a podcast and going to town on my tub with a Magic Eraser. But when I saw an X post about a new humanoid-robot cleaning service in San Francisco, I immediately signed…",
+   "veiculo": "MIT Technology Review",
+   "id": "i34"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Palo Alto Networks in talks to buy AI agent security startup Clutch for $500M",
+   "link": "https://techcrunch.com/2026/11/05/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/",
+   "data": "2026-11-06T06:28:32Z",
+   "trecho": "Clutch, backed by Lightspeed and SignalFire, was last valued at $85 million, according to a source.",
+   "veiculo": "TechCrunch",
+   "id": "i35"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "OpenAI is stepping back from NDAs for data center projects",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1028454/openai-data-center-nda",
+   "data": "2026-11-06T00:37:56Z",
+   "trecho": "Following this week's midterms where voters resoundingly voiced their opposition to data center expansion, OpenAI today announced new commitments to communities where it is working on data center projects, including that it won't use non-disclosure agreements (NDAs) with public officials. Many data center projects…",
+   "veiculo": "The Verge",
+   "id": "i36"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Airbnb is working on an AI travel agent",
+   "link": "https://www.theverge.com/tech/1028412/airbnb-ai-travel-agent-q3-2026-earnings",
+   "data": "2026-11-06T00:06:12Z",
+   "trecho": "Airbnb plans to roll out an AI agent in the first half of 2027 that will help users plan and book travel, the company said in its Q3 2026 earnings shareholder letter released today. \"Today's AI agents are good at simple, routine tasks, like making a restaurant reservation or scheduling an appointment,\" Airbnb said.…",
+   "veiculo": "The Verge",
+   "id": "i37"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "NASA unveils mysterious X-70 experimental aircraft using AI-generated image",
+   "link": "https://arstechnica.com/gadgets/2026/11/nasas-experimental-x-70-aircraft-is-a-big-question-mark/",
+   "data": "2026-11-05T22:49:03Z",
+   "trecho": "NASA’s X-70 Fractal announcement comes as agency aims to grow X-plane fleet.",
+   "veiculo": "Ars Technica",
+   "id": "i38"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Airbnb says it’s launching an AI travel agent in the first half of 2027",
+   "link": "https://techcrunch.com/2026/11/05/airbnb-says-its-launching-an-ai-travel-agent-in-the-first-half-of-2027/",
+   "data": "2026-11-05T22:40:55Z",
+   "trecho": "Airbnb says its upcoming AI agent will help travelers plan trips, compare options, manage bookings, and get assistance throughout their stay.",
+   "veiculo": "TechCrunch",
+   "id": "i39"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Perplexity launches its own take on AI agents for work",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1028302/perplexity-teammates-ai-agents-work",
+   "data": "2026-11-05T22:26:50Z",
+   "trecho": "Perplexity is taking on OpenAI and Anthropic with its own work-focused AI agents. The startup's new always-on \"Teammates\" can take on multiple roles within a workspace, while pulling existing projects, skills, and memory from the Perplexity tools you already use. Teammates integrate with Perplexity Computer, an AI…",
+   "veiculo": "The Verge",
+   "id": "i40"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Google: Schools can keep search while skipping Gemini, but AI search is non-negotiable",
+   "link": "https://arstechnica.com/ai/2026/11/google-schools-can-keep-search-while-skipping-gemini-but-ai-search-is-non-negotiable/",
+   "data": "2026-11-05T21:40:36Z",
+   "trecho": "Google is technically offering schools more choice but not the choices anyone wants.",
+   "veiculo": "Ars Technica",
+   "id": "i41"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Lawsuit: Man introduced his wife to ChatGPT. She used it to plan his murder.",
+   "link": "https://arstechnica.com/tech-policy/2026/11/lawsuit-man-introduced-his-wife-to-chatgpt-she-used-it-to-plan-his-murder/",
+   "data": "2026-11-05T21:39:40Z",
+   "trecho": "Bitter energy drinks turned out to be ChatGPT-steered poisoning, lawsuit says.",
+   "veiculo": "Ars Technica",
+   "id": "i42"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Meta says US users can now video chat with their Muse AI avatar",
+   "link": "https://techcrunch.com/2026/11/05/meta-says-us-users-can-now-video-chat-with-their-muse-ai-avatar/",
+   "data": "2026-11-05T19:48:28Z",
+   "trecho": "Meta's AI agent can now take calls as a customizable animated avatar, ahead of the launch of a Tamagotchi-like wearable designed to bring Muse to life.",
+   "veiculo": "TechCrunch",
+   "id": "i43"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Meta warns that election backlash against data centers could make AI expansion harder",
+   "link": "https://techcrunch.com/2026/11/05/metas-warns-that-election-backlash-against-data-centers-could-make-ai-expansion-harder/",
+   "data": "2026-11-05T19:12:39Z",
+   "trecho": "Meta warns that growing political opposition to data centers could threaten future AI investments, as communities push back against massive infrastructure projects.",
+   "veiculo": "TechCrunch",
+   "id": "i44"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "OpenAI released a new cybersecurity model. Is that enough?",
+   "link": "https://techcrunch.com/2026/11/05/openai-released-a-new-cybersecurity-model-is-that-enough/",
+   "data": "2026-11-05T19:06:12Z",
+   "trecho": "OpenAI's newest cybersecurity model comes out as AI labs face scrutiny of their work to protect digital infrastructure.",
+   "veiculo": "TechCrunch",
+   "id": "i45"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Muse has a voice mode now",
+   "link": "https://www.theverge.com/tech/1028015/meta-muse-ai-voice-mode-expressive-avatar",
+   "data": "2026-11-05T19:03:04Z",
+   "trecho": "Meta now lets you have voice conversations with your Muse AI agent in real time, CEO Mark Zuckerberg announced today. The feature has been rolled out to me, and I gave it a spin on the iOS app while writing this article. As you chat with your Muse agent, the avatar at the top of […]",
+   "veiculo": "The Verge",
+   "id": "i46"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "OpenAI president Greg Brockman says company could be IPO ready in 2027",
+   "link": "https://techcrunch.com/2026/11/05/openai-president-greg-brockman-says-company-could-be-ipo-ready-in-2027/",
+   "data": "2026-11-05T18:02:27Z",
+   "trecho": "Speaking at a Wall Street Journal tech conference on Wednesday, the executive touted how the company had been gaining ground in the enterprise market, where rival Anthropic had already successfully made inroads.",
+   "veiculo": "TechCrunch",
+   "id": "i47"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Claude can now analyze your spending with its new Personal Finance tool",
+   "link": "https://techcrunch.com/2026/11/05/claude-can-now-analyze-your-spending-with-its-new-personal-finance-tool/",
+   "data": "2026-11-05T18:00:00Z",
+   "trecho": "With Personal Finance in Claude, users can connect their bank and card accounts through Plaid and ask questions about their finances.",
+   "veiculo": "TechCrunch",
+   "id": "i48"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Claude AI can plug directly into your bank account",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1027652/anthropic-claude-plaid-personal-finance",
+   "data": "2026-11-05T18:00:00Z",
+   "trecho": "Anthropic has a new pitch for managing your personal finances: let Claude do it instead, with a new Personal Finance feature that connects it to your bank and card accounts via the Plaid bank bridging platform. You can ask the chatbot \"where did my money go this month,\" for example, and it'll create an overview […]",
+   "veiculo": "The Verge",
+   "id": "i49"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Gamers go to ridiculous lengths to \"improve\" GTA VI with Nvidia's DLSS 5",
+   "link": "https://arstechnica.com/gaming/2026/11/gamers-go-to-ridiculous-lengths-to-improve-gta-vi-with-nvidias-dlss-5/",
+   "data": "2026-11-05T17:40:27Z",
+   "trecho": "Using a capture card and open source software to run PS5 video through a PC GPU.",
+   "veiculo": "Ars Technica",
+   "id": "i50"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Axiom Math wants to keep AI slop out of mathematics",
+   "link": "https://techcrunch.com/2026/11/05/axiom-math-wants-to-keep-ai-slop-out-of-mathematics/",
+   "data": "2026-11-05T16:16:45Z",
+   "trecho": "As AI floods math with unchecked proofs, Axiom Math is betting on verification. The startup’s AI agents just formally verified the Stacks Project, one of the field’s biggest libraries.",
+   "veiculo": "TechCrunch",
+   "id": "i51"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Dropbox acquires Tigris Data for $350M to bolster its AI infrastructure",
+   "link": "https://techcrunch.com/2026/11/05/dropbox-acquires-tigris-data-for-350m-to-bolster-its-ai-iinfrastructure/",
+   "data": "2026-11-05T15:19:05Z",
+   "trecho": "The deal is expected to support the development of DBX Agent Cloud, a new storage platform aimed at developers building AI models and agents.",
+   "veiculo": "TechCrunch",
+   "id": "i52"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Aina’s smart ring has a screen, a joystick, and a mic so you can talk to AI agents",
+   "link": "https://techcrunch.com/2026/11/05/ainas-smart-ring-has-a-screen-a-joystick-and-a-mic-so-you-can-talk-to-ai-agents/",
+   "data": "2026-11-05T14:42:00Z",
+   "trecho": "Aina's ring can also take calls and help you dictate notes on your Mac.",
+   "veiculo": "TechCrunch",
+   "id": "i53"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Box taps Nvidia’s Nemotron for new agent-first content retrieval system",
+   "link": "https://techcrunch.com/2026/11/05/box-taps-nvidias-nemotron-for-new-agent-first-content-retrieval-system/",
+   "data": "2026-11-05T14:00:00Z",
+   "trecho": "The system can supposedly answer queries four times faster, with 20% fewer errors and 90% fewer tokens used.",
+   "veiculo": "TechCrunch",
+   "id": "i54"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "A YC startup is putting $1M behind 5 unsolved materials science problems for AI",
+   "link": "https://techcrunch.com/2026/11/05/a-yc-startup-is-putting-1m-behind-five-unsolved-materials-science-problems-for-ai/",
+   "data": "2026-11-05T13:00:00Z",
+   "trecho": "While frontier AI models have solved a remarkable series of outstanding mathematics problems and made progress in the life sciences, they have yet to truly plumb the complex physics in advanced materials.",
+   "veiculo": "TechCrunch",
+   "id": "i55"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Agility is the first pure humanoid robot company on the stock market. Are you buying?",
+   "link": "https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/",
+   "data": "2026-11-05T12:00:00Z",
+   "trecho": "Agility arrives on the Nasdaq today as the first publicly traded pure-play humanoid robotics company.",
+   "veiculo": "TechCrunch",
+   "id": "i56"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Apple is reportedly cutting budgets for its internal AI usage",
+   "link": "https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/",
+   "data": "2026-11-05T01:26:22Z",
+   "trecho": "The tokenmaxxing frenzy has been short-lived as bills for said tokens came due, and companies decided that token rationing might be a more fiscally sensible approach.",
+   "veiculo": "TechCrunch",
+   "id": "i57"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "After the midterms, a bigger clash over data centers could be coming",
+   "link": "https://techcrunch.com/2026/11/04/after-the-midterms-a-bigger-clash-over-data-centers-could-be-coming/",
+   "data": "2026-11-05T01:02:14Z",
+   "trecho": "Data center opposition crossed party lines in Tuesday’s midterms.",
+   "veiculo": "TechCrunch",
+   "id": "i58"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "AI PACs spent millions trying to shape Congress — here’s how they fared",
+   "link": "https://techcrunch.com/2026/11/04/ai-pacs-spent-millions-trying-to-shape-congress-heres-how-they-fared/",
+   "data": "2026-11-04T22:45:09Z",
+   "trecho": "AI industry PACs spent millions influencing the 2026 midterms, with mixed results. Political groups are already looking toward the next election cycle.",
+   "veiculo": "TechCrunch",
+   "id": "i59"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "Texas was the new epicenter of the AI data center buildout. That might be kaput.",
+   "link": "https://www.technologyreview.com/2026/11/04/1148043/texas-was-the-new-epicenter-of-the-ai-data-center-buildout-that-might-be-kaput/",
+   "data": "2026-11-04T18:50:55Z",
+   "trecho": "Texas is the fastest-growing data center market in the US and ground zero for Big Tech’s largest AI buildouts. But the blue wave that swept the Lone Star State may jeopardize that position. Democrat James Talarico won the US Senate seat against Ken Paxton. Gina Hinojosa won the race for governor against the…",
+   "veiculo": "MIT Technology Review",
+   "id": "i60"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "datasette-llm 0.1a10",
+   "link": "https://simonwillison.net/2026/Nov/4/datasette-llm/",
+   "data": "2026-11-04T15:26:02Z",
+   "trecho": "Release: datasette-llm 0.1a10 Fixes a bug that affected my agent.datasette.io demo site, where the set of available LLM models was not correctly restricted to just those in the configuration. Tags: datasette , llm",
+   "veiculo": "Simon Willison",
+   "id": "i61"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "Securing the agentic enterprise with data lineage",
+   "link": "https://www.technologyreview.com/2026/11/04/1147596/securing-the-agentic-enterprise-with-data-lineage/",
+   "data": "2026-11-04T13:00:00Z",
+   "trecho": "A sales representative asks an AI agent for customer pricing, and the agent pulls data from multiple sources: restricted pricing systems, internal communications, and archived quotes. The output looks accurate to the agent, so a second agent uses the data to draft the proposal for the sales rep. No human checks…",
+   "veiculo": "MIT Technology Review",
+   "id": "i62"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Claude Code sends your email address to websites",
+   "link": "https://github.com/anthropics/claude-code/issues/107757",
+   "data": "2026-11-05T22:17:15Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 1466,
+   "discussao": "https://news.ycombinator.com/item?id=50385272",
+   "id": "i63"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI is forcing us to pay off 40 years of technical debt",
+   "link": "https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability",
+   "data": "2026-11-04T11:52:17Z",
+   "trecho": "",
+   "veiculo": "spectrum.ieee.org",
+   "pontos": 1285,
+   "discussao": "https://news.ycombinator.com/item?id=50364336",
+   "id": "i64"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Kimi K3.1 Pro model weights are out",
+   "link": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+   "data": "2026-11-04T15:30:30Z",
+   "trecho": "",
+   "veiculo": "huggingface.co",
+   "pontos": 632,
+   "discussao": "https://news.ycombinator.com/item?id=50366999",
+   "id": "i65"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Launch HN: Kino AI (YC S23) – AI media manager and video editor",
+   "link": "https://news.ycombinator.com/item?id=50368804",
+   "data": "2026-11-04T17:31:53Z",
+   "trecho": "",
+   "veiculo": "news.ycombinator.com",
+   "pontos": 535,
+   "discussao": "https://news.ycombinator.com/item?id=50368804",
+   "id": "i66"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Cuban: Facebook knowingly runs AI deepfake scam ads; docs say $16B fraud revenue",
+   "link": "https://finance.yahoo.com/technology/ai/articles/mark-cuban-says-facebook-knowingly-213000020.html",
+   "data": "2026-11-05T23:09:57Z",
+   "trecho": "",
+   "veiculo": "finance.yahoo.com",
+   "pontos": 466,
+   "discussao": "https://news.ycombinator.com/item?id=50385870",
+   "id": "i67"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "GPT-6 Astra covertly underperforms on safety research",
+   "link": "https://alignment.openai.com/misalignment-reports/covert-underperformance-on-safety-research-tasks/",
+   "data": "2026-11-05T07:44:30Z",
+   "trecho": "",
+   "veiculo": "OpenAI",
+   "pontos": 337,
+   "discussao": "https://news.ycombinator.com/item?id=50376313",
+   "id": "i68"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Progress on provable inference for large language models",
+   "link": "https://www.anthropic.com/research/provable-inference",
+   "data": "2026-11-04T17:17:46Z",
+   "trecho": "",
+   "veiculo": "Anthropic",
+   "pontos": 238,
+   "discussao": "https://news.ycombinator.com/item?id=50368626",
+   "id": "i69"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Hungary: Communist-era files released, up to 60k former agents revealed",
+   "link": "https://www.euronews.com/2026/11/04/hungary-communist-era-files-opened-up-to-60000-former-agents-revealed",
+   "data": "2026-11-05T19:16:34Z",
+   "trecho": "",
+   "veiculo": "euronews.com",
+   "pontos": 230,
+   "discussao": "https://news.ycombinator.com/item?id=50383163",
+   "id": "i70"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Qualcomm Cloud AI 100 Ultra – 150W AI Accelerator Card with 128GB at 548GB/s",
+   "link": "https://www.qualcomm.com/data-center/products/cloud-ai-100-ultra",
+   "data": "2026-11-04T19:55:14Z",
+   "trecho": "",
+   "veiculo": "qualcomm.com",
+   "pontos": 170,
+   "discussao": "https://news.ycombinator.com/item?id=50370654",
+   "id": "i71"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Nasdaq Sinks 5% as Investors Retreat from AI Trade After Election",
+   "link": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-05-2026",
+   "data": "2026-11-05T18:00:01Z",
+   "trecho": "",
+   "veiculo": "The Wall Street Journal",
+   "pontos": 162,
+   "discussao": "https://news.ycombinator.com/item?id=50382179",
+   "id": "i72"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "I struggle to believe that AI R&D is ingenious",
+   "link": "https://www.lesswrong.com/posts/DALNiKBjMGMF8grme/arjun-panickssery-s-shortform?commentId=fJtaHHHfx45tD7BSL",
+   "data": "2026-11-06T05:19:04Z",
+   "trecho": "",
+   "veiculo": "lesswrong.com",
+   "pontos": 158,
+   "discussao": "https://news.ycombinator.com/item?id=50388513",
+   "id": "i73"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Everything is an AI scam now",
+   "link": "https://www.davidralphlewis.co.uk/posts/everything-is-an-ai-scam-now/",
+   "data": "2026-11-04T21:05:19Z",
+   "trecho": "",
+   "veiculo": "davidralphlewis.co.uk",
+   "pontos": 152,
+   "discussao": "https://news.ycombinator.com/item?id=50371508",
+   "id": "i74"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Launch HN: Rivet (YC W23) – Scale and Orchestrate Agents on S3",
+   "link": "https://github.com/rivet-dev/rivet",
+   "data": "2026-11-05T17:17:42Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 115,
+   "discussao": "https://news.ycombinator.com/item?id=50381687",
+   "id": "i75"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Nvidia Kubernetes Engine (NVKE)",
+   "link": "https://github.com/dsx-ai-factory/nvke",
+   "data": "2026-11-06T03:16:26Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 114,
+   "discussao": "https://news.ycombinator.com/item?id=50387738",
+   "id": "i76"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "YC's Garry Tan uses AI agents so much, he spends up to $200K a year on tokens",
+   "link": "https://techcrunch.com/2026/11/02/y-combinators-garry-tan-uses-ai-agents-so-much-he-spends-up-to-200k-a-year-on-tokens/",
+   "data": "2026-11-04T15:28:31Z",
+   "trecho": "",
+   "veiculo": "TechCrunch",
+   "pontos": 107,
+   "discussao": "https://news.ycombinator.com/item?id=50366971",
+   "id": "i77"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Building a Multi-Agent System from Scratch: Architecture Patterns",
+   "link": "https://kadhar.dev/blog/multi-agent-systems-from-scratch",
+   "data": "2026-11-05T15:51:57Z",
+   "trecho": "",
+   "veiculo": "kadhar.dev",
+   "pontos": 100,
+   "discussao": "https://news.ycombinator.com/item?id=50380658",
+   "id": "i78"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Show HN: Stroq – a local audit of what your coding agent did and why",
+   "link": "https://github.com/AGGIB/Stroq",
+   "data": "2026-11-05T15:54:41Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 89,
+   "discussao": "https://news.ycombinator.com/item?id=50380704",
+   "id": "i79"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Major Investors Are Skeptical Anthropic IPO Can Achieve $1.5T Valuation",
+   "link": "https://www.wsj.com/finance/major-investors-are-skeptical-anthropic-ipo-can-achieve-1-5-trillion-valuation-ca965d8b’",
+   "data": "2026-11-06T00:31:11Z",
+   "trecho": "",
+   "veiculo": "The Wall Street Journal",
+   "pontos": 88,
+   "discussao": "https://news.ycombinator.com/item?id=50386597",
+   "id": "i80"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Microsoft quer patentear IA que altera falas ao vivo",
+   "link": "https://tecnoblog.net/noticias/microsoft-quer-patentear-ia-que-altera-falas-ao-vivo/",
+   "data": "2026-11-06T15:10:46Z",
+   "trecho": "Sistema poderia traduzir discursos e substituir palavras com poucos segundos de atraso e sincronia labial. Microsoft quer patentear IA que altera falas ao vivo",
+   "veiculo": "Tecnoblog",
+   "id": "i81"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "ToyBlocks: A controlled world for robot learning and evaluation",
+   "link": "https://huggingface.co/blog/allenai/toyblocks",
+   "data": "2026-11-06T14:00:48Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i82"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Huawei Watch GT 7 com GPS está 42% mais barato na Amazon",
+   "link": "https://tecnoblog.net/achados/huawei-watch-gt-7-com-gps-esta-42-mais-barato-na-amazon/",
+   "data": "2026-11-06T13:43:32Z",
+   "trecho": "Watch GT 7 (46 mm) traz GPS com IA mais preciso e tela AMOLED de 3.000 nits; novo smartwatch da Huawei recebe desconto de 42% em oferta da Black November no Pix Huawei Watch GT 7 com GPS está 42% mais barato na Amazon",
+   "veiculo": "Tecnoblog",
+   "id": "i83"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Nubank demite funcionários após IA reduzir fila de fraudes",
+   "link": "https://tecnoblog.net/noticias/nubank-demite-funcionarios-apos-ia-reduzir-fila-de-fraudes/",
+   "data": "2026-11-06T13:09:13Z",
+   "trecho": "Automação teria diminuído em 80% as reclamações sobre golpes financeiros. Instituição atribui cortes a uma reestruturação interna. Nubank demite funcionários após IA reduzir fila de fraudes",
+   "veiculo": "Tecnoblog",
+   "id": "i84"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "Egyptian and Nigerian English join the Open ASR Leaderboard",
+   "link": "https://huggingface.co/blog/open-asr-leaderboard-liva",
+   "data": "2026-11-06T00:00:00Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i85"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Google anuncia Gemini Omni 1.2 Flash para criar vídeos de até 15 segundos",
+   "link": "https://tecnoblog.net/noticias/google-anuncia-gemini-omni-1-2-flash-para-criar-videos-de-ate-15-segundos/",
+   "data": "2026-11-05T22:06:01Z",
+   "trecho": "Novo modelo gera vídeos de até 15 segundos com mais qualidade. Novidade também traz maior controle de tempo e ajustes por comandos de voz ou texto. Google anuncia Gemini Omni 1.2 Flash para criar vídeos de até 15 segundos",
+   "veiculo": "Tecnoblog",
+   "id": "i86"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "New NVIDIA Cosmos 3 Open Models for Interactive World Simulation",
+   "link": "https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation",
+   "data": "2026-11-05T19:35:16Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i87"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Galaxy S26 FE atinge menor preço desde o lançamento no Magalu",
+   "link": "https://tecnoblog.net/achados/galaxy-s26-fe-atinge-menor-preco-desde-o-lancamento-no-magalu/",
+   "data": "2026-11-05T17:51:57Z",
+   "trecho": "Galaxy S26 FE (128 GB) tem chip de 3 nanômetros e novas funções de IA; premium acessível da Samsung sai 41% mais em conta no Pix com cupom durante a Black November 2026 Galaxy S26 FE atinge menor preço desde o lançamento no Magalu",
+   "veiculo": "Tecnoblog",
+   "id": "i88"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Proton se desculpa após polêmica sobre uso de IA",
+   "link": "https://tecnoblog.net/noticias/proton-se-desculpa-apos-polemica-sobre-uso-de-ia/",
+   "data": "2026-11-05T12:47:17Z",
+   "trecho": "Empresa prometeu mais transparência depois de relatos sobre pressão interna para usar inteligência artificial. Proton se desculpa após polêmica sobre uso de IA",
+   "veiculo": "Tecnoblog",
+   "id": "i89"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.",
+   "link": "https://huggingface.co/blog/phonon-tts",
+   "data": "2026-11-05T00:00:00Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i90"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Xiaomi começa a liberar HyperOS 4; veja quais celulares recebem",
+   "link": "https://tecnoblog.net/noticias/xiaomi-comeca-a-liberar-hyperos-4-veja-quais-celulares-recebem/",
+   "data": "2026-11-04T20:14:31Z",
+   "trecho": "Update traz novo visual, recursos de inteligência artificial e integração com iPhone. Xiaomi começa a liberar HyperOS 4; veja quais celulares recebem",
+   "veiculo": "Tecnoblog",
+   "id": "i91"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Google amplia demissões voluntárias para investir mais em IA",
+   "link": "https://tecnoblog.net/noticias/google-amplia-demissoes-voluntarias-para-investir-mais-em-ia/",
+   "data": "2026-11-04T19:03:52Z",
+   "trecho": "Programa chegou a cinco países, mas não inclui o Brasil. Funcionários receberam ofertas de até 12 meses de salário para deixar a empresa. Google amplia demissões voluntárias para investir mais em IA",
+   "veiculo": "Tecnoblog",
+   "id": "i92"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "Dharma Field Extractor: Any Document In, Structured Fields in JSON Out",
+   "link": "https://huggingface.co/blog/Dharma-AI/dharma-field-extractor",
+   "data": "2026-11-04T17:50:10Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i93"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "ChatGPT já equivale a 20% das buscas do Google, mas calma",
+   "link": "https://tecnoblog.net/noticias/chatgpt-ja-equivale-a-20-das-buscas-do-google-mas-calma/",
+   "data": "2026-11-04T13:57:44Z",
+   "trecho": "Com 1,2 bilhão de usuários ativos, ChatGPT já é o maior rival do buscador, mas \"império do Google\" está longe do fim. ChatGPT já equivale a 20% das buscas do Google, mas calma",
+   "veiculo": "Tecnoblog",
+   "id": "i94"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Binance diz que hackers prepararam roubo bilionário por meses",
+   "link": "https://tecnoblog.net/noticias/binance-diz-que-hackers-prepararam-roubo-bilionario-por-meses/",
+   "data": "2026-11-04T13:40:37Z",
+   "trecho": "Investigação aponta falsas entrevistas de emprego, programas maliciosos e até o uso de ferramenta interna de IA. Binance diz que hackers prepararam roubo bilionário por meses",
+   "veiculo": "Tecnoblog",
+   "id": "i95"
+  }
+ ],
+ "editor": {
+  "aprovada": true,
+  "acoes": [
+   "Barrado antes da redação, fonte única sem reputação: Claude Code sends your email address to websites",
+   "Barrado antes da redação, fonte única sem reputação: Kimi K3.1 Pro model weights are out",
+   "Barrado antes da redação, fonte única sem reputação: Launch HN: Kino AI (YC S23) – AI media manager and video editor",
+   "Barrado antes da redação, fonte única sem reputação: Cuban: Facebook knowingly runs AI deepfake scam ads; docs say $16B fraud revenue",
+   "Barrado antes da redação, fonte única sem reputação: Launch HN: Rivet (YC W23) – Scale and Orchestrate Agents on S3",
+   "Barrado antes da redação, fonte única sem reputação: Show HN: Stroq – a local audit of what your coding agent did and why",
+   "Barrado antes da redação, fonte única sem reputação: Nvidia Kubernetes Engine (NVKE)",
+   "Barrado antes da redação, fonte única sem reputação: Experts say the new Democratic congressional majority will likely seek to rebuil",
+   "Barrado antes da redação, fonte única sem reputação: Qualcomm Cloud AI 100 Ultra – 150W AI Accelerator Card with 128GB at 548GB/s",
+   "Corrigido (O resumo diz que o modelo está disponível sem custo no Google Vids, mas a fonte limita a três vídeos de 15 segundos por mês. Também faltava o preço concreto.): Google lança o Gemini Omni 1.2 Flash com vídeos de 15 segundos e preço 30% menor",
+   "Fora por diversidade: GPT-6 Astra covertly underperforms on safety research"
+  ],
+  "revisao": {
+   "a2": {
+    "veredito": "ok",
+    "motivo": "Fato e atribuição batem com a fonte primária da OpenAI; texto sem exagero."
+   },
+   "a3": {
+    "veredito": "ok",
+    "motivo": "Descrição do modelo atribuída à OpenAI e contexto de escrutínio atribuído ao TechCrunch, ambos presentes nas fontes."
+   },
+   "a6": {
+    "veredito": "corrigir",
+    "motivo": "O resumo diz que o modelo está disponível sem custo no Google Vids, mas a fonte limita a três vídeos de 15 segundos por mês. Também faltava o preço concreto."
+   }
+  }
+ },
+ "movimentos": [
+  {
+   "id": "8b0cb4050a3a",
+   "lab": "openai",
+   "fonte": "OpenAI API changelog",
+   "link": "https://developers.openai.com/api/docs/models/gpt-6-cyber",
+   "data": "2026-11-05",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "GPT-6-Cyber investiga vulnerabilidades e verifica correções na API da OpenAI",
+    "simples": "O GPT-6-Cyber serve para investigar vulnerabilidades, reproduzi-las em ambiente de teste autorizado e verificar se as correções funcionam.",
+    "tecnico": "Identificador gpt-6-cyber. Consulte a configuração do Daybreak antes de enviar a primeira requisição."
+   },
+   "en": {
+    "titulo": "GPT-6-Cyber investigates vulnerabilities and verifies fixes in the OpenAI API",
+    "simples": "GPT-6-Cyber is for investigating vulnerabilities, reproducing them in an authorized test environment and verifying that fixes work.",
+    "tecnico": "Identifier gpt-6-cyber. See the Daybreak setup before sending your first request."
+   }
+  },
+  {
+   "id": "5a9e7d9b1504",
+   "lab": "openai",
+   "fonte": "OpenAI API changelog",
+   "link": "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
+   "data": "2026-11-04",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "GPT-Image-2.6 Sunburst e Flare geram e editam imagens, com SVG e GIF animado",
+    "simples": "A OpenAI lançou dois modelos de imagem que geram e editam imagens, com complexidade ajustável, criação de SVG e de GIF animado.",
+    "tecnico": "Modelos gpt-image-2.6-sunburst e gpt-image-2.6-flare nos endpoints v1/images/generations e v1/images/edits. Edição guiada por marcação nos modelos GPT Image 2.5 e 2.6 compatíveis."
+   },
+   "en": {
+    "titulo": "GPT-Image-2.6 Sunburst and Flare generate and edit images with SVG and GIF",
+    "simples": "OpenAI released two image models that generate and edit images, with adjustable complexity, SVG generation and animated GIF generation.",
+    "tecnico": "Models gpt-image-2.6-sunburst and gpt-image-2.6-flare on the v1/images/generations and v1/images/edits endpoints. Markup-guided editing for supported GPT Image 2.5 and 2.6 models."
+   }
+  },
+  {
+   "id": "56b1edea82a8",
+   "lab": "openai",
+   "fonte": "OpenAI API changelog",
+   "link": "https://developers.openai.com/api/docs/guides/voice-sip?api=live#place-an-outbound-call",
+   "data": "2026-11-02",
+   "tipo": "api",
+   "pt": {
+    "titulo": "Live API da OpenAI libera chamadas SIP de saída para todas as organizações",
+    "simples": "Agora todas as organizações podem usar a Live API para fazer chamadas de saída, ligando o GPT-Live a um número de telefone.",
+    "tecnico": "Modelo gpt-live-1, endpoint v1/live/sessions. A conexão do GPT-Live a um número de telefone é feita por meio do seu provedor SIP."
+   },
+   "en": {
+    "titulo": "OpenAI Live API makes outbound SIP calling available to all organizations",
+    "simples": "All organizations can now use the Live API to place outbound calls by connecting GPT-Live to a phone number.",
+    "tecnico": "Model gpt-live-1, endpoint v1/live/sessions. GPT-Live connects to a phone number through your SIP provider."
+   }
+  }
+ ],
+ "movimentos_ignorados": [
+  {
+   "id": "a01367bf73c8",
+   "lab": "anthropic",
+   "data": "2026-11-05",
+   "motivo": "Recurso administrativo de plano empresarial"
+  },
+  {
+   "id": "06a072b685a1",
+   "lab": "anthropic",
+   "data": "2026-11-05",
+   "motivo": "Recurso administrativo de segurança do console"
+  },
+  {
+   "id": "ca61f374c218",
+   "lab": "openai",
+   "data": "2026-10-30",
+   "motivo": "limite de 3 por laboratório na edição"
+  }
+ ],
+ "fontes_movimentos": {
+  "anthropic": {
+   "ok": true,
+   "itens": 9
+  },
+  "openai": {
+   "ok": true,
+   "itens": 7
+  },
+  "google_api": {
+   "ok": true,
+   "itens": 0
+  },
+  "google_app": {
+   "ok": true,
+   "itens": 0
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 0
+  },
+  "z-ai": {
+   "ok": true,
+   "itens": 0
+  },
+  "minimax": {
+   "ok": true,
+   "itens": 0
+  },
+  "moonshotai": {
+   "ok": true,
+   "itens": 1
+  },
+  "qwen": {
+   "ok": true,
+   "itens": 0
+  },
+  "hf": {
+   "ok": true,
+   "itens": 2
+  }
+ }
+}
