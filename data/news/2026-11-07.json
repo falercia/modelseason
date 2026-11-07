@@ -1,0 +1,295 @@
+{
+ "versao": 1,
+ "dia": "2026-11-07",
+ "gerado_em": "2026-11-07T14:05:11Z",
+ "fontes": {
+  "catalogo": [
+   "2026-10-31",
+   "2026-11-07"
+  ],
+  "trafego": "2026-11-06"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-07",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-11-06",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20261017",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "openai/gpt-6-luna-20260922",
+   "tencent/hy4-20261104",
+   "stepfun/step-5-preview-20261008",
+   "anthropic/claude-opus-5.5-20260921",
+   "minimax/minimax-m3.1-flash-20261019",
+   "tencent/hy4-preview-20260827",
+   "openai/gpt-5.6-luna-20260709"
+  ]
+ },
+ "principal": "preco:deepseek/deepseek-v4.1-flash-20260910",
+ "eventos": [
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4.1-flash-20260910",
+   "id": "deepseek/deepseek-v4.1-flash",
+   "nome": "DeepSeek V4.1 Flash",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.1588,
+    "para": 0.18,
+    "variacao_pct": 13.4,
+    "entrada_de": 0.045,
+    "entrada_para": 0.051,
+    "saida_de": 0.5,
+    "saida_para": 0.567,
+    "desde": "2026-11-06"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 8.39,
+     "rank_7d": 2,
+     "pico_share": 23.843,
+     "semanas_com_volume": 8
+    },
+    "laboratorio": {
+     "share_tokens": 39.06,
+     "share_gasto": 10.21,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20261017",
+      "nome": "DeepSeek V4.1 Flash 1017",
+      "share_7d": 27.33,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 48
+  },
+  {
+   "tipo": "novo",
+   "slug": "liquid/lfm-3-1.7b-20261106",
+   "id": "liquid/lfm-3-1.7b",
+   "nome": "LFM3-1.7B",
+   "lab": "Liquid AI",
+   "vendor": "liquid",
+   "dados": {
+    "criado": "2026-11-06",
+    "contexto": 262144,
+    "preco_entrada": 0.08,
+    "preco_saida": 0.2,
+    "preco_misto": 0.11,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-flash-vision-exp-20260821",
+   "id": "deepseek/deepseek-v4-flash-vision-exp",
+   "nome": "DeepSeek V4 Flash Vision Exp",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.3234,
+    "para": 0.66,
+    "variacao_pct": 104.1,
+    "entrada_de": 0.2156,
+    "entrada_para": 0.44,
+    "saida_de": 0.6468,
+    "saida_para": 1.32,
+    "desde": "2026-11-06"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.394,
+     "semanas_com_volume": 4
+    },
+    "laboratorio": {
+     "share_tokens": 39.06,
+     "share_gasto": 10.21,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20261017",
+      "nome": "DeepSeek V4.1 Flash 1017",
+      "share_7d": 27.33,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "meta-llama/llama-3.3-70b-instruct",
+   "id": "meta-llama/llama-3.3-70b-instruct",
+   "nome": "Llama 3.3 70B Instruct",
+   "lab": "Meta",
+   "vendor": "meta-llama",
+   "dados": {
+    "de": 0.155,
+    "para": 0.64,
+    "variacao_pct": 312.9,
+    "entrada_de": 0.1,
+    "entrada_para": 0.59,
+    "saida_de": 0.32,
+    "saida_para": 0.79,
+    "desde": "2026-11-06"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 6.638,
+     "semanas_com_volume": 62
+    },
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "nvidia/nemotron-3-super-120b-a12b-20230311",
+   "id": "nvidia/nemotron-3-super-120b-a12b",
+   "nome": "Nemotron 3 Super",
+   "lab": "NVIDIA",
+   "vendor": "nvidia",
+   "dados": {
+    "de": 0.825,
+    "para": 0.1562,
+    "variacao_pct": -81.1,
+    "entrada_de": 0.3,
+    "entrada_para": 0.075,
+    "saida_de": 2.4,
+    "saida_para": 0.4,
+    "desde": "2026-11-06"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 3.138,
+     "semanas_com_volume": 33
+    },
+    "laboratorio": {
+     "share_tokens": 3.49,
+     "share_gasto": 0.0,
+     "lider": {
+      "slug": "nvidia/nemotron-3.5-super-vl-20261015",
+      "nome": "Nemotron 3.5 Super VL",
+      "share_7d": 1.78,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 36
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "liquid/lfm-2.5-2.6b-20260811",
+   "id": "liquid/lfm-2.5-2.6b",
+   "nome": "LFM2.5-2.6B",
+   "lab": "Liquid AI",
+   "vendor": "liquid",
+   "dados": {
+    "data": "2026-11-13",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "meta-llama/llama-3.2-1b-instruct",
+   "id": "meta-llama/llama-3.2-1b-instruct",
+   "nome": "Llama 3.2 1B Instruct",
+   "lab": "Meta",
+   "vendor": "meta-llama",
+   "dados": {
+    "data": "2026-11-20",
+    "anterior": "2026-11-15"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 3.766,
+     "semanas_com_volume": 23
+    },
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "meta-llama/llama-3.2-3b-instruct",
+   "id": "meta-llama/llama-3.2-3b-instruct",
+   "nome": "Llama 3.2 3B Instruct",
+   "lab": "Meta",
+   "vendor": "meta-llama",
+   "dados": {
+    "data": "2026-11-20",
+    "anterior": "2026-11-15"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.397,
+     "semanas_com_volume": 31
+    },
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-pro-20260813",
+   "id": "deepseek/deepseek-v4-pro-0813",
+   "nome": "DeepSeek V4 Pro 0813",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 1.0862,
+    "para": 1.2524,
+    "variacao_pct": 15.3,
+    "entrada_de": 0.115,
+    "entrada_para": 0.1165,
+    "saida_de": 4.0,
+    "saida_para": 4.66,
+    "desde": "2026-11-06"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.38,
+     "rank_7d": 34,
+     "pico_share": 1.062,
+     "semanas_com_volume": 12
+    },
+    "laboratorio": {
+     "share_tokens": 39.06,
+     "share_gasto": 10.21,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20261017",
+      "nome": "DeepSeek V4.1 Flash 1017",
+      "share_7d": 27.33,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 24
+  }
+ ]
+}
