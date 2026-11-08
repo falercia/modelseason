@@ -1,0 +1,301 @@
+{
+ "versao": 1,
+ "dia": "2026-11-08",
+ "gerado_em": "2026-11-08T14:19:32Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-01",
+   "2026-11-08"
+  ],
+  "trafego": "2026-11-07"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-08",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-11-07",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20261017",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "tencent/hy4-20261104",
+   "openai/gpt-6-luna-20260922",
+   "stepfun/step-5-preview-20261008",
+   "anthropic/claude-opus-5.5-20260921",
+   "minimax/minimax-m3.1-flash-20261019",
+   "tencent/hy4-preview-20260827",
+   "moonshotai/kimi-k3.1-pro-20261023"
+  ]
+ },
+ "principal": "top10:moonshotai/kimi-k3.1-pro-20261023",
+ "eventos": [
+  {
+   "tipo": "top10",
+   "slug": "moonshotai/kimi-k3.1-pro-20261023",
+   "id": null,
+   "nome": "Kimi K3.1 Pro",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "posicao": 10,
+    "share": 1.98,
+    "lancamento": "2026-10-23"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.98,
+     "rank_7d": 10,
+     "pico_share": 1.182,
+     "semanas_com_volume": 2
+    },
+    "laboratorio": {
+     "share_tokens": 2.2,
+     "share_gasto": 10.0
+    }
+   },
+   "relevancia": 54
+  },
+  {
+   "tipo": "preco",
+   "slug": "minimax/minimax-m3.1-flash-20261019",
+   "id": "minimax/minimax-m3.1-flash",
+   "nome": "MiniMax M3.1 Flash",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 0.1312,
+    "para": 0.2625,
+    "variacao_pct": 100.0,
+    "entrada_de": 0.075,
+    "entrada_para": 0.15,
+    "saida_de": 0.3,
+    "saida_para": 0.6,
+    "desde": "2026-11-07"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 2.59,
+     "rank_7d": 8,
+     "pico_share": 7.666,
+     "semanas_com_volume": 2
+    },
+    "laboratorio": {
+     "share_tokens": 3.74,
+     "share_gasto": 1.19
+    }
+   },
+   "relevancia": 48
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "moonshotai/kimi-k2.5-0127",
+   "id": "moonshotai/kimi-k2.5",
+   "nome": "Kimi K2.5",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "data": "2026-11-18",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 11.819,
+     "semanas_com_volume": 28
+    },
+    "laboratorio": {
+     "share_tokens": 2.2,
+     "share_gasto": 10.0,
+     "lider": {
+      "slug": "moonshotai/kimi-k3.1-pro-20261023",
+      "nome": "Kimi K3.1 Pro",
+      "share_7d": 1.98,
+      "preco_misto": 4.0
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "removido",
+   "slug": "inception/mercury-2-20260304",
+   "id": "inception/mercury-2",
+   "nome": "Mercury 2",
+   "lab": "Inception",
+   "vendor": "inception",
+   "dados": {
+    "visto_em": "2026-11-07",
+    "expira": "2026-11-08"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "inception/mercury-2.5-20260908",
+   "id": "inception/mercury-2.5",
+   "nome": "Mercury 2.5",
+   "lab": "Inception",
+   "vendor": "inception",
+   "dados": {
+    "visto_em": "2026-11-07",
+    "expira": "2026-11-08"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "inception/mercury-3-20261019",
+   "id": "inception/mercury-3",
+   "nome": "Mercury 3",
+   "lab": "Inception",
+   "vendor": "inception",
+   "dados": {
+    "visto_em": "2026-11-07",
+    "expira": "2026-11-08"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "inception/mercury-decide-20260930",
+   "id": "inception/mercury-decide",
+   "nome": "Mercury Decide",
+   "lab": "Inception",
+   "vendor": "inception",
+   "dados": {
+    "visto_em": "2026-11-07",
+    "expira": "2026-11-08"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "inclusionai/ling-3.1-flash-20261002",
+   "id": "inclusionai/ling-3.1-flash",
+   "nome": "Ling 3.1 Flash",
+   "lab": "InclusionAI",
+   "vendor": "inclusionai",
+   "dados": {
+    "de": 0.1125,
+    "para": 0.0675,
+    "variacao_pct": -40.0,
+    "entrada_de": 0.075,
+    "entrada_para": 0.045,
+    "saida_de": 0.225,
+    "saida_para": 0.135,
+    "desde": "2026-11-07"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.366,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": null
+   },
+   "relevancia": 28
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-4-26b-a4b-it-20260403",
+   "id": "google/gemma-4-26b-a4b-it",
+   "nome": "Gemma 4 26B A4B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.15,
+    "para": 0.1069,
+    "variacao_pct": -28.7,
+    "entrada_de": 0.1,
+    "entrada_para": 0.0675,
+    "saida_de": 0.3,
+    "saida_para": 0.225,
+    "desde": "2026-11-07"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.19,
+     "rank_7d": 47,
+     "pico_share": 0.737,
+     "semanas_com_volume": 30
+    },
+    "laboratorio": {
+     "share_tokens": 2.73,
+     "share_gasto": 5.4,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.75,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "minimax/minimax-m2.5-20260211",
+   "id": "minimax/minimax-m2.5",
+   "nome": "MiniMax M2.5",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 0.44,
+    "para": 0.525,
+    "variacao_pct": 19.3,
+    "entrada_de": 0.27,
+    "entrada_para": 0.3,
+    "saida_de": 0.95,
+    "saida_para": 1.2,
+    "desde": "2026-11-07"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 18.429,
+     "semanas_com_volume": 18
+    },
+    "laboratorio": {
+     "share_tokens": 3.74,
+     "share_gasto": 1.19,
+     "lider": {
+      "slug": "minimax/minimax-m3.1-flash-20261019",
+      "nome": "MiniMax M3.1 Flash",
+      "share_7d": 2.59,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 24
+  }
+ ]
+}
