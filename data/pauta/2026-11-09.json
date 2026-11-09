@@ -1,0 +1,2151 @@
+{
+ "versao": 1,
+ "dia": "2026-11-09",
+ "gerado_em": "2026-11-09T20:16:24Z",
+ "janela_horas": 78,
+ "modelo": "claude-sonnet-5-5",
+ "uso_tokens": {
+  "entrada": 29521,
+  "saida": 18783
+ },
+ "fontes": {
+  "openai": {
+   "ok": true,
+   "itens": 2
+  },
+  "google": {
+   "ok": true,
+   "itens": 1
+  },
+  "anthropic": {
+   "ok": true,
+   "itens": 0
+  },
+  "huggingface": {
+   "ok": true,
+   "itens": 2
+  },
+  "techcrunch": {
+   "ok": true,
+   "itens": 19
+  },
+  "mittr": {
+   "ok": true,
+   "itens": 3
+  },
+  "verge": {
+   "ok": true,
+   "itens": 10
+  },
+  "ars": {
+   "ok": true,
+   "itens": 5
+  },
+  "simonwillison": {
+   "ok": true,
+   "itens": 4
+  },
+  "tecnoblog": {
+   "ok": true,
+   "itens": 7
+  },
+  "nist": {
+   "ok": true,
+   "itens": 0
+  },
+  "ue": {
+   "ok": true,
+   "itens": 0
+  },
+  "hf": {
+   "ok": true,
+   "itens": 1
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 0
+  },
+  "camara": {
+   "ok": true,
+   "itens": 0
+  },
+  "techmeme": {
+   "ok": true,
+   "itens": 9
+  },
+  "hn": {
+   "ok": true,
+   "itens": 28
+  }
+ },
+ "assuntos": [
+  {
+   "id": "a1",
+   "categoria": "lancamento",
+   "nota": 20.16,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-09T19:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Anthropic launches new Claude Fable and Mythos 5.2 models",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1030005/anthropic-claude-fable-mythos-5-2",
+     "data": "2026-11-09T19:00:00Z"
+    },
+    {
+     "veiculo": "Anthropic",
+     "titulo": "Anthropic releases Mythos 5.2 and Fable 5.2, saying they are \"best for the most ambitious, open-ended technical work\", with outputs up to 30% faster than 5.1 (Anthropic)",
+     "link": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+     "data": "2026-11-09T19:02:08Z",
+     "discussao": "https://news.ycombinator.com/item?id=50429906",
+     "pontos": 481
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Anthropic releases new Mythos and Fable models amid RSI concerns",
+     "link": "https://techcrunch.com/2026/11/09/anthropic-releases-new-mythos-and-fable-models-amid-rsi-concerns/",
+     "data": "2026-11-09T19:24:51Z"
+    },
+    {
+     "veiculo": "thenewstack.io",
+     "titulo": "Anthropic prices Fable 5.2 and Mythos 5.2 at $8/1M input and $40/1M output tokens, down 20% from 5.1; fast mode costs $16/1M input and $80/1M output tokens",
+     "link": "https://thenewstack.io/anthropic-fable-coding-upgrade/",
+     "data": "2026-11-09T20:00:51Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Anthropic lança Mythos 5.2 e Fable 5.2, com saídas até 30% mais rápidas",
+    "resumo": "Segundo a Anthropic, os novos modelos têm melhorias em programação, raciocínio e visão e geram saídas até 30% mais rápido que as versões 5.1. A empresa cobra US$ 8 por milhão de tokens de entrada e US$ 40 por milhão de tokens de saída."
+   },
+   "en": {
+    "titulo": "Anthropic releases Mythos 5.2 and Fable 5.2 with outputs up to 30% faster",
+    "resumo": "According to Anthropic, the new models show improvements in coding, reasoning and vision and generate outputs up to 30% faster than the 5.1 versions. The company charges $8 per million input tokens and $40 per million output tokens."
+   },
+   "cruzamento": [
+    {
+     "vendor": "anthropic",
+     "lab": "Anthropic",
+     "share_tokens": 6.24,
+     "share_gasto": 39.81,
+     "lider": {
+      "slug": "anthropic/claude-opus-5.5-20260921",
+      "nome": "Claude Opus 5.5",
+      "share_7d": 3.23,
+      "preco_misto": 8.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "a2",
+   "categoria": "mercado",
+   "nota": 19.04,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-07T21:17:08Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Megaspeed exec was recruited to spy on Nvidia CEO, according to US intelligence memo",
+     "link": "https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo/",
+     "data": "2026-11-07T21:17:08Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Nvidia is investigating Jensen Huang’s relationship with an alleged Chinese spy",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1029562/nvidia-investigating-jensen-huang-relationship-chinese-spy",
+     "data": "2026-11-08T20:22:39Z"
+    },
+    {
+     "veiculo": "nvidianews.nvidia.com",
+     "titulo": "Statement from Nvidia board of directors",
+     "link": "https://nvidianews.nvidia.com/news/statement-from-nvidia-board-of-directors",
+     "data": "2026-11-08T20:26:43Z",
+     "discussao": "https://news.ycombinator.com/item?id=50416801",
+     "pontos": 487
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Nvidia will investigate CEO Jensen Huang’s relationship with possible Chinese spy",
+     "link": "https://techcrunch.com/2026/11/08/nvidia-says-its-investigating-ceo-jensen-huangs-relationship-with-possible-chinese-spy/",
+     "data": "2026-11-08T21:00:11Z"
+    },
+    {
+     "veiculo": "nvidianews.nvidia.com",
+     "titulo": "Nvidia CEO Jensen Huang's letter to staff about affair",
+     "link": "https://nvidianews.nvidia.com/news/a-message-to-our-company",
+     "data": "2026-11-08T22:20:09Z",
+     "discussao": "https://news.ycombinator.com/item?id=50418016",
+     "pontos": 922
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Here’s the full text of Jensen Huang’s memo to Nvidia",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1029595/full-text-jensen-huang-affair-memo-nvidia",
+     "data": "2026-11-08T22:54:50Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Is Jensen Huang’s job on the line? Yale’s Jeffrey Sonnenfeld estimates it’s ‘about a 50-50’",
+     "link": "https://techcrunch.com/2026/11/08/is-jensen-huangs-job-on-the-line-yales-jeffrey-sonnenfeld-estimates-its-about-a-50-50/",
+     "data": "2026-11-09T05:26:29Z"
+    },
+    {
+     "veiculo": "Tecnoblog",
+     "titulo": "Nvidia investiga CEO por relação com suposta espiã chinesa",
+     "link": "https://tecnoblog.net/noticias/nvidia-investiga-ceo-por-relacao-com-suposta-espia-chinesa/",
+     "data": "2026-11-09T12:55:30Z"
+    },
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Nvidia CEO's affair becomes a national security problem",
+     "link": "https://arstechnica.com/tech-policy/2026/11/ceo-jensen-huang-admits-affair-as-nvidia-probes-possible-chinese-espionage/",
+     "data": "2026-11-09T15:23:20Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "The future of AI hinges on… Jensen Huang’s sex life?",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1029990/jensen-huang-the-spy-who-loved-me",
+     "data": "2026-11-09T17:36:08Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Jensen Huang’s affair with alleged Chinese spy puts Nvidia’s China ambitions under scrutiny",
+     "link": "https://techcrunch.com/2026/11/09/jensen-huangs-affair-with-alleged-chinese-spy-puts-nvidias-china-ambitions-under-scrutiny/",
+     "data": "2026-11-09T18:09:52Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Jensen Huang pulls out of ElevenLabs Summit amid Nvidia controversy",
+     "link": "https://techcrunch.com/2026/11/09/jensen-huang-pulls-out-of-elevenlabs-summit-amid-nvidia-controversy/",
+     "data": "2026-11-09T20:09:06Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Nvidia abre investigação sobre Jensen Huang e relação com suposta espiã chinesa",
+    "resumo": "Segundo a Nvidia, o conselho abriu investigação independente após reportagens de que Jensen Huang foi alvo de inteligência estrangeira, e o CEO admitiu infidelidade em mensagem a funcionários. Segundo o The Verge, a executiva da Megaspeed Alice Huang teria sido recrutada pelo Ministério da Segurança do Estado da China para espionar a empresa."
+   },
+   "en": {
+    "titulo": "Nvidia opens investigation into Jensen Huang and relationship with alleged Chinese spy",
+    "resumo": "According to Nvidia, its board opened an independent investigation after reports that Jensen Huang was the target of a foreign intelligence effort, and the CEO admitted to infidelity in a message to employees. According to The Verge, Megaspeed executive Alice Huang was reportedly recruited by China's Ministry of State Security to spy on the company."
+   },
+   "cruzamento": [
+    {
+     "vendor": "nvidia",
+     "lab": "NVIDIA",
+     "share_tokens": 3.99,
+     "share_gasto": 0.12,
+     "lider": {
+      "slug": "nvidia/nemotron-3.5-super-vl-20261015",
+      "nome": "Nemotron 3.5 Super VL",
+      "share_7d": 1.79,
+      "preco_misto": 0.2375
+     }
+    }
+   ]
+  },
+  {
+   "id": "a4",
+   "categoria": "seguranca",
+   "nota": 13.78,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-07T20:45:32Z",
+   "fontes": [
+    {
+     "veiculo": "apiiro.com",
+     "titulo": "Claude Code's \"Don't Ask Again\" exposes passwords in 1,122 public GitHub files",
+     "link": "https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again",
+     "data": "2026-11-07T20:45:32Z",
+     "discussao": "https://news.ycombinator.com/item?id=50407882",
+     "pontos": 621
+    },
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Claude Code is accidentally exposing secrets all over GitHub",
+     "link": "https://arstechnica.com/ai/2026/11/claude-code-settings-files-expose-thousands-of-secrets-on-github/",
+     "data": "2026-11-09T17:24:26Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Apiiro encontra senhas e chaves de API de usuários do Claude Code em repositórios públicos",
+    "resumo": "Segundo a Apiiro, 1.122 arquivos públicos do GitHub com configurações do Claude Code contêm senhas e outros segredos. Segundo o Ars Technica, o problema vem da opção de aprovar comandos sem perguntar de novo, que grava o comando, inclusive dados sensíveis, no arquivo local de configuração."
+   },
+   "en": {
+    "titulo": "Apiiro finds Claude Code users' passwords and API keys in public repositories",
+    "resumo": "According to Apiiro, 1,122 public GitHub files with Claude Code settings contain passwords and other secrets. According to Ars Technica, the problem stems from the option to approve commands without asking again, which writes the command, including sensitive data, to the local settings file."
+   },
+   "cruzamento": [
+    {
+     "vendor": "anthropic",
+     "lab": "Anthropic",
+     "share_tokens": 6.24,
+     "share_gasto": 39.81,
+     "lider": {
+      "slug": "anthropic/claude-opus-5.5-20260921",
+      "nome": "Claude Opus 5.5",
+      "share_7d": 3.23,
+      "preco_misto": 8.0
+     }
+    }
+   ]
+  }
+ ],
+ "descartados": [
+  {
+   "id": "a3",
+   "categoria": "capacidade",
+   "nota": 14.03,
+   "labs": [
+    "deepseek"
+   ],
+   "publicado_em": "2026-11-08T10:22:04Z",
+   "fontes": [
+    {
+     "veiculo": "GitHub",
+     "titulo": "Llama-modchip: 284B DeepSeek on 64GB RAM, no GPU",
+     "link": "https://github.com/synchopate/llama-modchip",
+     "data": "2026-11-08T10:22:04Z",
+     "discussao": "https://news.ycombinator.com/item?id=50411961",
+     "pontos": 472
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a5",
+   "categoria": "mercado",
+   "nota": 12.65,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-08T18:16:07Z",
+   "fontes": [
+    {
+     "veiculo": "thestateofai.com",
+     "titulo": "Goldman Sachs is pulling Claude Code from its bankers and traders",
+     "link": "https://www.thestateofai.com/news/goldman-sachs-claude-code-traders-bankers",
+     "data": "2026-11-08T18:16:07Z",
+     "discussao": "https://news.ycombinator.com/item?id=50415628",
+     "pontos": 874
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a6",
+   "categoria": "mercado",
+   "nota": 11.78,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-06T22:53:46Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "OpenAI reportedly raises an additional $11 billion at a $1.25 trillion valuation",
+     "link": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
+     "data": "2026-11-06T22:53:46Z"
+    },
+    {
+     "veiculo": "247wallst.com",
+     "titulo": "OpenAI raises $11B at a $1.25T valuation",
+     "link": "https://247wallst.com/investing/2026/11/07/openai-just-raised-11-billion-at-a-1-25-trillion-valuation-below-the-1-4-trillion-it-first-sought/",
+     "data": "2026-11-08T14:49:23Z",
+     "discussao": "https://news.ycombinator.com/item?id=50413822",
+     "pontos": 189
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a7",
+   "categoria": "mercado",
+   "nota": 11.23,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-06T16:54:36Z",
+   "fontes": [
+    {
+     "veiculo": "Bloomberg",
+     "titulo": "Anthropic IPO buyers see valuation as low as $1.1T",
+     "link": "https://www.bloomberg.com/news/articles/2026-11-06/anthropic-ipo-valuation-expectations-pressured-after-ai-rout",
+     "data": "2026-11-06T16:54:36Z",
+     "discussao": "https://news.ycombinator.com/item?id=50394906",
+     "pontos": 322
+    },
+    {
+     "veiculo": "epyhia.com",
+     "titulo": "Anthropic IPO valuation talks drop to $1.3T",
+     "link": "https://epyhia.com/anthropic-ipo-valuation-talks-drop-to-1-3-trillion-as-major-investors",
+     "data": "2026-11-06T17:21:15Z",
+     "discussao": "https://news.ycombinator.com/item?id=50395318",
+     "pontos": 93
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a8",
+   "categoria": "lancamento",
+   "nota": 10.16,
+   "labs": [
+    "tencent"
+   ],
+   "publicado_em": "2026-11-07T14:20:29Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Tencent published Qwen3.8-27B-DSpine-b16 weights on Hugging Face",
+     "link": "https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16",
+     "data": "2026-11-07T14:20:29Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a9",
+   "categoria": "seguranca",
+   "nota": 9.8,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-09T08:17:49Z",
+   "fontes": [
+    {
+     "veiculo": "news.ycombinator.com",
+     "titulo": "ChatGPT Desktop forwards your SSH agent to remote machines",
+     "link": "https://news.ycombinator.com/item?id=50422628",
+     "data": "2026-11-09T08:17:49Z",
+     "discussao": "https://news.ycombinator.com/item?id=50422628",
+     "pontos": 191
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a10",
+   "categoria": "lancamento",
+   "nota": 9.72,
+   "labs": [
+    "amazon",
+    "openai"
+   ],
+   "publicado_em": "2026-11-09T19:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "ChatGPT Enterprise now available in AWS Marketplace",
+     "link": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
+     "data": "2026-11-09T19:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a11",
+   "categoria": "seguranca",
+   "nota": 8.63,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-06T22:50:43Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "ChatGPT silently passes data between connectors and the bounty wants an ID card",
+     "link": "https://community.openai.com/t/security-follow-up-tool-call-silently-routed-to-a-different-connector/1413053",
+     "data": "2026-11-06T22:50:43Z",
+     "discussao": "https://news.ycombinator.com/item?id=50399569",
+     "pontos": 94
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a12",
+   "categoria": "regulacao",
+   "nota": 8.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-09T16:20:00Z",
+   "fontes": [
+    {
+     "veiculo": "The New York Times",
+     "titulo": "Sources: a Commerce Department investigation into Megaspeed for allegedly smuggling Nvidia chips to China was transferred to the DOJ after Nvidia intervened (New York Times)",
+     "link": "https://www.nytimes.com/2026/11/09/business/economy/nvidia-megaspeed-investigation-huang.html?unlocked_article_code=1.PFE.kx0T.Y85ccrbdDRP8&smid=url-share",
+     "data": "2026-11-09T16:20:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a13",
+   "categoria": "capacidade",
+   "nota": 8.1,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-07T06:39:04Z",
+   "fontes": [
+    {
+     "veiculo": "Anthropic",
+     "titulo": "The Components of Agent Memory",
+     "link": "https://www.anthropic.com/research/components-of-agent-memory",
+     "data": "2026-11-07T06:39:04Z",
+     "discussao": "https://news.ycombinator.com/item?id=50402212",
+     "pontos": 185
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a14",
+   "categoria": "regulacao",
+   "nota": 8.09,
+   "labs": [
+    "meta",
+    "x-ai"
+   ],
+   "publicado_em": "2026-11-06T19:24:24Z",
+   "fontes": [
+    {
+     "veiculo": "The Washington Post",
+     "titulo": "Democrats launching congressional investigations into SpaceXAI, META and Apple",
+     "link": "https://www.washingtonpost.com/technology/2026/11/06/after-courting-trump-corporate-america-faces-democratic-reckoning/",
+     "data": "2026-11-06T19:24:24Z",
+     "discussao": "https://news.ycombinator.com/item?id=50397102",
+     "pontos": 148
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a15",
+   "categoria": "lancamento",
+   "nota": 8.0,
+   "labs": [],
+   "publicado_em": "2026-11-09T15:15:02Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Medium launches TK, an AI-powered, minimalist note-taking, journaling, and private social networking app with daily prompts, its first major launch since 2017",
+     "link": "https://www.theverge.com/tech/1029676/medium-tk-notes-app",
+     "data": "2026-11-09T15:15:02Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Medium’s new TK app brings AI assistance directly into the writing process",
+     "link": "https://techcrunch.com/2026/11/09/mediums-new-tk-app-brings-ai-assistance-directly-into-the-writing-process/",
+     "data": "2026-11-09T16:12:28Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a16",
+   "categoria": "lancamento",
+   "nota": 7.81,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-09T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Developers can now build with Google Maps Platform in AI Studio.",
+     "link": "https://blog.google/innovation-and-ai/technology/developers-tools/build-google-maps-platform-ai-studio/",
+     "data": "2026-11-09T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a17",
+   "categoria": "capacidade",
+   "nota": 7.5,
+   "labs": [],
+   "publicado_em": "2026-11-06T20:27:23Z",
+   "fontes": [
+    {
+     "veiculo": "planned-obsolescence.org",
+     "titulo": "AI is dramatically accelerating AI research",
+     "link": "https://www.planned-obsolescence.org/p/ai-is-dramatically-accelerating-ai",
+     "data": "2026-11-06T20:27:23Z",
+     "discussao": "https://news.ycombinator.com/item?id=50397994",
+     "pontos": 375
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a18",
+   "categoria": "preco",
+   "nota": 7.13,
+   "labs": [],
+   "publicado_em": "2026-11-09T05:30:11Z",
+   "fontes": [
+    {
+     "veiculo": "stork.ai",
+     "titulo": "Apple capped engineers at a $200 daily AI budget",
+     "link": "https://www.stork.ai/newsletter/2026-11-08-apple-capped-engineers-at-a-200-daily-ai-budget",
+     "data": "2026-11-09T05:30:11Z",
+     "discussao": "https://news.ycombinator.com/item?id=50421426",
+     "pontos": 109
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a19",
+   "categoria": "mercado",
+   "nota": 7.08,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-06T15:54:47Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Ramp data shows AI spending stalling just as Anthropic nears its IPO",
+     "link": "https://techcrunch.com/2026/11/06/ramp-data-shows-ai-spending-stalling-just-as-anthropic-nears-its-ipo/",
+     "data": "2026-11-06T15:54:47Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a20",
+   "categoria": "regulacao",
+   "nota": 7.0,
+   "labs": [],
+   "publicado_em": "2026-11-09T15:40:00Z",
+   "fontes": [
+    {
+     "veiculo": "Bloomberg",
+     "titulo": "Draft law: the EU's Digital Fairness Act would require companies to let adults disable addictive features and will target AI systems that simulate relationships (Bloomberg)",
+     "link": "https://www.bloomberg.com/news/articles/2026-11-09/eu-plans-crackdown-on-addictive-social-media-and-ai-bot-features",
+     "data": "2026-11-09T15:40:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a21",
+   "categoria": "lancamento",
+   "nota": 6.47,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-11-09T18:07:23Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Instagram’s Effect Builder makes new filters from AI prompts",
+     "link": "https://www.theverge.com/tech/1030061/instagram-ai-effect-builder-filters",
+     "data": "2026-11-09T18:07:23Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a22",
+   "categoria": "lancamento",
+   "nota": 6.47,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-11-09T18:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Meta releases Muse Ember, a new lightweight model for agent execution",
+     "link": "https://techcrunch.com/2026/11/09/meta-releases-muse-ember-a-new-lightweight-model-for-agent-execution/",
+     "data": "2026-11-09T18:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a23",
+   "categoria": "lancamento",
+   "nota": 6.47,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-11-06T18:44:20Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Meta introduces Spaces, a new way to collaborate with your Muse agent",
+     "link": "https://techcrunch.com/2026/11/06/meta-introduces-spaces-a-new-way-to-collaborate-with-your-muse-agent/",
+     "data": "2026-11-06T18:44:20Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a24",
+   "categoria": "lancamento",
+   "nota": 6.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-09T15:05:57Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Nemotron-Personas-Finance-Japan: A Synthetic Dataset Capturing Japan's Demographics and Financial Context",
+     "link": "https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan",
+     "data": "2026-11-09T15:05:57Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a25",
+   "categoria": "seguranca",
+   "nota": 6.26,
+   "labs": [],
+   "publicado_em": "2026-11-08T02:02:38Z",
+   "fontes": [
+    {
+     "veiculo": "science.org",
+     "titulo": "Wearable device makers are using brain data to train AI without telling users",
+     "link": "https://www.science.org/content/article/wearable-device-makers-are-harvesting-brain-data-train-ai-without-telling-users",
+     "data": "2026-11-08T02:02:38Z",
+     "discussao": "https://news.ycombinator.com/item?id=50409856",
+     "pontos": 119
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a26",
+   "categoria": "infraestrutura",
+   "nota": 6.08,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-09T16:56:54Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Anthropic joins AI’s natural gas frenzy, buys $3.4B worth of turbines",
+     "link": "https://techcrunch.com/2026/11/09/anthropic-joins-ais-natural-gas-frenzy-buys-3-4b-worth-of-turbines/",
+     "data": "2026-11-09T16:56:54Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a27",
+   "categoria": "preco",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-09T19:09:58Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Apple’s $50 Intelligence Usage Packs extend access to some AI features",
+     "link": "https://www.theverge.com/tech/1030084/apple-intelligence-usage-packs-ai-features-creator-studio-logic-pro",
+     "data": "2026-11-09T19:09:58Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a28",
+   "categoria": "regulacao",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-09T17:05:43Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "Nancy Pelosi’s replacement is ready to regulate AI",
+     "link": "https://www.technologyreview.com/2026/11/09/1148182/nancy-pelosis-replacement-is-ready-to-regulate-ai/",
+     "data": "2026-11-09T17:05:43Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a29",
+   "categoria": "regulacao",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-09T15:50:38Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Trump’s 60 Minutes interview touched on AI safety, threat to arrest an AI exec",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1029802/trump-60-minutes-ai",
+     "data": "2026-11-09T15:50:38Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a30",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-09T14:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Automattic debuts a platform to deploy vibe-coding apps amid a changing internet",
+     "link": "https://techcrunch.com/2026/11/09/automattic-debuts-a-platform-to-deploy-vibe-coding-apps-amid-a-changing-internet/",
+     "data": "2026-11-09T14:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a31",
+   "categoria": "regulacao",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-06T17:23:52Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "After the midterms, is the AI industry in for a rough two years?",
+     "link": "https://techcrunch.com/video/after-the-midterms-is-the-ai-industry-in-for-a-rough-two-years/",
+     "data": "2026-11-06T17:23:52Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "How a Blue Wave midterm might reshape the AI industry",
+     "link": "https://techcrunch.com/podcast/how-a-blue-wave-midterm-might-reshape-the-ai-industry/",
+     "data": "2026-11-06T18:00:00Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "From the front row to the hot seat — what the midterms mean for Big Tech",
+     "link": "https://techcrunch.com/2026/11/06/from-the-front-row-to-the-hot-seat-what-the-midterms-mean-for-big-tech/",
+     "data": "2026-11-07T04:16:43Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "After the midterms, things are looking rocky for Elon Musk and data centers",
+     "link": "https://techcrunch.com/2026/11/07/after-the-midterms-things-are-looking-rocky-for-elon-musk-and-data-centers/",
+     "data": "2026-11-07T22:07:22Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a32",
+   "categoria": "mercado",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-07T02:20:06Z",
+   "fontes": [
+    {
+     "veiculo": "kadoa.com",
+     "titulo": "The AI sell-off compared to well-known stock market crashes",
+     "link": "https://www.kadoa.com/companies/insights/ai-selloff-perspective",
+     "data": "2026-11-07T02:20:06Z",
+     "discussao": "https://news.ycombinator.com/item?id=50401029",
+     "pontos": 100
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a33",
+   "categoria": "mercado",
+   "nota": 5.97,
+   "labs": [],
+   "publicado_em": "2026-11-08T18:43:07Z",
+   "fontes": [
+    {
+     "veiculo": "The Wall Street Journal",
+     "titulo": "Silicon Valley Promises AI Will Cure Disease. Drugmaker CEOs Aren't Buying It",
+     "link": "https://www.wsj.com/tech/ai/silicon-valley-promises-ai-will-cure-disease-drugmaker-ceos-arent-buying-it-5218511c",
+     "data": "2026-11-08T18:43:07Z",
+     "discussao": "https://news.ycombinator.com/item?id=50415817",
+     "pontos": 98
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a34",
+   "categoria": "outro",
+   "nota": 5.72,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-09T08:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Kuken Industries searches 70 years of drawings in minutes",
+     "link": "https://openai.com/index/kuken",
+     "data": "2026-11-09T08:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a35",
+   "categoria": "infraestrutura",
+   "nota": 5.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-06T20:05:30Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Nvidia hardware worth $11.4M vanished between Oakland and Texas",
+     "link": "https://arstechnica.com/gadgets/2026/11/nvidia-hardware-worth-11-4m-vanished-between-oakland-and-texas/",
+     "data": "2026-11-06T20:05:30Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a36",
+   "categoria": "infraestrutura",
+   "nota": 5.13,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-11-06T18:04:06Z",
+   "fontes": [
+    {
+     "veiculo": "Reuters",
+     "titulo": "Microsoft is winding down Oracle deal to rent AI cloud capacity",
+     "link": "https://www.reuters.com/business/microsoft-is-winding-down-oracle-deal-rent-ai-cloud-capacity-bloomberg-news-2026-11-06/",
+     "data": "2026-11-06T18:04:06Z",
+     "discussao": "https://news.ycombinator.com/item?id=50395933",
+     "pontos": 109
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a37",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-09T15:38:56Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Disney and Adobe are building generative AI tools together",
+     "link": "https://www.theverge.com/tech/1029773/disney-adobe-generative-ai-partnership",
+     "data": "2026-11-09T15:38:56Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a38",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-06T20:56:41Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Chainalysis says hackers stole credentials and tokens for all of its customers",
+     "link": "https://arstechnica.com/security/2026/11/chainalysis-says-hackers-stole-credentials-and-tokens-for-all-of-its-customers/",
+     "data": "2026-11-06T20:56:41Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a39",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-06T18:44:38Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Hundreds of Artex AI hacking tools found publicly exposed to the web",
+     "link": "https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web/",
+     "data": "2026-11-06T18:44:38Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a40",
+   "categoria": "infraestrutura",
+   "nota": 4.81,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-07T01:40:28Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Crusoe sells troubled Wyoming data center project to Google",
+     "link": "https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/",
+     "data": "2026-11-07T01:40:28Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a41",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-11-09T19:35:33Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "The backlash about data centers might really just be about electricity",
+     "link": "https://www.technologyreview.com/2026/11/09/1148194/the-backlash-about-data-centers-might-really-just-be-about-electricity/",
+     "data": "2026-11-09T19:35:33Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a42",
+   "categoria": "seguranca",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-11-09T15:26:09Z",
+   "fontes": [
+    {
+     "veiculo": "Tecnoblog",
+     "titulo": "Linus Torvalds já vê “paz” entre Linux e ferramentas de IA que caçam bugs",
+     "link": "https://tecnoblog.net/noticias/linus-torvalds-ja-ve-paz-entre-linux-e-ferramentas-de-ia-que-cacam-bugs/",
+     "data": "2026-11-09T15:26:09Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a43",
+   "categoria": "infraestrutura",
+   "nota": 3.81,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-09T18:53:38Z",
+   "fontes": [
+    {
+     "veiculo": "Tecnoblog",
+     "titulo": "Google apresenta versões mais potentes de seus chips de IA",
+     "link": "https://tecnoblog.net/noticias/google-apresenta-versoes-mais-potentes-de-seus-chips-de-ia/",
+     "data": "2026-11-09T18:53:38Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  }
+ ],
+ "itens": [
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Anthropic releases Mythos 5.2 and Fable 5.2, saying they are \"best for the most ambitious, open-ended technical work\", with outputs up to 30% faster than 5.1 (Anthropic)",
+   "link": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+   "data": "2026-11-09T19:02:08Z",
+   "trecho": "",
+   "veiculo": "Anthropic",
+   "via": "https://www.techmeme.com/261109/p38#a261109p38",
+   "pontos": 481,
+   "discussao": "https://news.ycombinator.com/item?id=50429906",
+   "id": "i1"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "ChatGPT Enterprise now available in AWS Marketplace",
+   "link": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
+   "data": "2026-11-09T19:00:00Z",
+   "trecho": "ChatGPT Enterprise is now available through AWS Marketplace, helping organizations simplify procurement through existing AWS purchasing and billing relationships.",
+   "veiculo": "OpenAI",
+   "id": "i2"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Developers can now build with Google Maps Platform in AI Studio.",
+   "link": "https://blog.google/innovation-and-ai/technology/developers-tools/build-google-maps-platform-ai-studio/",
+   "data": "2026-11-09T17:00:00Z",
+   "trecho": "Developers can now build with Google Maps Platform in AI Studio.",
+   "veiculo": "Google",
+   "id": "i3"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Sources: a Commerce Department investigation into Megaspeed for allegedly smuggling Nvidia chips to China was transferred to the DOJ after Nvidia intervened (New York Times)",
+   "link": "https://www.nytimes.com/2026/11/09/business/economy/nvidia-megaspeed-investigation-huang.html?unlocked_article_code=1.PFE.kx0T.Y85ccrbdDRP8&smid=url-share",
+   "data": "2026-11-09T16:20:00Z",
+   "trecho": "",
+   "veiculo": "The New York Times",
+   "via": "https://www.techmeme.com/261109/p32#a261109p32",
+   "id": "i4"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Draft law: the EU's Digital Fairness Act would require companies to let adults disable addictive features and will target AI systems that simulate relationships (Bloomberg)",
+   "link": "https://www.bloomberg.com/news/articles/2026-11-09/eu-plans-crackdown-on-addictive-social-media-and-ai-bot-features",
+   "data": "2026-11-09T15:40:00Z",
+   "trecho": "",
+   "veiculo": "Bloomberg",
+   "via": "https://www.techmeme.com/261109/p28#a261109p28",
+   "id": "i5"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Kuken Industries searches 70 years of drawings in minutes",
+   "link": "https://openai.com/index/kuken",
+   "data": "2026-11-09T08:00:00Z",
+   "trecho": "Kuken Industries uses the OpenAI API to search 70 years of cooling tower drawings. Engineers can find the drawing for a repair in 4.5 minutes, down from nearly an hour.",
+   "veiculo": "OpenAI",
+   "id": "i6"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "Tencent published Qwen3.8-27B-DSpine-b16 weights on Hugging Face",
+   "link": "https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16",
+   "data": "2026-11-07T14:20:29Z",
+   "trecho": "Tencent released Qwen3.8-27B-DSpine-b16 (text-generation).",
+   "veiculo": "Hugging Face",
+   "lab": "tencent",
+   "id": "i7"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Jensen Huang pulls out of ElevenLabs Summit amid Nvidia controversy",
+   "link": "https://techcrunch.com/2026/11/09/jensen-huang-pulls-out-of-elevenlabs-summit-amid-nvidia-controversy/",
+   "data": "2026-11-09T20:09:06Z",
+   "trecho": "The Nvidia CEO also pulled out of an Anthropic event earlier.",
+   "veiculo": "TechCrunch",
+   "id": "i8"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Anthropic prices Fable 5.2 and Mythos 5.2 at $8/1M input and $40/1M output tokens, down 20% from 5.1; fast mode costs $16/1M input and $80/1M output tokens",
+   "link": "https://thenewstack.io/anthropic-fable-coding-upgrade/",
+   "data": "2026-11-09T20:00:51Z",
+   "trecho": "",
+   "veiculo": "thenewstack.io",
+   "via": "https://www.techmeme.com/261109/p40#a261109p40",
+   "id": "i9"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "The backlash about data centers might really just be about electricity",
+   "link": "https://www.technologyreview.com/2026/11/09/1148194/the-backlash-about-data-centers-might-really-just-be-about-electricity/",
+   "data": "2026-11-09T19:35:33Z",
+   "trecho": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. As voters went to the polls across the US last week, I was in Ashburn, Virginia, part of what’s known as Data Center Alley—the world’s largest data center hub. It’s also where…",
+   "veiculo": "MIT Technology Review",
+   "id": "i10"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Anthropic releases new Mythos and Fable models amid RSI concerns",
+   "link": "https://techcrunch.com/2026/11/09/anthropic-releases-new-mythos-and-fable-models-amid-rsi-concerns/",
+   "data": "2026-11-09T19:24:51Z",
+   "trecho": "Anthropic says the new models \"show improvements in areas like coding, reasoning, and vision,\" as well as in communicating more clearly with users.",
+   "veiculo": "TechCrunch",
+   "id": "i11"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Apple’s $50 Intelligence Usage Packs extend access to some AI features",
+   "link": "https://www.theverge.com/tech/1030084/apple-intelligence-usage-packs-ai-features-creator-studio-logic-pro",
+   "data": "2026-11-09T19:09:58Z",
+   "trecho": "After publishing a support article in early September outlining usage limits for some Apple Intelligence features, the company has updated Logic Pro with an option to \"Buy More Usage\" for a one-time purchase price of $49.99, as spotted by 9to5Mac. It has a built-in AI assistant to do things like \"start a new song,…",
+   "veiculo": "The Verge",
+   "id": "i12"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Anthropic launches new Claude Fable and Mythos 5.2 models",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1030005/anthropic-claude-fable-mythos-5-2",
+   "data": "2026-11-09T19:00:00Z",
+   "trecho": "Anthropic is announcing two new models today: Claude Fable 5.2 and Claude Mythos 5.2, which it says are designed to take on \"daunting\" technical challenges. The company claims the new models show improvements in coding, reasoning, and vision, and can generate outputs faster than the 5.1 versions of the Fable and…",
+   "veiculo": "The Verge",
+   "id": "i13"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Jensen Huang’s affair with alleged Chinese spy puts Nvidia’s China ambitions under scrutiny",
+   "link": "https://techcrunch.com/2026/11/09/jensen-huangs-affair-with-alleged-chinese-spy-puts-nvidias-china-ambitions-under-scrutiny/",
+   "data": "2026-11-09T18:09:52Z",
+   "trecho": "Jensen Huang’s alleged affair with a suspected Chinese spy threatens to complicate Nvidia’s lobbying efforts to loosen U.S. chip export restrictions and maintain access to China’s lucrative AI market.",
+   "veiculo": "TechCrunch",
+   "id": "i14"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Instagram’s Effect Builder makes new filters from AI prompts",
+   "link": "https://www.theverge.com/tech/1030061/instagram-ai-effect-builder-filters",
+   "data": "2026-11-09T18:07:23Z",
+   "trecho": "After expanding its Edits app to macOS last week, Instagram's next move is launching this Effect Builder that generates custom filters for your Stories posts with AI. Available now for US residents who are over 18, it has a prompt box for describing your filter idea to the chatbot, with an option to attach style […]",
+   "veiculo": "The Verge",
+   "id": "i15"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Meta releases Muse Ember, a new lightweight model for agent execution",
+   "link": "https://techcrunch.com/2026/11/09/meta-releases-muse-ember-a-new-lightweight-model-for-agent-execution/",
+   "data": "2026-11-09T18:00:00Z",
+   "trecho": "At 10 cents per million input tokens, Ember is significantly cheaper than frontier competitors like Haiku and Luna.",
+   "veiculo": "TechCrunch",
+   "id": "i16"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "The future of AI hinges on… Jensen Huang’s sex life?",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1029990/jensen-huang-the-spy-who-loved-me",
+   "data": "2026-11-09T17:36:08Z",
+   "trecho": "I would prefer that these people's sex lives were none of my business but I guess we have to talk about Jensen Huang and the National Security Incident. Who could have guessed that the guy who was out here signing titties might not have great judgment about how to behave around women? Alice Huang - […]",
+   "veiculo": "The Verge",
+   "id": "i17"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Claude Code is accidentally exposing secrets all over GitHub",
+   "link": "https://arstechnica.com/ai/2026/11/claude-code-settings-files-expose-thousands-of-secrets-on-github/",
+   "data": "2026-11-09T17:24:26Z",
+   "trecho": "\"Do not ask again\" prompt leads to passwords, API keys, and more being shared.",
+   "veiculo": "Ars Technica",
+   "id": "i18"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "Nancy Pelosi’s replacement is ready to regulate AI",
+   "link": "https://www.technologyreview.com/2026/11/09/1148182/nancy-pelosis-replacement-is-ready-to-regulate-ai/",
+   "data": "2026-11-09T17:05:43Z",
+   "trecho": "As a California state senator, Scott Wiener authored legislation aimed at curbing the risks of advanced AI. Now, after winning a tight congressional race for former Speaker of the House Nancy Pelosi’s open San Francisco seat, he could play a key role in setting federal AI policy. I spoke with Wiener on Friday, only a…",
+   "veiculo": "MIT Technology Review",
+   "id": "i19"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Anthropic joins AI’s natural gas frenzy, buys $3.4B worth of turbines",
+   "link": "https://techcrunch.com/2026/11/09/anthropic-joins-ais-natural-gas-frenzy-buys-3-4b-worth-of-turbines/",
+   "data": "2026-11-09T16:56:54Z",
+   "trecho": "Anthropic bought billions of dollars' worth of natural gas turbines in a deal that could give it buyer's remorse.",
+   "veiculo": "TechCrunch",
+   "id": "i20"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Medium’s new TK app brings AI assistance directly into the writing process",
+   "link": "https://techcrunch.com/2026/11/09/mediums-new-tk-app-brings-ai-assistance-directly-into-the-writing-process/",
+   "data": "2026-11-09T16:12:28Z",
+   "trecho": "Medium's new writing app embraces AI-assisted writing, despite growing controversy over the technology's role in publishing.",
+   "veiculo": "TechCrunch",
+   "id": "i21"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Trump’s 60 Minutes interview touched on AI safety, threat to arrest an AI exec",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1029802/trump-60-minutes-ai",
+   "data": "2026-11-09T15:50:38Z",
+   "trecho": "Asked about AI executives' warnings about their models' safety on 60 Minutes, Trump said, \"I think that the risk is not nearly as real as it- as they talk, and I think the risk can be managed, and it's managed.\" He claimed the DOJ is managing that risk, saying, \"We had a situation where somebody […]",
+   "veiculo": "The Verge",
+   "id": "i22"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "SpaceX now fundamentally an \"infrastructure company,\" senior official says",
+   "link": "https://arstechnica.com/space/2026/11/spacex-now-fundamentally-an-infrastructure-company-senior-official-says/",
+   "data": "2026-11-09T15:39:21Z",
+   "trecho": "\"Grok analyzing the same video is 99.9 percent perfect.\"",
+   "veiculo": "Ars Technica",
+   "id": "i23"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Disney and Adobe are building generative AI tools together",
+   "link": "https://www.theverge.com/tech/1029773/disney-adobe-generative-ai-partnership",
+   "data": "2026-11-09T15:38:56Z",
+   "trecho": "The Walt Disney Company has teamed up with Adobe to develop proprietary \"artist-led\" generative AI models to support Disney's production pipeline. The multiyear partnership was announced today at Adobe's MAX conference, and it will see Adobe providing Disney with early access to its latest technologies for everything…",
+   "veiculo": "The Verge",
+   "id": "i24"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Hold up — I had a great time talking to the RIAA guy",
+   "link": "https://www.theverge.com/podcast/1029684/riaa-mitch-glazier-napster-ai-labels-music",
+   "data": "2026-11-09T15:30:00Z",
+   "trecho": "Today, I’m talking with Mitch Glazier, who is CEO and chairman of the RIAA. This conversation was a real full-circle moment for me: I was in college when Napster hit, and the RIAA became everyone’s villain for suing kids for downloading music. That was when I decided to go be a copyright lawyer, which set […]",
+   "veiculo": "The Verge",
+   "id": "i25"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Nvidia CEO's affair becomes a national security problem",
+   "link": "https://arstechnica.com/tech-policy/2026/11/ceo-jensen-huang-admits-affair-as-nvidia-probes-possible-chinese-espionage/",
+   "data": "2026-11-09T15:23:20Z",
+   "trecho": "Nvidia is probing whether Chinese intelligence targeted its CEO through an affair.",
+   "veiculo": "Ars Technica",
+   "id": "i26"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Medium launches TK, an AI-powered, minimalist note-taking, journaling, and private social networking app with daily prompts, its first major launch since 2017",
+   "link": "https://www.theverge.com/tech/1029676/medium-tk-notes-app",
+   "data": "2026-11-09T15:15:02Z",
+   "trecho": "",
+   "veiculo": "The Verge",
+   "via": "https://www.techmeme.com/261109/p27#a261109p27",
+   "id": "i27"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Jonathan Kanter is using AI to take on Big Tech",
+   "link": "https://www.theverge.com/policy/1029652/kanter-doj-biden-legal-tech",
+   "data": "2026-11-09T14:30:00Z",
+   "trecho": "When Jonathan Kanter stepped down as head of the Justice Department's Antitrust Division in 2024, he set out to keep fighting to dismantle illegal monopolies. But this time, he's continuing the fight in the private sector, and with a perhaps unexpected tool: AI. Alongside former acting Antitrust Division chief Doha…",
+   "veiculo": "The Verge",
+   "id": "i28"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Automattic debuts a platform to deploy vibe-coding apps amid a changing internet",
+   "link": "https://techcrunch.com/2026/11/09/automattic-debuts-a-platform-to-deploy-vibe-coding-apps-amid-a-changing-internet/",
+   "data": "2026-11-09T14:00:00Z",
+   "trecho": "Automattic aims to compete with the likes of Lovable with Spacefast.",
+   "veiculo": "TechCrunch",
+   "id": "i29"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "Innovating with AI in the special chemicals industry",
+   "link": "https://www.technologyreview.com/2026/11/09/1147654/innovating-with-ai-in-the-special-chemicals-industry/",
+   "data": "2026-11-09T13:00:00Z",
+   "trecho": "As companies look to accelerate innovation with artificial intelligence, cloud computing, and advanced modeling, the primary challenge is connecting new technologies to reliable data, scientific expertise, and the practical realities of bringing products to market. For specialty chemicals manufacturer Lubrizol,…",
+   "veiculo": "MIT Technology Review",
+   "id": "i30"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Is Jensen Huang’s job on the line? Yale’s Jeffrey Sonnenfeld estimates it’s ‘about a 50-50’",
+   "link": "https://techcrunch.com/2026/11/08/is-jensen-huangs-job-on-the-line-yales-jeffrey-sonnenfeld-estimates-its-about-a-50-50/",
+   "data": "2026-11-09T05:26:29Z",
+   "trecho": "Nvidia’s board is investigating Jensen Huang over his relationship with a suspected Chinese spy, and Yale’s Jeffrey Sonnenfeld thinks it’s roughly a coin flip whether Huang stays on as CEO.",
+   "veiculo": "TechCrunch",
+   "id": "i31"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "The Web Is More Than Enough, by Paul Ford",
+   "link": "https://simonwillison.net/2026/Nov/9/hn-50421091/",
+   "data": "2026-11-09T04:32:33Z",
+   "trecho": "My comment on The Web Is More Than Enough, by Paul Ford — Hacker News. OK, this comment convinced me to give that a shot. Here's a thing I made in Three.js this morning - a Nudibranch themed Faberge Egg: https://static.simonwillison.net/static/2026/Hidden-Reef-Egg... (77KB) I just asked Claude (Opus 5.5 Medium…",
+   "veiculo": "Simon Willison",
+   "id": "i32"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Hide your slop PR descriptions behind",
+   "link": "https://simonwillison.net/2026/Nov/9/details-summary/",
+   "data": "2026-11-09T04:25:05Z",
+   "trecho": "Most of the changes I make to my projects these days come in the form of PRs opened for me by Claude Code or Codex. The PR is my unit of work - I use them to bundle commits together, iterating on them until a feature is complete, document decisions and then merge the finished result. Today's coding agents are great…",
+   "veiculo": "Simon Willison",
+   "id": "i33"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Here’s the full text of Jensen Huang’s memo to Nvidia",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1029595/full-text-jensen-huang-affair-memo-nvidia",
+   "data": "2026-11-08T22:54:50Z",
+   "trecho": "On Sunday, Nvidia announced it was launching an investigation into CEO Jensen Huang's relationship with Alice Huang, an AI executive and agent of the Chinese government. In addition to the Board of Directors announcing the investigation, Huang sent a memo to Nvidia employees acknowledging the affair. You can read the…",
+   "veiculo": "The Verge",
+   "id": "i34"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "parse_number() as a SQLite extension: C vs Rust",
+   "link": "https://simonwillison.net/2026/Nov/8/sqlite-parse-number-c-vs-rust/",
+   "data": "2026-11-08T22:26:00Z",
+   "trecho": "Research: parse_number() as a SQLite extension: C vs Rust I was out walking the dog when I got curious about how easy/difficult it would be to write a SQLite C extension that adds a parse_number() function for turning strings like -$1,234.56 or '12.5%' into numeric values that could be summed and sorted. I fired up…",
+   "veiculo": "Simon Willison",
+   "id": "i35"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Nvidia will investigate CEO Jensen Huang’s relationship with possible Chinese spy",
+   "link": "https://techcrunch.com/2026/11/08/nvidia-says-its-investigating-ceo-jensen-huangs-relationship-with-possible-chinese-spy/",
+   "data": "2026-11-08T21:00:11Z",
+   "trecho": "In a memo to the company, Huang admitted that he had an affair.",
+   "veiculo": "TechCrunch",
+   "id": "i36"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Nvidia is investigating Jensen Huang’s relationship with an alleged Chinese spy",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1029562/nvidia-investigating-jensen-huang-relationship-chinese-spy",
+   "data": "2026-11-08T20:22:39Z",
+   "trecho": "Nvidia has announced that it is opening an investigation into CEO Jensen Huang and his relationship with Megaspeed executive Alice Huang, who was reportedly recruited by China's Ministry of State Security to spy on the company. A statement posted by the board of directors reads: The NVIDIA Board is initiating an…",
+   "veiculo": "The Verge",
+   "id": "i37"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "After the midterms, things are looking rocky for Elon Musk and data centers",
+   "link": "https://techcrunch.com/2026/11/07/after-the-midterms-things-are-looking-rocky-for-elon-musk-and-data-centers/",
+   "data": "2026-11-07T22:07:22Z",
+   "trecho": "On Equity, we unpacked what the midterms mean for the tech industry.",
+   "veiculo": "TechCrunch",
+   "id": "i38"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Megaspeed exec was recruited to spy on Nvidia CEO, according to US intelligence memo",
+   "link": "https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo/",
+   "data": "2026-11-07T21:17:08Z",
+   "trecho": "A memo circulated earlier this year reportedly claimed that China’s Ministry of State Security recruited a female technology executive to spy on Nvidia's CEO.",
+   "veiculo": "TechCrunch",
+   "id": "i39"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "From the front row to the hot seat — what the midterms mean for Big Tech",
+   "link": "https://techcrunch.com/2026/11/06/from-the-front-row-to-the-hot-seat-what-the-midterms-mean-for-big-tech/",
+   "data": "2026-11-07T04:16:43Z",
+   "trecho": "After spending two years getting cozy with the White House, Big Tech is suddenly trying to make friends with Democrats, and the open question is whether that image makeover can hold up against what states, local communities, and the markets are about to do.",
+   "veiculo": "TechCrunch",
+   "id": "i40"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Crusoe sells troubled Wyoming data center project to Google",
+   "link": "https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/",
+   "data": "2026-11-07T01:40:28Z",
+   "trecho": "The deal highlights the challenges of developing massive AI data centers.",
+   "veiculo": "TechCrunch",
+   "id": "i41"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "OpenAI reportedly raises an additional $11 billion at a $1.25 trillion valuation",
+   "link": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
+   "data": "2026-11-06T22:53:46Z",
+   "trecho": "OpenAI has reportedly raised an additional $11 billion as part of a funding round that hasn't closed yet but is expected to in the coming weeks.",
+   "veiculo": "TechCrunch",
+   "id": "i42"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Chainalysis says hackers stole credentials and tokens for all of its customers",
+   "link": "https://arstechnica.com/security/2026/11/chainalysis-says-hackers-stole-credentials-and-tokens-for-all-of-its-customers/",
+   "data": "2026-11-06T20:56:41Z",
+   "trecho": "Company said a \"multifront cyberattack\" included AI agents and an on-path data snatch.",
+   "veiculo": "Ars Technica",
+   "id": "i43"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Nvidia hardware worth $11.4M vanished between Oakland and Texas",
+   "link": "https://arstechnica.com/gadgets/2026/11/nvidia-hardware-worth-11-4m-vanished-between-oakland-and-texas/",
+   "data": "2026-11-06T20:05:30Z",
+   "trecho": "6 pallets of hardware vanished en route to Texas, with no arrests 2 months later.",
+   "veiculo": "Ars Technica",
+   "id": "i44"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Hundreds of Artex AI hacking tools found publicly exposed to the web",
+   "link": "https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web/",
+   "data": "2026-11-06T18:44:38Z",
+   "trecho": "Security researchers found hundreds of servers hosting the penetration testing tool Artex exposed to the internet, allowing anyone access to the hacking tool.",
+   "veiculo": "TechCrunch",
+   "id": "i45"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Meta introduces Spaces, a new way to collaborate with your Muse agent",
+   "link": "https://techcrunch.com/2026/11/06/meta-introduces-spaces-a-new-way-to-collaborate-with-your-muse-agent/",
+   "data": "2026-11-06T18:44:20Z",
+   "trecho": "Meta's Muse agents continue to get new features and integrations. Spaces promises to be a new way to interact with the AI helpers.",
+   "veiculo": "TechCrunch",
+   "id": "i46"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "How a Blue Wave midterm might reshape the AI industry",
+   "link": "https://techcrunch.com/podcast/how-a-blue-wave-midterm-might-reshape-the-ai-industry/",
+   "data": "2026-11-06T18:00:00Z",
+   "trecho": "Democrats’ historic victories in this week’s U.S. midterm elections could also transform the tech industry. The public voted on 41 data center-related ballot measures on Tuesday — in all but one, the majority voted to impose more restrictions on data center development. And even when data centers weren’t on the…",
+   "veiculo": "TechCrunch",
+   "id": "i47"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "After the midterms, is the AI industry in for a rough two years?",
+   "link": "https://techcrunch.com/video/after-the-midterms-is-the-ai-industry-in-for-a-rough-two-years/",
+   "data": "2026-11-06T17:23:52Z",
+   "trecho": "Democrats’ historic victories in this week’s U.S. midterm elections could also transform the tech industry. The public voted on 41 data center-related ballot measures on Tuesday — in all but one, the majority voted to impose more restrictions on data center development. And even when data centers weren’t on the…",
+   "veiculo": "TechCrunch",
+   "id": "i48"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Quoting Nilay Patel",
+   "link": "https://simonwillison.net/2026/Nov/6/nilay-patel/",
+   "data": "2026-11-06T17:13:12Z",
+   "trecho": "The products aren't good enough to sell people on the costs. You cannot tell people that you have to listen to the whine of a data center in their backyard for AI overviews and some of the most hilarious deep fake slop in history. It's not worth it. It just isn't worth it to anyone. And agents aren't real and they…",
+   "veiculo": "Simon Willison",
+   "id": "i49"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Ramp data shows AI spending stalling just as Anthropic nears its IPO",
+   "link": "https://techcrunch.com/2026/11/06/ramp-data-shows-ai-spending-stalling-just-as-anthropic-nears-its-ipo/",
+   "data": "2026-11-06T15:54:47Z",
+   "trecho": "AI usage keeps climbing, but spending has stalled. Price cuts and smarter cost controls among the biggest spenders could challenge investor assumptions about AI hypergrowth.",
+   "veiculo": "TechCrunch",
+   "id": "i50"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Nvidia CEO Jensen Huang's letter to staff about affair",
+   "link": "https://nvidianews.nvidia.com/news/a-message-to-our-company",
+   "data": "2026-11-08T22:20:09Z",
+   "trecho": "",
+   "veiculo": "nvidianews.nvidia.com",
+   "pontos": 922,
+   "discussao": "https://news.ycombinator.com/item?id=50418016",
+   "id": "i51"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Goldman Sachs is pulling Claude Code from its bankers and traders",
+   "link": "https://www.thestateofai.com/news/goldman-sachs-claude-code-traders-bankers",
+   "data": "2026-11-08T18:16:07Z",
+   "trecho": "",
+   "veiculo": "thestateofai.com",
+   "pontos": 874,
+   "discussao": "https://news.ycombinator.com/item?id=50415628",
+   "id": "i52"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Goodbye Claude, hello Pi",
+   "link": "https://caleb.software/posts/claude-to-pi.html",
+   "data": "2026-11-08T03:11:48Z",
+   "trecho": "",
+   "veiculo": "caleb.software",
+   "pontos": 800,
+   "discussao": "https://news.ycombinator.com/item?id=50410107",
+   "id": "i53"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Claude Code's \"Don't Ask Again\" exposes passwords in 1,122 public GitHub files",
+   "link": "https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again",
+   "data": "2026-11-07T20:45:32Z",
+   "trecho": "",
+   "veiculo": "apiiro.com",
+   "pontos": 621,
+   "discussao": "https://news.ycombinator.com/item?id=50407882",
+   "id": "i54"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "I'm not convinced the AI bubble exists",
+   "link": "https://matteoraso.github.io/im-not-convinced-the-ai-bubble-exists.html#im-not-convinced-the-ai-bubble-exists",
+   "data": "2026-11-08T23:44:36Z",
+   "trecho": "",
+   "veiculo": "matteoraso.github.io",
+   "pontos": 533,
+   "discussao": "https://news.ycombinator.com/item?id=50418975",
+   "id": "i55"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "The End of AI Frontiers",
+   "link": "https://hunch.net/?p=13764006",
+   "data": "2026-11-07T18:04:07Z",
+   "trecho": "",
+   "veiculo": "hunch.net",
+   "pontos": 507,
+   "discussao": "https://news.ycombinator.com/item?id=50406589",
+   "id": "i56"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Statement from Nvidia board of directors",
+   "link": "https://nvidianews.nvidia.com/news/statement-from-nvidia-board-of-directors",
+   "data": "2026-11-08T20:26:43Z",
+   "trecho": "",
+   "veiculo": "nvidianews.nvidia.com",
+   "pontos": 487,
+   "discussao": "https://news.ycombinator.com/item?id=50416801",
+   "id": "i57"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Llama-modchip: 284B DeepSeek on 64GB RAM, no GPU",
+   "link": "https://github.com/synchopate/llama-modchip",
+   "data": "2026-11-08T10:22:04Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 472,
+   "discussao": "https://news.ycombinator.com/item?id=50411961",
+   "id": "i58"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI is dramatically accelerating AI research",
+   "link": "https://www.planned-obsolescence.org/p/ai-is-dramatically-accelerating-ai",
+   "data": "2026-11-06T20:27:23Z",
+   "trecho": "",
+   "veiculo": "planned-obsolescence.org",
+   "pontos": 375,
+   "discussao": "https://news.ycombinator.com/item?id=50397994",
+   "id": "i59"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Anthropic IPO buyers see valuation as low as $1.1T",
+   "link": "https://www.bloomberg.com/news/articles/2026-11-06/anthropic-ipo-valuation-expectations-pressured-after-ai-rout",
+   "data": "2026-11-06T16:54:36Z",
+   "trecho": "",
+   "veiculo": "Bloomberg",
+   "pontos": 322,
+   "discussao": "https://news.ycombinator.com/item?id=50394906",
+   "id": "i60"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "How I'm fighting the AI brain fry",
+   "link": "https://sergeykuhne.com/blog/fighting-ai-brain-fry",
+   "data": "2026-11-08T19:37:42Z",
+   "trecho": "",
+   "veiculo": "sergeykuhne.com",
+   "pontos": 298,
+   "discussao": "https://news.ycombinator.com/item?id=50416363",
+   "id": "i61"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "ChatGPT Desktop forwards your SSH agent to remote machines",
+   "link": "https://news.ycombinator.com/item?id=50422628",
+   "data": "2026-11-09T08:17:49Z",
+   "trecho": "",
+   "veiculo": "news.ycombinator.com",
+   "pontos": 191,
+   "discussao": "https://news.ycombinator.com/item?id=50422628",
+   "id": "i62"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "OpenAI raises $11B at a $1.25T valuation",
+   "link": "https://247wallst.com/investing/2026/11/07/openai-just-raised-11-billion-at-a-1-25-trillion-valuation-below-the-1-4-trillion-it-first-sought/",
+   "data": "2026-11-08T14:49:23Z",
+   "trecho": "",
+   "veiculo": "247wallst.com",
+   "pontos": 189,
+   "discussao": "https://news.ycombinator.com/item?id=50413822",
+   "id": "i63"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Agent memory needs its OpenTelemetry moment",
+   "link": "https://www.lorekit.io/blog/open-agent-memory-format",
+   "data": "2026-11-08T08:40:23Z",
+   "trecho": "",
+   "veiculo": "lorekit.io",
+   "pontos": 188,
+   "discussao": "https://news.ycombinator.com/item?id=50411467",
+   "id": "i64"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "The Components of Agent Memory",
+   "link": "https://www.anthropic.com/research/components-of-agent-memory",
+   "data": "2026-11-07T06:39:04Z",
+   "trecho": "",
+   "veiculo": "Anthropic",
+   "pontos": 185,
+   "discussao": "https://news.ycombinator.com/item?id=50402212",
+   "id": "i65"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Democrats launching congressional investigations into SpaceXAI, META and Apple",
+   "link": "https://www.washingtonpost.com/technology/2026/11/06/after-courting-trump-corporate-america-faces-democratic-reckoning/",
+   "data": "2026-11-06T19:24:24Z",
+   "trecho": "",
+   "veiculo": "The Washington Post",
+   "pontos": 148,
+   "discussao": "https://news.ycombinator.com/item?id=50397102",
+   "id": "i66"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Memorilla: Latent Semantic Memory for LLMs",
+   "link": "https://arxiv.org/abs/2610.21375",
+   "data": "2026-11-06T18:03:33Z",
+   "trecho": "",
+   "veiculo": "arXiv",
+   "pontos": 124,
+   "discussao": "https://news.ycombinator.com/item?id=50395919",
+   "id": "i67"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Wearable device makers are using brain data to train AI without telling users",
+   "link": "https://www.science.org/content/article/wearable-device-makers-are-harvesting-brain-data-train-ai-without-telling-users",
+   "data": "2026-11-08T02:02:38Z",
+   "trecho": "",
+   "veiculo": "science.org",
+   "pontos": 119,
+   "discussao": "https://news.ycombinator.com/item?id=50409856",
+   "id": "i68"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Why I will not be using LLMs in my coding",
+   "link": "https://www.polso.info/why-i-will-not-be-using-llms-coding",
+   "data": "2026-11-08T12:14:10Z",
+   "trecho": "",
+   "veiculo": "polso.info",
+   "pontos": 116,
+   "discussao": "https://news.ycombinator.com/item?id=50412591",
+   "id": "i69"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Apple capped engineers at a $200 daily AI budget",
+   "link": "https://www.stork.ai/newsletter/2026-11-08-apple-capped-engineers-at-a-200-daily-ai-budget",
+   "data": "2026-11-09T05:30:11Z",
+   "trecho": "",
+   "veiculo": "stork.ai",
+   "pontos": 109,
+   "discussao": "https://news.ycombinator.com/item?id=50421426",
+   "id": "i70"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Microsoft is winding down Oracle deal to rent AI cloud capacity",
+   "link": "https://www.reuters.com/business/microsoft-is-winding-down-oracle-deal-rent-ai-cloud-capacity-bloomberg-news-2026-11-06/",
+   "data": "2026-11-06T18:04:06Z",
+   "trecho": "",
+   "veiculo": "Reuters",
+   "pontos": 109,
+   "discussao": "https://news.ycombinator.com/item?id=50395933",
+   "id": "i71"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "The AI sell-off compared to well-known stock market crashes",
+   "link": "https://www.kadoa.com/companies/insights/ai-selloff-perspective",
+   "data": "2026-11-07T02:20:06Z",
+   "trecho": "",
+   "veiculo": "kadoa.com",
+   "pontos": 100,
+   "discussao": "https://news.ycombinator.com/item?id=50401029",
+   "id": "i72"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Silicon Valley Promises AI Will Cure Disease. Drugmaker CEOs Aren't Buying It",
+   "link": "https://www.wsj.com/tech/ai/silicon-valley-promises-ai-will-cure-disease-drugmaker-ceos-arent-buying-it-5218511c",
+   "data": "2026-11-08T18:43:07Z",
+   "trecho": "",
+   "veiculo": "The Wall Street Journal",
+   "pontos": 98,
+   "discussao": "https://news.ycombinator.com/item?id=50415817",
+   "id": "i73"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "ChatGPT silently passes data between connectors and the bounty wants an ID card",
+   "link": "https://community.openai.com/t/security-follow-up-tool-call-silently-routed-to-a-different-connector/1413053",
+   "data": "2026-11-06T22:50:43Z",
+   "trecho": "",
+   "veiculo": "OpenAI",
+   "pontos": 94,
+   "discussao": "https://news.ycombinator.com/item?id=50399569",
+   "id": "i74"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Anthropic IPO valuation talks drop to $1.3T",
+   "link": "https://epyhia.com/anthropic-ipo-valuation-talks-drop-to-1-3-trillion-as-major-investors",
+   "data": "2026-11-06T17:21:15Z",
+   "trecho": "",
+   "veiculo": "epyhia.com",
+   "pontos": 93,
+   "discussao": "https://news.ycombinator.com/item?id=50395318",
+   "id": "i75"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Google apresenta versões mais potentes de seus chips de IA",
+   "link": "https://tecnoblog.net/noticias/google-apresenta-versoes-mais-potentes-de-seus-chips-de-ia/",
+   "data": "2026-11-09T18:53:38Z",
+   "trecho": "TPU 8tx e 8i Max completam família de quatro aceleradores da 8ª geração. Google apresenta versões mais potentes de seus chips de IA",
+   "veiculo": "Tecnoblog",
+   "id": "i76"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Desenvolvedor cria script que manda dados de RAM para Sam Altman",
+   "link": "https://tecnoblog.net/noticias/desenvolvedor-cria-script-que-manda-dados-de-memoria-ram-para-sam-altman/",
+   "data": "2026-11-09T17:19:21Z",
+   "trecho": "Ferramenta para Linux transforma dados de memória disponível em mensagens irônicas ao CEO da OpenAI, em resposta a declarações sobre o uso de RAM em PCs. Desenvolvedor cria script que manda dados de RAM para Sam Altman",
+   "veiculo": "Tecnoblog",
+   "id": "i77"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Linus Torvalds já vê “paz” entre Linux e ferramentas de IA que caçam bugs",
+   "link": "https://tecnoblog.net/noticias/linus-torvalds-ja-ve-paz-entre-linux-e-ferramentas-de-ia-que-cacam-bugs/",
+   "data": "2026-11-09T15:26:09Z",
+   "trecho": "Linus Torvalds relatou que, em alguns pontos do Linux, o número de correções começou a superar os relatórios de bugs gerados por IA. Linus Torvalds já vê “paz” entre Linux e ferramentas de IA que caçam bugs",
+   "veiculo": "Tecnoblog",
+   "id": "i78"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "Nemotron-Personas-Finance-Japan: A Synthetic Dataset Capturing Japan's Demographics and Financial Context",
+   "link": "https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan",
+   "data": "2026-11-09T15:05:57Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i79"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Nvidia investiga CEO por relação com suposta espiã chinesa",
+   "link": "https://tecnoblog.net/noticias/nvidia-investiga-ceo-por-relacao-com-suposta-espia-chinesa/",
+   "data": "2026-11-09T12:55:30Z",
+   "trecho": "Jensen Huang admitiu ter tido um relacionamento com executiva suspeita de espionagem industrial. Nvidia investiga CEO por relação com suposta espiã chinesa",
+   "veiculo": "Tecnoblog",
+   "id": "i80"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "Your Experts Have Partners. There's HOPE for Keeping Them Together",
+   "link": "https://huggingface.co/blog/amazon/higher-order-pruning-experts",
+   "data": "2026-11-09T12:34:29Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i81"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Dona da 99 teve número “insignificante” de corridas solicitadas por agentes de IA",
+   "link": "https://tecnoblog.net/noticias/dona-da-99-teve-numero-insignificante-de-corridas-solicitadas-por-agentes-de-ia/",
+   "data": "2026-11-09T04:18:55Z",
+   "trecho": "Na semana passada, Uber revelou que apenas quatro viagens por IA foram registradas. Dona da 99 teve número “insignificante” de corridas solicitadas por agentes de IA",
+   "veiculo": "Tecnoblog",
+   "id": "i82"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "AMD agora prioriza data centers; mas e os jogos e os PCs?",
+   "link": "https://tecnoblog.net/noticias/amd-agora-prioriza-data-centers-mas-e-os-jogos-e-os-pcs/",
+   "data": "2026-11-06T19:59:24Z",
+   "trecho": "Aplicações de IA aumentaram demanda por data centers que, por sua vez, agora são principal fonte de receita para a AMD. AMD agora prioriza data centers; mas e os jogos e os PCs?",
+   "veiculo": "Tecnoblog",
+   "id": "i83"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Microsoft quer patentear IA que altera falas ao vivo",
+   "link": "https://tecnoblog.net/noticias/microsoft-quer-patentear-ia-que-altera-falas-ao-vivo/",
+   "data": "2026-11-06T15:10:46Z",
+   "trecho": "Sistema poderia traduzir discursos e substituir palavras com poucos segundos de atraso e sincronia labial. Microsoft quer patentear IA que altera falas ao vivo",
+   "veiculo": "Tecnoblog",
+   "id": "i84"
+  }
+ ],
+ "editor": {
+  "aprovada": true,
+  "acoes": [
+   "Barrado antes da redação, fonte única sem reputação: Llama-modchip: 284B DeepSeek on 64GB RAM, no GPU",
+   "Barrado antes da redação, fonte única sem reputação: Goldman Sachs is pulling Claude Code from its bankers and traders",
+   "Barrado antes da redação, fonte única sem reputação: ChatGPT Desktop forwards your SSH agent to remote machines",
+   "Barrado antes da redação, fonte única sem reputação: AI is dramatically accelerating AI research",
+   "Barrado antes da redação, fonte única sem reputação: Apple capped engineers at a $200 daily AI budget",
+   "Barrado antes da redação, fonte única sem reputação: The AI sell-off compared to well-known stock market crashes",
+   "Corrigido (A melhoria em programação, raciocínio e visão vem da Anthropic (fonte primária), não do TechCrunch. O resumo também omite o preço, um detalhe concreto das fontes.): Anthropic lança Mythos 5.2 e Fable 5.2, com saídas até 30% mais rápidas",
+   "Corrigido (A investigação e a admissão de Huang vêm da Nvidia (comunicado do conselho e carta de Huang), não do TechCrunch. A acusação de espionagem fica atribuída ao The Verge e ao TechCrunch, veículos de refer): Nvidia abre investigação sobre Jensen Huang e relação com suposta espiã chinesa",
+   "Corrigido (A descoberta é da Apiiro, e o Ars Technica a repercute. O título exagera ao dizer que a ferramenta expõe segredos, quando o vazamento ocorre se o arquivo local de configuração for enviado ao repositór): Apiiro encontra senhas e chaves de API de usuários do Claude Code em repositórios públicos"
+  ],
+  "revisao": {
+   "a1": {
+    "veredito": "corrigir",
+    "motivo": "A melhoria em programação, raciocínio e visão vem da Anthropic (fonte primária), não do TechCrunch. O resumo também omite o preço, um detalhe concreto das fontes."
+   },
+   "a2": {
+    "veredito": "corrigir",
+    "motivo": "A investigação e a admissão de Huang vêm da Nvidia (comunicado do conselho e carta de Huang), não do TechCrunch. A acusação de espionagem fica atribuída ao The Verge e ao TechCrunch, veículos de refer"
+   },
+   "a4": {
+    "veredito": "corrigir",
+    "motivo": "A descoberta é da Apiiro, e o Ars Technica a repercute. O título exagera ao dizer que a ferramenta expõe segredos, quando o vazamento ocorre se o arquivo local de configuração for enviado ao repositór"
+   }
+  }
+ },
+ "movimentos": [
+  {
+   "id": "6a9bd3f467fe",
+   "lab": "anthropic",
+   "fonte": "Claude Platform release notes",
+   "link": "https://support.claude.com/en/articles/14604842",
+   "data": "2026-11-09",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Claude Fable 5.2 e Claude Mythos 5.2 são lançados",
+    "simples": "A Anthropic lançou o Claude Fable 5.2, para raciocínio exigente e trabalho longo de agentes; o Mythos 5.2 oferece o mesmo, mas só a organizações verificadas.",
+    "tecnico": "claude-fable-5-2 e claude-mythos-5-2. Contexto de 1M tokens, saída máxima de 128k, adaptive thinking sempre ativo. US$ 8 por MTok de entrada e US$ 40 por MTok de saída. Fable 5.2 na Claude API, AWS, Google Cloud, Bedrock e Microsoft Foundry."
+   },
+   "en": {
+    "titulo": "Claude Fable 5.2 and Claude Mythos 5.2 launch",
+    "simples": "Anthropic launched Claude Fable 5.2, built for demanding reasoning and long agentic work; Mythos 5.2 offers the same only to verified organizations.",
+    "tecnico": "claude-fable-5-2 and claude-mythos-5-2. 1M token context window, 128k max output tokens, always-on adaptive thinking. $8 USD per MTok of input and $40 USD per MTok of output. Fable 5.2 on Claude API, AWS, Google Cloud, Bedrock and Microsoft Foundry."
+   }
+  },
+  {
+   "id": "cefd2ba1d1c1",
+   "lab": "anthropic",
+   "fonte": "Claude Platform release notes",
+   "link": "https://platform.claude.com/docs/en/build-with-claude/preserved-thinking#account-bound-thinking",
+   "data": "2026-11-09",
+   "tipo": "api",
+   "pt": {
+    "titulo": "Claude Fable 5.2 e Mythos 5.2 restringem blocos de thinking à conta",
+    "simples": "Os blocos de raciocínio gerados por esses dois modelos só funcionam na conta que os produziu ou em uma conta vinculada a ela.",
+    "tecnico": "Thinking blocks de Claude Fable 5.2 e Claude Mythos 5.2 só funcionam na conta que os produziu ou em conta vinculada a ela. Ver Preserved thinking."
+   },
+   "en": {
+    "titulo": "Claude Fable 5.2 and Mythos 5.2 thinking blocks are tied to the account",
+    "simples": "Thinking blocks produced by these two models work only in the account that produced them or in an account linked to it.",
+    "tecnico": "Thinking blocks from Claude Fable 5.2 and Claude Mythos 5.2 work only in the account that produced them or a linked account. See Preserved thinking."
+   }
+  },
+  {
+   "id": "8c3552630610",
+   "lab": "anthropic",
+   "fonte": "Claude Platform release notes",
+   "link": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool#migrate-from-computer-20251124",
+   "data": "2026-11-09",
+   "tipo": "api",
+   "pt": {
+    "titulo": "Claude Fable 5.2 e Mythos 5.2 usam computer use via computer_toolset_20260801",
+    "simples": "Os dois modelos usam o computador por um novo conjunto de ferramentas; a ferramenta antiga dá erro, exceto no Amazon Bedrock.",
+    "tecnico": "Computer use via toolset computer_toolset_20260801. Requisição que declara computer_20251124 retorna erro 400 em todas as plataformas, exceto Amazon Bedrock, onde a ferramenta anterior ainda funciona."
+   },
+   "en": {
+    "titulo": "Claude Fable 5.2 and Mythos 5.2 use computer_toolset_20260801 for computer use",
+    "simples": "Both models support computer use through a new toolset; the earlier tool returns an error except on Amazon Bedrock.",
+    "tecnico": "Computer use via the computer_toolset_20260801 toolset. A request declaring computer_20251124 returns a 400 error on every platform except Amazon Bedrock, where the earlier tool still works."
+   }
+  },
+  {
+   "id": "213eb3bde6a0",
+   "lab": "openai",
+   "fonte": "OpenAI API changelog",
+   "link": "https://developers.openai.com/api/docs/guides/agents-api/configuration#update-settings-for-an-existing-session",
+   "data": "2026-10-30",
+   "tipo": "api",
+   "pt": {
+    "titulo": "Agents API permite atualizar ferramentas de uma sessão existente",
+    "simples": "Na beta pública da Agents API, dá para trocar as ferramentas de uma sessão em andamento, e a compactação de contexto agora roda em segundo plano.",
+    "tecnico": "v1/agents e v1/agents/sessions. A atualização substitui a lista completa de ferramentas. compaction.async false ativa compactação bloqueante; em segundo plano pode aumentar o uso de tokens. experimental.time_awareness true dá lembretes de hora, desativado por padrão."
+   },
+   "en": {
+    "titulo": "Agents API lets you update the tools in an existing session",
+    "simples": "In the Agents API public beta, you can change the tools of a running session, and context compaction now runs in the background by default.",
+    "tecnico": "v1/agents and v1/agents/sessions. Updates replace the full tool list. Set compaction.async to false for blocking compaction; background compaction may increase token usage. experimental.time_awareness true gives time reminders, disabled by default."
+   }
+  },
+  {
+   "id": "f7d031818375",
+   "lab": "tencent",
+   "fonte": "Hugging Face",
+   "link": "https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16",
+   "data": "2026-11-07",
+   "chaves": [
+    "hf:tencent/Qwen3.8-27B-DSpine-b16"
+   ],
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Qwen3.8-27B-DSpine-b16 chega com pesos abertos no Hugging Face",
+    "simples": "A Tencent publicou no Hugging Face os pesos abertos de um modelo de geração de texto.",
+    "tecnico": "Qwen3.8-27B-DSpine-b16, tarefa text-generation, pesos abertos no Hugging Face."
+   },
+   "en": {
+    "titulo": "Qwen3.8-27B-DSpine-b16 arrives with open weights on Hugging Face",
+    "simples": "Tencent published the open weights of a text generation model on Hugging Face.",
+    "tecnico": "Qwen3.8-27B-DSpine-b16, text-generation task, open weights on Hugging Face."
+   }
+  }
+ ],
+ "movimentos_ignorados": [
+  {
+   "id": "8a7dae27d101",
+   "lab": "anthropic",
+   "data": "2026-11-09",
+   "motivo": "limite de 3 por laboratório na edição"
+  },
+  {
+   "id": "52ce28fb1729",
+   "lab": "anthropic",
+   "data": "2026-11-09",
+   "motivo": "limite de 3 por laboratório na edição"
+  },
+  {
+   "id": "3e90dd4e7fdd",
+   "lab": "anthropic",
+   "data": "2026-11-09",
+   "motivo": "limite de 3 por laboratório na edição"
+  },
+  {
+   "id": "0f06c565053e",
+   "lab": "anthropic",
+   "data": "2026-11-09",
+   "motivo": "limite de 3 por laboratório na edição"
+  },
+  {
+   "id": "02992415dcf7",
+   "lab": "anthropic",
+   "data": "2026-11-09",
+   "motivo": "limite de 3 por laboratório na edição"
+  }
+ ],
+ "fontes_movimentos": {
+  "anthropic": {
+   "ok": true,
+   "itens": 16
+  },
+  "openai": {
+   "ok": true,
+   "itens": 8
+  },
+  "google_api": {
+   "ok": true,
+   "itens": 0
+  },
+  "google_app": {
+   "ok": true,
+   "itens": 0
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 0
+  },
+  "z-ai": {
+   "ok": true,
+   "itens": 0
+  },
+  "minimax": {
+   "ok": true,
+   "itens": 0
+  },
+  "moonshotai": {
+   "ok": true,
+   "itens": 1
+  },
+  "qwen": {
+   "ok": true,
+   "itens": 0
+  },
+  "hf": {
+   "ok": true,
+   "itens": 2
+  }
+ }
+}
