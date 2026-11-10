@@ -528,5 +528,121 @@ ok("API: extrai o JSON da resposta", cl.json("s", "u") == {"assuntos": []})
 ok("API: sem temperature (recusado pelos modelos recentes)", "temperature" not in se.enviados[0], se.enviados[0])
 ok("API: soma o uso de tokens", cl.uso == {"entrada": 3, "saida": 2})
 
+# ---- estreia no top 5 vira assunto obrigatorio (10/11/2026, caso Tencent Hy4)
+print("estreia no top 5")
+import csv as _csv  # noqa: E402
+with tempfile.TemporaryDirectory() as tmp:
+    tmp = Path(tmp)
+    rk, ct, pasta, ini = tmp / "rk.csv", tmp / "cat.csv", tmp / "pauta", tmp / "inicial.json"
+    pasta.mkdir()
+    dias_rk = ["2026-08-01"] + [f"2026-11-0{k}" for k in range(1, 9)]
+    with open(rk, "w", newline="") as fh:
+        w = _csv.writer(fh)
+        w.writerow(["date", "model_permaslug", "total_tokens"])
+        for d in dias_rk:
+            for k in range(50):
+                w.writerow([d, f"velho/m{k}", 1000 - k])
+            w.writerow([d, "other", 99999])  # "other" nunca conta nem empurra posicao
+        # novo: estreia em 04/11 em 4o, chega a 2o; a variante :free soma no mesmo modelo
+        for d, pos in [("2026-11-04", 4), ("2026-11-05", 2), ("2026-11-06", 2), ("2026-11-07", 2), ("2026-11-08", 2)]:
+            w.writerow([d, "tencent/hy9-20261104", 1000 - (pos - 1) + 0.25])
+            w.writerow([d, "tencent/hy9-20261104:free", 0.25])
+        w.writerow(["2026-11-05", "fraco/x-1", 1000 - 7 + 0.5])     # estreia em 8o: fora do top 5
+        w.writerow(["2026-11-09", "futuro/y-1", 5000])              # dia da pauta: nao conta
+        w.writerow(["2026-08-01", "antigo/z-1", 5000])              # estreia velha: fora da janela, mesmo no top 5
+        w.writerow(["2026-11-07", "antigo/z-1", 5000])
+    ct.write_text("canonical_slug,model_id,name,vendor,price_prompt,price_completion,context_length,hugging_face_id\n"
+                  "tencent/hy9-20261104,tencent/hy9,Tencent: Hy9,tencent,4.17e-07,1.2505e-06,1048576,tencent/Hy9\n")
+    ini.write_text(json.dumps({"movimentos": []}))
+    es = P.estreias_top("2026-11-09", rk, ct)
+    ok("estreia: so quem estreou na janela e chegou ao top 5", [e["slug"] for e in es] == ["tencent/hy9-20261104"], es)
+    e = es[0] if es else {}
+    ok("estreia: posicoes de estreia, melhor e ultimo dia, sem 'other' e com :free somado",
+       (e.get("estreia"), e.get("pos_estreia"), e.get("melhor_pos"), e.get("pos_ultimo"), e.get("ultimo_dia"))
+       == ("2026-11-04", 4, 2, 2, "2026-11-08"), e)
+    ok("estreia: nome e laboratorio do catalogo", (e.get("lab"), e.get("nome"), e.get("model_id")) == ("Tencent", "Hy9", "tencent/hy9"), e)
+    it = P.item_estreia(e)
+    ok("estreia: item da fonte dado, oficial para o editor, com link da pagina do modelo",
+       it["fonte"] == "dado" and P.primaria(it, ["tencent"]) and it["link"] == "https://openrouter.ai/tencent/hy9"
+       and it["obrigatorio"] and it["estreia"] == "tencent/hy9-20261104" and it["lab"] == "tencent", it)
+    ok("estreia: trecho com os numeros da fonte, preco e contexto inteiros, sem data",
+       all(x in it["trecho"] for x in ("#4", "#2", "$0.42", "$1.25", "1,048,576", "about 1 million", "tencent/Hy9"))
+       and "2026" not in it["trecho"], it["trecho"])
+    ok("estreia: redacao com os numeros do trecho passa na trava",
+       P.numeros_ok("O Hy9 estreou em 4º, chegou a 2º e cobra US$ 0,42 e US$ 1,25, com 1 milhão de tokens de contexto", it["titulo"] + " " + it["trecho"])[0])
+    ok("estreia: modelo anonimo ganha rotulo em ingles",
+       P.item_estreia(dict(e, lab="Stealth model", nome="Bunny"))["titulo"].startswith("Stealth model Bunny"))
+    # ja coberta: nome em assunto ou movimento recente, ou no registro inicial
+    ok("estreia: sem cobertura, entra", not P.ja_coberta(e, "2026-11-09", pasta, inicial=ini))
+    (pasta / "2026-11-06.json").write_text(json.dumps({"assuntos": [], "movimentos": [
+        {"pt": {"titulo": "Tencent publica pesos do HY-9"}, "en": {"titulo": "Tencent publishes HY-9 weights"}}]}))
+    ok("estreia: nome citado em movimento recente (sem pontuacao) conta como coberto", P.ja_coberta(e, "2026-11-09", pasta, inicial=ini))
+    ok("estreia: pauta antiga demais nao conta", not P.ja_coberta(e, "2026-12-09", pasta, inicial=ini))
+    ok("estreia: pauta do proprio dia nao conta", not P.ja_coberta(e, "2026-11-06", pasta, inicial=ini))
+    (pasta / "2026-11-06.json").unlink()
+    ini.write_text(json.dumps({"movimentos": [{"data": "2026-11-05", "pt": {"titulo": "Hy9 chega"}, "en": {"titulo": "Hy9 arrives"}}]}))
+    ok("estreia: registro inicial tambem conta", P.ja_coberta(e, "2026-11-09", pasta, inicial=ini))
+    its, st = P.itens_estreia("2026-11-09", pasta, ranking=tmp / "nao-existe.csv")
+    ok("estreia: dado ausente nao derruba a pauta", its == [] and st["ok"] is False and "FileNotFoundError" in st["erro"], st)
+
+
+class FalsoEstreia(FalsoEditor):
+    """A IA esquece o item da estreia no agrupamento: ele precisa virar assunto sozinho e sair primeiro."""
+    def __init__(self, repete=False, **kw):
+        super().__init__(revisora_padrao, **kw)
+        self.repete = repete
+
+    def json(self, sistema, usuario, max_tokens=0):
+        if "agrupar os itens" in sistema:
+            self.chamadas.append((sistema, usuario))
+            g = [dict(x) for x in GRUPOS_ED]
+            if self.repete:
+                g.append({"itens": ["d1"], "categoria": "lancamento", "labs": ["tencent"], "repete": "p1"})
+            return {"assuntos": g}
+        return super().json(sistema, usuario, max_tokens)
+
+
+EST = {"slug": "tencent/hy9-20261104", "vendor": "tencent", "lab": "Tencent", "nome": "Hy9", "model_id": "tencent/hy9",
+       "estreia": "2026-11-04", "pos_estreia": 4, "melhor_pos": 2, "melhor_dia": "2026-11-05", "ultimo_dia": "2026-11-08",
+       "pos_ultimo": 2, "tokens_ultimo": 2.74e12, "preco_entrada": 0.417, "preco_saida": 1.2505, "contexto": 1048576, "hf": "tencent/Hy9"}
+it_est = dict(P.item_estreia(EST), id="d1")
+fes = FalsoEstreia()
+muitos_ed = [dict(x) for x in ITENS_ED] + [dict(P.item("hn", 1, f"Enchimento {k}", f"https://x.com/{k}", AGORA, "", "x"), id=f"z{k}")
+                                           for k in range(P.MAX_ITENS_PROMPT)] + [dict(it_est)]
+pes = P.montar("2026-11-09", muitos_ed, status, fes, ctx, AGORA, editor=True, get=get_falso)
+a0 = pes["assuntos"][0] if pes["assuntos"] else {}
+ok("estreia: item vai para a IA mesmo depois do corte de itens", '"d1"' in fes.chamadas[0][1])
+ok("estreia: IA esqueceu, vira assunto sozinho e sai primeiro com o bonus",
+   a0.get("estreia") == "tencent/hy9-20261104" and a0["fontes"][0]["veiculo"] == "OpenRouter" and a0["nota"] >= P.BONUS_ESTREIA
+   and a0["labs"] == ["tencent"] and a0["categoria"] == "lancamento", a0)
+ok("estreia: os outros assuntos seguem pela formula", len(pes["assuntos"]) == 3 and "estreia" not in pes["assuntos"][1])
+ok("estreia: PR mostra a marca", "estreia no top 5 `tencent/hy9-20261104`" in P.corpo_pr(pes))
+pr_rep = P.montar("2026-11-09", [dict(x) for x in ITENS_ED] + [dict(it_est)], status, FalsoEstreia(repete=True), ctx, AGORA,
+                  historico=[{"dia": "2026-11-06", "titulo": "Tencent Hy9 debuts", "links": []}], editor=True, get=get_falso)
+ok("estreia: IA reconhece como ja publicada, nao repete", not any(a.get("estreia") for a in pr_rep["assuntos"]),
+   [a.get("estreia") for a in pr_rep["assuntos"]])
+pr_link = P.montar("2026-11-09", [dict(x) for x in ITENS_ED] + [dict(it_est)], status, FalsoEstreia(), ctx, AGORA,
+                   historico=[{"dia": "2026-11-06", "titulo": "x", "links": ["https://openrouter.ai/tencent/hy9"]}], editor=True, get=get_falso)
+ok("estreia: link ja publicado nao volta", not any(a.get("estreia") for a in pr_link["assuntos"] + pr_link["descartados"]))
+
+# ---- aviso de pauta publicada (automerge.yml, pipeline/aviso.py)
+print("aviso de publicada")
+import aviso as AV  # noqa: E402
+av = AV.aviso({"dia": "2026-11-09", "assuntos": [dict(a0, pt={"titulo": "Tencent Hy9 estreia em 4º e chega a 2º", "resumo": "r"}),
+                                                 {"pt": {"titulo": "OpenAI lança X", "resumo": "r"}}],
+               "movimentos": [{"lab": "anthropic", "pt": {"titulo": "Claude Y é lançado"}}],
+               "editor": {"acoes": ["Corrigido (x): a", "Barrado antes da redação, y: b", "Barrado antes da redação, y: c"]}}, "falercia")
+ok("aviso: menciona o dono, diz que deu certo e traz o link da edicao",
+   av.startswith("@falercia A pauta de 2026-11-09 foi publicada com sucesso: https://modelseason.com/radar/2026-11-09"), av[:120])
+ok("aviso: lista noticias e movimentos com o laboratorio",
+   "**Notícias (2)**" in av and "- OpenAI lança X" in av and "(estreia no ranking)" in av
+   and "**Movimentos dos laboratórios (1)**" in av and "- Anthropic: Claude Y é lançado" in av, av)
+ok("aviso: resumo do editor em uma linha", "1 corrigido(s), 0 retirado(s) e 2 barrado(s)" in av, av)
+ok("aviso: edicao so com o dado", "Edição só com o dado do dia." in AV.aviso({"dia": "2026-11-09", "assuntos": [], "movimentos": []}, "d"))
+ok("aviso: sem travessao", "—" not in av and "–" not in av)
+ok("aviso: so biblioteca padrao (o automerge nao instala dependencias)",
+   all(m in sys.stdlib_module_names or m == "movimentos" for m in ("json", "sys", "pathlib", "movimentos"))
+   and "import requests" not in Path(AV.__file__).read_text() and "import requests" not in Path(P.movimentos.__file__).read_text())
+
 print(f"\n{'TODAS AS CHECAGENS PASSARAM' if not falhas else str(len(falhas)) + ' FALHA(S)'}")
 sys.exit(1 if falhas else 0)

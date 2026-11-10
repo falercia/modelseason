@@ -32,6 +32,7 @@ Uso:
     python pipeline/pauta.py --janela 54     # horas de coleta, em vez da regra por dia da semana
 """
 import argparse
+import csv
 import datetime as dt
 import html
 import json
@@ -673,7 +674,7 @@ RECONHECIDOS = set(REFERENCIA.values()) | set(PRIMARIAS.values()) | {
     "Hugging Face", "NIST", "Comissão Europeia", "DeepSeek", "Câmara dos Deputados", "Anthropic",
     "Wired", "VentureBeat", "404 Media", "Platformer", "The Register", "Engadget", "ZDNET",
     "Business Insider", "Fortune", "Forbes", "The Next Web", "The Atlantic"}
-FONTES_OFICIAIS = {"openai", "google", "anthropic", "hf", "deepseek", "nist", "ue", "camara"}
+FONTES_OFICIAIS = {"openai", "google", "anthropic", "hf", "deepseek", "nist", "ue", "camara", "dado"}
 SOCIAIS = {"x.com", "twitter.com", "reddit.com", "linkedin.com", "youtube.com", "threads.net", "bsky.app",
            "facebook.com", "mastodon.social", "news.ycombinator.com"}
 MAX_POR_LAB = 2        # no maximo dois dos tres assuntos do mesmo laboratorio
@@ -882,6 +883,137 @@ def editar(claude, elegiveis, por_id, get=None):
                                "acoes": acoes, "revisao": revisao}
 
 
+# ------------------------------------------------------------------ estreia no top 5 (10/11/2026)
+
+# O Tencent Hy4 estreou em 4o no ranking diario em 04/11, foi o 2o modelo mais usado a partir
+# de 05/11 e nao saiu em nenhuma pauta: nenhuma fonte de noticia coletada falou dele. Agora o
+# proprio dado vira fonte. Modelo que estreou no ranking nos ultimos JANELA_ESTREIA dias e chegou
+# ao top TOP_ESTREIA entra como item da fonte "dado" (veiculo OpenRouter, oficial para o editor),
+# vai para a IA mesmo se o corte de itens o deixaria de fora, vira assunto sozinho se a IA nao o
+# agrupar e soma BONUS_ESTREIA na nota, o que o poe na frente de qualquer nota da formula. As
+# travas seguem valendo: repeticao (link ja publicado, "repete" da IA, nome ja citado em
+# assunto ou movimento recente), numeros so do trecho e a revisora do editor.
+TOP_ESTREIA = 5
+JANELA_ESTREIA = 10     # dias entre a estreia e o ultimo dia do ranking
+BONUS_ESTREIA = 30      # a formula vai ate ~34 (12 de fontes, 10 de HN, 6 de categoria, 6 de trafego)
+DIAS_COBERTURA = 21     # nome citado em pauta deste periodo conta como ja coberto
+
+
+def _num(v):
+    """Numero do trecho sem zero sobrando: 0.417 -> '0.42', 1.25 -> '1.25', 8.0 -> '8'."""
+    return f"{v:.2f}".rstrip("0").rstrip(".")
+
+
+def estreias_top(dia, ranking=DATA / "rankings_daily.csv", catalogo=DATA / "models_catalog.csv",
+                 top=TOP_ESTREIA, janela=JANELA_ESTREIA):
+    """Estreias no ranking diario que chegaram ao top `top`. So dias anteriores a pauta contam.
+    Modelo = slug sem a variante (":free" somado), sem a linha "other"; posicao como no
+    build_web, 1 + modelos com mais tokens no dia. Estreia = primeiro dia do modelo no historico."""
+    por = {}
+    with open(ranking, newline="") as fh:
+        for x in csv.DictReader(fh):
+            if x["date"] >= dia:
+                continue
+            b = x["model_permaslug"].split(":")[0]
+            if b == "other":
+                continue
+            d = por.setdefault(x["date"], {})
+            d[b] = d.get(b, 0.0) + float(x["total_tokens"] or 0)
+    if not por:
+        return []
+    dias = sorted(por)
+    ult = dias[-1]
+    corte = (dt.date.fromisoformat(ult) - dt.timedelta(days=janela)).isoformat()
+    primeiro, serie = {}, {}
+    for d in dias:
+        vals = sorted(por[d].values(), reverse=True)
+        for b, t in por[d].items():
+            primeiro.setdefault(b, d)
+            if primeiro[b] > corte:
+                serie.setdefault(b, []).append((d, 1 + sum(1 for v in vals if v > t), t))
+    cat = {}
+    if Path(catalogo).exists():
+        with open(catalogo, newline="") as fh:
+            cat = {x["canonical_slug"]: x for x in csv.DictReader(fh)}
+    out = []
+    for b, s in sorted(serie.items()):
+        melhor = min(s, key=lambda z: (z[1], z[0]))
+        if melhor[1] > top:
+            continue
+        c, vendor = cat.get(b, {}), b.split("/")[0]
+        nome_cat = c.get("name") or b.split("/")[-1]
+        # o trecho vai em ingles: "Anônimo (stealth)" do LAB nao serve aqui
+        rotulo = "Stealth model" if vendor == "stealth" else (LAB.get(vendor) or vendor.capitalize())
+        lab, _, nome = nome_cat.partition(": ") if ": " in nome_cat else (rotulo, "", nome_cat)
+        hoje = next((z for z in s if z[0] == ult), None)
+        preco = lambda k: float(c[k]) * 1e6 if c.get(k) not in (None, "") else None  # noqa: E731
+        out.append({"slug": b, "vendor": vendor, "lab": lab, "nome": nome, "model_id": c.get("model_id") or b,
+                    "estreia": s[0][0], "pos_estreia": s[0][1], "melhor_pos": melhor[1], "melhor_dia": melhor[0],
+                    "ultimo_dia": ult, "pos_ultimo": hoje[1] if hoje else None, "tokens_ultimo": hoje[2] if hoje else None,
+                    "preco_entrada": preco("price_prompt"), "preco_saida": preco("price_completion"),
+                    "contexto": int(float(c["context_length"])) if c.get("context_length") else None,
+                    "hf": c.get("hugging_face_id") or None})
+    return out
+
+
+def item_estreia(e):
+    """Item da fonte "dado" para uma estreia: o trecho traz so numeros da fonte (posicoes,
+    tokens do dia, preco e contexto do catalogo), sem datas, que a pauta nao escreve."""
+    nome = f"{e['lab']} {e['nome']}"
+    t = [f"{nome} ({e['model_id']}) entered the OpenRouter daily token ranking at #{e['pos_estreia']}.",
+         f"Best position so far: #{e['melhor_pos']}."]
+    if e["pos_ultimo"]:
+        tok = e["tokens_ultimo"]
+        qtd = f"{tok / 1e12:.2f} trillion" if tok >= 1e12 else f"{tok / 1e9:.1f} billion"
+        t.append(f"On the latest day of the ranking it was #{e['pos_ultimo']}, with {qtd} tokens.")
+    else:
+        t.append("On the latest day of the ranking it was out of the top 50.")
+    if e["preco_entrada"] is not None and e["preco_saida"] is not None:
+        t.append(f"Price: ${_num(e['preco_entrada'])} per million input tokens and ${_num(e['preco_saida'])} per million output tokens.")
+    if e["contexto"]:
+        cx = e["contexto"]
+        aprox = f"about {round(cx / 1e6)} million" if cx >= 1e6 else f"about {round(cx / 1e3)} thousand"
+        t.append(f"Context window: {cx:,} tokens ({aprox}).")
+    if e["hf"]:
+        t.append(f"Open weights on Hugging Face: {e['hf']}.")
+    quando = dt.datetime.fromisoformat(e["estreia"]).replace(tzinfo=dt.timezone.utc)
+    it = item("dado", 3, f"{nome} debuts at #{e['pos_estreia']} in the daily token ranking and reaches #{e['melhor_pos']}",
+              f"https://openrouter.ai/{e['model_id']}", quando, "", "OpenRouter",
+              lab=e["vendor"], obrigatorio=True, estreia=e["slug"])
+    it["trecho"] = limpar(" ".join(t), 700)  # o corte padrao de 320 levaria preco e contexto
+    return it
+
+
+def ja_coberta(e, dia, pasta=DESTINO, dias=DIAS_COBERTURA, inicial=movimentos.INICIAL):
+    """O nome do modelo ja apareceu em titulo de assunto ou de movimento publicado nas pautas
+    dos ultimos `dias` dias (antes de `dia`), ou em movimento do registro inicial desse periodo?
+    Compara sem espaco nem pontuacao ("MiMo-V2.6 Flash" = "MiMo-V2.6-Flash"); nome curto demais
+    compara pelo slug."""
+    chave = _chave(e["nome"])
+    if len(chave) < 3:
+        chave = _chave(e["slug"].split("/")[-1])
+    desde = (dt.date.fromisoformat(dia) - dt.timedelta(days=dias)).isoformat()
+    cita = lambda x: any(chave in _chave((x.get(l) or {}).get("titulo")) for l in ("pt", "en"))  # noqa: E731
+    for arq in sorted(Path(pasta).glob("????-??-??.json")):
+        if desde <= arq.name[:10] < dia:
+            p = json.loads(arq.read_text())
+            if any(cita(x) for x in p.get("assuntos", []) + p.get("movimentos", [])):
+                return True
+    if Path(inicial).exists():
+        ms = json.loads(Path(inicial).read_text()).get("movimentos", [])
+        return any(desde <= (m.get("data") or "")[:10] < dia and cita(m) for m in ms)
+    return False
+
+
+def itens_estreia(dia, pasta=DESTINO, **kw):
+    """Itens da fonte "dado", ids d1, d2...; (itens, status da fonte) como as outras fontes."""
+    try:
+        es = [e for e in estreias_top(dia, **kw) if not ja_coberta(e, dia, pasta)]
+    except Exception as e:  # dado ausente ou quebrado nao derruba a pauta
+        return [], {"ok": False, "erro": f"{type(e).__name__}: {str(e)[:120]}"}
+    return [dict(item_estreia(e), id=f"d{k}") for k, e in enumerate(es, 1)], {"ok": True, "itens": len(es)}
+
+
 # ------------------------------------------------------------------ pauta
 
 DIAS_MEMORIA = 10
@@ -953,7 +1085,7 @@ def montar(dia, itens, status, claude, contexto, agora, historico=None, janela=N
     if itens:
         # item que cita um destaque nunca cai no corte do prompt: em 21/09 o unico item do Jev
         # tinha peso 1 e ficou fora dos 80 antes mesmo de a IA ve-lo
-        dest_ids = {i for i in ids if destaque_de({"itens": [i]}, por_id, destaques or [])}
+        dest_ids = {i for i in ids if destaque_de({"itens": [i]}, por_id, destaques or []) or por_id[i].get("obrigatorio")}
         prioridade = [it for it in itens if it["id"] in dest_ids]
         resto = [it for it in itens if it["id"] not in dest_ids][:max(0, MAX_ITENS_PROMPT - len(prioridade))]
         if len(itens) > MAX_ITENS_PROMPT:
@@ -967,10 +1099,21 @@ def montar(dia, itens, status, claude, contexto, agora, historico=None, janela=N
             + "Itens:\n" + json.dumps(lista, ensure_ascii=False, indent=1)
         grupos = valida_agrupamento(claude.json(SISTEMA_AGRUPAR, pedido), ids, {r["id"]: r for r in ref})
         log(f"  {len(grupos)} assuntos")
+        # estreia no top 5 e obrigatoria: se a IA nao a agrupou, vira assunto sozinho
+        obrig = {i for i in ids if por_id[i].get("obrigatorio")}
+        for i in sorted(obrig - {i for g in grupos for i in g["itens"]}):
+            grupos.append({"itens": [i], "categoria": "lancamento", "labs": []})
         for g in grupos:
             # o laboratorio declarado pela propria fonte vale mesmo que o modelo esqueca
             g["labs"] = sorted(set(g["labs"]) | {por_id[i]["lab"] for i in g["itens"] if por_id[i].get("lab") in LAB})
             g["nota"] = nota(g, por_id, share_labs)
+            est = [por_id[i]["estreia"] for i in g["itens"] if i in obrig]
+            if est:
+                g["nota"] = round(g["nota"] + BONUS_ESTREIA, 2)
+                g["estreia"] = est[0]
+                if g["categoria"] == "outro":
+                    g["categoria"] = "lancamento"
+                log(f"  estreia no top {TOP_ESTREIA} '{est[0]}': +{BONUS_ESTREIA} na nota")
             d = destaque_de(g, por_id, destaques or [])
             if d:
                 g["nota"] = round(g["nota"] + d["bonus"], 2)
@@ -997,7 +1140,8 @@ def montar(dia, itens, status, claude, contexto, agora, historico=None, janela=N
             datas = [f["data"] for f in fontes if f["data"]]
             a = {"id": g["id"], "categoria": g["categoria"], "nota": g["nota"], "labs": g["labs"],
                  "publicado_em": datas[0] if datas else None, "fontes": fontes,
-                 **({"destaque": g["destaque"]} if g.get("destaque") else {})}
+                 **({"destaque": g["destaque"]} if g.get("destaque") else {}),
+                 **({"estreia": g["estreia"]} if g.get("estreia") else {})}
             if g["id"] in textos:
                 a.update(textos[g["id"]])
                 a["cruzamento"] = cruzar_labs(g["labs"], contexto)
@@ -1051,7 +1195,8 @@ def corpo_pr(p):
         L.append("Nenhum assunto passou do corte hoje.")
     for a in p["assuntos"]:
         L += [f"### {a['pt']['titulo']}", f"`{a['categoria']}` · nota {a['nota']}"
-              + (f" · destaque `{a['destaque']}`" if a.get("destaque") else ""), "", a["pt"]["resumo"], "",
+              + (f" · destaque `{a['destaque']}`" if a.get("destaque") else "")
+              + (f" · estreia no top {TOP_ESTREIA} `{a['estreia']}`" if a.get("estreia") else ""), "", a["pt"]["resumo"], "",
               f"> EN: **{a['en']['titulo']}**. {a['en']['resumo']}", ""]
         L += [f"- {(f.get('data') or '')[:16].replace('T', ' ')} UTC · [{f['veiculo']}]({f['link']}): {f['titulo']}" for f in a["fontes"]]
         L.append("")
@@ -1101,6 +1246,8 @@ def main(argv=None):
     log(f"janela: {janela} h")
     sessao = requests.Session()
     itens, status = coletar(http_get(sessao), agora, janela=janela)
+    estreias, status["dado"] = itens_estreia(dia)
+    itens += estreias
     for k, v in status.items():
         log(f"  {k}: {v}")
     log(f"coleta: {len(itens)} itens em {time.time() - t0:.0f}s")

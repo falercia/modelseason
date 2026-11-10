@@ -13,6 +13,12 @@ name: Publicar pauta aprovada
 # PAUTA_TOKEN o PR e o merge saem no nome dele. O comentário de aviso, por isso, é
 # feito com o GITHUB_TOKEN (github-actions[bot]) e menciona o dono: menção de outro
 # usuário num PR dele gera e-mail.
+#
+# Publicada com sucesso (desde 10/11/2026): o título do PR vira "Publicada: Pauta do
+# Radar AAAA-MM-DD" antes do comentário, para o e-mail chegar com assunto próprio, e o
+# comentário traz o que saiu (pipeline/aviso.py: notícias, movimentos e o resumo do
+# editor). O JSON da pauta é lido do commit testado; o código vem da main (checkout
+# padrão), nunca do PR. Se o resumo falhar, o aviso sai com a linha simples.
 
 on:
   workflow_run:
@@ -45,6 +51,9 @@ jobs:
       BOT_TOKEN: ${{ github.token }}
       DONO: ${{ github.repository_owner }}
     steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - name: Mesclar se o editor aprovou e avisar o dono
         run: |
           avisar() { GH_TOKEN="$BOT_TOKEN" gh pr comment "$n" --body "@$DONO $1"; }
@@ -60,6 +69,14 @@ jobs:
           fi
           case "$rotulos" in *,segurar,*) echo "PR #$n com a etiqueta segurar."; exit 0;; esac
           case "$rotulos" in *,editor-ok,*) ;; *) echo "PR #$n sem aprovação do editor: fica para merge manual."; exit 0;; esac
+          gh api "repos/$GH_REPO/contents/data/pauta/$dia.json?ref=$SHA" -H "Accept: application/vnd.github.raw" \
+            > "$RUNNER_TEMP/pauta.json" || echo "JSON da pauta não lido; o aviso sai sem resumo."
           gh pr merge "$n" --merge --delete-branch
-          avisar "Pauta de $dia publicada: https://modelseason.com/radar/$dia (o site atualiza em poucos minutos)."
           echo "PR #$n mesclado: a Vercel publica a pauta."
+          if ! python3 -I pipeline/aviso.py "$RUNNER_TEMP/pauta.json" "$DONO" > "$RUNNER_TEMP/aviso.md"; then
+            printf '@%s A pauta de %s foi publicada com sucesso: https://modelseason.com/radar/%s (o site atualiza em poucos minutos).\n' \
+              "$DONO" "$dia" "$dia" > "$RUNNER_TEMP/aviso.md"
+          fi
+          GH_TOKEN="$BOT_TOKEN" gh api -X PATCH "repos/$GH_REPO/pulls/$n" -f title="Publicada: Pauta do Radar $dia" --silent \
+            || echo "Título não mudou; o aviso sai mesmo assim."
+          GH_TOKEN="$BOT_TOKEN" gh pr comment "$n" --body-file "$RUNNER_TEMP/aviso.md"
