@@ -566,8 +566,19 @@ with tempfile.TemporaryDirectory() as tmp:
        it["fonte"] == "dado" and P.primaria(it, ["tencent"]) and it["link"] == "https://openrouter.ai/tencent/hy9"
        and it["obrigatorio"] and it["estreia"] == "tencent/hy9-20261104" and it["lab"] == "tencent", it)
     ok("estreia: trecho com os numeros da fonte, preco e contexto inteiros, sem data",
-       all(x in it["trecho"] for x in ("#4", "#2", "$0.42", "$1.25", "1,048,576", "about 1 million", "tencent/Hy9"))
+       all(x in it["trecho"] for x in ("#4", "#2", "$0.42", "$1.25", "1,048,576", "about 1 million"))
        and "2026" not in it["trecho"], it["trecho"])
+    ok("estreia: sem repositorio publico conferido, nada de pesos abertos (caso Hy4, 401 no Hugging Face)",
+       "Open weights" not in it["trecho"] and "Open weights on Hugging Face: tencent/Hy9" in P.item_estreia(dict(e, hf_publico=True))["trecho"])
+    def get_hf(url):
+        if url.endswith("/tencent/Hy9"):
+            return json.dumps({"id": "tencent/Hy9", "private": False})
+        if url.endswith("/tencent/Priv"):
+            return json.dumps({"id": "tencent/Priv", "private": True})
+        raise RuntimeError("HTTP 401")
+    ok("estreia: repositorio publico confere pela API; privado, 401 ou sem get nao",
+       P.hf_publico("tencent/Hy9", get_hf) and not P.hf_publico("tencent/Priv", get_hf)
+       and not P.hf_publico("tencent/Hy4", get_hf) and not P.hf_publico("tencent/Hy9", None) and not P.hf_publico("", get_hf))
     ok("estreia: redacao com os numeros do trecho passa na trava",
        P.numeros_ok("O Hy9 estreou em 4º, chegou a 2º e cobra US$ 0,42 e US$ 1,25, com 1 milhão de tokens de contexto", it["titulo"] + " " + it["trecho"])[0])
     ok("estreia: modelo anonimo ganha rotulo em ingles",
@@ -582,6 +593,10 @@ with tempfile.TemporaryDirectory() as tmp:
     (pasta / "2026-11-06.json").unlink()
     ini.write_text(json.dumps({"movimentos": [{"data": "2026-11-05", "pt": {"titulo": "Hy9 chega"}, "en": {"titulo": "Hy9 arrives"}}]}))
     ok("estreia: registro inicial tambem conta", P.ja_coberta(e, "2026-11-09", pasta, inicial=ini))
+    ini.write_text(json.dumps({"movimentos": []}))
+    its, st = P.itens_estreia("2026-11-09", pasta, get=get_hf, ranking=rk, catalogo=ct)
+    ok("estreia: itens_estreia confere o repositorio e monta o item", len(its) == 1 and its[0]["id"] == "d1"
+       and "Open weights on Hugging Face: tencent/Hy9" in its[0]["trecho"] and st == {"ok": True, "itens": 1}, (st, its))
     its, st = P.itens_estreia("2026-11-09", pasta, ranking=tmp / "nao-existe.csv")
     ok("estreia: dado ausente nao derruba a pauta", its == [] and st["ok"] is False and "FileNotFoundError" in st["erro"], st)
 
@@ -624,6 +639,15 @@ ok("estreia: IA reconhece como ja publicada, nao repete", not any(a.get("estreia
 pr_link = P.montar("2026-11-09", [dict(x) for x in ITENS_ED] + [dict(it_est)], status, FalsoEstreia(), ctx, AGORA,
                    historico=[{"dia": "2026-11-06", "titulo": "x", "links": ["https://openrouter.ai/tencent/hy9"]}], editor=True, get=get_falso)
 ok("estreia: link ja publicado nao volta", not any(a.get("estreia") for a in pr_link["assuntos"] + pr_link["descartados"]))
+
+# ---- imprensa chinesa em ingles (10/11/2026)
+ok("fontes: SCMP e TechNode na pauta, reconhecidos pelo editor",
+   {"scmp", "technode"} <= set(P.FONTES) and P.reconhecida({"veiculo": "TechNode", "link": "https://technode.com/2026/11/04/x/"})
+   and P.reconhecida({"veiculo": "South China Morning Post", "link": "https://www.scmp.com/tech/x"}))
+ok("fontes: filtro de tema pega laboratorios chineses",
+   all(P.TEMA_IA.search(x) for x in ("Tencent launches Hy4 with vision and computer use capabilities", "Xiaomi updates MiMo",
+                                     "StepFun ships Step 5", "Hunyuan team", "Doubao 2.0"))
+   and not P.TEMA_IA.search("JD.com reportedly tests free short dramas with plans for in-show shopping"))
 
 # ---- aviso de pauta publicada (automerge.yml, pipeline/aviso.py)
 print("aviso de publicada")

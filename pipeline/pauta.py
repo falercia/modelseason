@@ -90,6 +90,7 @@ TEMA_IA = re.compile(
     r"\bAI\b|\bA\.I\.|artificial intelligence|\bLLMs?\b|OpenAI|Anthropic|\bClaude\b|Gemini|ChatGPT|\bGPT-?\d|"
     r"DeepSeek|Mistral|\bLlama\b|\bQwen\b|Nvidia|chatbot|xAI|\bGrok\b|Hugging ?Face|Copilot|Perplexity|"
     r"language models?|frontier models?|\bagents?\b|Moonshot|Kimi|Zhipu|\bGLM\b|MiniMax|OpenRouter|"
+    r"Hunyuan|\bHy\d|\bMiMo\b|StepFun|Doubao|ByteDance Seed|\bERNIE\b|"
     r"\bIA\b|intelig[eê]ncia artificial|AI Act",
     re.I)
 
@@ -113,7 +114,7 @@ NOMES_DOMINIO = {"thenextweb.com": "The Next Web", "venturebeat.com": "VentureBe
                  "x.com": "X", "twitter.com": "X", "arxiv.org": "arXiv", "zdnet.com": "ZDNET",
                  "businessinsider.com": "Business Insider", "fortune.com": "Fortune", "forbes.com": "Forbes",
                  "theregister.com": "The Register", "engadget.com": "Engadget", "sciencedirect.com": "ScienceDirect",
-                 "theatlantic.com": "The Atlantic"}
+                 "theatlantic.com": "The Atlantic", "scmp.com": "South China Morning Post", "technode.com": "TechNode"}
 
 
 def veiculo_de(url, padrao=None):
@@ -315,6 +316,10 @@ FONTES = {
     "ars": fonte_rss("ars", "https://feeds.arstechnica.com/arstechnica/index", 2, "Ars Technica", filtrar=True),
     "simonwillison": fonte_rss("simonwillison", "https://simonwillison.net/atom/everything/", 2, "Simon Willison", filtrar=True),
     "tecnoblog": fonte_rss("tecnoblog", "https://tecnoblog.net/feed/", 1, "Tecnoblog", filtrar=True),
+    # laboratorios chineses na imprensa em ingles (10/11/2026): o Hy4 da Tencent saiu na TechNode e no
+    # SCMP em 04/11 e em nenhuma das fontes acima; as notas oficiais dos chineses sao poucas e atrasam
+    "scmp": fonte_rss("scmp", "https://www.scmp.com/rss/36/feed", 2, "South China Morning Post", filtrar=True),
+    "technode": fonte_rss("technode", "https://technode.com/feed/", 2, "TechNode", filtrar=True),
     "nist": fonte_rss("nist", "https://www.nist.gov/news-events/news/rss.xml", 3, "NIST", filtrar=True),
     "ue": fonte_rss("ue", "https://digital-strategy.ec.europa.eu/en/rss.xml", 3, "Comissão Europeia", filtrar=True),
     "hf": coletar_hf,
@@ -673,7 +678,7 @@ RECONHECIDOS = set(REFERENCIA.values()) | set(PRIMARIAS.values()) | {
     "TechCrunch", "MIT Technology Review", "The Verge", "Ars Technica", "Simon Willison", "Tecnoblog",
     "Hugging Face", "NIST", "Comissão Europeia", "DeepSeek", "Câmara dos Deputados", "Anthropic",
     "Wired", "VentureBeat", "404 Media", "Platformer", "The Register", "Engadget", "ZDNET",
-    "Business Insider", "Fortune", "Forbes", "The Next Web", "The Atlantic"}
+    "Business Insider", "Fortune", "Forbes", "The Next Web", "The Atlantic", "South China Morning Post", "TechNode"}
 FONTES_OFICIAIS = {"openai", "google", "anthropic", "hf", "deepseek", "nist", "ue", "camara", "dado"}
 SOCIAIS = {"x.com", "twitter.com", "reddit.com", "linkedin.com", "youtube.com", "threads.net", "bsky.app",
            "facebook.com", "mastodon.social", "news.ycombinator.com"}
@@ -974,7 +979,7 @@ def item_estreia(e):
         cx = e["contexto"]
         aprox = f"about {round(cx / 1e6)} million" if cx >= 1e6 else f"about {round(cx / 1e3)} thousand"
         t.append(f"Context window: {cx:,} tokens ({aprox}).")
-    if e["hf"]:
+    if e.get("hf_publico"):  # o catalogo lista tencent/Hy4, mas o repositorio nao e publico (401 em 10/11)
         t.append(f"Open weights on Hugging Face: {e['hf']}.")
     quando = dt.datetime.fromisoformat(e["estreia"]).replace(tzinfo=dt.timezone.utc)
     it = item("dado", 3, f"{nome} debuts at #{e['pos_estreia']} in the daily token ranking and reaches #{e['melhor_pos']}",
@@ -1005,10 +1010,24 @@ def ja_coberta(e, dia, pasta=DESTINO, dias=DIAS_COBERTURA, inicial=movimentos.IN
     return False
 
 
-def itens_estreia(dia, pasta=DESTINO, **kw):
+def hf_publico(repo, get):
+    """O repositorio de pesos existe e e publico? So assim o trecho fala em pesos abertos: o
+    hugging_face_id do catalogo nao prova nada (tencent/Hy4 estava no catalogo e dava 401)."""
+    if not repo or not get:
+        return False
+    try:
+        d = json.loads(get(f"https://huggingface.co/api/models/{repo}"))
+    except Exception:  # 401, 404, rede: na duvida, nao afirma
+        return False
+    return isinstance(d, dict) and d.get("id", "").lower() == repo.lower() and not d.get("private")
+
+
+def itens_estreia(dia, pasta=DESTINO, get=None, **kw):
     """Itens da fonte "dado", ids d1, d2...; (itens, status da fonte) como as outras fontes."""
     try:
         es = [e for e in estreias_top(dia, **kw) if not ja_coberta(e, dia, pasta)]
+        for e in es:
+            e["hf_publico"] = hf_publico(e["hf"], get)
     except Exception as e:  # dado ausente ou quebrado nao derruba a pauta
         return [], {"ok": False, "erro": f"{type(e).__name__}: {str(e)[:120]}"}
     return [dict(item_estreia(e), id=f"d{k}") for k, e in enumerate(es, 1)], {"ok": True, "itens": len(es)}
@@ -1246,7 +1265,7 @@ def main(argv=None):
     log(f"janela: {janela} h")
     sessao = requests.Session()
     itens, status = coletar(http_get(sessao), agora, janela=janela)
-    estreias, status["dado"] = itens_estreia(dia)
+    estreias, status["dado"] = itens_estreia(dia, get=http_get(sessao))
     itens += estreias
     for k, v in status.items():
         log(f"  {k}: {v}")
