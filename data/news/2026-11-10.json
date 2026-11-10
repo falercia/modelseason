@@ -1,0 +1,427 @@
+{
+ "versao": 1,
+ "dia": "2026-11-10",
+ "gerado_em": "2026-11-10T15:38:06Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-03",
+   "2026-11-10"
+  ],
+  "trafego": "2026-11-09"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-10",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-11-09",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20261017",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "tencent/hy4-20261104",
+   "z-ai/glm-5.3-flash-20260826",
+   "stepfun/step-5-preview-20261008",
+   "openai/gpt-6-luna-20260922",
+   "anthropic/claude-opus-5.5-20260921",
+   "stealth/crouton-alpha",
+   "minimax/minimax-m3.1-flash-20261019",
+   "moonshotai/kimi-k3.1-pro-20261023"
+  ]
+ },
+ "principal": "novo:anthropic/claude-fable-5.2-20261109",
+ "eventos": [
+  {
+   "tipo": "novo",
+   "slug": "anthropic/claude-fable-5.2-20261109",
+   "id": "anthropic/claude-fable-5.2",
+   "nome": "Claude Fable 5.2",
+   "lab": "Anthropic",
+   "vendor": "anthropic",
+   "dados": {
+    "criado": "2026-11-09",
+    "contexto": 1000000,
+    "preco_entrada": 8.0,
+    "preco_saida": 40.0,
+    "preco_misto": 16.0,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+file->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 6.24,
+     "share_gasto": 38.27,
+     "lider": {
+      "slug": "anthropic/claude-opus-5.5-20260921",
+      "nome": "Claude Opus 5.5",
+      "share_7d": 3.23,
+      "preco_misto": 8.0
+     }
+    }
+   },
+   "relevancia": 42
+  },
+  {
+   "tipo": "removido",
+   "slug": "stealth/crouton-alpha",
+   "id": "stealth/crouton-alpha",
+   "nome": "Crouton Alpha",
+   "lab": "Anônimo (stealth)",
+   "vendor": "stealth",
+   "dados": {
+    "visto_em": "2026-11-09",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 2.43,
+     "rank_7d": 8,
+     "pico_share": 2.024,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 2.14,
+     "share_gasto": 0.0
+    }
+   },
+   "relevancia": 42
+  },
+  {
+   "tipo": "novo",
+   "slug": "meta/muse-ember-20261109",
+   "id": "meta/muse-ember",
+   "nome": "Muse Ember",
+   "lab": "Meta",
+   "vendor": "meta",
+   "dados": {
+    "criado": "2026-11-09",
+    "contexto": 1048576,
+    "preco_entrada": 0.1,
+    "preco_saida": 0.5,
+    "preco_misto": 0.2,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+file+audio+video->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.41,
+     "share_gasto": 0.2,
+     "lider": {
+      "slug": "meta/muse-spark-1.3-contributor-20260902",
+      "nome": "Muse Spark 1.3 Contributor",
+      "share_7d": 1.38,
+      "preco_misto": 0.125
+     }
+    }
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "novo",
+   "slug": "nace-ai/drex-max-finance-20261110",
+   "id": "nace-ai/drex-max-finance",
+   "nome": "Drex Max Finance",
+   "lab": "Nace Ai",
+   "vendor": "nace-ai",
+   "dados": {
+    "criado": "2026-11-10",
+    "contexto": 262144,
+    "preco_entrada": 0.06,
+    "preco_saida": 0.0,
+    "preco_misto": 0.045,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "nex-agi/nex-n2.6-20261110",
+   "id": "nex-agi/nex-n2.6",
+   "nome": "Nex-N2.6",
+   "lab": "Nex AGI",
+   "vendor": "nex-agi",
+   "dados": {
+    "criado": "2026-11-10",
+    "contexto": 262144,
+    "preco_entrada": 0.12,
+    "preco_saida": 0.4,
+    "preco_misto": 0.19,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "qwen/qwen3-reranker-0.6b",
+   "id": "qwen/qwen3-reranker-0.6b",
+   "nome": "Qwen3 Reranker 0.6B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "criado": "2026-08-26",
+    "contexto": 32768,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->rerank",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.48,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "minimax/minimax-m3.1-flash-20261019",
+   "id": "minimax/minimax-m3.1-flash",
+   "nome": "MiniMax M3.1 Flash",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 0.2625,
+    "para": 0.1312,
+    "variacao_pct": -50.0,
+    "entrada_de": 0.15,
+    "entrada_para": 0.075,
+    "saida_de": 0.6,
+    "saida_para": 0.3,
+    "desde": "2026-11-09"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 2.23,
+     "rank_7d": 9,
+     "pico_share": 7.666,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": {
+     "share_tokens": 2.87,
+     "share_gasto": 0.57
+    }
+   },
+   "relevancia": 37
+  },
+  {
+   "tipo": "preco",
+   "slug": "mistralai/mistral-small-3.2-24b-instruct-2506",
+   "id": "mistralai/mistral-small-3.2-24b-instruct",
+   "nome": "Mistral Small 3.2 24B",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "de": 0.1062,
+    "para": 0.15,
+    "variacao_pct": 41.2,
+    "entrada_de": 0.075,
+    "entrada_para": 0.1,
+    "saida_de": 0.2,
+    "saida_para": 0.3,
+    "desde": "2026-11-09"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.536,
+     "semanas_com_volume": 36
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.05,
+      "preco_misto": 0.0293
+     }
+    }
+   },
+   "relevancia": 28
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-4.5-air",
+   "id": "z-ai/glm-4.5-air",
+   "nome": "GLM 4.5 Air",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 0.31,
+    "para": 0.425,
+    "variacao_pct": 37.1,
+    "entrada_de": 0.13,
+    "entrada_para": 0.2,
+    "saida_de": 0.85,
+    "saida_para": 1.1,
+    "desde": "2026-11-09"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 1.185,
+     "semanas_com_volume": 44
+    },
+    "laboratorio": {
+     "share_tokens": 8.97,
+     "share_gasto": 2.08,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 5.82,
+      "preco_misto": 0.0495
+     }
+    }
+   },
+   "relevancia": 27
+  },
+  {
+   "tipo": "preco",
+   "slug": "cloudflare/clef",
+   "id": "cloudflare/clef",
+   "nome": "Clef",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 0.144,
+    "para": 0.18,
+    "variacao_pct": 25.0,
+    "entrada_de": 0.192,
+    "entrada_para": 0.24,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-11-09"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 25
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-3-27b-it",
+   "id": "google/gemma-3-27b-it",
+   "nome": "Gemma 3 27B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.1475,
+    "para": 0.1725,
+    "variacao_pct": 16.9,
+    "entrada_de": 0.08,
+    "entrada_para": 0.08,
+    "saida_de": 0.35,
+    "saida_para": 0.45,
+    "desde": "2026-11-09"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.721,
+     "semanas_com_volume": 50
+    },
+    "laboratorio": {
+     "share_tokens": 2.44,
+     "share_gasto": 4.88,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.75,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 23
+  },
+  {
+   "tipo": "alias",
+   "slug": "~anthropic/claude-fable-latest",
+   "id": "~anthropic/claude-fable-latest",
+   "nome": "Claude Fable Latest",
+   "lab": "Anthropic",
+   "vendor": "anthropic",
+   "dados": {
+    "alvo_slug": "anthropic/claude-fable-5.2",
+    "alvo_nome": "Claude Fable 5.2",
+    "anterior": "anthropic/claude-fable-5.1"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 6.24,
+     "share_gasto": 38.27,
+     "lider": {
+      "slug": "anthropic/claude-opus-5.5-20260921",
+      "nome": "Claude Opus 5.5",
+      "share_7d": 3.23,
+      "preco_misto": 8.0
+     }
+    }
+   },
+   "relevancia": 16
+  },
+  {
+   "tipo": "contexto",
+   "slug": "qwen/qwen3.8-27b-20260814",
+   "id": "qwen/qwen3.8-27b",
+   "nome": "Qwen3.8 27B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 1024000,
+    "para": 1048575
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.35,
+     "rank_7d": 36,
+     "pico_share": 0.347,
+     "semanas_com_volume": 12
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.48,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 16
+  }
+ ]
+}
