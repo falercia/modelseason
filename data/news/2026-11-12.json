@@ -1,0 +1,387 @@
+{
+ "versao": 1,
+ "dia": "2026-11-12",
+ "gerado_em": "2026-11-12T16:00:27Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-05",
+   "2026-11-12"
+  ],
+  "trafego": "2026-11-11"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-12",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-11-11",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20261017",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "tencent/hy4-20261104",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "openai/gpt-6-luna-20260922",
+   "stepfun/step-5-preview-20261008",
+   "anthropic/claude-opus-5.5-20260921",
+   "stealth/crouton-alpha",
+   "moonshotai/kimi-k3.1-pro-20261023",
+   "openai/gpt-6.1-sol-20260929"
+  ]
+ },
+ "principal": "alta:tencent/hy4-20261104",
+ "eventos": [
+  {
+   "tipo": "alta",
+   "slug": "tencent/hy4-20261104",
+   "id": null,
+   "nome": "Hy4",
+   "lab": "Tencent",
+   "vendor": "tencent",
+   "dados": {
+    "de": 0.62,
+    "para": 9.77,
+    "delta_pp": 9.15
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 9.77,
+     "rank_7d": 2,
+     "pico_share": 6.109,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": {
+     "share_tokens": 9.48,
+     "share_gasto": 7.34
+    }
+   },
+   "relevancia": 69
+  },
+  {
+   "tipo": "top10",
+   "slug": "openai/gpt-6.1-sol-20260929",
+   "id": null,
+   "nome": "GPT-6.1 Sol",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "posicao": 10,
+    "share": 2.0,
+    "lancamento": "2026-09-29"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 2.0,
+     "rank_7d": 10,
+     "pico_share": 1.937,
+     "semanas_com_volume": 6
+    },
+    "laboratorio": {
+     "share_tokens": 8.15,
+     "share_gasto": 14.54,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.46,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 54
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "openai/gpt-image-2",
+   "id": "openai/gpt-image-2",
+   "nome": "GPT Image 2",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "data": "2027-02-10",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 8.15,
+     "share_gasto": 14.54,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.46,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 43
+  },
+  {
+   "tipo": "novo",
+   "slug": "google/gemini-decision-1-20261111",
+   "id": "google/gemini-decision-1",
+   "nome": "Gemini Decision 1",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "criado": "2026-11-11",
+    "contexto": 262144,
+    "preco_entrada": 0.1,
+    "preco_saida": 0.0,
+    "preco_misto": 0.075,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image+file+audio+video->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 2.44,
+     "share_gasto": 4.86,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.77,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "novo",
+   "slug": "speechify/simba-3.5-20261111",
+   "id": "speechify/simba-3.5",
+   "nome": "Simba 3.5",
+   "lab": "Speechify",
+   "vendor": "speechify",
+   "dados": {
+    "criado": "2026-11-11",
+    "contexto": 0,
+    "preco_entrada": 15.0,
+    "preco_saida": 0.0,
+    "preco_misto": 11.25,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "unbiased/pareto-26.10-preview-20260929",
+   "id": "unbiased/pareto-26.10-preview",
+   "nome": "Pareto 26.10 Preview",
+   "lab": "Unbiased",
+   "vendor": "unbiased",
+   "dados": {
+    "criado": "2026-10-01",
+    "contexto": 1048576,
+    "preco_entrada": 0.8,
+    "preco_saida": 3.2,
+    "preco_misto": 1.4,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "fish-audio/drama-3-20261013",
+   "id": "fish-audio/drama-3",
+   "nome": "Drama 3",
+   "lab": "Fish Audio",
+   "vendor": "fish-audio",
+   "dados": {
+    "de": 1.5,
+    "para": 7.5,
+    "variacao_pct": 400.0,
+    "entrada_de": 2.0,
+    "entrada_para": 10.0,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-11-11"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "estreia",
+   "slug": "baidu/ernie-5.5-flash-preview-20261110",
+   "id": null,
+   "nome": "ERNIE-5.5-Flash-Preview (free)",
+   "lab": "Baidu",
+   "vendor": "baidu",
+   "dados": {
+    "primeiro_dia": "2026-11-11",
+    "share_7d": 0.04,
+    "lancamento": "2026-11-10",
+    "dias_desde_catalogo": 1
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.04,
+     "rank_7d": 56,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "estreia",
+   "slug": "google/gemini-4-carbon-20261110",
+   "id": null,
+   "nome": "Gemini 4 Carbon",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "primeiro_dia": "2026-11-11",
+    "share_7d": 0.05,
+    "lancamento": "2026-11-10",
+    "dias_desde_catalogo": 1
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.05,
+     "rank_7d": 55,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 2.44,
+     "share_gasto": 4.86,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.77,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "mancer/weaver",
+   "id": "mancer/weaver",
+   "nome": "Weaver (alpha)",
+   "lab": "Mancer",
+   "vendor": "mancer",
+   "dados": {
+    "de": 0.4875,
+    "para": 0.35,
+    "variacao_pct": -28.2,
+    "entrada_de": 0.4,
+    "entrada_para": 0.3,
+    "saida_de": 0.75,
+    "saida_para": 0.5,
+    "desde": "2026-11-11"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "cloudflare/clef",
+   "id": "cloudflare/clef",
+   "nome": "Clef",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 0.18,
+    "para": 0.144,
+    "variacao_pct": -20.0,
+    "entrada_de": 0.24,
+    "entrada_para": 0.192,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-11-11"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 24
+  },
+  {
+   "tipo": "preco",
+   "slug": "undi95/remm-slerp-l2-13b",
+   "id": "undi95/remm-slerp-l2-13b",
+   "nome": "ReMM SLERP 13B",
+   "lab": "Undi95",
+   "vendor": "undi95",
+   "dados": {
+    "de": 0.425,
+    "para": 0.35,
+    "variacao_pct": -17.6,
+    "entrada_de": 0.35,
+    "entrada_para": 0.3,
+    "saida_de": 0.65,
+    "saida_para": 0.5,
+    "desde": "2026-11-11"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 24
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-3-27b-it",
+   "id": "google/gemma-3-27b-it",
+   "nome": "Gemma 3 27B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.1725,
+    "para": 0.1475,
+    "variacao_pct": -14.5,
+    "entrada_de": 0.08,
+    "entrada_para": 0.08,
+    "saida_de": 0.45,
+    "saida_para": 0.35,
+    "desde": "2026-11-11"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.721,
+     "semanas_com_volume": 50
+    },
+    "laboratorio": {
+     "share_tokens": 2.44,
+     "share_gasto": 4.86,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.77,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 23
+  }
+ ]
+}
