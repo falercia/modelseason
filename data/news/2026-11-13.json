@@ -1,0 +1,505 @@
+{
+ "versao": 1,
+ "dia": "2026-11-13",
+ "gerado_em": "2026-11-13T15:25:58Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-06",
+   "2026-11-13"
+  ],
+  "trafego": "2026-11-12"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-13",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-11-12",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20261017",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "tencent/hy4-20261104",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "openai/gpt-6-luna-20260922",
+   "anthropic/claude-opus-5.5-20260921",
+   "stepfun/step-5-preview-20261008",
+   "moonshotai/kimi-k3.1-pro-20261023",
+   "openai/gpt-6.1-sol-20260929",
+   "z-ai/glm-5.3-20260816"
+  ]
+ },
+ "principal": "preco:deepseek/deepseek-v4.1-flash-20260910",
+ "eventos": [
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4.1-flash-20260910",
+   "id": "deepseek/deepseek-v4.1-flash",
+   "nome": "DeepSeek V4.1 Flash",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.18,
+    "para": 0.525,
+    "variacao_pct": 191.7,
+    "entrada_de": 0.051,
+    "entrada_para": 0.3,
+    "saida_de": 0.567,
+    "saida_para": 1.2,
+    "desde": "2026-11-12"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 7.61,
+     "rank_7d": 3,
+     "pico_share": 23.843,
+     "semanas_com_volume": 9
+    },
+    "laboratorio": {
+     "share_tokens": 40.68,
+     "share_gasto": 11.1,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20261017",
+      "nome": "DeepSeek V4.1 Flash 1017",
+      "share_7d": 26.61,
+      "preco_misto": 0.1535
+     }
+    }
+   },
+   "relevancia": 63
+  },
+  {
+   "tipo": "top10",
+   "slug": "z-ai/glm-5.3-20260816",
+   "id": null,
+   "nome": "GLM 5.3",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "posicao": 10,
+    "share": 1.85,
+    "lancamento": "2026-08-18"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.85,
+     "rank_7d": 10,
+     "pico_share": 3.165,
+     "semanas_com_volume": 12
+    },
+    "laboratorio": {
+     "share_tokens": 8.97,
+     "share_gasto": 3.16,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 5.71,
+      "preco_misto": 0.0495
+     }
+    }
+   },
+   "relevancia": 54
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "tencent/hunyuan-a13b-instruct",
+   "id": "tencent/hunyuan-a13b-instruct",
+   "nome": "Hunyuan A13B Instruct",
+   "lab": "Tencent",
+   "vendor": "tencent",
+   "dados": {
+    "data": "2026-11-15",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 9.48,
+     "share_gasto": 7.19,
+     "lider": {
+      "slug": "tencent/hy4-20261104",
+      "nome": "Hy4",
+      "share_7d": 9.66,
+      "preco_misto": 0.6254
+     }
+    }
+   },
+   "relevancia": 44
+  },
+  {
+   "tipo": "novo",
+   "slug": "google/gemini-4-hydrogen-20261112",
+   "id": "google/gemini-4-hydrogen",
+   "nome": "Gemini 4 Hydrogen",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "criado": "2026-11-12",
+    "contexto": 1048576,
+    "preco_entrada": 1.5,
+    "preco_saida": 7.5,
+    "preco_misto": 3.0,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+file+audio+video->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 2.44,
+     "share_gasto": 4.78,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.77,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "novo",
+   "slug": "bytedance-seed/seedream-5-5-20261112",
+   "id": "bytedance-seed/seedream-5-5",
+   "nome": "Seedream 5.5",
+   "lab": "ByteDance",
+   "vendor": "bytedance-seed",
+   "dados": {
+    "criado": "2026-11-12",
+    "contexto": 0,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->image",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "heygen/heygen-decision-1-20261112",
+   "id": "heygen/heygen-decision-1",
+   "nome": "HeyGen Decision",
+   "lab": "Heygen",
+   "vendor": "heygen",
+   "dados": {
+    "criado": "2026-11-13",
+    "contexto": 131072,
+    "preco_entrada": 0.14,
+    "preco_saida": 0.0,
+    "preco_misto": 0.105,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "heygen/heygen-decision-1-turbo-20261112",
+   "id": "heygen/heygen-decision-1-turbo",
+   "nome": "HeyGen Decision Turbo",
+   "lab": "Heygen",
+   "vendor": "heygen",
+   "dados": {
+    "criado": "2026-11-13",
+    "contexto": 262144,
+    "preco_entrada": 0.09,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0675,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "thinkingmachines/inkling-2-small-20261107",
+   "id": "thinkingmachines/inkling-2-small",
+   "nome": "Inkling 2 Small",
+   "lab": "Thinking Machines",
+   "vendor": "thinkingmachines",
+   "dados": {
+    "criado": "2026-11-09",
+    "contexto": 1048576,
+    "preco_entrada": 0.3,
+    "preco_saida": 1.0,
+    "preco_misto": 0.475,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.24,
+     "rank_7d": 41,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "qwen/qwen3-vl-30b-a3b-thinking",
+   "id": "qwen/qwen3-vl-30b-a3b-thinking",
+   "nome": "Qwen3 VL 30B A3B Thinking",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "data": "2026-11-15",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.55,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "stepfun/step-3.5-flash",
+   "id": "stepfun/step-3.5-flash",
+   "nome": "Step 3.5 Flash",
+   "lab": "StepFun",
+   "vendor": "stepfun",
+   "dados": {
+    "data": "2026-11-15",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 8.028,
+     "semanas_com_volume": 17
+    },
+    "laboratorio": {
+     "share_tokens": 3.71,
+     "share_gasto": 5.74,
+     "lider": {
+      "slug": "stepfun/step-5-preview-20261008",
+      "nome": "Step 5 Preview",
+      "share_7d": 3.21,
+      "preco_misto": 1.425
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "cloudflare/clef-flash",
+   "id": "cloudflare/clef-flash",
+   "nome": "Clef Flash",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 0.0285,
+    "para": 0.0143,
+    "variacao_pct": -50.0,
+    "entrada_de": 0.038,
+    "entrada_para": 0.019,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-11-12"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "liquid/lfm-2.5-2.6b-20260811",
+   "id": "liquid/lfm-2.5-2.6b",
+   "nome": "LFM2.5-2.6B",
+   "lab": "Liquid AI",
+   "vendor": "liquid",
+   "dados": {
+    "visto_em": "2026-11-12",
+    "expira": "2026-11-13"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3-14b-04-28",
+   "id": "qwen/qwen3-14b",
+   "nome": "Qwen3 14B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.13,
+    "para": 0.15,
+    "variacao_pct": 15.4,
+    "entrada_de": 0.1,
+    "entrada_para": 0.12,
+    "saida_de": 0.22,
+    "saida_para": 0.24,
+    "desde": "2026-11-12"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.153,
+     "semanas_com_volume": 4
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.55,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 23
+  },
+  {
+   "tipo": "alias",
+   "slug": "~google/gemini-flash-latest",
+   "id": "~google/gemini-flash-latest",
+   "nome": "Gemini Flash Latest",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "alvo_slug": "google/gemini-4-hydrogen",
+    "alvo_nome": "Gemini 4 Hydrogen",
+    "anterior": "google/gemini-3.8-flash"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 2.44,
+     "share_gasto": 4.78,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.77,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 15
+  },
+  {
+   "tipo": "alias",
+   "slug": "~perplexity/pplx-decider-flash-latest",
+   "id": "~perplexity/pplx-decider-flash-latest",
+   "nome": "Decider Flash Latest",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "alvo_slug": "perplexity/pplx-decider-flash-v1.3",
+    "alvo_nome": "Decider Flash V1.3",
+    "anterior": "perplexity/pplx-decider-flash-v1.2"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "perplexity/pplx-decider-v1.2-20261016",
+      "nome": "pplx-decider-v1.2",
+      "share_7d": 0.21,
+      "preco_misto": null
+     }
+    }
+   },
+   "relevancia": 15
+  },
+  {
+   "tipo": "alias",
+   "slug": "~perplexity/pplx-decider-latest",
+   "id": "~perplexity/pplx-decider-latest",
+   "nome": "Decider Latest",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "alvo_slug": "perplexity/pplx-decider-v1.3",
+    "alvo_nome": "Decider V1.3",
+    "anterior": "perplexity/pplx-decider-v1.2"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "perplexity/pplx-decider-v1.2-20261016",
+      "nome": "pplx-decider-v1.2",
+      "share_7d": 0.21,
+      "preco_misto": null
+     }
+    }
+   },
+   "relevancia": 15
+  },
+  {
+   "tipo": "contexto",
+   "slug": "minimax/minimax-m2.5-20260211",
+   "id": "minimax/minimax-m2.5",
+   "nome": "MiniMax M2.5",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 200000,
+    "para": 198000
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 18.429,
+     "semanas_com_volume": 18
+    },
+    "laboratorio": {
+     "share_tokens": 2.87,
+     "share_gasto": 0.93,
+     "lider": {
+      "slug": "minimax/minimax-m3.1-flash-20261019",
+      "nome": "MiniMax M3.1 Flash",
+      "share_7d": 1.72,
+      "preco_misto": 0.2625
+     }
+    }
+   },
+   "relevancia": 15
+  }
+ ]
+}
