@@ -1,0 +1,2716 @@
+{
+ "versao": 1,
+ "dia": "2026-11-13",
+ "gerado_em": "2026-11-13T17:25:45Z",
+ "janela_horas": 54,
+ "modelo": "claude-sonnet-5-5",
+ "uso_tokens": {
+  "entrada": 26424,
+  "saida": 9757
+ },
+ "fontes": {
+  "openai": {
+   "ok": true,
+   "itens": 6
+  },
+  "google": {
+   "ok": true,
+   "itens": 8
+  },
+  "anthropic": {
+   "ok": true,
+   "itens": 0
+  },
+  "huggingface": {
+   "ok": true,
+   "itens": 4
+  },
+  "techcrunch": {
+   "ok": true,
+   "itens": 20
+  },
+  "mittr": {
+   "ok": true,
+   "itens": 1
+  },
+  "verge": {
+   "ok": true,
+   "itens": 10
+  },
+  "ars": {
+   "ok": true,
+   "itens": 6
+  },
+  "simonwillison": {
+   "ok": true,
+   "itens": 6
+  },
+  "tecnoblog": {
+   "ok": true,
+   "itens": 10
+  },
+  "scmp": {
+   "ok": true,
+   "itens": 12
+  },
+  "technode": {
+   "ok": true,
+   "itens": 7
+  },
+  "nist": {
+   "ok": true,
+   "itens": 0
+  },
+  "ue": {
+   "ok": true,
+   "itens": 0
+  },
+  "hf": {
+   "ok": true,
+   "itens": 0
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 1
+  },
+  "camara": {
+   "ok": true,
+   "itens": 0
+  },
+  "techmeme": {
+   "ok": true,
+   "itens": 11
+  },
+  "hn": {
+   "ok": true,
+   "itens": 28
+  },
+  "dado": {
+   "ok": true,
+   "itens": 0
+  }
+ },
+ "assuntos": [
+  {
+   "id": "a1",
+   "categoria": "lancamento",
+   "nota": 21.23,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-12T18:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Introducing Gemini 4 Hydrogen",
+     "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
+     "data": "2026-11-12T18:00:00Z",
+     "discussao": "https://news.ycombinator.com/item?id=50471431",
+     "pontos": 554
+    },
+    {
+     "veiculo": "Google",
+     "titulo": "Google Search gets a major upgrade with Gemini 4 Hydrogen",
+     "link": "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/",
+     "data": "2026-11-12T18:00:00Z"
+    },
+    {
+     "veiculo": "Google",
+     "titulo": "Gemini 4 Hydrogen: everyday coding and agentic workflows for developers",
+     "link": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/",
+     "data": "2026-11-12T18:00:00Z"
+    },
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Google rolls out Gemini 4 Hydrogen, finally replacing 3.8 Flash",
+     "link": "https://arstechnica.com/google/2026/11/google-rolls-out-gemini-4-hydrogen-finally-replacing-3-8-flash/",
+     "data": "2026-11-12T19:23:03Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Google’s latest Search upgrade promises better answers to your most complicated questions",
+     "link": "https://techcrunch.com/2026/11/12/googles-latest-search-upgrade-promises-better-answers-to-your-most-complicated-questions/",
+     "data": "2026-11-12T19:27:45Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Google’s new Gemini model is better at understanding complicated questions",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1032505/google-search-ai-mode-gemini-4-hydrogen",
+     "data": "2026-11-12T21:55:32Z"
+    },
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "llm-gemini 0.37",
+     "link": "https://simonwillison.net/2026/Nov/12/llm-gemini/",
+     "data": "2026-11-12T22:55:19Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Google lança o Gemini 4 Hydrogen e o leva à Busca e a desenvolvedores",
+    "resumo": "Segundo o Google, o Gemini 4 Hydrogen é o modelo de uso diário para fluxos de trabalho com agentes e chega à Busca globalmente. A empresa diz que ele entende melhor perguntas com várias partes ou erros de digitação e cobra US$ 1,50 por milhão de tokens de entrada. Segundo o Ars Technica, ele substitui o 3.8 Flash."
+   },
+   "en": {
+    "titulo": "Google launches Gemini 4 Hydrogen for Search and developers",
+    "resumo": "According to Google, Gemini 4 Hydrogen is its daily driver for agentic workflows and is coming to Search globally. The company says it better understands multipart questions and typos, and is priced at $1.50 per million input tokens. According to Ars Technica, it replaces 3.8 Flash."
+   },
+   "cruzamento": [
+    {
+     "vendor": "google",
+     "lab": "Google",
+     "share_tokens": 2.44,
+     "share_gasto": 4.78,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.77,
+      "preco_misto": 1.65
+     }
+    }
+   ]
+  },
+  {
+   "id": "a2",
+   "categoria": "lancamento",
+   "nota": 14.72,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-13T15:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Introducing ChatGPT Wallet",
+     "link": "https://openai.com/index/introducing-chatgpt-wallet",
+     "data": "2026-11-13T15:00:00Z"
+    },
+    {
+     "veiculo": "CNBC",
+     "titulo": "OpenAI announces ChatGPT Wallet, which lets its dots AI agents make purchases on behalf of users, available to ChatGPT Pro subscribers in the US who are over 18",
+     "link": "https://www.cnbc.com/2026/11/13/openai-chatgpt-wallet-dot-purchases.html",
+     "data": "2026-11-13T15:35:05Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "ChatGPT’s new Wallet lets AI agents shop and check out for you",
+     "link": "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/",
+     "data": "2026-11-13T16:00:12Z"
+    }
+   ],
+   "pt": {
+    "titulo": "OpenAI anuncia o ChatGPT Wallet para agentes fazerem compras por usuários",
+    "resumo": "Segundo a OpenAI, o ChatGPT Wallet permite que agentes concluam compras com aprovação do usuário e com as proteções já existentes do cartão. Segundo o TechCrunch, o lançamento começa de forma limitada para assinantes do plano Pro nos Estados Unidos. Segundo a CNBC, o recurso é voltado a maiores de 18 anos."
+   },
+   "en": {
+    "titulo": "OpenAI announces ChatGPT Wallet so AI agents can make purchases for users",
+    "resumo": "According to OpenAI, ChatGPT Wallet lets agents complete purchases with user approval and existing card protections. According to TechCrunch, it starts with a limited rollout to Pro subscribers in the U.S. According to CNBC, it is available to users over 18."
+   },
+   "cruzamento": [
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 8.15,
+     "share_gasto": 14.24,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.54,
+      "preco_misto": 0.2
+     }
+    }
+   ]
+  },
+  {
+   "id": "a3",
+   "categoria": "lancamento",
+   "nota": 13.28,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-11T18:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Gemini Decisions API: Fast, calibrated multimodal decisions",
+     "link": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
+     "data": "2026-11-11T18:00:00Z",
+     "discussao": "https://news.ycombinator.com/item?id=50456791",
+     "pontos": 565
+    }
+   ],
+   "pt": {
+    "titulo": "Google apresenta a Gemini Decisions API para decisões multimodais rápidas",
+    "resumo": "Segundo o Google, a Gemini Decisions API, movida pelo modelo Gemini Decision 1, avalia até 1.000 perguntas de sim ou não, múltipla escolha e pontuação em uma única passada, sobre texto, imagens, áudio, vídeo e PDFs. A latência é de 150 a 250 ms, a US$ 0,10 por milhão de tokens de entrada."
+   },
+   "en": {
+    "titulo": "Google introduces the Gemini Decisions API for fast multimodal decisions",
+    "resumo": "According to Google, the Gemini Decisions API, powered by Gemini Decision 1, evaluates up to 1,000 yes/no, choice and rubric-scoring questions in a single pass across text, images, audio, video and PDFs. Latency is 150-250 ms end-to-end at $0.10 per 1M input tokens."
+   },
+   "cruzamento": [
+    {
+     "vendor": "google",
+     "lab": "Google",
+     "share_tokens": 2.44,
+     "share_gasto": 4.78,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.77,
+      "preco_misto": 1.65
+     }
+    }
+   ]
+  }
+ ],
+ "descartados": [
+  {
+   "id": "a4",
+   "categoria": "lancamento",
+   "nota": 13.0,
+   "labs": [
+    "deepseek"
+   ],
+   "publicado_em": "2026-11-13T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "DeepSeek",
+     "titulo": "The full DeepSeek App experience, now via API",
+     "link": "https://api-docs.deepseek.com/news/news261113",
+     "data": "2026-11-13T12:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a5",
+   "categoria": "mercado",
+   "nota": 12.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-12T10:30:04Z",
+   "fontes": [
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "Loyalty vs accountability: a look at the Nvidia board deciding CEO Jensen Huang’s fate",
+     "link": "https://www.scmp.com/tech/big-tech/article/3374203/loyalty-vs-accountability-look-nvidia-board-deciding-ceo-jensen-huangs-fate",
+     "data": "2026-11-12T10:30:04Z"
+    },
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "If Jensen Huang exits Nvidia, who could take the US$4 trillion chipmaker’s reins?",
+     "link": "https://www.scmp.com/tech/article/3374235/if-jensen-huang-exits-nvidia-who-could-take-us4tr-chipmakers-reins",
+     "data": "2026-11-12T12:30:07Z"
+    },
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "Jensen Huang resigns as Nvidia CEO amid affairs scandal",
+     "link": "https://www.scmp.com/tech/big-tech/article/3374255/jensen-huang-resigns-nvidia-ceo-amid-affair-scandal",
+     "data": "2026-11-12T14:04:46Z"
+    },
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Nvidia CEO Jensen Huang has resigned",
+     "link": "https://arstechnica.com/gadgets/2026/11/ceo-jensen-huangs-job-is-suddenly-on-the-line-at-nvidia/",
+     "data": "2026-11-12T14:05:17Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Jensen Huang is out at Nvidia — who is Colette Kress, his interim replacement?",
+     "link": "https://techcrunch.com/2026/11/12/jensen-huang-is-out-at-nvidia-who-is-colette-kress-his-interim-replacement/",
+     "data": "2026-11-12T15:37:29Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Jensen Huang is out. What did China want from him?",
+     "link": "https://www.theverge.com/podcast/1031260/nvidia-jensen-huang-resign-china-spy-scandal-ai-chips-trump",
+     "data": "2026-11-12T16:30:00Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Five ways Jensen Huang’s ouster from Nvidia could damage the AI industry",
+     "link": "https://techcrunch.com/2026/11/12/five-ways-jensen-huangs-ouster-from-nvidia-could-damage-the-ai-industry/",
+     "data": "2026-11-12T16:32:33Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "The Jensen Huang scandal is hardly over",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1032069/jensen-huang-resignation-affair-chips-smuggling",
+     "data": "2026-11-12T17:44:33Z"
+    },
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "Jensen Huang quits Nvidia; non-invasive treatment for kidney tumours: SCMP’s 7 highlights",
+     "link": "https://www.scmp.com/news/china/article/3374278/jensen-huang-quits-nvidia-non-invasive-treatment-kidney-tumours-scmps-7-highlights",
+     "data": "2026-11-13T04:15:04Z"
+    },
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "Jensen Huang quits, China trade surplus hits US$1 trillion, Xi-Trump summit",
+     "link": "https://www.scmp.com/plus/tech/tech-war/article/3374341/jensen-huang-quits-china-trade-surplus-hits-us1-trillion-xi-trump-summit",
+     "data": "2026-11-13T09:00:26Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Let’s talk about Jensen Huang’s many affairs!",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1032339/lets-talk-about-the-nvidia-shitshow",
+     "data": "2026-11-13T12:00:00Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "What’s really at stake in the Jensen Huang saga",
+     "link": "https://www.theverge.com/podcast/1032866/jensen-huang-nvidia-china-trump-vergecast",
+     "data": "2026-11-13T14:47:16Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "The unfolding Jensen Huang scandal: a timeline",
+     "link": "https://techcrunch.com/2026/11/13/nvidia-ceo-jensen-huangs-affair-with-alleged-chinese-spy-a-timeline/",
+     "data": "2026-11-13T15:58:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a6",
+   "categoria": "mercado",
+   "nota": 10.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-13T13:10:02Z",
+   "fontes": [
+    {
+     "veiculo": "Financial Times",
+     "titulo": "Jensen Huang's downfall exposes Nvidia's internal politics; source: Huang ran Nvidia as a \"feudal system\" with his daughter and son-in-law in powerful positions (Financial Times)",
+     "link": "https://www.ft.com/content/ef8f85a6-e2d7-4d41-b70e-092b2567813a",
+     "data": "2026-11-13T13:10:02Z"
+    },
+    {
+     "veiculo": "The New York Times",
+     "titulo": "Jensen Huang's biographer says Nvidia had a culture of omertà and deference toward Huang, who was quite arrogant, that enabled him to \"be his worst self\"",
+     "link": "https://www.nytimes.com/2026/11/12/opinion/jensen-huang-nvidia.html?unlocked_article_code=1.P1E.6bW-.jsvT3PNHnXvZ&smid=nytcore-ios-share",
+     "data": "2026-11-13T14:40:42Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a7",
+   "categoria": "seguranca",
+   "nota": 8.72,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-12T00:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Supporting research on AI and children’s safety",
+     "link": "https://openai.com/index/children-first-declaration",
+     "data": "2026-11-12T00:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a8",
+   "categoria": "lancamento",
+   "nota": 8.72,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-13T07:25:02Z",
+   "fontes": [
+    {
+     "veiculo": "The Register",
+     "titulo": "OpenAI launches Daybreak Red Team in early access to test web apps for flaws and Daybreak Defense Factory to automate finding, validating, and fixing them",
+     "link": "https://www.theregister.com/security/2026/11/12/openai-launches-security-products-tells-orgs-theyre-doomed-if-they-dont-use-them/5309500",
+     "data": "2026-11-13T07:25:02Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a9",
+   "categoria": "mercado",
+   "nota": 8.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-12T17:36:40Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Hugging Face CEO vows to keep fighting for open source AI after Jensen Huang’s exit",
+     "link": "https://techcrunch.com/2026/11/12/hugging-face-ceo-vows-to-keep-fighting-for-open-source-ai-after-jensen-huangs-exit/",
+     "data": "2026-11-12T17:36:40Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Jensen Huang’s exit puts Nvidia’s support for open source in question",
+     "link": "https://techcrunch.com/2026/11/12/jensen-huangs-exit-puts-nvidias-support-for-open-source-in-question/",
+     "data": "2026-11-12T18:39:23Z"
+    },
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "Will Jensen Huang’s downfall tip the scales against open-source AI?",
+     "link": "https://www.scmp.com/tech/big-tech/article/3374376/will-jensen-huangs-downfall-tip-scales-against-open-source-ai",
+     "data": "2026-11-13T14:00:09Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a10",
+   "categoria": "mercado",
+   "nota": 8.08,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-13T17:10:03Z",
+   "fontes": [
+    {
+     "veiculo": "Bloomberg",
+     "titulo": "Sources: Anthropic's IPO, like SpaceX's, is closed to institutional investors in mainland China and Hong Kong, partly due to US arms export rules (Bloomberg)",
+     "link": "https://www.bloomberg.com/news/articles/2026-11-13/anthropic-ipo-share-orders-from-china-are-said-to-be-rebuffed",
+     "data": "2026-11-13T17:10:03Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a11",
+   "categoria": "lancamento",
+   "nota": 8.08,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-13T14:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Claude’s Duet agent is a little neurotic and surprisingly helpful",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1032518/claude-duet-ai-agent-hands-on",
+     "data": "2026-11-13T14:00:00Z"
+    }
+   ],
+   "motivo": "já publicado em 2026-10-23: Anthropic opens Claude Duet preview, an app where Claude works as a proactive agent"
+  },
+  {
+   "id": "a12",
+   "categoria": "lancamento",
+   "nota": 7.81,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-12T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Get quick answers from Gemini on any website.",
+     "link": "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome/",
+     "data": "2026-11-12T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a13",
+   "categoria": "lancamento",
+   "nota": 7.81,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-11T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Talk it through with Gemini, now on Apple CarPlay",
+     "link": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay/",
+     "data": "2026-11-11T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a14",
+   "categoria": "lancamento",
+   "nota": 7.81,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-13T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Connect Google Wallet to Gemini for personal finance insights",
+     "link": "https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/",
+     "data": "2026-11-13T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a15",
+   "categoria": "mercado",
+   "nota": 7.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-13T14:25:00Z",
+   "fontes": [
+    {
+     "veiculo": "Bloomberg",
+     "titulo": "Amended S-1: Nscale had $5.5B in debt in September, up from $137.4M in June; Nvidia committed $2B of its $3B+ convertible financing; it previously disclosed $1B (Bloomberg)",
+     "link": "https://www.bloomberg.com/news/articles/2026-11-13/neocloud-nscale-reveals-5-5-billion-debt-and-closer-nvidia-ties-ahead-of-ipo",
+     "data": "2026-11-13T14:25:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a16",
+   "categoria": "regulacao",
+   "nota": 7.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-13T13:00:08Z",
+   "fontes": [
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "China could tighten rare earths exports if US escalates chip curbs over Nvidia: analysts",
+     "link": "https://www.scmp.com/economy/global-economy/article/3374328/china-could-tighten-rare-earths-exports-if-us-escalates-chip-curbs-over-nvidia-analysts",
+     "data": "2026-11-13T13:00:08Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a17",
+   "categoria": "mercado",
+   "nota": 7.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-13T17:03:26Z",
+   "fontes": [
+    {
+     "veiculo": "Financial Times",
+     "titulo": "Sources: Nvidia's board has approached Arm CEO Rene Haas in its search for a potential successor to Jensen Huang; Haas worked at Nvidia more than a decade ago",
+     "link": "https://www.ft.com/content/2a64f698-46dd-4178-a3f4-4c5f4c0a0926",
+     "data": "2026-11-13T17:03:26Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a18",
+   "categoria": "regulacao",
+   "nota": 7.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-12T22:42:51Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Democrats launch Nvidia investigation, write scathing letter on Huang’s ‘scheme’ with Trump",
+     "link": "https://techcrunch.com/2026/11/12/democrats-launch-nvidia-investigation-write-scathing-letter-on-huangs-scheme-with-trump/",
+     "data": "2026-11-12T22:42:51Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a19",
+   "categoria": "regulacao",
+   "nota": 7.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-12T20:16:24Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "Nvidia privately confirmed it could track chips to fight smuggling, even as industry publicly questioned feasibility",
+     "link": "https://www.technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking/",
+     "data": "2026-11-12T20:16:24Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a20",
+   "categoria": "regulacao",
+   "nota": 7.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-12T16:36:37Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Jensen Huang agrees to testify before Congress",
+     "link": "https://techcrunch.com/2026/11/12/jensen-huang-agrees-to-testify-before-congress/",
+     "data": "2026-11-12T16:36:37Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a21",
+   "categoria": "lancamento",
+   "nota": 6.81,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-12T14:50:17Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Google pushes privacy angle as Gemini-powered smartglasses debut starting at $395",
+     "link": "https://arstechnica.com/google/2026/11/google-pushes-privacy-angle-as-gemini-powered-smartglasses-debut-starting-at-395/",
+     "data": "2026-11-12T14:50:17Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a22",
+   "categoria": "lancamento",
+   "nota": 6.47,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-11-12T22:22:28Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Muse can now place calls to US businesses — if you pay",
+     "link": "https://techcrunch.com/2026/11/12/muse-can-now-place-calls-to-u-s-businesses-if-you-pay/",
+     "data": "2026-11-12T22:22:28Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a23",
+   "categoria": "lancamento",
+   "nota": 6.47,
+   "labs": [
+    "bytedance",
+    "meta"
+   ],
+   "publicado_em": "2026-11-12T07:11:14Z",
+   "fontes": [
+    {
+     "veiculo": "TechNode",
+     "titulo": "ByteDance reportedly plans AI assistant similar to Meta’s Muse",
+     "link": "https://technode.com/2026/11/12/bytedance-reportedly-plans-ai-assistant-similar-to-metas-muse/",
+     "data": "2026-11-12T07:11:14Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a24",
+   "categoria": "infraestrutura",
+   "nota": 6.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-13T10:50:00Z",
+   "fontes": [
+    {
+     "veiculo": "Reuters",
+     "titulo": "A review of Chinese contracts, disclosures, and other documents identifies $3.2B+ in compute projects built or planned around Nvidia GPUs restricted by the US",
+     "link": "https://www.reuters.com/world/china/huang-exit-us-scrutiny-imperil-3-billion-chinese-ai-projects-reliant-nvidia-2026-11-13/",
+     "data": "2026-11-13T10:50:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a25",
+   "categoria": "mercado",
+   "nota": 6.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-13T12:52:19Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Israel’s VCs see opportunity for challengers in Nvidia’s turmoil",
+     "link": "https://techcrunch.com/2026/11/13/israels-vcs-see-opportunity-for-challengers-in-nvidias-turmoil/",
+     "data": "2026-11-13T12:52:19Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a26",
+   "categoria": "mercado",
+   "nota": 6.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-13T12:28:23Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Jensen Huang didn’t show confidence in his successor, report says",
+     "link": "https://techcrunch.com/2026/11/13/jensen-huang-didnt-show-confidence-in-his-successor-report-says/",
+     "data": "2026-11-13T12:28:23Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a27",
+   "categoria": "mercado",
+   "nota": 6.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-13T11:00:10Z",
+   "fontes": [
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "Jensen Huang’s exit tests Nvidia’s supply chain clout, ability to bankroll AI buildout",
+     "link": "https://www.scmp.com/tech/big-tech/article/3374357/jensen-huangs-exit-tests-nvidias-supply-chain-clout-ability-bankroll-ai-buildout",
+     "data": "2026-11-13T11:00:10Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a28",
+   "categoria": "mercado",
+   "nota": 6.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-13T07:00:40Z",
+   "fontes": [
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "Jensen Huang’s abrupt exit stuns Nvidia’s China staff, clouding the outlook in a key market",
+     "link": "https://www.scmp.com/tech/big-tech/article/3374316/jensen-huangs-abrupt-exit-stuns-nvidias-china-staff-clouding-outlook-key-market",
+     "data": "2026-11-13T07:00:40Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a29",
+   "categoria": "mercado",
+   "nota": 6.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-12T16:12:44Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Trump floats Apple chairman Tim Cook as Jensen Huang’s successor",
+     "link": "https://techcrunch.com/2026/11/12/trump-floats-apple-chairman-tim-cook-as-jensen-huangs-successor/",
+     "data": "2026-11-12T16:12:44Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a30",
+   "categoria": "mercado",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-13T09:35:00Z",
+   "fontes": [
+    {
+     "veiculo": "Bloomberg",
+     "titulo": "AI server maker xFusion gets approval from the Shenzhen Stock Exchange for a ChiNext IPO; filing: xFusion aims to raise ~$1.2B by issuing up to 220.08M shares",
+     "link": "https://www.bloomberg.com/news/articles/2026-11-13/server-maker-xfusion-gets-shenzhen-nod-for-1-2-billion-listing",
+     "data": "2026-11-13T09:35:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a31",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-13T14:44:48Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "ElevenLabs’ new app combines meeting note-taking and dictation for teams",
+     "link": "https://techcrunch.com/2026/11/13/elevenlabs-new-app-combines-meeting-note-taking-and-dictation-for-teams/",
+     "data": "2026-11-13T14:44:48Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a32",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-13T08:20:19Z",
+   "fontes": [
+    {
+     "veiculo": "TechNode",
+     "titulo": "Xiaohongshu tests standalone app for users to build and share AI agents",
+     "link": "https://technode.com/2026/11/13/xiaohongshu-tests-standalone-app-for-users-to-build-and-share-ai-agents/",
+     "data": "2026-11-13T08:20:19Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a33",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-12T19:11:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Nectar launches an AI agent to automate creator discovery and outreach for brands",
+     "link": "https://techcrunch.com/2026/11/12/nectar-launches-an-ai-agent-to-automate-creator-discovery-and-outreach-for-brands/",
+     "data": "2026-11-12T19:11:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a34",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-12T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Phota Labs uses AI to turn everyday photos into professional-looking shots",
+     "link": "https://techcrunch.com/2026/11/12/phota-labs-uses-ai-to-turn-everyday-photos-into-professional-looking-shots/",
+     "data": "2026-11-12T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a35",
+   "categoria": "mercado",
+   "nota": 6.0,
+   "labs": [
+    "x-ai"
+   ],
+   "publicado_em": "2026-11-13T15:15:02Z",
+   "fontes": [
+    {
+     "veiculo": "The Information",
+     "titulo": "Sources: SpaceX laid off ~60 Grok Imagine staffers in the past week, leaving a handful to keep the product alive, as it prioritizes AI coding tools and Grok Bot (The Information)",
+     "link": "https://www.theinformation.com/articles/elon-musks-ai-group-guts-grok-video-generation-team",
+     "data": "2026-11-13T15:15:02Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a36",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-12T10:00:14Z",
+   "fontes": [
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "Former ByteDance AI scientist touts drug-discovery model that tops world leaders",
+     "link": "https://www.scmp.com/business/companies/article/3374201/former-bytedance-ai-scientist-touts-drug-discovery-model-tops-world-leaders",
+     "data": "2026-11-12T10:00:14Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a37",
+   "categoria": "seguranca",
+   "nota": 5.81,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-12T18:57:45Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Google faces calls for AI moratoriums in schools after Gemini pilot backlash",
+     "link": "https://arstechnica.com/tech-policy/2026/11/families-fight-to-keep-googles-disturbing-ai-off-school-issued-chromebooks/",
+     "data": "2026-11-12T18:57:45Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a38",
+   "categoria": "outro",
+   "nota": 5.72,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-12T20:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+     "link": "https://openai.com/business/customer-stories/amplitude",
+     "data": "2026-11-12T20:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a39",
+   "categoria": "outro",
+   "nota": 5.72,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-12T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Gondola doubles revenue as its team builds more with Codex",
+     "link": "https://openai.com/business/customer-stories/gondola",
+     "data": "2026-11-12T12:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a40",
+   "categoria": "outro",
+   "nota": 5.72,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-12T09:30:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Holiday Extras is rethinking what it can build with Codex",
+     "link": "https://openai.com/business/customer-stories/holidays-extras-codex",
+     "data": "2026-11-12T09:30:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a41",
+   "categoria": "outro",
+   "nota": 5.72,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-12T00:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Gilbert + Tobin rethinks the business of law with AI",
+     "link": "https://openai.com/index/gilbert-tobin-sam-nickless",
+     "data": "2026-11-12T00:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a42",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [
+    "bytedance"
+   ],
+   "publicado_em": "2026-11-13T08:20:11Z",
+   "fontes": [
+    {
+     "veiculo": "TechNode",
+     "titulo": "ByteDance’s AI chip chief has submitted his resignation, report says",
+     "link": "https://technode.com/2026/11/13/bytedances-ai-chip-chief-has-submitted-his-resignation-report-says/",
+     "data": "2026-11-13T08:20:11Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a43",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-13T06:59:31Z",
+   "fontes": [
+    {
+     "veiculo": "TechNode",
+     "titulo": "In Nvidia’s Shadow, a Chinese Chipmaker Takes a Different Route",
+     "link": "https://technode.com/2026/11/13/in-nvidias-shadow-denglin-chinese-gpu-chipmaker/",
+     "data": "2026-11-13T06:59:31Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a44",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-12T17:17:58Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "United Airlines blocks AI agents from booking flights, citing cybersecurity risks",
+     "link": "https://techcrunch.com/2026/11/12/united-airlines-blocks-ai-agents-from-booking-flights-citing-cybersecurity-risks/",
+     "data": "2026-11-12T17:17:58Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a45",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-12T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "AI chatbots are recommending fake retail websites, study finds",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1032020/gemini-chatgpt-perplexity-shopping-test-risky-fake-websites-citations",
+     "data": "2026-11-12T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a46",
+   "categoria": "capacidade",
+   "nota": 4.81,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-12T19:42:40Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "No, AI agents did not discover a previously unknown Maya site",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1032125/ai-agents-maya-site-archeology-discovery",
+     "data": "2026-11-12T19:42:40Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a47",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-11-13T12:15:19Z",
+   "fontes": [
+    {
+     "veiculo": "eetimes.com",
+     "titulo": "South Korea-based DeepX tapes out DX-M2, an edge AI chip to run inference of 100B-parameter LLMs on robots and drones, targeting fall 2027 for mass production",
+     "link": "https://www.eetimes.com/deepx-tapes-out-second-gen-chip-projects-6-7x-performance-gain-with-lpddr5x-pim/",
+     "data": "2026-11-13T12:15:19Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a48",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-11-13T05:55:56Z",
+   "fontes": [
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "China’s SMIC sees AI computing crunch until 2028 as Nvidia heat risks tighter chip curbs",
+     "link": "https://www.scmp.com/tech/big-tech/article/3374305/chinas-smic-sees-ai-computing-crunch-until-2028-nvidia-heat-risks-tighter-chip-curbs",
+     "data": "2026-11-13T05:55:56Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a49",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-11-12T21:27:10Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Nebius tests the neocloud playbook with $40 billion in planned spending",
+     "link": "https://techcrunch.com/2026/11/12/nebius-tests-the-neocloud-playbook-with-40-billion-in-planned-spending/",
+     "data": "2026-11-12T21:27:10Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a50",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-11-12T17:00:52Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "SoftBank’s billion-dollar loss may have put a cap on AI’s natural gas ambitions",
+     "link": "https://techcrunch.com/2026/11/12/softbanks-billion-dollar-loss-may-have-put-a-cap-on-ais-natural-gas-ambitions/",
+     "data": "2026-11-12T17:00:52Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a51",
+   "categoria": "outro",
+   "nota": 3.81,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-12T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Scientists are using Google AI to help restore giant kelp forests.",
+     "link": "https://blog.google/company-news/outreach-and-initiatives/sustainability/saving-giant-kelp-australia/",
+     "data": "2026-11-12T17:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a52",
+   "categoria": "outro",
+   "nota": 3.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-12T20:26:47Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Jensen Huang was having a third affair, Reuters reports",
+     "link": "https://techcrunch.com/2026/11/12/jensen-huang-was-having-a-third-affair-reuters-reports/",
+     "data": "2026-11-12T20:26:47Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a53",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-11-12T22:28:47Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "FAA expands AI advice to manage air traffic congestion across entire US airspace",
+     "link": "https://arstechnica.com/ai/2026/11/faa-expands-ai-advice-to-manage-air-traffic-congestion-across-entire-us-airspace/",
+     "data": "2026-11-12T22:28:47Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a54",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-11-12T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "More game developers are starting to use generative AI",
+     "link": "https://www.theverge.com/games/1032085/gdc-festival-of-gaming-annual-survey-ai-layoffs",
+     "data": "2026-11-12T17:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a55",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-11-12T08:10:47Z",
+   "fontes": [
+    {
+     "veiculo": "TechNode",
+     "titulo": "Baidu’s Robin Li says AI’s next phase is the “intelligent organization,” outlines three principles",
+     "link": "https://technode.com/2026/11/12/baidus-robin-li-says-ais-next-phase-is-the-intelligent-organization-outlines-three-principles/",
+     "data": "2026-11-12T08:10:47Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  }
+ ],
+ "itens": [
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Gemini Decisions API: Fast, calibrated multimodal decisions",
+   "link": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
+   "data": "2026-11-11T18:00:00Z",
+   "trecho": "Meet the Gemini Decisions API, powered by our state-of-the-art model Gemini Decision for fast, calibrated multimodal decisions.",
+   "veiculo": "Google",
+   "pontos": 565,
+   "discussao": "https://news.ycombinator.com/item?id=50456791",
+   "id": "i1"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Introducing Gemini 4 Hydrogen",
+   "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
+   "data": "2026-11-12T18:00:00Z",
+   "trecho": "Today, we’re introducing Gemini 4 Hydrogen, our daily driver for agentic workflows",
+   "veiculo": "Google",
+   "pontos": 554,
+   "discussao": "https://news.ycombinator.com/item?id=50471431",
+   "id": "i2"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Sources: Anthropic's IPO, like SpaceX's, is closed to institutional investors in mainland China and Hong Kong, partly due to US arms export rules (Bloomberg)",
+   "link": "https://www.bloomberg.com/news/articles/2026-11-13/anthropic-ipo-share-orders-from-china-are-said-to-be-rebuffed",
+   "data": "2026-11-13T17:10:03Z",
+   "trecho": "",
+   "veiculo": "Bloomberg",
+   "via": "https://www.techmeme.com/261113/p18#a261113p18",
+   "id": "i3"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Sources: Nvidia's board has approached Arm CEO Rene Haas in its search for a potential successor to Jensen Huang; Haas worked at Nvidia more than a decade ago",
+   "link": "https://www.ft.com/content/2a64f698-46dd-4178-a3f4-4c5f4c0a0926",
+   "data": "2026-11-13T17:03:26Z",
+   "trecho": "",
+   "veiculo": "Financial Times",
+   "via": "https://www.techmeme.com/261113/p17#a261113p17",
+   "id": "i4"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Connect Google Wallet to Gemini for personal finance insights",
+   "link": "https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/",
+   "data": "2026-11-13T17:00:00Z",
+   "trecho": "All Gemini app users in the U.S. can connect Google Wallet to get responses informed by their spending habits.",
+   "veiculo": "Google",
+   "id": "i5"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "OpenAI announces ChatGPT Wallet, which lets its dots AI agents make purchases on behalf of users, available to ChatGPT Pro subscribers in the US who are over 18",
+   "link": "https://www.cnbc.com/2026/11/13/openai-chatgpt-wallet-dot-purchases.html",
+   "data": "2026-11-13T15:35:05Z",
+   "trecho": "",
+   "veiculo": "CNBC",
+   "via": "https://www.techmeme.com/261113/p15#a261113p15",
+   "id": "i6"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Sources: SpaceX laid off ~60 Grok Imagine staffers in the past week, leaving a handful to keep the product alive, as it prioritizes AI coding tools and Grok Bot (The Information)",
+   "link": "https://www.theinformation.com/articles/elon-musks-ai-group-guts-grok-video-generation-team",
+   "data": "2026-11-13T15:15:02Z",
+   "trecho": "",
+   "veiculo": "The Information",
+   "via": "https://www.techmeme.com/261113/p14#a261113p14",
+   "id": "i7"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Introducing ChatGPT Wallet",
+   "link": "https://openai.com/index/introducing-chatgpt-wallet",
+   "data": "2026-11-13T15:00:00Z",
+   "trecho": "Introducing ChatGPT Wallet, a secure way for agents in ChatGPT Work, Codex, and dots to complete purchases with user approval and existing card protections.",
+   "veiculo": "OpenAI",
+   "id": "i8"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Jensen Huang's biographer says Nvidia had a culture of omertà and deference toward Huang, who was quite arrogant, that enabled him to \"be his worst self\"",
+   "link": "https://www.nytimes.com/2026/11/12/opinion/jensen-huang-nvidia.html?unlocked_article_code=1.P1E.6bW-.jsvT3PNHnXvZ&smid=nytcore-ios-share",
+   "data": "2026-11-13T14:40:42Z",
+   "trecho": "",
+   "veiculo": "The New York Times",
+   "via": "https://www.techmeme.com/261113/p12#a261113p12",
+   "id": "i9"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Amended S-1: Nscale had $5.5B in debt in September, up from $137.4M in June; Nvidia committed $2B of its $3B+ convertible financing; it previously disclosed $1B (Bloomberg)",
+   "link": "https://www.bloomberg.com/news/articles/2026-11-13/neocloud-nscale-reveals-5-5-billion-debt-and-closer-nvidia-ties-ahead-of-ipo",
+   "data": "2026-11-13T14:25:00Z",
+   "trecho": "",
+   "veiculo": "Bloomberg",
+   "via": "https://www.techmeme.com/261113/p11#a261113p11",
+   "id": "i10"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Jensen Huang's downfall exposes Nvidia's internal politics; source: Huang ran Nvidia as a \"feudal system\" with his daughter and son-in-law in powerful positions (Financial Times)",
+   "link": "https://www.ft.com/content/ef8f85a6-e2d7-4d41-b70e-092b2567813a",
+   "data": "2026-11-13T13:10:02Z",
+   "trecho": "",
+   "veiculo": "Financial Times",
+   "via": "https://www.techmeme.com/261113/p10#a261113p10",
+   "id": "i11"
+  },
+  {
+   "fonte": "deepseek",
+   "peso": 3,
+   "titulo": "The full DeepSeek App experience, now via API",
+   "link": "https://api-docs.deepseek.com/news/news261113",
+   "data": "2026-11-13T12:00:00Z",
+   "trecho": "Copy Markdown Copy Markdown Open Markdown Search, files, links, safety, and voice. The capabilities behind the DeepSeek App are now available through the DeepSeek API. Enable built-in features with a few parameters, or call standalone APIs such as OCR, ASR, and TTS. Build richer conversations or recreate the full…",
+   "veiculo": "DeepSeek",
+   "lab": "deepseek",
+   "id": "i12"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "A review of Chinese contracts, disclosures, and other documents identifies $3.2B+ in compute projects built or planned around Nvidia GPUs restricted by the US",
+   "link": "https://www.reuters.com/world/china/huang-exit-us-scrutiny-imperil-3-billion-chinese-ai-projects-reliant-nvidia-2026-11-13/",
+   "data": "2026-11-13T10:50:00Z",
+   "trecho": "",
+   "veiculo": "Reuters",
+   "via": "https://www.techmeme.com/261113/p7#a261113p7",
+   "id": "i13"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "AI server maker xFusion gets approval from the Shenzhen Stock Exchange for a ChiNext IPO; filing: xFusion aims to raise ~$1.2B by issuing up to 220.08M shares",
+   "link": "https://www.bloomberg.com/news/articles/2026-11-13/server-maker-xfusion-gets-shenzhen-nod-for-1-2-billion-listing",
+   "data": "2026-11-13T09:35:00Z",
+   "trecho": "",
+   "veiculo": "Bloomberg",
+   "via": "https://www.techmeme.com/261113/p6#a261113p6",
+   "id": "i14"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "How Amplitude ships product improvements in 1–2 days with OpenAI",
+   "link": "https://openai.com/business/customer-stories/amplitude",
+   "data": "2026-11-12T20:00:00Z",
+   "trecho": "Built primarily on OpenAI models, Amplitude’s proactive product agent, Wave, identifies what to build, helps teams ship changes with coding agents, and measures the impact.",
+   "veiculo": "OpenAI",
+   "id": "i15"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Google Search gets a major upgrade with Gemini 4 Hydrogen",
+   "link": "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/",
+   "data": "2026-11-12T18:00:00Z",
+   "trecho": "We are bringing Gemini 4 Hydrogen to Google Search globally to provide you with more helpful, visual, and intuitive responses.",
+   "veiculo": "Google",
+   "id": "i16"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Gemini 4 Hydrogen: everyday coding and agentic workflows for developers",
+   "link": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/",
+   "data": "2026-11-12T18:00:00Z",
+   "trecho": "Build faster with Gemini 4 Hydrogen, Google’s new model for cost-efficient agentic coding and debugging. Start building in Google AI Studio today.",
+   "veiculo": "Google",
+   "id": "i17"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Scientists are using Google AI to help restore giant kelp forests.",
+   "link": "https://blog.google/company-news/outreach-and-initiatives/sustainability/saving-giant-kelp-australia/",
+   "data": "2026-11-12T17:00:00Z",
+   "trecho": "Underwater forests of giant kelp protect coastlines, provide habitat, and support marine ecosystems — but they’re disappearing worldwide due to ocean warming. As COP31 k…",
+   "veiculo": "Google",
+   "id": "i18"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Get quick answers from Gemini on any website.",
+   "link": "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome/",
+   "data": "2026-11-12T17:00:00Z",
+   "trecho": "Get quick answers with Gemini in Chrome. Summarize articles, compare products, and explain complex topics directly in your side panel. Try it now.",
+   "veiculo": "Google",
+   "id": "i19"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Gondola doubles revenue as its team builds more with Codex",
+   "link": "https://openai.com/business/customer-stories/gondola",
+   "data": "2026-11-12T12:00:00Z",
+   "trecho": "Gondola helps creatives get credit and get hired, with Codex raising its lead engineer’s output by 50% and ChatGPT simplifying daily work.",
+   "veiculo": "OpenAI",
+   "id": "i20"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Holiday Extras is rethinking what it can build with Codex",
+   "link": "https://openai.com/business/customer-stories/holidays-extras-codex",
+   "data": "2026-11-12T09:30:00Z",
+   "trecho": "With Codex, Holiday Extras is turning customer expertise into better apps, higher booking conversion and new possibilities for growth.",
+   "veiculo": "OpenAI",
+   "id": "i21"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Supporting research on AI and children’s safety",
+   "link": "https://openai.com/index/children-first-declaration",
+   "data": "2026-11-12T00:00:00Z",
+   "trecho": "OpenAI commits $2 million to research on AI and children’s safety. The work supports shared tools to measure risks and opportunities for young people.",
+   "veiculo": "OpenAI",
+   "id": "i22"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Gilbert + Tobin rethinks the business of law with AI",
+   "link": "https://openai.com/index/gilbert-tobin-sam-nickless",
+   "data": "2026-11-12T00:00:00Z",
+   "trecho": "A conversation with Sam Nickless, Partner and Chief Executive Officer at Gilbert + Tobin.",
+   "veiculo": "OpenAI",
+   "id": "i23"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Talk it through with Gemini, now on Apple CarPlay",
+   "link": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay/",
+   "data": "2026-11-11T17:00:00Z",
+   "trecho": "Gemini is now available on Apple CarPlay.",
+   "veiculo": "Google",
+   "id": "i24"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "ChatGPT’s new Wallet lets AI agents shop and check out for you",
+   "link": "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/",
+   "data": "2026-11-13T16:00:12Z",
+   "trecho": "ChatGPT Wallet lets AI agents shop and check out on users' behalf, starting with a limited rollout to U.S. Pro subscribers.",
+   "veiculo": "TechCrunch",
+   "id": "i25"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "The unfolding Jensen Huang scandal: a timeline",
+   "link": "https://techcrunch.com/2026/11/13/nvidia-ceo-jensen-huangs-affair-with-alleged-chinese-spy-a-timeline/",
+   "data": "2026-11-13T15:58:00Z",
+   "trecho": "Jensen Huang has resigned from Nvidia following an affair, which could have ramifications for national security as the U.S. and China race to develop the most advanced AI infrastructure.",
+   "veiculo": "TechCrunch",
+   "id": "i26"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "What’s really at stake in the Jensen Huang saga",
+   "link": "https://www.theverge.com/podcast/1032866/jensen-huang-nvidia-china-trump-vergecast",
+   "data": "2026-11-13T14:47:16Z",
+   "trecho": "One part of the saga surrounding Nvidia CEO Jensen Huang ended on Thursday, when Huang resigned from his position at the top of AI's most important company. But in the coming weeks and months, a much bigger story may be about to unfold. A story about Nvidia's dealings in China, about the US government's willingness […]",
+   "veiculo": "The Verge",
+   "id": "i27"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "ElevenLabs’ new app combines meeting note-taking and dictation for teams",
+   "link": "https://techcrunch.com/2026/11/13/elevenlabs-new-app-combines-meeting-note-taking-and-dictation-for-teams/",
+   "data": "2026-11-13T14:44:48Z",
+   "trecho": "ElevenAI is a new meeting notetaker and dictation app aimed at teams and enterprises.",
+   "veiculo": "TechCrunch",
+   "id": "i28"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "Will Jensen Huang’s downfall tip the scales against open-source AI?",
+   "link": "https://www.scmp.com/tech/big-tech/article/3374376/will-jensen-huangs-downfall-tip-scales-against-open-source-ai",
+   "data": "2026-11-13T14:00:09Z",
+   "trecho": "Jensen Huang’s abrupt resignation from Nvidia has cast uncertainty over the US chip giant’s multibillion-dollar investments in open-source artificial intelligence, while potentially depriving Chinese developers of one of their most influential advocates in Washington. His departure could prompt Nvidia to scale back…",
+   "veiculo": "South China Morning Post",
+   "id": "i29"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Claude’s Duet agent is a little neurotic and surprisingly helpful",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1032518/claude-duet-ai-agent-hands-on",
+   "data": "2026-11-13T14:00:00Z",
+   "trecho": "Normally, the products I test don't offer to help me write up my experience with them. Duet is different. Claude Duet is Anthropic's AI agent for consumers, the latest attempt by an AI company to try to convince us that agents can be useful for people who don't write code. It's been an interesting couple […]",
+   "veiculo": "The Verge",
+   "id": "i30"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "China could tighten rare earths exports if US escalates chip curbs over Nvidia: analysts",
+   "link": "https://www.scmp.com/economy/global-economy/article/3374328/china-could-tighten-rare-earths-exports-if-us-escalates-chip-curbs-over-nvidia-analysts",
+   "data": "2026-11-13T13:00:08Z",
+   "trecho": "China could retaliate with tighter rare earth export controls if Washington further restricts chip sales in the wake of the Nvidia saga, Chinese analysts say, though they expect broader US-China trade talks to remain on track ahead of a planned meeting between the two countries’ leaders next week. Following Jensen…",
+   "veiculo": "South China Morning Post",
+   "id": "i31"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Israel’s VCs see opportunity for challengers in Nvidia’s turmoil",
+   "link": "https://techcrunch.com/2026/11/13/israels-vcs-see-opportunity-for-challengers-in-nvidias-turmoil/",
+   "data": "2026-11-13T12:52:19Z",
+   "trecho": "Given Nvidia’s stronghold on AI and its importance in Israel, many in the country's startup ecosystem are worried about the impact of his departure.",
+   "veiculo": "TechCrunch",
+   "id": "i32"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Jensen Huang didn’t show confidence in his successor, report says",
+   "link": "https://techcrunch.com/2026/11/13/jensen-huang-didnt-show-confidence-in-his-successor-report-says/",
+   "data": "2026-11-13T12:28:23Z",
+   "trecho": "Huang described Kress as a \"deer in the headlights\" during a meeting in summer.",
+   "veiculo": "TechCrunch",
+   "id": "i33"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "South Korea-based DeepX tapes out DX-M2, an edge AI chip to run inference of 100B-parameter LLMs on robots and drones, targeting fall 2027 for mass production",
+   "link": "https://www.eetimes.com/deepx-tapes-out-second-gen-chip-projects-6-7x-performance-gain-with-lpddr5x-pim/",
+   "data": "2026-11-13T12:15:19Z",
+   "trecho": "",
+   "veiculo": "eetimes.com",
+   "via": "https://www.techmeme.com/261113/p8#a261113p8",
+   "id": "i34"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Let’s talk about Jensen Huang’s many affairs!",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1032339/lets-talk-about-the-nvidia-shitshow",
+   "data": "2026-11-13T12:00:00Z",
+   "trecho": "Usually, we'd be offering to answer your questions about a news event, but honestly we don't really have any answers about what the hell is going on over at Nvidia. I can't speak for Nilay but at the rate Jensen Huang's new mistresses are dropping, I am concerned we are approaching an affair Singularity. If […]",
+   "veiculo": "The Verge",
+   "id": "i35"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "Jensen Huang’s exit tests Nvidia’s supply chain clout, ability to bankroll AI buildout",
+   "link": "https://www.scmp.com/tech/big-tech/article/3374357/jensen-huangs-exit-tests-nvidias-supply-chain-clout-ability-bankroll-ai-buildout",
+   "data": "2026-11-13T11:00:10Z",
+   "trecho": "For years, Jensen Huang was more than Nvidia’s CEO – he was a key figure driving the artificial intelligence boom, parlaying close ties with Asian chip foundries and aggressive financial backing into an unprecedented global buildout of data centres. Following his sudden resignation, the industry is confronting two…",
+   "veiculo": "South China Morning Post",
+   "id": "i36"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "Jensen Huang quits, China trade surplus hits US$1 trillion, Xi-Trump summit",
+   "link": "https://www.scmp.com/plus/tech/tech-war/article/3374341/jensen-huang-quits-china-trade-surplus-hits-us1-trillion-xi-trump-summit",
+   "data": "2026-11-13T09:00:26Z",
+   "trecho": "Jensen Huang resigned as chief executive officer of chipmaker Nvidia following an affair with an alleged Chinese spy, boosting the odds of tighter US export controls against China days before the countries’ leaders are due to meet. Huang left the company he founded in 1993 with immediate effect, according to a…",
+   "veiculo": "South China Morning Post",
+   "id": "i37"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "Xiaohongshu tests standalone app for users to build and share AI agents",
+   "link": "https://technode.com/2026/11/13/xiaohongshu-tests-standalone-app-for-users-to-build-and-share-ai-agents/",
+   "data": "2026-11-13T08:20:19Z",
+   "trecho": "Xiaohongshu, the Chinese social platform also known as RedNote, is testing a standalone app called Dada that lets users turn their expertise into AI agents others can use. Ebrun found dozens of agents in the app, covering tasks such as design, job hunting and studying. Users can interact with them through text and…",
+   "veiculo": "TechNode",
+   "id": "i38"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "ByteDance’s AI chip chief has submitted his resignation, report says",
+   "link": "https://technode.com/2026/11/13/bytedances-ai-chip-chief-has-submitted-his-resignation-report-says/",
+   "data": "2026-11-13T08:20:11Z",
+   "trecho": "Shi Yunfeng, who leads ByteDance’s AI chip and data processing unit teams, has submitted his resignation and is handing over his responsibilities, LatePost reported. Shi joined ByteDance in 2018 and reports to Yang Zhenyuan, who heads the company’s cloud business, Volcano Engine. ByteDance began building its AI chip…",
+   "veiculo": "TechNode",
+   "id": "i39"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "OpenAI launches Daybreak Red Team in early access to test web apps for flaws and Daybreak Defense Factory to automate finding, validating, and fixing them",
+   "link": "https://www.theregister.com/security/2026/11/12/openai-launches-security-products-tells-orgs-theyre-doomed-if-they-dont-use-them/5309500",
+   "data": "2026-11-13T07:25:02Z",
+   "trecho": "",
+   "veiculo": "The Register",
+   "via": "https://www.techmeme.com/261113/p5#a261113p5",
+   "id": "i40"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "Jensen Huang’s abrupt exit stuns Nvidia’s China staff, clouding the outlook in a key market",
+   "link": "https://www.scmp.com/tech/big-tech/article/3374316/jensen-huangs-abrupt-exit-stuns-nvidias-china-staff-clouding-outlook-key-market",
+   "data": "2026-11-13T07:00:40Z",
+   "trecho": "Jensen Huang’s abrupt resignation stunned some Nvidia staff in China and raised questions about the future of the US chipmaker’s operations in a market its co-founder had spent years cultivating, according to company sources. “It’s the end of an era. I really don’t understand why Huang was asked to resign – no one…",
+   "veiculo": "South China Morning Post",
+   "id": "i41"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "In Nvidia’s Shadow, a Chinese Chipmaker Takes a Different Route",
+   "link": "https://technode.com/2026/11/13/in-nvidias-shadow-denglin-chinese-gpu-chipmaker/",
+   "data": "2026-11-13T06:59:31Z",
+   "trecho": "Editor’s note: Denglin Technology, a Chinese maker of general-purpose GPUs for AI computing, went public in Hong Kong on November 10, raising HK$1.41 billion. Revenue reached RMB 200.4 million in the first four months of 2026, already exceeding its full-year 2025 total. Frost & Sullivan ranked it third in China’s…",
+   "veiculo": "TechNode",
+   "id": "i42"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "China’s SMIC sees AI computing crunch until 2028 as Nvidia heat risks tighter chip curbs",
+   "link": "https://www.scmp.com/tech/big-tech/article/3374305/chinas-smic-sees-ai-computing-crunch-until-2028-nvidia-heat-risks-tighter-chip-curbs",
+   "data": "2026-11-13T05:55:56Z",
+   "trecho": "China’s Semiconductor Manufacturing International Corporation (SMIC) is betting that a relentless data centre buildout will keep artificial intelligence computing power in short supply for the next two years. The bullish forecast comes as scrutiny over former Nvidia CEO Jensen Huang threatens to intensify…",
+   "veiculo": "South China Morning Post",
+   "id": "i43"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "Jensen Huang quits Nvidia; non-invasive treatment for kidney tumours: SCMP’s 7 highlights",
+   "link": "https://www.scmp.com/news/china/article/3374278/jensen-huang-quits-nvidia-non-invasive-treatment-kidney-tumours-scmps-7-highlights",
+   "data": "2026-11-13T04:15:04Z",
+   "trecho": "We have selected seven stories from this week’s news across Hong Kong, mainland China, the wider Asia region and beyond that resonated with our readers and shed light on topical issues. If you would like to see more of our reporting, please consider subscribing. 1. Jensen Huang resigns as Nvidia CEO amid affairs…",
+   "veiculo": "South China Morning Post",
+   "id": "i44"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "llm-gemini 0.37",
+   "link": "https://simonwillison.net/2026/Nov/12/llm-gemini/",
+   "data": "2026-11-12T22:55:19Z",
+   "trecho": "Release: llm-gemini 0.37 Google launched Gemini 4 Hydrogen today - the lowest cost member of the Gemini 4 family. It's actually not too far off the price of its much bigger siblings, Carbon and Argon. I'm finding Gemini 4's pricing really confusing. Here's the pricing scheme: Model Dates Input ($/M) Cached input…",
+   "veiculo": "Simon Willison",
+   "id": "i45"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Democrats launch Nvidia investigation, write scathing letter on Huang’s ‘scheme’ with Trump",
+   "link": "https://techcrunch.com/2026/11/12/democrats-launch-nvidia-investigation-write-scathing-letter-on-huangs-scheme-with-trump/",
+   "data": "2026-11-12T22:42:51Z",
+   "trecho": "This Congressional investigation into Nvidia's China sales and its dealings with Trump is the second one, so far, since news of the alleged spy affair broke.",
+   "veiculo": "TechCrunch",
+   "id": "i46"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "FAA expands AI advice to manage air traffic congestion across entire US airspace",
+   "link": "https://arstechnica.com/ai/2026/11/faa-expands-ai-advice-to-manage-air-traffic-congestion-across-entire-us-airspace/",
+   "data": "2026-11-12T22:28:47Z",
+   "trecho": "Airlines praised the AI tool, but the air traffic controllers’ union wasn’t involved.",
+   "veiculo": "Ars Technica",
+   "id": "i47"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Muse can now place calls to US businesses — if you pay",
+   "link": "https://techcrunch.com/2026/11/12/muse-can-now-place-calls-to-u-s-businesses-if-you-pay/",
+   "data": "2026-11-12T22:22:28Z",
+   "trecho": "Muse's AI can now place outbound calls to U.S. businesses — but it's not free.",
+   "veiculo": "TechCrunch",
+   "id": "i48"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Google’s new Gemini model is better at understanding complicated questions",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1032505/google-search-ai-mode-gemini-4-hydrogen",
+   "data": "2026-11-12T21:55:32Z",
+   "trecho": "Google says its new Gemini 4 Hydrogen model can give more helpful answers to complex questions, including \"questions with multiple parts, hard-to-understand typos, or highly specific requests.\" The new model can break down your questions and address each part in its responses. It's available starting today in search,…",
+   "veiculo": "The Verge",
+   "id": "i49"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Nebius tests the neocloud playbook with $40 billion in planned spending",
+   "link": "https://techcrunch.com/2026/11/12/nebius-tests-the-neocloud-playbook-with-40-billion-in-planned-spending/",
+   "data": "2026-11-12T21:27:10Z",
+   "trecho": "Nebius plans to fund its $40 billion AI infrastructure expansion through customer prepayments and loans, even as delays at a Microsoft data center raise questions about its financing model.",
+   "veiculo": "TechCrunch",
+   "id": "i50"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Jensen Huang was having a third affair, Reuters reports",
+   "link": "https://techcrunch.com/2026/11/12/jensen-huang-was-having-a-third-affair-reuters-reports/",
+   "data": "2026-11-12T20:26:47Z",
+   "trecho": "Reuters is withholding the name of the new employee linked to Huang, but says she is an employee of Nvidia.",
+   "veiculo": "TechCrunch",
+   "id": "i51"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "Nvidia privately confirmed it could track chips to fight smuggling, even as industry publicly questioned feasibility",
+   "link": "https://www.technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking/",
+   "data": "2026-11-12T20:16:24Z",
+   "trecho": "Representatives from Nvidia told Illinois representative Bill Foster that it would be technically possible to implement the anti-smuggling measures called for in the Chip Security Act, Foster told MIT Technology Review in an interview on Thursday, even while an industry group claimed they were “potentially…",
+   "veiculo": "MIT Technology Review",
+   "id": "i52"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "The Elder Scrolls' most obscure adventure gets a 4K PC makeover",
+   "link": "https://arstechnica.com/gaming/2026/11/the-elder-scrolls-most-obscure-adventure-gets-a-4k-pc-makeover/",
+   "data": "2026-11-12T19:49:11Z",
+   "trecho": "N-Gage exclusive Shadowkey gets an AI-coded glow-up with plenty of new features.",
+   "veiculo": "Ars Technica",
+   "id": "i53"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "No, AI agents did not discover a previously unknown Maya site",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1032125/ai-agents-maya-site-archeology-discovery",
+   "data": "2026-11-12T19:42:40Z",
+   "trecho": "Armed with a team of AI agents, Google researcher Pietro Miotti claimed earlier this week to have discovered a potentially unmapped Maya site in Mexico. There was just one problem: The site had already been discovered and was published in an academic journal last year. The incident, which sparked criticism among…",
+   "veiculo": "The Verge",
+   "id": "i54"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Google’s latest Search upgrade promises better answers to your most complicated questions",
+   "link": "https://techcrunch.com/2026/11/12/googles-latest-search-upgrade-promises-better-answers-to-your-most-complicated-questions/",
+   "data": "2026-11-12T19:27:45Z",
+   "trecho": "Powered by Gemini 4 Hydrogen, Google's AI Mode is getting better at understanding complex queries, surfacing relevant links, and delivering richer visual responses.",
+   "veiculo": "TechCrunch",
+   "id": "i55"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Google rolls out Gemini 4 Hydrogen, finally replacing 3.8 Flash",
+   "link": "https://arstechnica.com/google/2026/11/google-rolls-out-gemini-4-hydrogen-finally-replacing-3-8-flash/",
+   "data": "2026-11-12T19:23:03Z",
+   "trecho": "Gemini 4 Hydrogen isn't getting a slow, security-conscious release like Carbon and Argon.",
+   "veiculo": "Ars Technica",
+   "id": "i56"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Nectar launches an AI agent to automate creator discovery and outreach for brands",
+   "link": "https://techcrunch.com/2026/11/12/nectar-launches-an-ai-agent-to-automate-creator-discovery-and-outreach-for-brands/",
+   "data": "2026-11-12T19:11:00Z",
+   "trecho": "Nectar's new AI agent automates influencer marketing, helping brands discover creators, manage outreach and partnerships, and track campaign results.",
+   "veiculo": "TechCrunch",
+   "id": "i57"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Google faces calls for AI moratoriums in schools after Gemini pilot backlash",
+   "link": "https://arstechnica.com/tech-policy/2026/11/families-fight-to-keep-googles-disturbing-ai-off-school-issued-chromebooks/",
+   "data": "2026-11-12T18:57:45Z",
+   "trecho": "Families confront Google after teen’s lawsuit labels Gemini a “suicide coach.”",
+   "veiculo": "Ars Technica",
+   "id": "i58"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Jensen Huang’s exit puts Nvidia’s support for open source in question",
+   "link": "https://techcrunch.com/2026/11/12/jensen-huangs-exit-puts-nvidias-support-for-open-source-in-question/",
+   "data": "2026-11-12T18:39:23Z",
+   "trecho": "Jensen Huang’s resignation raises questions about Nvidia’s commitment to open source AI, including its Hugging Face acquisition, open-weight models, and advocacy against restrictions, as the company navigates a leadership transition.",
+   "veiculo": "TechCrunch",
+   "id": "i59"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Oh, Palantir is ‘progressive’ now, is it?",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1032126/alex-baby-you-were-recorded-on-video",
+   "data": "2026-11-12T18:06:54Z",
+   "trecho": "I had other things to do today, but Alex Karp's pathetic attempt to pivot back to the left gave me no choice but to put them on hold. Last week's elections were a bloodbath for the right, a problem for all the wannabe fash founders who had tied their political fortunes to a \"vibe shift\" […]",
+   "veiculo": "The Verge",
+   "id": "i60"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "The Jensen Huang scandal is hardly over",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1032069/jensen-huang-resignation-affair-chips-smuggling",
+   "data": "2026-11-12T17:44:33Z",
+   "trecho": "I was certain, until the story of Jensen Huang's second affair hit, that Huang was bulletproof. After all, why wouldn't he be? He's placed himself indispensably at the center of the AI industry and famously had no succession plan at Nvidia. In fact, he's the only CEO Nvidia has ever had. L'état c'est moi. Then […]",
+   "veiculo": "The Verge",
+   "id": "i61"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Hugging Face CEO vows to keep fighting for open source AI after Jensen Huang’s exit",
+   "link": "https://techcrunch.com/2026/11/12/hugging-face-ceo-vows-to-keep-fighting-for-open-source-ai-after-jensen-huangs-exit/",
+   "data": "2026-11-12T17:36:40Z",
+   "trecho": "Hugging Face's CEO pledged to keep fighting for open source AI after Huang's exit, raising questions about Nvidia's $12.9 billion acquisition.",
+   "veiculo": "TechCrunch",
+   "id": "i62"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "United Airlines blocks AI agents from booking flights, citing cybersecurity risks",
+   "link": "https://techcrunch.com/2026/11/12/united-airlines-blocks-ai-agents-from-booking-flights-citing-cybersecurity-risks/",
+   "data": "2026-11-12T17:17:58Z",
+   "trecho": "The airline said it will not allow customers to use AI agents to book flights and manage reservations.",
+   "veiculo": "TechCrunch",
+   "id": "i63"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "SoftBank’s billion-dollar loss may have put a cap on AI’s natural gas ambitions",
+   "link": "https://techcrunch.com/2026/11/12/softbanks-billion-dollar-loss-may-have-put-a-cap-on-ais-natural-gas-ambitions/",
+   "data": "2026-11-12T17:00:52Z",
+   "trecho": "SoftBank lost over $3 billion preordering natural gas turbines to power AI data centers. Here's what the loss means to power markets.",
+   "veiculo": "TechCrunch",
+   "id": "i64"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Phota Labs uses AI to turn everyday photos into professional-looking shots",
+   "link": "https://techcrunch.com/2026/11/12/phota-labs-uses-ai-to-turn-everyday-photos-into-professional-looking-shots/",
+   "data": "2026-11-12T17:00:00Z",
+   "trecho": "Rather than giving consumers yet another photo-editing tool, Phota Labs aims to use advances in AI to automate the editing process so it’s easier for anyone to turn everyday moments into better photos.",
+   "veiculo": "TechCrunch",
+   "id": "i65"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "AI chatbots are recommending fake retail websites, study finds",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1032020/gemini-chatgpt-perplexity-shopping-test-risky-fake-websites-citations",
+   "data": "2026-11-12T17:00:00Z",
+   "trecho": "Shoppers using AI chatbots to research products or find places to buy items could be directed to imposters and other risky websites, a new study found. The study conducted by IP protection firm Podqi and shared exclusively with The Verge prompted ChatGPT, Gemini, and Perplexity with a handful of shopping-related…",
+   "veiculo": "The Verge",
+   "id": "i66"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "More game developers are starting to use generative AI",
+   "link": "https://www.theverge.com/games/1032085/gdc-festival-of-gaming-annual-survey-ai-layoffs",
+   "data": "2026-11-12T17:00:00Z",
+   "trecho": "More video game developers are using generative AI tools in their jobs compared to last year, according to the GDC Festival of Gaming's latest annual industry survey. Forty percent of developers surveyed say they use it \"as part of their job,\" an increase from 36 percent in 2025. Usage was higher with game developers…",
+   "veiculo": "The Verge",
+   "id": "i67"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Jensen Huang agrees to testify before Congress",
+   "link": "https://techcrunch.com/2026/11/12/jensen-huang-agrees-to-testify-before-congress/",
+   "data": "2026-11-12T16:36:37Z",
+   "trecho": "Huang, who was ousted as CEO following reports of an alleged affair with a woman suspected of spying for China, agreed to testify Wednesday after several senior lawmakers threatened to subpoena him.",
+   "veiculo": "TechCrunch",
+   "id": "i68"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Five ways Jensen Huang’s ouster from Nvidia could damage the AI industry",
+   "link": "https://techcrunch.com/2026/11/12/five-ways-jensen-huangs-ouster-from-nvidia-could-damage-the-ai-industry/",
+   "data": "2026-11-12T16:32:33Z",
+   "trecho": "Nvidia's ousted CEO Jensen Huang's downfall isn’t just your run-of-the-mill salacious billionaire sex scandal. He was using his influence to push the AI industry in some very specific ways.",
+   "veiculo": "TechCrunch",
+   "id": "i69"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Jensen Huang is out. What did China want from him?",
+   "link": "https://www.theverge.com/podcast/1031260/nvidia-jensen-huang-resign-china-spy-scandal-ai-chips-trump",
+   "data": "2026-11-12T16:30:00Z",
+   "trecho": "Today, we’re talking about the Jensen Huang scandal at Nvidia, which is developing so quickly that we had to do an emergency update of this intro minutes before publishing this episode. Huang just resigned from his position as CEO of Nvidia as news of his affairs, including with an alleged Chinese spy, threatened to…",
+   "veiculo": "The Verge",
+   "id": "i70"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Trump floats Apple chairman Tim Cook as Jensen Huang’s successor",
+   "link": "https://techcrunch.com/2026/11/12/trump-floats-apple-chairman-tim-cook-as-jensen-huangs-successor/",
+   "data": "2026-11-12T16:12:44Z",
+   "trecho": "In a post on Truth Social, President Trump says only one man can take Jensen Huang's place as head of Nvidia: Tim Cook.",
+   "veiculo": "TechCrunch",
+   "id": "i71"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Jensen Huang is out at Nvidia — who is Colette Kress, his interim replacement?",
+   "link": "https://techcrunch.com/2026/11/12/jensen-huang-is-out-at-nvidia-who-is-colette-kress-his-interim-replacement/",
+   "data": "2026-11-12T15:37:29Z",
+   "trecho": "Nvidia CFO Colette Kress is taking over as an interim replacement for longtime CEO Jensen Huang, who is embroiled in scandal.",
+   "veiculo": "TechCrunch",
+   "id": "i72"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Google pushes privacy angle as Gemini-powered smartglasses debut starting at $395",
+   "link": "https://arstechnica.com/google/2026/11/google-pushes-privacy-angle-as-gemini-powered-smartglasses-debut-starting-at-395/",
+   "data": "2026-11-12T14:50:17Z",
+   "trecho": "The first Gemini smartglasses are a collab between Google, Samsung, Gentle Monster, and Warby Parker.",
+   "veiculo": "Ars Technica",
+   "id": "i73"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Nvidia CEO Jensen Huang has resigned",
+   "link": "https://arstechnica.com/gadgets/2026/11/ceo-jensen-huangs-job-is-suddenly-on-the-line-at-nvidia/",
+   "data": "2026-11-12T14:05:17Z",
+   "trecho": "Nvidia CEO also had an affair with a senior executive at the firm.",
+   "veiculo": "Ars Technica",
+   "id": "i74"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "Jensen Huang resigns as Nvidia CEO amid affairs scandal",
+   "link": "https://www.scmp.com/tech/big-tech/article/3374255/jensen-huang-resigns-nvidia-ceo-amid-affair-scandal",
+   "data": "2026-11-12T14:04:46Z",
+   "trecho": "Jensen Huang has resigned as president, chief executive officer and board member of the AI chip giant Nvidia with immediate effect, the firm announced on Thursday, amid media reports of his alleged extramarital affairs. The company’s executive vice-president and chief financial officer, Colette Kress, will take over…",
+   "veiculo": "South China Morning Post",
+   "id": "i75"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "If Jensen Huang exits Nvidia, who could take the US$4 trillion chipmaker’s reins?",
+   "link": "https://www.scmp.com/tech/article/3374235/if-jensen-huang-exits-nvidia-who-could-take-us4tr-chipmakers-reins",
+   "data": "2026-11-12T12:30:07Z",
+   "trecho": "Few tech leaders are as synonymous with their companies as Jensen Huang. The Nvidia co-founder has been credited with transforming the firm over three decades from a niche graphics-chip designer into a US$4 trillion powerhouse through a series of high-stakes bets. Now, allegations of extramarital affairs with two…",
+   "veiculo": "South China Morning Post",
+   "id": "i76"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "Loyalty vs accountability: a look at the Nvidia board deciding CEO Jensen Huang’s fate",
+   "link": "https://www.scmp.com/tech/big-tech/article/3374203/loyalty-vs-accountability-look-nvidia-board-deciding-ceo-jensen-huangs-fate",
+   "data": "2026-11-12T10:30:04Z",
+   "trecho": "Nvidia’s board of directors is facing perhaps its biggest test yet as it weighs whether to oust chief executive Jensen Huang, the man credited with transforming the chipmaker into one of the world’s most valuable companies. The board was reportedly preparing to remove Huang after reports that he had an extramarital…",
+   "veiculo": "South China Morning Post",
+   "id": "i77"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "Former ByteDance AI scientist touts drug-discovery model that tops world leaders",
+   "link": "https://www.scmp.com/business/companies/article/3374201/former-bytedance-ai-scientist-touts-drug-discovery-model-tops-world-leaders",
+   "data": "2026-11-12T10:00:14Z",
+   "trecho": "A former ByteDance artificial intelligence scientist’s new venture has released a life sciences AI model that the firm claims outperforms state-of-the-art systems, intensifying the increasingly crowded competition in AI-driven drug discovery. Geodesic Intelligence’s NovaAtom-Lite, an AI model designed to predict the…",
+   "veiculo": "South China Morning Post",
+   "id": "i78"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "Baidu’s Robin Li says AI’s next phase is the “intelligent organization,” outlines three principles",
+   "link": "https://technode.com/2026/11/12/baidus-robin-li-says-ais-next-phase-is-the-intelligent-organization-outlines-three-principles/",
+   "data": "2026-11-12T08:10:47Z",
+   "trecho": "Baidu founder Robin Li said Thursday that the next stage of AI adoption will require companies to redesign how they work. Speaking at Baidu World 2026 in Beijing, he laid out three principles for what he calls an “intelligent organization”: organize work around tasks that cross job boundaries, document employee…",
+   "veiculo": "TechNode",
+   "id": "i79"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "ByteDance reportedly plans AI assistant similar to Meta’s Muse",
+   "link": "https://technode.com/2026/11/12/bytedance-reportedly-plans-ai-assistant-similar-to-metas-muse/",
+   "data": "2026-11-12T07:11:14Z",
+   "trecho": "ByteDance plans to introduce an AI assistant similar to Meta’s Muse in the coming weeks, IT Home reported on Wednesday, citing Bloomberg. ByteDance co-founder Zhang Yiming outlined the plan at an internal meeting with the company’s AI team, according to people familiar with the discussion. Meta launched Muse in…",
+   "veiculo": "TechNode",
+   "id": "i80"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "Baidu opens API access to ERNIE 5.5 Flash Preview",
+   "link": "https://technode.com/2026/11/12/baidu-opens-api-access-to-ernie-5-5-flash-preview/",
+   "data": "2026-11-12T07:10:52Z",
+   "trecho": "Baidu released ERNIE 5.5 Flash Preview on Wednesday and opened API access through its Qianfan platform. It is the first post-trained version of ERNIE 5.5 Flash Base, which Baidu released earlier this month. The new model supports a million-token context window and uses 14 billion of its 280 billion parameters to…",
+   "veiculo": "TechNode",
+   "id": "i81"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "Source close to Tencent denies rumor of 50% layoffs",
+   "link": "https://technode.com/2026/11/12/source-close-to-tencent-denies-rumor-of-50-layoffs/",
+   "data": "2026-11-12T07:09:11Z",
+   "trecho": "A person close to Tencent told Sina Tech on Thursday that a rumor the company planned to cut half its workforce was false. The claim circulated after Tencent’s 28th-anniversary all-hands meeting, where executives called for faster organizational changes as the company shifts resources toward AI. The person said the…",
+   "veiculo": "TechNode",
+   "id": "i82"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "‘Web of complexity’: Jensen Huang’s position in doubt as Nvidia shares plunge overnight",
+   "link": "https://www.scmp.com/tech/article/3374131/nvidia-shares-plunge-after-hours-trading-concerns-about-ceo-jensen-huang-intensify",
+   "data": "2026-11-12T00:53:52Z",
+   "trecho": "Nvidia shares fell more than 8 per cent at one point in US after-hours trading on Wednesday as CEO Jensen Huang’s prospects of hanging onto his role became more clouded after media reports of a board meeting and another extramarital affair. The drop in the American AI chip giant’s share price erased a 2.9 per cent…",
+   "veiculo": "South China Morning Post",
+   "id": "i83"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Gemini Decisions API",
+   "link": "https://simonwillison.net/2026/Nov/11/gemini-decisions-api/",
+   "data": "2026-11-11T22:03:25Z",
+   "trecho": "Gemini Decisions API Google join Jev and OpenAI in the decision model category with \"Gemini Decision 1\". This new model API is almost identical to Jev: it supports the same three types of questions (yes/no, choice, and rubric-scoring) and even reuses Jev's term \"Noul\" for a yes/no question. It's priced the same as…",
+   "veiculo": "Simon Willison",
+   "id": "i84"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "aws-emulator",
+   "link": "https://simonwillison.net/2026/Nov/11/aws-emulator/",
+   "data": "2026-11-11T21:18:30Z",
+   "trecho": "aws-emulator Finally, an official emulator from AWS to run tests against a local clone of their many different services without having to provision a paid API key to do so. It's written in Rust by a huge swarm of agents - 29,684 commits in the first three weeks of the project. Swaminathan (Swami) Sivasubramanian…",
+   "veiculo": "Simon Willison",
+   "id": "i85"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Browse tools.simonwillison.net by tag",
+   "link": "https://simonwillison.net/2026/Nov/11/tools-tags/",
+   "data": "2026-11-11T18:42:50Z",
+   "trecho": "Browse tools.simonwillison.net by tag I've been wanting a better way to browse my collection of vibe-coded tools (244 and counting) for a while. I had a few Fable 5.2 credits left over before my weekly reset so I set it to work using tree-sitter to analyze the code for JavaScript APIs, libraries, and web API hosts…",
+   "veiculo": "Simon Willison",
+   "id": "i86"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "llm 0.37.2",
+   "link": "https://simonwillison.net/2026/Nov/11/llm/",
+   "data": "2026-11-11T17:19:52Z",
+   "trecho": "Release: llm 0.37.2 Fixes a security issue reported by Daniel de Araujo in GHSA-v9h7-jj4g-f862 and GHSA-r639-rr7r-x72w . LLM has a mechanism called extra-openai-models.yaml - now managed by the new-in-0.37 llm openai endpoint add command - for using LLM with OpenAI-compatible API endpoints from other providers.…",
+   "veiculo": "Simon Willison",
+   "id": "i87"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Anthropic's IPO roadshow video",
+   "link": "https://simonwillison.net/2026/Nov/11/anthropic-ipo-roadshow/",
+   "data": "2026-11-11T15:11:59Z",
+   "trecho": "Anthropic's IPO roadshow video Anthropic kicked off their IPO roadshow yesterday, and their roadshow video has some previously unreleased information about how their business works. The section on \"Approach to compute\" with co-founder Tom Brown is particularly interesting, describing how Anthropic train and serve…",
+   "veiculo": "Simon Willison",
+   "id": "i88"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Nvidia is preparing to oust Jensen Huang",
+   "link": "https://www.wsj.com/business/nvidia-is-preparing-to-oust-nvidia-ceo-jensen-huang-30f421ad",
+   "data": "2026-11-11T22:31:06Z",
+   "trecho": "",
+   "veiculo": "The Wall Street Journal",
+   "pontos": 1220,
+   "discussao": "https://news.ycombinator.com/item?id=50459703",
+   "id": "i89"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "My AI agents found an unmapped Maya site?",
+   "link": "https://pietromiotti.com/latest/maya-site",
+   "data": "2026-11-11T12:05:22Z",
+   "trecho": "",
+   "veiculo": "pietromiotti.com",
+   "pontos": 1033,
+   "discussao": "https://news.ycombinator.com/item?id=50452455",
+   "id": "i90"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Anthropic IPO",
+   "link": "https://ipo.anthropic.com/us/",
+   "data": "2026-11-12T11:46:41Z",
+   "trecho": "",
+   "veiculo": "Anthropic",
+   "pontos": 985,
+   "discussao": "https://news.ycombinator.com/item?id=50465829",
+   "id": "i91"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Nvidia employees petition to bring back Jensen Huang",
+   "link": "https://www.wired.com/story/nvidia-employees-petition-for-jensen-huangs-return/",
+   "data": "2026-11-13T02:16:24Z",
+   "trecho": "",
+   "veiculo": "Wired",
+   "pontos": 750,
+   "discussao": "https://news.ycombinator.com/item?id=50477231",
+   "id": "i92"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "United Airlines bans AI agents from booking flights on behalf of travelers",
+   "link": "https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/",
+   "data": "2026-11-11T21:24:35Z",
+   "trecho": "",
+   "veiculo": "cbsnews.com",
+   "pontos": 676,
+   "discussao": "https://news.ycombinator.com/item?id=50458900",
+   "id": "i93"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Gemini 4 Hydrogen and Orchestrator",
+   "link": "https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity/",
+   "data": "2026-11-12T18:52:01Z",
+   "trecho": "",
+   "veiculo": "antigravity.google",
+   "pontos": 480,
+   "discussao": "https://news.ycombinator.com/item?id=50472260",
+   "id": "i94"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "I'm making LLMs work on small and old devices",
+   "link": "https://github.com/hyperionaidev/smolmaxxing/",
+   "data": "2026-11-12T15:23:10Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 450,
+   "discussao": "https://news.ycombinator.com/item?id=50468888",
+   "id": "i95"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Elevated errors on claude.ai, Claude Code, and platform.claude.com",
+   "link": "https://status.claude.com/incidents/nn11wk485zfn",
+   "data": "2026-11-13T10:18:13Z",
+   "trecho": "",
+   "veiculo": "status.claude.com",
+   "pontos": 432,
+   "discussao": "https://news.ycombinator.com/item?id=50481187",
+   "id": "i96"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Former Nvidia CEO Huang had a relationship with a second employee, sources say",
+   "link": "https://www.reuters.com/technology/former-nvidia-ceo-huang-had-relationship-with-second-employee-sources-say-2026-11-12/",
+   "data": "2026-11-12T19:51:33Z",
+   "trecho": "",
+   "veiculo": "Reuters",
+   "pontos": 406,
+   "discussao": "https://news.ycombinator.com/item?id=50473190",
+   "id": "i97"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Jensen Huang resigns as Nvidia CEO immediately",
+   "link": "https://www.reuters.com/live/nvidia-live-board-meets-fate-ceo-jensen-huang-after-affair-reports-2026-11-12/",
+   "data": "2026-11-12T13:56:11Z",
+   "trecho": "",
+   "veiculo": "Reuters",
+   "pontos": 375,
+   "discussao": "https://news.ycombinator.com/item?id=50467132",
+   "id": "i98"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Chinese frontier AI models carry the fingerprint of export-controlled GPUs",
+   "link": "https://unemploymentlabs.com/checkpoint-forensics",
+   "data": "2026-11-12T21:56:11Z",
+   "trecho": "",
+   "veiculo": "unemploymentlabs.com",
+   "pontos": 336,
+   "discussao": "https://news.ycombinator.com/item?id=50474883",
+   "id": "i99"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Edge0-145B: Frontier AI Capabilities on Your Own Computer",
+   "link": "https://edge0.ai/blog/introducing-edge0-145b-frontier-ai-capabilities-on-your-own-computer",
+   "data": "2026-11-12T23:06:17Z",
+   "trecho": "",
+   "veiculo": "edge0.ai",
+   "pontos": 315,
+   "discussao": "https://news.ycombinator.com/item?id=50475713",
+   "id": "i100"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Atuin Threads: All your agent sessions on every machine",
+   "link": "https://blog.atuin.sh/threads-agent-sessions/",
+   "data": "2026-11-11T14:10:46Z",
+   "trecho": "",
+   "veiculo": "blog.atuin.sh",
+   "pontos": 235,
+   "discussao": "https://news.ycombinator.com/item?id=50453637",
+   "id": "i101"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Nvidia prepares to fire CEO Jensen Huang, WSJ reports",
+   "link": "https://twitter.com/watcherguru/status/2120645607866188008",
+   "data": "2026-11-11T22:36:35Z",
+   "trecho": "",
+   "veiculo": "X",
+   "pontos": 225,
+   "discussao": "https://news.ycombinator.com/item?id=50459776",
+   "id": "i102"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI is turning Apple's app review process into a nightmare for synth developers",
+   "link": "https://synthanatomy.com/2026/11/ai-is-turning-apples-app-review-process-into-a-nightmare-for-developers.html",
+   "data": "2026-11-12T21:09:49Z",
+   "trecho": "",
+   "veiculo": "synthanatomy.com",
+   "pontos": 192,
+   "discussao": "https://news.ycombinator.com/item?id=50474311",
+   "id": "i103"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI Is Destroying the Trust Between Writers and Readers",
+   "link": "https://www.theatlantic.com/books/2026/11/ai-literary-scams-amazon/689391/",
+   "data": "2026-11-13T11:13:46Z",
+   "trecho": "",
+   "veiculo": "The Atlantic",
+   "pontos": 186,
+   "discussao": "https://news.ycombinator.com/item?id=50481870",
+   "id": "i104"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Claude Is Down",
+   "link": "https://status.claude.com/history",
+   "data": "2026-11-13T10:20:09Z",
+   "trecho": "",
+   "veiculo": "status.claude.com",
+   "pontos": 184,
+   "discussao": "https://news.ycombinator.com/item?id=50481220",
+   "id": "i105"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Nvidia CEO Jensen Huang resigns after reports of second affair deepened scandal",
+   "link": "https://www.bbc.co.uk/news/live/c6zjry11v8w1t",
+   "data": "2026-11-12T13:56:38Z",
+   "trecho": "",
+   "veiculo": "BBC",
+   "pontos": 168,
+   "discussao": "https://news.ycombinator.com/item?id=50467139",
+   "id": "i106"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Retirement Savings Are Fueling the AI Bubble",
+   "link": "https://lpeproject.org/blog/your-retirement-savings-are-fueling-the-ai-bubble/",
+   "data": "2026-11-11T19:06:43Z",
+   "trecho": "",
+   "veiculo": "lpeproject.org",
+   "pontos": 165,
+   "discussao": "https://news.ycombinator.com/item?id=50457164",
+   "id": "i107"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI, activity, and outcomes in software engineering",
+   "link": "https://cabird.com/talks/shipping-faster/",
+   "data": "2026-11-11T16:33:28Z",
+   "trecho": "",
+   "veiculo": "cabird.com",
+   "pontos": 130,
+   "discussao": "https://news.ycombinator.com/item?id=50455332",
+   "id": "i108"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Show HN: AgentRun – open-source, Self-improving Managed Agents",
+   "link": "https://github.com/Parcha-ai/agentrun/blob/main/README.md",
+   "data": "2026-11-12T18:15:48Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 129,
+   "discussao": "https://news.ycombinator.com/item?id=50471650",
+   "id": "i109"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AWS Emulator and the engineer's job when agents write the code",
+   "link": "https://www.allthingsdistributed.com/2026/11/aws-emulator-and-the-engineers-job-when-agents-write-the-code.html",
+   "data": "2026-11-11T18:28:31Z",
+   "trecho": "",
+   "veiculo": "allthingsdistributed.com",
+   "pontos": 111,
+   "discussao": "https://news.ycombinator.com/item?id=50456740",
+   "id": "i110"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Why You Should Expect an AI Crash",
+   "link": "https://www.economist.com/leaders/2026/11/12/why-you-should-expect-an-ai-crash",
+   "data": "2026-11-12T23:08:31Z",
+   "trecho": "",
+   "veiculo": "The Economist",
+   "pontos": 98,
+   "discussao": "https://news.ycombinator.com/item?id=50475735",
+   "id": "i111"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Chicago schools to Google – we'd rather lose Search than be forced to accept AI",
+   "link": "https://www.techspot.com/news/114532-chicago-schools-tell-google-they-can-live-without.html",
+   "data": "2026-11-13T00:38:41Z",
+   "trecho": "",
+   "veiculo": "techspot.com",
+   "pontos": 86,
+   "discussao": "https://news.ycombinator.com/item?id=50476586",
+   "id": "i112"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Jonathan Blow – If AI Solved Coding, Why Is My Software Still the Same? [video]",
+   "link": "https://www.youtube.com/watch?v=IRK8h67ol7Q",
+   "data": "2026-11-13T15:08:44Z",
+   "trecho": "",
+   "veiculo": "youtube.com",
+   "pontos": 83,
+   "discussao": "https://news.ycombinator.com/item?id=50484658",
+   "id": "i113"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Show HN: Klad, a paint app your coding agent can drive (source-available)",
+   "link": "https://github.com/klad-app/klad",
+   "data": "2026-11-11T16:00:50Z",
+   "trecho": "",
+   "veiculo": "GitHub",
+   "pontos": 83,
+   "discussao": "https://news.ycombinator.com/item?id=50454951",
+   "id": "i114"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "XYBench: Helping with the problem behind the question",
+   "link": "https://huggingface.co/blog/allenai/xybench",
+   "data": "2026-11-13T17:02:35Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i115"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "TV Samsung Neo QLED 55″ tem perto de R$ 1.000 OFF em até 10x pré-Black 2026",
+   "link": "https://tecnoblog.net/achados/tv-samsung-neo-qled-55-tem-perto-de-r-1-000-off-em-ate-10x-pre-black-2026/",
+   "data": "2026-11-13T15:18:28Z",
+   "trecho": "QN70H de 55\" traz painel Neo QLED e recursos avançados de IA; Smart TV 4K da Samsung sai 17% mais em conta no prazo durante a Black November 2026 no MeLi TV Samsung Neo QLED 55″ tem perto de R$ 1.000 OFF em até 10x pré-Black 2026",
+   "veiculo": "Tecnoblog",
+   "id": "i116"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Tinder proíbe que agentes de IA conversem pelos usuários",
+   "link": "https://tecnoblog.net/noticias/tinder-proibe-que-agentes-de-ia-conversem-pelos-usuarios/",
+   "data": "2026-11-13T14:17:13Z",
+   "trecho": "Match Group quer impedir que assistentes escolham perfis e enviem mensagens no lugar das pessoas. Tinder proíbe que agentes de IA conversem pelos usuários",
+   "veiculo": "Tecnoblog",
+   "id": "i117"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "llama.cpp v1.0.0 : A stronger foundation for the local AI ecosystem",
+   "link": "https://huggingface.co/blog/ggml-org/llama-cpp-v1",
+   "data": "2026-11-13T14:05:22Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i118"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Um em cada três usuários xinga ChatGPT, Gemini ou Claude",
+   "link": "https://tecnoblog.net/noticias/um-em-cada-tres-usuarios-xinga-chatgpt-gemini-ou-claude/",
+   "data": "2026-11-13T13:42:16Z",
+   "trecho": "Levantamento analisou mais de 8 milhões de mensagens. Respostas erradas, instruções ignoradas e pedidos mal compreendidos são principais causas de frustração. Um em cada três usuários xinga ChatGPT, Gemini ou Claude",
+   "veiculo": "Tecnoblog",
+   "id": "i119"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Microsoft diz que serviços estão quase todos normalizados após pane",
+   "link": "https://tecnoblog.net/noticias/microsoft-enfrenta-dificuldades-para-religar-outlook-teams-e-outros-servicos/",
+   "data": "2026-11-13T12:00:27Z",
+   "trecho": "Usuários ainda podem enfrentar falhas de acesso e atrasos na entrega de mensagens no Outlook, Teams e Copilot. Microsoft diz que serviços estão quase todos normalizados após pane",
+   "veiculo": "Tecnoblog",
+   "id": "i120"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "ChatGPT e Gemini indicam lojas falsas para compras, aponta estudo",
+   "link": "https://tecnoblog.net/noticias/chatgpt-e-gemini-indicam-lojas-falsas-para-compras-aponta-estudo/",
+   "data": "2026-11-12T20:38:47Z",
+   "trecho": "Pior resultado foi o da Perplexity, que recomendou sites problemáticos em 15% das respostas. ChatGPT e Gemini indicam lojas falsas para compras, aponta estudo",
+   "veiculo": "Tecnoblog",
+   "id": "i121"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Gemini 4 Hydrogen é o novo modelo do Google para tarefas do dia a dia",
+   "link": "https://tecnoblog.net/noticias/gemini-4-hydrogen-e-o-novo-modelo-do-google-para-tarefas-do-dia-a-dia/",
+   "data": "2026-11-12T20:05:40Z",
+   "trecho": "Novo modelo substitui o Gemini 3.8 Flash e chega gratuitamente ao aplicativo Gemini e à Busca do Google. Gemini 4 Hydrogen é o novo modelo do Google para tarefas do dia a dia",
+   "veiculo": "Tecnoblog",
+   "id": "i122"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "LLMON: An LLM-Native Markup Language, now in Granite 4.1 3B and 8B",
+   "link": "https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite",
+   "data": "2026-11-12T19:07:35Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i123"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "United Airlines bane agentes de IA na compra de passagens",
+   "link": "https://tecnoblog.net/noticias/united-airlines-bane-agentes-de-ia-na-compra-de-passagens/",
+   "data": "2026-11-12T16:30:58Z",
+   "trecho": "A United justifica a restrição pela proteção de dados sensíveis, pelo risco de erros operacionais e por exigências regulatórias. United Airlines bane agentes de IA na compra de passagens",
+   "veiculo": "Tecnoblog",
+   "id": "i124"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Grok vaza dados confidenciais de mais de 35 mil aplicativos",
+   "link": "https://tecnoblog.net/noticias/grok-vaza-dados-confidenciais-de-mais-de-35-mil-aplicativos/",
+   "data": "2026-11-12T16:03:27Z",
+   "trecho": "Links de projetos podiam ser rastreados pela internet e permitiam acesso a documentos de empresas, incluindo a própria SpaceX. Grok vaza dados confidenciais de mais de 35 mil aplicativos",
+   "veiculo": "Tecnoblog",
+   "id": "i125"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Jensen Huang renuncia ao cargo de CEO da Nvidia após escândalos",
+   "link": "https://tecnoblog.net/noticias/nvidia-avalia-demissao-de-jensen-huang-apos-novas-denuncias/",
+   "data": "2026-11-12T13:29:59Z",
+   "trecho": "Cofundador deixa o comando da empresa após denúncias de casos extraconjugais e investigação sobre possível espionagem. Jensen Huang renuncia ao cargo de CEO da Nvidia após escândalos",
+   "veiculo": "Tecnoblog",
+   "id": "i126"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "ByteDance estaria trabalhando em IA rival do Muse",
+   "link": "https://tecnoblog.net/noticias/bytedance-estaria-trabalhando-em-ia-rival-do-muse-meta/",
+   "data": "2026-11-12T09:04:53Z",
+   "trecho": "Agente pessoal pode chegar “nas próximas semanas” com proposta bastante semelhante à nova inteligência artificial da empresa estadunidense. ByteDance estaria trabalhando em IA rival do Muse",
+   "veiculo": "Tecnoblog",
+   "id": "i127"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "The Definitive Fine-Tuning Guide for 3D Generation Models",
+   "link": "https://huggingface.co/blog/3d-lora-finetuning",
+   "data": "2026-11-12T00:00:00Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i128"
+  }
+ ],
+ "editor": {
+  "aprovada": true,
+  "acoes": [
+   "Corrigido (Os fatos aparecem nas fontes, mas a melhoria na Busca é do anúncio do Google, não do The Verge, que só repercutiu. Atribuição corrigida e preço acrescentado como detalhe concreto.): Google lança o Gemini 4 Hydrogen e o leva à Busca e a desenvolvedores",
+   "Corrigido (O resumo era vago e repetia o título, e o nome do modelo é Gemini Decision 1. Reescrito com detalhes concretos da página do Google.): Google apresenta a Gemini Decisions API para decisões multimodais rápidas"
+  ],
+  "revisao": {
+   "a1": {
+    "veredito": "corrigir",
+    "motivo": "Os fatos aparecem nas fontes, mas a melhoria na Busca é do anúncio do Google, não do The Verge, que só repercutiu. Atribuição corrigida e preço acrescentado como detalhe concreto."
+   },
+   "a2": {
+    "veredito": "ok",
+    "motivo": "Anúncio atribuído à OpenAI, fonte primária. Os detalhes de lançamento limitado, plano Pro nos EUA e maiores de 18 anos aparecem no TechCrunch e no título da CNBC."
+   },
+   "a3": {
+    "veredito": "corrigir",
+    "motivo": "O resumo era vago e repetia o título, e o nome do modelo é Gemini Decision 1. Reescrito com detalhes concretos da página do Google."
+   }
+  }
+ },
+ "movimentos": [
+  {
+   "id": "c75c1cb7e960",
+   "lab": "anthropic",
+   "fonte": "Claude Platform release notes",
+   "link": "https://platform.claude.com/docs/en/managed-agents/self-hosted",
+   "data": "2026-11-12",
+   "tipo": "api",
+   "pt": {
+    "titulo": "Claude Managed Agents ganha versão hospedada pelo próprio cliente",
+    "simples": "Agora é possível rodar todo o serviço Claude Managed Agents na própria infraestrutura, guardando lá agentes, sessões e histórico. O acesso é pedido à equipe de conta da Anthropic.",
+    "tecnico": "Todo o serviço Managed Agents roda na infraestrutura do cliente, não só os sandboxes. O servidor envia as requisições de modelo ao provedor escolhido, por padrão a Anthropic. Acesso mediante solicitação à equipe de conta."
+   },
+   "en": {
+    "titulo": "Claude Managed Agents now available as a self-hosted service",
+    "simples": "You can now run the whole Claude Managed Agents service on your own infrastructure and store agents, sessions and session history there. Access is requested through your Anthropic account team.",
+    "tecnico": "The entire Managed Agents service runs on your infrastructure, not only the sandboxes. The server sends model requests to the provider you choose, Anthropic by default. Access is by request through your account team."
+   }
+  },
+  {
+   "id": "42255af327b4",
+   "lab": "deepseek",
+   "fonte": "DeepSeek API news",
+   "link": "https://api-docs.deepseek.com/news/news261113",
+   "data": "2026-11-13",
+   "chaves": [
+    "link:https://api-docs.deepseek.com/news/news261113"
+   ],
+   "tipo": "api",
+   "pt": {
+    "titulo": "DeepSeek API passa a oferecer os recursos do app DeepSeek",
+    "simples": "Os recursos do app DeepSeek, como busca, arquivos, links, segurança e voz, agora podem ser usados pela API, inclusive com APIs separadas de OCR, ASR e TTS.",
+    "tecnico": "Recursos embutidos são ativados com poucos parâmetros. Há APIs independentes de OCR, ASR e TTS. Demo de frontend de código aberto com importação do histórico de conversas: https://cdn.deepseek.com/chat-demo, código em https://github.com/deepseek-ai/chat-demo."
+   },
+   "en": {
+    "titulo": "DeepSeek API now offers the capabilities of the DeepSeek App",
+    "simples": "The DeepSeek App features, such as search, files, links, safety and voice, can now be used through the API, including standalone OCR, ASR and TTS APIs.",
+    "tecnico": "Built-in features are enabled with a few parameters. Standalone OCR, ASR and TTS APIs are available. Open-source frontend demo supports importing DeepSeek conversation history: https://cdn.deepseek.com/chat-demo, code at https://github.com/deepseek-ai/chat-demo."
+   }
+  }
+ ],
+ "movimentos_ignorados": [],
+ "fontes_movimentos": {
+  "anthropic": {
+   "ok": true,
+   "itens": 17
+  },
+  "openai": {
+   "ok": true,
+   "itens": 6
+  },
+  "google_api": {
+   "ok": true,
+   "itens": 0
+  },
+  "google_app": {
+   "ok": true,
+   "itens": 0
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 1
+  },
+  "z-ai": {
+   "ok": true,
+   "itens": 0
+  },
+  "minimax": {
+   "ok": true,
+   "itens": 1
+  },
+  "moonshotai": {
+   "ok": true,
+   "itens": 1
+  },
+  "qwen": {
+   "ok": true,
+   "itens": 0
+  },
+  "hf": {
+   "ok": true,
+   "itens": 4
+  }
+ }
+}
