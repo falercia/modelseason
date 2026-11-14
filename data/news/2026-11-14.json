@@ -1,0 +1,396 @@
+{
+ "versao": 1,
+ "dia": "2026-11-14",
+ "gerado_em": "2026-11-14T14:11:13Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-07",
+   "2026-11-14"
+  ],
+  "trafego": "2026-11-13"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-14",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-11-13",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20261017",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "tencent/hy4-20261104",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "openai/gpt-6-luna-20260922",
+   "anthropic/claude-opus-5.5-20260921",
+   "stepfun/step-5-preview-20261008",
+   "moonshotai/kimi-k3.1-pro-20261023",
+   "openai/gpt-6.1-sol-20260929",
+   "xiaomi/mimo-v2.6-flash-20260921"
+  ]
+ },
+ "principal": "preco:deepseek/deepseek-v4.1-flash-20261017",
+ "eventos": [
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4.1-flash-20261017",
+   "id": "deepseek/deepseek-v4.1-flash-1017",
+   "nome": "DeepSeek V4.1 Flash 1017",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.1295,
+    "para": 0.1535,
+    "variacao_pct": 18.5,
+    "entrada_de": 0.006,
+    "entrada_para": 0.038,
+    "saida_de": 0.5,
+    "saida_para": 0.5,
+    "desde": "2026-11-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 27.09,
+     "rank_7d": 1,
+     "pico_share": 26.75,
+     "semanas_com_volume": 4
+    },
+    "laboratorio": {
+     "share_tokens": 40.68,
+     "share_gasto": 7.14
+    }
+   },
+   "relevancia": 54
+  },
+  {
+   "tipo": "top10",
+   "slug": "xiaomi/mimo-v2.6-flash-20260921",
+   "id": null,
+   "nome": "MiMo-V2.6-Flash",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "posicao": 10,
+    "share": 1.83,
+    "lancamento": "2026-09-21"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.83,
+     "rank_7d": 10,
+     "pico_share": 6.667,
+     "semanas_com_volume": 7
+    },
+    "laboratorio": {
+     "share_tokens": 1.72,
+     "share_gasto": 0.59
+    }
+   },
+   "relevancia": 54
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.3-20260816",
+   "id": "z-ai/glm-5.3",
+   "nome": "GLM 5.3",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 0.4024,
+    "para": 0.963,
+    "variacao_pct": 139.3,
+    "entrada_de": 0.0699,
+    "entrada_para": 0.084,
+    "saida_de": 1.4,
+    "saida_para": 3.6,
+    "desde": "2026-11-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.8,
+     "rank_7d": 11,
+     "pico_share": 3.165,
+     "semanas_com_volume": 12
+    },
+    "laboratorio": {
+     "share_tokens": 8.97,
+     "share_gasto": 3.31,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 5.62,
+      "preco_misto": 0.0495
+     }
+    }
+   },
+   "relevancia": 45
+  },
+  {
+   "tipo": "novo",
+   "slug": "tencent/hy-world-2.1-panorama-20261112",
+   "id": "tencent/hy-world-2.1-panorama",
+   "nome": "HY-World 2.1 Panorama",
+   "lab": "Tencent",
+   "vendor": "tencent",
+   "dados": {
+    "criado": "2026-11-13",
+    "contexto": 4096,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->image",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 9.48,
+     "share_gasto": 7.52,
+     "lider": {
+      "slug": "tencent/hy4-20261104",
+      "nome": "Hy4",
+      "share_7d": 9.43,
+      "preco_misto": 0.6254
+     }
+    }
+   },
+   "relevancia": 44
+  },
+  {
+   "tipo": "novo",
+   "slug": "parallel/decisions-fast-20261106",
+   "id": "parallel/decisions-fast",
+   "nome": "Decisions Fast",
+   "lab": "Parallel",
+   "vendor": "parallel",
+   "dados": {
+    "criado": "2026-11-06",
+    "contexto": 32000,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "recraft/recraft-v4.1-flash-v2-20261113",
+   "id": "recraft/recraft-v4.1-flash-v2",
+   "nome": "Recraft V4.1 Flash V2",
+   "lab": "Recraft",
+   "vendor": "recraft",
+   "dados": {
+    "criado": "2026-11-13",
+    "contexto": 65536,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->image",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "meta-llama/llama-3.2-3b-instruct",
+   "id": "meta-llama/llama-3.2-3b-instruct",
+   "nome": "Llama 3.2 3B Instruct",
+   "lab": "Meta",
+   "vendor": "meta-llama",
+   "dados": {
+    "data": "2026-11-20",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.397,
+     "semanas_com_volume": 31
+    },
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "ricursiveai/ripple-65b-preview-20261104",
+   "id": "ricursiveai/ripple-65b-preview",
+   "nome": "Ripple 65B Preview",
+   "lab": "Ricursiveai",
+   "vendor": "ricursiveai",
+   "dados": {
+    "de": 0.3,
+    "para": 0.15,
+    "variacao_pct": -50.0,
+    "entrada_de": 0.2,
+    "entrada_para": 0.1,
+    "saida_de": 0.6,
+    "saida_para": 0.3,
+    "desde": "2026-11-13"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "xiaomi/mimo-v2.5-pro-20260422",
+   "id": "xiaomi/mimo-v2.5-pro",
+   "nome": "MiMo-V2.5-Pro",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "de": 0.81,
+    "para": 0.5437,
+    "variacao_pct": -32.9,
+    "entrada_de": 0.48,
+    "entrada_para": 0.435,
+    "saida_de": 1.8,
+    "saida_para": 0.87,
+    "desde": "2026-11-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 3.91,
+     "semanas_com_volume": 22
+    },
+    "laboratorio": {
+     "share_tokens": 1.72,
+     "share_gasto": 0.59,
+     "lider": {
+      "slug": "xiaomi/mimo-v2.6-flash-20260921",
+      "nome": "MiMo-V2.6-Flash",
+      "share_7d": 1.83,
+      "preco_misto": 0.175
+     }
+    }
+   },
+   "relevancia": 27
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-pro-20260423",
+   "id": "deepseek/deepseek-v4-pro",
+   "nome": "DeepSeek V4 Pro 0423",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.8596,
+    "para": 1.05,
+    "variacao_pct": 22.2,
+    "entrada_de": 0.6876,
+    "entrada_para": 0.9,
+    "saida_de": 1.3753,
+    "saida_para": 1.5,
+    "desde": "2026-11-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.27,
+     "rank_7d": 43,
+     "pico_share": 5.773,
+     "semanas_com_volume": 29
+    },
+    "laboratorio": {
+     "share_tokens": 40.68,
+     "share_gasto": 7.14,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20261017",
+      "nome": "DeepSeek V4.1 Flash 1017",
+      "share_7d": 27.09,
+      "preco_misto": 0.1535
+     }
+    }
+   },
+   "relevancia": 25
+  },
+  {
+   "tipo": "preco",
+   "slug": "moonshotai/kimi-k2.5-0127",
+   "id": "moonshotai/kimi-k2.5",
+   "nome": "Kimi K2.5",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "de": 1.2303,
+    "para": 1.0,
+    "variacao_pct": -18.7,
+    "entrada_de": 0.532,
+    "entrada_para": 0.5,
+    "saida_de": 3.325,
+    "saida_para": 2.5,
+    "desde": "2026-11-13"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 11.819,
+     "semanas_com_volume": 28
+    },
+    "laboratorio": {
+     "share_tokens": 3.17,
+     "share_gasto": 14.74,
+     "lider": {
+      "slug": "moonshotai/kimi-k3.1-pro-20261023",
+      "nome": "Kimi K3.1 Pro",
+      "share_7d": 2.06,
+      "preco_misto": 4.0
+     }
+    }
+   },
+   "relevancia": 24
+  },
+  {
+   "tipo": "contexto",
+   "slug": "qwen/qwen3.8-27b-20260814",
+   "id": "qwen/qwen3.8-27b",
+   "nome": "Qwen3.8 27B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 1048575,
+    "para": 1024000
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.41,
+     "rank_7d": 35,
+     "pico_share": 0.347,
+     "semanas_com_volume": 12
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.57,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 16
+  }
+ ]
+}
