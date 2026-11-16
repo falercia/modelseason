@@ -1,0 +1,221 @@
+{
+ "versao": 1,
+ "dia": "2026-11-16",
+ "gerado_em": "2026-11-16T17:03:42Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-09",
+   "2026-11-16"
+  ],
+  "trafego": "2026-11-15"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-16",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-11-15",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20261017",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "tencent/hy4-20261104",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "z-ai/glm-5.3-flash-20260826",
+   "openai/gpt-6-luna-20260922",
+   "anthropic/claude-opus-5.5-20260921",
+   "stepfun/step-5-preview-20261008",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "z-ai/glm-5.3-20260816",
+   "openai/gpt-6.1-sol-20260929"
+  ]
+ },
+ "principal": "novo:tencent/hy4-flash-20261116",
+ "eventos": [
+  {
+   "tipo": "novo",
+   "slug": "tencent/hy4-flash-20261116",
+   "id": "tencent/hy4-flash",
+   "nome": "Hy4 flash",
+   "lab": "Tencent",
+   "vendor": "tencent",
+   "dados": {
+    "criado": "2026-11-16",
+    "contexto": 1048576,
+    "preco_entrada": 0.035,
+    "preco_saida": 0.1405,
+    "preco_misto": 0.0614,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 10.17,
+     "share_gasto": 6.68,
+     "lider": {
+      "slug": "tencent/hy4-20261104",
+      "nome": "Hy4",
+      "share_7d": 8.58,
+      "preco_misto": 0.6254
+     }
+    }
+   },
+   "relevancia": 44
+  },
+  {
+   "tipo": "novo",
+   "slug": "qwen/qwen4-max-20261115",
+   "id": "qwen/qwen4-max",
+   "nome": "Qwen4 Max",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "criado": "2026-11-16",
+    "contexto": 1000000,
+    "preco_entrada": 1.5,
+    "preco_saida": 4.5,
+    "preco_misto": 2.25,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image+video->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.25,
+     "share_gasto": 0.45,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.65,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "estreia",
+   "slug": "inclusionai/ling-3.2-flash-20261113",
+   "id": null,
+   "nome": "Ling 3.2 Flash (free)",
+   "lab": "InclusionAI",
+   "vendor": "inclusionai",
+   "dados": {
+    "primeiro_dia": "2026-11-15",
+    "share_7d": 0.03,
+    "lancamento": "2026-11-13",
+    "dias_desde_catalogo": 2
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.03,
+     "rank_7d": 56,
+     "pico_share": 0.029,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "moonshotai/kimi-k3.1-pro-20261023",
+   "id": "moonshotai/kimi-k3.1-pro",
+   "nome": "Kimi K3.1 Pro",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "de": 4.0,
+    "para": 2.2808,
+    "variacao_pct": -43.0,
+    "entrada_de": 2.0,
+    "entrada_para": 0.2403,
+    "saida_de": 10.0,
+    "saida_para": 8.4023,
+    "desde": "2026-11-15"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.64,
+     "rank_7d": 12,
+     "pico_share": 2.086,
+     "semanas_com_volume": 4
+    },
+    "laboratorio": {
+     "share_tokens": 2.33,
+     "share_gasto": 7.28
+    }
+   },
+   "relevancia": 34
+  },
+  {
+   "tipo": "preco",
+   "slug": "ibm-granite/granite-4.2-8b-20260831",
+   "id": "ibm-granite/granite-4.2-8b",
+   "nome": "Granite 4.2 8B",
+   "lab": "IBM Granite",
+   "vendor": "ibm-granite",
+   "dados": {
+    "de": 0.1075,
+    "para": 0.0825,
+    "variacao_pct": -23.3,
+    "entrada_de": 0.06,
+    "entrada_para": 0.06,
+    "saida_de": 0.25,
+    "saida_para": 0.15,
+    "desde": "2026-11-15"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": null
+   },
+   "relevancia": 25
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-4.7-20251222",
+   "id": "z-ai/glm-4.7",
+   "nome": "GLM 4.7",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 1.0,
+    "para": 0.7375,
+    "variacao_pct": -26.3,
+    "entrada_de": 0.6,
+    "entrada_para": 0.4,
+    "saida_de": 2.2,
+    "saida_para": 1.75,
+    "desde": "2026-11-15"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 2.63,
+     "semanas_com_volume": 25
+    },
+    "laboratorio": {
+     "share_tokens": 8.39,
+     "share_gasto": 2.17,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 5.63,
+      "preco_misto": 0.0495
+     }
+    }
+   },
+   "relevancia": 25
+  }
+ ]
+}
