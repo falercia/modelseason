@@ -1,0 +1,741 @@
+{
+ "versao": 1,
+ "dia": "2026-11-18",
+ "gerado_em": "2026-11-18T16:29:31Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-11",
+   "2026-11-18"
+  ],
+  "trafego": "2026-11-17"
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-18",
+ "licenca": "CC BY 4.0",
+ "estado": {
+  "ultimo_dia": "2026-11-17",
+  "lider_7d": "deepseek/deepseek-v4.1-flash-20261017",
+  "top10_7d": [
+   "deepseek/deepseek-v4.1-flash-20261017",
+   "tencent/hy4-flash-20261116",
+   "deepseek/deepseek-v4.1-flash-20260910",
+   "tencent/hy4-20261104",
+   "z-ai/glm-5.3-flash-20260826",
+   "openai/gpt-6-luna-20260922",
+   "anthropic/claude-opus-5.5-20260921",
+   "stepfun/step-5-preview-20261008",
+   "xiaomi/mimo-v2.6-flash-20260921",
+   "z-ai/glm-5.3-20260816"
+  ]
+ },
+ "principal": "top10:tencent/hy4-flash-20261116",
+ "eventos": [
+  {
+   "tipo": "top10",
+   "slug": "tencent/hy4-flash-20261116",
+   "id": null,
+   "nome": "Hy4 flash",
+   "lab": "Tencent",
+   "vendor": "tencent",
+   "dados": {
+    "posicao": 2,
+    "share": 9.67,
+    "lancamento": "2026-11-16"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 9.67,
+     "rank_7d": 2,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 10.17,
+     "share_gasto": 7.02
+    }
+   },
+   "relevancia": 69
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.3-flash-20260826",
+   "id": "z-ai/glm-5.3-flash",
+   "nome": "GLM 5.3 Flash",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 0.0495,
+    "para": 0.2375,
+    "variacao_pct": 379.6,
+    "entrada_de": 0.0399,
+    "entrada_para": 0.15,
+    "saida_de": 0.0784,
+    "saida_para": 0.5,
+    "desde": "2026-11-17"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 4.9,
+     "rank_7d": 5,
+     "pico_share": 11.188,
+     "semanas_com_volume": 12
+    },
+    "laboratorio": {
+     "share_tokens": 8.39,
+     "share_gasto": 3.58
+    }
+   },
+   "relevancia": 55
+  },
+  {
+   "tipo": "novo",
+   "slug": "openai/gpt-6.2-astra-20261117",
+   "id": "openai/gpt-6.2-astra",
+   "nome": "GPT-6.2 Astra",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "criado": "2026-11-17",
+    "contexto": 1050000,
+    "preco_entrada": 8.0,
+    "preco_saida": 40.0,
+    "preco_misto": 16.0,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+file->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 7.63,
+     "share_gasto": 11.73,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 43
+  },
+  {
+   "tipo": "novo",
+   "slug": "openai/gpt-6.2-astra-pro-20261117",
+   "id": "openai/gpt-6.2-astra-pro",
+   "nome": "GPT-6.2 Astra Pro",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "criado": "2026-11-17",
+    "contexto": 1050000,
+    "preco_entrada": 8.0,
+    "preco_saida": 40.0,
+    "preco_misto": 16.0,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+file->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 7.63,
+     "share_gasto": 11.73,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 43
+  },
+  {
+   "tipo": "novo",
+   "slug": "openai/gpt-6.2-sol-20261117",
+   "id": "openai/gpt-6.2-sol",
+   "nome": "GPT-6.2 Sol",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "criado": "2026-11-17",
+    "contexto": 1050000,
+    "preco_entrada": 2.0,
+    "preco_saida": 10.0,
+    "preco_misto": 4.0,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+file->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 7.63,
+     "share_gasto": 11.73,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 43
+  },
+  {
+   "tipo": "novo",
+   "slug": "openai/gpt-6.2-sol-pro-20261117",
+   "id": "openai/gpt-6.2-sol-pro",
+   "nome": "GPT-6.2 Sol Pro",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "criado": "2026-11-17",
+    "contexto": 1050000,
+    "preco_entrada": 2.0,
+    "preco_saida": 10.0,
+    "preco_misto": 4.0,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+file->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 7.63,
+     "share_gasto": 11.73,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 43
+  },
+  {
+   "tipo": "novo",
+   "slug": "heygen/heygen-avatar-6-20261117",
+   "id": "heygen/heygen-avatar-6",
+   "nome": "Avatar 6",
+   "lab": "Heygen",
+   "vendor": "heygen",
+   "dados": {
+    "criado": "2026-11-17",
+    "contexto": 0,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image+audio+video->video",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "heygen/heygen-avatar-6-turbo-20261117",
+   "id": "heygen/heygen-avatar-6-turbo",
+   "nome": "Avatar 6 Turbo",
+   "lab": "Heygen",
+   "vendor": "heygen",
+   "dados": {
+    "criado": "2026-11-17",
+    "contexto": 0,
+    "preco_entrada": 0.0,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image+audio+video->video",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "microsoft/mai-image-2.7-20261117",
+   "id": "microsoft/mai-image-2.7",
+   "nome": "MAI-Image-2.7",
+   "lab": "Microsoft",
+   "vendor": "microsoft",
+   "dados": {
+    "criado": "2026-11-17",
+    "contexto": 4096,
+    "preco_entrada": 5.0,
+    "preco_saida": 0.0,
+    "preco_misto": 3.75,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->image",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "microsoft/mai-image-2.7-flash-20261117",
+   "id": "microsoft/mai-image-2.7-flash",
+   "nome": "MAI-Image-2.7 Flash",
+   "lab": "Microsoft",
+   "vendor": "microsoft",
+   "dados": {
+    "criado": "2026-11-17",
+    "contexto": 4096,
+    "preco_entrada": 1.75,
+    "preco_saida": 0.0,
+    "preco_misto": 1.3125,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->image",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "microsoft/microsoft-decision-1.1-20261117",
+   "id": "microsoft/microsoft-decision-1.1",
+   "nome": "Microsoft-Decision-1.1",
+   "lab": "Microsoft",
+   "vendor": "microsoft",
+   "dados": {
+    "criado": "2026-11-17",
+    "contexto": 32768,
+    "preco_entrada": 0.042,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0315,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->decisions",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "liquid/d1-ultra-20261015",
+   "id": "liquid/d1-ultra",
+   "nome": "d1-ultra",
+   "lab": "Liquid AI",
+   "vendor": "liquid",
+   "dados": {
+    "data": "2026-11-24",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "liquid/d1.1-20261027",
+   "id": "liquid/d1.1",
+   "nome": "d1.1",
+   "lab": "Liquid AI",
+   "vendor": "liquid",
+   "dados": {
+    "data": "2026-11-24",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "estreia",
+   "slug": "google/gemini-4-hydrogen-20261112",
+   "id": null,
+   "nome": "Gemini 4 Hydrogen",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "primeiro_dia": "2026-11-17",
+    "share_7d": 0.04,
+    "lancamento": "2026-11-12",
+    "dias_desde_catalogo": 5
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.04,
+     "rank_7d": 55,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 2.51,
+     "share_gasto": 5.9,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.7,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.3-prime-20260921",
+   "id": "z-ai/glm-5.3-prime",
+   "nome": "GLM 5.3 Prime",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 4.3,
+    "para": 2.58,
+    "variacao_pct": -40.0,
+    "entrada_de": 2.8,
+    "entrada_para": 1.68,
+    "saida_de": 8.8,
+    "saida_para": 5.28,
+    "desde": "2026-11-17"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 8.39,
+     "share_gasto": 3.58,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 4.9,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 33
+  },
+  {
+   "tipo": "preco",
+   "slug": "openai/gpt-oss-20b",
+   "id": "openai/gpt-oss-20b",
+   "nome": "gpt-oss-20b",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "de": 0.055,
+    "para": 0.036,
+    "variacao_pct": -34.5,
+    "entrada_de": 0.03,
+    "entrada_para": 0.018,
+    "saida_de": 0.13,
+    "saida_para": 0.09,
+    "desde": "2026-11-17"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 2.903,
+     "semanas_com_volume": 49
+    },
+    "laboratorio": {
+     "share_tokens": 7.63,
+     "share_gasto": 11.73,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 27
+  },
+  {
+   "tipo": "preco",
+   "slug": "mistralai/mistral-small-3.2-24b-instruct-2506",
+   "id": "mistralai/mistral-small-3.2-24b-instruct",
+   "nome": "Mistral Small 3.2 24B",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "de": 0.15,
+    "para": 0.1062,
+    "variacao_pct": -29.2,
+    "entrada_de": 0.1,
+    "entrada_para": 0.075,
+    "saida_de": 0.3,
+    "saida_para": 0.2,
+    "desde": "2026-11-17"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.536,
+     "semanas_com_volume": 36
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.03,
+      "preco_misto": 0.0293
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
+   "id": "nvidia/nemotron-3-ultra-550b-a55b",
+   "nome": "Nemotron 3 Ultra",
+   "lab": "NVIDIA",
+   "vendor": "nvidia",
+   "dados": {
+    "de": 1.05,
+    "para": 0.925,
+    "variacao_pct": -11.9,
+    "entrada_de": 0.6,
+    "entrada_para": 0.5,
+    "saida_de": 2.4,
+    "saida_para": 2.2,
+    "desde": "2026-11-17"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.32,
+     "rank_7d": 16,
+     "pico_share": 5.084,
+     "semanas_com_volume": 24
+    },
+    "laboratorio": {
+     "share_tokens": 3.98,
+     "share_gasto": 0.08,
+     "lider": {
+      "slug": "nvidia/nemotron-3.5-super-vl-20261015",
+      "nome": "Nemotron 3.5 Super VL",
+      "share_7d": 1.45,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "meta/muse-glimmer-30b-20260810",
+   "id": "meta/muse-glimmer-30b",
+   "nome": "Muse Glimmer 30B",
+   "lab": "Meta",
+   "vendor": "meta",
+   "dados": {
+    "de": 0.525,
+    "para": 0.6375,
+    "variacao_pct": 21.4,
+    "entrada_de": 0.3,
+    "entrada_para": 0.35,
+    "saida_de": 1.2,
+    "saida_para": 1.5,
+    "desde": "2026-11-17"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 1.75,
+     "share_gasto": 0.28,
+     "lider": {
+      "slug": "meta/muse-spark-1.3-contributor-20260902",
+      "nome": "Muse Spark 1.3 Contributor",
+      "share_7d": 1.25,
+      "preco_misto": 0.125
+     }
+    }
+   },
+   "relevancia": 24
+  },
+  {
+   "tipo": "preco",
+   "slug": "mistralai/mistral-medium-3",
+   "id": "mistralai/mistral-medium-3",
+   "nome": "Mistral Medium 3",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "de": 0.8,
+    "para": 0.88,
+    "variacao_pct": 10.0,
+    "entrada_de": 0.4,
+    "entrada_para": 0.44,
+    "saida_de": 2.0,
+    "saida_para": 2.2,
+    "desde": "2026-11-17"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.03,
+      "preco_misto": 0.0293
+     }
+    }
+   },
+   "relevancia": 22
+  },
+  {
+   "tipo": "preco",
+   "slug": "mistralai/mistral-medium-3.1",
+   "id": "mistralai/mistral-medium-3.1",
+   "nome": "Mistral Medium 3.1",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "de": 0.8,
+    "para": 0.88,
+    "variacao_pct": 10.0,
+    "entrada_de": 0.4,
+    "entrada_para": 0.44,
+    "saida_de": 2.0,
+    "saida_para": 2.2,
+    "desde": "2026-11-17"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.03,
+      "preco_misto": 0.0293
+     }
+    }
+   },
+   "relevancia": 22
+  },
+  {
+   "tipo": "alias",
+   "slug": "~openai/gpt-astra-latest",
+   "id": "~openai/gpt-astra-latest",
+   "nome": "GPT Astra Latest",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "alvo_slug": "openai/gpt-6.2-astra",
+    "alvo_nome": "GPT-6.2 Astra",
+    "anterior": "openai/gpt-6-astra"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 7.63,
+     "share_gasto": 11.73,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 17
+  },
+  {
+   "tipo": "alias",
+   "slug": "~openai/gpt-sol-latest",
+   "id": "~openai/gpt-sol-latest",
+   "nome": "GPT Sol Latest",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "alvo_slug": "openai/gpt-6.2-sol",
+    "alvo_nome": "GPT-6.2 Sol",
+    "anterior": "openai/gpt-6.1-sol"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 7.63,
+     "share_gasto": 11.73,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 17
+  },
+  {
+   "tipo": "contexto",
+   "slug": "xiaomi/mimo-v2.5-pro-20260422",
+   "id": "xiaomi/mimo-v2.5-pro",
+   "nome": "MiMo-V2.5-Pro",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "de": 1024000,
+    "para": 262144
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 3.91,
+     "semanas_com_volume": 22
+    },
+    "laboratorio": {
+     "share_tokens": 2.6,
+     "share_gasto": 0.74,
+     "lider": {
+      "slug": "xiaomi/mimo-v2.6-flash-20260921",
+      "nome": "MiMo-V2.6-Flash",
+      "share_7d": 1.74,
+      "preco_misto": 0.175
+     }
+    }
+   },
+   "relevancia": 15
+  }
+ ]
+}
