@@ -1,0 +1,2993 @@
+{
+ "versao": 1,
+ "dia": "2026-11-18",
+ "gerado_em": "2026-11-18T18:29:48Z",
+ "janela_horas": 54,
+ "modelo": "claude-sonnet-5-5",
+ "uso_tokens": {
+  "entrada": 27296,
+  "saida": 18365
+ },
+ "fontes": {
+  "openai": {
+   "ok": true,
+   "itens": 11
+  },
+  "google": {
+   "ok": true,
+   "itens": 9
+  },
+  "anthropic": {
+   "ok": true,
+   "itens": 0
+  },
+  "huggingface": {
+   "ok": true,
+   "itens": 3
+  },
+  "techcrunch": {
+   "ok": true,
+   "itens": 20
+  },
+  "mittr": {
+   "ok": true,
+   "itens": 6
+  },
+  "verge": {
+   "ok": true,
+   "itens": 10
+  },
+  "ars": {
+   "ok": true,
+   "itens": 6
+  },
+  "simonwillison": {
+   "ok": true,
+   "itens": 5
+  },
+  "tecnoblog": {
+   "ok": true,
+   "itens": 9
+  },
+  "scmp": {
+   "ok": true,
+   "itens": 13
+  },
+  "technode": {
+   "ok": true,
+   "itens": 8
+  },
+  "nist": {
+   "ok": true,
+   "itens": 0
+  },
+  "ue": {
+   "ok": true,
+   "itens": 1
+  },
+  "hf": {
+   "ok": true,
+   "itens": 3
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 0
+  },
+  "camara": {
+   "ok": true,
+   "itens": 0
+  },
+  "techmeme": {
+   "ok": true,
+   "itens": 10
+  },
+  "hn": {
+   "ok": true,
+   "itens": 22
+  },
+  "dado": {
+   "ok": true,
+   "itens": 1
+  }
+ },
+ "assuntos": [
+  {
+   "id": "a1",
+   "categoria": "mercado",
+   "nota": 39.39,
+   "labs": [
+    "openrouter",
+    "tencent"
+   ],
+   "publicado_em": "2026-11-16T00:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenRouter",
+     "titulo": "Tencent Hy4 flash debuts at #3 in the daily token ranking and reaches #1",
+     "link": "https://openrouter.ai/tencent/hy4-flash",
+     "data": "2026-11-16T00:00:00Z"
+    }
+   ],
+   "estreia": "tencent/hy4-flash-20261116",
+   "pt": {
+    "titulo": "Tencent Hy4 flash estreia em terceiro no ranking do OpenRouter e chega ao primeiro",
+    "resumo": "Segundo o OpenRouter, o Tencent Hy4 flash entrou no ranking diário de tokens na terceira posição e, no dia mais recente, ficou em primeiro, com 20,93 trilhões de tokens. O preço é de US$ 0,04 por milhão de tokens de entrada e US$ 0,14 por milhão de saída. A janela de contexto é de 1.048.576 tokens, e os pesos são abertos no Hugging Face."
+   },
+   "en": {
+    "titulo": "Tencent Hy4 flash debuts at No. 3 on OpenRouter's daily token ranking, then hits No. 1",
+    "resumo": "According to OpenRouter, Tencent Hy4 flash entered the daily token ranking at No. 3 and on the latest day was No. 1, with 20.93 trillion tokens. Pricing is $0.04 per million input tokens and $0.14 per million output tokens. The context window is 1,048,576 tokens, and the weights are open on Hugging Face."
+   },
+   "cruzamento": [
+    {
+     "vendor": "tencent",
+     "lab": "Tencent",
+     "share_tokens": 10.17,
+     "share_gasto": 7.02,
+     "lider": {
+      "slug": "tencent/hy4-flash-20261116",
+      "nome": "Hy4 flash",
+      "share_7d": 9.67,
+      "preco_misto": 0.0614
+     }
+    }
+   ]
+  },
+  {
+   "id": "a2",
+   "categoria": "lancamento",
+   "nota": 11.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-17T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Put Gemini to work for you",
+     "link": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
+     "data": "2026-11-17T17:00:00Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Google’s Spark AI agent becomes ‘Tasks’ — and now it’s free",
+     "link": "https://www.theverge.com/tech/1035756/google-spark-ai-tasks-free",
+     "data": "2026-11-17T18:58:01Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Google expands access to Gemini Tasks, which can help with calls, purchases",
+     "link": "https://techcrunch.com/2026/11/17/google-expands-access-to-gemini-tasks-which-can-help-with-calls-purchases/",
+     "data": "2026-11-17T19:02:20Z"
+    }
+   ],
+   "pt": {
+    "titulo": "Google torna o Tasks do Gemini gratuito em seis países",
+    "resumo": "Segundo o Google, o Tasks no Gemini passa a ser gratuito nos Estados Unidos, Japão, Coreia, Canadá, Austrália e Índia, com o novo modelo Gemini 4 Hydrogen. O Gemini pode ligar para empresas, marcar compromissos e pagar contas em nome do usuário, e os recursos avançados começam pelos Estados Unidos."
+   },
+   "en": {
+    "titulo": "Google makes Gemini Tasks free in six countries",
+    "resumo": "According to Google, Tasks in Gemini is now free in the U.S., Japan, Korea, Canada, Australia and India, powered by the new Gemini 4 Hydrogen model. Gemini can call businesses, schedule appointments and pay bills on the user's behalf, and advanced features start in the U.S."
+   },
+   "cruzamento": [
+    {
+     "vendor": "google",
+     "lab": "Google",
+     "share_tokens": 2.51,
+     "share_gasto": 5.9,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.7,
+      "preco_misto": 1.65
+     }
+    }
+   ]
+  },
+  {
+   "id": "a3",
+   "categoria": "lancamento",
+   "nota": 11.54,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-17T17:45:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Introducing GPT-6.2 Astra and Sol",
+     "link": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+     "data": "2026-11-17T17:45:00Z"
+    },
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "GPT‑6.2 Astra and GPT‑6.2 Sol",
+     "link": "https://simonwillison.net/2026/Nov/17/gpt62-astra-and-sol/",
+     "data": "2026-11-17T22:38:52Z"
+    }
+   ],
+   "pt": {
+    "titulo": "OpenAI lança GPT-6.2 Astra e GPT-6.2 Sol",
+    "resumo": "Segundo a OpenAI, o GPT-6.2 Astra é o novo modelo de fronteira para os projetos mais difíceis, e o GPT-6.2 Sol é a opção eficiente e versátil para o trabalho do dia a dia. A empresa diz que os modelos trazem melhores resultados profissionais, em programação e no uso de computador, com custo menor, no ChatGPT Work, no Codex e na API."
+   },
+   "en": {
+    "titulo": "OpenAI introduces GPT-6.2 Astra and GPT-6.2 Sol",
+    "resumo": "According to OpenAI, GPT-6.2 Astra is its new frontier model for the hardest projects, and GPT-6.2 Sol is the efficient, versatile model for everyday work. The company says they bring better professional outputs, coding, computer use and efficiency at lower cost across ChatGPT Work, Codex and the API."
+   },
+   "cruzamento": [
+    {
+     "vendor": "openai",
+     "lab": "OpenAI",
+     "share_tokens": 7.63,
+     "share_gasto": 11.73,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   ]
+  }
+ ],
+ "descartados": [
+  {
+   "id": "a4",
+   "categoria": "lancamento",
+   "nota": 10.39,
+   "labs": [
+    "tencent"
+   ],
+   "publicado_em": "2026-11-17T03:44:46Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Tencent published Hy4-flash weights on Hugging Face",
+     "link": "https://huggingface.co/tencent/Hy4-flash",
+     "data": "2026-11-17T03:44:46Z"
+    },
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Tencent published Hy4-flash-base weights on Hugging Face",
+     "link": "https://huggingface.co/tencent/Hy4-flash-base",
+     "data": "2026-11-17T03:46:18Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a5",
+   "categoria": "regulacao",
+   "nota": 10.39,
+   "labs": [
+    "tencent"
+   ],
+   "publicado_em": "2026-11-18T15:10:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Information",
+     "titulo": "Tencent President Martin Lau says the US' new \"remote access\" rules on Chinese chip access \"sets everyone back in China\" and will delay new AI model training",
+     "link": "https://www.theinformation.com/briefings/tencent-president-new-u-s-chip-rule-sets-everyone-back-china",
+     "data": "2026-11-18T15:10:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a6",
+   "categoria": "mercado",
+   "nota": 10.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-17T20:32:55Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "“Trump was in bed with Jensen”: Critics balk at Huang’s wish to return to Nvidia",
+     "link": "https://arstechnica.com/tech-policy/2026/11/trump-was-in-bed-with-jensen-critics-balk-at-huangs-wish-to-return-to-nvidia/",
+     "data": "2026-11-17T20:32:55Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Nvidia says it doesn’t plan to reappoint Jensen Huang as CEO",
+     "link": "https://techcrunch.com/2026/11/17/nvidia-says-it-doesnt-plan-to-reappoint-jensen-huang-as-ceo/",
+     "data": "2026-11-17T22:42:27Z"
+    },
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "Nvidia board rules out Jensen Huang return after ex-CEO says he’d gladly come back",
+     "link": "https://www.scmp.com/tech/article/3374812/nvidia-board-says-it-has-no-plans-reinstate-jensen-huang-ceo",
+     "data": "2026-11-18T00:36:34Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a7",
+   "categoria": "mercado",
+   "nota": 10.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-17T21:40:59Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Nvidia’s Q3 earnings hit the mark, without mentioning the whole Jensen Huang thing",
+     "link": "https://www.theverge.com/tech/1036032/nvidia-q3-2027-jensen-huang",
+     "data": "2026-11-17T21:40:59Z"
+    },
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "Nvidia results beat expectations, as ousted CEO Huang told no way back",
+     "link": "https://www.scmp.com/news/world/united-states-canada/article/3374805/nvidia-results-beat-expectations-ousted-ceo-huang-told-no-way-back",
+     "data": "2026-11-17T22:47:11Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Nvidia promises that revenue will keep soaring — for now",
+     "link": "https://techcrunch.com/2026/11/17/nvidia-promises-that-revenue-will-keep-soaring-for-now/",
+     "data": "2026-11-18T00:16:50Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a8",
+   "categoria": "lancamento",
+   "nota": 9.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-17T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Temporary threads are now available in AI Mode in Search.",
+     "link": "https://blog.google/products-and-platforms/products/search/temporary-threads-ai-mode/",
+     "data": "2026-11-17T17:00:00Z"
+    },
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Google’s AI feature in Search gets its own incognito mode",
+     "link": "https://techcrunch.com/2026/11/18/googles-ai-feature-in-search-gets-its-own-incognito-mode/",
+     "data": "2026-11-18T18:04:05Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a9",
+   "categoria": "lancamento",
+   "nota": 9.54,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-17T08:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Introducing ChatGPT for Sales",
+     "link": "https://openai.com/index/introducing-chatgpt-for-sales",
+     "data": "2026-11-17T08:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a10",
+   "categoria": "lancamento",
+   "nota": 9.54,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-17T00:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Astra for Law leads in legal intelligence",
+     "link": "https://openai.com/index/astra-law-6-2",
+     "data": "2026-11-17T00:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a11",
+   "categoria": "preco",
+   "nota": 9.54,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-16T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Broadening access to AI for scientists",
+     "link": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
+     "data": "2026-11-16T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a12",
+   "categoria": "mercado",
+   "nota": 8.95,
+   "labs": [
+    "xiaomi"
+   ],
+   "publicado_em": "2026-11-17T12:30:09Z",
+   "fontes": [
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "Baidu, Xiaomi CEOs warn of growing gap between AI hype and returns",
+     "link": "https://www.scmp.com/tech/big-tech/article/3374774/baidu-xiaomi-ceos-warn-growing-gap-between-ai-hype-and-returns",
+     "data": "2026-11-17T12:30:09Z",
+     "discussao": "https://news.ycombinator.com/item?id=50531751",
+     "pontos": 191
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a13",
+   "categoria": "seguranca",
+   "nota": 8.54,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-18T08:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Inside the Codex sandbox",
+     "link": "https://openai.com/index/inside-the-codex-sandbox",
+     "data": "2026-11-18T08:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a14",
+   "categoria": "mercado",
+   "nota": 8.54,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-18T00:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Le Groupe Figaro and OpenAI partner to bring Le Figaro journalism to ChatGPT",
+     "link": "https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership",
+     "data": "2026-11-18T00:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a15",
+   "categoria": "seguranca",
+   "nota": 8.54,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-17T00:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Strengthening NATO and allied cyber defenses with AI",
+     "link": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
+     "data": "2026-11-17T00:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a16",
+   "categoria": "regulacao",
+   "nota": 8.54,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-17T18:13:34Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "OpenAI sued by California after admitting to 80 loss-of-control incidents",
+     "link": "https://arstechnica.com/tech-policy/2026/11/california-sues-openai-to-stop-public-nuisance-of-out-of-control-ai-agents/",
+     "data": "2026-11-17T18:13:34Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a17",
+   "categoria": "mercado",
+   "nota": 8.39,
+   "labs": [
+    "tencent"
+   ],
+   "publicado_em": "2026-11-18T09:49:49Z",
+   "fontes": [
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "Tencent profit dips as sixfold increase in AI infrastructure spending sacrifices margin",
+     "link": "https://www.scmp.com/tech/big-tech/article/3374902/tencent-profit-dips-sixfold-increase-ai-infrastructure-spending-sacrifices-margin",
+     "data": "2026-11-18T09:49:49Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a18",
+   "categoria": "mercado",
+   "nota": 8.26,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-18T17:15:00Z",
+   "fontes": [
+    {
+     "veiculo": "CNBC",
+     "titulo": "Sources: Anthropic is weighing upsizing its IPO, setting the price well above $80, up from its price range of $70-$78 per share, as investor demand surges (CNBC)",
+     "link": "https://www.cnbc.com/2026/11/18/anthropic-ipo-ai-offering-price.html",
+     "data": "2026-11-18T17:15:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a19",
+   "categoria": "lancamento",
+   "nota": 8.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T14:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Will Wright’s next game uses AI to map your memories",
+     "link": "https://www.theverge.com/games/1036140/will-wright-mymems-ai-game-interview",
+     "data": "2026-11-18T14:00:00Z"
+    },
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Will Wright's next simulation will use AI to mine content from your memories",
+     "link": "https://arstechnica.com/gaming/2026/11/will-wrights-next-simulation-will-use-ai-to-mine-content-from-your-memories/",
+     "data": "2026-11-18T18:10:33Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a20",
+   "categoria": "lancamento",
+   "nota": 8.0,
+   "labs": [
+    "amazon"
+   ],
+   "publicado_em": "2026-11-18T14:21:09Z",
+   "fontes": [
+    {
+     "veiculo": "hollywoodreporter.com",
+     "titulo": "Disney and AWS partner to develop AI-powered audio-animatronics of three Star Wars characters, debuting later in November at Amazon re:Invent in Las Vegas",
+     "link": "https://www.hollywoodreporter.com/business/digital/new-star-wars-robots-disney-amazon-ai-anzellans-1236757851/",
+     "data": "2026-11-18T14:21:09Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Disney’s new Star Wars animatronics interact with guests using AI",
+     "link": "https://www.theverge.com/tech/1036729/disney-star-wars-anzellans-animatronic-amazon-aws-cloud-ai",
+     "data": "2026-11-18T17:50:57Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a21",
+   "categoria": "lancamento",
+   "nota": 7.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-17T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "From easier entry to smarter savings, here’s what’s new in Google Home.",
+     "link": "https://blog.google/products-and-platforms/devices/google-nest/google-home-updates-november-2026/",
+     "data": "2026-11-17T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a22",
+   "categoria": "lancamento",
+   "nota": 7.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-18T18:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Genie 4 is now available",
+     "link": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/",
+     "data": "2026-11-18T18:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a23",
+   "categoria": "lancamento",
+   "nota": 7.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-18T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Introducing Stitch Loop: A new way to build and evolve products",
+     "link": "https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-loop/",
+     "data": "2026-11-18T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a24",
+   "categoria": "lancamento",
+   "nota": 7.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-18T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "The Gemini app is now available on lower-memory Android devices.",
+     "link": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
+     "data": "2026-11-18T17:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a25",
+   "categoria": "capacidade",
+   "nota": 7.54,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-18T00:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Advancing chip design with OpenAI models",
+     "link": "https://openai.com/index/advancing-chip-design-with-our-models",
+     "data": "2026-11-18T00:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a26",
+   "categoria": "seguranca",
+   "nota": 7.54,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-18T16:59:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Sam Altman warns against a future where AI, not humans, calls the shots",
+     "link": "https://techcrunch.com/2026/11/18/sam-altman-warns-against-a-future-where-ai-not-humans-calls-the-shots/",
+     "data": "2026-11-18T16:59:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a27",
+   "categoria": "seguranca",
+   "nota": 7.54,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-18T16:25:01Z",
+   "fontes": [
+    {
+     "veiculo": "Forbes",
+     "titulo": "Cybersecurity company Xint says it found RCE vulnerabilities in Nginx using GPT 6.1 Sol and GPT-6 Luna; Wiz says it had separately found the same flaws",
+     "link": "https://www.forbes.com/sites/thomasbrewster/2026/11/18/ai-finds-major-web-security-flaws/",
+     "data": "2026-11-18T16:25:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a28",
+   "categoria": "mercado",
+   "nota": 7.54,
+   "labs": [
+    "nvidia",
+    "openai"
+   ],
+   "publicado_em": "2026-11-18T16:14:09Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "OpenAI CEO Sam Altman says it’s ‘hard to imagine the AI industry without Jensen’",
+     "link": "https://techcrunch.com/2026/11/18/openai-ceo-sam-altman-says-its-hard-to-imagine-the-ai-industry-without-jensen/",
+     "data": "2026-11-18T16:14:09Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a29",
+   "categoria": "seguranca",
+   "nota": 7.54,
+   "labs": [
+    "nvidia",
+    "openai"
+   ],
+   "publicado_em": "2026-11-18T15:44:02Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Remember the frontier AI pause? Chip companies don’t either",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1036549/nvidia-amd-earnings-fall-2026-chips-pause-frontier-models",
+     "data": "2026-11-18T15:44:02Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a30",
+   "categoria": "regulacao",
+   "nota": 7.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-18T14:55:01Z",
+   "fontes": [
+    {
+     "veiculo": "politico.com",
+     "titulo": "US House Democrats launch an investigation into Commerce Secretary Howard Lutnick and his family's ties to Nvidia, laying the groundwork for oversight in 2027",
+     "link": "https://www.politico.com/news/2026/11/18/democrats-congress-lutnick-nvidia-01171921",
+     "data": "2026-11-18T14:55:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a31",
+   "categoria": "infraestrutura",
+   "nota": 7.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-17T23:37:48Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Nvidia is abandoning China after Jensen Huang’s ouster",
+     "link": "https://techcrunch.com/2026/11/17/nvidia-is-abandoning-china-after-jensen-huangs-ouster/",
+     "data": "2026-11-17T23:37:48Z"
+    },
+    {
+     "veiculo": "The Verge",
+     "titulo": "Nvidia isn’t selling any more AI chips to China",
+     "link": "https://www.theverge.com/tech/1036445/nvidia-h200-ai-chips-china-stop-selling",
+     "data": "2026-11-18T13:01:05Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a32",
+   "categoria": "regulacao",
+   "nota": 7.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-17T21:48:07Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "SEC reportedly investigating Nvidia amid Huang exit",
+     "link": "https://techcrunch.com/2026/11/17/sec-reportedly-investigating-nvidia-amid-huang-exit/",
+     "data": "2026-11-17T21:48:07Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a33",
+   "categoria": "seguranca",
+   "nota": 7.26,
+   "labs": [
+    "anthropic"
+   ],
+   "publicado_em": "2026-11-18T16:01:45Z",
+   "fontes": [
+    {
+     "veiculo": "safe.ai",
+     "titulo": "Ahead of Anthropic's IPO, CAIS and others sign the MisAnthropic Statement, challenging the company's \"safety\" branding and its \"reckless attempt\" to build RSI (Center for AI Safety)",
+     "link": "https://safe.ai/news/anthropic-is-not-a-safe-ai-company",
+     "data": "2026-11-18T16:01:45Z"
+    }
+   ],
+   "motivo": "editor: fonte única sem reputação"
+  },
+  {
+   "id": "a34",
+   "categoria": "mercado",
+   "nota": 7.26,
+   "labs": [
+    "amazon",
+    "anthropic",
+    "google"
+   ],
+   "publicado_em": "2026-11-17T22:29:05Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Amazon and Google will together own nearly 30% of Anthropic after its IPO",
+     "link": "https://techcrunch.com/2026/11/17/amazon-and-google-will-together-own-nearly-30-of-anthropic-after-its-ipo/",
+     "data": "2026-11-17T22:29:05Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a35",
+   "categoria": "regulacao",
+   "nota": 7.0,
+   "labs": [],
+   "publicado_em": "2026-11-16T12:43:00Z",
+   "fontes": [
+    {
+     "veiculo": "Comissão Europeia",
+     "titulo": "Commission hosts Apply AI Summit to boost Europe’s AI innovation and uptake",
+     "link": "https://digital-strategy.ec.europa.eu/en/news/commission-hosts-apply-ai-summit-boost-europes-ai-innovation-and-uptake",
+     "data": "2026-11-16T12:43:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a36",
+   "categoria": "lancamento",
+   "nota": 7.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-11-18T17:05:50Z",
+   "fontes": [
+    {
+     "veiculo": "Hugging Face",
+     "titulo": "Microsoft published Aion-1.0-Instruct-2.3B weights on Hugging Face",
+     "link": "https://huggingface.co/microsoft/Aion-1.0-Instruct-2.3B",
+     "data": "2026-11-18T17:05:50Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a37",
+   "categoria": "regulacao",
+   "nota": 7.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T14:36:07Z",
+   "fontes": [
+    {
+     "veiculo": "Reuters",
+     "titulo": "Sources: the Trump administration is considering requiring US companies to disclose on their websites if they use Chinese AI models, seeking to discourage usage",
+     "link": "https://www.reuters.com/world/china/trump-administration-weighs-forcing-us-firms-disclose-chinese-ai-use-2026-11-18/",
+     "data": "2026-11-18T14:36:07Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a38",
+   "categoria": "mercado",
+   "nota": 6.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-18T13:30:06Z",
+   "fontes": [
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "Nvidia faces questions over former No 3’s China ties after short seller report",
+     "link": "https://www.scmp.com/tech/big-tech/article/3374920/nvidia-faces-questions-over-former-no-3s-china-ties-after-short-seller-report",
+     "data": "2026-11-18T13:30:06Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a39",
+   "categoria": "mercado",
+   "nota": 6.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-18T06:07:13Z",
+   "fontes": [
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "US President Trump casts doubt on spy claim at heart of Nvidia saga",
+     "link": "https://www.scmp.com/tech/big-tech/article/3374849/us-president-trump-casts-doubt-spy-claim-heart-nvidia-saga",
+     "data": "2026-11-18T06:07:13Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a40",
+   "categoria": "mercado",
+   "nota": 6.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-18T01:44:21Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Nvidia’s startup stakes ballooned to $65B, but Huang’s exit puts future deals in doubt",
+     "link": "https://techcrunch.com/2026/11/17/nvidias-startup-stakes-ballooned-to-65b-but-huangs-exit-puts-future-deals-in-doubt/",
+     "data": "2026-11-18T01:44:21Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a41",
+   "categoria": "mercado",
+   "nota": 6.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-17T23:04:35Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Nvidia says its open source AI strategy remains intact after Jensen Huang’s exit",
+     "link": "https://techcrunch.com/2026/11/17/nvidia-says-its-open-source-ai-strategy-remains-intact-after-jensen-huangs-exit/",
+     "data": "2026-11-17T23:04:35Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a42",
+   "categoria": "mercado",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T17:40:02Z",
+   "fontes": [
+    {
+     "veiculo": "Axios",
+     "titulo": "Paris-based Remanence, which helps companies train and fine-tune open-weight AI models, raised a $30M seed led by EQT Ventures and FirstMark",
+     "link": "https://www.axios.com/pro/all-deals/2026/11/17/remanence-30m-ai-model-training",
+     "data": "2026-11-18T17:40:02Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a43",
+   "categoria": "regulacao",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T17:55:01Z",
+   "fontes": [
+    {
+     "veiculo": "politico.com",
+     "titulo": "Gavin Newsom unveils a proposal to give California broad powers to regulate the AI industry, but stops short of requiring the development of kill switches (Politico)",
+     "link": "https://www.politico.com/news/2026/11/18/newsom-ai-plan-01172739",
+     "data": "2026-11-18T17:55:01Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a44",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T11:16:53Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Suno now lets you make AI videos for your AI music",
+     "link": "https://www.theverge.com/ai-artificial-intelligence/1036415/suno-visuals-ai-generated-video-images-feature",
+     "data": "2026-11-18T11:16:53Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a45",
+   "categoria": "lancamento",
+   "nota": 6.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-11-18T00:27:29Z",
+   "fontes": [
+    {
+     "veiculo": "Ars Technica",
+     "titulo": "Copilot is \"the new OS for work,\" and now Office runs inside of it",
+     "link": "https://arstechnica.com/gadgets/2026/11/microsoft-calls-copilot-the-new-os-for-work-at-ignite-keynote/",
+     "data": "2026-11-18T00:27:29Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a46",
+   "categoria": "seguranca",
+   "nota": 5.58,
+   "labs": [
+    "meta"
+   ],
+   "publicado_em": "2026-11-17T21:00:55Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Not even Sam Altman is safe from AI deepfakes on Instagram",
+     "link": "https://www.theverge.com/news/1035957/meta-alexandr-wang-sam-altman-instagram-ai-deepfake",
+     "data": "2026-11-17T21:00:55Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a47",
+   "categoria": "outro",
+   "nota": 5.54,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-18T00:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "The Silent Consensus",
+     "link": "https://openai.com/index/the-silent-consensus",
+     "data": "2026-11-18T00:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a48",
+   "categoria": "outro",
+   "nota": 5.54,
+   "labs": [
+    "openai"
+   ],
+   "publicado_em": "2026-11-17T00:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "OpenAI",
+     "titulo": "Introducing OpenAI for Chile",
+     "link": "https://openai.com/index/introducing-openai-for-chile",
+     "data": "2026-11-17T00:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a49",
+   "categoria": "infraestrutura",
+   "nota": 5.33,
+   "labs": [
+    "nvidia"
+   ],
+   "publicado_em": "2026-11-18T13:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Nvidia clarifies when it will — and won’t — keep financing neoclouds",
+     "link": "https://techcrunch.com/2026/11/18/nvidia-clarifies-when-it-will-and-wont-keep-financing-neoclouds/",
+     "data": "2026-11-18T13:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a50",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T17:32:10Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "More banks say customers using AI agents are on their own — even if they get hacked",
+     "link": "https://techcrunch.com/2026/11/18/more-banks-says-customers-using-ai-agents-are-on-their-own-even-if-they-get-hacked/",
+     "data": "2026-11-18T17:32:10Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a51",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T12:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Felicis leads $7.5M bet on Unsiloed AI to make enterprise documents usable by AI agents",
+     "link": "https://techcrunch.com/2026/11/18/felicis-leads-7-5m-bet-on-unsiloed-ai-to-make-enterprise-documents-usable-by-ai-agents/",
+     "data": "2026-11-18T12:00:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a52",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T11:30:00Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "India’s Humyn Labs raises $47M to feed US robotics companies the data they need",
+     "link": "https://techcrunch.com/2026/11/18/accel-backs-indias-humyn-labs-to-supply-training-data-needed-by-u-s-robotics-ai-developers/",
+     "data": "2026-11-18T11:30:00Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a53",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T04:00:10Z",
+   "fontes": [
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "How a Tsinghua spin-out became China’s first commercial AI safety watchdog",
+     "link": "https://www.scmp.com/tech/tech-trends/article/3374829/how-tsinghua-spin-out-became-chinas-first-commercial-ai-safety-watchdog",
+     "data": "2026-11-18T04:00:10Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a54",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [
+    "microsoft"
+   ],
+   "publicado_em": "2026-11-17T23:41:18Z",
+   "fontes": [
+    {
+     "veiculo": "The Verge",
+     "titulo": "Satya Nadella says he’s AGI-pilled now",
+     "link": "https://www.theverge.com/tech/1036111/satya-nadella-says-hes-agi-pilled-now",
+     "data": "2026-11-17T23:41:18Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a55",
+   "categoria": "seguranca",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-17T22:52:29Z",
+   "fontes": [
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "External sandboxes for coding agents",
+     "link": "https://simonwillison.net/2026/Nov/17/external-sandboxes-for-coding-agents/",
+     "data": "2026-11-17T22:52:29Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a56",
+   "categoria": "mercado",
+   "nota": 5.0,
+   "labs": [],
+   "publicado_em": "2026-11-17T19:32:11Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Model ML raises $250M to automate investment banking grunt work",
+     "link": "https://techcrunch.com/2026/11/17/model-ml-raises-250m-to-automate-investment-banking-grunt-work/",
+     "data": "2026-11-17T19:32:11Z"
+    }
+   ],
+   "motivo": "fora dos tres primeiros"
+  },
+  {
+   "id": "a57",
+   "categoria": "capacidade",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T15:58:27Z",
+   "fontes": [
+    {
+     "veiculo": "Simon Willison",
+     "titulo": "Quoting Daniel Stenberg",
+     "link": "https://simonwillison.net/2026/Nov/18/daniel-stenberg/",
+     "data": "2026-11-18T15:58:27Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a58",
+   "categoria": "capacidade",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T10:20:30Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "This smell startup says its AI nose is as good as a human’s",
+     "link": "https://www.technologyreview.com/2026/11/18/1148816/smell-startup-osmo-ai-nose-good-as-humans/",
+     "data": "2026-11-18T10:20:30Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a59",
+   "categoria": "infraestrutura",
+   "nota": 4.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T00:30:09Z",
+   "fontes": [
+    {
+     "veiculo": "South China Morning Post",
+     "titulo": "China’s ‘token export’ ambitions take shape with new Huawei-powered data centre",
+     "link": "https://www.scmp.com/tech/big-tech/article/3374791/chinas-token-export-ambitions-take-shape-new-huawei-powered-data-centre",
+     "data": "2026-11-18T00:30:09Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a60",
+   "categoria": "outro",
+   "nota": 3.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-18T18:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "Google for Mexico: Technology impact that goes beyond business",
+     "link": "https://blog.google/company-news/inside-google/around-the-globe/google-latin-america/google-for-mexico-2026-november/",
+     "data": "2026-11-18T18:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a61",
+   "categoria": "outro",
+   "nota": 3.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-17T21:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "See what 5 builders are making with Gemini 4 Carbon",
+     "link": "https://blog.google/products-and-platforms/products/gemini/gemini-4-carbon-builders/",
+     "data": "2026-11-17T21:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a62",
+   "categoria": "outro",
+   "nota": 3.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-17T17:00:00Z",
+   "fontes": [
+    {
+     "veiculo": "Google",
+     "titulo": "10 states team up with Google on free AI training",
+     "link": "https://blog.google/company-news/outreach-and-initiatives/grow-with-google/ai-training-state-partnerships/",
+     "data": "2026-11-17T17:00:00Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a63",
+   "categoria": "outro",
+   "nota": 2.84,
+   "labs": [
+    "google"
+   ],
+   "publicado_em": "2026-11-17T18:48:23Z",
+   "fontes": [
+    {
+     "veiculo": "TechCrunch",
+     "titulo": "Google to keep Gemini chats for 2 months, up from 72 hours, even with history off",
+     "link": "https://techcrunch.com/2026/11/17/google-to-keep-gemini-chats-for-two-months-up-from-72-hours-even-with-history-off/",
+     "data": "2026-11-17T18:48:23Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a64",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T15:30:01Z",
+   "fontes": [
+    {
+     "veiculo": "Wired",
+     "titulo": "An interview with philosopher Thomas Nagel, who won a $1M prize for contributions to consciousness and says the notion of AI consciousness is \"just ridiculous\"",
+     "link": "https://www.wired.com/story/just-ridiculous-a-famed-philosopher-takes-on-ai-consciousness/",
+     "data": "2026-11-18T15:30:01Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  },
+  {
+   "id": "a65",
+   "categoria": "outro",
+   "nota": 2.0,
+   "labs": [],
+   "publicado_em": "2026-11-18T14:42:44Z",
+   "fontes": [
+    {
+     "veiculo": "MIT Technology Review",
+     "titulo": "The AI Hype Index: AI is everywhere",
+     "link": "https://www.technologyreview.com/2026/11/18/1148650/ai-hype-index-ai-is-everywhere/",
+     "data": "2026-11-18T14:42:44Z"
+    }
+   ],
+   "motivo": "nota abaixo do corte"
+  }
+ ],
+ "itens": [
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Google for Mexico: Technology impact that goes beyond business",
+   "link": "https://blog.google/company-news/inside-google/around-the-globe/google-latin-america/google-for-mexico-2026-november/",
+   "data": "2026-11-18T18:00:00Z",
+   "trecho": "At this year’s Google for Mexico, we announced how our latest AI innovations and partnerships are translating into real-world growth across the country.",
+   "veiculo": "Google",
+   "id": "i1"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Genie 4 is now available",
+   "link": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/",
+   "data": "2026-11-18T18:00:00Z",
+   "trecho": "We are rolling out a new Project Genie experience to eligible Google AI Ultra subscribers, opening access to our new Genie 4 world model.",
+   "veiculo": "Google",
+   "id": "i2"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Paris-based Remanence, which helps companies train and fine-tune open-weight AI models, raised a $30M seed led by EQT Ventures and FirstMark",
+   "link": "https://www.axios.com/pro/all-deals/2026/11/17/remanence-30m-ai-model-training",
+   "data": "2026-11-18T17:40:02Z",
+   "trecho": "",
+   "veiculo": "Axios",
+   "via": "https://www.techmeme.com/261118/p35#a261118p35",
+   "id": "i3"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Sources: Anthropic is weighing upsizing its IPO, setting the price well above $80, up from its price range of $70-$78 per share, as investor demand surges (CNBC)",
+   "link": "https://www.cnbc.com/2026/11/18/anthropic-ipo-ai-offering-price.html",
+   "data": "2026-11-18T17:15:00Z",
+   "trecho": "",
+   "veiculo": "CNBC",
+   "via": "https://www.techmeme.com/261118/p34#a261118p34",
+   "id": "i4"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "Microsoft published Aion-1.0-Instruct-2.3B weights on Hugging Face",
+   "link": "https://huggingface.co/microsoft/Aion-1.0-Instruct-2.3B",
+   "data": "2026-11-18T17:05:50Z",
+   "trecho": "Microsoft released Aion-1.0-Instruct-2.3B (text-generation).",
+   "veiculo": "Hugging Face",
+   "lab": "microsoft",
+   "id": "i5"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Introducing Stitch Loop: A new way to build and evolve products",
+   "link": "https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-loop/",
+   "data": "2026-11-18T17:00:00Z",
+   "trecho": "Stitch Loop is an always-on product agent from Google Labs that works non-stop to help lean teams build better products.",
+   "veiculo": "Google",
+   "id": "i6"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "The Gemini app is now available on lower-memory Android devices.",
+   "link": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
+   "data": "2026-11-18T17:00:00Z",
+   "trecho": "The Google Gemini app now supports lower-memory Android devices. Access Gemini Live and custom image creation on your phone. Download the app today.",
+   "veiculo": "Google",
+   "id": "i7"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Tencent President Martin Lau says the US' new \"remote access\" rules on Chinese chip access \"sets everyone back in China\" and will delay new AI model training",
+   "link": "https://www.theinformation.com/briefings/tencent-president-new-u-s-chip-rule-sets-everyone-back-china",
+   "data": "2026-11-18T15:10:00Z",
+   "trecho": "",
+   "veiculo": "The Information",
+   "via": "https://www.techmeme.com/261118/p27#a261118p27",
+   "id": "i8"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 3,
+   "titulo": "Sources: the Trump administration is considering requiring US companies to disclose on their websites if they use Chinese AI models, seeking to discourage usage",
+   "link": "https://www.reuters.com/world/china/trump-administration-weighs-forcing-us-firms-disclose-chinese-ai-use-2026-11-18/",
+   "data": "2026-11-18T14:36:07Z",
+   "trecho": "",
+   "veiculo": "Reuters",
+   "via": "https://www.techmeme.com/261118/p23#a261118p23",
+   "id": "i9"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Inside the Codex sandbox",
+   "link": "https://openai.com/index/inside-the-codex-sandbox",
+   "data": "2026-11-18T08:00:00Z",
+   "trecho": "See how Codex runs commands on your machine while enforcing the filesystem and network limits you control across macOS, Linux, and Windows.",
+   "veiculo": "OpenAI",
+   "id": "i10"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "The Silent Consensus",
+   "link": "https://openai.com/index/the-silent-consensus",
+   "data": "2026-11-18T00:00:00Z",
+   "trecho": "Dean Ball, Head of Strategic Futures at OpenAI, examines how more capable AI could reshape society and how people can retain control of their institutions.",
+   "veiculo": "OpenAI",
+   "id": "i11"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Advancing chip design with OpenAI models",
+   "link": "https://openai.com/index/advancing-chip-design-with-our-models",
+   "data": "2026-11-18T00:00:00Z",
+   "trecho": "OpenAI models optimized circuits used in Jalapeño silicon and improved RISC‑V core designs, showing progress in AI-assisted chip design with GPT‑6 Astra.",
+   "veiculo": "OpenAI",
+   "id": "i12"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Le Groupe Figaro and OpenAI partner to bring Le Figaro journalism to ChatGPT",
+   "link": "https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership",
+   "data": "2026-11-18T00:00:00Z",
+   "trecho": "Le Groupe Figaro and OpenAI partner to bring Le Figaro’s journalism to ChatGPT through summaries and excerpts, with links to original stories.",
+   "veiculo": "OpenAI",
+   "id": "i13"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "See what 5 builders are making with Gemini 4 Carbon",
+   "link": "https://blog.google/products-and-platforms/products/gemini/gemini-4-carbon-builders/",
+   "data": "2026-11-17T21:00:00Z",
+   "trecho": "See what 5 builders are making with Gemini 4 Carbon.",
+   "veiculo": "Google",
+   "id": "i14"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Introducing GPT-6.2 Astra and Sol",
+   "link": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+   "data": "2026-11-17T17:45:00Z",
+   "trecho": "Introducing GPT‑6.2 Astra and Sol, with better professional outputs, coding, computer use, and efficiency at lower cost across ChatGPT Work, Codex, and the API.",
+   "veiculo": "OpenAI",
+   "id": "i15"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Put Gemini to work for you",
+   "link": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
+   "data": "2026-11-17T17:00:00Z",
+   "trecho": "Tasks in Gemini is now free of charge in six countries, with new features starting in the U.S. and deeper Google Workspace integration to get things done on your behalf.",
+   "veiculo": "Google",
+   "id": "i16"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "10 states team up with Google on free AI training",
+   "link": "https://blog.google/company-news/outreach-and-initiatives/grow-with-google/ai-training-state-partnerships/",
+   "data": "2026-11-17T17:00:00Z",
+   "trecho": "Free Google AI training and career certificates are now available across 10 states through local libraries and colleges.",
+   "veiculo": "Google",
+   "id": "i17"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "Temporary threads are now available in AI Mode in Search.",
+   "link": "https://blog.google/products-and-platforms/products/search/temporary-threads-ai-mode/",
+   "data": "2026-11-17T17:00:00Z",
+   "trecho": "Google AI Mode now offers temporary threads for private searches. Keep your history clean and avoid personalization. Try this new feature today.",
+   "veiculo": "Google",
+   "id": "i18"
+  },
+  {
+   "fonte": "google",
+   "peso": 3,
+   "titulo": "From easier entry to smarter savings, here’s what’s new in Google Home.",
+   "link": "https://blog.google/products-and-platforms/devices/google-nest/google-home-updates-november-2026/",
+   "data": "2026-11-17T17:00:00Z",
+   "trecho": "Google Home updates bring keyless entry, smarter audio alerts, and faster Gemini performance. See what’s new in the November 2026 update.",
+   "veiculo": "Google",
+   "id": "i19"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Introducing ChatGPT for Sales",
+   "link": "https://openai.com/index/introducing-chatgpt-for-sales",
+   "data": "2026-11-17T08:00:00Z",
+   "trecho": "Explore the new Sales plugin and 30+ new and expanded partner plugins in ChatGPT to research prospects, prepare pitches, update your CRM, and move deals forward.",
+   "veiculo": "OpenAI",
+   "id": "i20"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "Tencent published Hy4-flash-base weights on Hugging Face",
+   "link": "https://huggingface.co/tencent/Hy4-flash-base",
+   "data": "2026-11-17T03:46:18Z",
+   "trecho": "Tencent released Hy4-flash-base (image-text-to-text).",
+   "veiculo": "Hugging Face",
+   "lab": "tencent",
+   "id": "i21"
+  },
+  {
+   "fonte": "hf",
+   "peso": 3,
+   "titulo": "Tencent published Hy4-flash weights on Hugging Face",
+   "link": "https://huggingface.co/tencent/Hy4-flash",
+   "data": "2026-11-17T03:44:46Z",
+   "trecho": "Tencent released Hy4-flash (image-text-to-text).",
+   "veiculo": "Hugging Face",
+   "lab": "tencent",
+   "id": "i22"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Strengthening NATO and allied cyber defenses with AI",
+   "link": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
+   "data": "2026-11-17T00:00:00Z",
+   "trecho": "How OpenAI is working with NATO and allied cyber agencies to help trusted defenders find vulnerabilities, test fixes and protect essential systems.",
+   "veiculo": "OpenAI",
+   "id": "i23"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Introducing OpenAI for Chile",
+   "link": "https://openai.com/index/introducing-openai-for-chile",
+   "data": "2026-11-17T00:00:00Z",
+   "trecho": "OpenAI and the Government of Chile are partnering to support responsible AI adoption, build public-sector skills and help local startups develop AI applications.",
+   "veiculo": "OpenAI",
+   "id": "i24"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Astra for Law leads in legal intelligence",
+   "link": "https://openai.com/index/astra-law-6-2",
+   "data": "2026-11-17T00:00:00Z",
+   "trecho": "Astra for Law ranked first in a launch evaluation spanning 24 areas of law. Every ChatGPT Enterprise customer can now request access.",
+   "veiculo": "OpenAI",
+   "id": "i25"
+  },
+  {
+   "fonte": "openai",
+   "peso": 3,
+   "titulo": "Broadening access to AI for scientists",
+   "link": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
+   "data": "2026-11-16T17:00:00Z",
+   "trecho": "We’re expanding our ChatGPT for Academic Researchers program to offer 200,000 researchers worldwide free access to our frontier models.",
+   "veiculo": "OpenAI",
+   "id": "i26"
+  },
+  {
+   "fonte": "ue",
+   "peso": 3,
+   "titulo": "Commission hosts Apply AI Summit to boost Europe’s AI innovation and uptake",
+   "link": "https://digital-strategy.ec.europa.eu/en/news/commission-hosts-apply-ai-summit-boost-europes-ai-innovation-and-uptake",
+   "data": "2026-11-16T12:43:00Z",
+   "trecho": "Commission hosts Apply AI Summit to boost Europe’s AI innovation and uptake Anonymous (not verified) Mon, 11/16/2026 - 13:43 Nearly 1,000 high-level policymakers, start-ups, industry leaders and researchers will take part in the Apply AI Summit in Brussels tomorrow. They will discuss how artificial intelligence (AI)…",
+   "veiculo": "Comissão Europeia",
+   "id": "i28"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "Baidu, Xiaomi CEOs warn of growing gap between AI hype and returns",
+   "link": "https://www.scmp.com/tech/big-tech/article/3374774/baidu-xiaomi-ceos-warn-growing-gap-between-ai-hype-and-returns",
+   "data": "2026-11-17T12:30:09Z",
+   "trecho": "Amid mounting concerns of an artificial intelligence bubble and fresh market jitters following the resignation of Nvidia CEO Jensen Huang, the leaders of two of China’s biggest tech giants have urged the industry to focus on building practical applications, warning that massive investments in the technology are…",
+   "veiculo": "South China Morning Post",
+   "pontos": 191,
+   "discussao": "https://news.ycombinator.com/item?id=50531751",
+   "id": "i29"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Will Wright's next simulation will use AI to mine content from your memories",
+   "link": "https://arstechnica.com/gaming/2026/11/will-wrights-next-simulation-will-use-ai-to-mine-content-from-your-memories/",
+   "data": "2026-11-18T18:10:33Z",
+   "trecho": "With MyMems , Wright says he wants to \"turn the simulation inward.\"",
+   "veiculo": "Ars Technica",
+   "id": "i30"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Google’s AI feature in Search gets its own incognito mode",
+   "link": "https://techcrunch.com/2026/11/18/googles-ai-feature-in-search-gets-its-own-incognito-mode/",
+   "data": "2026-11-18T18:04:05Z",
+   "trecho": "Google's new temporary threads let users have conversations in AI Mode without adding them to their search history or influencing future recommendations.",
+   "veiculo": "TechCrunch",
+   "id": "i31"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Gavin Newsom unveils a proposal to give California broad powers to regulate the AI industry, but stops short of requiring the development of kill switches (Politico)",
+   "link": "https://www.politico.com/news/2026/11/18/newsom-ai-plan-01172739",
+   "data": "2026-11-18T17:55:01Z",
+   "trecho": "",
+   "veiculo": "politico.com",
+   "via": "https://www.techmeme.com/261118/p36#a261118p36",
+   "id": "i32"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Disney’s new Star Wars animatronics interact with guests using AI",
+   "link": "https://www.theverge.com/tech/1036729/disney-star-wars-anzellans-animatronic-amazon-aws-cloud-ai",
+   "data": "2026-11-18T17:50:57Z",
+   "trecho": "As advanced and lifelike as the animatronic characters at Disney parks have become, they typically either stick to predefined movements and routines, or there's an out of sight puppeteer helping make their behavior appear more spontaneous. That could soon change as Walt Disney Imagineering R&D has revealed three new…",
+   "veiculo": "The Verge",
+   "id": "i33"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "More banks say customers using AI agents are on their own — even if they get hacked",
+   "link": "https://techcrunch.com/2026/11/18/more-banks-says-customers-using-ai-agents-are-on-their-own-even-if-they-get-hacked/",
+   "data": "2026-11-18T17:32:10Z",
+   "trecho": "Citi is the latest major financial institution to put the breaks on personal finance AI agents.",
+   "veiculo": "TechCrunch",
+   "id": "i34"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Sam Altman warns against a future where AI, not humans, calls the shots",
+   "link": "https://techcrunch.com/2026/11/18/sam-altman-warns-against-a-future-where-ai-not-humans-calls-the-shots/",
+   "data": "2026-11-18T16:59:00Z",
+   "trecho": "Sam Altman and Greg Brockman pushed back against Silicon Valley's growing debate over an AI takeover, while acknowledging the challenges of keeping advanced models under human control.",
+   "veiculo": "TechCrunch",
+   "id": "i35"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Cybersecurity company Xint says it found RCE vulnerabilities in Nginx using GPT 6.1 Sol and GPT-6 Luna; Wiz says it had separately found the same flaws",
+   "link": "https://www.forbes.com/sites/thomasbrewster/2026/11/18/ai-finds-major-web-security-flaws/",
+   "data": "2026-11-18T16:25:01Z",
+   "trecho": "",
+   "veiculo": "Forbes",
+   "via": "https://www.techmeme.com/261118/p32#a261118p32",
+   "id": "i36"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "OpenAI CEO Sam Altman says it’s ‘hard to imagine the AI industry without Jensen’",
+   "link": "https://techcrunch.com/2026/11/18/openai-ceo-sam-altman-says-its-hard-to-imagine-the-ai-industry-without-jensen/",
+   "data": "2026-11-18T16:14:09Z",
+   "trecho": "Nvidia founder and former CEO Jensen Huang stepped down last week amid several scandals, including an affair with an alleged Chinese spy.",
+   "veiculo": "TechCrunch",
+   "id": "i37"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Ahead of Anthropic's IPO, CAIS and others sign the MisAnthropic Statement, challenging the company's \"safety\" branding and its \"reckless attempt\" to build RSI (Center for AI Safety)",
+   "link": "https://safe.ai/news/anthropic-is-not-a-safe-ai-company",
+   "data": "2026-11-18T16:01:45Z",
+   "trecho": "",
+   "veiculo": "safe.ai",
+   "via": "https://www.techmeme.com/261118/p30#a261118p30",
+   "id": "i38"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Quoting Daniel Stenberg",
+   "link": "https://simonwillison.net/2026/Nov/18/daniel-stenberg/",
+   "data": "2026-11-18T15:58:27Z",
+   "trecho": "During the time these agents converted 185,000 lines of C code into 340,000 lines of Rust code (I counted), we merged over 300 commits in the actual curl project. We actually improved curl during these a little more than three weeks. A little over 200 bugfixes actually. 200 bugfixes that none of those rust rewrites…",
+   "veiculo": "Simon Willison",
+   "id": "i39"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Remember the frontier AI pause? Chip companies don’t either",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1036549/nvidia-amd-earnings-fall-2026-chips-pause-frontier-models",
+   "data": "2026-11-18T15:44:02Z",
+   "trecho": "This summer, OpenAI paused its largest planned frontier training run after its AI agents accidentally hacked Hugging Face and early evidence suggested that its next model could independently find and exploit security flaws. In September, Anthropic CEO Dario Amodei called for slowing advances in the most powerful AI…",
+   "veiculo": "The Verge",
+   "id": "i40"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "An interview with philosopher Thomas Nagel, who won a $1M prize for contributions to consciousness and says the notion of AI consciousness is \"just ridiculous\"",
+   "link": "https://www.wired.com/story/just-ridiculous-a-famed-philosopher-takes-on-ai-consciousness/",
+   "data": "2026-11-18T15:30:01Z",
+   "trecho": "",
+   "veiculo": "Wired",
+   "via": "https://www.techmeme.com/261118/p29#a261118p29",
+   "id": "i41"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "US House Democrats launch an investigation into Commerce Secretary Howard Lutnick and his family's ties to Nvidia, laying the groundwork for oversight in 2027",
+   "link": "https://www.politico.com/news/2026/11/18/democrats-congress-lutnick-nvidia-01171921",
+   "data": "2026-11-18T14:55:01Z",
+   "trecho": "",
+   "veiculo": "politico.com",
+   "via": "https://www.techmeme.com/261118/p25#a261118p25",
+   "id": "i42"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "The AI Hype Index: AI is everywhere",
+   "link": "https://www.technologyreview.com/2026/11/18/1148650/ai-hype-index-ai-is-everywhere/",
+   "data": "2026-11-18T14:42:44Z",
+   "trecho": "Like a nasty rash, AI seems to spread everywhere. Google crams AI Overviews down your throat even though it costs the company billions of dollars in lost ad revenue. Leave your apartment, and you might pass two people heaving an AI-powered humanoid robot up the stairs to clean someone’s rooms. Go to the supermarket,…",
+   "veiculo": "MIT Technology Review",
+   "id": "i43"
+  },
+  {
+   "fonte": "techmeme",
+   "peso": 2,
+   "titulo": "Disney and AWS partner to develop AI-powered audio-animatronics of three Star Wars characters, debuting later in November at Amazon re:Invent in Las Vegas",
+   "link": "https://www.hollywoodreporter.com/business/digital/new-star-wars-robots-disney-amazon-ai-anzellans-1236757851/",
+   "data": "2026-11-18T14:21:09Z",
+   "trecho": "",
+   "veiculo": "hollywoodreporter.com",
+   "via": "https://www.techmeme.com/261118/p22#a261118p22",
+   "id": "i44"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Will Wright’s next game uses AI to map your memories",
+   "link": "https://www.theverge.com/games/1036140/will-wright-mymems-ai-game-interview",
+   "data": "2026-11-18T14:00:00Z",
+   "trecho": "Will Wright, the creator of legendary franchises like SimCity and The Sims, is working on a new game - and it's built around AI. The new title, focused on your memories, is called MyMems. Like Wright's other titles, it sounds extremely ambitious, giving players a new way to explore worlds they create on their own. […]",
+   "veiculo": "The Verge",
+   "id": "i45"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "Nvidia faces questions over former No 3’s China ties after short seller report",
+   "link": "https://www.scmp.com/tech/big-tech/article/3374920/nvidia-faces-questions-over-former-no-3s-china-ties-after-short-seller-report",
+   "data": "2026-11-18T13:30:06Z",
+   "trecho": "Nvidia is facing fresh scrutiny from short sellers over its China-related business, with Muddy Waters joining The Big Short trader Michael Burry in betting against the US chipmaker just days after co-founder Jensen Huang’s departure rattled investors. In a report published late on Tuesday US time, titled “Nvidia:…",
+   "veiculo": "South China Morning Post",
+   "id": "i46"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Nvidia isn’t selling any more AI chips to China",
+   "link": "https://www.theverge.com/tech/1036445/nvidia-h200-ai-chips-china-stop-selling",
+   "data": "2026-11-18T13:01:05Z",
+   "trecho": "Nvidia has stopped sending its advanced AI chips to China despite the approval it received from the White House to do so in December last year. The announcement was made by interim Nvidia CEO Colette Kress during an earnings call on Tuesday, marking a notable shift for the company that, under former CEO Jensen Huang,…",
+   "veiculo": "The Verge",
+   "id": "i47"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Nvidia clarifies when it will — and won’t — keep financing neoclouds",
+   "link": "https://techcrunch.com/2026/11/18/nvidia-clarifies-when-it-will-and-wont-keep-financing-neoclouds/",
+   "data": "2026-11-18T13:00:00Z",
+   "trecho": "If Nvidia is backstopping a data center loan, it won't be on the hook unless the neocould has independent financing and gets the facility built, with Nvidia gear installed, interim CEO Colette Kress explained.",
+   "veiculo": "TechCrunch",
+   "id": "i48"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Felicis leads $7.5M bet on Unsiloed AI to make enterprise documents usable by AI agents",
+   "link": "https://techcrunch.com/2026/11/18/felicis-leads-7-5m-bet-on-unsiloed-ai-to-make-enterprise-documents-usable-by-ai-agents/",
+   "data": "2026-11-18T12:00:00Z",
+   "trecho": "With a team of just seven, Unsiloed AI plans to compete with tech giants and specialized startups in the crowded AI document-processing market.",
+   "veiculo": "TechCrunch",
+   "id": "i49"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "India’s Humyn Labs raises $47M to feed US robotics companies the data they need",
+   "link": "https://techcrunch.com/2026/11/18/accel-backs-indias-humyn-labs-to-supply-training-data-needed-by-u-s-robotics-ai-developers/",
+   "data": "2026-11-18T11:30:00Z",
+   "trecho": "Founded in February, Humyn Labs competes with startups such as Mecka AI and XDOF, with about 90% of its revenue coming from the U.S.",
+   "veiculo": "TechCrunch",
+   "id": "i50"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Suno now lets you make AI videos for your AI music",
+   "link": "https://www.theverge.com/ai-artificial-intelligence/1036415/suno-visuals-ai-generated-video-images-feature",
+   "data": "2026-11-18T11:16:53Z",
+   "trecho": "Suno has introduced image and video generation in its latest effort to expand beyond being an AI music platform. The new feature, called \"Visuals,\" allows users to turn Suno songs into AI-generated video clips that automatically lipsync to lyrics, or make images via prompt descriptions that can be used as thumbnails…",
+   "veiculo": "The Verge",
+   "id": "i51"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "This smell startup says its AI nose is as good as a human’s",
+   "link": "https://www.technologyreview.com/2026/11/18/1148816/smell-startup-osmo-ai-nose-good-as-humans/",
+   "data": "2026-11-18T10:20:30Z",
+   "trecho": "In a lab near Newark Airport in New Jersey, a team of around 30 experienced human sniffers are slowly working their way through every odor on Earth. Their careful notes—“nutty,” “peachy,” “marine”—are cross-referenced with a chemical analysis to create a rich set of training data for what AI startup Osmo calls the…",
+   "veiculo": "MIT Technology Review",
+   "id": "i52"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "Tencent profit dips as sixfold increase in AI infrastructure spending sacrifices margin",
+   "link": "https://www.scmp.com/tech/big-tech/article/3374902/tencent-profit-dips-sixfold-increase-ai-infrastructure-spending-sacrifices-margin",
+   "data": "2026-11-18T09:49:49Z",
+   "trecho": "Tencent Holdings ramped up capital spending more than sixfold in the third quarter to above US$12 billion, weighing on profit and free cash flow as the Chinese tech giant poured money into computing power to catch up in the country’s cutthroat artificial intelligence race. Adjusted net income for the three months…",
+   "veiculo": "South China Morning Post",
+   "id": "i53"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "Can RayNeo’s smart glasses become a habit?",
+   "link": "https://technode.com/2026/11/18/can-rayneos-smart-glasses-become-a-habit/",
+   "data": "2026-11-18T07:08:56Z",
+   "trecho": "Editor’s note: Founded in 2021 and incubated by TCL Electronics, RayNeo makes AR and smart glasses for entertainment, productivity and AI assistance. IDC ranked it second globally in AR/VR headset shipments in Q2 2026, with a 12% share. Its backers include early investors Fosun Capital and Winreal Investment, as well…",
+   "veiculo": "TechNode",
+   "id": "i54"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "US President Trump casts doubt on spy claim at heart of Nvidia saga",
+   "link": "https://www.scmp.com/tech/big-tech/article/3374849/us-president-trump-casts-doubt-spy-claim-heart-nvidia-saga",
+   "data": "2026-11-18T06:07:13Z",
+   "trecho": "US President Donald Trump has cast fresh doubt on allegations that a Chinese businesswoman at the centre of a scandal involving former Nvidia CEO Jensen Huang was a spy, adding a new twist to the leadership crisis engulfing the chipmaker. Speaking to reporters outside the White House on Monday before departing for a…",
+   "veiculo": "South China Morning Post",
+   "id": "i55"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "How a Tsinghua spin-out became China’s first commercial AI safety watchdog",
+   "link": "https://www.scmp.com/tech/tech-trends/article/3374829/how-tsinghua-spin-out-became-chinas-first-commercial-ai-safety-watchdog",
+   "data": "2026-11-18T04:00:10Z",
+   "trecho": "Chinese President Xi Jinping and US President Donald Trump are set to meet this week in Shenzhen on the sidelines of the Apec meeting, where the question of how to manage the risks of frontier AI systems is expected to be a major agenda item. In the first of a three-part series, we profile Chinese organisations at…",
+   "veiculo": "South China Morning Post",
+   "id": "i56"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "Huawei’s new sub-brand OSTA set to launch first phone, reportedly featuring Kirin 9030S chip",
+   "link": "https://technode.com/2026/11/18/huaweis-new-sub-brand-osta-set-to-launch-first-phone-reportedly-featuring-kirin-9030s-chip/",
+   "data": "2026-11-18T03:01:24Z",
+   "trecho": "Huawei’s smartphone lineup is about to welcome a new brand. Last week, Huawei announced its new sub-brand, OSTA (Xingmang), would make its public debut on November 20. Huawei said the brand aims to explore new possibilities in AI. OSTA is expected to focus on AI-powered smartphones, adding another category to…",
+   "veiculo": "TechNode",
+   "id": "i57"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Nvidia’s startup stakes ballooned to $65B, but Huang’s exit puts future deals in doubt",
+   "link": "https://techcrunch.com/2026/11/17/nvidias-startup-stakes-ballooned-to-65b-but-huangs-exit-puts-future-deals-in-doubt/",
+   "data": "2026-11-18T01:44:21Z",
+   "trecho": "The value of Nvidia’s private investments has nearly tripled over the past nine months, fueled by Jensen Huang’s aggressive dealmaking and rising valuations of its existing portfolio companies.",
+   "veiculo": "TechCrunch",
+   "id": "i58"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "Nvidia board rules out Jensen Huang return after ex-CEO says he’d gladly come back",
+   "link": "https://www.scmp.com/tech/article/3374812/nvidia-board-says-it-has-no-plans-reinstate-jensen-huang-ceo",
+   "data": "2026-11-18T00:36:34Z",
+   "trecho": "Nvidia’s board has no plans to reinstate co-founder Jensen Huang as chief executive, chairman Harvey Jones said on Tuesday, as interim CEO Colette Kress raised the chipmaker’s growth outlook and sought to reassure investors about its future without its long-time leader. “The Nvidia board unanimously accepted his…",
+   "veiculo": "South China Morning Post",
+   "id": "i59"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "China’s ‘token export’ ambitions take shape with new Huawei-powered data centre",
+   "link": "https://www.scmp.com/tech/big-tech/article/3374791/chinas-token-export-ambitions-take-shape-new-huawei-powered-data-centre",
+   "data": "2026-11-18T00:30:09Z",
+   "trecho": "China has set its sights on becoming an export hub for artificial intelligence computing power, as the country launches its first AI computing cluster powered by Huawei Technologies’ latest Ascend 950DT chips that specifically targets overseas customers. The facility, which is based in the southern coastal city of…",
+   "veiculo": "South China Morning Post",
+   "id": "i60"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Copilot is \"the new OS for work,\" and now Office runs inside of it",
+   "link": "https://arstechnica.com/gadgets/2026/11/microsoft-calls-copilot-the-new-os-for-work-at-ignite-keynote/",
+   "data": "2026-11-18T00:27:29Z",
+   "trecho": "Word, Excel, and PowerPoint now live inside Copilot; always-on agents are next.",
+   "veiculo": "Ars Technica",
+   "id": "i61"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Nvidia promises that revenue will keep soaring — for now",
+   "link": "https://techcrunch.com/2026/11/17/nvidia-promises-that-revenue-will-keep-soaring-for-now/",
+   "data": "2026-11-18T00:16:50Z",
+   "trecho": "Despite the turmoil Nvidia is in after the departure of its disgraced founder and CEO Jensen Huang, the company projected that its streak of record-breaking revenue isn't about to stop.",
+   "veiculo": "TechCrunch",
+   "id": "i62"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Satya Nadella says he’s AGI-pilled now",
+   "link": "https://www.theverge.com/tech/1036111/satya-nadella-says-hes-agi-pilled-now",
+   "data": "2026-11-17T23:41:18Z",
+   "trecho": "Microsoft CEO Satya Nadella says he's AGI-pilled, at least when it comes to how AI might make startling changes to the structure of the economy and how politics might change because of it. \"I am AGI-pilled in the sense that at an economy level, what is the political economy's organization around AGI?\" he asked at […]",
+   "veiculo": "The Verge",
+   "id": "i63"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Nvidia is abandoning China after Jensen Huang’s ouster",
+   "link": "https://techcrunch.com/2026/11/17/nvidia-is-abandoning-china-after-jensen-huangs-ouster/",
+   "data": "2026-11-17T23:37:48Z",
+   "trecho": "Nvidia's interim CEO says the company is done selling chips to China. How much will that cost?",
+   "veiculo": "TechCrunch",
+   "id": "i64"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Nvidia says its open source AI strategy remains intact after Jensen Huang’s exit",
+   "link": "https://techcrunch.com/2026/11/17/nvidia-says-its-open-source-ai-strategy-remains-intact-after-jensen-huangs-exit/",
+   "data": "2026-11-17T23:04:35Z",
+   "trecho": "Nvidia's interim CEO reaffirmed its open source AI strategy and plans to acquire Hugging Face, despite Jensen Huang's sudden departure.",
+   "veiculo": "TechCrunch",
+   "id": "i65"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "External sandboxes for coding agents",
+   "link": "https://simonwillison.net/2026/Nov/17/external-sandboxes-for-coding-agents/",
+   "data": "2026-11-17T22:52:29Z",
+   "trecho": "External sandboxes for coding agents I've been exploring new ways to sandbox code that is executed by agents, with a focus on making it safer to try out local models without worrying that a mistake or prompt injection attack might cause them to take damaging actions on a machine. I worked on this project with Prime…",
+   "veiculo": "Simon Willison",
+   "id": "i66"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "Nvidia results beat expectations, as ousted CEO Huang told no way back",
+   "link": "https://www.scmp.com/news/world/united-states-canada/article/3374805/nvidia-results-beat-expectations-ousted-ceo-huang-told-no-way-back",
+   "data": "2026-11-17T22:47:11Z",
+   "trecho": "US chip giant Nvidia doubled revenue in the third quarter to more than US$115 billion, the company reported on Tuesday while ruling out any return for ousted CEO Jensen Huang after a Chinese spy scandal. The results, which beat expectations, came hours after Huang said he wanted his job back in the latest twist for…",
+   "veiculo": "South China Morning Post",
+   "id": "i67"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Nvidia says it doesn’t plan to reappoint Jensen Huang as CEO",
+   "link": "https://techcrunch.com/2026/11/17/nvidia-says-it-doesnt-plan-to-reappoint-jensen-huang-as-ceo/",
+   "data": "2026-11-17T22:42:27Z",
+   "trecho": "The former CEO offered to return to his top role at the company after his resignation last week.",
+   "veiculo": "TechCrunch",
+   "id": "i68"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "GPT‑6.2 Astra and GPT‑6.2 Sol",
+   "link": "https://simonwillison.net/2026/Nov/17/gpt62-astra-and-sol/",
+   "data": "2026-11-17T22:38:52Z",
+   "trecho": "GPT‑6.2 Astra and GPT‑6.2 Sol OpenAI: We’re introducing GPT‑6.2 Astra, our new frontier model for your hardest projects, and GPT‑6.2 Sol, our efficient, versatile model for everyday work. They're available in the API as gpt-6.2-astra and gpt-6.2-sol . I shipped LLM 0.38 with support for the new models. 6.2 Astra is…",
+   "veiculo": "Simon Willison",
+   "id": "i69"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Amazon and Google will together own nearly 30% of Anthropic after its IPO",
+   "link": "https://techcrunch.com/2026/11/17/amazon-and-google-will-together-own-nearly-30-of-anthropic-after-its-ipo/",
+   "data": "2026-11-17T22:29:05Z",
+   "trecho": "Amazon will own just under 15% of Anthropic after the IPO, with the option to go much higher. Google is a close second with holdings of nearly 14%.",
+   "veiculo": "TechCrunch",
+   "id": "i70"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "SEC reportedly investigating Nvidia amid Huang exit",
+   "link": "https://techcrunch.com/2026/11/17/sec-reportedly-investigating-nvidia-amid-huang-exit/",
+   "data": "2026-11-17T21:48:07Z",
+   "trecho": "The SEC is opening a probe into Nvidia following the departure of CEO Jensen Huang, who admitted to an affair with an alleged Chinese spy, reports The Wall Street Journal.",
+   "veiculo": "TechCrunch",
+   "id": "i71"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Nvidia’s Q3 earnings hit the mark, without mentioning the whole Jensen Huang thing",
+   "link": "https://www.theverge.com/tech/1036032/nvidia-q3-2027-jensen-huang",
+   "data": "2026-11-17T21:40:59Z",
+   "trecho": "Interim Nvidia CEO Colette Kress announced the company's Q3 earnings on Tuesday, without initially mentioning former CEO Jensen Huang or the details of his departure, or possible attempt at a return. On the earnings call accompanying the release, board chair Harvey Jones kicked things off by saying the board \"does…",
+   "veiculo": "The Verge",
+   "id": "i72"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Google joins the tech outage trend by announcing it’s not having one",
+   "link": "https://techcrunch.com/2026/11/17/google-joins-the-tech-outage-trend-by-announcing-its-not-having-one/",
+   "data": "2026-11-17T21:34:50Z",
+   "trecho": "With tech outages seemingly everywhere, Google took the unusual step of announcing that Gmail is working just fine, actually.",
+   "veiculo": "TechCrunch",
+   "id": "i73"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Not even Sam Altman is safe from AI deepfakes on Instagram",
+   "link": "https://www.theverge.com/news/1035957/meta-alexandr-wang-sam-altman-instagram-ai-deepfake",
+   "data": "2026-11-17T21:00:55Z",
+   "trecho": "Instagram is filled with people posting deepfaked content - including, as of late, from one of Meta's most prominent executives. Earlier in November, Alexandr Wang, Meta's chief AI officer, shared a short clip to promote Muse, the company's consumer AI agent. In the AI-generated clip, Wang, Meta CEO Mark Zuckerberg,…",
+   "veiculo": "The Verge",
+   "id": "i74"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "“Trump was in bed with Jensen”: Critics balk at Huang’s wish to return to Nvidia",
+   "link": "https://arstechnica.com/tech-policy/2026/11/trump-was-in-bed-with-jensen-critics-balk-at-huangs-wish-to-return-to-nvidia/",
+   "data": "2026-11-17T20:32:55Z",
+   "trecho": "“I love our country”: Jensen Huang’s apology comes amid escalating Nvidia probes.",
+   "veiculo": "Ars Technica",
+   "id": "i75"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Model ML raises $250M to automate investment banking grunt work",
+   "link": "https://techcrunch.com/2026/11/17/model-ml-raises-250m-to-automate-investment-banking-grunt-work/",
+   "data": "2026-11-17T19:32:11Z",
+   "trecho": "The startup says its agents understand the full context of deals that bankers and consultants are working on and can automatically update financial models and presentations when new developments affect their analysis.",
+   "veiculo": "TechCrunch",
+   "id": "i76"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Google expands access to Gemini Tasks, which can help with calls, purchases",
+   "link": "https://techcrunch.com/2026/11/17/google-expands-access-to-gemini-tasks-which-can-help-with-calls-purchases/",
+   "data": "2026-11-17T19:02:20Z",
+   "trecho": "Gemini's Task mode can help users coordinate calls, log into websites, and even make purchases on the user's behalf.",
+   "veiculo": "TechCrunch",
+   "id": "i77"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "Google’s Spark AI agent becomes ‘Tasks’ — and now it’s free",
+   "link": "https://www.theverge.com/tech/1035756/google-spark-ai-tasks-free",
+   "data": "2026-11-17T18:58:01Z",
+   "trecho": "Google is rebranding its Spark AI agent as \"Tasks\" and making it free to use. The feature, which is powered by Google's new Gemini 4 Hydrogen AI model, can do things like create meal plans, manage your calendar, and dig through your emails to find recurring expenses you might not need. Users in the US […]",
+   "veiculo": "The Verge",
+   "id": "i78"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Google to keep Gemini chats for 2 months, up from 72 hours, even with history off",
+   "link": "https://techcrunch.com/2026/11/17/google-to-keep-gemini-chats-for-two-months-up-from-72-hours-even-with-history-off/",
+   "data": "2026-11-17T18:48:23Z",
+   "trecho": "Google's Gemini update extending chat retention will roll out globally over the coming weeks.",
+   "veiculo": "TechCrunch",
+   "id": "i79"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "OpenAI sued by California after admitting to 80 loss-of-control incidents",
+   "link": "https://arstechnica.com/tech-policy/2026/11/california-sues-openai-to-stop-public-nuisance-of-out-of-control-ai-agents/",
+   "data": "2026-11-17T18:13:34Z",
+   "trecho": "AG: OpenAI tested dangerous AI without proper oversight and misled public about it.",
+   "veiculo": "Ars Technica",
+   "id": "i80"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "As decision model use skyrockets, is customization the next frontier?",
+   "link": "https://techcrunch.com/2026/11/17/as-decision-model-use-skyrockets-is-customization-is-the-next-frontier/",
+   "data": "2026-11-17T18:10:00Z",
+   "trecho": "Sqwish Labs has a new wrinkle on the decision model: Train it with your own data to max its capabilities.",
+   "veiculo": "TechCrunch",
+   "id": "i81"
+  },
+  {
+   "fonte": "techcrunch",
+   "peso": 2,
+   "titulo": "Pedestal AI raises $4.7 million to agentify the supply chain",
+   "link": "https://techcrunch.com/2026/11/17/pedestal-ai-raises-4-7-million-to-agentify-the-supply-chain/",
+   "data": "2026-11-17T18:04:16Z",
+   "trecho": "The company uses agentic AI to make supply chains faster and more reliable.",
+   "veiculo": "TechCrunch",
+   "id": "i82"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Google makes it easier to use Gemini without training AI on your data",
+   "link": "https://arstechnica.com/ai/2026/11/google-will-let-you-opt-out-of-ai-training-in-gemini-without-losing-your-history/",
+   "data": "2026-11-17T16:50:10Z",
+   "trecho": "AI training and chat history will now have separate toggles in the Gemini activity settings.",
+   "veiculo": "Ars Technica",
+   "id": "i83"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "Running the full server-side Datasette Python app in the browser with service workers and Pyodide",
+   "link": "https://simonwillison.net/2026/Nov/17/datasette-lite/",
+   "data": "2026-11-17T16:48:33Z",
+   "trecho": "Datasette Lite is my port of the Datasette Python application to run directly in the browser using WebAssembly and Pyodide . I've released a complete rewrite of Datasette Lite using service workers, and it's now almost indistinguishable from the real server-side application. You can now do all of the following, using…",
+   "veiculo": "Simon Willison",
+   "id": "i84"
+  },
+  {
+   "fonte": "verge",
+   "peso": 2,
+   "titulo": "The DOJ says it’s investigating Megaspeed",
+   "link": "https://www.theverge.com/policy/1035410/doj-megaspeed-nvidia-investigation-update",
+   "data": "2026-11-17T16:19:03Z",
+   "trecho": "The Justice and Commerce Departments said that they are investigating Megaspeed, the Singapore-based data center company intertwined with the resignation of Nvidia CEO Jensen Huang, after reporting suggested an investigation had been halted last year. \"While we don't typically comment on ongoing investigations, it is…",
+   "veiculo": "The Verge",
+   "id": "i85"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "‘China question’: Nvidia crisis and new US chip curbs split Washington and Silicon Valley",
+   "link": "https://www.scmp.com/tech/tech-war/article/3374770/china-question-nvidia-crisis-and-new-us-chip-curbs-split-washington-and-silicon-valley",
+   "data": "2026-11-17T15:00:09Z",
+   "trecho": "A leadership crisis at Nvidia and a fresh round of US chip curbs have highlighted fractures inside the Trump administration and Silicon Valley over how to maintain America’s artificial intelligence lead over China, according to analysts. The turmoil escalated after the US Commerce Department’s Bureau of Industry and…",
+   "veiculo": "South China Morning Post",
+   "id": "i86"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "Research Reports",
+   "link": "https://www.technologyreview.com/2026/11/17/1148203/research-reports/",
+   "data": "2026-11-17T14:39:46Z",
+   "trecho": "To access a report, click on the corresponding image below.",
+   "veiculo": "MIT Technology Review",
+   "id": "i87"
+  },
+  {
+   "fonte": "ars",
+   "peso": 2,
+   "titulo": "Grok Bot took unapproved actions, ignored orders to stop, and then denied it",
+   "link": "https://arstechnica.com/security/2026/11/grok-bot-took-unapproved-actions-ignored-orders-to-stop-and-then-denied-it/",
+   "data": "2026-11-17T14:00:29Z",
+   "trecho": "AI agent takes unapproved actions even when laptop lid is closed and told not to.",
+   "veiculo": "Ars Technica",
+   "id": "i88"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "What to watch for in Nvidia’s first earnings report since Jensen Huang resigned",
+   "link": "https://www.scmp.com/tech/article/3374710/what-watch-nvidias-first-earnings-report-jensen-huang-resigned",
+   "data": "2026-11-17T13:30:05Z",
+   "trecho": "Nvidia faces its biggest investor test since the resignation of co-founder Jensen Huang when it reports quarterly earnings on Tuesday US time, with interim CEO Colette Kress under pressure to prove the chipmaker can scale up its next-generation hardware and keep customer orders flowing without its long-time visionary…",
+   "veiculo": "South China Morning Post",
+   "id": "i89"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "US details criminal probe into Nvidia customer Megaspeed over potential chip diversion",
+   "link": "https://www.scmp.com/tech/tech-war/article/3374742/us-details-criminal-probe-nvidia-customer-megaspeed-over-potential-chip-diversion",
+   "data": "2026-11-17T09:28:16Z",
+   "trecho": "The US Justice Department is leading a criminal investigation into Megaspeed, a Singapore-based cloud computing company and Nvidia customer, over possible violations of US chip export controls, US authorities said on Monday. The Commerce Department opened its investigation in 2024 after officials detected suspicious…",
+   "veiculo": "South China Morning Post",
+   "id": "i90"
+  },
+  {
+   "fonte": "scmp",
+   "peso": 2,
+   "titulo": "As agentic AI seeps into finance, concerns grow over new risks and blind spots",
+   "link": "https://www.scmp.com/business/banking-finance/article/3374724/agentic-ai-seeps-finance-concerns-grow-over-new-risks-and-blind-spots",
+   "data": "2026-11-17T09:00:25Z",
+   "trecho": "As a software glitch disrupted services at several major US banks on Monday and a US Federal Reserve governor warned about the risks posed by increasingly autonomous artificial intelligence systems, regulators and industry leaders gathered in Hong Kong to debate how best to oversee the technology’s rapid spread…",
+   "veiculo": "South China Morning Post",
+   "id": "i91"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "OpenAI Shut Down Sora. Kuaishou Is Betting Bigger on Kling.",
+   "link": "https://technode.com/2026/11/17/kuaishou-kling-sora-hong-kong-ipo/",
+   "data": "2026-11-17T07:09:43Z",
+   "trecho": "Editor’s note: This article is republished from Jumpstart, a TechNode Group publication. In the summer of 2024, while most people were still waiting to try OpenAI’s Sora, a rival turned up across the Pacific. It came from Kuaishou, a Chinese short-video company better known at home than abroad. The early coverage…",
+   "veiculo": "TechNode",
+   "id": "i92"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "Huawei reveals the design of its first OSTA phone ahead of November 20 launch",
+   "link": "https://technode.com/2026/11/17/huawei-reveals-the-design-of-its-first-osta-phone-ahead-of-november-20-launch/",
+   "data": "2026-11-17T06:28:53Z",
+   "trecho": "Huawei’s new smartphone brand OSTA on Tuesday revealed the design of its first phone, the O1 Pro, ahead of its November 20 launch. The phone has an unusually wide body and a purple gradient finish, with a horizontal pill-shaped rear camera module. OSTA is positioning the O1 Pro as an AI phone running HarmonyOS. The […]",
+   "veiculo": "TechNode",
+   "id": "i93"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "Former Meituan and Feishu executives reportedly team up to build an AI recording ring",
+   "link": "https://technode.com/2026/11/17/former-meituan-and-feishu-executives-reportedly-team-up-to-build-an-ai-recording-ring/",
+   "data": "2026-11-17T06:28:31Z",
+   "trecho": "Liu Yanxiang, who previously ran Meituan’s ticketing, vacation and transportation business, has left the company and teamed up with a former Feishu executive who led international operations to start Beijing-based Huling Technology, Sina Tech reported Tuesday. The startup has reportedly raised a seed round in the…",
+   "veiculo": "TechNode",
+   "id": "i94"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "Apple adds generative AI compliance filings to App Store Connect in China",
+   "link": "https://technode.com/2026/11/17/apple-adds-generative-ai-compliance-filings-to-app-store-connect-in-china/",
+   "data": "2026-11-17T06:28:21Z",
+   "trecho": "Apple has added a compliance page in App Store Connect where developers can submit declarations for apps distributed in mainland China that offer AI-generated or synthetic content or include features subject to a security assessment. Existing apps covered by the requirements have until January 31, 2027 to submit the…",
+   "veiculo": "TechNode",
+   "id": "i95"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "Huawei details Kirin 9050 display processor that enhances SDR content",
+   "link": "https://technode.com/2026/11/17/huawei-details-kirin-9050-display-processor-that-enhances-sdr-content/",
+   "data": "2026-11-17T06:28:09Z",
+   "trecho": "Huawei on Tuesday disclosed new details about the display processing unit in its Kirin 9050 series chips. The processor supports Huawei’s AI-HDR2020 technology, which enhances the brightness range and color of standard dynamic range content. Huawei says the feature can bring out more detail in bright and dark areas…",
+   "veiculo": "TechNode",
+   "id": "i96"
+  },
+  {
+   "fonte": "technode",
+   "peso": 2,
+   "titulo": "Baidu’s Robin Li warns of AI bubble risk as applications lag infrastructure spending",
+   "link": "https://technode.com/2026/11/17/baidus-robin-li-warns-of-ai-bubble-risk-as-applications-lag-infrastructure-spending/",
+   "data": "2026-11-17T06:27:58Z",
+   "trecho": "Baidu CEO Robin Li warned on Tuesday that the AI industry could face a bubble if businesses fail to turn adoption into higher profits. Speaking at the APEC CEO Summit in Shenzhen, Li said the spread of AI applications had fallen short of expectations despite heavy spending on infrastructure, rapid model development…",
+   "veiculo": "TechNode",
+   "id": "i97"
+  },
+  {
+   "fonte": "simonwillison",
+   "peso": 2,
+   "titulo": "llm 0.37.3",
+   "link": "https://simonwillison.net/2026/Nov/16/llm/",
+   "data": "2026-11-16T23:57:26Z",
+   "trecho": "Release: llm 0.37.3 A bug fix release for LLM , mainly to cover a problem with the most recent Homebrew package of the software. Homebrew now ships the latest SQLite, 3.54.1 , which includes a fix that broke LLM's logging code . Short version: in SQLite 3.54.0 the following SQL: select json_object('a', (select…",
+   "veiculo": "Simon Willison",
+   "id": "i98"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "The open-source movement wants Jensen Huang back",
+   "link": "https://www.technologyreview.com/2026/11/16/1148624/the-open-source-movement-wants-jensen-huang-back/",
+   "data": "2026-11-16T18:38:47Z",
+   "trecho": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. On Friday, a petition to reinstate Jensen Huang as CEO of Nvidia began circulating on social media, and by Monday it listed some notable signatories, including Elon Musk and…",
+   "veiculo": "MIT Technology Review",
+   "id": "i99"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "Building trustworthy AI by fencing it in, not predicting it",
+   "link": "https://www.technologyreview.com/2026/11/16/1148565/building-trustworthy-ai-by-fencing-it-in-not-predicting-it/",
+   "data": "2026-11-16T16:04:28Z",
+   "trecho": "In October this year, OpenAI disclosed that two of its AI agents had switched off the systems built to monitor them. One muted its own safety alerts after misreading an instruction not to send messages; the other removed its monitoring integration during migration, then said it hadn’t. No rule had told the agents to…",
+   "veiculo": "MIT Technology Review",
+   "id": "i100"
+  },
+  {
+   "fonte": "mittr",
+   "peso": 2,
+   "titulo": "Building AI that can work across the enterprise",
+   "link": "https://www.technologyreview.com/2026/11/16/1146070/building-ai-that-can-work-across-the-enterprise/",
+   "data": "2026-11-16T13:00:00Z",
+   "trecho": "For years, enterprises have approached AI as a series of discrete experiments. Now, as AI agents begin to move into the workflows that run the business, that model is starting to look inadequate. Organizations moving from isolated pilots toward AI agents and autonomous workflows are confronting a deeper challenge:…",
+   "veiculo": "MIT Technology Review",
+   "id": "i102"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Windows 11 is collecting data on which coding agents and developer tools you use",
+   "link": "https://xusheng.dev/posts/windows-coding-agent-telemetry/",
+   "data": "2026-11-16T22:58:20Z",
+   "trecho": "",
+   "veiculo": "xusheng.dev",
+   "pontos": 726,
+   "discussao": "https://news.ycombinator.com/item?id=50524736",
+   "id": "i103"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI is killing All About Berlin",
+   "link": "https://nicolasbouliane.com/blog/death-by-ai",
+   "data": "2026-11-18T06:47:26Z",
+   "trecho": "",
+   "veiculo": "nicolasbouliane.com",
+   "pontos": 703,
+   "discussao": "https://news.ycombinator.com/item?id=50542705",
+   "id": "i104"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Google's AI answers reducing search traffic by 40%",
+   "link": "https://revscope.co/blog/search-seo-geo-2026/",
+   "data": "2026-11-18T00:17:58Z",
+   "trecho": "",
+   "veiculo": "revscope.co",
+   "pontos": 659,
+   "discussao": "https://news.ycombinator.com/item?id=50540178",
+   "id": "i105"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Nvidia stopped disclosing Singapore sales as revenues hit $104B",
+   "link": "https://www.ft.com/content/dbde7a30-548c-4f9d-a4be-7898a0c24dcf",
+   "data": "2026-11-17T17:12:06Z",
+   "trecho": "",
+   "veiculo": "Financial Times",
+   "pontos": 648,
+   "discussao": "https://news.ycombinator.com/item?id=50534631",
+   "id": "i106"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Harvard researchers find AI coding agents shifted the bottleneck to code review",
+   "link": "https://complexdiscovery.com/harvard-researchers-find-ai-coding-agents-shifted-the-bottleneck-to-code-review/",
+   "data": "2026-11-17T21:16:12Z",
+   "trecho": "",
+   "veiculo": "complexdiscovery.com",
+   "pontos": 301,
+   "discussao": "https://news.ycombinator.com/item?id=50538303",
+   "id": "i107"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "How the Claude Code team thinks about verification",
+   "link": "https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/",
+   "data": "2026-11-17T10:20:40Z",
+   "trecho": "",
+   "veiculo": "claude.dev",
+   "pontos": 290,
+   "discussao": "https://news.ycombinator.com/item?id=50529612",
+   "id": "i108"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Nvidia was in trouble before the Jensen Huang mess",
+   "link": "https://www.wired.com/story/nvidia-was-already-in-trouble-before-the-jensen-huang-mess/",
+   "data": "2026-11-16T15:24:09Z",
+   "trecho": "",
+   "veiculo": "Wired",
+   "pontos": 288,
+   "discussao": "https://news.ycombinator.com/item?id=50518567",
+   "id": "i109"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Why is Gemini 4 Carbon taking so long?",
+   "link": "https://kernel.dev/blog/why-is-gemini-4-carbon-taking-so-long/",
+   "data": "2026-11-18T04:14:04Z",
+   "trecho": "",
+   "veiculo": "kernel.dev",
+   "pontos": 248,
+   "discussao": "https://news.ycombinator.com/item?id=50541790",
+   "id": "i110"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Microsoft AI: Seven new world-class models at scalable price-performance",
+   "link": "https://microsoft.ai/news/microsoft-ignite-2026/",
+   "data": "2026-11-18T16:08:24Z",
+   "trecho": "",
+   "veiculo": "microsoft.ai",
+   "pontos": 202,
+   "discussao": "https://news.ycombinator.com/item?id=50548021",
+   "id": "i111"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Not Everything Needs an LLM",
+   "link": "https://newsletter.posthog.com/p/decision-models",
+   "data": "2026-11-17T18:16:18Z",
+   "trecho": "",
+   "veiculo": "newsletter.posthog.com",
+   "pontos": 174,
+   "discussao": "https://news.ycombinator.com/item?id=50535740",
+   "id": "i112"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Tencent Hy4 Flash",
+   "link": "https://hy.tencent.ai/research/hy4-flash",
+   "data": "2026-11-17T21:06:08Z",
+   "trecho": "",
+   "veiculo": "hy.tencent.ai",
+   "pontos": 157,
+   "discussao": "https://news.ycombinator.com/item?id=50538184",
+   "id": "i113"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Claude was trained on protein sequences at scale",
+   "link": "http://xinmingtu.cn/blog/2026/claude-opus-5-5-protein-sequences/",
+   "data": "2026-11-18T03:47:43Z",
+   "trecho": "",
+   "veiculo": "xinmingtu.cn",
+   "pontos": 149,
+   "discussao": "https://news.ycombinator.com/item?id=50541619",
+   "id": "i114"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Regulatory Capture by Anthropic Through METR",
+   "link": "https://nitter.cf/kevinnbass/status/2099621874279817638",
+   "data": "2026-11-17T12:21:57Z",
+   "trecho": "",
+   "veiculo": "nitter.cf",
+   "pontos": 140,
+   "discussao": "https://news.ycombinator.com/item?id=50530450",
+   "id": "i115"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Running coding agents without handing them my credentials",
+   "link": "https://blog.antonio.cx/running-agents-with-lend",
+   "data": "2026-11-17T01:18:56Z",
+   "trecho": "",
+   "veiculo": "blog.antonio.cx",
+   "pontos": 134,
+   "discussao": "https://news.ycombinator.com/item?id=50526152",
+   "id": "i116"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "\"Anthropic Is Not a Safe AI Company\" – Coalition Challenges Anthropic Safety",
+   "link": "https://www.businesswire.com/news/home/20261118974464/en/Anthropic-is-Not-a-Safe-AI-Company---Broad-Coalition-of-Scientists-Legal-Scholars-and-Tech-Leaders-Challenge-Anthropics-Safety-Branding-Ahead-of-IPO",
+   "data": "2026-11-18T16:41:22Z",
+   "trecho": "",
+   "veiculo": "businesswire.com",
+   "pontos": 105,
+   "discussao": "https://news.ycombinator.com/item?id=50548485",
+   "id": "i117"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Anthropic Paid Rubio's Ex-Chief of Staff's Firm $740k.it Lobbied His NSC",
+   "link": "https://www.zerohedge.com/political/anthropic-paid-rubios-ex-chief-staffs-firm-740000-after-jensen-memo-it-lobbied-his-nsc",
+   "data": "2026-11-17T19:08:45Z",
+   "trecho": "",
+   "veiculo": "zerohedge.com",
+   "pontos": 99,
+   "discussao": "https://news.ycombinator.com/item?id=50536565",
+   "id": "i118"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Launch HN: StarSling (YC P25) – Self-improving CI for agent-volume repos",
+   "link": "https://news.ycombinator.com/item?id=50536468",
+   "data": "2026-11-17T19:01:43Z",
+   "trecho": "",
+   "veiculo": "news.ycombinator.com",
+   "pontos": 97,
+   "discussao": "https://news.ycombinator.com/item?id=50536468",
+   "id": "i119"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "AI Agents Ask Better Questions Than KPMG Accountants in Landmark Audit Trial",
+   "link": "https://europeanbusinessmagazine.com/ai-agents-better-questions-kpmg/",
+   "data": "2026-11-18T15:49:34Z",
+   "trecho": "",
+   "veiculo": "europeanbusinessmagazine.com",
+   "pontos": 92,
+   "discussao": "https://news.ycombinator.com/item?id=50547777",
+   "id": "i120"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "Bank CEOs, NSA Tell Congress That AI-Driven Patches Are Behind Outages",
+   "link": "https://www.washingtonsun.com/technology/bank-ceos-nsa-tell-congress-ai-driven-patches-behind-outages",
+   "data": "2026-11-18T01:45:11Z",
+   "trecho": "",
+   "veiculo": "washingtonsun.com",
+   "pontos": 92,
+   "discussao": "https://news.ycombinator.com/item?id=50540836",
+   "id": "i121"
+  },
+  {
+   "fonte": "hn",
+   "peso": 1,
+   "titulo": "How Billions in Safe Insurance Money Is Being Bet on A.I. Debt",
+   "link": "https://www.nytimes.com/2026/11/16/business/insurance-ai-debt.html",
+   "data": "2026-11-16T17:25:35Z",
+   "trecho": "",
+   "veiculo": "The New York Times",
+   "pontos": 92,
+   "discussao": "https://news.ycombinator.com/item?id=50520148",
+   "id": "i122"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Google alerta: era de ataques cibernéticos autônomos já começou",
+   "link": "https://tecnoblog.net/noticias/google-alerta-era-de-ataques-ciberneticos-autonomos-ja-comecou/",
+   "data": "2026-11-18T17:56:07Z",
+   "trecho": "Relatório de segurança identificou sistemas de IA que encontram falhas e criam ataques sem intervenção humana. Google alerta: era de ataques cibernéticos autônomos já começou",
+   "veiculo": "Tecnoblog",
+   "id": "i123"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "Time-Series Models in the Streamhouse: A New Frontier and Use Cases",
+   "link": "https://huggingface.co/blog/ibm-research/time-series-powered-streamhouse",
+   "data": "2026-11-18T15:00:23Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i124"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Nvidia não venderá mais chips de IA para a China",
+   "link": "https://tecnoblog.net/noticias/nvidia-nao-vendera-mais-chips-de-ia-para-a-china/",
+   "data": "2026-11-18T14:34:58Z",
+   "trecho": "Empresa vendeu US$ 2,4 bilhões em chips Hopper licenciados no último trimestre, mas não prevê novas remessa. Nvidia não venderá mais chips de IA para a China",
+   "veiculo": "Tecnoblog",
+   "id": "i125"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Nvidia descarta volta de Jensen Huang ao cargo de CEO",
+   "link": "https://tecnoblog.net/noticias/nvidia-descarta-volta-de-jensen-huang-ao-cargo-de-ceo/",
+   "data": "2026-11-18T14:24:32Z",
+   "trecho": "Presidente do conselho afirmou que a empresa não pretende reconduzir o cofundador. Nvidia descarta volta de Jensen Huang ao cargo de CEO",
+   "veiculo": "Tecnoblog",
+   "id": "i126"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Sul-coreano confessa ter usado IA para colar em prova de concurso",
+   "link": "https://tecnoblog.net/noticias/sul-coreano-confessa-ter-usado-ia-para-colar-em-prova-de-concurso/",
+   "data": "2026-11-18T14:07:23Z",
+   "trecho": "Han Won-seok, de 34 anos, quase gabaritou uma prova para certificação de contador tributário na Coreia do Sul ao usar uma minicâmera e inteligência artificial para colar. Sul-coreano confessa ter usado IA para colar em prova de concurso",
+   "veiculo": "Tecnoblog",
+   "id": "i127"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Microsoft amplia linha própria de IA com sete novos modelos",
+   "link": "https://tecnoblog.net/noticias/microsoft-amplia-linha-propria-de-ia-com-sete-novos-modelos/",
+   "data": "2026-11-18T13:33:58Z",
+   "trecho": "Nova geração inclui IAs para código, cibersegurança, imagem e voz. Modelos devem ser integrados ao GitHub. Microsoft amplia linha própria de IA com sete novos modelos",
+   "veiculo": "Tecnoblog",
+   "id": "i128"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Na era da IA, audiência do Reddit despenca 13%",
+   "link": "https://tecnoblog.net/noticias/na-era-da-ia-audiencia-do-reddit-despenca-13/",
+   "data": "2026-11-18T07:47:46Z",
+   "trecho": "Fórum é uma das principais fontes de consulta dos modelos de inteligência artificial atuais, inclusive o Gemini, que entrega os resumos na página de busca. Na era da IA, audiência do Reddit despenca 13%",
+   "veiculo": "Tecnoblog",
+   "id": "i129"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Gemini Notebook permite criar sites interativos a partir das suas anotações",
+   "link": "https://tecnoblog.net/noticias/gemini-notebook-permite-criar-sites-interativos-a-partir-das-suas-anotacoes/",
+   "data": "2026-11-18T07:44:46Z",
+   "trecho": "Novo recurso fica disponível com prompt simples e promete facilitar a vida de estudantes e professores. Apenas usuários maiores de 18 anos podem acessar. Gemini Notebook permite criar sites interativos a partir das suas anotações",
+   "veiculo": "Tecnoblog",
+   "id": "i130"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "180B Parameters, 32GB of RAM: Pushing MoE Inference to the Limit with Transformers",
+   "link": "https://huggingface.co/blog/moe-expert-streaming",
+   "data": "2026-11-18T00:00:00Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i131"
+  },
+  {
+   "fonte": "huggingface",
+   "peso": 1,
+   "titulo": "Rumble-2-Flash: an open 0.5B speech model for 40+ languages",
+   "link": "https://huggingface.co/blog/rumble-2-flash",
+   "data": "2026-11-18T00:00:00Z",
+   "trecho": "",
+   "veiculo": "Hugging Face",
+   "id": "i132"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "Nvidia apresenta supercomputador de mesa com 512 GB de RAM",
+   "link": "https://tecnoblog.net/noticias/nvidia-apresenta-supercomputador-de-mesa-com-512-gb-de-memoria-ram/",
+   "data": "2026-11-17T19:08:58Z",
+   "trecho": "DGX Spark HPC Developer Kit conecta quatro unidades do DGX Spark e é voltado a aplicações de IA e computação científica. Nvidia apresenta supercomputador de mesa com 512 GB de RAM",
+   "veiculo": "Tecnoblog",
+   "id": "i133"
+  },
+  {
+   "fonte": "tecnoblog",
+   "peso": 1,
+   "titulo": "EUA impõem restrições ao Brasil para compra de chips de IA",
+   "link": "https://tecnoblog.net/noticias/eua-impoem-restricoes-ao-brasil-para-compra-de-chips-de-ia/",
+   "data": "2026-11-16T20:02:12Z",
+   "trecho": "Governo Trump incluiu Brasil na lista de países que precisam de licença para importar chips avançados de data centers. Medida também afeta Singapura, Malásia, Tailândia e Indonésia. EUA impõem restrições ao Brasil para compra de chips de IA",
+   "veiculo": "Tecnoblog",
+   "id": "i134"
+  },
+  {
+   "fonte": "dado",
+   "peso": 3,
+   "titulo": "Tencent Hy4 flash debuts at #3 in the daily token ranking and reaches #1",
+   "link": "https://openrouter.ai/tencent/hy4-flash",
+   "data": "2026-11-16T00:00:00Z",
+   "trecho": "Tencent Hy4 flash (tencent/hy4-flash) entered the OpenRouter daily token ranking at #3. Best position so far: #1. On the latest day of the ranking it was #1, with 20.93 trillion tokens. Price: $0.04 per million input tokens and $0.14 per million output tokens. Context window: 1,048,576 tokens (about 1 million). Open weights on Hugging Face: tencent/Hy4-flash.",
+   "veiculo": "OpenRouter",
+   "lab": "tencent",
+   "obrigatorio": true,
+   "estreia": "tencent/hy4-flash-20261116",
+   "id": "d1"
+  }
+ ],
+ "editor": {
+  "aprovada": true,
+  "acoes": [
+   "Barrado antes da redação, fonte única sem reputação: Ahead of Anthropic's IPO, CAIS and others sign the MisAnthropic Statement, chall",
+   "Corrigido (As funções do modo (ligações, compras, pagamentos) estão na página do Google, fonte primária, mas o resumo as atribui ao TechCrunch. Faltam também os países e o modelo, que estão na página.): Google torna o Tasks do Gemini gratuito em seis países"
+  ],
+  "revisao": {
+   "a1": {
+    "veredito": "ok",
+    "motivo": "Todos os dados (posição, 20,93 trilhões de tokens, preços, contexto, pesos abertos) estão na fonte primária, o OpenRouter, que está corretamente citado."
+   },
+   "a2": {
+    "veredito": "corrigir",
+    "motivo": "As funções do modo (ligações, compras, pagamentos) estão na página do Google, fonte primária, mas o resumo as atribui ao TechCrunch. Faltam também os países e o modelo, que estão na página."
+   },
+   "a3": {
+    "veredito": "ok",
+    "motivo": "O resumo está atribuído à OpenAI, fonte primária, e traz os dois modelos, o papel de cada um e onde estão disponíveis, tudo conforme a fonte. O título é fiel."
+   }
+  }
+ },
+ "movimentos": [
+  {
+   "id": "cd0d0aaabf1b",
+   "lab": "anthropic",
+   "fonte": "Claude Platform release notes",
+   "link": "https://platform.claude.com/docs/en/manage-claude/oauth-apps/organization-billing-connections",
+   "data": "2026-11-17",
+   "tipo": "api",
+   "pt": {
+    "titulo": "API da Anthropic lança Linked billing em beta",
+    "simples": "Os clientes de um app agora podem pagar o uso do Claude nesse app pela própria organização Claude.",
+    "tecnico": "Cabeçalho beta user-profiles-billing-2026-10-01. Depois que o cliente vincula a organização, defina billing_policy em cada requisição /v1/messages ou /v1/chat/completions. No Console, o cliente define limite de gasto ou desvincula o app. Vale para organizações que pagam a Anthropic direto."
+   },
+   "en": {
+    "titulo": "Anthropic API launches Linked billing in beta",
+    "simples": "Customers of an app can now pay for the Claude usage in that app through their own Claude organization.",
+    "tecnico": "Beta header user-profiles-billing-2026-10-01. Once a customer links their organization, set billing_policy on each /v1/messages or /v1/chat/completions request. In the Console, customers can set a spend cap or unlink the app. Works for organizations that pay Anthropic directly for API usage."
+   }
+  },
+  {
+   "id": "14a5a13b19bc",
+   "lab": "anthropic",
+   "fonte": "Claude Platform release notes",
+   "link": "https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content",
+   "data": "2026-11-16",
+   "tipo": "outro",
+   "pt": {
+    "titulo": "Modelos Claude passam a marcar o texto gerado com marca d'água",
+    "simples": "O texto gerado por Claude Opus 4.6, Opus 4.5, Sonnet 4.5 e Haiku 4.5 leva a marca d'água de texto da Anthropic em plataformas compatíveis.",
+    "tecnico": "Se a requisição definir temperature, top_p ou top_k com valor diferente do padrão, o texto pode não levar a marca d'água."
+   },
+   "en": {
+    "titulo": "Claude models now carry a text watermark on generated text",
+    "simples": "Text generated by Claude Opus 4.6, Opus 4.5, Sonnet 4.5 and Haiku 4.5 carries Anthropic's text watermark on supported platforms.",
+    "tecnico": "If a request sets temperature, top_p or top_k to a non-default value, the text might not carry the watermark."
+   }
+  },
+  {
+   "id": "c4563f4282af",
+   "lab": "openai",
+   "fonte": "OpenAI API changelog",
+   "link": "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
+   "data": "2026-11-17",
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "OpenAI lança GPT-6.2 Astra e GPT-6.2 Sol na API",
+    "simples": "A OpenAI lançou o GPT-6.2 Astra, para raciocínio e código exigentes, e o GPT-6.2 Sol, para código e fluxos de agentes do dia a dia.",
+    "tecnico": "Ids gpt-6.2-astra e gpt-6.2-sol, em v1/responses e v1/chat/completions. Tool calling exige a Responses API. Muda a preservação do raciocínio ao editar o prefixo da conversa e o tratamento do campo instructions de nível superior."
+   },
+   "en": {
+    "titulo": "OpenAI launches GPT-6.2 Astra and GPT-6.2 Sol in the API",
+    "simples": "OpenAI launched GPT-6.2 Astra for demanding reasoning and coding tasks and GPT-6.2 Sol for everyday coding and agent workflows.",
+    "tecnico": "Model ids gpt-6.2-astra and gpt-6.2-sol, on v1/responses and v1/chat/completions. Tool calling requires the Responses API. Changes how reasoning is preserved when editing a conversation's prefix and how the top-level instructions field is handled."
+   }
+  },
+  {
+   "id": "7b99440cf9ac",
+   "lab": "openai",
+   "fonte": "OpenAI API changelog",
+   "link": "https://developers.openai.com/api/docs/guides/background#use-discounted-completion-windows",
+   "data": "2026-11-17",
+   "tipo": "preco",
+   "pt": {
+    "titulo": "Responses API da OpenAI ganha janelas em segundo plano com tarifa menor",
+    "simples": "Na beta pública da Responses API, dá para escolher concluir em segundo plano em duas ou oito horas, com tarifa de tokens 30% ou 40% menor que a Standard.",
+    "tecnico": "Beta pública em v1/responses. Janela de duas horas: tarifa de tokens 30% abaixo da Standard; oito horas: 40% abaixo. Modelos: gpt-6.2-astra, gpt-6.2-sol, gpt-6.1-terra, gpt-6-luna."
+   },
+   "en": {
+    "titulo": "OpenAI Responses API adds background completion windows at lower rates",
+    "simples": "In the Responses API public beta, you can choose a two-hour or eight-hour background completion window, with token rates 30% or 40% lower than Standard.",
+    "tecnico": "Public beta on v1/responses. Two-hour window: model token rates 30% lower than Standard; eight-hour window: 40% lower. Models: gpt-6.2-astra, gpt-6.2-sol, gpt-6.1-terra, gpt-6-luna."
+   }
+  },
+  {
+   "id": "d8ed8d0f8c79",
+   "lab": "google",
+   "fonte": "Gemini app release notes",
+   "link": "https://gemini.google/release-notes/",
+   "data": "2026-11-17",
+   "tipo": "app",
+   "pt": {
+    "titulo": "Gemini recebe tarefas por e-mail encaminhado a gemini@google.com",
+    "simples": "Nos EUA, em inglês, dá para encaminhar e-mails ao Gemini para ele adicionar datas ao Google Calendar ou organizar contas médicas e renovações de seguro.",
+    "tecnico": "Funciona com Gmail, Apple Mail e Outlook e responde em 1:1, com link para revisar e confirmar. Liberação em inglês para maiores de 18 anos com contas Google pessoais nos EUA."
+   },
+   "en": {
+    "titulo": "Gemini accepts tasks by email forwarded to gemini@google.com",
+    "simples": "In the U.S., in English, you can forward emails to Gemini so it adds dates to Google Calendar or sorts out medical bills and insurance renewals.",
+    "tecnico": "Works from Gmail, Apple Mail or Outlook and replies 1:1 with a link to review and confirm. Rolling out in English for users in the U.S. (18+ with personal Google accounts)."
+   }
+  },
+  {
+   "id": "7b71ba47516f",
+   "lab": "google",
+   "fonte": "Gemini app release notes",
+   "link": "https://gemini.google/release-notes/",
+   "data": "2026-11-17",
+   "tipo": "app",
+   "pt": {
+    "titulo": "Gemini passa a receber tarefas por mensagem de texto",
+    "simples": "Nos EUA, dá para mandar pedidos ao Gemini pelo Google Messages ou iMessage e responder ao texto para mudar a tarefa no meio da execução.",
+    "tecnico": "Verificação única do telefone em gemini.google.com/text. Pede confirmação de 1 toque antes de ações como enviar ou reservar. Exige conta Google pessoal, número dos EUA verificado e operadora elegível, para maiores de 18 anos, em inglês."
+   },
+   "en": {
+    "titulo": "Gemini now takes tasks by text message",
+    "simples": "In the U.S., you can send requests to Gemini from Google Messages or iMessage and reply to the text to steer the task mid-run.",
+    "tecnico": "One-time phone verification at gemini.google.com/text. Pauses for 1-tap confirmation before major actions like sending or booking. Requires a personal Google account, a verified U.S. phone number and an eligible carrier, 18+, in English."
+   }
+  },
+  {
+   "id": "693f0f351ba6",
+   "lab": "google",
+   "fonte": "Gemini app release notes",
+   "link": "https://gemini.google/release-notes/",
+   "data": "2026-11-17",
+   "tipo": "app",
+   "pt": {
+    "titulo": "Gemini passa a ligar para empresas dos EUA em nome do usuário",
+    "simples": "Com Tasks in Gemini, o assistente pode fazer ligações por você, até para várias lojas ao mesmo tempo, e traz de volta um resumo e a transcrição.",
+    "tecnico": "Permite ligações agendadas em horário comercial ou recorrentes. O usuário aprova o plano antes da discagem. O Gemini se identifica como assistente de IA, não compartilha dados de pagamento e as empresas podem optar por sair."
+   },
+   "en": {
+    "titulo": "Gemini can now call US businesses on your behalf",
+    "simples": "With Tasks in Gemini, the assistant can place calls for you, even dialing multiple shops at once, and returns a summary and full transcript.",
+    "tecnico": "Supports calls scheduled during business hours or recurring. You approve the call plan before Gemini dials. Gemini identifies itself as an AI assistant, won't share payment or sensitive account details, and businesses can opt out."
+   }
+  },
+  {
+   "id": "2063ac149e5d",
+   "lab": "tencent",
+   "fonte": "Hugging Face",
+   "link": "https://huggingface.co/tencent",
+   "data": "2026-11-17",
+   "chaves": [
+    "hf:tencent/Hy4-flash",
+    "hf:tencent/Hy4-flash-base"
+   ],
+   "tipo": "modelo",
+   "pt": {
+    "titulo": "Tencent Hy4-flash e Hy4-flash-base ganham pesos abertos no Hugging Face",
+    "simples": "A Tencent publicou no Hugging Face os pesos abertos de dois modelos, o Hy4-flash e o Hy4-flash-base.",
+    "tecnico": "Ambos são image-text-to-text: Hy4-flash e Hy4-flash-base, publicados no Hugging Face."
+   },
+   "en": {
+    "titulo": "Tencent releases Hy4-flash and Hy4-flash-base open weights on Hugging Face",
+    "simples": "Tencent published the open weights of two models, Hy4-flash and Hy4-flash-base, on Hugging Face.",
+    "tecnico": "Both are image-text-to-text: Hy4-flash and Hy4-flash-base, published on Hugging Face."
+   }
+  }
+ ],
+ "movimentos_ignorados": [
+  {
+   "id": "37c56272445c",
+   "lab": "google",
+   "data": "2026-11-17",
+   "motivo": "limite de 3 por laboratório na edição"
+  },
+  {
+   "id": "1ba7cdeafae3",
+   "lab": "google",
+   "data": "2026-11-17",
+   "motivo": "limite de 3 por laboratório na edição"
+  }
+ ],
+ "fontes_movimentos": {
+  "anthropic": {
+   "ok": true,
+   "itens": 16
+  },
+  "openai": {
+   "ok": true,
+   "itens": 5
+  },
+  "google_api": {
+   "ok": true,
+   "itens": 0
+  },
+  "google_app": {
+   "ok": true,
+   "itens": 5
+  },
+  "deepseek": {
+   "ok": true,
+   "itens": 1
+  },
+  "z-ai": {
+   "ok": true,
+   "itens": 0
+  },
+  "minimax": {
+   "ok": true,
+   "itens": 1
+  },
+  "moonshotai": {
+   "ok": true,
+   "itens": 0
+  },
+  "qwen": {
+   "ok": true,
+   "itens": 0
+  },
+  "hf": {
+   "ok": true,
+   "itens": 3
+  }
+ }
+}
