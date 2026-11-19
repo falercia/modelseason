@@ -1,0 +1,89 @@
+{
+ "versao": 1,
+ "dia": "2026-11-19",
+ "gerado_em": "2026-11-19T16:36:15Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-12",
+   "2026-11-19"
+  ],
+  "trafego": null
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-19",
+ "licenca": "CC BY 4.0",
+ "estado": null,
+ "principal": "novo:google/gemini-4-neon-20261118",
+ "eventos": [
+  {
+   "tipo": "novo",
+   "slug": "google/gemini-4-neon-20261118",
+   "id": "google/gemini-4-neon",
+   "nome": "Gemini 4 Neon",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "criado": "2026-11-18",
+    "contexto": 1048576,
+    "preco_entrada": 3.0,
+    "preco_saida": 15.0,
+    "preco_misto": 6.0,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text+image+file+audio+video->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 2.51,
+     "share_gasto": 5.9,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.7,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "preco",
+   "slug": "xiaomi/mimo-v2.5-pro-20260422",
+   "id": "xiaomi/mimo-v2.5-pro",
+   "nome": "MiMo-V2.5-Pro",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "de": 0.5437,
+    "para": 0.81,
+    "variacao_pct": 49.0,
+    "entrada_de": 0.435,
+    "entrada_para": 0.48,
+    "saida_de": 0.87,
+    "saida_para": 1.8,
+    "desde": "2026-11-18"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 3.91,
+     "semanas_com_volume": 22
+    },
+    "laboratorio": {
+     "share_tokens": 2.6,
+     "share_gasto": 0.74,
+     "lider": {
+      "slug": "xiaomi/mimo-v2.6-flash-20260921",
+      "nome": "MiMo-V2.6-Flash",
+      "share_7d": 1.74,
+      "preco_misto": 0.175
+     }
+    }
+   },
+   "relevancia": 30
+  }
+ ]
+}
