@@ -1,0 +1,401 @@
+{
+ "versao": 1,
+ "dia": "2026-11-20",
+ "gerado_em": "2026-11-20T16:11:41Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-13",
+   "2026-11-20"
+  ],
+  "trafego": null
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-20",
+ "licenca": "CC BY 4.0",
+ "estado": null,
+ "principal": "preco:deepseek/deepseek-v4.1-flash-20261017",
+ "eventos": [
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4.1-flash-20261017",
+   "id": "deepseek/deepseek-v4.1-flash-1017",
+   "nome": "DeepSeek V4.1 Flash 1017",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.152,
+    "para": 0.2625,
+    "variacao_pct": 72.7,
+    "entrada_de": 0.036,
+    "entrada_para": 0.15,
+    "saida_de": 0.5,
+    "saida_para": 0.6,
+    "desde": "2026-11-19"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 26.26,
+     "rank_7d": 1,
+     "pico_share": 28.032,
+     "semanas_com_volume": 5
+    },
+    "laboratorio": {
+     "share_tokens": 41.09,
+     "share_gasto": 7.35
+    }
+   },
+   "relevancia": 65
+  },
+  {
+   "tipo": "novo",
+   "slug": "google/gemini-2.5-flash-tts",
+   "id": "google/gemini-2.5-flash-tts",
+   "nome": "Gemini 2.5 Flash TTS",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "criado": "2026-11-20",
+    "contexto": 8192,
+    "preco_entrada": 0.5,
+    "preco_saida": 10.0,
+    "preco_misto": 2.875,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 2.51,
+     "share_gasto": 5.9,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.7,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "novo",
+   "slug": "google/gemini-2.5-pro-tts",
+   "id": "google/gemini-2.5-pro-tts",
+   "nome": "Gemini 2.5 Pro TTS",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "criado": "2026-11-20",
+    "contexto": 8192,
+    "preco_entrada": 1.0,
+    "preco_saida": 20.0,
+    "preco_misto": 5.75,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 2.51,
+     "share_gasto": 5.9,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.7,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "novo",
+   "slug": "mistralai/pixtral-large-2502",
+   "id": "mistralai/pixtral-large-2502",
+   "nome": "Pixtral Large 2502",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "criado": "2026-11-20",
+    "contexto": 128000,
+    "preco_entrada": 2.0,
+    "preco_saida": 6.0,
+    "preco_misto": 3.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.03,
+      "preco_misto": 0.0293
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "hexgrad/kokoro-82m",
+   "id": "hexgrad/kokoro-82m",
+   "nome": "Kokoro 82M",
+   "lab": "Hexgrad",
+   "vendor": "hexgrad",
+   "dados": {
+    "de": 0.465,
+    "para": 0.7425,
+    "variacao_pct": 59.7,
+    "entrada_de": 0.62,
+    "entrada_para": 0.99,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-11-19"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 32
+  },
+  {
+   "tipo": "removido",
+   "slug": "liquid/d1-20260930",
+   "id": "liquid/d1",
+   "nome": "d1",
+   "lab": "Liquid AI",
+   "vendor": "liquid",
+   "dados": {
+    "visto_em": "2026-11-19",
+    "expira": "2026-11-20"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "meta-llama/llama-3.2-1b-instruct",
+   "id": "meta-llama/llama-3.2-1b-instruct",
+   "nome": "Llama 3.2 1B Instruct",
+   "lab": "Meta",
+   "vendor": "meta-llama",
+   "dados": {
+    "visto_em": "2026-11-19",
+    "expira": "2026-11-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 3.766,
+     "semanas_com_volume": 23
+    },
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "x-ai/grok-build-0.1-20260520",
+   "id": "x-ai/grok-build-0.1",
+   "nome": "Grok Build 0.1",
+   "lab": "xAI",
+   "vendor": "x-ai",
+   "dados": {
+    "visto_em": "2026-11-19",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "x-ai/grok-4.7-20260916",
+      "nome": "Grok 4.7",
+      "share_7d": 0.25,
+      "preco_misto": 3.0
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.2-20260616",
+   "id": "z-ai/glm-5.2",
+   "nome": "GLM 5.2",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 1.7053,
+    "para": 1.07,
+    "variacao_pct": -37.3,
+    "entrada_de": 0.007,
+    "entrada_para": 0.62,
+    "saida_de": 6.8,
+    "saida_para": 2.42,
+    "desde": "2026-11-19"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.41,
+     "rank_7d": 34,
+     "pico_share": 6.065,
+     "semanas_com_volume": 22
+    },
+    "laboratorio": {
+     "share_tokens": 8.39,
+     "share_gasto": 3.58,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 4.9,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 29
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.5-27b-20260224",
+   "id": "qwen/qwen3.5-27b",
+   "nome": "Qwen3.5-27B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.845,
+    "para": 0.5363,
+    "variacao_pct": -36.5,
+    "entrada_de": 0.26,
+    "entrada_para": 0.195,
+    "saida_de": 2.6,
+    "saida_para": 1.56,
+    "desde": "2026-11-19"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.25,
+     "share_gasto": 0.48,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.54,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 28
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-3-27b-it",
+   "id": "google/gemma-3-27b-it",
+   "nome": "Gemma 3 27B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.1475,
+    "para": 0.1,
+    "variacao_pct": -32.2,
+    "entrada_de": 0.08,
+    "entrada_para": 0.08,
+    "saida_de": 0.35,
+    "saida_para": 0.16,
+    "desde": "2026-11-19"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.721,
+     "semanas_com_volume": 50
+    },
+    "laboratorio": {
+     "share_tokens": 2.51,
+     "share_gasto": 5.9,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.7,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "speechify/simba-3.5-20261111",
+   "id": "speechify/simba-3.5",
+   "nome": "Simba 3.5",
+   "lab": "Speechify",
+   "vendor": "speechify",
+   "dados": {
+    "de": 11.25,
+    "para": 8.4375,
+    "variacao_pct": -25.0,
+    "entrada_de": 15.0,
+    "entrada_para": 11.25,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-11-19"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 25
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.1-20260406",
+   "id": "z-ai/glm-5.1",
+   "nome": "GLM 5.1",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 2.15,
+    "para": 1.8275,
+    "variacao_pct": -15.0,
+    "entrada_de": 1.4,
+    "entrada_para": 1.19,
+    "saida_de": 4.4,
+    "saida_para": 3.74,
+    "desde": "2026-11-19"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 2.348,
+     "semanas_com_volume": 15
+    },
+    "laboratorio": {
+     "share_tokens": 8.39,
+     "share_gasto": 3.58,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 4.9,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 23
+  }
+ ]
+}
