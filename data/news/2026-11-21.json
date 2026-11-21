@@ -1,0 +1,643 @@
+{
+ "versao": 1,
+ "dia": "2026-11-21",
+ "gerado_em": "2026-11-21T15:24:42Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-14",
+   "2026-11-21"
+  ],
+  "trafego": null
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-21",
+ "licenca": "CC BY 4.0",
+ "estado": null,
+ "principal": "preco:z-ai/glm-5.3-flash-20260826",
+ "eventos": [
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.3-flash-20260826",
+   "id": "z-ai/glm-5.3-flash",
+   "nome": "GLM 5.3 Flash",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 0.2375,
+    "para": 0.0495,
+    "variacao_pct": -79.1,
+    "entrada_de": 0.15,
+    "entrada_para": 0.0399,
+    "saida_de": 0.5,
+    "saida_para": 0.0784,
+    "desde": "2026-11-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 4.9,
+     "rank_7d": 5,
+     "pico_share": 11.188,
+     "semanas_com_volume": 12
+    },
+    "laboratorio": {
+     "share_tokens": 8.39,
+     "share_gasto": 3.58
+    }
+   },
+   "relevancia": 51
+  },
+  {
+   "tipo": "novo",
+   "slug": "baseten/bison-1-20261120",
+   "id": "baseten/bison-1",
+   "nome": "Bison 1",
+   "lab": "Baseten",
+   "vendor": "baseten",
+   "dados": {
+    "criado": "2026-11-20",
+    "contexto": 32768,
+    "preco_entrada": 0.1,
+    "preco_saida": 0.0,
+    "preco_misto": 0.075,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->decisions",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "baseten/groundhog-1-20261120",
+   "id": "baseten/groundhog-1",
+   "nome": "Groundhog 1",
+   "lab": "Baseten",
+   "vendor": "baseten",
+   "dados": {
+    "criado": "2026-11-20",
+    "contexto": 16384,
+    "preco_entrada": 0.035,
+    "preco_saida": 0.0,
+    "preco_misto": 0.0262,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->decisions",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "perplexity/pplx-embed-v2-context-0.6b-20261120",
+   "id": "perplexity/pplx-embed-v2-context-0.6b",
+   "nome": "Embed V2 Context 0.6B",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "criado": "2026-11-20",
+    "contexto": 32000,
+    "preco_entrada": 0.02,
+    "preco_saida": 0.0,
+    "preco_misto": 0.015,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->embeddings",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "perplexity/pplx-decider-v1.2-20261016",
+      "nome": "pplx-decider-v1.2",
+      "share_7d": 0.16,
+      "preco_misto": null
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "perplexity/pplx-embed-v2-context-9b-20261120",
+   "id": "perplexity/pplx-embed-v2-context-9b",
+   "nome": "Embed V2 Context 9B",
+   "lab": "Perplexity",
+   "vendor": "perplexity",
+   "dados": {
+    "criado": "2026-11-20",
+    "contexto": 32000,
+    "preco_entrada": 0.12,
+    "preco_saida": 0.0,
+    "preco_misto": 0.09,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text+image->embeddings",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "perplexity/pplx-decider-v1.2-20261016",
+      "nome": "pplx-decider-v1.2",
+      "share_7d": 0.16,
+      "preco_misto": null
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "qwen/qwen3-tts-1.7b",
+   "id": "qwen/qwen3-tts-1.7b",
+   "nome": "Qwen3 TTS 1.7B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "criado": "2026-11-20",
+    "contexto": 4096,
+    "preco_entrada": 20.0,
+    "preco_saida": 0.0,
+    "preco_misto": 15.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 1.25,
+     "share_gasto": 0.48,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.54,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "radixark/daisyrose-27b-20261120",
+   "id": "radixark/daisyrose-27b",
+   "nome": "DaisyRose 27B",
+   "lab": "Radixark",
+   "vendor": "radixark",
+   "dados": {
+    "criado": "2026-11-21",
+    "contexto": 262144,
+    "preco_entrada": 0.15,
+    "preco_saida": 1.875,
+    "preco_misto": 0.5813,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "thinkingmachines/inkling-2-mini-20261120",
+   "id": "thinkingmachines/inkling-2-mini",
+   "nome": "Inkling 2 Mini",
+   "lab": "Thinking Machines",
+   "vendor": "thinkingmachines",
+   "dados": {
+    "criado": "2026-11-21",
+    "contexto": 1048576,
+    "preco_entrada": 0.1,
+    "preco_saida": 0.4,
+    "preco_misto": 0.175,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "thinkingmachines/inkling-2-small-20261107",
+      "nome": "Inkling 2 Small",
+      "share_7d": 0.67,
+      "preco_misto": 0.475
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-pro-20260813",
+   "id": "deepseek/deepseek-v4-pro-0813",
+   "nome": "DeepSeek V4 Pro 0813",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 1.1932,
+    "para": 1.98,
+    "variacao_pct": 65.9,
+    "entrada_de": 0.111,
+    "entrada_para": 1.32,
+    "saida_de": 4.44,
+    "saida_para": 3.96,
+    "desde": "2026-11-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.31,
+     "rank_7d": 40,
+     "pico_share": 1.062,
+     "semanas_com_volume": 14
+    },
+    "laboratorio": {
+     "share_tokens": 41.09,
+     "share_gasto": 7.35,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20261017",
+      "nome": "DeepSeek V4.1 Flash 1017",
+      "share_7d": 26.26,
+      "preco_misto": 0.152
+     }
+    }
+   },
+   "relevancia": 34
+  },
+  {
+   "tipo": "removido",
+   "slug": "alibaba/wan-2.6-20260327",
+   "id": "alibaba/wan-2.6",
+   "nome": "Wan 2.6",
+   "lab": "Alibaba",
+   "vendor": "alibaba",
+   "dados": {
+    "visto_em": "2026-11-20",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "alibaba/wan-2.7-20260414",
+   "id": "alibaba/wan-2.7",
+   "nome": "Wan 2.7",
+   "lab": "Alibaba",
+   "vendor": "alibaba",
+   "dados": {
+    "visto_em": "2026-11-20",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "kwaivgi/kling-v3.0-pro-20260429",
+   "id": "kwaivgi/kling-v3.0-pro",
+   "nome": "Video v3.0 Pro",
+   "lab": "Kwaivgi",
+   "vendor": "kwaivgi",
+   "dados": {
+    "visto_em": "2026-11-20",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "kwaivgi/kling-v3.0-std-20260429",
+   "id": "kwaivgi/kling-v3.0-std",
+   "nome": "Video v3.0 Standard",
+   "lab": "Kwaivgi",
+   "vendor": "kwaivgi",
+   "dados": {
+    "visto_em": "2026-11-20",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "kwaivgi/kling-video-o1-20260420",
+   "id": "kwaivgi/kling-video-o1",
+   "nome": "Video O1",
+   "lab": "Kwaivgi",
+   "vendor": "kwaivgi",
+   "dados": {
+    "visto_em": "2026-11-20",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "meituan/longcat-2.0-20260720",
+   "id": "meituan/longcat-2.0",
+   "nome": "LongCat 2.0",
+   "lab": "Meituan",
+   "vendor": "meituan",
+   "dados": {
+    "visto_em": "2026-11-20",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "tencent/hy3-preview-20260421",
+   "id": "tencent/hy3-preview",
+   "nome": "Hy3 preview",
+   "lab": "Tencent",
+   "vendor": "tencent",
+   "dados": {
+    "visto_em": "2026-11-20",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 13.723,
+     "semanas_com_volume": 12
+    },
+    "laboratorio": {
+     "share_tokens": 10.17,
+     "share_gasto": 7.02,
+     "lider": {
+      "slug": "tencent/hy4-flash-20261116",
+      "nome": "Hy4 flash",
+      "share_7d": 9.67,
+      "preco_misto": 0.0614
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-flash-20260731",
+   "id": "deepseek/deepseek-v4-flash-0731",
+   "nome": "DeepSeek V4 Flash 0731",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.09,
+    "para": 0.1082,
+    "variacao_pct": 20.3,
+    "entrada_de": 0.06,
+    "entrada_para": 0.0443,
+    "saida_de": 0.18,
+    "saida_para": 0.3,
+    "desde": "2026-11-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.33,
+     "rank_7d": 15,
+     "pico_share": 14.84,
+     "semanas_com_volume": 16
+    },
+    "laboratorio": {
+     "share_tokens": 41.09,
+     "share_gasto": 7.35,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20261017",
+      "nome": "DeepSeek V4.1 Flash 1017",
+      "share_7d": 26.26,
+      "preco_misto": 0.152
+     }
+    }
+   },
+   "relevancia": 28
+  },
+  {
+   "tipo": "preco",
+   "slug": "openai/gpt-oss-120b",
+   "id": "openai/gpt-oss-120b",
+   "nome": "gpt-oss-120b",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "de": 0.2625,
+    "para": 0.1575,
+    "variacao_pct": -40.0,
+    "entrada_de": 0.15,
+    "entrada_para": 0.09,
+    "saida_de": 0.6,
+    "saida_para": 0.36,
+    "desde": "2026-11-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.03,
+     "rank_7d": 57,
+     "pico_share": 5.596,
+     "semanas_com_volume": 67
+    },
+    "laboratorio": {
+     "share_tokens": 7.63,
+     "share_gasto": 11.73,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 28
+  },
+  {
+   "tipo": "preco",
+   "slug": "inclusionai/ling-3.1-flash-20261002",
+   "id": "inclusionai/ling-3.1-flash",
+   "nome": "Ling 3.1 Flash",
+   "lab": "InclusionAI",
+   "vendor": "inclusionai",
+   "dados": {
+    "de": 0.0675,
+    "para": 0.09,
+    "variacao_pct": 33.3,
+    "entrada_de": 0.045,
+    "entrada_para": 0.06,
+    "saida_de": 0.135,
+    "saida_para": 0.18,
+    "desde": "2026-11-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.366,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "inclusionai/ling-3.2-flash-20261113",
+      "nome": "Ling 3.2 Flash (free)",
+      "share_7d": 0.03,
+      "preco_misto": 0.0
+     }
+    }
+   },
+   "relevancia": 27
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.8-27b-20260814",
+   "id": "qwen/qwen3.8-27b",
+   "nome": "Qwen3.8 27B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.595,
+    "para": 0.535,
+    "variacao_pct": -10.1,
+    "entrada_de": 0.06,
+    "entrada_para": 0.06,
+    "saida_de": 2.2,
+    "saida_para": 1.96,
+    "desde": "2026-11-20"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.35,
+     "rank_7d": 38,
+     "pico_share": 0.372,
+     "semanas_com_volume": 13
+    },
+    "laboratorio": {
+     "share_tokens": 1.25,
+     "share_gasto": 0.48,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.54,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 23
+  },
+  {
+   "tipo": "contexto",
+   "slug": "xiaomi/mimo-v2.6-flash-20260921",
+   "id": "xiaomi/mimo-v2.6-flash",
+   "nome": "MiMo-V2.6-Flash",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "de": 1050000,
+    "para": 1048576
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 1.74,
+     "rank_7d": 9,
+     "pico_share": 6.667,
+     "semanas_com_volume": 8
+    },
+    "laboratorio": {
+     "share_tokens": 2.6,
+     "share_gasto": 0.74
+    }
+   },
+   "relevancia": 18
+  },
+  {
+   "tipo": "contexto",
+   "slug": "xiaomi/mimo-v2.6-pro-20260921",
+   "id": "xiaomi/mimo-v2.6-pro",
+   "nome": "MiMo-V2.6-Pro",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "de": 1050000,
+    "para": 1048576
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.39,
+     "rank_7d": 35,
+     "pico_share": 1.032,
+     "semanas_com_volume": 8
+    },
+    "laboratorio": {
+     "share_tokens": 2.6,
+     "share_gasto": 0.74,
+     "lider": {
+      "slug": "xiaomi/mimo-v2.6-flash-20260921",
+      "nome": "MiMo-V2.6-Flash",
+      "share_7d": 1.74,
+      "preco_misto": 0.175
+     }
+    }
+   },
+   "relevancia": 16
+  },
+  {
+   "tipo": "contexto",
+   "slug": "heygen/heygen-decision-1-20261112",
+   "id": "heygen/heygen-decision-1",
+   "nome": "HeyGen Decision",
+   "lab": "Heygen",
+   "vendor": "heygen",
+   "dados": {
+    "de": 131072,
+    "para": 262144
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 15
+  }
+ ]
+}
