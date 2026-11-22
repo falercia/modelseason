@@ -1,0 +1,397 @@
+{
+ "versao": 1,
+ "dia": "2026-11-22",
+ "gerado_em": "2026-11-22T15:19:48Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-15",
+   "2026-11-22"
+  ],
+  "trafego": null
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-22",
+ "licenca": "CC BY 4.0",
+ "estado": null,
+ "principal": "preco:minimax/minimax-m2.7-20260318",
+ "eventos": [
+  {
+   "tipo": "preco",
+   "slug": "minimax/minimax-m2.7-20260318",
+   "id": "minimax/minimax-m2.7",
+   "nome": "MiniMax M2.7",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 0.3675,
+    "para": 0.9,
+    "variacao_pct": 144.9,
+    "entrada_de": 0.21,
+    "entrada_para": 0.6,
+    "saida_de": 0.84,
+    "saida_para": 1.8,
+    "desde": "2026-11-21"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 5.673,
+     "semanas_com_volume": 26
+    },
+    "laboratorio": {
+     "share_tokens": 2.01,
+     "share_gasto": 0.45,
+     "lider": {
+      "slug": "minimax/minimax-m3.1-flash-20261019",
+      "nome": "MiniMax M3.1 Flash",
+      "share_7d": 1.42,
+      "preco_misto": 0.1312
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-3-27b-it",
+   "id": "google/gemma-3-27b-it",
+   "nome": "Gemma 3 27B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.1,
+    "para": 0.1725,
+    "variacao_pct": 72.5,
+    "entrada_de": 0.08,
+    "entrada_para": 0.08,
+    "saida_de": 0.16,
+    "saida_para": 0.45,
+    "desde": "2026-11-21"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.721,
+     "semanas_com_volume": 50
+    },
+    "laboratorio": {
+     "share_tokens": 2.51,
+     "share_gasto": 5.9,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.7,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 34
+  },
+  {
+   "tipo": "preco",
+   "slug": "heygen/heygen-decision-1-turbo-20261112",
+   "id": "heygen/heygen-decision-1-turbo",
+   "nome": "HeyGen Decision Turbo",
+   "lab": "Heygen",
+   "vendor": "heygen",
+   "dados": {
+    "de": 0.0675,
+    "para": 0.0315,
+    "variacao_pct": -53.3,
+    "entrada_de": 0.09,
+    "entrada_para": 0.042,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-11-21"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 31
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3-coder-30b-a3b-instruct",
+   "id": "qwen/qwen3-coder-30b-a3b-instruct",
+   "nome": "Qwen3 Coder 30B A3B Instruct",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.2625,
+    "para": 0.1225,
+    "variacao_pct": -53.3,
+    "entrada_de": 0.15,
+    "entrada_para": 0.07,
+    "saida_de": 0.6,
+    "saida_para": 0.28,
+    "desde": "2026-11-21"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 2.628,
+     "semanas_com_volume": 5
+    },
+    "laboratorio": {
+     "share_tokens": 1.25,
+     "share_gasto": 0.48,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.54,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 31
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-flash-vision-exp-20260821",
+   "id": "deepseek/deepseek-v4-flash-vision-exp",
+   "nome": "DeepSeek V4 Flash Vision Exp",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.66,
+    "para": 0.3234,
+    "variacao_pct": -51.0,
+    "entrada_de": 0.44,
+    "entrada_para": 0.2156,
+    "saida_de": 1.32,
+    "saida_para": 0.6468,
+    "desde": "2026-11-21"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.394,
+     "semanas_com_volume": 4
+    },
+    "laboratorio": {
+     "share_tokens": 41.09,
+     "share_gasto": 7.35,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20261017",
+      "nome": "DeepSeek V4.1 Flash 1017",
+      "share_7d": 26.26,
+      "preco_misto": 0.152
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "heygen/heygen-decision-1-20261112",
+   "id": "heygen/heygen-decision-1",
+   "nome": "HeyGen Decision",
+   "lab": "Heygen",
+   "vendor": "heygen",
+   "dados": {
+    "de": 0.105,
+    "para": 0.0525,
+    "variacao_pct": -50.0,
+    "entrada_de": 0.14,
+    "entrada_para": 0.07,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-11-21"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-4-26b-a4b-it-20260403",
+   "id": "google/gemma-4-26b-a4b-it",
+   "nome": "Gemma 4 26B A4B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.1425,
+    "para": 0.1069,
+    "variacao_pct": -25.0,
+    "entrada_de": 0.09,
+    "entrada_para": 0.0675,
+    "saida_de": 0.3,
+    "saida_para": 0.225,
+    "desde": "2026-11-21"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.19,
+     "rank_7d": 48,
+     "pico_share": 0.737,
+     "semanas_com_volume": 32
+    },
+    "laboratorio": {
+     "share_tokens": 2.51,
+     "share_gasto": 5.9,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.7,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.1-20260406",
+   "id": "z-ai/glm-5.1",
+   "nome": "GLM 5.1",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 1.8275,
+    "para": 2.15,
+    "variacao_pct": 17.6,
+    "entrada_de": 1.19,
+    "entrada_para": 1.4,
+    "saida_de": 3.74,
+    "saida_para": 4.4,
+    "desde": "2026-11-21"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 2.348,
+     "semanas_com_volume": 15
+    },
+    "laboratorio": {
+     "share_tokens": 8.39,
+     "share_gasto": 3.58,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 4.9,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 24
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-chat-v3-0324",
+   "id": "deepseek/deepseek-chat-v3-0324",
+   "nome": "DeepSeek V3 0324",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.5025,
+    "para": 0.4375,
+    "variacao_pct": -12.9,
+    "entrada_de": 0.29,
+    "entrada_para": 0.25,
+    "saida_de": 1.14,
+    "saida_para": 1.0,
+    "desde": "2026-11-21"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 14.114,
+     "semanas_com_volume": 58
+    },
+    "laboratorio": {
+     "share_tokens": 41.09,
+     "share_gasto": 7.35,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20261017",
+      "nome": "DeepSeek V4.1 Flash 1017",
+      "share_7d": 26.26,
+      "preco_misto": 0.152
+     }
+    }
+   },
+   "relevancia": 23
+  },
+  {
+   "tipo": "preco",
+   "slug": "minimax/minimax-m2.5-20260211",
+   "id": "minimax/minimax-m2.5",
+   "nome": "MiniMax M2.5",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 0.5212,
+    "para": 0.44,
+    "variacao_pct": -15.6,
+    "entrada_de": 0.295,
+    "entrada_para": 0.27,
+    "saida_de": 1.2,
+    "saida_para": 0.95,
+    "desde": "2026-11-21"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 18.429,
+     "semanas_com_volume": 18
+    },
+    "laboratorio": {
+     "share_tokens": 2.01,
+     "share_gasto": 0.45,
+     "lider": {
+      "slug": "minimax/minimax-m3.1-flash-20261019",
+      "nome": "MiniMax M3.1 Flash",
+      "share_7d": 1.42,
+      "preco_misto": 0.1312
+     }
+    }
+   },
+   "relevancia": 23
+  },
+  {
+   "tipo": "preco",
+   "slug": "tencent/hy4-preview-20260827",
+   "id": "tencent/hy4-preview",
+   "nome": "Hy4 preview",
+   "lab": "Tencent",
+   "vendor": "tencent",
+   "dados": {
+    "de": 1.1257,
+    "para": 1.2507,
+    "variacao_pct": 11.1,
+    "entrada_de": 0.7506,
+    "entrada_para": 0.834,
+    "saida_de": 2.2509,
+    "saida_para": 2.501,
+    "desde": "2026-11-21"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 13.266,
+     "semanas_com_volume": 11
+    },
+    "laboratorio": {
+     "share_tokens": 10.17,
+     "share_gasto": 7.02,
+     "lider": {
+      "slug": "tencent/hy4-flash-20261116",
+      "nome": "Hy4 flash",
+      "share_7d": 9.67,
+      "preco_misto": 0.0614
+     }
+    }
+   },
+   "relevancia": 22
+  }
+ ]
+}
