@@ -1,0 +1,502 @@
+{
+ "versao": 1,
+ "dia": "2026-11-24",
+ "gerado_em": "2026-11-24T18:56:01Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-17",
+   "2026-11-24"
+  ],
+  "trafego": null
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-24",
+ "licenca": "CC BY 4.0",
+ "estado": null,
+ "principal": "preco:deepseek/deepseek-v4.1-flash-20261017",
+ "eventos": [
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4.1-flash-20261017",
+   "id": "deepseek/deepseek-v4.1-flash-1017",
+   "nome": "DeepSeek V4.1 Flash 1017",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.2625,
+    "para": 0.0725,
+    "variacao_pct": -72.4,
+    "entrada_de": 0.15,
+    "entrada_para": 0.03,
+    "saida_de": 0.6,
+    "saida_para": 0.2,
+    "desde": "2026-11-23"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 26.26,
+     "rank_7d": 1,
+     "pico_share": 28.032,
+     "semanas_com_volume": 5
+    },
+    "laboratorio": {
+     "share_tokens": 41.09,
+     "share_gasto": 7.35
+    }
+   },
+   "relevancia": 64
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "microsoft/mai-image-2.5",
+   "id": "microsoft/mai-image-2.5",
+   "nome": "MAI-Image-2.5",
+   "lab": "Microsoft",
+   "vendor": "microsoft",
+   "dados": {
+    "data": "2026-11-27",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "microsoft/mai-image-2.5-pro-20260723",
+   "id": "microsoft/mai-image-2.5-pro",
+   "nome": "MAI-Image-2.5 Pro",
+   "lab": "Microsoft",
+   "vendor": "microsoft",
+   "dados": {
+    "data": "2026-11-27",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "openai/gpt-oss-20b",
+   "id": "openai/gpt-oss-20b",
+   "nome": "gpt-oss-20b",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "de": 0.036,
+    "para": 0.055,
+    "variacao_pct": 52.8,
+    "entrada_de": 0.018,
+    "entrada_para": 0.03,
+    "saida_de": 0.09,
+    "saida_para": 0.13,
+    "desde": "2026-11-23"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 2.903,
+     "semanas_com_volume": 49
+    },
+    "laboratorio": {
+     "share_tokens": 7.63,
+     "share_gasto": 11.73,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 31
+  },
+  {
+   "tipo": "removido",
+   "slug": "kwaivgi/kling-v3.0-pro-20260429",
+   "id": "kwaivgi/kling-v3.0-pro",
+   "nome": "Video v3.0 Pro",
+   "lab": "Kwaivgi",
+   "vendor": "kwaivgi",
+   "dados": {
+    "visto_em": "2026-11-23",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "kwaivgi/kling-v3.0-std-20260429",
+   "id": "kwaivgi/kling-v3.0-std",
+   "nome": "Video v3.0 Standard",
+   "lab": "Kwaivgi",
+   "vendor": "kwaivgi",
+   "dados": {
+    "visto_em": "2026-11-23",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "kwaivgi/kling-video-o1-20260420",
+   "id": "kwaivgi/kling-video-o1",
+   "nome": "Video O1",
+   "lab": "Kwaivgi",
+   "vendor": "kwaivgi",
+   "dados": {
+    "visto_em": "2026-11-23",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "liquid/d1.1-20261027",
+   "id": "liquid/d1.1",
+   "nome": "d1.1",
+   "lab": "Liquid AI",
+   "vendor": "liquid",
+   "dados": {
+    "visto_em": "2026-11-23",
+    "expira": "2026-11-24"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "mistralai/mistral-medium-3",
+   "id": "mistralai/mistral-medium-3",
+   "nome": "Mistral Medium 3",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "visto_em": "2026-11-23",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.03,
+      "preco_misto": 0.0293
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "mistralai/mistral-medium-3.1",
+   "id": "mistralai/mistral-medium-3.1",
+   "nome": "Mistral Medium 3.1",
+   "lab": "Mistral AI",
+   "vendor": "mistralai",
+   "dados": {
+    "visto_em": "2026-11-23",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "mistralai/mistral-nemo",
+      "nome": "Mistral Nemo",
+      "share_7d": 0.03,
+      "preco_misto": 0.0293
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "moonshotai/kimi-k2",
+   "id": "moonshotai/kimi-k2",
+   "nome": "Kimi K2 0711",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "visto_em": "2026-11-23",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 3.349,
+     "semanas_com_volume": 14
+    },
+    "laboratorio": {
+     "share_tokens": 2.33,
+     "share_gasto": 7.54,
+     "lider": {
+      "slug": "moonshotai/kimi-k3.1-pro-20261023",
+      "nome": "Kimi K3.1 Pro",
+      "share_7d": 1.44,
+      "preco_misto": 2.2808
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "moonshotai/kimi-k2-0905",
+   "id": "moonshotai/kimi-k2-0905",
+   "nome": "Kimi K2 0905",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "visto_em": "2026-11-23",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.628,
+     "semanas_com_volume": 24
+    },
+    "laboratorio": {
+     "share_tokens": 2.33,
+     "share_gasto": 7.54,
+     "lider": {
+      "slug": "moonshotai/kimi-k3.1-pro-20261023",
+      "nome": "Kimi K3.1 Pro",
+      "share_7d": 1.44,
+      "preco_misto": 2.2808
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "moonshotai/kimi-k2-thinking-20251106",
+   "id": "moonshotai/kimi-k2-thinking",
+   "nome": "Kimi K2 Thinking",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "visto_em": "2026-11-23",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.605,
+     "semanas_com_volume": 13
+    },
+    "laboratorio": {
+     "share_tokens": 2.33,
+     "share_gasto": 7.54,
+     "lider": {
+      "slug": "moonshotai/kimi-k3.1-pro-20261023",
+      "nome": "Kimi K3.1 Pro",
+      "share_7d": 1.44,
+      "preco_misto": 2.2808
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "xiaomi/mimo-v2.5-pro-20260422",
+   "id": "xiaomi/mimo-v2.5-pro",
+   "nome": "MiMo-V2.5-Pro",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "visto_em": "2026-11-23",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 3.91,
+     "semanas_com_volume": 22
+    },
+    "laboratorio": {
+     "share_tokens": 2.6,
+     "share_gasto": 0.74,
+     "lider": {
+      "slug": "xiaomi/mimo-v2.6-flash-20260921",
+      "nome": "MiMo-V2.6-Flash",
+      "share_7d": 1.74,
+      "preco_misto": 0.175
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-3-27b-it",
+   "id": "google/gemma-3-27b-it",
+   "nome": "Gemma 3 27B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.1725,
+    "para": 0.1,
+    "variacao_pct": -42.0,
+    "entrada_de": 0.08,
+    "entrada_para": 0.08,
+    "saida_de": 0.45,
+    "saida_para": 0.16,
+    "desde": "2026-11-23"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.721,
+     "semanas_com_volume": 50
+    },
+    "laboratorio": {
+     "share_tokens": 2.51,
+     "share_gasto": 5.9,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.7,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 28
+  },
+  {
+   "tipo": "preco",
+   "slug": "openai/gpt-oss-120b",
+   "id": "openai/gpt-oss-120b",
+   "nome": "gpt-oss-120b",
+   "lab": "OpenAI",
+   "vendor": "openai",
+   "dados": {
+    "de": 0.1575,
+    "para": 0.1,
+    "variacao_pct": -36.5,
+    "entrada_de": 0.09,
+    "entrada_para": 0.05,
+    "saida_de": 0.36,
+    "saida_para": 0.25,
+    "desde": "2026-11-23"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.03,
+     "rank_7d": 57,
+     "pico_share": 5.596,
+     "semanas_com_volume": 67
+    },
+    "laboratorio": {
+     "share_tokens": 7.63,
+     "share_gasto": 11.73,
+     "lider": {
+      "slug": "openai/gpt-6-luna-20260922",
+      "nome": "GPT-6 Luna",
+      "share_7d": 3.55,
+      "preco_misto": 0.2
+     }
+    }
+   },
+   "relevancia": 27
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.6-35b-a3b-20260415",
+   "id": "qwen/qwen3.6-35b-a3b",
+   "nome": "Qwen3.6 35B A3B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.3,
+    "para": 0.2125,
+    "variacao_pct": -29.2,
+    "entrada_de": 0.1,
+    "entrada_para": 0.05,
+    "saida_de": 0.9,
+    "saida_para": 0.7,
+    "desde": "2026-11-23"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.501,
+     "semanas_com_volume": 6
+    },
+    "laboratorio": {
+     "share_tokens": 1.25,
+     "share_gasto": 0.48,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.54,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "contexto",
+   "slug": "stepfun/step-3.7-flash-20260528",
+   "id": "stepfun/step-3.7-flash",
+   "nome": "Step 3.7 Flash",
+   "lab": "StepFun",
+   "vendor": "stepfun",
+   "dados": {
+    "de": 262144,
+    "para": 256000
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 3.326,
+     "semanas_com_volume": 19
+    },
+    "laboratorio": {
+     "share_tokens": 3.23,
+     "share_gasto": 5.43,
+     "lider": {
+      "slug": "stepfun/step-5-preview-20261008",
+      "nome": "Step 5 Preview",
+      "share_7d": 2.78,
+      "preco_misto": 1.425
+     }
+    }
+   },
+   "relevancia": 15
+  }
+ ]
+}
