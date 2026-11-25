@@ -1,0 +1,586 @@
+{
+ "versao": 1,
+ "dia": "2026-11-25",
+ "gerado_em": "2026-11-25T17:59:57Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-18",
+   "2026-11-25"
+  ],
+  "trafego": null
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-25",
+ "licenca": "CC BY 4.0",
+ "estado": null,
+ "principal": "novo:xiaomi/mimo-v2.6-flash-mopd-20260927",
+ "eventos": [
+  {
+   "tipo": "novo",
+   "slug": "xiaomi/mimo-v2.6-flash-mopd-20260927",
+   "id": "xiaomi/mimo-v2.6-flash-mopd",
+   "nome": "MiMo-V2.6-Flash-MOPD",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "criado": "2026-11-23",
+    "contexto": 1048576,
+    "preco_entrada": 0.5,
+    "preco_saida": 1.0,
+    "preco_misto": 0.625,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image+audio+video->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "share_tokens": 2.6,
+     "share_gasto": 0.74,
+     "lider": {
+      "slug": "xiaomi/mimo-v2.6-flash-20260921",
+      "nome": "MiMo-V2.6-Flash",
+      "share_7d": 1.74,
+      "preco_misto": 0.175
+     }
+    }
+   },
+   "relevancia": 41
+  },
+  {
+   "tipo": "novo",
+   "slug": "tngtech/deepseek-r1t2-chimera",
+   "id": "tngtech/deepseek-r1t2-chimera",
+   "nome": "DeepSeek R1T2 Chimera",
+   "lab": "TNG",
+   "vendor": "tngtech",
+   "dados": {
+    "criado": "2025-07-08",
+    "contexto": 131072,
+    "preco_entrada": 1.0,
+    "preco_saida": 2.625,
+    "preco_misto": 1.4062,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": true,
+    "modalidade": "text->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 1.702,
+     "semanas_com_volume": 31
+    },
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "upstage/solar-mini-4-5-20261125",
+   "id": "upstage/solar-mini-4-5",
+   "nome": "Solar Mini 4.5 (Preview)",
+   "lab": "Upstage",
+   "vendor": "upstage",
+   "dados": {
+    "criado": "2026-11-24",
+    "contexto": 524288,
+    "preco_entrada": 0.01,
+    "preco_saida": 0.04,
+    "preco_misto": 0.0175,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "upstage/solar-mini4-20260922",
+      "nome": "Solar Mini 4",
+      "share_7d": 0.6,
+      "preco_misto": 0.0875
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "upstage/solar-pro-4-contributor-20261125",
+   "id": "upstage/solar-pro-4-contributor",
+   "nome": "Solar Pro 4 Contributor",
+   "lab": "Upstage",
+   "vendor": "upstage",
+   "dados": {
+    "criado": "2026-11-24",
+    "contexto": 524288,
+    "preco_entrada": 0.09,
+    "preco_saida": 0.36,
+    "preco_misto": 0.1575,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text->text",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "upstage/solar-mini4-20260922",
+      "nome": "Solar Mini 4",
+      "share_7d": 0.6,
+      "preco_misto": 0.0875
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "cloudflare/clef-flash",
+   "id": "cloudflare/clef-flash",
+   "nome": "Clef Flash",
+   "lab": "Cloudflare",
+   "vendor": "cloudflare",
+   "dados": {
+    "de": 0.0143,
+    "para": 0.0285,
+    "variacao_pct": 100.0,
+    "entrada_de": 0.019,
+    "entrada_para": 0.038,
+    "saida_de": 0.0,
+    "saida_para": 0.0,
+    "desde": "2026-11-24"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-flash-vision-exp-20260821",
+   "id": "deepseek/deepseek-v4-flash-vision-exp",
+   "nome": "DeepSeek V4 Flash Vision Exp",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.3234,
+    "para": 0.66,
+    "variacao_pct": 104.1,
+    "entrada_de": 0.2156,
+    "entrada_para": 0.44,
+    "saida_de": 0.6468,
+    "saida_para": 1.32,
+    "desde": "2026-11-24"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.394,
+     "semanas_com_volume": 4
+    },
+    "laboratorio": {
+     "share_tokens": 41.09,
+     "share_gasto": 7.35,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20261017",
+      "nome": "DeepSeek V4.1 Flash 1017",
+      "share_7d": 26.26,
+      "preco_misto": 0.152
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "meta-llama/llama-3.1-8b-instruct",
+   "id": "meta-llama/llama-3.1-8b-instruct",
+   "nome": "Llama 3.1 8B Instruct",
+   "lab": "Meta",
+   "vendor": "meta-llama",
+   "dados": {
+    "de": 0.025,
+    "para": 0.0575,
+    "variacao_pct": 130.0,
+    "entrada_de": 0.02,
+    "entrada_para": 0.05,
+    "saida_de": 0.04,
+    "saida_para": 0.08,
+    "desde": "2026-11-24"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 1.462,
+     "semanas_com_volume": 66
+    },
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "google/gemini-2.5-flash",
+   "id": "google/gemini-2.5-flash",
+   "nome": "Gemini 2.5 Flash",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "data": "2026-12-01",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 10.546,
+     "semanas_com_volume": 69
+    },
+    "laboratorio": {
+     "share_tokens": 2.51,
+     "share_gasto": 5.9,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.7,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "desativacao",
+   "slug": "google/gemini-2.5-pro",
+   "id": "google/gemini-2.5-pro",
+   "nome": "Gemini 2.5 Pro",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "data": "2026-12-01",
+    "anterior": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 7.132,
+     "semanas_com_volume": 48
+    },
+    "laboratorio": {
+     "share_tokens": 2.51,
+     "share_gasto": 5.9,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.7,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 35
+  },
+  {
+   "tipo": "preco",
+   "slug": "tencent/hy3-20260706",
+   "id": "tencent/hy3",
+   "nome": "Hy3",
+   "lab": "Tencent",
+   "vendor": "tencent",
+   "dados": {
+    "de": 0.25,
+    "para": 0.1444,
+    "variacao_pct": -42.2,
+    "entrada_de": 0.14,
+    "entrada_para": 0.0825,
+    "saida_de": 0.58,
+    "saida_para": 0.33,
+    "desde": "2026-11-24"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.59,
+     "rank_7d": 29,
+     "pico_share": 18.346,
+     "semanas_com_volume": 19
+    },
+    "laboratorio": {
+     "share_tokens": 10.17,
+     "share_gasto": 7.02,
+     "lider": {
+      "slug": "tencent/hy4-flash-20261116",
+      "nome": "Hy4 flash",
+      "share_7d": 9.67,
+      "preco_misto": 0.0614
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "unbiased/pareto-26.10-20261015",
+   "id": "unbiased/pareto-26.10",
+   "nome": "Pareto 26.10",
+   "lab": "Unbiased",
+   "vendor": "unbiased",
+   "dados": {
+    "visto_em": "2026-11-24",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "unbiased/pareto-26.10-preview-20260929",
+   "id": "unbiased/pareto-26.10-preview",
+   "nome": "Pareto 26.10 Preview",
+   "lab": "Unbiased",
+   "vendor": "unbiased",
+   "dados": {
+    "visto_em": "2026-11-24",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "unbiased/pareto-26.9-20260917",
+   "id": "unbiased/pareto-26.9",
+   "nome": "Pareto 26.9",
+   "lab": "Unbiased",
+   "vendor": "unbiased",
+   "dados": {
+    "visto_em": "2026-11-24",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "xiaomi/mimo-v2.5-20260422",
+   "id": "xiaomi/mimo-v2.5",
+   "nome": "MiMo-V2.5",
+   "lab": "Xiaomi",
+   "vendor": "xiaomi",
+   "dados": {
+    "visto_em": "2026-11-24",
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 18.027,
+     "semanas_com_volume": 25
+    },
+    "laboratorio": {
+     "share_tokens": 2.6,
+     "share_gasto": 0.74,
+     "lider": {
+      "slug": "xiaomi/mimo-v2.6-flash-20260921",
+      "nome": "MiMo-V2.6-Flash",
+      "share_7d": 1.74,
+      "preco_misto": 0.175
+     }
+    }
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4-pro-20260813",
+   "id": "deepseek/deepseek-v4-pro-0813",
+   "nome": "DeepSeek V4 Pro 0813",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 1.98,
+    "para": 1.1932,
+    "variacao_pct": -39.7,
+    "entrada_de": 1.32,
+    "entrada_para": 0.111,
+    "saida_de": 3.96,
+    "saida_para": 4.44,
+    "desde": "2026-11-24"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.31,
+     "rank_7d": 40,
+     "pico_share": 1.062,
+     "semanas_com_volume": 14
+    },
+    "laboratorio": {
+     "share_tokens": 41.09,
+     "share_gasto": 7.35,
+     "lider": {
+      "slug": "deepseek/deepseek-v4.1-flash-20261017",
+      "nome": "DeepSeek V4.1 Flash 1017",
+      "share_7d": 26.26,
+      "preco_misto": 0.152
+     }
+    }
+   },
+   "relevancia": 29
+  },
+  {
+   "tipo": "preco",
+   "slug": "google/gemma-4-26b-a4b-it-20260403",
+   "id": "google/gemma-4-26b-a4b-it",
+   "nome": "Gemma 4 26B A4B",
+   "lab": "Google",
+   "vendor": "google",
+   "dados": {
+    "de": 0.1069,
+    "para": 0.1425,
+    "variacao_pct": 33.3,
+    "entrada_de": 0.0675,
+    "entrada_para": 0.09,
+    "saida_de": 0.225,
+    "saida_para": 0.3,
+    "desde": "2026-11-24"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.19,
+     "rank_7d": 48,
+     "pico_share": 0.737,
+     "semanas_com_volume": 32
+    },
+    "laboratorio": {
+     "share_tokens": 2.51,
+     "share_gasto": 5.9,
+     "lider": {
+      "slug": "google/gemini-3.8-flash-20260902",
+      "nome": "Gemini 3.8 Flash",
+      "share_7d": 0.7,
+      "preco_misto": 1.65
+     }
+    }
+   },
+   "relevancia": 27
+  },
+  {
+   "tipo": "preco",
+   "slug": "inclusionai/ling-3.1-flash-20261002",
+   "id": "inclusionai/ling-3.1-flash",
+   "nome": "Ling 3.1 Flash",
+   "lab": "InclusionAI",
+   "vendor": "inclusionai",
+   "dados": {
+    "de": 0.09,
+    "para": 0.1125,
+    "variacao_pct": 25.0,
+    "entrada_de": 0.06,
+    "entrada_para": 0.075,
+    "saida_de": 0.18,
+    "saida_para": 0.225,
+    "desde": "2026-11-24"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.366,
+     "semanas_com_volume": 3
+    },
+    "laboratorio": {
+     "lider": {
+      "slug": "inclusionai/ling-3.2-flash-20261113",
+      "nome": "Ling 3.2 Flash (free)",
+      "share_7d": 0.03,
+      "preco_misto": 0.0
+     }
+    }
+   },
+   "relevancia": 25
+  },
+  {
+   "tipo": "contexto",
+   "slug": "minimax/minimax-m2.5-20260211",
+   "id": "minimax/minimax-m2.5",
+   "nome": "MiniMax M2.5",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 198000,
+    "para": 65536
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 18.429,
+     "semanas_com_volume": 18
+    },
+    "laboratorio": {
+     "share_tokens": 2.01,
+     "share_gasto": 0.45,
+     "lider": {
+      "slug": "minimax/minimax-m3.1-flash-20261019",
+      "nome": "MiniMax M3.1 Flash",
+      "share_7d": 1.42,
+      "preco_misto": 0.1312
+     }
+    }
+   },
+   "relevancia": 15
+  },
+  {
+   "tipo": "contexto",
+   "slug": "z-ai/glm-4.7-flash-20260119",
+   "id": "z-ai/glm-4.7-flash",
+   "nome": "GLM 4.7 Flash",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 200000,
+    "para": 131072
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.318,
+     "semanas_com_volume": 10
+    },
+    "laboratorio": {
+     "share_tokens": 8.39,
+     "share_gasto": 3.58,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 4.9,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 15
+  }
+ ]
+}
