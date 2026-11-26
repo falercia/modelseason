@@ -1,0 +1,289 @@
+{
+ "versao": 1,
+ "dia": "2026-11-26",
+ "gerado_em": "2026-11-26T17:45:43Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-19",
+   "2026-11-26"
+  ],
+  "trafego": null
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-26",
+ "licenca": "CC BY 4.0",
+ "estado": null,
+ "principal": "preco:deepseek/deepseek-v4.1-flash-20261017",
+ "eventos": [
+  {
+   "tipo": "preco",
+   "slug": "deepseek/deepseek-v4.1-flash-20261017",
+   "id": "deepseek/deepseek-v4.1-flash-1017",
+   "nome": "DeepSeek V4.1 Flash 1017",
+   "lab": "DeepSeek",
+   "vendor": "deepseek",
+   "dados": {
+    "de": 0.0725,
+    "para": 0.2625,
+    "variacao_pct": 262.1,
+    "entrada_de": 0.03,
+    "entrada_para": 0.15,
+    "saida_de": 0.2,
+    "saida_para": 0.6,
+    "desde": "2026-11-25"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 26.26,
+     "rank_7d": 1,
+     "pico_share": 28.032,
+     "semanas_com_volume": 5
+    },
+    "laboratorio": {
+     "share_tokens": 41.09,
+     "share_gasto": 7.35
+    }
+   },
+   "relevancia": 70
+  },
+  {
+   "tipo": "novo",
+   "slug": "bytedance-seed/seed-tts-3-0-20261125",
+   "id": "bytedance-seed/seed-tts-3-0",
+   "nome": "Seed-TTS 3.0",
+   "lab": "ByteDance",
+   "vendor": "bytedance-seed",
+   "dados": {
+    "criado": "2026-11-25",
+    "contexto": 0,
+    "preco_entrada": 20.0,
+    "preco_saida": 0.0,
+    "preco_misto": 15.0,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->speech",
+    "pesos_abertos": false,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "inclusionai/lingsante-3.1-air-vl-20261126",
+   "id": "inclusionai/lingsante-3.1-air-vl",
+   "nome": "LingSante 3.1 Air VL",
+   "lab": "InclusionAI",
+   "vendor": "inclusionai",
+   "dados": {
+    "criado": "2026-11-26",
+    "contexto": 131072,
+    "preco_entrada": 0.06,
+    "preco_saida": 0.18,
+    "preco_misto": 0.09,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": {
+     "lider": {
+      "slug": "inclusionai/ling-3.2-flash-20261113",
+      "nome": "Ling 3.2 Flash (free)",
+      "share_7d": 0.03,
+      "preco_misto": 0.0
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "moonshotai/kimi-k2",
+   "id": "moonshotai/kimi-k2",
+   "nome": "Kimi K2 0711",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "criado": "2025-07-11",
+    "contexto": 131072,
+    "preco_entrada": 0.57,
+    "preco_saida": 2.3,
+    "preco_misto": 1.0025,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 3.349,
+     "semanas_com_volume": 14
+    },
+    "laboratorio": {
+     "share_tokens": 2.33,
+     "share_gasto": 7.54,
+     "lider": {
+      "slug": "moonshotai/kimi-k3.1-pro-20261023",
+      "nome": "Kimi K3.1 Pro",
+      "share_7d": 1.44,
+      "preco_misto": 2.2808
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "novo",
+   "slug": "moonshotai/kimi-k2-0905",
+   "id": "moonshotai/kimi-k2-0905",
+   "nome": "Kimi K2 0905",
+   "lab": "Moonshot AI",
+   "vendor": "moonshotai",
+   "dados": {
+    "criado": "2025-09-04",
+    "contexto": 262144,
+    "preco_entrada": 0.6,
+    "preco_saida": 2.5,
+    "preco_misto": 1.075,
+    "raciocinio": false,
+    "raciocinio_obrigatorio": null,
+    "modalidade": "text->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.628,
+     "semanas_com_volume": 24
+    },
+    "laboratorio": {
+     "share_tokens": 2.33,
+     "share_gasto": 7.54,
+     "lider": {
+      "slug": "moonshotai/kimi-k3.1-pro-20261023",
+      "nome": "Kimi K3.1 Pro",
+      "share_7d": 1.44,
+      "preco_misto": 2.2808
+     }
+    }
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.6-35b-a3b-20260415",
+   "id": "qwen/qwen3.6-35b-a3b",
+   "nome": "Qwen3.6 35B A3B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.2125,
+    "para": 0.2975,
+    "variacao_pct": 40.0,
+    "entrada_de": 0.05,
+    "entrada_para": 0.1,
+    "saida_de": 0.7,
+    "saida_para": 0.89,
+    "desde": "2026-11-25"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.501,
+     "semanas_com_volume": 6
+    },
+    "laboratorio": {
+     "share_tokens": 1.25,
+     "share_gasto": 0.48,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.54,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 28
+  },
+  {
+   "tipo": "preco",
+   "slug": "minimax/minimax-m2.5-20260211",
+   "id": "minimax/minimax-m2.5",
+   "nome": "MiniMax M2.5",
+   "lab": "MiniMax",
+   "vendor": "minimax",
+   "dados": {
+    "de": 0.44,
+    "para": 0.525,
+    "variacao_pct": 19.3,
+    "entrada_de": 0.27,
+    "entrada_para": 0.3,
+    "saida_de": 0.95,
+    "saida_para": 1.2,
+    "desde": "2026-11-25"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 18.429,
+     "semanas_com_volume": 18
+    },
+    "laboratorio": {
+     "share_tokens": 2.01,
+     "share_gasto": 0.45,
+     "lider": {
+      "slug": "minimax/minimax-m3.1-flash-20261019",
+      "nome": "MiniMax M3.1 Flash",
+      "share_7d": 1.42,
+      "preco_misto": 0.1312
+     }
+    }
+   },
+   "relevancia": 24
+  },
+  {
+   "tipo": "contexto",
+   "slug": "z-ai/glm-4.6",
+   "id": "z-ai/glm-4.6",
+   "nome": "GLM 4.6",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 204800,
+    "para": 202752
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 2.192,
+     "semanas_com_volume": 20
+    },
+    "laboratorio": {
+     "share_tokens": 8.39,
+     "share_gasto": 3.58,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 4.9,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 15
+  }
+ ]
+}
