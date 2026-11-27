@@ -1,0 +1,292 @@
+{
+ "versao": 1,
+ "dia": "2026-11-27",
+ "gerado_em": "2026-11-27T17:30:16Z",
+ "fontes": {
+  "catalogo": [
+   "2026-11-20",
+   "2026-11-27"
+  ],
+  "trafego": null
+ },
+ "citacao": "Source: OpenRouter (openrouter.ai/rankings), as of 2026-11-27",
+ "licenca": "CC BY 4.0",
+ "estado": null,
+ "principal": "preco:z-ai/glm-5.3-flash-20260826",
+ "eventos": [
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-5.3-flash-20260826",
+   "id": "z-ai/glm-5.3-flash",
+   "nome": "GLM 5.3 Flash",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 0.0495,
+    "para": 0.2375,
+    "variacao_pct": 379.6,
+    "entrada_de": 0.0399,
+    "entrada_para": 0.15,
+    "saida_de": 0.0784,
+    "saida_para": 0.5,
+    "desde": "2026-11-26"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 4.9,
+     "rank_7d": 5,
+     "pico_share": 11.188,
+     "semanas_com_volume": 12
+    },
+    "laboratorio": {
+     "share_tokens": 8.39,
+     "share_gasto": 3.58
+    }
+   },
+   "relevancia": 55
+  },
+  {
+   "tipo": "novo",
+   "slug": "inclusionai/ling-3.2-flash-20261113",
+   "id": "inclusionai/ling-3.2-flash",
+   "nome": "Ling 3.2 Flash",
+   "lab": "InclusionAI",
+   "vendor": "inclusionai",
+   "dados": {
+    "criado": "2026-11-13",
+    "contexto": 1048576,
+    "preco_entrada": 0.3,
+    "preco_saida": 0.9,
+    "preco_misto": 0.45,
+    "raciocinio": true,
+    "raciocinio_obrigatorio": false,
+    "modalidade": "text+image->text",
+    "pesos_abertos": true,
+    "expira": null
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.03,
+     "rank_7d": 59,
+     "pico_share": 0.029,
+     "semanas_com_volume": 1
+    },
+    "laboratorio": null
+   },
+   "relevancia": 40
+  },
+  {
+   "tipo": "removido",
+   "slug": "microsoft/mai-image-2.5",
+   "id": "microsoft/mai-image-2.5",
+   "nome": "MAI-Image-2.5",
+   "lab": "Microsoft",
+   "vendor": "microsoft",
+   "dados": {
+    "visto_em": "2026-11-26",
+    "expira": "2026-11-27"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "removido",
+   "slug": "microsoft/mai-image-2.5-pro-20260723",
+   "id": "microsoft/mai-image-2.5-pro",
+   "nome": "MAI-Image-2.5 Pro",
+   "lab": "Microsoft",
+   "vendor": "microsoft",
+   "dados": {
+    "visto_em": "2026-11-26",
+    "expira": "2026-11-27"
+   },
+   "cruzamento": {
+    "modelo": null,
+    "laboratorio": null
+   },
+   "relevancia": 30
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.8-27b-20260814",
+   "id": "qwen/qwen3.8-27b",
+   "nome": "Qwen3.8 27B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.4012,
+    "para": 0.535,
+    "variacao_pct": 33.3,
+    "entrada_de": 0.035,
+    "entrada_para": 0.06,
+    "saida_de": 1.5,
+    "saida_para": 1.96,
+    "desde": "2026-11-26"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.35,
+     "rank_7d": 38,
+     "pico_share": 0.372,
+     "semanas_com_volume": 13
+    },
+    "laboratorio": {
+     "share_tokens": 1.25,
+     "share_gasto": 0.48,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.54,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 28
+  },
+  {
+   "tipo": "preco",
+   "slug": "z-ai/glm-4.5-air",
+   "id": "z-ai/glm-4.5-air",
+   "nome": "GLM 4.5 Air",
+   "lab": "Z.ai (GLM)",
+   "vendor": "z-ai",
+   "dados": {
+    "de": 0.31,
+    "para": 0.425,
+    "variacao_pct": 37.1,
+    "entrada_de": 0.13,
+    "entrada_para": 0.2,
+    "saida_de": 0.85,
+    "saida_para": 1.1,
+    "desde": "2026-11-26"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 1.185,
+     "semanas_com_volume": 44
+    },
+    "laboratorio": {
+     "share_tokens": 8.39,
+     "share_gasto": 3.58,
+     "lider": {
+      "slug": "z-ai/glm-5.3-flash-20260826",
+      "nome": "GLM 5.3 Flash",
+      "share_7d": 4.9,
+      "preco_misto": 0.2375
+     }
+    }
+   },
+   "relevancia": 27
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.5-9b-20260310",
+   "id": "qwen/qwen3.5-9b",
+   "nome": "Qwen3.5-9B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 0.19,
+    "para": 0.1375,
+    "variacao_pct": -27.6,
+    "entrada_de": 0.17,
+    "entrada_para": 0.1,
+    "saida_de": 0.25,
+    "saida_para": 0.25,
+    "desde": "2026-11-26"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.205,
+     "semanas_com_volume": 5
+    },
+    "laboratorio": {
+     "share_tokens": 1.25,
+     "share_gasto": 0.48,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.54,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 26
+  },
+  {
+   "tipo": "preco",
+   "slug": "qwen/qwen3.5-397b-a17b-20260216",
+   "id": "qwen/qwen3.5-397b-a17b",
+   "nome": "Qwen3.5 397B A17B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 1.0875,
+    "para": 1.275,
+    "variacao_pct": 17.2,
+    "entrada_de": 0.45,
+    "entrada_para": 0.5,
+    "saida_de": 3.0,
+    "saida_para": 3.6,
+    "desde": "2026-11-26"
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.671,
+     "semanas_com_volume": 15
+    },
+    "laboratorio": {
+     "share_tokens": 1.25,
+     "share_gasto": 0.48,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.54,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 23
+  },
+  {
+   "tipo": "contexto",
+   "slug": "qwen/qwen3.8-2.4t-a95b-20260812",
+   "id": "qwen/qwen3.8-2.4t-a95b",
+   "nome": "Qwen3.8 2.4T A95B",
+   "lab": "Qwen",
+   "vendor": "qwen",
+   "dados": {
+    "de": 1048576,
+    "para": 1000000
+   },
+   "cruzamento": {
+    "modelo": {
+     "share_7d": 0.0,
+     "rank_7d": null,
+     "pico_share": 0.0,
+     "semanas_com_volume": 0
+    },
+    "laboratorio": {
+     "share_tokens": 1.25,
+     "share_gasto": 0.48,
+     "lider": {
+      "slug": "qwen/qwen3.8-flash-20260826",
+      "nome": "Qwen3.8 Flash",
+      "share_7d": 0.54,
+      "preco_misto": 0.23
+     }
+    }
+   },
+   "relevancia": 15
+  }
+ ]
+}
